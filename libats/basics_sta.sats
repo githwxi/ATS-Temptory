@@ -52,11 +52,16 @@ VERBOSE_PRELUDE
 //
 // HX: unindexed type for pointers
 //
-abstbox ptr_type = $extype"atstype_ptrk"
-abstbox ptr_addr_type(l:addr) = ptr_type
+abstbox
+ptr_type =
+$extype"atstype_ptrk"
+abstbox
+ptr_addr_type(l:addr) = ptr_type
 //
-typedef ptr = ptr_type // HX: a shorthand
-sexpdef ptr = ptr_addr_type // HX: a shorthand
+typedef
+ptr = ptr_type // HX: a shorthand
+sexpdef
+ptr = ptr_addr_type // HX: a shorthand
 //
 typedef Ptr = [l:addr] ptr(l)
 typedef Ptr0 = [l:agez] ptr(l)
@@ -67,29 +72,47 @@ Ptrnul(l:addr) =
   [l1:addr | l1==null || l1==l] ptr(l1)
 // end of [Ptrnul]
 //
-// HX-2012-02-14: it is an expriment for now:
+(*
+//
+// HX-2012-02-14:
+// it is an expriment for now:
 //
 typedef
-ptr(n:int) = ptr_addr_type(addr_of_int(n))
+ptr(n:int) = ptr_addr_tbox(addr_of_int(n))
+//
+*)
+(* ****** ****** *)
+//
+abstbox
+cptr_vtflt_tbox
+  (a: vtflt) = $extype"atstype_cptr"
+abstbox
+cptr_vtflt_addr_tbox
+  (a:vtflt, l: addr) = cptr_vtflt_tbox(a)
+//
+typedef
+cptr0(a:vtflt) = cptr_vtflt_tbox(a)
+typedef
+cptr1(a:vtflt, l:addr) = cptr_vtflt_addr_tbox(a, l)
 //
 (* ****** ****** *)
 
 abstflt
-sint_kind = $extype"atstype_sint"
+sint_tk = $extype"atstype_sint"
 abstflt
-uint_kind = $extype"atstype_uint"
+uint_tk = $extype"atstype_uint"
 abstflt
-slint_kind = $extype"atstype_slint"
+slint_tknd = $extype"atstype_slint"
 abstflt
-ulint_kind = $extype"atstype_ulint"
+ulint_tk = $extype"atstype_ulint"
 abstflt
-ssize_kind = $extype"atstype_ssize"
+ssize_tk = $extype"atstype_ssize"
 abstflt
-usize_kind = $extype"atstype_usize"
+usize_tk = $extype"atstype_usize"
 abstflt
-sllint_kind = $extype"atstype_sllint"
+sllint_tk = $extype"atstype_sllint"
 abstflt
-ullint_kind = $extype"atstype_ullint"
+ullint_tk = $extype"atstype_ullint"
 
 (* ****** ****** *)
 
@@ -97,6 +120,13 @@ abstflt
 g0int_t0ype(tknd:tflt) = tknd
 abstflt
 g1int_int_t0ype(tknd:tflt, int) = tknd
+
+(* ****** ****** *)
+
+typedef
+int = g0int_t0ype(sint_tk)
+typedef
+int(i:int) = g1int_int_t0ype(sint_tk, i)
 
 (* ****** ****** *)
 //
@@ -209,18 +239,36 @@ Stropt1 = [n:int | n >= 0] stropt_int_type(n)
 //
 (* ****** ****** *)
 //
-// HX: [lazy(T)] :
-// suspended evaluation of type T
+abstflt
+atsvoid_t0ype
+(*
+= $extype"atsvoid_t0ype"
+*)
+typedef
+void = atsvoid_t0ype // = C-void
+//
+absvtbox
+exception_vtype =
+$extype"atstype_exnconptr"
+vtypedef exn = exception_vtype
+//
+absvtflt
+opt_vtflt_bool_vtflt
+(a:vtflt+, opt:bool) = a
+sexpdef opt = opt_vtflt_bool_vtflt
+//
+(* ****** ****** *)
+//
+// HX:
+// suspended computation:
 //
 abstbox
 lazy_t0ype_type(tflt+) = ptr
 typedef
 lazy(a:tflt) = lazy_t0ype_type(a)
 //
-(* ****** ****** *)
-//
-// HX: [lazy_vt(VT)] :
-// suspended computation of viewtype VT
+// HX:
+// suspended linear computation
 //
 absvtbox
 lazy_vt0ype_vtype(vtflt+) = ptr

@@ -538,16 +538,6 @@ INV(a:tflt) = invar_t0ype_t0ype(a)
 //
 (* ****** ****** *)
 //
-abstflt
-stamped_t0ype(a:tflt, int) = a
-absvtflt
-stamped_vt0ype(a:vtflt, int) = a
-//
-sexpdef stamped_t = stamped_t0ype
-sexpdef stamped_vt = stamped_vt0ype
-//
-(* ****** ****** *)
-//
 absview
 vcopyenv_view_view(v:view)
 absvtflt

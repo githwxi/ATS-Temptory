@@ -881,9 +881,9 @@ pervasive_load
   (PATSHOME, given) = {
 //
 (*
-val () = (
-  println! ("pervasive_load: given = ", given)
-) (* end of [val] *)
+val () =
+println!
+("pervasive_load: given = ", given)
 *)
 //
 val fullname =
@@ -947,9 +947,9 @@ val () =
   pervasive_load(PATSHOME, "libats/basics_pre.sats")
 val () =
   pervasive_load(PATSHOME, "libats/basics_sta.sats")
-(*
 val () =
   pervasive_load(PATSHOME, "libats/basics_dyn.sats")
+(*
 val () =
   pervasive_load(PATSHOME, "libats/basics_gen.sats")
 *)
