@@ -1,0 +1,188 @@
+#
+#
+# This Makefile is automatically generated
+# from executing the following command-line:
+#
+# make -f Makefile.gen
+#
+#
+
+######
+#
+CC=gcc
+CCOMP=$(CC)
+#
+export ATSCCOMP=$(CC)
+#
+######
+
+ATSCC=$(ATSHOME)/bin/atscc
+ATSOPT=$(ATSHOME)/bin/atsopt
+
+######
+
+CFLAGS=-g
+CFLAGS=-g -O
+CFLAGS=-g -O2
+
+######
+#
+GCFLAG=
+#
+# GCFLAG=-D_ATS_NGC
+# GCFLAG=-D_ATS_GCBDW
+# GCFLAG=-D_ATS_GCATS
+#
+######
+#
+# Bootstrapping:
+#
+# [gmpknd] for CBOOTgmp
+# [intknd] for CBOOTint
+#
+C3NSTRINTKND=gmpknd
+#C3NSTRINTKND=gmpknd
+#C3NSTRINTKND=intknd
+#
+######
+#
+DATSCC=-DATS \
+C3NSTRINTKND=$(C3NSTRINTKND)
+#
+######
+
+LIBATS=-lats
+
+######
+#
+# HX: no [gmp] 
+ifeq ($(C3NSTRINTKND),intknd)
+LIBGMP=
+endif
+#
+# HX: [gmp] needed
+ifeq ($(C3NSTRINTKND),gmpknd)
+LIBGMP=-lgmp
+endif
+#
+######
+
+SOURCES := \
+#__tok1$
+
+SOURCESsta := $(filter %.sats, $(SOURCES))
+SOURCESdyn := $(filter %.dats, $(SOURCES))
+
+######
+
+TARGETS := \
+#__tok2$
+TARGETS += pats_main_dats.c
+TARGETS += pats_main_none_dats.c
+
+######
+
+OBJECTS := \
+#__tok3$
+
+######
+
+all:: patsopt
+
+######
+#
+# AS-20130407:
+# link order matters to GNU ld
+# please keep the order '$(LIBATS) $(LIBGMP)'
+# as the former depends on the latter
+#
+patsopt:: $(TARGETS)
+patsopt:: $(OBJECTS) ; \
+$(ATSCC) $(CFLAGS) $(GCFLAG) \
+-o $@ pats_main.dats $(OBJECTS) $(LIBATS) $(LIBGMP)
+#
+cleanall:: ; $(RMF) patsopt
+#
+######
+#
+libatsopt:: $(TARGETS)
+#
+libatsopt:: $(OBJECTS)   pats_main_none_dats.o; $(ARR) libatsopt.a $^
+#
+######
+#
+# for building patsopt through CMake
+#
+BUILD/init: ; cd BUILD; cmake ..; cd ..
+BUILD/clean: ; make -C BUILD -f Makefile clean
+BUILD/patsopt: ; make -C BUILD -j8 -f Makefile patsopt
+#
+######
+CBOOT:: CBOOTgmp
+######
+#
+CBOOTgmp:: ; $(CPF) pats_*.hats CBOOT
+CBOOTgmp:: ; $(CPF) pats_*.cats CBOOT
+CBOOTgmp:: ; $(CPF) pats_*_sats.c CBOOT
+CBOOTgmp:: ; $(CPF) pats_*_dats.c CBOOT
+CBOOTgmp:: ; $(CPF) Makefile_CBOOTgmp CBOOT/Makefile
+#
+######
+#
+CBOOTint:: ; $(CPF) pats_*.hats CBOOT
+CBOOTint:: ; $(CPF) pats_*.cats CBOOT
+CBOOTint:: ; $(CPF) pats_*_sats.c CBOOT
+CBOOTint:: ; $(CPF) pats_*_dats.c CBOOT
+CBOOTint:: ; $(CPF) Makefile_CBOOTint CBOOT/Makefile
+#
+######
+
+TAGATS:: ; $(RMF) $@
+TAGATS:: ; $(ATSOPT) --output-a $@ --taggen -s $(SOURCESsta) -d $(SOURCESdyn)
+
+######
+#
+#__tok4$
+#
+pats_main_dats.c: \
+  pats_main.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+pats_main_none_dats.c: \
+  pats_main.dats; $(ATSOPT) $(DATSCC) -DATS PATSOPT_MAIN_NONE -o $@ -d $<
+#
+pats_main_none_dats.o: pats_main_none_dats.c; $(ATSCC) $(CFLAGS) -c -o $@ $<
+#
+######
+#
+# HX: '-o .depend' means appending instead of overwriting
+#
+depend::
+	$(RMF) .depend
+	$(ATSOPT) --output-a .depend --depgen -d pats_main.dats
+	$(ATSOPT) --output-a .depend --depgen -s $(SOURCESsta) -d $(SOURCESdyn)
+#
+-include .depend
+#
+######
+
+DIR=.
+ARR=ar -r
+CPF=cp -f
+RMF=rm -f
+WCL=wc -l
+
+######
+#
+srclines:: ; $(WCL)   pats_main.dats $(SOURCES)
+#
+liblines:: ; $(WCL)   ../prelude/*.sats   ../prelude/?ATS/*.?ats   ../libc/?ATS/*.?ats   ../libats/?ATS/*.?ats ../libats/?ATS/SHARE/*.?ats
+#
+######
+
+clean:: ; $(RMF) $(DIR)/*~
+clean:: ; $(RMF) $(DIR)/*_?ats.o
+clean:: ; $(RMF) $(DIR)/*_?ats.c
+
+cleanall:: clean
+cleanall:: ; $(RMF) TAGATS
+
+###### end of [Makefile] ######
