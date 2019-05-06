@@ -605,24 +605,24 @@ end // end of [un_s2exp_bool_index_t0ype]
 (* ****** ****** *)
 
 implement
-the_sint_kind = s2cstref_make "sint_kind"
+the_sint_kind = s2cstref_make "sint_tk"
 implement
-the_uint_kind = s2cstref_make "uint_kind"
+the_uint_kind = s2cstref_make "uint_tk"
 //
 implement
-the_slint_kind = s2cstref_make "slint_kind"
+the_slint_kind = s2cstref_make "slint_tk"
 implement
-the_ulint_kind = s2cstref_make "ulint_kind"
+the_ulint_kind = s2cstref_make "ulint_tk"
 //
 implement
-the_ssize_kind = s2cstref_make "ssize_kind"
+the_ssize_kind = s2cstref_make "ssize_tk"
 implement
-the_usize_kind = s2cstref_make "usize_kind"
+the_usize_kind = s2cstref_make "usize_tk"
 //
 implement
-the_sllint_kind = s2cstref_make "sllint_kind"
+the_sllint_kind = s2cstref_make "sllint_tk"
 implement
-the_ullint_kind = s2cstref_make "ullint_kind"
+the_ullint_kind = s2cstref_make "ullint_tk"
 //
 implement
 the_g0int_t0ype = s2cstref_make "g0int_t0ype"

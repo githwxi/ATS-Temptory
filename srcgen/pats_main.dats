@@ -944,15 +944,13 @@ val () =
 the_fixity_load(PATSHOME)
 //
 val () =
-  pervasive_load(PATSHOME, "libats/basics_pre.sats")
+pervasive_load(PATSHOME, "libats/basics_pre.sats")
 val () =
-  pervasive_load(PATSHOME, "libats/basics_sta.sats")
+pervasive_load(PATSHOME, "libats/basics_sta.sats")
 val () =
-  pervasive_load(PATSHOME, "libats/basics_dyn.sats")
-(*
+pervasive_load(PATSHOME, "libats/basics_dyn.sats")
 val () =
-  pervasive_load(PATSHOME, "libats/basics_gen.sats")
-*)
+pervasive_load(PATSHOME, "libats/basics_gen.sats")
 //
 (*
 val () = pervasive_load(PATSHOME, "libats/macrodef.sats")

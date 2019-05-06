@@ -816,7 +816,7 @@ OBJECTS := \
 
 ######
 
-all:: patsopt
+all:: tempopt
 
 ######
 #
@@ -825,12 +825,12 @@ all:: patsopt
 # please keep the order '$(LIBATS) $(LIBGMP)'
 # as the former depends on the latter
 #
-patsopt:: $(TARGETS)
-patsopt:: $(OBJECTS) ; \
+tempopt:: $(TARGETS)
+tempopt:: $(OBJECTS) ; \
 $(ATSCC) $(CFLAGS) $(GCFLAG) \
 -o $@ pats_main.dats $(OBJECTS) $(LIBATS) $(LIBGMP)
 #
-cleanall:: ; $(RMF) patsopt
+cleanall:: ; $(RMF) tempopt
 #
 ######
 #
@@ -840,11 +840,11 @@ libatsopt:: $(OBJECTS)   pats_main_none_dats.o; $(ARR) libatsopt.a $^
 #
 ######
 #
-# for building patsopt through CMake
+# for building tempopt through CMake
 #
 BUILD/init: ; cd BUILD; cmake ..; cd ..
 BUILD/clean: ; make -C BUILD -f Makefile clean
-BUILD/patsopt: ; make -C BUILD -j8 -f Makefile patsopt
+BUILD/tempopt: ; make -C BUILD -j8 -f Makefile tempopt
 #
 ######
 CBOOT:: CBOOTgmp

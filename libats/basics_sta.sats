@@ -102,7 +102,7 @@ sint_tk = $extype"atstype_sint"
 abstflt
 uint_tk = $extype"atstype_uint"
 abstflt
-slint_tknd = $extype"atstype_slint"
+slint_tk = $extype"atstype_slint"
 abstflt
 ulint_tk = $extype"atstype_ulint"
 abstflt
@@ -115,19 +115,57 @@ abstflt
 ullint_tk = $extype"atstype_ullint"
 
 (* ****** ****** *)
-
+//
 abstflt
 g0int_t0ype(tknd:tflt) = tknd
 abstflt
 g1int_int_t0ype(tknd:tflt, int) = tknd
-
+//
+sexpdef g0int = g0int_t0ype
+sexpdef g1int = g1int_int_t0ype
+//
 (* ****** ****** *)
-
+//
 typedef
 int = g0int_t0ype(sint_tk)
 typedef
 int(i:int) = g1int_int_t0ype(sint_tk, i)
-
+typedef
+sint = g0int_t0ype(sint_tk)
+typedef
+sint(i:int) = g1int_int_t0ype(sint_tk, i)
+typedef
+uint = g0int_t0ype(uint_tk)
+typedef
+uint(i:int) = g1int_int_t0ype(uint_tk, i)
+//
+typedef
+slint = g0int_t0ype(slint_tk)
+typedef
+slint(i:int) = g1int_int_t0ype(slint_tk, i)
+typedef
+ulint = g0int_t0ype(ulint_tk)
+typedef
+ulint(i:int) = g1int_int_t0ype(ulint_tk, i)
+//
+typedef
+ssize = g0int_t0ype(ssize_tk)
+typedef
+ssize(i:int) = g1int_int_t0ype(ssize_tk, i)
+typedef
+usize = g0int_t0ype(usize_tk)
+typedef
+usize(i:int) = g1int_int_t0ype(usize_tk, i)
+//
+typedef
+sllint = g0int_t0ype(sllint_tk)
+typedef
+sllint(i:int) = g1int_int_t0ype(sllint_tk, i)
+typedef
+ullint = g0int_t0ype(ullint_tk)
+typedef
+ullint(i:int) = g1int_int_t0ype(ullint_tk, i)
+//
 (* ****** ****** *)
 //
 abstflt
@@ -278,6 +316,40 @@ lazy_vt(a:vtflt) = lazy_vt0ype_vtype(a)
 (* ****** ****** *)
 //
 (*
+** HX: linear mutable strings
+*)
+//
+absvtbox
+strptr_addr_vtype(l:addr) = ptr
+vtypedef
+strptr(l:addr) = strptr_addr_vtype(l)
+//
+vtypedef
+strptr = [l:addr] strptr(l)
+vtypedef
+Strptr = [l:addr] strptr(l)
+vtypedef
+Strptr0 = [l:addr] strptr(l)
+vtypedef
+Strptr1 = [l:addr|l > null] strptr(l)
+//
+absvtbox
+strnptr_addr_int_vtype(l:addr, n:int) = ptr
+vtypedef
+strnptr(l:addr, n:int) = strnptr_addr_int_vtype(l, n)
+vtypedef
+strnptr(n:int) = [l:addr] strnptr_addr_int_vtype(l, n)
+//
+vtypedef
+Strnptr = [l:addr;n:int] strnptr(l, n)
+vtypedef
+Strnptr0 = [l:addr;n:int] strnptr(l, n)
+vtypedef
+Strnptr1 = [l:addr;n:int | n >= 0] strnptr(l, n)
+//
+(* ****** ****** *)
+//
+(*
 //
 // HX-2016-02-21:
 // these are renamed/relocated elsewhere
@@ -289,20 +361,17 @@ lazy_vt(a:vtflt) = lazy_vt0ype_vtype(a)
 //
 (*
 abstflt
-literal_int
-(intlit) = $extype"atsliteral_int"
+literal_int(intlit) = $extype"atsliteral_int"
 *)
 //
 (*
 abstflt
-literal_float
-(float) = $extype"atsliteral_float"
+literal_float(float) = $extype"atsliteral_float"
 *)
 //
 (*
 abstflt
-literal_string
-(string) = $extype"atsliteral_string"
+literal_string(string) = $extype"atsliteral_string"
 *)
 //
 *)
@@ -319,8 +388,7 @@ undefined_vt0ype = $extype"atstype_undefined"
 #if
 VERBOSE_PRELUDE
 #then
-#print
-"Loading [basics_sta.sats] finishes!\n"
+#print "Loading [basics_sta.sats] finishes!\n"
 #endif // end of [VERBOSE_PRELUDE]
 
 (* ****** ****** *)
