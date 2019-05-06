@@ -530,9 +530,9 @@ val () = ins ("primplement", PRIMPLMNT) // ~1
 val () = ins ("import", T_IMPORT) // for importing packages
 //
 (*
+val () = ins ("fix", FIX)
 val () = ins ("lam", LAM)
 val () = ins ("llam", LLAM)
-val () = ins ("fix", FIX)
 *)
 //
 val () = ins ("let", T_LET)
@@ -547,7 +547,9 @@ val () = ins ("nonfix", T_NONFIX)
 val () = ins ("symelim", T_SYMELIM)
 val () = ins ("symintr", T_SYMINTR)
 val () = ins ("symload", T_SYMLOAD)
+(*
 val () = ins ("overload", T_SYMLOAD) // first-used
+*)
 val () = ins ("#symload", T_SYMLOAD) // ATS-Xanadu
 //
 val () = ins ("of", T_OF)

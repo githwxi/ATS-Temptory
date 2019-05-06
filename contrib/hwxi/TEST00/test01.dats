@@ -9,6 +9,10 @@
 "libats/SATS/gint.sats"
 //
 (* ****** ****** *)
+
+implement main0() = ()
+
+(* ****** ****** *)
 //
 fun
 fact
@@ -20,10 +24,6 @@ fact
 (x: int(i)): int =
 if x > 0 then x * fact(x-1) else 1
 //
-(* ****** ****** *)
-
-implement main0() = ()
-
 (* ****** ****** *)
 
 (* end of [test01.dats] *)

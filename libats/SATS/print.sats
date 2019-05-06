@@ -5,20 +5,20 @@
 (***********************************************************************)
 
 (*
-** ATS/Postiats - Unleashing the Potential of Types!
-** Copyright (C) 2010-2019 Hongwei Xi, ATS Trustful Software, Inc.
+** ATS/Xanadu - Unleashing the Potential of Types!
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-**
+** 
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-**
+** 
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -27,94 +27,49 @@
 
 (* ****** ****** *)
 //
-// Author of the file:
-// Hongwei Xi (gmhwxiATgmailDOTcom)
-// Start Time: July, 2012
-//
-(* ****** ****** *)
-
-#include "libats/params.hats"
-
-(* ****** ****** *)
-
-#if
-VERBOSE_PRELUDE
-#then
-#print
-"Loading [basics_gen.sats] starts!\n"
-#endif // end of [VERBOSE_PRELUDE]
-
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-gcopy$val(x: !INV(a)):<!wrt> a
-//
-fun
-{a:vtflt}
-gcopy$ref(x: &INV(a)):<!wrt> a
+// Author: Hongwei Xi
+// Start Time: May, 2019
+// Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
 fun
 {a:vtflt}
-gfree$val(x: INV(a)):<!wrt> void
+print$val(x: !a): void
+fun
+{a:vtflt}
+print$ref(x: &INV(a)): void
 //
+(* ****** ****** *)
+//
+fun{}
+print_newline((*void*)): void
+//
+(* ****** ****** *)
+
+fun{}
+print_int(int): void
+fun{}
+print_bool(bool): void
+fun{}
+print_char(char): void
 (*
-fun
-{a:vtflt}
-gfree_ref (x: &INV(a) >> a?):<!wrt> void
+fun{}
+print_double(double): void
 *)
-//
-(* ****** ****** *)
-
-fun
-{a:vtflt}
-ginit$ref(x: &a? >> a):<!wrt> void
+fun{}
+print_string(string): void
 
 (* ****** ****** *)
 
-fun
-{a:vtflt}
-gclear$ref(x: &a >> a?):<!wrt> void
-
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-gequal$val(x: !a, y: !a):<> bool
-//
-fun
-{a:vtflt}
-gequal$ref(x: &INV(a), y: &a):<> bool
-//
-(* ****** ****** *)
+#symload print with print_int
+#symload print with print_bool
+#symload print with print_char
 (*
-fun
-{a:vtflt}
-tostring$val(x: !a):<> string
-fun
-{a:vtflt}
-tostring$ref(x: &INV(a)):<> string
+#symload print with print_double
 *)
-(* ****** ****** *)
-(*
-fun
-{a:vtflt}
-tostrptr$val(x: !a):<!wrt> Strptr1
-fun
-{a:vtflt}
-tostrptr$ref(x: &INV(a)):<!wrt> Strptr1
-*)
-(* ****** ****** *)
-
-#if
-VERBOSE_PRELUDE
-#then
-#print
-"Loading [basics_gen.sats] finishes!\n"
-#endif // end of [VERBOSE_PRELUDE]
+#symload print with print_string
 
 (* ****** ****** *)
 
-(* end of [basics_gen.sats] *)
+(* end of [print.sats] *)
