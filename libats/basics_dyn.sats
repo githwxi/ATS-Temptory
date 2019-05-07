@@ -82,6 +82,17 @@ prop_verify_add
 {b:bool | b} ():<prf> [b] void
 
 (* ****** ****** *)
+//
+val {
+a:vtflt
+} sizeof : usize(sizeof(a))
+//
+praxi
+lemma_sizeof
+{a:vtflt}
+((*void*)):[sizeof(a) >= 0] void
+//
+(* ****** ****** *)
 
 praxi
 topize
@@ -152,8 +163,8 @@ lazy_vt_free
   {a:vtflt}
   (lazyval: lazy_vt(a)):<!wrt> void = "mac#%"
 //
-overload ~ with lazy_vt_free of 0
-overload free with lazy_vt_free of 0
+#symload ~ with lazy_vt_free of 0
+#symload free with lazy_vt_free of 0
 //
 (* ****** ****** *)
 //
@@ -438,8 +449,8 @@ argv_set_at
 {n:int}{i:nat | i < n}
 (argv: !argv(n), i: int(i), x: string):<!wrt> void = "mac#%"
 //
-overload [] with argv_get_at
-overload [] with argv_set_at
+#symload [] with argv_get_at
+#symload [] with argv_set_at
 //
 (* ****** ****** *)
 //
@@ -450,8 +461,8 @@ listize_argc_argv
 //
 (* ****** ****** *)
 //
-symintr main0
-symintr main1
+#symintr main0
+#symintr main1
 //
 (* ****** ****** *)
 //
@@ -487,13 +498,13 @@ main1_argc_argv_envp
 //
 (* ****** ****** *)
 //
-overload main0 with main0_void
-overload main0 with main0_argc_argv
-overload main0 with main0_argc_argv_envp
+#symload main0 with main0_void
+#symload main0 with main0_argc_argv
+#symload main0 with main0_argc_argv_envp
 //
-overload main1 with main1_void
-overload main1 with main1_argc_argv
-overload main1 with main1_argc_argv_envp
+#symload main1 with main1_void
+#symload main1 with main1_argc_argv
+#symload main1 with main1_argc_argv_envp
 //
 (* ****** ****** *)
 //
@@ -522,8 +533,8 @@ fun
 assert_bool1
   {b:bool} (x: bool (b)):<!exn> [b] void = "mac#%"
 //
-overload assert with assert_bool0 of 0
-overload assert with assert_bool1 of 10
+#symload assert with assert_bool0 of 0
+#symload assert with assert_bool1 of 10
 //
 (* ****** ****** *)
 //
@@ -532,9 +543,9 @@ assertexn_bool0 (x: bool):<!exn> void
 fun{}
 assertexn_bool1 {b:bool} (x: bool (b)):<!exn> [b] void
 //
-symintr assertexn
-overload assertexn with assertexn_bool0 of 0
-overload assertexn with assertexn_bool1 of 10
+#symintr assertexn
+#symload assertexn with assertexn_bool0 of 0
+#symload assertexn with assertexn_bool1 of 10
 //
 (* ****** ****** *)
 //
@@ -545,9 +556,9 @@ fun
 assert_errmsg_bool1
   {b:bool} (x: bool b, msg: string):<!exn> [b] void = "mac#%"
 //
-symintr assert_errmsg
-overload assert_errmsg with assert_errmsg_bool0 of 0
-overload assert_errmsg with assert_errmsg_bool1 of 10
+#symintr assert_errmsg
+#symload assert_errmsg with assert_errmsg_bool0 of 0
+#symload assert_errmsg with assert_errmsg_bool1 of 10
 //
 (* ****** ****** *)
 //
@@ -558,9 +569,9 @@ fun
 assert_errmsg2_bool1{b:bool}
   (x: bool b, msg1: string, msg2: string):<!exn> [b] void = "mac#%"
 //
-symintr assert_errmsg2
-overload assert_errmsg2 with assert_errmsg2_bool0 of 0
-overload assert_errmsg2 with assert_errmsg2_bool1 of 10
+#symintr assert_errmsg2
+#symload assert_errmsg2 with assert_errmsg2_bool0 of 0
+#symload assert_errmsg2 with assert_errmsg2_bool1 of 10
 //
 (* ****** ****** *)
 

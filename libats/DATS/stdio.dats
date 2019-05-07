@@ -33,52 +33,77 @@
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/print.sats"
+#staload
+UNSAFE =
+"libats/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/stdio.sats"
 //
 (* ****** ****** *)
 
 implement
-{a}(*tmp*)
-print$val(x) =
-fprint$val<a>(the_stdout<>(), x)
+{}(*tmp*)
+the_stdin() =
+$extval(FILEref, "stdin")
 implement
-{a}(*tmp*)
-print$ref(x) =
-fprint$ref<a>(the_stdout<>(), x)
+{}(*tmp*)
+the_stdout() =
+$extval(FILEref, "stdout")
+implement
+{}(*tmp*)
+the_stderr() =
+$extval(FILEref, "stderr")
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-print_newline() =
-fprint_newline<>(the_stdout<>())
+fprint_newline
+  (out) =
+{
+  val () =
+  $extfcall
+  (void, "fprintf", out, "\n")
+  val () =
+  $extfcall(void, "fflush", out)
+} (* end of [fprint_newline] *)
 //
 (* ****** ****** *)
-
-implement
-{}(*tmp*)
-print_int(x) = print$val<int>(x)
-implement
-{}(*tmp*)
-print_bool(x) = print$val<bool>(x)
-implement
-{}(*tmp*)
-print_char(x) = print$val<char>(x)
-(*
-implement
-print_double(f0) = print$val<double>(f0)
-*)
-implement
-{}(*tmp*)
-print_string(cs) = print$val<string>(cs)
-
-(* ****** ****** *)
-
+//
 implement
 fprint$val<int>(out, x) =
-$extfcall(void, "fprintf", out, "%i", x)
-
+(
+  $extfcall
+  (void, "fprintf", out, "%i", x)
+)
+//
+implement
+fprint$val<bool>(out, x) =
+(
+$extfcall
+(void, "fprintf", out, rep)
+) where
+{
+  val rep =
+  (if x then "tt" else "ff"): string
+}
+//
+implement
+fprint$val<char>(out, x) =
+$extfcall(void, "fprintf", out, "%c", x)
+//
+implement
+fprint$val<string>(out, cs) =
+(
+$extfcall
+(void, "fprintf", out, "%s", cs)
+) where
+{
+  val cs = $UNSAFE.cast{charptr}(cs)
+}
+//
 (* ****** ****** *)
 
-(* end of [print.dats] *)
+(* end of [stdio.dats] *)

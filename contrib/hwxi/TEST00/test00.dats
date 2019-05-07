@@ -1,7 +1,7 @@
 (* ****** ****** *)
 //
 // HX-2019-05-05:
-// For testing ATS-Temptory
+// For ATS-Temptory
 //
 (* ****** ****** *)
 

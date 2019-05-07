@@ -515,11 +515,25 @@ val () = ins ("ifcase", T_IFCASE)
 //
 val () = ins ("in", T_IN)
 //
+(*
 val () = ins ("infix", INFIX)
+val () = ins ("infix0", INFIX)
 val () = ins ("infixl", INFIXL)
 val () = ins ("infixr", INFIXR)
 val () = ins ("prefix", PREFIX)
 val () = ins ("postfix", POSTFIX)
+*)
+val () = ins ("#infix", INFIX)
+val () = ins ("#infix0", INFIX)
+val () = ins ("#infixl", INFIXL)
+val () = ins ("#infixr", INFIXR)
+val () = ins ("#prefix", PREFIX)
+val () = ins ("#postfix", POSTFIX)
+//
+(*
+val () = ins ("nonfix", T_NONFIX)
+*)
+val () = ins ("#nonfix", T_NONFIX)
 //
 val () = ins ("implmnt", IMPLMNT) // 0
 val () = ins ("implement", IMPLEMENT) // 1
@@ -542,14 +556,14 @@ val () = ins ("local", T_LOCAL)
 val () = ins ("macdef", MACDEF)
 val () = ins ("macrodef", MACRODEF)
 //
-val () = ins ("nonfix", T_NONFIX)
-//
 val () = ins ("symelim", T_SYMELIM)
 val () = ins ("symintr", T_SYMINTR)
-val () = ins ("symload", T_SYMLOAD)
 (*
+val () = ins ("symload", T_SYMLOAD)
 val () = ins ("overload", T_SYMLOAD) // first-used
 *)
+val () = ins ("#symelim", T_SYMELIM)
+val () = ins ("#symintr", T_SYMINTR)
 val () = ins ("#symload", T_SYMLOAD) // ATS-Xanadu
 //
 val () = ins ("of", T_OF)
@@ -711,10 +725,14 @@ val () = ins ("#define", T_SRPDEFINE)
 //
 val () = ins ("#include", T_SRPINCLUDE)
 //
+(*
 val () = ins ("staload", T_SRPSTALOAD)
+*)
 val () = ins ("#staload", T_SRPSTALOAD)
 //
+(*
 val () = ins ("dynload", T_SRPDYNLOAD)
+*)
 val () = ins ("#dynload", T_SRPDYNLOAD)
 //
 val () = ins ("#require", T_SRPREQUIRE)

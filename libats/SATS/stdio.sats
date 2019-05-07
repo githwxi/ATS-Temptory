@@ -32,53 +32,52 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+%{#
 //
-#staload "./../SATS/print.sats"
-#staload "./../SATS/stdio.sats"
+#include <stdio.h>
 //
+typedef char *charptr;
+//
+%}(* end of [%{#] *)
+
 (* ****** ****** *)
 
-implement
-{a}(*tmp*)
-print$val(x) =
-fprint$val<a>(the_stdout<>(), x)
-implement
-{a}(*tmp*)
-print$ref(x) =
-fprint$ref<a>(the_stdout<>(), x)
+typedef
+charptr = $extype"charptr"
 
 (* ****** ****** *)
 //
-implement
-{}(*tmp*)
-print_newline() =
-fprint_newline<>(the_stdout<>())
+abstbox
+FILEref_tbox = ptr
+typedef
+FILEref = FILEref_tbox
+//
+(* ****** ****** *)
+//
+fun{}
+the_stdin(): FILEref // STDIN
+fun{}
+the_stdout(): FILEref // STDOUT
+fun{}
+the_stderr(): FILEref // STDERR
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+fprint$val
+(out: FILEref, x: !a): void
+fun
+{a:vtflt}
+fprint$ref
+(out: FILEref, x: &INV(a)): void
 //
 (* ****** ****** *)
 
-implement
-{}(*tmp*)
-print_int(x) = print$val<int>(x)
-implement
-{}(*tmp*)
-print_bool(x) = print$val<bool>(x)
-implement
-{}(*tmp*)
-print_char(x) = print$val<char>(x)
-(*
-implement
-print_double(f0) = print$val<double>(f0)
-*)
-implement
-{}(*tmp*)
-print_string(cs) = print$val<string>(cs)
+fun{}
+fprint_newline(out: FILEref): void
 
 (* ****** ****** *)
 
-implement
-fprint$val<int>(out, x) =
-$extfcall(void, "fprintf", out, "%i", x)
-
-(* ****** ****** *)
-
-(* end of [print.dats] *)
+(* end of [stdio.sats] *)

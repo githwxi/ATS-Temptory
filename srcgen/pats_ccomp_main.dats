@@ -90,20 +90,20 @@ emit_ats_ccomp_header
   val () = emit_text (out, "** include runtime header files\n")
   val () = emit_text (out, "*/\n")
 //
-  val () = emit_text (out, "#ifndef _ATS_CCOMP_HEADER_NONE_\n")
+  val () = emit_text (out, "#ifndef _TEMPTORY_HEADER_NONE_\n")
 //
-  val () = emit_text (out, "#include \"pats_ccomp_config.h\"\n")
-  val () = emit_text (out, "#include \"pats_ccomp_basics.h\"\n")
-  val () = emit_text (out, "#include \"pats_ccomp_typedefs.h\"\n")
-  val () = emit_text (out, "#include \"pats_ccomp_instrset.h\"\n")
-  val () = emit_text (out, "#include \"pats_ccomp_memalloc.h\"\n")
+  val () = emit_text (out, "#include \"temptory_config.h\"\n")
+  val () = emit_text (out, "#include \"temptory_basics.h\"\n")
+  val () = emit_text (out, "#include \"temptory_typedefs.h\"\n")
+  val () = emit_text (out, "#include \"temptory_instrset.h\"\n")
+  val () = emit_text (out, "#include \"temptory_memalloc.h\"\n")
 //
-  val () = emit_text (out, "#ifndef _ATS_CCOMP_EXCEPTION_NONE_\n")
+  val () = emit_text (out, "#ifndef _TEMPTORY_EXCEPTION_NONE_\n")
   val () = emit_text (out, "#include \"pats_ccomp_memalloca.h\"\n")
   val () = emit_text (out, "#include \"pats_ccomp_exception.h\"\n")
-  val () = emit_text (out, "#endif // end of [_ATS_CCOMP_EXCEPTION_NONE_]\n")
+  val () = emit_text (out, "#endif // end of [_TEMPTORY_EXCEPTION_NONE_]\n")
 //
-  val () = emit_text (out, "#endif /* _ATS_CCOMP_HEADER_NONE_ */\n")
+  val () = emit_text (out, "#endif /* _TEMPTORY_HEADER_NONE_ */\n")
   val () = emit_newline (out)
 in
   emit_newline (out)
@@ -119,13 +119,16 @@ val () = emit_text (out, "/*\n")
 val () = emit_text (out, "** include prelude cats files\n")
 val () = emit_text (out, "*/\n")
 //
-val () = emit_text (out, "#ifndef _ATS_CCOMP_PRELUDE_NONE_\n")
+val () = emit_text (out, "#ifndef _TEMPTORY_PRELUDE_NONE_\n")
 //
 // HX: primary prelude cats files
 //
 val () = emit_text (out, "//\n")
-val () = emit_text (out, "#include \"prelude/CATS/basics.cats\"\n")
+val () = emit_text (out, "#include \"libats/CATS/basics.cats\"\n")
+val () = emit_text (out, "//\n")
 //
+val () = emit_text (out, "/*\n")
+val () = emit_text (out, "//\n")
 val () = emit_text (out, "#include \"prelude/CATS/integer.cats\"\n")
 //
 val () = emit_text (out, "#include \"prelude/CATS/pointer.cats\"\n")
@@ -149,9 +152,12 @@ val () = emit_text (out, "//\n")
 val () = emit_text (out, "#include \"prelude/CATS/fprintf.cats\"\n")
 val () = emit_text (out, "//\n")
 val () = emit_text (out, "#include \"prelude/CATS/filebas.cats\"\n")
+val () = emit_text (out, "//\n")
+val () = emit_text (out, "*/\n")
 //
 // HX: secondary prelude cats files
 //
+val () = emit_text (out, "/*\n")
 val () = emit_text (out, "//\n")
 val () = emit_text (out, "#include \"prelude/CATS/list.cats\"\n")
 val () = emit_text (out, "#include \"prelude/CATS/option.cats\"\n")
@@ -162,25 +168,26 @@ val () = emit_text (out, "#include \"prelude/CATS/matrix.cats\"\n")
 val () = emit_text (out, "#include \"prelude/CATS/matrixptr.cats\"\n")
 //
 val () = emit_text (out, "//\n")
-val () = emit_text (out, "#endif /* _ATS_CCOMP_PRELUDE_NONE_ */\n")
+val () = emit_text (out, "*/\n")
+val () = emit_text (out, "#endif /* _TEMPTORY_PRELUDE_NONE_ */\n")
 //
 val () = emit_text (out, "/*\n")
 val () = emit_text (out, "** for user-supplied prelude\n")
 val () = emit_text (out, "*/\n")
-val () = emit_text (out, "#ifdef _ATS_CCOMP_PRELUDE_USER_\n")
+val () = emit_text (out, "#ifdef _TEMPTORY_PRELUDE_USER_\n")
 val () = emit_text (out, "//\n")
-val () = emit_text (out, "#include _ATS_CCOMP_PRELUDE_USER_\n")
+val () = emit_text (out, "#include _TEMPTORY_PRELUDE_USER_\n")
 val () = emit_text (out, "//\n")
-val () = emit_text (out, "#endif /* _ATS_CCOMP_PRELUDE_USER_ */\n")
+val () = emit_text (out, "#endif /* _TEMPTORY_PRELUDE_USER_ */\n")
 //
 val () = emit_text (out, "/*\n")
 val () = emit_text (out, "** for user2-supplied prelude\n")
 val () = emit_text (out, "*/\n")
-val () = emit_text (out, "#ifdef _ATS_CCOMP_PRELUDE_USER2_\n")
+val () = emit_text (out, "#ifdef _TEMPTORY_PRELUDE_USER2_\n")
 val () = emit_text (out, "//\n")
-val () = emit_text (out, "#include _ATS_CCOMP_PRELUDE_USER2_\n")
+val () = emit_text (out, "#include _TEMPTORY_PRELUDE_USER2_\n")
 val () = emit_text (out, "//\n")
-val () = emit_text (out, "#endif /* _ATS_CCOMP_PRELUDE_USER2_ */\n")
+val () = emit_text (out, "#endif /* _TEMPTORY_PRELUDE_USER2_ */\n")
 //
 in
   emit_newline (out)
@@ -1153,16 +1160,16 @@ aux_main
 val () = emit_text (out, "\n/*\n")
 val () = emit_text (out, "** the ATS runtime")
 val () = emit_text (out, "\n*/\n")
-val () = emit_text (out, "#ifndef _ATS_CCOMP_RUNTIME_NONE_\n")
+val () = emit_text (out, "#ifndef _TEMPTORY_RUNTIME_NONE_\n")
 val () = emit_text (out, "#include \"pats_ccomp_runtime.c\"\n")
 val () = emit_text (out, "#include \"pats_ccomp_runtime_memalloc.c\"\n")
-val () = emit_text (out, "#ifndef _ATS_CCOMP_EXCEPTION_NONE_\n")
+val () = emit_text (out, "#ifndef _TEMPTORY_EXCEPTION_NONE_\n")
 val () = emit_text (out, "#include \"pats_ccomp_runtime2_dats.c\"\n")
-val () = emit_text (out, "#ifndef _ATS_CCOMP_RUNTIME_TRYWITH_NONE_\n")
+val () = emit_text (out, "#ifndef _TEMPTORY_RUNTIME_TRYWITH_NONE_\n")
 val () = emit_text (out, "#include \"pats_ccomp_runtime_trywith.c\"\n")
-val () = emit_text (out, "#endif /* _ATS_CCOMP_RUNTIME_TRYWITH_NONE_ */\n")
-val () = emit_text (out, "#endif // end of [_ATS_CCOMP_EXCEPTION_NONE_]\n")
-val () = emit_text (out, "#endif /* _ATS_CCOMP_RUNTIME_NONE_ */\n")
+val () = emit_text (out, "#endif /* _TEMPTORY_RUNTIME_TRYWITH_NONE_ */\n")
+val () = emit_text (out, "#endif // end of [_TEMPTORY_EXCEPTION_NONE_]\n")
+val () = emit_text (out, "#endif /* _TEMPTORY_RUNTIME_NONE_ */\n")
 //
 val () = emit_text (out, "\n/*\n")
 val () = emit_text (out, "** the [main] implementation")
@@ -1290,7 +1297,7 @@ val () =
 emit_text
 (
   out
-, "#ifndef _ATS_CCOMP_EXCEPTION_NONE_\n"
+, "#ifndef _TEMPTORY_EXCEPTION_NONE_\n"
 )
 val () =
 emit_text
@@ -1305,7 +1312,7 @@ the_atsexncon_initize\n\
 ) ;\n\
 ") // end of [val]
 val () =
-emit_text (out, "#endif // end of [_ATS_CCOMP_EXCEPTION_NONE_]\n")
+emit_text (out, "#endif // end of [_TEMPTORY_EXCEPTION_NONE_]\n")
 //
 val hids = the_exndeclst_get ()
 val ((*void*)) = loop (out, hids)
@@ -1357,7 +1364,7 @@ val () =
 emit_text(out, "*/\n")
 //
 val () =
-emit_text(out, "#ifndef _ATS_CCOMP_ASSUME_CHECK_NONE_\n")
+emit_text(out, "#ifndef _TEMPTORY_ASSUME_CHECK_NONE_\n")
 //
 val ((*void*)) =
 loop(out, hids) where
@@ -1366,7 +1373,7 @@ loop(out, hids) where
 } (* end of [where] *) // end of [val]
 //
 val () =
-emit_text(out, "#endif // #ifndef(_ATS_CCOMP_ASSUME_CHECK_NONE_)\n")
+emit_text(out, "#endif // #ifndef(_TEMPTORY_ASSUME_CHECK_NONE_)\n")
 //
 val () =
 emit_text(out, "/*\n")
