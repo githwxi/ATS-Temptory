@@ -446,7 +446,7 @@ extern void patsopt_PATSRELOCROOT_set() ;
 (* ****** ****** *)
 
 fn
-patsopt_usage
+tempopt_usage
 (
   out: FILEref, arg0: comarg
 ) : void = let
@@ -509,7 +509,7 @@ fprintln! (out, "  --constraint-ignore (for entirely ignoring constraint-solving
 //
 fprint_newline (out);
 //
-end // end of [patsopt_usage]
+end // end of [tempopt_usage]
 
 (* ****** ****** *)
 //
@@ -554,30 +554,30 @@ HX: VERSION-0.2.8 released on Wednesday, June 29, 2016)
 (* ****** ****** *)
 //
 #define
-PATS_COPYRIGHT
-"Copyright (c) 2011-2018 Hongwei Xi"
+TEMPOPT_COPYRIGHT
+"Copyright (c) 2011-2019 Hongwei Xi"
 //
 (* ****** ****** *)
 //
 extern
 fun
-patsopt_version
+tempopt_version
 (
   out: FILEref
-) : void = "ext#libatsopt_patsopt_version"
+) : void = "ext#libatsopt_tempopt_version"
 //
 implement
-patsopt_version(out) =
+tempopt_version(out) =
 {
 //
 val () =
 fprintf
 ( out
-, "ATS/Postiats version %i.%i.%i with %s\n"
-, @(PATS_MAJOR_VERSION, PATS_MINOR_VERSION, PATS_MICRO_VERSION, PATS_COPYRIGHT)
+, "ATS/Temptory version %i.%i.%i with %s\n"
+, @(PATS_MAJOR_VERSION, PATS_MINOR_VERSION, PATS_MICRO_VERSION, TEMPOPT_COPYRIGHT)
 ) (* end of [fprintf] *)
 //
-} (* end of [patsopt_version] *)
+} (* end of [tempopt_version] *)
 //
 (* ****** ****** *)
 
@@ -2029,10 +2029,10 @@ case+ key of
 | "-h" => let
     val cmd = state.comarg0
   in
-    patsopt_usage(stdout_ref, cmd)
+    tempopt_usage(stdout_ref, cmd)
   end // end of ["-h"]
 //
-| "-v" => patsopt_version(stdout_ref)
+| "-v" => tempopt_version(stdout_ref)
 //
 | _ (*rest*) => comarg_warning(key) // unrecognized key
 //
@@ -2060,7 +2060,7 @@ val () =
 case+ key of
 //
 | "--help" =>
-  patsopt_usage
+  tempopt_usage
     (stdout_ref, state.comarg0)
   // end of [--help]
 //
@@ -2125,7 +2125,7 @@ case+ key of
     val () = state.cnstrsolveflag := ~1
   }
 //
-| "--version" => patsopt_version(stdout_ref)
+| "--version" => tempopt_version(stdout_ref)
 //
 | _ (* unrecognized *) => comarg_warning(key)
 //
@@ -2139,16 +2139,16 @@ end // end of [process_cmdline2_comarg2]
 //
 extern
 fun
-patsopt_main
+tempopt_main
   {n:pos}
 (
   argc: int(n), argc: &(@[string][n])
-) : void = "ext#libatsopt_patsopt_main"
+) : void = "ext#libatsopt_tempopt_main"
 //
 (* ****** ****** *)
 
 implement
-patsopt_main
+tempopt_main
   (argc, argv) = () where
 {
 //
@@ -2282,12 +2282,12 @@ val () = process_cmdline(state, arglst)
 val () =
 if state.nerror > 0 then $ERR.abort{void}()
 //
-} (* end of [where] *) // end of [patsopt_main]
+} (* end of [where] *) // end of [tempopt_main]
 //
 (* ****** ****** *)
 //
 #ifndef
-PATSOPT_MAIN_NONE
+TEMPOPT_MAIN_NONE
 //
 implement
 main(argc, argv) =
@@ -2295,12 +2295,12 @@ main(argc, argv) =
 //
 if
 (argc >= 2)
-then patsopt_main(argc, argv)
-else prerrln! ("Hello from ATS2(ATS/Postiats)!")
+then tempopt_main(argc, argv)
+else prerrln! ("Hello from ATS2(ATS/Temptory)!")
 // end of [if]
 ) (* end of [main] *)
 //
-#endif // ifndef(PATSOPT_MAIN_NONE)
+#endif // ifndef(TEMPOPT_MAIN_NONE)
 //
 (* ****** ****** *)
 

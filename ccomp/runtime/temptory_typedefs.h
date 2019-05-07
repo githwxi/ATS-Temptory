@@ -134,7 +134,8 @@ _TEMPTORY_EXCEPTION_NONE_
 #else
 //
 typedef
-struct{
+ATSstruct
+{
   int exntag ; char *exnmsg ;
 } atstype_exncon ;
 //
