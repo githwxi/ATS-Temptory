@@ -5,32 +5,10 @@
 //
 (* ****** ****** *)
 
-(*
-#define nil list0_nil
-#define cons list0_cons
-#define none optn0_none
-#define some optn0_some
-*)
+#include
+"share/HATS\
+/temptory_staload_cs320.hats"
 
-(* ****** ****** *)
-//
-#staload
-"libats/SATS/gint.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"libats/SATS/print.sats"
-#staload _ =
-"libats/DATS/print.dats"
-#staload _ =
-"libats/DATS/stdio.dats"
-//
-(* ****** ****** *)
-//
-#staload
-UN = "libats/SATS/unsafe.sats"
-//
 (* ****** ****** *)
 
 implement main0() = ()

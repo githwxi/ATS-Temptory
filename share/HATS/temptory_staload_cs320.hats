@@ -38,6 +38,31 @@ TEMPLIB_targetloc
 #define some1 optn1_some
 
 (* ****** ****** *)
+//
+#staload
+"libats/SATS/gint.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"libats/SATS/print.sats"
+#staload _ =
+"libats/DATS/print.dats"
+#staload _ =
+"libats/DATS/stdio.dats"
+//
+(* ****** ****** *)
+//
+#staload
+UN = "libats/SATS/unsafe.sats"
+(*
+#staload
+UNSF = "libats/SATS/unsafe.sats"
+#staload
+UNSAFE = "libats/SATS/unsafe.sats"
+*)
+//
+(* ****** ****** *)
 
 #endif // SHARE_TEMPTORY_STALOAD_CS320
 

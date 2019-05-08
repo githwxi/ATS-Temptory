@@ -48,6 +48,21 @@ test03_dats.c: test03.dats; $(TEMPOPT) -cc -o $@ -d $<
 
 ######
 
+regress:: \
+test01_dats; ./test01_dats
+regress:: \
+test02_dats; ./test02_dats
+regress:: \
+test03_dats; ./test03_dats
+
+######
+
+testall:: all
+testall:: regress
+testall:: cleanall
+
+######
+
 RMF=rm -f
 
 ######
