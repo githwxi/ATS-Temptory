@@ -297,6 +297,7 @@ list0_tflt_tbox
 | list0_nil(a) of ()
 | list0_cons(a) of (a, list0_tflt_tbox(a))
 // end of [datatype]
+//
 sexpdef list0 = list0_tflt_tbox
 //
 (* ****** ****** *)
@@ -353,6 +354,7 @@ list0_vtflt_vtbox
 | list0_nil_vt(a) of ()
 | list0_cons_vt(a) of (a, list0_vtflt_vtbox(a))
 // end of [datavtype]
+//
 sexpdef list0_vt = list0_vtflt_vtbox
 //
 (* ****** ****** *)
@@ -454,9 +456,8 @@ opt_clear{a:tflt}
 (* ****** ****** *)
 //
 datatype
-// tflt+: covariant
 optn0_tflt_tbox
-  (a:tflt+) =
+  (a:tflt) =
 | optn0_none(a) of ()
 | optn0_some(a) of (a)
 // end of [datatype]
@@ -466,10 +467,9 @@ sexpdef optn0 = optn0_tflt_tbox
 (* ****** ****** *)
 //
 datatype
-// tflt+: covariant
 optn1_tflt_bool_tbox
 (
-  a:tflt+, bool
+  a:tflt, bool
 ) = // optn1_tflt_bool_tbox
   | optn1_none(a, ff)
   | optn1_some(a, tt) of (a)
@@ -494,25 +494,25 @@ g1ofg0_optn
 (* ****** ****** *)
 //
 datavtype
-// vtflt+: covariant
 optn0_vtflt_vtbox
-  (a:vtflt+) =
+  (a:vtflt) =
   | optn0_none_vt(a)
   | optn0_some_vt(a) of (a)
 // end of [option_vtflt_bool_vtbox]
+//
 sexpdef optn0_vt = optn0_vtflt_vtbox
 //
 (* ****** ****** *)
 //
 datavtype
-// vtflt+: covariant
 optn1_vtflt_bool_vtbox
 (
-  a:vtflt+, bool
+  a:vtflt, bool
 ) = // option_vtflt_bool_vtbox
   | optn1_none_vt(a, ff)
   | optn1_some_vt(a, tt) of (a)
 // end of [option_vtflt_bool_vtbox]
+//
 sexpdef optn1_vt = optn1_vtflt_bool_vtbox
 sexpdef optn1_vt(a:vtflt) = [b:bool] optn1_vt(a, b)
 //
