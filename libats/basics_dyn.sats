@@ -295,7 +295,8 @@ datatype
 list0_tflt_tbox
   (a:tflt+) =
 | list0_nil(a) of ()
-| list0_cons(a) of (a, list0_tflt_tbox(a))
+| list0_cons(a) of
+  (a, list0_tflt_tbox(INV(a)))
 // end of [datatype]
 //
 sexpdef list0 = list0_tflt_tbox
@@ -308,7 +309,8 @@ list1_tflt_int_tbox
   (a:tflt+, int) =
 | list1_nil(a, 0) of ()
 | {n:int | n >= 0}
-  list1_cons(a, n+1) of (a, list1_tflt_int_tbox(a, n))
+  list1_cons(a, n+1) of
+  (a, list1_tflt_int_tbox(INV(a), n))
 // end of [datatype]
 sexpdef list1 = list1_tflt_int_tbox
 //
@@ -352,7 +354,8 @@ datavtype
 list0_vtflt_vtbox
   (a:vtflt+) =
 | list0_nil_vt(a) of ()
-| list0_cons_vt(a) of (a, list0_vtflt_vtbox(a))
+| list0_cons_vt(a) of
+  (a, list0_vtflt_vtbox(INV(a)))
 // end of [datavtype]
 //
 sexpdef list0_vt = list0_vtflt_vtbox
@@ -365,7 +368,8 @@ list1_vtflt_int_vtbox
   (a:vtflt+, int) =
 | list1_nil_vt(a, 0) of ()
 | {n:int | n >= 0}
-  list1_cons_vt(a, n+1) of (a, list1_vtflt_int_vtbox(a, n))
+  list1_cons_vt(a, n+1) of
+  (a, list1_vtflt_int_vtbox(INV(a), n))
 // end of [list_vtflt_int_vtbox]
 //
 sexpdef list1_vt = list1_vtflt_int_vtbox
@@ -459,7 +463,7 @@ datatype
 optn0_tflt_tbox
   (a:tflt) =
 | optn0_none(a) of ()
-| optn0_some(a) of (a)
+| optn0_some(a) of (INV(a))
 // end of [datatype]
 //
 sexpdef optn0 = optn0_tflt_tbox
@@ -472,8 +476,9 @@ optn1_tflt_bool_tbox
   a:tflt, bool
 ) = // optn1_tflt_bool_tbox
   | optn1_none(a, ff)
-  | optn1_some(a, tt) of (a)
+  | optn1_some(a, tt) of (INV(a))
 // end of [datatype]
+//
 sexpdef optn1 = optn1_tflt_bool_tbox
 sexpdef optn1(a:tflt) = [b:bool] optn1(a, b)
 //
@@ -497,7 +502,7 @@ datavtype
 optn0_vtflt_vtbox
   (a:vtflt) =
   | optn0_none_vt(a)
-  | optn0_some_vt(a) of (a)
+  | optn0_some_vt(a) of (INV(a))
 // end of [option_vtflt_bool_vtbox]
 //
 sexpdef optn0_vt = optn0_vtflt_vtbox
@@ -510,7 +515,7 @@ optn1_vtflt_bool_vtbox
   a:vtflt, bool
 ) = // option_vtflt_bool_vtbox
   | optn1_none_vt(a, ff)
-  | optn1_some_vt(a, tt) of (a)
+  | optn1_some_vt(a, tt) of (INV(a))
 // end of [option_vtflt_bool_vtbox]
 //
 sexpdef optn1_vt = optn1_vtflt_bool_vtbox

@@ -112,6 +112,30 @@ list1_print$sep((*void*)): void
 //
 (* ****** ****** *)
 //
+fun
+{a:tflt}
+optn0_print
+(xs: optn0(INV(a))): void
+fun
+{a:tflt}
+optn1_print
+(xs: optn1(INV(a))): void
+//
+fun{}
+optn0_print$beg((*void*)): void
+fun{}
+optn0_print$end((*void*)): void
+//
+fun{}
+optn1_print$beg((*void*)): void
+fun{}
+optn1_print$end((*void*)): void
+//
+#symload print with optn0_print
+#symload print with optn1_print
+//
+(* ****** ****** *)
+//
 fun{}
 tuple_print$beg((*void*)): void
 fun{}

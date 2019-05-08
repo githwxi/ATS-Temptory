@@ -127,6 +127,37 @@ implement
 print$val<list0(a)>(xs) = list0_print<a>(xs)
 //
 (* ****** ****** *)
+//
+implement
+{a}//tmp
+optn0_print(t0) =
+(
+case+ t0 of
+| optn0_none() => 
+  (
+   optn0_print$beg<>();
+   optn0_print$end<>();
+  )
+| optn0_some(x0) => 
+  (
+   optn0_print$beg<>();
+   print$val<a>(x0);
+   optn0_print$end<>();
+  )
+)
+//
+implement
+{}(*tmp*)
+optn0_print$beg() = print_string("(")
+implement
+{}(*tmp*)
+optn0_print$end() = print_string(")")
+//
+implement
+(a:tflt)
+print$val<optn0(a)>(xs) = optn0_print<a>(xs)
+//
+(* ****** ****** *)
 
 implement
 {a0,a1}
