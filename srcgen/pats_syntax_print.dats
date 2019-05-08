@@ -804,13 +804,6 @@ case+ x.p0at_node of
     val () = prstr ")"
   }
 //
-| P0Tlst (lin, p0ts) => {
-    val () = prstr "P0Tlst("
-    val () = fprint_int (out, lin)
-    val () = prstr "; "
-    val () = $UT.fprintlst (out, p0ts, ", ", fprint_p0at)
-    val () = prstr ")"
-  }
 | P0Trec (knd, npf, lp0ts) => {
     val () = prstr "P0Trec("
     val () = fprint_int (out, knd)
@@ -825,6 +818,15 @@ case+ x.p0at_node of
     val () = fprint_int (out, knd)
     val () = prstr "; "
     val () = fprint_int (out, npf)
+    val () = prstr "; "
+    val () = $UT.fprintlst (out, p0ts, ", ", fprint_p0at)
+    val () = prstr ")"
+  }
+//
+| P0Tlist1(lin, p0ts) =>
+  {
+    val () = prstr "P0Tlist1("
+    val () = fprint_int (out, lin)
     val () = prstr "; "
     val () = $UT.fprintlst (out, p0ts, ", ", fprint_p0at)
     val () = prstr ")"
@@ -1029,15 +1031,14 @@ case+ x.d0exp_node of
     val () = prstr ")"
   }
 //
-| D0Elst(lin, elt, d0e) => {
-    val () = prstr "D0Elst("
-    val () = fprint_int (out, lin)
-    val () = prstr "; "
-    val () = fprint_s0expopt (out, elt)
-    val () = prstr "; "
-    val () = fprint_d0exp (out, d0e)
+| D0Eseq (d0es) => {
+    val () = prstr "D0Eseq("
+    val () =
+    $UT.fprintlst
+    (out, d0es, "; ", fprint_d0exp)
     val () = prstr ")"
   }
+//
 | D0Etup(knd, npf, d0es) => {
     val () = prstr "D0Etup("
     val () = fprint_int (out, knd)
@@ -1058,9 +1059,15 @@ case+ x.d0exp_node of
     // end of [val]
     val () = prstr ")"
   }
-| D0Eseq (d0es) => {
-    val () = prstr "D0Eseq("
-    val () = $UT.fprintlst (out, d0es, "; ", fprint_d0exp)
+//
+| D0Elist1(lin, elt, d0e) =>
+  {
+    val () = prstr "D0Elist1("
+    val () = fprint_int (out, lin)
+    val () = prstr "; "
+    val () = fprint_s0expopt (out, elt)
+    val () = prstr "; "
+    val () = fprint_d0exp (out, d0e)
     val () = prstr ")"
   }
 //

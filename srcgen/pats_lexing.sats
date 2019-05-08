@@ -223,9 +223,16 @@ token_node =
   | T_DLRMYLOCATION of () // $mylocation
   | T_DLRMYFUNCTION of () // $myfunction
 //
-  | T_DLRLST of int // $lst and $lst_t and $lst_vt
   | T_DLRREC of int // $rec and $rec_t and $rec_vt
   | T_DLRTUP of int // $tup and $tup_t and $tup_vt
+//
+(*
+  | T_DLRLST of int // $lst and $lst_t and $lst_vt
+*)
+(*
+  | T_DLRLIST0 of int // $lst and $list0_t and $list0_vt
+*)
+  | T_DLRLIST1 of int // $lst and $list1_t and $list1_vt
 //
   | T_DLRBREAK of () // $break
   | T_DLRCONTINUE of () // $continue
@@ -504,15 +511,16 @@ val DLREFFMASK_REF : tnode
 val DLREFFMASK_WRT : tnode
 val DLREFFMASK_ALL : tnode
 
-val DLRLST : tnode
-val DLRLST_T : tnode
-val DLRLST_VT : tnode
 val DLRREC : tnode
 val DLRREC_T : tnode
 val DLRREC_VT : tnode
 val DLRTUP : tnode
 val DLRTUP_T : tnode
 val DLRTUP_VT : tnode
+
+val DLRLIST1 : tnode
+val DLRLIST1_T : tnode
+val DLRLIST1_VT : tnode
 
 val DLRVCOPYENV_V : tnode
 val DLRVCOPYENV_VT : tnode

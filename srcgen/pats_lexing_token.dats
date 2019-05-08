@@ -272,15 +272,6 @@ implement DLREFFMASK_ALL = T_DLREFFMASK_ARG (4)
 (* ****** ****** *)
 
 implement
-DLRLST = T_DLRLST (~1) // unspecified
-implement
-DLRLST_T = T_DLRLST (TBOX_int) // boxed
-implement
-DLRLST_VT = T_DLRLST (VTBOX_int) // linboxed
-
-(* ****** ****** *)
-
-implement
 DLRREC =
 T_DLRREC (TYRECKIND_box) // unspecified
 implement
@@ -295,6 +286,15 @@ implement
 DLRTUP_T = T_DLRTUP (TYTUPKIND_box_t)
 implement
 DLRTUP_VT = T_DLRTUP (TYTUPKIND_box_vt)
+
+(* ****** ****** *)
+
+implement
+DLRLIST1 = T_DLRLIST1(~1) // unspecified
+implement
+DLRLIST1_T = T_DLRLIST1(TBOX_int) // boxed
+implement
+DLRLIST1_VT = T_DLRLIST1(VTBOX_int) // linboxed
 
 (* ****** ****** *)
 
@@ -662,13 +662,6 @@ val () = ins ("$myfilename", T_DLRMYFILENAME)
 val () = ins ("$mylocation", T_DLRMYLOCATION)
 val () = ins ("$myfunction", T_DLRMYFUNCTION)
 //
-val () = ins ("$lst", DLRLST)
-val () = ins ("$lst_t", DLRLST_T)
-val () = ins ("$lst_vt", DLRLST_VT)
-val () = ins ("$list", DLRLST)
-val () = ins ("$list_t", DLRLST_T)
-val () = ins ("$list_vt", DLRLST_VT)
-//
 val () = ins ("$rec", DLRREC)
 val () = ins ("$rec_t", DLRREC_T)
 val () = ins ("$rec_vt", DLRREC_VT)
@@ -682,6 +675,15 @@ val () = ins ("$tup_vt", DLRTUP_VT)
 val () = ins ("$tuple", DLRTUP)
 val () = ins ("$tuple_t", DLRTUP_T)
 val () = ins ("$tuple_vt", DLRTUP_VT)
+//
+(*
+val () = ins ("$lst", DLRLST)
+val () = ins ("$lst_t", DLRLST_T)
+val () = ins ("$lst_vt", DLRLST_VT)
+*)
+val () = ins ("$list1", DLRLIST1)
+val () = ins ("$list1_t", DLRLIST1_T)
+val () = ins ("$list1_vt", DLRLIST1_VT)
 //
 val () = ins ("$break", T_DLRBREAK)
 val () = ins ("$continue", T_DLRCONTINUE)

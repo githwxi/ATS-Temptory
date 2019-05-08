@@ -99,14 +99,14 @@ hipat_node =
     ) (* HIPcon *)
   | HIPcon_any of (pckind, d2con) // HX: unused arg
 //
-(*
-  | HIPlst of (hisexp(*element*), hipatlst)
-*)
   | HIPrec of (* rec-pattern *)
     (
     int(*knd*), pckind, labhipatlst, hisexp(*tyrec*)
     ) (* HIPrec *)
 //
+(*
+  | HIPlist1 of (hisexp(*element*), hipatlst)
+*)
   | HIPrefas of (d2var, hipat) // referenced pattern
 //
   | HIPann of (hipat, hisexp(*ann*))
@@ -205,14 +205,6 @@ fun hipat_empty (loc: loc_t, hse: hisexp): hipat
 
 (* ****** ****** *)
 
-fun hipat_lst
-(
-  loc: loc_t
-, lin: int, hse_lst: hisexp, hse_elt: hisexp, hips: hipatlst
-) : hipat // end of [hipat_lst]
-
-(* ****** ****** *)
-
 fun
 hipat_rec (
   loc: loc_t
@@ -225,6 +217,15 @@ hipat_rec2 (
 , hse: hisexp
 , knd: int, pck: pckind, lhips: labhipatlst, hse_rec: hisexp
 ) : hipat // end of [hipat_rec2]
+
+(* ****** ****** *)
+
+fun
+hipat_list1
+(
+  loc: loc_t
+, lin: int, hse_lst: hisexp, hse_elt: hisexp, hips: hipatlst
+) : hipat // end of [hipat_list1]
 
 (* ****** ****** *)
 
@@ -366,12 +367,15 @@ and hidexp_node =
       caskind, hidexplst(*values*), hiclaulst(*clauses*)
     ) // end of [HDEcase]
 //
-  | HDElst of (* list expression *)
-      (int(*lin*), hisexp(*elt*), hidexplst)
+  | HDEseq of (hidexplst) // sequencing
+//
   | HDErec of
       (int(*knd*), labhidexplst, hisexp(*tyrec*))
     // end of [HDErec]
-  | HDEseq of (hidexplst) // sequencing
+//
+  | HDElist1 of (* list expression *)
+      (int(*lin*), hisexp(*elt*), hidexplst)
+    // end of [HDElist1]
 //
 // HX: record field selection; array subscripting
 //
@@ -754,15 +758,15 @@ hidexp_case (
 ) : hidexp // end of [hidexp_case]
 
 (* ****** ****** *)
-
-fun
-hidexp_lst (
-  loc: loc_t
-, hse: hisexp, lin: int, hse_elt: hisexp, hdes: hidexplst
-) : hidexp // end of [hidexp_lst]
-
+//
+fun hidexp_seq
+  (loc: loc_t, hse: hisexp, hdes: hidexplst): hidexp
+// end of [hidexp_seq]
+fun hidexp_seq_simplify
+  (loc: loc_t, hse: hisexp, hdes: hidexplst): hidexp
+// end of [hidexp_seq_simply]
+//
 (* ****** ****** *)
-
 fun
 hidexp_rec (
   loc: loc_t
@@ -775,14 +779,13 @@ hidexp_rec2 (
 ) : hidexp // end of [hidexp_rec2]
 
 (* ****** ****** *)
-//
-fun hidexp_seq
-  (loc: loc_t, hse: hisexp, hdes: hidexplst): hidexp
-// end of [hidexp_seq]
-fun hidexp_seq_simplify
-  (loc: loc_t, hse: hisexp, hdes: hidexplst): hidexp
-// end of [hidexp_seq_simply]
-//
+
+fun
+hidexp_list1 (
+  loc: loc_t
+, hse: hisexp, lin: int, hse_elt: hisexp, hdes: hidexplst
+) : hidexp // end of [hidexp_list1]
+
 (* ****** ****** *)
 
 fun hidexp_selab (

@@ -1114,7 +1114,7 @@ case+ tok.token_node of
     val ent3 = p_RBRACKET(buf, bt, err)
   in
     if err = err0
-      then d0exp_lst_quote(tok, (l2l)ent2, ent3)
+      then d0exp_list1_quote(tok, (l2l)ent2, ent3)
       else let
         val () = list_vt_free(ent2) in synent_null()
       end // end of [else]
@@ -1160,31 +1160,6 @@ case+ tok.token_node of
     // end of [if]
   end
 //
-| T_DLRLST(lin) => let
-    val bt = 0
-    val () = incby1()
-    val ent2 = p_s0expelt(buf, bt, err)
-    val ent3 = pif_fun(buf, bt, err, p_LPAREN, err0)
-    val ent4 =
-    (
-      if err = err0
-        then pstar_fun0_COMMA{d0exp}(buf, bt, p_d0exp)
-        else list_vt_nil((*void*))
-      // end of [if]
-    ) : d0explst_vt // end of [val]
-    val ent5 = pif_fun (buf, bt, err, p_RPAREN, err0)
-  in
-    if err = err0
-      then let
-        val ent4 = (l2l)ent4
-      in
-        d0exp_lst(lin, tok, ent2, ent3, ent4, ent5)
-      end // end of [then]
-      else let
-        val () = list_vt_free(ent4) in synent_null()
-      end (* end of [else] *)
-    // end of [if]
-  end
 | T_DLRTUP(knd) => let
     val bt = 0
     val () = incby1 ()
@@ -1210,6 +1185,35 @@ case+ tok.token_node of
       else let
         val () = list12_free (ent3) in synent_null ()
       end // end of [else]
+    // end of [if]
+  end
+//
+| T_DLRLIST1(lin) => let
+    val bt = 0
+    val () = incby1()
+    val ent2 = p_s0expelt(buf, bt, err)
+    val ent3 =
+      pif_fun(buf, bt, err, p_LPAREN, err0)
+    val ent4 =
+    (
+      if err = err0
+        then
+        pstar_fun0_COMMA{d0exp}(buf, bt, p_d0exp)
+        else list_vt_nil((*void*))
+      // end of [if]
+    ) : d0explst_vt // end of [val]
+    val ent5 =
+      pif_fun(buf, bt, err, p_RPAREN, err0)
+  in
+    if err = err0
+      then let
+        val ent4 = (l2l)ent4
+      in
+        d0exp_list1(lin, tok, ent2, ent3, ent4, ent5)
+      end // end of [then]
+      else let
+        val () = list_vt_free(ent4) in synent_null()
+      end (* end of [else] *)
     // end of [if]
   end
 //

@@ -124,10 +124,10 @@ fun d2exp_trup_tmpid (d2e0: d2exp): d3exp
 
 (* ****** ****** *)
 
-extern fun d2exp_trup_lst (d2e0: d2exp): d3exp
+extern fun d2exp_trup_seq (d2e0: d2exp): d3exp
 extern fun d2exp_trup_tup (d2e0: d2exp): d3exp
 extern fun d2exp_trup_rec (d2e0: d2exp): d3exp
-extern fun d2exp_trup_seq (d2e0: d2exp): d3exp
+extern fun d2exp_trup_list1 (d2e0: d2exp): d3exp
 
 (* ****** ****** *)
 
@@ -443,10 +443,12 @@ of (* case+ *)
     // end of [val]
   end // end of [D2Elist]
 //
-| D2Elst _ => d2exp_trup_lst (d2e0)
+| D2Eseq _ => d2exp_trup_seq (d2e0)
+//
 | D2Etup _ => d2exp_trup_tup (d2e0)
 | D2Erec _ => d2exp_trup_rec (d2e0)
-| D2Eseq _ => d2exp_trup_seq (d2e0)
+//
+| D2Elist1 _ => d2exp_trup_list1 (d2e0)
 //
 | D2Eselab
     (d2e, d2ls) =>
@@ -1491,11 +1493,11 @@ end // end of [d2exp_trup_applst]
 (* ****** ****** *)
 
 implement
-d2exp_trup_lst
+d2exp_trup_list1
   (d2e0) = let
 //
 val loc0 = d2e0.d2exp_loc
-val-D2Elst (lin, opt, d2es) = d2e0.d2exp_node
+val-D2Elist1(lin, opt, d2es) = d2e0.d2exp_node
 (*
 val () = println! ("d2exp_trup_lst: lin = ", lin)
 *)
@@ -1532,15 +1534,15 @@ val s2e_lst =
 if
 isnonlin
 then
-  s2exp_list_t0ype_int_type (s2e_elt, n)
+  s2exp_list1_t0ype_int_type(s2e_elt, n)
 else
-  s2exp_list_vt0ype_int_vtype (s2e_elt, n)
+  s2exp_list1_vt0ype_int_vtype(s2e_elt, n)
 //
 ) : s2exp // end of [val]
 //
 in
-  d3exp_lst(loc0, s2e_lst, lin, s2e_elt, d3es)
-end // end of [d2exp_trup_lst]
+  d3exp_list1(loc0, s2e_lst, lin, s2e_elt, d3es)
+end // end of [d2exp_trup_list1]
 
 (* ****** ****** *)
 

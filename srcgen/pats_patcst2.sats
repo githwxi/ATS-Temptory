@@ -110,7 +110,8 @@ and labp2atcstlst = List (labp2atcst)
 
 (* ****** ****** *)
 
-fun p2atcst_lst (lin: int, xs: p2atcstlst): p2atcst
+fun
+p2atcst_list1(lin: int, xs: p2atcstlst): p2atcst
 
 (* ****** ****** *)
 

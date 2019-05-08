@@ -361,14 +361,6 @@ of (* case+ *)
 | P2Tempty() =>
   p2at_empty(loc0)
 //
-| P2Tlst(lin, p2ts) => let
-    val
-    p2ts =
-    eval1_p2atlst(loc0, ctx, env, p2ts)
-  in
-    p2at_lst(loc0, lin, p2ts)
-  end // end of [P2Tlst]
-//
 | P2Trec(knd, npf, lp2ts) => let
     val
     lp2ts =
@@ -376,6 +368,14 @@ of (* case+ *)
   in
     p2at_rec(loc0, knd, npf, lp2ts)
   end // end of [P2Trec]
+//
+| P2Tlist1(lin, p2ts) => let
+    val
+    p2ts =
+    eval1_p2atlst(loc0, ctx, env, p2ts)
+  in
+    p2at_list1(loc0, lin, p2ts)
+  end // end of [P2Tlist1]
 //
 | P2Tann(p2t, s2e) =>
   p2at_ann(loc0, p2t, s2e) where
@@ -786,18 +786,20 @@ case+ d2en0 of
 | D2Elist (npf, d2es) =>
     d2exp_list(loc0, npf, eval1dexplst (d2es))
 //
-| D2Elst
-    (lin, opt, d2es) => d2exp_lst
-  (
-    loc0, lin, eval1sexpopt (opt), eval1dexplst (d2es)
-  ) (* end of [D2Elst] *)
+| D2Eseq (d2es) =>
+    d2exp_seq (loc0, eval1dexplst (d2es))
 //
 | D2Etup (knd, npf, d2es) =>
     d2exp_tup (loc0, knd, npf, eval1dexplst (d2es))
 | D2Erec (knd, npf, ld2es) =>
     d2exp_rec (loc0, knd, npf, eval1labdexplst (ld2es))
 //
-| D2Eseq (d2es) => d2exp_seq (loc0, eval1dexplst (d2es))
+//
+| D2Elist1
+    (lin, opt, d2es) => d2exp_list1
+  (
+    loc0, lin, eval1sexpopt (opt), eval1dexplst (d2es)
+  ) (* end of [D2Elist1] *)
 //
 | D2Eselab (d2e, d2ls) =>
     d2exp_selab (loc0, eval1dexp (d2e), eval1dlablst (d2ls))

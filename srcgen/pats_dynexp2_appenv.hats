@@ -503,8 +503,11 @@ p2t0.p2at_node of
 //
 | P2Tempty () => ()
 //
-| P2Tlst (lin, p2ts) => p2atlst_app (p2ts, env)
-| P2Trec (knd, npf, lp2ts) => labp2atlst_app (lp2ts, env)
+| P2Trec
+  (knd, npf, lp2ts) =>
+  labp2atlst_app(lp2ts, env)
+//
+| P2Tlist1(lin, p2ts) => p2atlst_app(p2ts, env)
 //
 | P2Trefas (d2v, p2t) =>
   (
@@ -676,23 +679,26 @@ d2e0.d2exp_node of
 | D2Ecasehead
     (knd, invres, d2es, c2ls) =>
   (
-    d2explst_app (d2es, env); c2laulst_app (c2ls, env)
+    d2explst_app(d2es, env); c2laulst_app (c2ls, env)
   ) (* end of [D2Ecaseof] *)
 | D2Escasehead
     (invres, s2e, sc2ls) => let
-    val () = s2exp_app (s2e, env) in sc2laulst_app (sc2ls, env)
+    val () =
+    s2exp_app (s2e, env) in sc2laulst_app (sc2ls, env)
   end // end of [D2Escasehead]
 //
 | D2Esing (d2e) => d2exp_app (d2e, env)
 | D2Elist (npf, d2es) => d2explst_app (d2es, env)
 //
-| D2Elst (lin, opt, d2es) =>
+| D2Eseq (d2es) => d2explst_app (d2es, env)
+//
+| D2Etup (knd, npf, d2es) => d2explst_app (d2es, env)
+| D2Erec (knd, npf, ld2es) => labd2explst_app (ld2es, env)
+//
+| D2Elist1(lin, opt, d2es) =>
   (
     s2expopt_app (opt, env); d2explst_app (d2es, env)
   ) (* end of [D2Elst] *)
-| D2Etup (knd, npf, d2es) => d2explst_app (d2es, env)
-| D2Erec (knd, npf, ld2es) => labd2explst_app (ld2es, env)
-| D2Eseq (d2es) => d2explst_app (d2es, env)
 //
 | D2Eselab (d2e, d2ls) =>
   (

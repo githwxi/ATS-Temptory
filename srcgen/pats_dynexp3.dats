@@ -133,7 +133,8 @@ p3at_empty
 (* ****** ****** *)
 //
 implement
-p3at_rec (
+p3at_rec
+(
   loc, s2f, knd, npf, pck, lp3ts
 ) =
 (
@@ -141,9 +142,10 @@ p3at_rec (
 )
 //
 implement
-p3at_lst (
+p3at_list1
+(
   loc, s2f, lin, s2e_elt, p3ts
-) = p3at_make_node(loc, s2f, P3Tlst(lin, s2e_elt, p3ts))
+) = p3at_make_node(loc, s2f, P3Tlist1(lin, s2e_elt, p3ts))
 //
 (* ****** ****** *)
 
@@ -662,13 +664,13 @@ d3exp_app_dyn
 (* ****** ****** *)
 
 implement
-d3exp_lst (
-  loc, s2f_lst, lin, s2f_elt, d3es
+d3exp_seq (
+  loc, s2f, d3es
 ) = '{
   d3exp_loc= loc
-, d3exp_type= s2f_lst
-, d3exp_node= D3Elst (lin, s2f_elt, d3es)
-} // end of [d3exp_lst]
+, d3exp_type= s2f
+, d3exp_node= D3Eseq (d3es)
+} // end of [d3exp_seq]
 
 implement
 d3exp_tup (
@@ -689,13 +691,14 @@ d3exp_rec (
 } // end of [d3exp_rec]
 
 implement
-d3exp_seq (
-  loc, s2f, d3es
+d3exp_list1
+(
+  loc, s2f_lst, lin, s2f_elt, d3es
 ) = '{
   d3exp_loc= loc
-, d3exp_type= s2f
-, d3exp_node= D3Eseq (d3es)
-} // end of [d3exp_seq]
+, d3exp_type= s2f_lst
+, d3exp_node= D3Elist1(lin, s2f_elt, d3es)
+} // end of [d3exp_list1]
 
 (* ****** ****** *)
 

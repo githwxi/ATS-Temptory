@@ -481,7 +481,7 @@ case+ p3t.p3at_node of
   ) =>
     the_d2varenv_add_labp3atlst(lp3ts)
   // end of [P3Trec]
-| P3Tlst (
+| P3Tlist1 (
     lin, _elt, p3ts
   ) => the_d2varenv_add_p3atlst( p3ts )
 //

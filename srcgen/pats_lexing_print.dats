@@ -187,9 +187,13 @@ fprint_token
   | T_DLRMYLOCATION () => fprintf (out, "DLRMYLOCATION()", @())
   | T_DLRMYFUNCTION () => fprintf (out, "DLRMYFUNCTION()", @())
 //
-  | T_DLRLST (x) => fprintf (out, "DLRLST(%i)", @(x))
   | T_DLRREC (x) => fprintf (out, "DLRREC(%i)", @(x))
   | T_DLRTUP (x) => fprintf (out, "DLRTUP(%i)", @(x))
+//
+(*
+  | T_DLRLIST0 (x) => fprintf (out, "DLRLIST0(%i)", @(x))
+*)
+  | T_DLRLIST1 (x) => fprintf (out, "DLRLIST1(%i)", @(x))
 //
   | T_DLRBREAK () => fprintf (out, "DLRBREAK()", @())
   | T_DLRCONTINUE () => fprintf (out, "DLRCONTINUE()", @())

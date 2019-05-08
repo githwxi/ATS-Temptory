@@ -292,65 +292,94 @@ arrszref(a:vtflt) = arrszref_vtflt_tbox(a)
 //
 datatype
 // tflt+: covariant
-list_tflt_int_tbox
-  (a:tflt+, int) =
-  | list_nil(a, 0) of ()
-  | {n:int | n >= 0}
-    list_cons(a, n+1) of
-    (a, list_tflt_int_tbox(a, n))
+list0_tflt_tbox
+  (a:tflt+) =
+| list0_nil(a) of ()
+| list0_cons(a) of (a, list0_tflt_tbox(a))
 // end of [datatype]
-sexpdef list = list_tflt_int_tbox
+sexpdef list0 = list0_tflt_tbox
+//
+(* ****** ****** *)
+//
+datatype
+// tflt+: covariant
+list1_tflt_int_tbox
+  (a:tflt+, int) =
+| list1_nil(a, 0) of ()
+| {n:int | n >= 0}
+  list1_cons(a, n+1) of (a, list1_tflt_int_tbox(a, n))
+// end of [datatype]
+sexpdef list1 = list1_tflt_int_tbox
 //
 typedef
-List(a:tflt) = [n:int] list(a, n)
+list1(a:tflt) = [n:int] list1(a, n)
 typedef
-List0(a:tflt) = [n:int | n >= 0] list(a, n)
+list1_0(a:tflt) = [n:int | n >= 0] list1(a, n)
 typedef
-List1(a:tflt) = [n:int | n >= 1] list(a, n)
-typedef listLt
-  (a:tflt, n:int) = [k:nat | k < n] list(a, k)
-typedef listLte
-  (a:tflt, n:int) = [k:nat | k <= n] list(a, k)
-typedef listGt
-  (a:tflt, n:int) = [k:int | k > n] list(a, k)
-typedef listGte
-  (a:tflt, n:int) = [k:int | k >= n] list(a, k)
-typedef listBtw
-  (a:tflt, m:int, n:int) = [k:int | m <= k; k < n] list(a, k)
-typedef listBtwe
-  (a:tflt, m:int, n:int) = [k:int | m <= k; k <= n] list(a, k)
+list1_1(a:tflt) = [n:int | n >= 1] list1(a, n)
+typedef list1_lt
+  (a:tflt, n:int) = [k:nat | k < n] list1(a, k)
+typedef list1_gt
+  (a:tflt, n:int) = [k:int | k > n] list1(a, k)
+typedef list1_lte
+  (a:tflt, n:int) = [k:nat | k <= n] list1(a, k)
+typedef list1_gte
+  (a:tflt, n:int) = [k:int | k >= n] list1(a, k)
+typedef list1_btw
+  (a:tflt, m:int, n:int) = [k:int | m <= k; k < n] list1(a, k)
+typedef list1_btwe
+  (a:tflt, m:int, n:int) = [k:int | m <= k; k <= n] list1(a, k)
 //
 (* ****** ****** *)
 //
 datavtype
 // vtflt+: covariant
-list_vtflt_int_vtbox
+list0_vtflt_vtbox
+  (a:vtflt+) =
+| list0_nil_vt(a) of ()
+| list0_cons_vt(a) of (a, list0_vtflt_vtbox(a))
+// end of [datavtype]
+sexpdef list0_vt = list0_vtflt_vtbox
+//
+(* ****** ****** *)
+//
+datavtype
+// vtflt+: covariant
+list1_vtflt_int_vtbox
   (a:vtflt+, int) =
-  | list_vt_nil(a, 0) of ()
-  | {n:int | n >= 0}
-    list_vt_cons(a, n+1) of (a, list_vtflt_int_vtbox(a, n))
+| list1_nil_vt(a, 0) of ()
+| {n:int | n >= 0}
+  list1_cons_vt(a, n+1) of (a, list1_vtflt_int_vtbox(a, n))
 // end of [list_vtflt_int_vtbox]
 //
-sexpdef list_vt = list_vtflt_int_vtbox
+sexpdef list1_vt = list1_vtflt_int_vtbox
 //
 vtypedef
-List_vt(a:vtflt) = [n:int] list_vt(a, n)
+list1_vt(a:vtflt) = [n:int] list1_vt(a, n)
 vtypedef
-List0_vt(a:vtflt) = [n:int | n >= 0] list_vt(a, n)
+list1_0_vt
+  (a:vtflt) = [n:int | n >= 0] list1_vt(a, n)
 vtypedef
-List1_vt(a:vtflt) = [n:int | n >= 1] list_vt(a, n)
-vtypedef listLt_vt
-  (a:vtflt, n:int) = [k:nat | k < n] list_vt(a, k)
-vtypedef listLte_vt
-  (a:vtflt, n:int) = [k:nat | k <= n] list_vt(a, k)
-vtypedef listGt_vt
-  (a:vtflt, n:int) = [k:int | k > n] list_vt(a, k)
-vtypedef listGte_vt
-  (a:vtflt, n:int) = [k:int | k >= n] list_vt(a, k)
-vtypedef listBtw_vt
-  (a:vtflt, m:int, n:int) = [k:int | m <= k; k < n] list_vt(a, k)
-vtypedef listBtwe_vt
-  (a:vtflt, m:int, n:int) = [k:int | m <= k; k <= n] list_vt(a, k)
+list1_0_vt
+  (a:vtflt) = [n:int | n >= 1] list1_vt(a, n)
+vtypedef
+list1_gt_vt
+  (a:vtflt, n:int) = [k:nat | k < n] list1_vt(a, k)
+vtypedef
+list1_lte_vt
+  (a:vtflt, n:int) = [k:nat | k <= n] list1_vt(a, k)
+vtypedef
+list1_gt_vt
+  (a:vtflt, n:int) = [k:int | k > n] list1_vt(a, k)
+vtypedef
+list1_gte_vt
+  (a:vtflt, n:int) = [k:int | k >= n] list1_vt(a, k)
+vtypedef
+list1_btw_vt
+  (a:vtflt, m:int, n:int) = [k:int | m <= k; k < n] list1_vt(a, k)
+vtypedef
+list1_btwe_vt
+  (a:vtflt, m:int, n:int) = [k:int | m <= k; k <= n] list1_vt(a, k)
 //
 (* ****** ****** *)
 //
@@ -370,30 +399,6 @@ stream_vt_con
 //
 where
 stream_vt(a:vtflt) = lazy_vt(stream_vt_con(a))
-//
-(* ****** ****** *)
-//
-datatype
-// tflt+: covariant
-option_tflt_bool_tbox
-(
-  a:tflt+, bool
-) = // option_tflt_bool_tbox
-  | Some(a, true) of (a) | None(a, false)
-// end of [datatype]
-sexpdef option = option_tflt_bool_tbox
-typedef Option(a:tflt) = [b:bool] option(a, b)
-//
-datavtype
-// vtflt+: covariant
-option_vtflt_bool_vtbox
-(
-  a:vtflt+, bool
-) = // option_vtflt_bool_vtbox
-  | Some_vt(a, true) of (a) | None_vt(a, false)
-// end of [option_vtflt_bool_vtbox]
-stadef option_vt = option_vtflt_bool_vtbox
-vtypedef Option_vt(a:vtflt) = [b:bool] option_vt(a, b)
 //
 (* ****** ****** *)
 //
@@ -420,6 +425,57 @@ opt_clear{a:tflt}
 //
 (* ****** ****** *)
 //
+datatype
+// tflt+: covariant
+optn0_tflt_tbox
+  (a:tflt+) =
+| optn0_none(a) of ()
+| optn0_some(a) of (a)
+// end of [datatype]
+//
+sexpdef optn0 = optn0_tflt_tbox
+//
+(* ****** ****** *)
+//
+datatype
+// tflt+: covariant
+optn1_tflt_bool_tbox
+(
+  a:tflt+, bool
+) = // optn1_tflt_bool_tbox
+  | optn1_none(a, ff)
+  | optn1_some(a, tt) of (a)
+// end of [datatype]
+sexpdef optn1 = optn1_tflt_bool_tbox
+sexpdef optn1(a:tflt) = [b:bool] optn1(a, b)
+//
+(* ****** ****** *)
+//
+datavtype
+// vtflt+: covariant
+optn0_vtflt_vtbox
+  (a:vtflt+) =
+  | optn0_none_vt(a)
+  | optn0_some_vt(a) of (a)
+// end of [option_vtflt_bool_vtbox]
+sexpdef optn0_vt = optn0_vtflt_vtbox
+//
+(* ****** ****** *)
+//
+datavtype
+// vtflt+: covariant
+optn1_vtflt_bool_vtbox
+(
+  a:vtflt+, bool
+) = // option_vtflt_bool_vtbox
+  | optn1_none_vt(a, ff)
+  | optn1_some_vt(a, tt) of (a)
+// end of [option_vtflt_bool_vtbox]
+sexpdef optn1_vt = optn1_vtflt_bool_vtbox
+sexpdef optn1_vt(a:vtflt) = [b:bool] optn1_vt(a, b)
+//
+(* ****** ****** *)
+//
 absvtbox
 argv_int_vtbox(n:int) = ptr
 sexpdef argv = argv_int_vtbox
@@ -431,13 +487,11 @@ is declared in prelude/SATS/extern.sats
 is declared in prelude/SATS/extern.sats
 *)
 //
-(* ****** ****** *)
-
 praxi
 lemma_argv_param
   {n:int}(argv: !argv(n)): [n >= 0] void
 // end of [praxi]
-
+//
 (* ****** ****** *)
 //
 fun
@@ -457,7 +511,7 @@ argv_set_at
 fun{}
 listize_argc_argv
   {n:int}
-  (argc: int(n), argv: !argv(n)): list_vt(string, n)
+  (argc: int(n), argv: !argv(n)): list1_vt(string, n)
 //
 (* ****** ****** *)
 //

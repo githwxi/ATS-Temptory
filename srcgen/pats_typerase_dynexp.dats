@@ -276,17 +276,6 @@ p3t0.p3at_node of
 //
 | P3Tempty((*void*)) => hipat_empty(loc0, hse0)
 //
-| P3Tlst
-  (
-    lin, s2e_elt, p3ts
-  ) => let
-    val hse_elt =
-      s2exp_tyer_shallow (loc0, s2e_elt)
-    val hips = p3atlst_tyer (p3ts)
-  in
-    hipat_lst (loc0, lin, hse0, hse_elt, hips)
-  end // end of [P3Tlst]
-//
 | P3Trec
   (
     knd, npf, pck, lp3ts
@@ -305,6 +294,17 @@ p3t0.p3at_node of
   in
     hipat_rec2(loc0, hse0, knd, pck, lhips, hse_rec)
   end // end of [P3Trec]
+//
+| P3Tlist1
+  (
+    lin, s2e_elt, p3ts
+  ) => let
+    val hse_elt =
+      s2exp_tyer_shallow (loc0, s2e_elt)
+    val hips = p3atlst_tyer (p3ts)
+  in
+    hipat_list1(loc0, lin, hse0, hse_elt, hips)
+  end // end of [P3Tlist1]
 //
 | P3Trefas
     (d2v, p3t_as) => let
@@ -856,16 +856,15 @@ d3e0.d3exp_node of
     hidexp_case (loc0, hse0, knd, hdes, hcls)
   end // end of [D3Ecase]
 //
-| D3Elst (
-    lin, s2e_elt, d3es
-  ) => let
-    val hse_elt =
-      s2exp_tyer_shallow (loc0, s2e_elt)
-    val hdes = list_map_fun (d3es, d3exp_tyer)
-    val hdes = list_of_list_vt (hdes)
+| D3Eseq (d3es) => let
+    val hdes =
+      list_map_fun(d3es, d3exp_tyer)
+    // end of [val]
+    val hdes = list_of_list_vt(hdes)
   in
-    hidexp_lst (loc0, hse0, lin, hse_elt, hdes)
-  end // end of [D3Elst]
+    hidexp_seq_simplify(loc0, hse0, hdes)
+  end // end of [D3Eseq]
+//
 | D3Etup (
     knd, npf, d3es
   ) => let
@@ -890,14 +889,17 @@ d3e0.d3exp_node of
     hidexp_rec2 (loc0, hse0, knd, lhdes, hse_rec)
   end // end of [D3Erec]
 //
-| D3Eseq (d3es) => let
-    val hdes =
-      list_map_fun(d3es, d3exp_tyer)
-    // end of [val]
-    val hdes = list_of_list_vt(hdes)
+| D3Elist1
+  (
+    lin, s2e_elt, d3es
+  ) => let
+    val hse_elt =
+      s2exp_tyer_shallow (loc0, s2e_elt)
+    val hdes = list_map_fun (d3es, d3exp_tyer)
+    val hdes = list_of_list_vt (hdes)
   in
-    hidexp_seq_simplify(loc0, hse0, hdes)
-  end // end of [D3Eseq]
+    hidexp_list1(loc0, hse0, lin, hse_elt, hdes)
+  end // end of [D3Elist1]
 //
 | D3Eselab
     (d3e, d3ls) => let

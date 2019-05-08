@@ -226,22 +226,26 @@ of (* case+ *)
   end // end of [P0Tapp]
 //
 | P0Tlist(npf, p0ts) => let
-    val p1ts =
-    p0atlst_tr p0ts in FXITMatm(p1at_list(loc0, npf, p1ts))
+    val p1ts = p0atlst_tr p0ts
+  in
+    FXITMatm(p1at_list(loc0, npf, p1ts))
   end // end of [[P0Tlist]
 //
-| P0Tlst (lin, p0ts) => let
-    val p1ts =
-    p0atlst_tr(p0ts) in FXITMatm(p1at_lst(loc0, lin, p1ts))
-  end // end of [P1Tlst]
 | P0Ttup (knd, npf, p0ts) => let
-    val p1ts =
-    p0atlst_tr(p0ts) in FXITMatm(p1at_tup(loc0, knd, npf, p1ts))
+    val p1ts = p0atlst_tr(p0ts)
+  in
+    FXITMatm(p1at_tup(loc0, knd, npf, p1ts))
   end // end of [P1Ttup]
 | P0Trec (knd, npf, lp0ts) => let
-    val lp1ts =
-    labp0atlst_tr(lp0ts) in FXITMatm(p1at_rec(loc0, knd, npf, lp1ts))
+    val lp1ts = labp0atlst_tr(lp0ts)
+  in
+    FXITMatm(p1at_rec(loc0, knd, npf, lp1ts))
   end // end of [P0Trec]
+//
+| P0Tlist1(lin, p0ts) => let
+    val p1ts =
+    p0atlst_tr(p0ts) in FXITMatm(p1at_list1(loc0, lin, p1ts))
+  end // end of [P0Tlist1]
 //
 | P0Tfree(p0t) => FXITMatm(p1at_free(loc0, p0at_tr(p0t)))
 | P0Tunfold(p0t) => FXITMatm(p1at_unfold(loc0, p0at_tr(p0t)))

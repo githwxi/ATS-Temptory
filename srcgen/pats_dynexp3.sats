@@ -80,10 +80,11 @@ datatype p3at_node =
   | P3Tempty (* empty pattern *)
 //
   | P3Trec of
-      (int(*knd*), int(*npf*), pckind, labp3atlst)
-    // P3Trec
+    ( int(*knd*)
+    , int(*npf*), pckind, labp3atlst)
 //
-  | P3Tlst of (int(*lin*), s2exp(*elt*), p3atlst) // pattern list
+  | P3Tlist1 of
+    (int(*lin*), s2exp(*elt*), p3atlst) // pattern list
 //
   | P3Trefas of (d2var, p3at) // referenced pattern
 //
@@ -181,11 +182,11 @@ fun p3at_rec
 , knd: int, npf: int, pck: pckind, lp3ts: labp3atlst
 ) : p3at // end of [p3at_rec]
 //
-fun p3at_lst
+fun p3at_list1
 (
   loc: location
 , s2f: s2exp, lin: int, s2e_elt: s2exp, p3ts: p3atlst
-) : p3at // end of [p3at_lst]
+) : p3at // end of [p3at_list1]
 
 fun p3at_refas (
   loc: location, s2f: s2exp, d2v: d2var, p3t: p3at
@@ -349,13 +350,15 @@ and d3exp_node =
 //
   | D3Eifcase of (int(*else*), i3fclist)
 //
-  | D3Elst of (* list expression *)
-      (int(*lin*), s2exp(*elt*), d3explst)
+  | D3Eseq of (d3explst) // sequencing
+//
   | D3Etup of (* tuple expression *)
       (int(*tupknd*), int(*npf*), d3explst)
   | D3Erec of (* record expression *)
       (int(*recknd*), int(*npf*), labd3explst)
-  | D3Eseq of (d3explst) // sequencing
+//
+  | D3Elist1 of (* list expression *)
+      (int(*lin*), s2exp(*elt*), d3explst)
 //
   | D3Eselab of (d3exp, d3lablst) // record/tuple field selection
 //
@@ -745,10 +748,9 @@ fun d3exp_app_dyn
 
 (* ****** ****** *)
 
-fun d3exp_lst (
-  loc: location
-, s2f0: s2exp, lin: int, s2f_elt: s2exp, d3es: d3explst
-) : d3exp // end of [d3exp_lst]
+fun d3exp_seq
+  (loc: location, s2f: s2exp, d3es: d3explst): d3exp
+// end of [d3exp_seq]
 
 fun d3exp_tup (
   loc: location
@@ -760,9 +762,12 @@ fun d3exp_rec (
 , s2f0: s2exp, recknd: int, npf: int, ld3es: labd3explst
 ) : d3exp // end of [d3exp_rec]
 
-fun d3exp_seq
-  (loc: location, s2f: s2exp, d3es: d3explst): d3exp
-// end of [d3exp_seq]
+fun
+d3exp_list1
+(
+  loc: location
+, s2f0: s2exp, lin: int, s2f_elt: s2exp, d3es: d3explst
+) : d3exp // end of [d3exp_list1]
 
 (* ****** ****** *)
 //

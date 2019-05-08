@@ -617,8 +617,9 @@ p2at_node =
 //
   | P2Tempty of ()
 //
-  | P2Tlst of (int(*lin*), p2atlst) // pattern list
   | P2Trec of (int(*knd*), int(*npf*), labp2atlst)
+//
+  | P2Tlist1 of (int(*lin*), p2atlst) // pattern list
 //
   | P2Trefas of (d2var, p2at)
 //
@@ -719,14 +720,17 @@ p2at_list // HX: flat tuple
 (* ****** ****** *)
 
 fun
-p2at_lst
-(loc: loc_t, lin: int, p2ts: p2atlst): p2at
-// end of [p2at_lst]
-fun
 p2at_rec
 ( loc: loc_t
 , knd: int(*boxity*), npf: int, lp2ts: labp2atlst
 ) : p2at // end of [p2at_tup]
+
+(* ****** ****** *)
+
+fun
+p2at_list1
+(loc: loc_t, lin: int, p2ts: p2atlst): p2at
+// end of [p2at_list1]
 
 (* ****** ****** *)
 
@@ -927,10 +931,12 @@ and d2exp_node =
   | D2Esing of (d2exp) // singleton
   | D2Elist of (int(*pfarity*), d2explst) // temporary
 //
-  | D2Elst of (int(*lin*), s2expopt, d2explst) // list
+  | D2Eseq of d2explst // dynamic sequencing
+//
   | D2Etup of (int(*knd*), int(*npf*), d2explst) // tuple
   | D2Erec of (int (*knd*), int (*npf*), labd2explst) // record
-  | D2Eseq of d2explst // sequence-expressions // sequencing
+//
+  | D2Elist1 of (int(*lin*), s2expopt, d2explst) // list
 //
   | D2Eselab of (d2exp, d2lablst) // record/tuple field selection
 //
@@ -1470,13 +1476,6 @@ d2exp_list
 (* ****** ****** *)
 //
 fun
-d2exp_lst
-(
-  loc: location
-, lin: int, elt: s2expopt, d2es: d2explst
-) : d2exp // end of [d2exp_lst]
-//
-fun
 d2exp_tup
 (
   loc: location
@@ -1494,6 +1493,15 @@ d2exp_rec
   loc: location
 , knd: int, npf: int, ld2es: labd2explst
 ) : d2exp // end of [d2exp_rec]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_list1
+(
+  loc: location
+, lin: int, elt: s2expopt, d2es: d2explst
+) : d2exp // end of [d2exp_list1]
 //
 (* ****** ****** *)
 

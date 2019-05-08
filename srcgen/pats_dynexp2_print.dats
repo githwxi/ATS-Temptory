@@ -281,7 +281,7 @@ x0.p2at_node of
     val () = prstr ")"
   }
 //
-| P2Trec (knd, npf, lp2ts) => {
+| P2Trec(knd, npf, lp2ts) => {
     val () = prstr "P2Ttup("
     val () = fprint_int (out, knd)
     val () = prstr "; "
@@ -290,8 +290,9 @@ x0.p2at_node of
     val () = fprint_labp2atlst (out, lp2ts)
     val () = prstr ")"
   }
-| P2Tlst (lin, p2ts) => {
-    val () = prstr "P2Tlst("
+//
+| P2Tlist1(lin, p2ts) => {
+    val () = prstr "P2Tlist1("
     val () = fprint_int (out, lin)
     val () = prstr "; "
     val () = fprint_p2atlst (out, p2ts)
@@ -642,15 +643,9 @@ d2e0.d2exp_node of
     fprint! (out, "D2Elist(", npf, "; ", d2es, ")")
   (* end of [D2Elist] *)
 //
-| D2Elst (
-    lin, opt, d2es
-  ) => {
-    val () = prstr "D2Elst("
-    val () = fprint_s2expopt (out, opt)
-    val () = prstr "; "
-    val () = fprint_d2explst (out, d2es)
-    val () = prstr ")"
-  } (* end of [D2Elst] *)
+| D2Eseq(d2es) =>
+    fprint! (out, "D2Eseq(", d2es, ")")
+//
 | D2Etup (
     knd, npf, d2es
   ) => {
@@ -674,8 +669,16 @@ d2e0.d2exp_node of
     val () = prstr ")"
   } (* end of [D2Erec] *)
 //
-| D2Eseq(d2es) =>
-    fprint! (out, "D2Eseq(", d2es, ")")
+| D2Elist1
+  (
+    lin, opt, d2es
+  ) => {
+    val () = prstr "D2Elist1("
+    val () = fprint_s2expopt (out, opt)
+    val () = prstr "; "
+    val () = fprint_d2explst (out, d2es)
+    val () = prstr ")"
+  } (* end of [D2Elist1] *)
 //
 | D2Eraise(d2e) =>
     fprint! (out, "D2Eraise(", d2e, ")")

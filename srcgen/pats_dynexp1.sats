@@ -80,7 +80,7 @@ datatype p1at_node =
       (int (*tupknd*), int (*pfarity*), p1atlst)
   | P1Trec of (* boxed/unboxed records *)
       (int (*recknd*), int (*pfarity*), labp1atlst)
-  | P1Tlst of (int(*lin*), p1atlst) // list pattern
+  | P1Tlist1 of (int(*lin*), p1atlst) // list pattern
 //
   | P1Tfree of p1at (* freed constructor *)
   | P1Tunfold of p1at (* unfolded constructor *)
@@ -162,7 +162,7 @@ fun p1at_tup
   (loc: loc_t, knd: int, npf: int, xs: p1atlst): p1at
 fun p1at_rec
   (loc: loc_t, knd: int, npf: int, xs: labp1atlst): p1at
-fun p1at_lst (loc: loc_t, lin: int, xs: p1atlst): p1at
+fun p1at_list1 (loc: loc_t, lin: int, xs: p1atlst): p1at
 
 fun p1at_free (loc: loc_t, p1t: p1at): p1at
 fun p1at_unfold (loc: loc_t, p1t: p1at): p1at
@@ -407,13 +407,13 @@ and d1exp_node =
       (caskind, i1nvresstate, d1explst, c1laulst)
   | D1Escasehead of (i1nvresstate, s1exp, sc1laulst)
 //
-  | D1Elst of (* dynamic list-expression *)
-      (int (*lin*), s1expopt, d1explst)
+  | D1Eseq of (d1explst) // sequencing
+//
   | D1Etup of (* dynamic tuple-expression *)
       (int (*tupknd*), int (*pfarity*), d1explst)
   | D1Erec of (* dynamic record-expression *)
       (int (*recknd*), int (*pfarity*), labd1explst) // HX: 0/1: flat/boxed
-  | D1Eseq of d1explst // dynamic sequence-expression
+  | D1Elist1 of (int (*lin*), s1expopt, d1explst)
 //
   | D1Earrsub of (* array subscription *)
       (d1exp, loc_t(*ind*), d1explst(*ind*))
@@ -805,16 +805,29 @@ d1exp_scasehead
 
 (* ****** ****** *)
 
-fun d1exp_lst (
-  loc: loc_t, knd: int, elt: s1expopt, d1es: d1explst
-) : d1exp // end of [d1exp_lst]
-fun d1exp_tup (
+fun
+d1exp_seq(loc: loc_t, d1es: d1explst): d1exp
+
+(* ****** ****** *)
+
+fun
+d1exp_tup
+(
   loc: loc_t, knd: int, npf: int, d1es: d1explst
 ) : d1exp // end of [d1exp_tup]
-fun d1exp_rec (
+fun
+d1exp_rec
+(
   loc: loc_t, knd: int, npf: int, ld1es: labd1explst
 ) : d1exp // end of [d1exp_rec]
-fun d1exp_seq (loc: loc_t, d1es: d1explst): d1exp
+
+(* ****** ****** *)
+
+fun
+d1exp_list1
+(
+  loc: loc_t, knd: int, elt: s1expopt, d1es: d1explst
+) : d1exp // end of [d1exp_list1]
 
 (* ****** ****** *)
 

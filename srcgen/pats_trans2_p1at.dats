@@ -751,7 +751,9 @@ p1t0.p1at_node of
   | list_nil () => p2at_empty (loc0)
   ) (* end of [P1Tlist] *)
 //
-| P1Ttup (knd, npf, p1ts) => p1at_tr_tup (p1t0, knd, npf, p1ts)
+| P1Ttup
+  (knd, npf, p1ts) =>
+  p1at_tr_tup (p1t0, knd, npf, p1ts)
 | P1Trec (
     knd, npf, lp1ts
   ) => let
@@ -761,7 +763,9 @@ p1t0.p1at_node of
   in
     p2at_rec (loc0, knd, npf, (l2l)lp2ts)
   end // end of [P1Trec]
-| P1Tlst (lin, p1ts) => p2at_lst (loc0, lin, p1atlst_tr (p1ts))
+//
+| P1Tlist1(lin, p1ts) =>
+  p2at_list1(loc0, lin, p1atlst_tr(p1ts))
 //
 | P1Tfree (p1t) => p1at_tr_free_unfold (PCKfree, p1t0, p1t)
 | P1Tunfold (p1t) => p1at_tr_free_unfold (PCKunfold, p1t0, p1t)

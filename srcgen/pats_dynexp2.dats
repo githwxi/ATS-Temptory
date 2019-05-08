@@ -283,17 +283,18 @@ end // end of [p2at_lp2ts]
 (* ****** ****** *)
 
 implement
-p2at_lst (loc, lin, p2ts) = let
+p2at_list1
+  (loc, lin, p2ts) = let
   val svs = p2atlst_svs_union (p2ts)
   val dvs = p2atlst_dvs_union (p2ts)
 in
-  p2at_make_node (loc, svs, dvs, P2Tlst (lin, p2ts))
-end // end of [p2at_lst]
+  p2at_make_node (loc, svs, dvs, P2Tlist1(lin, p2ts))
+end // end of [p2at_list1]
 
 (* ****** ****** *)
 
 implement
-p2at_refas (loc, d2v, p2t) = let
+p2at_refas(loc, d2v, p2t) = let
   val svs = p2t.p2at_svs
   val dvs = $UT.lstord_insert
     (p2t.p2at_dvs, d2v, compare_d2vsym_d2vsym)
@@ -679,14 +680,6 @@ d2exp_list(loc, npf, d2es) =
   d2exp_make_node(loc, D2Elist(npf, d2es))
 //
 (* ****** ****** *)
-
-implement
-d2exp_lst
-  (loc, lin, elt, d2es) =
-  d2exp_make_node(loc, D2Elst (lin, elt, d2es))
-// end of [d2exp_lst]
-
-(* ****** ****** *)
 //
 implement
 d2exp_tup
@@ -717,6 +710,14 @@ d2exp_rec
   d2exp_make_node(loc, D2Erec(knd, npf, ld2es))
 )
 //
+(* ****** ****** *)
+
+implement
+d2exp_list1
+  (loc, lin, elt, d2es) =
+  d2exp_make_node(loc, D2Elist1(lin, elt, d2es))
+// end of [d2exp_list1]
+
 (* ****** ****** *)
 
 implement

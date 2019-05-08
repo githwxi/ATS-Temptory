@@ -1169,15 +1169,17 @@ p0at_node =
 //
   | P0Tlist of (int(*npf*), p0atlst)
 //
-  | P0Tlst of (int(*lin*), p0atlst) // pattern list
-//
 // tupknd:
 // TYTUPKIND_flt(0)/TYTUPKIND_box(1)/TYTUPKIND_box_t(2)/TYTUPKIND_box_vt(3)
 // recknd:
 // TYRECKIND_flt(0)/TYRECKIND_box(1)/TYRECKIND_box_t(2)/TYRECKIND_box_vt(3)
 //
-  | P0Ttup of (int (*tupknd*), int(*npf*), p0atlst)
-  | P0Trec of (int (*recknd*), int(*npf*), labp0atlst)
+  | P0Ttup of
+    (int (*tupknd*), int(*npf*), p0atlst)
+  | P0Trec of
+    (int (*recknd*), int(*npf*), labp0atlst)
+//
+  | P0Tlist1 of (int(*lin*), p0atlst) // pattern list
 //
   | P0Tfree of p0at
   | P0Tunfold of p0at
@@ -1227,21 +1229,25 @@ fun p0at_list
 
 (* ****** ****** *)
 
-fun p0at_tup (
+fun
+p0at_tup
+(
   knd: int, t_beg: token, npf: int, xs: p0atlst, t_end: token
 ) : p0at // end of [p0at_tup]
-fun p0at_rec (
+fun
+p0at_rec
+(
   knd: int, t_beg: token, npf: int, xs: labp0atlst, t_end: token
 ) : p0at // end of [p0at_rec]
 
 (* ****** ****** *)
 
 fun
-p0at_lst
+p0at_list1
 (
   lin: int
 , t_beg: token, p0ts: p0atlst, t_end: token
-) : p0at // end of [p0at_lst]
+) : p0at // end of [p0at_list1]
 
 (*
 //
@@ -1250,10 +1256,10 @@ p0at_lst
 // like '[x1, x2] is no longer supported
 //
 fun
-p0at_lst_quote
+p0at_list1_quote
 (
   t_beg: token, p0ts: p0atlst, t_end: token
-) : p0at // end of [p0at_lst_quote]
+) : p0at // end of [p0at_list1_quote]
 *)
 
 (* ****** ****** *)
@@ -1603,7 +1609,7 @@ and d0exp_node =
   | D0Ecasehead of (casehead, d0exp, c0laulst)
   | D0Escasehead of (scasehead, s0exp, sc0laulst)
 //
-  | D0Elst of (int(*lin*), s0expopt, d0exp(*elts*))
+  | D0Eseq of d0explst // dynamic sequence-expression
 //
 // tupknd:
 // TYTUPKIND_flt(0)/TYTUPKIND_box(1)/TYTUPKIND_box_t(2)/TYTUPKIND_box_vt(3)
@@ -1613,7 +1619,7 @@ and d0exp_node =
   | D0Etup of (int(*tupknd*), int(*npf*), d0explst)
   | D0Erec of (int(*recknd*), int (*npf*), labd0explst)
 //
-  | D0Eseq of d0explst // dynamic sequence-expression
+  | D0Elist1 of (int(*lin*), s0expopt, d0exp(*elts*))
 //
   | D0Earrsub of // array subscripting
       (dqi0de, location(*ind*), d0explstlst(*ind*))
@@ -1984,22 +1990,12 @@ d0exp_scasehead
 // end of [d0exp_scasehead]
 //
 (* ****** ****** *)
-
+//
 fun
-d0exp_lst
-( lin: int
-, t_beg: token
-, elt: s0expopt
-, t_lp: token
-, xs: d0explst // elements
-, t_rp: token
-) : d0exp // end of [d0exp_lst]
-
-fun
-d0exp_lst_quote
-  (t_beg: token, elts: d0explst, t_end: token): d0exp
-// end of [d0exp_lst_quote]
-
+d0exp_seq
+(t_beg: token, xs: d0explst, t_end: token): d0exp
+// end of [d0exp_seq]
+//
 (* ****** ****** *)
 //
 fun
@@ -2015,11 +2011,21 @@ d0exp_rec
 ) : d0exp // end of [d0exp_rec]
 //
 (* ****** ****** *)
+//
+fun
+d0exp_list1
+( lin: int
+, t_beg: token
+, elt: s0expopt
+, t_lp: token
+, xs: d0explst // elements
+, t_rp: token) : d0exp // end of [d0exp_list1]
 
-fun d0exp_seq
-  (t_beg: token, xs: d0explst, t_end: token): d0exp
-// end of [d0exp_seq]
-
+fun
+d0exp_list1_quote
+  (t_beg: token, elts: d0explst, t_end: token): d0exp
+// end of [d0exp_list1_quote]
+//
 (* ****** ****** *)
 
 fun

@@ -138,26 +138,28 @@ end // end of [i0nt2intinf]
 (* ****** ****** *)
 
 implement
-p2atcst_lst
+p2atcst_list1
   (lin, xs) = let
 //
 (*
 val () = println! ("p2atcst_lst: lin = ", lin)
 *)
 //
-val isnonlin =
+val
+isnonlin =
 (
-  if lin >= 0 then not(test_linkind(lin)) else true
+if lin >= 0
+  then not(test_linkind(lin)) else true
 ) : bool // end of [val]
 //
 val s2c =
 (
 if isnonlin
-  then s2cstref_get_cst (the_list_t0ype_int_type)
-  else s2cstref_get_cst (the_list_vt0ype_int_vtype)
+  then s2cstref_get_cst(the_list1_t0ype_int_type)
+  else s2cstref_get_cst(the_list1_vt0ype_int_vtype)
 ) : s2cst // end of [val]
 //
-val-Some xx = s2cst_get_islst (s2c)
+val-Some xx = s2cst_get_islst(s2c)
 val d2c_nil = xx.0 and d2c_cons = xx.1
 //
 fun
@@ -167,9 +169,9 @@ auxlst
 ) :<cloref1> p2atcst =
 (
 case+ xs of
-| list_nil () =>
-    P2TCcon (d2c_nil, list_nil())
-| list_cons (x, xs) =>
+| list_nil() =>
+    P2TCcon(d2c_nil, list_nil())
+| list_cons(x, xs) =>
     P2TCcon(d2c_cons, list_pair(x, auxlst(xs)))
 ) (* end of [auxlst] *)
 //
@@ -180,20 +182,20 @@ end // end of [p2atcst_lst]
 (* ****** ****** *)
 
 implement
-p2atcstlstlst_vt_free (xss) =
+p2atcstlstlst_vt_free(xss) =
 (
   case+ xss of
-  | ~list_vt_cons (xs, xss) => let
-      val () = list_vt_free (xs) in p2atcstlstlst_vt_free (xss)
+  | ~list_vt_cons(xs, xss) => let
+      val () = list_vt_free(xs) in p2atcstlstlst_vt_free(xss)
     end // end of [list_vt_cons]
-  | ~list_vt_nil () => ()
+  | ~list_vt_nil((*void*)) => ()
 ) // end of [p2atcstlstlst_vt_free]
 
 implement
 p2atcstlstlst_vt_copy (xss) =
 (
   list_map_fun<p2atcstlst><p2atcstlst_vt>
-    ($UN.castvwtp1{p2atcstlstlst}(xss), lam (xs) =<0> list_copy (xs))
+    ($UN.castvwtp1{p2atcstlstlst}(xss), lam (xs) =<0> list_copy(xs))
 ) // end of [p2atcstlstlst_vt_copy]
 
 (* ****** ****** *)
@@ -400,9 +402,6 @@ case+ p2t0.p2at_node of
     val-T_FLOAT(base, rep, sfx) = tok.token_node in P2TCfloat (rep)
   end // end of [P2Tf0loat]
 //
-| P2Tlst (lin, p2ts) =>
-    p2atcst_lst (lin, p2at2cstlst (p2ts))
-//
 | P2Trec (
     recknd, npf, lp2ts
   ) => let
@@ -422,6 +421,9 @@ case+ p2t0.p2at_node of
   in
     P2TCrec (recknd, (l2l)lp2tcs)
   end // end of [P2Trec]
+//
+| P2Tlist1(lin, p2ts) =>
+    p2atcst_list1(lin, p2at2cstlst(p2ts))
 //
 | P2Trefas (_(*d2v*), p2t) => p2at2cst (p2t)
 //

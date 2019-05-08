@@ -142,7 +142,8 @@ case+ p1t0.p1at_node of
     val () = prstr ")"
   }
 //
-| P1Ttup (knd, npf, p1ts) => {
+| P1Ttup
+    (knd, npf, p1ts) => {
     val () = prstr "P1Ttup("
     val () = fprint_int (out, knd)
     val () = prstr "; "
@@ -151,7 +152,8 @@ case+ p1t0.p1at_node of
     val () = fprint_p1atlst (out, p1ts)
     val () = prstr ")"
   }
-| P1Trec (knd, npf, lp1ts) => {
+| P1Trec
+    (knd, npf, lp1ts) => {
     val () = prstr "P1Ttup("
     val () = fprint_int (out, knd)
     val () = prstr "; "
@@ -160,8 +162,9 @@ case+ p1t0.p1at_node of
     val () = $UT.fprintlst (out, lp1ts, ", ", fprint_labp1at)
     val () = prstr ")"
   }
-| P1Tlst (lin, p1ts) => {
-    val () = prstr "P1Tlst("
+//
+| P1Tlist1(lin, p1ts) => {
+    val () = prstr "P1Tlist1("
     val () = fprint_int (out, lin)
     val () = prstr "; "
     val () = fprint_p1atlst (out, p1ts)
@@ -504,15 +507,11 @@ case+ d1e0.d1exp_node of
     val () = prstr ")"
   }
 //
-| D1Elst (lin, opt, d1es) => {
-    val () = prstr "D1Etup("
-    val () = fprint_int (out, lin)
-    val () = prstr "; "
-    val () = fprint_s1expopt (out, opt)
-    val () = prstr "; "
+| D1Eseq (d1es) => {
+    val () = prstr "D1Eseq("
     val () = fprint_d1explst (out, d1es)
     val () = prstr ")"
-  }
+  } // end of [D1Eseq]
 //
 | D1Etup
     (knd, npf, d1es) => {
@@ -534,11 +533,18 @@ case+ d1e0.d1exp_node of
     val () = fprint_labd1explst (out, ld1es)
     val () = prstr ")"
   } // end of [D1Erec]
-| D1Eseq (d1es) => {
-    val () = prstr "D1Eseq("
+//
+| D1Elist1
+    (lin, opt, d1es) =>
+  {
+    val () = prstr "D1Etup("
+    val () = fprint_int (out, lin)
+    val () = prstr "; "
+    val () = fprint_s1expopt (out, opt)
+    val () = prstr "; "
     val () = fprint_d1explst (out, d1es)
     val () = prstr ")"
-  } // end of [D1Eseq]
+  }
 //
 | D1Earrsub _ => {
     val () = prstr "D1Earrsub("

@@ -225,27 +225,16 @@ case+ d2e0.d2exp_node of
 //
 | D2Eassgn _ => s2exp_void_t0ype ()
 //
-| D2Elst (lin, opt, d2es) => let
-    val s2e = (
-      case+ opt of
-      | Some s2e => s2e
-      | None () => let
-          val s2t = (
-            if lin = 0 then s2rt_t0ype else s2rt_vt0ype
-          ) : s2rt // end of [val]
-        in
-          s2exp_Var_make_srt (loc0, s2t)
-        end // end of [None]
-    ) : s2exp // end of [val]
-    val n = list_length (d2es)
-    val isnonlin = s2exp_is_nonlin (s2e)
-  in
-    if isnonlin then
-      s2exp_list_t0ype_int_type (s2e, n)
-    else
-      s2exp_list_vt0ype_int_vtype (s2e, n)
-    // end of [if]
-  end // end of [D2Elst]
+| D2Eseq (d2es) =>
+  (
+  case+ d2es of
+  | list_cons _ => let
+      val d2e =
+      list_last(d2es) in d2exp_syn_type(d2e)
+    end
+  | list_nil((*void*)) => s2exp_void_t0ype()
+  ) // end of [D2Eseq]
+//
 | D2Etup (knd, npf, d2es) => let
     val s2es = d2explst_syn_type (d2es)
   in
@@ -256,12 +245,30 @@ case+ d2e0.d2exp_node of
   in
     s2exp_tyrec (knd, npf, ls2es)
   end // end of [D2Erec]
-| D2Eseq (d2es) => (case+ d2es of
-  | list_cons _ => let
-      val d2e = list_last (d2es) in d2exp_syn_type (d2e)
-    end
-  | list_nil () => s2exp_void_t0ype ()
-  ) // end of [D2Eseq]
+//
+| D2Elist1(lin, opt, d2es) => let
+    val s2e = (
+      case+ opt of
+      | Some s2e => s2e
+      | None () => let
+          val s2t = (
+            if lin = 0
+              then s2rt_t0ype else s2rt_vt0ype
+            // end of [if]
+          ) : s2rt // end of [val]
+        in
+          s2exp_Var_make_srt(loc0, s2t)
+        end // end of [None]
+    ) : s2exp // end of [val]
+    val n = list_length (d2es)
+    val isnonlin = s2exp_is_nonlin(s2e)
+  in
+    if isnonlin then
+      s2exp_list1_t0ype_int_type(s2e, n)
+    else
+      s2exp_list1_vt0ype_int_vtype(s2e, n)
+    // end of [if]
+  end // end of [D2Elist1]
 //
 | D2Earrpsz (opt, d2es) => let
     val s2e = (

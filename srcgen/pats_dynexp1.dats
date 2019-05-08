@@ -201,16 +201,18 @@ end // end of [p1at_list]
 (* ****** ****** *)
 
 implement
-p1at_tup (loc, knd, npf, p1ts) = '{
+p1at_tup
+  (loc, knd, npf, p1ts) = '{
   p1at_loc= loc, p1at_node= P1Ttup (knd, npf, p1ts)
 }
 implement
-p1at_rec (loc, knd, npf, lp1ts) = '{
+p1at_rec
+  (loc, knd, npf, lp1ts) = '{
   p1at_loc= loc, p1at_node= P1Trec (knd, npf, lp1ts)
 }
 implement
-p1at_lst (loc, lin, p1ts) = '{
-  p1at_loc= loc, p1at_node= P1Tlst (lin, p1ts)
+p1at_list1(loc, lin, p1ts) = '{
+  p1at_loc= loc, p1at_node= P1Tlist1(lin, p1ts)
 }
 
 implement
@@ -670,8 +672,8 @@ d1exp_scasehead
 (* ****** ****** *)
 
 implement
-d1exp_lst (loc, knd, elt, d1es) =
-  d1exp_make (loc, D1Elst (knd, elt, d1es))
+d1exp_seq (loc, d1es) =
+  d1exp_make (loc, D1Eseq (d1es))
 
 implement
 d1exp_tup (loc, knd, npf, d1es) =
@@ -682,7 +684,8 @@ d1exp_rec (loc, knd, npf, ld1es) =
   d1exp_make (loc, D1Erec (knd, npf, ld1es))
 
 implement
-d1exp_seq (loc, d1es) = d1exp_make (loc, D1Eseq (d1es))
+d1exp_list1(loc, knd, elt, d1es) =
+  d1exp_make (loc, D1Elist1(knd, elt, d1es))
 
 (* ****** ****** *)
 

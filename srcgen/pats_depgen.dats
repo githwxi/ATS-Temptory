@@ -270,11 +270,11 @@ case+
 //
 | D0Eseq(d0es) => depgen_d0explst(d0es, res)
 //
-| D0Elst(lin, elt, d0e) => depgen_d0exp(d0e, res)
-//
 | D0Etup(knd, npf, d0es) => depgen_d0explst(d0es, res)
 //
 | D0Erec(knd, npf, ld0es) => depgen_labd0explst(ld0es, res)
+//
+| D0Elist1(lin, elt, d0e) => depgen_d0exp(d0e, res)
 //
 | _ (* rest-of-d0exp *) => ((*nothing*))
 //

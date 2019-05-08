@@ -1775,7 +1775,30 @@ d1e0.d1exp_node of
     d2exp_scasehead (loc0, r2es, s2e, sc2ls)
   end // end of [D1Escasehead]
 //
-| D1Elst
+| D1Eseq(d1es) => let
+    val d2es =
+    d1explst_tr(d1es) in d2exp_seq2 (loc0, d2es)
+  end // end of [D1Eseq]
+//
+| D1Etup
+  (
+    tupknd, npf, d1es
+  ) => let
+  in
+    d2exp_tup (loc0, tupknd, npf, d1explst_tr d1es)
+  end // end of [D1Etup]
+| D1Erec
+  (
+    recknd, npf, ld1es
+  ) => let
+    val ld2es =
+      list_map_fun (ld1es, labd1exp_tr)
+    // end of [val]
+  in
+    d2exp_rec (loc0, recknd, npf, (l2l)ld2es)
+  end // end of [D1Erec]
+//
+| D1Elist1
   (
     lin, s1eopt, d1es
   ) => let
@@ -1796,30 +1819,8 @@ d1e0.d1exp_node of
     ) : s2expopt // end of [val]
     val d2es = d1explst_tr (d1es)
   in
-    d2exp_lst (loc0, lin, opt, d2es)
-  end // end of [D1Elst]
-//
-| D1Etup
-  (
-    tupknd, npf, d1es
-  ) => let
-  in
-    d2exp_tup (loc0, tupknd, npf, d1explst_tr d1es)
-  end // end of [D1Etup]
-| D1Erec
-  (
-    recknd, npf, ld1es
-  ) => let
-    val ld2es =
-      list_map_fun (ld1es, labd1exp_tr)
-    // end of [val]
-  in
-    d2exp_rec (loc0, recknd, npf, (l2l)ld2es)
-  end // end of [D1Erec]
-//
-| D1Eseq d1es => let
-    val d2es = d1explst_tr (d1es) in d2exp_seq2 (loc0, d2es)
-  end // end of [D1Eseq]
+    d2exp_list1(loc0, lin, opt, d2es)
+  end // end of [D1Elist1]
 //
 | D1Earrsub
     (arr, locind, ind) => let

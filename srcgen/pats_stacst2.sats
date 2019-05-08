@@ -208,8 +208,8 @@ val the_arrpsz_vt0ype_int_vt0ype : s2cstref
 val the_list0_t0ype_type : s2cstref
 *)
 //
-val the_list_t0ype_int_type : s2cstref
-val the_list_vt0ype_int_vtype : s2cstref
+val the_list1_t0ype_int_type : s2cstref
+val the_list1_vt0ype_int_vtype : s2cstref
 //
 val the_vbox_view_prop : s2cstref
 val the_ref_vt0ype_type : s2cstref
@@ -388,9 +388,9 @@ s2exp_list0_t0ype_type (s2e: s2exp): s2exp
 *)
 //
 fun
-s2exp_list_t0ype_int_type(s2e: s2exp, n: int): s2exp
+s2exp_list1_t0ype_int_type(s2e: s2exp, n: int): s2exp
 fun
-s2exp_list_vt0ype_int_vtype(s2e: s2exp, n: int): s2exp
+s2exp_list1_vt0ype_int_vtype(s2e: s2exp, n: int): s2exp
 //
 (* ****** ****** *)
 //

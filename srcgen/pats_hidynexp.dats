@@ -186,7 +186,46 @@ hipat_empty
 (* ****** ****** *)
 
 implement
-hipat_lst
+hipat_rec (
+  loc, hse, knd, pck, lhips, hse_rec
+) =
+(
+hipat_make_node
+  (loc, hse, HIPrec(knd, pck, lhips, hse_rec))
+) // end of [hipat_rec]
+
+implement
+hipat_rec2
+(
+  loc0, hse0, knd, pck, lhips, hse_rec
+) = let
+//
+val isflt =
+  (if knd = 0 then true else false): bool
+//
+in
+//
+if
+isflt
+then (
+case lhips of
+| list_cons
+    (lx, list_nil ()) =>
+    let val+LABHIPAT(l, x) = lx in x end
+  // end of [list_cons]
+| _ (*notsing*) =>
+    hipat_rec(loc0, hse0, knd, pck, lhips, hse_rec)
+) (* end of [then] *)
+else (
+  hipat_rec (loc0, hse0, knd, pck, lhips, hse_rec)
+) (* end of [else] *)
+//
+end // end of [hipat_rec2]
+
+(* ****** ****** *)
+
+implement
+hipat_list1
 (
   loc
 , lin, hse_lst, hse_elt, hips
@@ -195,8 +234,8 @@ hipat_lst
 val s2c =
 (
 if lin = 0
-  then $S2C.s2cstref_get_cst ($S2C.the_list_t0ype_int_type)
-  else $S2C.s2cstref_get_cst ($S2C.the_list_vt0ype_int_vtype)
+  then $S2C.s2cstref_get_cst ($S2C.the_list1_t0ype_int_type)
+  else $S2C.s2cstref_get_cst ($S2C.the_list1_vt0ype_int_vtype)
 ) : s2cst
 //
 val-Some(xx) =
@@ -241,46 +280,7 @@ end // end of [auxlst]
 //
 in
   auxlst (hips)
-end // end of [hipat_lst]
-
-(* ****** ****** *)
-
-implement
-hipat_rec (
-  loc, hse, knd, pck, lhips, hse_rec
-) =
-(
-hipat_make_node
-  (loc, hse, HIPrec(knd, pck, lhips, hse_rec))
-) // end of [hipat_rec]
-
-implement
-hipat_rec2
-(
-  loc0, hse0, knd, pck, lhips, hse_rec
-) = let
-//
-val isflt =
-  (if knd = 0 then true else false): bool
-//
-in
-//
-if
-isflt
-then (
-case lhips of
-| list_cons
-    (lx, list_nil ()) =>
-    let val+LABHIPAT(l, x) = lx in x end
-  // end of [list_cons]
-| _ (*notsing*) =>
-    hipat_rec(loc0, hse0, knd, pck, lhips, hse_rec)
-) (* end of [then] *)
-else (
-  hipat_rec (loc0, hse0, knd, pck, lhips, hse_rec)
-) (* end of [else] *)
-//
-end // end of [hipat_rec2]
+end // end of [hipat_list1]
 
 (* ****** ****** *)
 
@@ -553,10 +553,10 @@ hidexp_case
 (* ****** ****** *)
 
 implement
-hidexp_lst
-  (loc, hse, lin, hse_elt, hdes) =
-  hidexp_make_node (loc, hse, HDElst (lin, hse_elt, hdes))
-// end of [hidexp_lst]
+hidexp_seq
+  (loc, hse, hdes) =
+  hidexp_make_node (loc, hse, HDEseq (hdes))
+// end of [hidexp_seq]
 
 (* ****** ****** *)
 
@@ -598,10 +598,10 @@ end (* end of [hidexp_rec2] *)
 (* ****** ****** *)
 
 implement
-hidexp_seq
-  (loc, hse, hdes) =
-  hidexp_make_node (loc, hse, HDEseq (hdes))
-// end of [hidexp_seq]
+hidexp_list1
+  (loc, hse, lin, hse_elt, hdes) =
+  hidexp_make_node (loc, hse, HDElist1(lin, hse_elt, hdes))
+// end of [hidexp_lst]
 
 (* ****** ****** *)
 

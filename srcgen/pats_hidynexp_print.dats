@@ -485,17 +485,12 @@ case+
     val () = prstr "\n)"
   } // end of [HDEcase]
 //
-| HDElst (
-    lin, hse_elt, hdes
-  ) => {
-    val () = prstr "HDElst("
-    val () = fprintf (out, "lin= %i", @(lin))
-    val () = prstr "; "
-    val () = fprint_hisexp (out, hse_elt)
-    val () = prstr "; "
+| HDEseq (hdes) => {
+    val () = prstr "HDEseq("
     val () = fprint_hidexplst (out, hdes)
     val () = prstr ")"
-  } // end of [HDElst]
+  }
+//
 | HDErec (
     knd, lhdes, hse_rec
   ) => {
@@ -505,11 +500,19 @@ case+
     val () = fprint_labhidexplst (out, lhdes)
     val () = prstr ")"
   } // end of [HDErec]
-| HDEseq (hdes) => {
-    val () = prstr "HDEseq("
+//
+| HDElist1
+  (
+    lin, hse_elt, hdes
+  ) => {
+    val () = prstr "HDElist1("
+    val () = fprintf (out, "lin= %i", @(lin))
+    val () = prstr "; "
+    val () = fprint_hisexp (out, hse_elt)
+    val () = prstr "; "
     val () = fprint_hidexplst (out, hdes)
     val () = prstr ")"
-  }
+  } // end of [HDElist1]
 //
 | HDEselab (
     hde, hse_flt, hils

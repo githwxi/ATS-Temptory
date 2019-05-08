@@ -779,7 +779,8 @@ case+ d0e0.d0exp_node of
     ) : d1explst // end of [val]
     val c1ls = c0laulst_tr (c0ls)
   in
-    FXITMatm(d1exp_casehead(loc0, knd, i1nv, d1es, c1ls))
+    FXITMatm
+    (d1exp_casehead(loc0, knd, i1nv, d1es, c1ls))
   end // end of [D0Ecasehead]
 | D0Escasehead
     (hd, s0e, sc0ls) => let
@@ -795,24 +796,15 @@ case+ d0e0.d0exp_node of
     val sc1ls = sc0laulst_tr(sc0ls)
 //
   in
-    FXITMatm(d1exp_scasehead(loc0, i1nv, s1e, sc1ls))
+    FXITMatm
+    (d1exp_scasehead(loc0, i1nv, s1e, sc1ls))
   end // end of [D0Escasehead]
 //
-| D0Elst
-    (lin, elt, d0e_elts) => let
-    val elt = s0expopt_tr(elt)
-    val d1e_elts = d0exp_tr(d0e_elts)
-    val d1es_elts =
-    (
-      case+
-      d1e_elts.d1exp_node
-      of (* case+ *)
-      | D1Elist(_(*npf*), d1es) => d1es | _ => list_sing(d1e_elts)
-    ) : d1explst // end of [val]
-    val d1e_lst = d1exp_lst (loc0, lin, elt, d1es_elts)
-  in
-    FXITMatm (d1e_lst)
-  end // end of [D0Elst]
+| D0Eseq(d0es) =>
+  (
+    FXITMatm(d1exp_seq(loc0, d0explst_tr d0es))
+  )
+//
 | D0Etup(knd, npf, d0es) => let
     val d1es = d0explst_tr d0es in
     FXITMatm(d1exp_tup (loc0, knd, npf, d1es))
@@ -824,7 +816,23 @@ case+ d0e0.d0exp_node of
   in
     FXITMatm(d1exp_rec(loc0, knd, npf, (l2l)ld1es))
   end // end of [D0Erec]
-| D0Eseq(d0es) => FXITMatm(d1exp_seq(loc0, d0explst_tr d0es))
+//
+| D0Elist1
+    (lin, elt, d0e_elts) => let
+    val elt = s0expopt_tr(elt)
+    val d1e_elts = d0exp_tr(d0e_elts)
+    val d1es_elts =
+    (
+      case+
+      d1e_elts.d1exp_node
+      of (* case+ *)
+      | D1Elist
+        (_(*npf*), d1es) => d1es | _ => list_sing(d1e_elts)
+    ) : d1explst // end of [val]
+    val d1e_lst = d1exp_list1(loc0, lin, elt, d1es_elts)
+  in
+    FXITMatm (d1e_lst)
+  end // end of [D0Elist1]
 //
 | D0Earrsub
     (qid, loc_ind, d0ess) => let

@@ -118,10 +118,11 @@ case+ p3t0.p3at_node of
 | P3Tempty () => prstr "P3Tempty()"
 //
 | P3Trec _ => prstr "P3Trec(...)"
-| P3Tlst (
+//
+| P3Tlist1 (
     lin, s2e_elt, p3ts
   ) => {
-    val () = prstr "P3Tlst("
+    val () = prstr "P3Tlist1("
     val () = fprint_int (out, lin)
     val () = prstr "; "
     val () = fprint_s2exp (out, s2e_elt)
@@ -390,17 +391,12 @@ case+ d3e0.d3exp_node of
     val () = prstr "D3Eifcase(...)"
   } (* [D3Eifcase] *)
 //
-| D3Elst (
-    lin, s2e, d3es
-  ) => {
-    val () = prstr "D3Elst("
-    val () = fprint_int (out, lin)
-    val () = prstr "; "
-    val () = fprint_s2exp (out, s2e)
-    val () = prstr "; "
+| D3Eseq (d3es) => {
+    val () = prstr "D3Eseq("
     val () = fprint_d3explst (out, d3es)
     val () = prstr ")"
-  } // end of [D3Elst]
+  } // end of [D3Eseq]
+//
 | D3Etup (
     knd, npf, d3es
   ) =>  {
@@ -413,11 +409,19 @@ case+ d3e0.d3exp_node of
     val () = prstr ")"
   } // end of [D3Etup]
 | D3Erec _ => prstr "D3Erec(...)"
-| D3Eseq (d3es) => {
-    val () = prstr "D3Eseq("
+//
+| D3Elist1
+  (
+    lin, s2e, d3es
+  ) => {
+    val () = prstr "D3Elist1("
+    val () = fprint_int (out, lin)
+    val () = prstr "; "
+    val () = fprint_s2exp (out, s2e)
+    val () = prstr "; "
     val () = fprint_d3explst (out, d3es)
     val () = prstr ")"
-  } // end of [D3Eseq]
+  } // end of [D3Elist1]
 //
 | D3Eselab (d3e, d3ls) => {
     val () = prstr "D3Eselab("

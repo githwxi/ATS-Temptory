@@ -64,27 +64,7 @@ viewtypedef labp0atlst12 = list12 (labp0at)
 (* ****** ****** *)
 
 fun
-p0at_list12
-(
-  t_beg: token
-, ent2: p0atlst12
-, t_end: token
-) : p0at =
-  case+ ent2 of
-  | ~LIST12one (xs) =>
-      p0at_list (t_beg, ~1, (l2l)xs, t_end)
-  | ~LIST12two (xs1, xs2) => let
-      val npf = list_vt_length (xs1)
-      val xs12 = list_vt_append (xs1, xs2)
-    in
-      p0at_list (t_beg, npf, (l2l)xs12, t_end)
-    end (* end of [LIST12two] *)
-// end of [p0at_list12]
-
-(* ****** ****** *)
-
-fun
-p0at_tup12
+p0at_list12_tup
 (
   knd: int
 , t_beg: token
@@ -100,12 +80,12 @@ p0at_tup12
     in
       p0at_tup (knd, t_beg, npf, (l2l)xs12, t_end)
     end (* end of [LIST12two] *)
-// end of [p0at_tup12]
+// end of [p0at_list12_tup]
 
 (* ****** ****** *)
 
 fun
-p0at_rec12
+p0at_list12_rec
 (
   knd: int
 , t_beg: token, ent2: labp0atlst12, t_end: token
@@ -119,7 +99,27 @@ p0at_rec12
     in
       p0at_rec (knd, t_beg, npf, (l2l)xs12, t_end)
     end
-// end of [p0at_rec12]
+// end of [p0at_list12_rec]
+
+(* ****** ****** *)
+
+fun
+p0at_list12_list
+(
+  t_beg: token
+, ent2: p0atlst12
+, t_end: token
+) : p0at =
+  case+ ent2 of
+  | ~LIST12one (xs) =>
+      p0at_list (t_beg, ~1, (l2l)xs, t_end)
+  | ~LIST12two (xs1, xs2) => let
+      val npf = list_vt_length (xs1)
+      val xs12 = list_vt_append (xs1, xs2)
+    in
+      p0at_list (t_beg, npf, (l2l)xs12, t_end)
+    end (* end of [LIST12two] *)
+// end of [p0at_list12_list]
 
 (* ****** ****** *)
 
@@ -280,7 +280,7 @@ case+ tok.token_node of
     val ent3 = p_RPAREN (buf, bt, err) // err = err0
   in
     if err = err0 then
-      p0at_list12 (tok, ent2, ent3)
+      p0at_list12_list(tok, ent2, ent3)
     else let
       val () = list12_free (ent2) in synent_null ()
     end // end of [if]
@@ -311,7 +311,7 @@ case+ tok.token_node of
         if is_ATLPAREN (tnd) then TYTUPKIND_flt else TYTUPKIND_box
       ) : int // end of [val]
     in
-      p0at_tup12 (knd, tok, ent2, ent3)
+      p0at_list12_tup (knd, tok, ent2, ent3)
     end else let
       val () = list12_free (ent2) in synent_null ()
     end // end of [if]
@@ -328,28 +328,10 @@ case+ tok.token_node of
         if is_ATLBRACE (tnd) then TYRECKIND_flt else TYRECKIND_box
       ) : int // end of [val]
     in
-      p0at_rec12 (knd, tok, ent2, ent3)
+      p0at_list12_rec (knd, tok, ent2, ent3)
     end else let
       val () = list12_free (ent2) in synent_null ()
     end // end of [if]
-  end
-//
-| T_DLRLST (lin) => let
-    val bt = 0
-    val () = incby1 ()
-    val ent2 = p_LPAREN (buf, bt, err)
-    val ent3 = (
-      if err = err0 then
-        pstar_fun0_COMMA{p0at}(buf, bt, p_p0at) else list_vt_nil()
-      // end of [if]
-    ) : p0atlst_vt // end of [val]
-    val ent4 = pif_fun (buf, bt, err, p_RPAREN, err0)
-  in
-    if err = err0 then 
-      p0at_lst (lin, tok, (l2l)ent3, ent4)
-    else let
-      val () = list_vt_free (ent3) in synent_null ()
-    end (* end of [if] *)
   end
 //
 | T_DLRTUP (knd) => let
@@ -360,7 +342,7 @@ case+ tok.token_node of
     val ent4 = p_RPAREN (buf, bt, err) // err = err0
   in
     if err = err0 then 
-      p0at_tup12 (knd, tok, ent3, ent4)
+      p0at_list12_tup (knd, tok, ent3, ent4)
     else let
       val () = list12_free (ent3) in synent_null ()
     end (* end of [if] *)
@@ -374,9 +356,29 @@ case+ tok.token_node of
     val ent4 = p_RBRACE (buf, bt, err) // err = err0
   in
     if err = err0 then 
-      p0at_rec12 (knd, tok, ent3, ent4)
+      p0at_list12_rec (knd, tok, ent3, ent4)
     else let
       val () = list12_free (ent3) in synent_null ()
+    end (* end of [if] *)
+  end
+//
+| T_DLRLIST1 (lin) => let
+    val bt = 0
+    val () = incby1 ()
+    val ent2 = p_LPAREN (buf, bt, err)
+    val ent3 = (
+      if err = err0 then
+        pstar_fun0_COMMA{p0at}(buf, bt, p_p0at) else list_vt_nil()
+      // end of [if]
+    ) : p0atlst_vt // end of [val]
+    val ent4 = pif_fun (buf, bt, err, p_RPAREN, err0)
+  in
+    if
+    (err = err0)
+    then 
+      p0at_list1(lin, tok, (l2l)ent3, ent4)
+    else let
+      val () = list_vt_free (ent3) in synent_null ()
     end (* end of [if] *)
   end
 //
@@ -393,7 +395,7 @@ case+ tok.token_node of
     val ent3 = p_RBRACKET (buf, bt, err)
   in
     if err = err0 then
-      p0at_lst_quote (tok, (l2l)ent2, ent3)
+      p0at_list1_quote (tok, (l2l)ent2, ent3)
     else let
       val () = list_vt_free (ent2) in synent_null ()
     end (* end of [if] *)

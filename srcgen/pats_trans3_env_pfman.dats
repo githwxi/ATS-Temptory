@@ -278,7 +278,7 @@ case+ p3t.p3at_node of
   ) =>
     the_pfmanenv_add_labp3atlst(lp3ts)
   // end of [P3Trec]
-| P3Tlst (
+| P3Tlist1 (
     lin, s2e_elt, p3ts
   ) => the_pfmanenv_add_p3atlst( p3ts )
 //

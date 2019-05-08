@@ -145,14 +145,39 @@ atstype_exncon *atstype_exnconptr ;
 #endif // end of [_TEMPTORY_EXCEPTION_NONE_]
 
 /* ****** ****** */
+//
+// HX-2014-05:
+// making it not usable!!!
+//
+#ifdef _ATSTYPE_VAR_SIZE_
+// HX: it is set by the user
+#else
+#define _ATSTYPE_VAR_SIZE_ 0X10000
+#endif // end of [#ifdef]
+//
+// HX-2014-05:
+// for 8-bit or 16-bit march,
+// _ATSTYPE_VAR_SIZE can be set to 0X100
+//
+typedef
+struct{char _[_ATSTYPE_VAR_SIZE_];} atstype_var[0] ;
+//
+/*
+#define \
+atstype_var atstype_struct
+*/
+#define \
+atstyvar_type(tflt) atstype_var
+//
+/* ****** ****** */
 
-#define atstkind_type(tk) tk
-#define atstkind_t0ype(tk) tk
+#define atstkind_type(tknd) tknd
+#define atstkind_t0ype(tknd) tknd
 
 /* ****** ****** */
 
-#define atsrefarg0_type(hit) hit
-#define atsrefarg1_type(hit) atstype_ref
+#define atsrefarg0_type(tflt) tflt
+#define atsrefarg1_type(tflt) atstype_ref
 
 /* ****** ****** */
 

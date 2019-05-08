@@ -1420,14 +1420,14 @@ in '{
 (* ****** ****** *)
 
 implement
-p0at_lst
+p0at_list1
 (
   lin, t_beg, p0ts, t_end
 ) = let
   val loc = t_beg.token_loc + t_end.token_loc
 in '{
-  p0at_loc= loc, p0at_node= P0Tlst (lin, p0ts)
-} end // end of [p0at_lst]
+  p0at_loc= loc, p0at_node= P0Tlist1(lin, p0ts)
+} end // end of [p0at_list1]
 
 (*
 //
@@ -1436,10 +1436,10 @@ in '{
 // like '[x1, x2] is no longer supported
 //
 implement
-p0at_lst_quote
+p0at_list_quote
 (
   t_beg, p0ts, t_end
-) = p0at_lst (0(*lin*), t_beg, p0ts, t_end)
+) = p0at_list (0(*lin*), t_beg, p0ts, t_end)
 *)
 
 (* ****** ****** *)
@@ -2124,25 +2124,6 @@ in '{
 (* ****** ****** *)
 
 implement
-d0exp_lst
-(
-  lin, t_beg, elt, t_lp, d0es, t_rp
-) = let
-  val loc = t_beg.token_loc + t_rp.token_loc
-  val d0e_elts = d0exp_list (t_lp, ~1(*npf*), d0es, t_rp)
-in '{
-  d0exp_loc= loc, d0exp_node= D0Elst (lin, elt, d0e_elts)
-} end // end of [d0exp_lst]
-
-implement
-d0exp_lst_quote
-  (t_beg, d0es, t_end) =
-  d0exp_lst (0(*lin*), t_beg, None(*elt*), t_beg, d0es, t_end)
-// end of [d0exp_lst_quote]
-
-(* ****** ****** *)
-
-implement
 d0exp_tup
 (
   knd, t_beg, npf, xs, t_end
@@ -2161,6 +2142,25 @@ d0exp_rec
 in '{
   d0exp_loc= loc, d0exp_node= D0Erec(knd, npf, xs)
 } end // end of [d0exp_rec]
+
+(* ****** ****** *)
+
+implement
+d0exp_list1
+(
+  lin, t_beg, elt, t_lp, d0es, t_rp
+) = let
+  val loc = t_beg.token_loc + t_rp.token_loc
+  val d0e_elts = d0exp_list (t_lp, ~1(*npf*), d0es, t_rp)
+in '{
+  d0exp_loc= loc, d0exp_node= D0Elist1(lin, elt, d0e_elts)
+} end // end of [d0exp_list1]
+
+implement
+d0exp_list1_quote
+  (t_beg, d0es, t_end) =
+  d0exp_list1(0(*lin*), t_beg, None(*elt*), t_beg, d0es, t_end)
+// end of [d0exp_list1_quote]
 
 (* ****** ****** *)
 

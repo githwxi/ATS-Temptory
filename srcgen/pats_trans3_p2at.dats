@@ -149,10 +149,9 @@ case+ p2t0.p2at_node of
 | P2Tempty () => s2exp_void_t0ype ()
 //
 | P2Tcon _ =>
-    s2exp_Var_make_srt (p2t0.p2at_loc, s2rt_t0ype)
-  (* end of [P2Tcon] *)
+  s2exp_Var_make_srt(p2t0.p2at_loc, s2rt_t0ype)
 //
-| P2Tlst (lin, p2ts) => s2exp_t0ype_err ()
+| P2Tlist1(lin, p2ts) => s2exp_t0ype_err()
 //
 (*
 | P2Ttup : tuples have been turned into records
@@ -564,7 +563,8 @@ case+ p2t0.p2at_node of
 | P2Tempty () => p2at_trdn_empty (p2t0, s2f0)
 //
 | P2Trec _ => p2at_trdn_rec (p2t0, s2f0)
-| P2Tlst _ => p2at_trdn_lst (p2t0, s2f0)
+//
+| P2Tlist1 _ => p2at_trdn_lst (p2t0, s2f0)
 //
 | P2Trefas _ => p2at_trdn_refas (p2t0, s2f0)
 //
@@ -1344,8 +1344,11 @@ implement
 p2at_trdn_lst
   (p2t0, s2f0) = let
 //
-val loc0 = p2t0.p2at_loc
-val-P2Tlst (lin, p2ts) = p2t0.p2at_node
+val
+loc0 = p2t0.p2at_loc
+val-
+P2Tlist1(lin, p2ts) = p2t0.p2at_node
+//
 val s2e = s2hnf_opnexi_and_add (loc0, s2f0)
 //
 val islin =
@@ -1362,8 +1365,10 @@ s2e.s2exp_node of
   (
     s2e_fun, s2es_arg
   )
-    when s2cstref_equ_exp (
-    the_list_t0ype_int_type, s2e_fun
+  when
+  s2cstref_equ_exp
+  (
+    the_list1_t0ype_int_type, s2e_fun
   ) => let
     val-list_cons
       (s2e1_arg, s2es_arg) = s2es_arg
@@ -1376,20 +1381,23 @@ s2e.s2exp_node of
       s2exp2hnf_cast (s2e_ind)
     // end of [val]
     val s2f2_arg = s2exp2hnf (s2e2_arg)
-    val () = trans3_env_hypadd_eqeq (loc0, s2f_ind, s2f2_arg)
+    val () =
+    trans3_env_hypadd_eqeq (loc0, s2f_ind, s2f2_arg)
 //
     val () = if islin then auxerr_lin (p2t0)
 //
   in
-    p3at_lst (loc0, s2e, 0(*lin*), s2e1_arg, p3ts)
-  end // list_t0ype_int_type
+    p3at_list1(loc0, s2e, 0(*lin*), s2e1_arg, p3ts)
+  end // list1_t0ype_int_type
 //
 | S2Eapp
   (
     s2e_fun, s2es_arg
   )
-    when s2cstref_equ_exp (
-    the_list_vt0ype_int_vtype, s2e_fun
+  when
+  s2cstref_equ_exp
+  (
+    the_list1_vt0ype_int_vtype, s2e_fun
   ) => let
     val-list_cons
       (s2e1_arg, s2es_arg) = s2es_arg
@@ -1402,13 +1410,14 @@ s2e.s2exp_node of
       s2exp2hnf_cast (s2e_ind)
     // end of [val]
     val s2f2_arg = s2exp2hnf (s2e2_arg)
-    val () = trans3_env_hypadd_eqeq (loc0, s2f_ind, s2f2_arg)
+    val () =
+    trans3_env_hypadd_eqeq (loc0, s2f_ind, s2f2_arg)
 //
-    val () = if not(islin) then auxerr_nonlin (p2t0)
+    val () = if not(islin) then auxerr_nonlin(p2t0)
 //
   in
-    p3at_lst (loc0, s2e, 1(*lin*), s2e1_arg, p3ts)
-  end // list_vt0ype_int_vtype
+    p3at_list1(loc0, s2e, 1(*lin*), s2e1_arg, p3ts)
+  end // list1_vt0ype_int_vtype
 //
 | _ => let
     val () = prerr_error3_loc (loc0)

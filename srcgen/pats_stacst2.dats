@@ -1189,7 +1189,7 @@ s2exp_arrpsz_vt0ype_int_vt0ype
   val s2c = s2cstref_get_cst(the_arrpsz_vt0ype_int_vt0ype)
 in
   s2exp_cstapp(s2c, list_pair(s2e, ind))
-end // end of [s2exp_list_vt0ype_int_vtype]
+end // end of [s2exp_arrpsz_vt0ype_int_vt0ype]
 
 (* ****** ****** *)
 
@@ -1208,28 +1208,28 @@ end // end of [s2exp_list0_t0ype_type]
 (* ****** ****** *)
 
 implement
-the_list_t0ype_int_type =
-  s2cstref_make "list_t0ype_int_type"
+the_list1_t0ype_int_type =
+  s2cstref_make "list1_tflt_int_tbox"
 implement
-s2exp_list_t0ype_int_type
+s2exp_list1_t0ype_int_type
   (s2e, s2i) = let
   val ind = s2exp_int (s2i)
-  val s2c = s2cstref_get_cst (the_list_t0ype_int_type)
+  val s2c = s2cstref_get_cst(the_list1_t0ype_int_type)
 in
   s2exp_cstapp(s2c, list_pair(s2e,  ind))
-end // end of [s2exp_list_t0ype_int_type]
+end // end of [s2exp_list1_t0ype_int_type]
 
 implement
-the_list_vt0ype_int_vtype =
-  s2cstref_make "list_vt0ype_int_vtype"
+the_list1_vt0ype_int_vtype =
+  s2cstref_make "list1_vt0ype_int_vtype"
 implement
-s2exp_list_vt0ype_int_vtype
+s2exp_list1_vt0ype_int_vtype
   (s2e, s2i) = let
   val ind = s2exp_int (s2i)
-  val s2c = s2cstref_get_cst (the_list_vt0ype_int_vtype)
+  val s2c = s2cstref_get_cst(the_list1_vt0ype_int_vtype)
 in
   s2exp_cstapp(s2c, list_pair(s2e, ind))
-end // end of [s2exp_list_vt0ype_int_vtype]
+end // end of [s2exp_list1_vt0ype_int_vtype]
 
 (* ****** ****** *)
 //
