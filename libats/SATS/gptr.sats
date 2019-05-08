@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2019
+// Start Time: February, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -39,57 +39,18 @@ ATS_PACKNAME "temptory"
 ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
-
-%{#
 //
-#ifdef \
-_TEMPTORY_LIBATS_SATS_STDIO_
-#else
-#define \
-_TEMPTORY_LIBATS_SATS_STDIO_
-#include <stdio.h>
-typedef char *charptr;
-#endif // _TEMPTORY_LIBATS_SATS_STDIO_
+castfn
+g0ofg1_ptr
+{l:addr}
+(p1: ptr1(l)):<> ptr0
+castfn
+g1ofg0_ptr
+(p0: ptr0):<> [l:addr] ptr1(l)
 //
-%}(* end of [%{#] *)
-
-(* ****** ****** *)
-
-typedef
-charptr = $extype"charptr"
-
-(* ****** ****** *)
-//
-abstbox
-FILEref_tbox = ptr
-typedef
-FILEref = FILEref_tbox
-//
-(* ****** ****** *)
-//
-fun{}
-the_stdin(): FILEref // STDIN
-fun{}
-the_stdout(): FILEref // STDOUT
-fun{}
-the_stderr(): FILEref // STDERR
-//
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-fprint$val
-(out: FILEref, x: !a): void
-fun
-{a:vtflt}
-fprint$ref
-(out: FILEref, x: &INV(a)): void
+#symload g0ofg1 with g0ofg1_ptr
+#symload g1ofg0 with g1ofg0_ptr
 //
 (* ****** ****** *)
 
-fun{}
-fprint_newline(out: FILEref): void
-
-(* ****** ****** *)
-
-(* end of [stdio.sats] *)
+(* end of [gptr.sats] *)

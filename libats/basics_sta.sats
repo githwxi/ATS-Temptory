@@ -58,10 +58,11 @@ $extype"atstype_ptrk"
 abstbox
 ptr_addr_type(l:addr) = ptr_type
 //
-typedef
-ptr = ptr_type // HX: a shorthand
-sexpdef
-ptr = ptr_addr_type // HX: a shorthand
+typedef ptr = ptr_type
+sexpdef ptr = ptr_addr_type
+//
+typedef ptr0 = ptr_type
+sexpdef ptr1 = ptr_addr_type
 //
 typedef Ptr = [l:addr] ptr(l)
 typedef Ptr0 = [l:agez] ptr(l)

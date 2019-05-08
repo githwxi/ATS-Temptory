@@ -28,68 +28,97 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2019
+// Start Time: February, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#define
-ATS_PACKNAME "temptory"
-#define
-ATS_EXTERN_PREFIX "temptory_"
-
-(* ****** ****** *)
-
-%{#
 //
-#ifdef \
-_TEMPTORY_LIBATS_SATS_STDIO_
-#else
-#define \
-_TEMPTORY_LIBATS_SATS_STDIO_
-#include <stdio.h>
-typedef char *charptr;
-#endif // _TEMPTORY_LIBATS_SATS_STDIO_
+#staload "./../SATS/gint.sats"
+#staload "./../SATS/gseq.sats"
 //
-%}(* end of [%{#] *)
-
-(* ****** ****** *)
-
-typedef
-charptr = $extype"charptr"
-
-(* ****** ****** *)
-//
-abstbox
-FILEref_tbox = ptr
-typedef
-FILEref = FILEref_tbox
+#staload UN = "./../SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-fun{}
-the_stdin(): FILEref // STDIN
-fun{}
-the_stdout(): FILEref // STDOUT
-fun{}
-the_stderr(): FILEref // STDERR
-//
-(* ****** ****** *)
-//
+(*
 fun
-{a:vtflt}
-fprint$val
-(out: FILEref, x: !a): void
-fun
-{a:vtflt}
-fprint$ref
-(out: FILEref, x: &INV(a)): void
+{xs:tflt}
+{x0:tflt}
+gseq_forall(xs): bool
+*)
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+gseq_foreach(xs) =
+let
+//
+implement
+gseq_forall$test<x0>(x0) =
+let
+val () =
+gseq_foreach$work<x0>(x0) in true
+end // end of [let]
+//
+in
+  ignoret(gseq_forall<xs><x0>(xs))
+end // end of [let]
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}{r0}
+gseq_foldleft
+  (xs, r0) = let
+//
+var rr: r0 = r0
+val p0 = addr@(rr)
+//
+implement
+gseq_foreach$work<x0>
+  (x0) = () where
+{
+val r0 =
+$UN.ptr0_get<r0>(p0)
+val r0 =
+gseq_foldleft$fopr<x0><r0>(r0, x0)
+val () =
+$UN.ptr0_set<r0>(p0, r0)
+} (* end of [where] *)
+//
+in
+let
+val () = gseq_foreach<xs><x0>(xs) in rr
+end
+end // end of [let]
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+gseq_iforall(xs) =
+(
+gseq_forall<xs><x0>(xs)
+) where
+{
+//
+var i0: int = 0
+val p0 = addr@(i0)
+//
+implement
+gseq_forall$test<x0>
+  (x0) =
+(
+gseq_iforall$test<x0>(i0, x0)
+) where
+{
+val i0 = $UN.ptr0_get<int>(p0)
+val () = $UN.ptr0_set<int>(p0, succ(i0))
+} (* end of [where] *)
+//
+} (* end of [where] *)
 //
 (* ****** ****** *)
 
-fun{}
-fprint_newline(out: FILEref): void
-
-(* ****** ****** *)
-
-(* end of [stdio.sats] *)
+(* end of [gseq.dats] *)

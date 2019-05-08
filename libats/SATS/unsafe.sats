@@ -57,13 +57,15 @@ eqbool_assert{b1,b2:bool}((*void*)): EQBOOL(b1,b2)
 //
 castfn
 cast
-{to:tflt}{from:tflt} (x: INV(from)):<> to
+{to:tflt}
+{from:tflt} (x: INV(from)):<> (to)
 //
 (* ****** ****** *)
 //
 castfn
 castvwtp0
-{to:vtflt}{from:vtflt} (x: INV(from)):<> to
+{to:vtflt}
+{from:vtflt}(x: INV(from)):<> (to)
 //
 (* ****** ****** *)
 //
@@ -76,7 +78,17 @@ castvwtp0
 //
 castfn
 castvwtp1
-{to:vtflt}{from:vtflt} (x: !INV(from)>>from):<> to
+{to:vtflt}
+{from:vtflt}(x: !INV(from)>>from):<> to
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+ptr0_get(p0: ptr):<> (a)
+fun
+{a:vtflt}
+ptr0_set(p0: ptr, x0: INV(a)):<!wrt> void
 //
 (* ****** ****** *)
 

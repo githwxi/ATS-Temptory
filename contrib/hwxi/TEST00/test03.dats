@@ -36,6 +36,8 @@ val xs =
 g0ofg1($list1{int}(0, 1, 2))
 val ys =
 g0ofg1($list1{int}(3, 4, 5))
+val zs =
+g0ofg1($list1{int}(6, 7, 8))
 //
 val () = println!("xs = ", xs)
 //
@@ -51,7 +53,8 @@ val () = println!("ys = ", ys)
 end // end of [local]
 //
 val () =
-println!("(xs, ys) = ", @(xs, ys))
+println!
+("(xs,ys) = ", @(xs, ys))
 //
 val () =
 println!
@@ -60,12 +63,14 @@ val () =
 println!
 ("length(ys) = ", length(ys))
 //
-val xsys =
-g0ofg1($list1{list0(int)}(xs, ys))
+val
+xyzs =
+g0ofg1
+($list1{list0(int)}(xs, ys, zs))
+//
+val () = println!("xyzs = ", xyzs)
 val () =
-println!
-("length(xsys) = ", length(xsys))
-val () = println!("xsys = ", xsys)
+println!("length(xyzs) = ", length(xyzs))
 //
 (* ****** ****** *)
 

@@ -28,68 +28,110 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2019
+// Start Time: February, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#define
-ATS_PACKNAME "temptory"
-#define
-ATS_EXTERN_PREFIX "temptory_"
-
-(* ****** ****** *)
-
-%{#
 //
-#ifdef \
-_TEMPTORY_LIBATS_SATS_STDIO_
-#else
-#define \
-_TEMPTORY_LIBATS_SATS_STDIO_
-#include <stdio.h>
-typedef char *charptr;
-#endif // _TEMPTORY_LIBATS_SATS_STDIO_
-//
-%}(* end of [%{#] *)
-
-(* ****** ****** *)
-
-typedef
-charptr = $extype"charptr"
-
-(* ****** ****** *)
-//
-abstbox
-FILEref_tbox = ptr
-typedef
-FILEref = FILEref_tbox
-//
-(* ****** ****** *)
-//
-fun{}
-the_stdin(): FILEref // STDIN
-fun{}
-the_stdout(): FILEref // STDOUT
-fun{}
-the_stderr(): FILEref // STDERR
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_forall(xs): bool
+fun
+{x0:tflt}
+gseq_forall$test(x0): bool
 //
 (* ****** ****** *)
 //
 fun
-{a:vtflt}
-fprint$val
-(out: FILEref, x: !a): void
+{xs:tflt}
+{x0:tflt}
+gseq_foreach(xs): void
 fun
-{a:vtflt}
-fprint$ref
-(out: FILEref, x: &INV(a)): void
+{x0:tflt}
+gseq_foreach$work(x0): void
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{r0:vtflt}
+gseq_foldleft(xs, r0): r0
+fun
+{x0:tflt}
+{r0:vtflt}
+gseq_foldleft$fopr(r0, x0): r0
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_iforall(xs): bool
+fun
+{x0:tflt}
+gseq_iforall$test(int, x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_iforeach(xs): void
+fun
+{x0:tflt}
+gseq_iforeach$work(int, x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+{y0:tflt}
+gseq_map$fopr(x0): (y0)
+fun
+{x0:tflt}
+{y0:tflt}
+gseq_imap$fopr(int, x0): (y0)
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_map_list(xs): list0_vt(y0)
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_map_rlist(xs): list0_vt(y0)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_map_stream(xs): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_imap_list(xs): list0_vt(y0)
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_imap_rlist(xs): list0_vt(y0)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_imap_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
 
-fun{}
-fprint_newline(out: FILEref): void
-
-(* ****** ****** *)
-
-(* end of [stdio.sats] *)
+(* end of [gseq.sats] *)

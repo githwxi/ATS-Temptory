@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2019
+// Start Time: February, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -39,57 +39,83 @@ ATS_PACKNAME "temptory"
 ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
-
-%{#
 //
-#ifdef \
-_TEMPTORY_LIBATS_SATS_STDIO_
-#else
-#define \
-_TEMPTORY_LIBATS_SATS_STDIO_
-#include <stdio.h>
-typedef char *charptr;
-#endif // _TEMPTORY_LIBATS_SATS_STDIO_
+castfn
+g0ofg1_list
+{a:tflt}
+(list1(INV(a))):<> list0(a)
+castfn
+g1ofg0_list
+{a:tflt}
+(list0(INV(a))):<> list1(a)
 //
-%}(* end of [%{#] *)
-
-(* ****** ****** *)
-
-typedef
-charptr = $extype"charptr"
-
-(* ****** ****** *)
-//
-abstbox
-FILEref_tbox = ptr
-typedef
-FILEref = FILEref_tbox
+#symload g0ofg1 with g0ofg1_list
+#symload g1ofg0 with g1ofg0_list
 //
 (* ****** ****** *)
 //
-fun{}
-the_stdin(): FILEref // STDIN
-fun{}
-the_stdout(): FILEref // STDOUT
-fun{}
-the_stderr(): FILEref // STDERR
+castfn
+g0ofg1_list_vt
+{a:vtflt}
+(list1_vt(INV(a))):<> list0_vt(a)
+castfn
+g1ofg0_list_vt
+{a:vtflt}
+(list0_vt(INV(a))):<> list1_vt(a)
+//
+#symload g0ofg1 with g0ofg1_list_vt
+#symload g1ofg0 with g1ofg0_list_vt
 //
 (* ****** ****** *)
 //
 fun
-{a:vtflt}
-fprint$val
-(out: FILEref, x: !a): void
-fun
-{a:vtflt}
-fprint$ref
-(out: FILEref, x: &INV(a)): void
+{x0:tflt}
+list0_length(xs: list0(x0)): int
+//
+#symload length with list0_length
 //
 (* ****** ****** *)
-
-fun{}
-fprint_newline(out: FILEref): void
-
+//
+fun
+{x0:tflt}
+list0_forall
+(xs: list0(x0)): bool
+fun
+{x0:tflt}
+list0_forall$test(x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+list0_foreach
+(xs: list0(x0)): void
+fun
+{x0:tflt}
+list0_foreach$work(x0): void
+//
+(* ****** ****** *)
+(*
+//
+fun
+{x0:tflt}
+{r0:vtflt}
+list0_foldleft
+(xs: list0(x0), r0: r0): r0
+fun
+{x0:tflt}
+{r0:vtflt}
+list0_foldright
+(xs: list0(x0), r0: r0): r0
+//
+fun
+{x0:tflt}{r0:vtflt}
+list0_foldleft$fopr(r0, x0): r0
+fun
+{x0:tflt}{r0:vtflt}
+list0_foldright$fopr(x0, r0): r0
+//
+*)
 (* ****** ****** *)
 
-(* end of [stdio.sats] *)
+(* end of [list.sats] *)

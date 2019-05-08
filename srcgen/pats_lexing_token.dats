@@ -553,8 +553,12 @@ val () = ins ("let", T_LET)
 //
 val () = ins ("local", T_LOCAL)
 //
+(*
 val () = ins ("macdef", MACDEF)
+*)
+val () = ins ("#macdef", MACDEF)
 val () = ins ("macrodef", MACRODEF)
+val () = ins ("#macrodef", MACRODEF)
 //
 val () = ins ("symelim", T_SYMELIM)
 val () = ins ("symintr", T_SYMINTR)

@@ -217,9 +217,11 @@ exception NotFoundExn of () // to be found but not
 //
 (* ****** ****** *)
 //
-exception GenerallyExn of (string) // for unspecified causes
+exception
+GenerallyExn of (string) // for unspecified causes
 (*
-exception GenerallyExn2 of (string, ptr(*data*)) // for unspecified causes
+exception
+GenerallyExn2 of (string, ptr(*data*)) // for unspecified causes
 *)
 //
 (* ****** ****** *)
@@ -335,20 +337,6 @@ typedef list1_btwe
 //
 (* ****** ****** *)
 //
-castfn
-g0ofg1_list
-{a:tflt}
-(list1(INV(a))):<> list0(a)
-castfn
-g1ofg0_list
-{a:tflt}
-(list0(INV(a))):<> list1(a)
-//
-#symload g0ofg1 with g0ofg1_list
-#symload g1ofg0 with g1ofg0_list
-//
-(* ****** ****** *)
-//
 datavtype
 // vtflt+: covariant
 list0_vtflt_vtbox
@@ -400,20 +388,6 @@ list1_btw_vt
 vtypedef
 list1_btwe_vt
   (a:vtflt, m:int, n:int) = [k:int | m <= k; k <= n] list1_vt(a, k)
-//
-(* ****** ****** *)
-//
-castfn
-g0ofg1_list_vt
-{a:vtflt}
-(list1_vt(INV(a))):<> list0_vt(a)
-castfn
-g1ofg0_list_vt
-{a:vtflt}
-(list0_vt(INV(a))):<> list1_vt(a)
-//
-#symload g0ofg1 with g0ofg1_list_vt
-#symload g1ofg0 with g1ofg0_list_vt
 //
 (* ****** ****** *)
 //

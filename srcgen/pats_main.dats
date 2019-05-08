@@ -951,6 +951,8 @@ val () =
 pervasive_load(PATSHOME, "libats/basics_dyn.sats")
 val () =
 pervasive_load(PATSHOME, "libats/basics_gen.sats")
+val () =
+pervasive_load(PATSHOME, "libats/basics_mac.hats")
 //
 (*
 val () = pervasive_load(PATSHOME, "libats/macrodef.sats")
