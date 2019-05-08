@@ -72,4 +72,65 @@ print_string(string): void
 
 (* ****** ****** *)
 
+fun{}
+print_uint(uint): void
+fun{}
+print_lint(lint): void
+
+(* ****** ****** *)
+
+#symload print with print_uint
+#symload print with print_lint
+
+(* ****** ****** *)
+//
+fun
+{a:tflt}
+list0_print
+(xs: list0(INV(a))): void
+fun
+{a:tflt}
+list1_print
+(xs: list1(INV(a))): void
+//
+#symload print with list0_print
+#symload print with list1_print
+//
+fun{}
+list0_print$beg((*void*)): void
+fun{}
+list0_print$end((*void*)): void
+fun{}
+list0_print$sep((*void*)): void
+//
+fun{}
+list1_print$beg((*void*)): void
+fun{}
+list1_print$end((*void*)): void
+fun{}
+list1_print$sep((*void*)): void
+//
+(* ****** ****** *)
+//
+fun{}
+tuple_print$beg((*void*)): void
+fun{}
+tuple_print$end((*void*)): void
+fun{}
+tuple_print$sep((*void*)): void
+//
+fun
+{a0,a1:tflt}
+tuple2_print
+(xs: tup(INV(a0),INV(a1))): void
+fun
+{a0,a1,a2:tflt}
+tuple3_print
+(xs: tup(INV(a0),INV(a1),INV(a2))): void
+//
+#symload print with tuple2_print
+#symload print with tuple3_print
+//
+(* ****** ****** *)
+
 (* end of [print.sats] *)

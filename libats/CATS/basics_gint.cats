@@ -32,6 +32,24 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 /* ****** ****** */
+//
+// HX: for sint
+//
+/* ****** ****** */
+//
+#define \
+temptory_g0succ_sint(x) (x + 1)
+#define \
+temptory_g0pred_sint(x) (x - 1)
+//
+/* ****** ****** */
+//
+#define \
+temptory_g1succ_sint(x) (x + 1)
+#define \
+temptory_g1pred_sint(x) (x - 1)
+//
+/* ****** ****** */
 
 #define \
 temptory_g0add_sint_sint(x, y) (x + y)
@@ -82,6 +100,46 @@ temptory_g1lte_sint_sint(x, y) (( x <= y ) ? 1 : 0)
 temptory_g1gte_sint_sint(x, y) (( x >= y ) ? 1 : 0)
 #define \
 temptory_g1neq_sint_sint(x, y) (( x != y ) ? 1 : 0)
+
+/* ****** ****** */
+//
+// HX: for uint
+//
+/* ****** ****** */
+//
+#define \
+temptory_g0succ_uint(x) (x + 1)
+#define \
+temptory_g0pred_uint(x) (x - 1)
+//
+/* ****** ****** */
+//
+#define \
+temptory_g1succ_uint(x) (x + 1)
+#define \
+temptory_g1pred_uint(x) (x - 1)
+//
+/* ****** ****** */
+
+#define \
+temptory_g0add_uint_uint(x, y) (x + y)
+#define \
+temptory_g0sub_uint_uint(x, y) (x - y)
+#define \
+temptory_g0mul_uint_uint(x, y) (x * y)
+#define \
+temptory_g0div_uint_uint(x, y) (x / y)
+
+/* ****** ****** */
+
+#define \
+temptory_g1add_uint_uint(x, y) (x + y)
+#define \
+temptory_g1sub_uint_uint(x, y) (x - y)
+#define \
+temptory_g1mul_uint_uint(x, y) (x * y)
+#define \
+temptory_g1div_uint_uint(x, y) (x / y)
 
 /* ****** ****** */
 

@@ -332,6 +332,20 @@ typedef list1_btwe
 //
 (* ****** ****** *)
 //
+castfn
+g0ofg1_list
+{a:tflt}
+(list1(INV(a))):<> list0(a)
+castfn
+g1ofg0_list
+{a:tflt}
+(list0(INV(a))):<> list1(a)
+//
+#symload g0ofg1 with g0ofg1_list
+#symload g1ofg0 with g1ofg0_list
+//
+(* ****** ****** *)
+//
 datavtype
 // vtflt+: covariant
 list0_vtflt_vtbox
@@ -380,6 +394,20 @@ list1_btw_vt
 vtypedef
 list1_btwe_vt
   (a:vtflt, m:int, n:int) = [k:int | m <= k; k <= n] list1_vt(a, k)
+//
+(* ****** ****** *)
+//
+castfn
+g0ofg1_list_vt
+{a:vtflt}
+(list1_vt(INV(a))):<> list0_vt(a)
+castfn
+g1ofg0_list_vt
+{a:vtflt}
+(list0_vt(INV(a))):<> list1_vt(a)
+//
+#symload g0ofg1 with g0ofg1_list_vt
+#symload g1ofg0 with g1ofg0_list_vt
 //
 (* ****** ****** *)
 //
@@ -451,6 +479,20 @@ sexpdef optn1(a:tflt) = [b:bool] optn1(a, b)
 //
 (* ****** ****** *)
 //
+castfn
+g0ofg1_optn
+{a:tflt}
+(optn1(INV(a))):<> optn0(a)
+castfn
+g1ofg0_optn
+{a:tflt}
+(optn0(INV(a))):<> optn1(a)
+//
+#symload g0ofg1 with g0ofg1_optn
+#symload g1ofg0 with g1ofg0_optn
+//
+(* ****** ****** *)
+//
 datavtype
 // vtflt+: covariant
 optn0_vtflt_vtbox
@@ -476,6 +518,20 @@ sexpdef optn1_vt(a:vtflt) = [b:bool] optn1_vt(a, b)
 //
 (* ****** ****** *)
 //
+castfn
+g0ofg1_optn_vt
+{a:vtflt}
+(optn1_vt(INV(a))):<> optn0_vt(a)
+castfn
+g1ofg0_optn_vt
+{a:vtflt}
+(optn0_vt(INV(a))):<> optn1_vt(a)
+//
+#symload g0ofg1 with g0ofg1_optn_vt
+#symload g1ofg0 with g1ofg0_optn_vt
+//
+(* ****** ****** *)
+//
 absvtbox
 argv_int_vtbox(n:int) = ptr
 sexpdef argv = argv_int_vtbox
@@ -489,7 +545,7 @@ is declared in prelude/SATS/extern.sats
 //
 praxi
 lemma_argv_param
-  {n:int}(argv: !argv(n)): [n >= 0] void
+{n:int}(argv: !argv(n)): [n >= 0] void
 // end of [praxi]
 //
 (* ****** ****** *)
@@ -564,19 +620,20 @@ main1_argc_argv_envp
 //
 fun
 exit
-(ecode: int):<!exn> {a:tflt}(a) = "mac#%"
+(ecd: int):<!exn> {a:tflt}(a) = "mac#%"
 fun
 exit_errmsg
-(ecode: int, msg: string):<!exn> {a:tflt}(a) = "mac#%"
+( ecd: int
+, msg: string):<!exn> {a:tflt}(a) = "mac#%"
 //
 (* ****** ****** *)
 //
 fun
 exit_void
-  (ecode: int):<!exn> void = "mac#%"
+  (ecd: int):<!exn> void = "mac#%"
 fun
 exit_errmsg_void
-  (ecode: int, msg: string):<!exn> void = "mac#%"
+  (ecd: int, msg: string):<!exn> void = "mac#%"
 //
 (* ****** ****** *)
 //

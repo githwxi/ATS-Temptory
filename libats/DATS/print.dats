@@ -33,6 +33,8 @@
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/gint.sats"
+//
 #staload "./../SATS/print.sats"
 #staload "./../SATS/stdio.sats"
 //
@@ -76,8 +78,92 @@ print_string(cs) = print$val<string>(cs)
 (* ****** ****** *)
 
 implement
-fprint$val<int>(out, x) =
-$extfcall(void, "fprintf", out, "%i", x)
+{}(*tmp*)
+print_uint(x) = print$val<uint>(x)
+implement
+{}(*tmp*)
+print_lint(x) = print$val<lint>(x)
+
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+list0_print(xs) =
+(
+list0_print$beg<>();
+loop(0, xs);
+list0_print$end<>();
+) where
+{
+fun
+loop
+( i0: int
+, xs: list0(a)): void =
+(
+case+ xs of
+| list0_nil() => ()
+| list0_cons(x0, xs) =>
+  (
+  if i0 > 0
+    then list0_print$sep<>();
+  // end of [if]
+  print$val<a>(x0); loop(i0+1, xs)
+  )
+)
+} (* end of [list0_print] *)
+//
+implement
+{}(*tmp*)
+list0_print$beg() = print_string("(")
+implement
+{}(*tmp*)
+list0_print$end() = print_string(")")
+implement
+{}(*tmp*)
+list0_print$sep() = print_string(",")
+//
+implement
+(a:tflt)
+print$val<list0(a)>(xs) = list0_print<a>(xs)
+//
+(* ****** ****** *)
+
+implement
+{a0,a1}
+tuple2_print(xs) =
+(
+tuple_print$beg<>();
+print$val<a0>(xs.0);
+tuple_print$sep<>(); print$val<a1>(xs.1);
+tuple_print$end<>();
+)
+implement
+{a0,a1,a2}
+tuple3_print(xs) =
+(
+tuple_print$beg<>();
+print$val<a0>(xs.0);
+tuple_print$sep<>(); print$val<a1>(xs.1);
+tuple_print$sep<>(); print$val<a2>(xs.2);
+tuple_print$end<>();
+)
+//
+implement
+{}(*tmp*)
+tuple_print$beg() = print_string("(")
+implement
+{}(*tmp*)
+tuple_print$end() = print_string(")")
+implement
+{}(*tmp*)
+tuple_print$sep() = print_string(",")
+//
+implement
+(a0,a1:tflt)
+print$val<tup(a0,a1)>(xs) = tuple2_print<a0,a1>(xs)
+implement
+(a0,a1,a2:tflt)
+print$val<tup(a0,a1,a2)>(xs) = tuple3_print<a0,a1,a2>(xs)
 
 (* ****** ****** *)
 

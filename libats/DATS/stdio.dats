@@ -105,5 +105,26 @@ $extfcall
 }
 //
 (* ****** ****** *)
+//
+implement
+fprint$val<uint>(out, x) =
+(
+  $extfcall
+  (void, "fprintf", out, "%u", x)
+)
+implement
+fprint$val<lint>(out, x) =
+(
+  $extfcall
+  (void, "fprintf", out, "%li", x)
+)
+implement
+fprint$val<ulint>(out, x) =
+(
+  $extfcall
+  (void, "fprintf", out, "%ul", x)
+)
+//
+(* ****** ****** *)
 
 (* end of [stdio.dats] *)

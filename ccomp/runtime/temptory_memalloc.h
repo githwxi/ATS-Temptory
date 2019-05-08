@@ -68,7 +68,7 @@ void *atsruntime_realloc_undef (void *ptr, size_t bsz) ;
 //
 #define ATS_MEMALLOC_FLAG
 //
-#include "pats_ccomp_memalloc_libc.h"
+#include "temptory_memalloc_libc.h"
 //
 #define ATS_MINIT atsruntime_minit_libc
 #define ATS_MFREE atsruntime_mfree_libc
@@ -84,7 +84,7 @@ void *atsruntime_realloc_undef (void *ptr, size_t bsz) ;
 //
 #define ATS_MEMALLOC_FLAG
 //
-#include "pats_ccomp_memalloc_gcbdw.h"
+#include "temptory_memalloc_gcbdw.h"
 //
 #define ATS_MINIT atsruntime_minit_gcbdw
 #define ATS_MFREE atsruntime_mfree_gcbdw
@@ -100,7 +100,7 @@ void *atsruntime_realloc_undef (void *ptr, size_t bsz) ;
 //
 #define ATS_MEMALLOC_FLAG
 //
-#include "pats_ccomp_memalloc_user.h"
+#include "temptory_memalloc_user.h"
 //
 #define ATS_MINIT atsruntime_minit_user
 #define ATS_MFREE atsruntime_mfree_user

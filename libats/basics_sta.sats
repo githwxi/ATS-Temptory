@@ -140,6 +140,8 @@ typedef
 uint(i:int) = g1int_int_t0ype(uint_tk, i)
 //
 typedef
+lint = g0int_t0ype(slint_tk)
+typedef
 slint = g0int_t0ype(slint_tk)
 typedef
 slint(i:int) = g1int_int_t0ype(slint_tk, i)
@@ -149,6 +151,8 @@ typedef
 ulint(i:int) = g1int_int_t0ype(ulint_tk, i)
 //
 typedef
+size = g0int_t0ype(ssize_tk)
+typedef
 ssize = g0int_t0ype(ssize_tk)
 typedef
 ssize(i:int) = g1int_int_t0ype(ssize_tk, i)
@@ -157,6 +161,8 @@ usize = g0int_t0ype(usize_tk)
 typedef
 usize(i:int) = g1int_int_t0ype(usize_tk, i)
 //
+typedef
+llint = g0int_t0ype(sllint_tk)
 typedef
 sllint = g0int_t0ype(sllint_tk)
 typedef
@@ -346,6 +352,40 @@ vtypedef
 Strnptr0 = [l:addr;n:int] strnptr(l, n)
 vtypedef
 Strnptr1 = [l:addr;n:int | n >= 0] strnptr(l, n)
+//
+(* ****** ****** *)
+//
+typedef
+tup2
+(a0:tflt, a1:tflt) = (a0, a1)
+typedef
+tup3
+( a0:tflt
+, a1:tflt, a2:tflt) = (a0, a1, a2)
+typedef
+tup4
+( a0:tflt, a1:tflt
+, a2:tflt, a3:tflt) = (a0, a1, a2, a3)
+//
+sexpdef tup = tup2
+sexpdef tup = tup3
+sexpdef tup = tup4
+//
+vtypedef
+tup2_vt
+(a0:vtflt, a1:vtflt) = (a0, a1)
+vtypedef
+tup3_vt
+( a0:vtflt
+, a1:vtflt, a2:vtflt) = (a0, a1, a2)
+vtypedef
+tup4_vt
+( a0:vtflt, a1:vtflt
+, a2:vtflt, a3:vtflt) = (a0, a1, a2, a3)
+//
+sexpdef tup_vt = tup2_vt
+sexpdef tup_vt = tup3_vt
+sexpdef tup_vt = tup4_vt
 //
 (* ****** ****** *)
 //

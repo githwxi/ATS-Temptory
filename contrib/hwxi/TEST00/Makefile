@@ -11,9 +11,16 @@ TEMPOPT= $(TEMPTORY)/bin/tempopt
 
 ######
 
+INCLUDE :=
+INCLUDE += -I${TEMPTORY}
+INCLUDE += -I${TEMPTORY}/ccomp/runtime 
+
+######
+
 all:: test00
 all:: test01_dats
 all:: test02_dats
+all:: test03_dats
 
 ######
 
@@ -22,20 +29,21 @@ test00.dats; $(TEMPOPT) -tc -d $<
 
 ######
 
-test01_dats: test01_dats.c ; \
-$(GCC) -I${TEMPTORY} -I${TEMPTORY}/ccomp/runtime -o $@ $<
+test01_dats: \
+test01_dats.c; $(GCC) $(INCLUDE) -o $@ $<
 test01_dats.c: test01.dats; $(TEMPOPT) -cc -o $@ -d $<
 
 ######
 
-test02_dats: test02_dats.c ; \
-$(GCC) -I${TEMPTORY} -I${TEMPTORY}/ccomp/runtime -o $@ $<
+test02_dats: \
+test02_dats.c; $(GCC) $(INCLUDE) -o $@ $<
 test02_dats.c: test02.dats; $(TEMPOPT) -cc -o $@ -d $<
 
 ######
 
-test03_dats: test03_dats.c ; \
-$(GCC) -I${TEMPTORY} -I${TEMPTORY}/ccomp/runtime -o $@ $<
+test03_dats: \
+test03_dats.c ; \
+$(GCC) -DATS_MEMALLOC_LIBC $(INCLUDE) -o $@ $<
 test03_dats.c: test03.dats; $(TEMPOPT) -cc -o $@ -d $<
 
 ######
