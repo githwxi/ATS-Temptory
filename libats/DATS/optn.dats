@@ -33,6 +33,11 @@
 //
 (* ****** ****** *)
 
+#define tt true
+#define ff false
+
+(* ****** ****** *)
+
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/optn.sats"
@@ -40,7 +45,29 @@
 (* ****** ****** *)
 //
 implement
-{a}//tmp
+{x0}//tmp
+optn0_iseqz
+  (opt) =
+(
+case+ opt of
+| optn0_none _ => tt
+| optn0_some _ => ff
+)
+//
+implement
+{x0}//tmp
+optn0_isneqz
+  (opt) =
+(
+case+ opt of
+| optn0_none _ => ff
+| optn0_some _ => tt
+)
+//
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
 optn0_length
   (opt) =
 (
@@ -48,6 +75,54 @@ case+ opt of
 | optn0_none _ => 0 | optn0_some _ => 1
 )
 //
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+optn0_forall
+  (opt) =
+(
+case+ opt of
+| optn0_none() => true
+| optn0_some(x0) => optn0_forall$test<x0>(x0)
+) (* end of [optn0_forall] *)
+
+implement
+(x0:tflt)
+gseq_forall<optn0(x0)><x0>
+  (xs) =
+(
+  optn0_forall<x0>(xs)
+) where
+{
+implement
+optn0_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
+} (* end of [gseq_forall] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+optn0_foreach
+  (opt) =
+(
+case+ opt of
+| optn0_none() => ()
+| optn0_some(x0) => optn0_foreach$work<x0>(x0)
+) (* end of [optn0_foreach] *)
+
+implement
+(x0:tflt)
+gseq_foreach<optn0(x0)><x0>
+  (xs) =
+(
+  optn0_foreach<x0>(xs)
+) where
+{
+implement
+optn0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
+} (* end of [gseq_foreach] *)
+
 (* ****** ****** *)
 
 (* end of [optn.dats] *)

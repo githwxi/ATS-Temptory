@@ -43,6 +43,23 @@
 #staload "./../SATS/list.sats"
 
 (* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_iseqz(xs) =
+(
+case+ xs of
+| list0_nil _ => tt | list0_cons _ => ff
+)
+implement
+{x0}//tmp
+list0_isneqz(xs) =
+(
+case+ xs of
+| list0_nil _ => ff | list0_cons _ => tt
+)
+
+(* ****** ****** *)
 //
 implement
 {x0}//tmp
@@ -53,7 +70,7 @@ list0_length(xs) =
 {
 fun
 loop
-(xs: list0(a), i0: int): int =
+(xs: list0(x0), i0: int): int =
 case+ xs of
 | list0_nil() => i0
 | list0_cons(_, xs) => loop(xs, succ(i0))

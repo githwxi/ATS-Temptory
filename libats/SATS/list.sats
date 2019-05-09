@@ -70,6 +70,18 @@ g1ofg0_list_vt
 //
 fun
 {x0:tflt}
+list0_iseqz(xs: list0(x0)): bool
+fun
+{x0:tflt}
+list0_isneqz(xs: list0(x0)): bool
+//
+#symload iseqz with list0_iseqz
+#symload isneqz with list0_isneqz
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
 list0_length(xs: list0(x0)): int
 //
 #symload length with list0_length

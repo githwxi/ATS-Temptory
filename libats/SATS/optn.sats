@@ -70,9 +70,41 @@ g1ofg0_optn_vt
 //
 fun
 {x0:tflt}
+optn0_iseqz(xs: optn0(x0)): bool
+fun
+{x0:tflt}
+optn0_isneqz(xs: optn0(x0)): bool
+//
+#symload iseqz with optn0_iseqz
+#symload isneqz with optn0_isneqz
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
 optn0_length(xs: optn0(x0)): int
 //
 #symload length with optn0_length
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+optn0_forall
+(xs: optn0(x0)): bool
+fun
+{x0:tflt}
+optn0_forall$test(x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+optn0_foreach
+(xs: optn0(x0)): void
+fun
+{x0:tflt}
+optn0_foreach$work(x0): void
 //
 (* ****** ****** *)
 
