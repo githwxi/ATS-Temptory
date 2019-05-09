@@ -458,20 +458,6 @@ sexpdef optn1(a:tflt) = [b:bool] optn1(a, b)
 //
 (* ****** ****** *)
 //
-castfn
-g0ofg1_optn
-{a:tflt}
-(optn1(INV(a))):<> optn0(a)
-castfn
-g1ofg0_optn
-{a:tflt}
-(optn0(INV(a))):<> optn1(a)
-//
-#symload g0ofg1 with g0ofg1_optn
-#symload g1ofg0 with g1ofg0_optn
-//
-(* ****** ****** *)
-//
 datavtype
 optn0_vtflt_vtbox
   (a:vtflt) =
@@ -494,20 +480,6 @@ optn1_vtflt_bool_vtbox
 //
 sexpdef optn1_vt = optn1_vtflt_bool_vtbox
 sexpdef optn1_vt(a:vtflt) = [b:bool] optn1_vt(a, b)
-//
-(* ****** ****** *)
-//
-castfn
-g0ofg1_optn_vt
-{a:vtflt}
-(optn1_vt(INV(a))):<> optn0_vt(a)
-castfn
-g1ofg0_optn_vt
-{a:vtflt}
-(optn0_vt(INV(a))):<> optn1_vt(a)
-//
-#symload g0ofg1 with g0ofg1_optn_vt
-#symload g1ofg0 with g1ofg0_optn_vt
 //
 (* ****** ****** *)
 //

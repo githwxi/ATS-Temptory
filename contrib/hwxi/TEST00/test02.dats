@@ -18,7 +18,7 @@ implement main0() = ()
 
 (* ****** ****** *)
 //
-val () = println!("Hello", '!')
+val () = println!("Hello", ", world", '!')
 //
 (* ****** ****** *)
 

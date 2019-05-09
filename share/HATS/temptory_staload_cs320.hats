@@ -44,6 +44,13 @@ TEMPLIB_targetloc
 (* ****** ****** *)
 //
 #staload
+"libats/SATS/optn.sats"
+#staload _ =
+"libats/DATS/optn.dats"
+//
+(* ****** ****** *)
+//
+#staload
 "libats/SATS/print.sats"
 #staload _ =
 "libats/DATS/print.dats"

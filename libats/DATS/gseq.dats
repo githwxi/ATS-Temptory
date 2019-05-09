@@ -49,6 +49,31 @@ gseq_forall(xs): bool
 //
 (* ****** ****** *)
 //
+local
+exception False of ()
+in(*in-of-local*)
+implement
+{xs}{x0}
+gseq_forall(xs) =
+let
+//
+implement
+gseq_foreach$work<x0>(x0) =
+if
+gseq_forall<x0>(x0)
+then () else $raise False()
+//
+in
+try
+let
+val () =
+gseq_foreach<xs><x0>(xs)
+in true end with ~False() => false
+end // end of [let]
+end // end of [local]
+//
+(* ****** ****** *)
+//
 implement
 {xs}{x0}
 gseq_foreach(xs) =

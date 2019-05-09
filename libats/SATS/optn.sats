@@ -33,109 +33,47 @@
 //
 (* ****** ****** *)
 
-#define tt true
-#define ff false
-
-(* ****** ****** *)
-
-#staload "./../SATS/gint.sats"
-#staload "./../SATS/gseq.sats"
-#staload "./../SATS/list.sats"
+#define
+ATS_PACKNAME "temptory"
+#define
+ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 //
-implement
-{x0}//tmp
-list0_length(xs) =
-(
-  loop(xs, 0)
-) where
-{
+castfn
+g0ofg1_optn
+{a:tflt}
+(optn1(INV(a))):<> optn0(a)
+castfn
+g1ofg0_optn
+{a:tflt}
+(optn0(INV(a))):<> optn1(a)
+//
+#symload g0ofg1 with g0ofg1_optn
+#symload g1ofg0 with g1ofg0_optn
+//
+(* ****** ****** *)
+//
+castfn
+g0ofg1_optn_vt
+{a:vtflt}
+(optn1_vt(INV(a))):<> optn0_vt(a)
+castfn
+g1ofg0_optn_vt
+{a:vtflt}
+(optn0_vt(INV(a))):<> optn1_vt(a)
+//
+#symload g0ofg1 with g0ofg1_optn_vt
+#symload g1ofg0 with g1ofg0_optn_vt
+//
+(* ****** ****** *)
+//
 fun
-loop
-(xs: list0(a), i0: int): int =
-case+ xs of
-| list0_nil() => i0
-| list0_cons(_, xs) => loop(xs, succ(i0))
-} (* end of [list0_length] *)
-(*
-implement
-{x0}//tmp
-list0_length(xs) =
-(
-gseq_foldleft<list0(x0)><x0><int>(xs, 0)
-) where
-{
-implement
-gseq_foldleft$fopr<x0><int>(r0, x0) = succ(r0)
-}
-*)
+{x0:tflt}
+optn0_length(xs: optn0(x0)): int
+//
+#symload length with optn0_length
 //
 (* ****** ****** *)
 
-implement
-{x0}//tmp
-list0_forall(xs) =
-(
-  loop(xs)
-) where
-{
-fun
-loop(xs: list0(x0)): bool =
-case+ xs of
-| list0_nil() => true
-| list0_cons(x0, xs) =>
-  if
-  list0_forall$test<x0>(x0) then loop(xs) else ff
-} (* end of [list0_forall] *)
-
-(* ****** ****** *)
-
-implement
-(x0:tflt)
-gseq_forall<list0(x0)><x0>
-  (xs) =
-(
-  list0_forall<x0>(xs)
-) where
-{
-implement
-list0_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
-} (* end of [gseq_forall] *)
-
-(* ****** ****** *)
-
-implement
-{x0}//tmp
-list0_foreach(xs) =
-(
-  loop(xs)
-) where
-{
-fun
-loop(xs: list0(x0)): void =
-case+ xs of
-| list0_nil() => ()
-| list0_cons(x0, xs) =>
-  let
-    val () = list0_foreach$work<x0>(x0) in loop(xs)
-  end
-} (* end of [list0_forall] *)
-
-(* ****** ****** *)
-
-implement
-(x0:tflt)
-gseq_foreach<list0(x0)><x0>
-  (xs) =
-(
-  list0_foreach<x0>(xs)
-) where
-{
-implement
-list0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
-} (* end of [gseq_foreach] *)
-
-(* ****** ****** *)
-
-(* end of [list.dats] *)
+(* end of [optn.sats] *)
