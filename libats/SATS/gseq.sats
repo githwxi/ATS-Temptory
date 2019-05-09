@@ -86,6 +86,14 @@ gseq_iforeach$work(int, x0): void
 (* ****** ****** *)
 //
 fun
+{xs:tflt}
+{x0:tflt}
+gseq_streamize
+  (xs: xs): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
 {x0:tflt}
 {y0:tflt}
 gseq_map$fopr(x0): (y0)

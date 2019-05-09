@@ -303,6 +303,18 @@ opt_vtflt_bool_vtflt
 sexpdef opt = opt_vtflt_bool_vtflt
 //
 (* ****** ****** *)
+
+absprop // invariance
+vbox_view_prop (v:view)
+propdef
+vbox(v:view) = vbox_view_prop(v)
+
+abstbox // invariance
+ref_vt0ype_type(a:vtflt) = ptr
+typedef
+ref(a:vtflt) = ref_vt0ype_type(a)
+
+(* ****** ****** *)
 //
 // HX:
 // suspended computation:

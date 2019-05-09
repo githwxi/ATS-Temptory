@@ -39,19 +39,42 @@
 #staload UN = "./../SATS/unsafe.sats"
 //
 (* ****** ****** *)
-//
-(*
+
+implement
+{xs}{x0}
+gseq_forall(xs) =
+(
+loop
+(
+gseq_streamize<xs><x0>(xs)
+)
+) where
+{
 fun
-{xs:tflt}
-{x0:tflt}
-gseq_forall(xs): bool
-*)
-//
+loop
+( xs
+: stream_vt(x0)): bool =
+(
+case+ !xs of
+|
+~stream_vt_nil() => true
+|
+~stream_vt_cons(x0, xs) =>
+let
+  val test =
+  gseq_forall$test<x0>(x0)
+in
+  if test then loop(xs) else (~xs; false)
+end // end of [let]
+)
+} (* end of [gseq_forall] *)
+
 (* ****** ****** *)
 //
+(*
 local
-exception False of ()
-in(*in-of-local*)
+exception False
+in//in-of-local
 implement
 {xs}{x0}
 gseq_forall(xs) =
@@ -71,6 +94,7 @@ gseq_foreach<xs><x0>(xs)
 in true end with ~False() => false
 end // end of [let]
 end // end of [local]
+*)
 //
 (* ****** ****** *)
 //
