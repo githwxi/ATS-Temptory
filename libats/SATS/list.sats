@@ -90,8 +90,31 @@ list0_length(xs: list0(x0)): int
 //
 fun
 {x0:tflt}
+list0_concat
+(list0(list0(x0))): list0(x0)
+fun
+{x0:tflt}
+list0_append
+(list0(x0), list0(x0)): list0(x0)
+fun
+{x0:tflt}
+list0_revapp
+(list0(x0), list0(x0)): list0(x0)
+fun
+{x0:tflt}
+list0_reverse(list0(x0)): list0(x0)
+//
+#symload concat with list0_concat
+#symload append with list0_append
+#symload revapp with list0_revapp
+#symload reverse with list0_reverse
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
 list0_forall
-(xs: list0(x0)): bool
+(xs: list0(INV(x0))): bool
 fun
 {x0:tflt}
 list0_forall$test(x0): bool
@@ -101,33 +124,31 @@ list0_forall$test(x0): bool
 fun
 {x0:tflt}
 list0_foreach
-(xs: list0(x0)): void
+(xs: list0(INV(x0))): void
 fun
 {x0:tflt}
 list0_foreach$work(x0): void
 //
 (* ****** ****** *)
-(*
 //
 fun
 {x0:tflt}
 {r0:vtflt}
 list0_foldleft
-(xs: list0(x0), r0: r0): r0
+(xs: list0(INV(x0)), r0: r0): r0
 fun
 {x0:tflt}
 {r0:vtflt}
 list0_foldright
-(xs: list0(x0), r0: r0): r0
+(xs: list0(INV(x0)), r0: r0): r0
 //
 fun
 {x0:tflt}{r0:vtflt}
-list0_foldleft$fopr(r0, x0): r0
+list0_foldleft$fopr(r0: r0, x0: x0): r0
 fun
 {x0:tflt}{r0:vtflt}
-list0_foldright$fopr(x0, r0): r0
+list0_foldright$fopr(x0: x0, r0: r0): r0
 //
-*)
 (* ****** ****** *)
 
 (* end of [list.sats] *)

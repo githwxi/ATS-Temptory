@@ -36,6 +36,23 @@
 // HX: for sint
 //
 /* ****** ****** */
+
+ATSinline()
+atstype_sint
+temptory_g0abs_sint
+  (atstype_sint x)
+{
+  return (x >= 0? x : -x);
+}
+ATSinline()
+atstype_slint
+temptory_g0abs_slint
+  (atstype_slint x)
+{
+  return (x >= 0? x : -x);
+}
+
+/* ****** ****** */
 //
 #define \
 temptory_g0succ_sint(x) (x + 1)

@@ -102,6 +102,18 @@ cast with g1cast_slint_sllint of 11
 (* ****** ****** *)
 //
 fun
+g0abs_sint
+(x: sint): sint = "mac#%"
+#symload abs with g0abs_sint of 10
+//
+fun
+g0abs_slint
+(x: slint): slint = "mac#%"
+#symload abs with g0abs_slint of 10
+//
+(* ****** ****** *)
+//
+fun
 {k1:tflt}
 {k2:tflt}
 g0int_succ
@@ -132,7 +144,7 @@ g1succ_uint
 {i:int}
 (x: uint(i)): uint(i+1) = "mac#%"
 //
-#symload succ with g0succ_uint of 11
+#symload succ with g0succ_uint of 10
 #symload succ with g1succ_uint of 11
 //
 (* ****** ****** *)

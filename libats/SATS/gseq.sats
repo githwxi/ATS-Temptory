@@ -36,6 +36,21 @@
 fun
 {xs:tflt}
 {x0:tflt}
+gseq_iseqz(xs): bool
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_isneqz(xs): bool
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_length(xs): (int)
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
 gseq_forall(xs): bool
 fun
 {x0:tflt}

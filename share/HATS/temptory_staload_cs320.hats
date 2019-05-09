@@ -79,10 +79,15 @@ _(*UNSAFE*) =
 
 sexpdef list = list0
 sexpdef optn = optn0
+
+#define :: list0_cons
+
 #define nil list0_nil
 #define cons list0_cons
 #define none optn0_none
 #define some optn0_some
+
+#define sing(x) cons(x, nil)
 
 (* ****** ****** *)
 

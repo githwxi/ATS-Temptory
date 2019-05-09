@@ -32,12 +32,46 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+#define tt true
+#define ff false
+
+(* ****** ****** *)
 //
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gseq.sats"
 //
 #staload UN = "./../SATS/unsafe.sats"
 //
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+gseq_iseqz(xs) =
+(
+gseq_forall<xs><x0>(xs)
+) where
+{
+implement
+gseq_forall$test<x0>(x0) = ff
+}
+implement
+{xs}{x0}
+gseq_isneqz(xs) =
+(
+ if eqz then ff else tt
+) where
+{
+val eqz = gseq_iseqz<xs><x0>(xs)
+} (* end of [gseq_isneqz] *)
+//
+(* ****** ****** *)
+
+implement
+{xs}{x0}
+gseq_length(xs) =
+gseq_foldleft<xs><x0><int>(xs, 0)
+
 (* ****** ****** *)
 
 implement
@@ -166,7 +200,27 @@ val i0 = $UN.ptr0_get<int>(p0)
 val () = $UN.ptr0_set<int>(p0, succ(i0))
 } (* end of [where] *)
 //
-} (* end of [where] *)
+} (* end of [gseq_iforall] *)
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+gseq_iforeach(xs) =
+(
+ignoret
+(gseq_iforall<xs><x0>(xs))
+) where
+{
+//
+implement
+gseq_iforall$test<x0>(i0, x0) =
+let
+val () =
+gseq_iforeach$work<x0>(i0, x0) in true
+end // end of [let]
+//
+} (* end of [gseq_iforeach] *)
 //
 (* ****** ****** *)
 

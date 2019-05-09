@@ -92,6 +92,84 @@ gseq_foldleft$fopr<x0><int>(r0, x0) = succ(r0)
 
 implement
 {x0}//tmp
+list0_concat(xss) =
+(
+list0_foldright<xs><xs>(xss, list0_nil())
+) where
+{
+typedef xs = list0(x0)
+implement
+list0_foldright$fopr<xs><xs>(xs, r0) = list0_append<x0>(xs, r0)
+}
+
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
+list0_append
+  (xs, ys) =
+(
+let
+  var r0: ptr?
+in
+  loop(xs, r0); r0
+end
+) where
+{
+  fun
+  loop
+  ( xs: list0(x0)
+  , r0: &ptr? >> list0(x0)
+  ) : void =
+  (
+  case+ xs of
+  | list0_nil() =>
+    {
+      val () = (r0 := ys)
+    } (* list0_nil *)
+  | list0_cons(x0, xs) =>
+    {
+      val () =
+      (r0 := list0_cons(x0, _))
+      val+list0_cons(_, r1) = r0
+      val () = loop(xs, r1); prval () = fold@(r0)
+    } (* list0_cons *)
+  ) (* end of [loop] *)
+} (* end of [list0_append] *)
+
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
+list0_revapp
+  (xs, ys) =
+(
+  loop(xs, ys)
+) where
+{
+fun
+loop
+( xs: list0(x0)
+, ys: list0(x0)): list0(x0) =
+(
+case+ xs of
+| list0_nil() => ys
+| list0_cons(x0, xs) =>
+  loop(xs, list0_cons(x0, ys))
+)
+} (* end of [list0_revapp] *)
+//
+implement
+{x0}//tmp
+list0_reverse(xs) =
+(
+  list0_revapp<x0>(xs, list0_nil())
+) (* end of [list0_reverse] *)
+//
+(* ****** ****** *)
+
+implement
+{x0}//tmp
 list0_forall(xs) =
 (
   loop(xs)
@@ -137,7 +215,7 @@ case+ xs of
   let
     val () = list0_foreach$work<x0>(x0) in loop(xs)
   end
-} (* end of [list0_forall] *)
+} (* end of [list0_foreach] *)
 
 (* ****** ****** *)
 
@@ -152,6 +230,50 @@ gseq_foreach<list0(x0)><x0>
 implement
 list0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
 } (* end of [gseq_foreach] *)
+
+(* ****** ****** *)
+
+implement
+{x0}{r0}
+list0_foldleft
+  (xs, r0) =
+(
+  loop(xs, r0)
+) where
+{
+//
+typedef xs = list0(x0)
+//
+fun
+loop
+(xs: xs, r0: r0): r0 =
+case+ xs of
+| list0_nil() => r0
+| list0_cons(x0, xs) =>
+  loop(xs, list0_foldleft$fopr<x0><r0>(r0, x0))
+} (* end of [list0_foldleft] *)
+
+(* ****** ****** *)
+
+implement
+{x0}{r0}
+list0_foldright
+  (xs, r0) =
+(
+  auxlst(xs, r0)
+) where
+{
+//
+typedef xs = list0(x0)
+//
+fun
+auxlst
+(xs: xs, r0: r0): r0 =
+case+ xs of
+| list0_nil() => r0
+| list0_cons(x0, xs) =>
+  list0_foldright$fopr<x0><r0>(x0, auxlst(xs, r0))
+} (* end of [list0_foldright] *)
 
 (* ****** ****** *)
 

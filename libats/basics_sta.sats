@@ -305,7 +305,7 @@ sexpdef opt = opt_vtflt_bool_vtflt
 (* ****** ****** *)
 
 absprop // invariance
-vbox_view_prop (v:view)
+vbox_view_prop(v:view)
 propdef
 vbox(v:view) = vbox_view_prop(v)
 
@@ -413,18 +413,15 @@ sexpdef tup_vt = tup4_vt
 // Please see $PATSHOME/utils/atexting/TEST
 //
 (*
-abstflt
-literal_int(intlit) = $extype"atsliteral_int"
-*)
-//
-(*
-abstflt
-literal_float(float) = $extype"atsliteral_float"
-*)
-//
-(*
-abstflt
-literal_string(string) = $extype"atsliteral_string"
+abstbox
+literal_int
+(value: int) = $extype"atsliteral_int"
+abstbox
+literal_float
+(value: float) = $extype"atsliteral_float"
+abstbox
+literal_string
+(value: string) = $extype"atsliteral_string"
 *)
 //
 *)
