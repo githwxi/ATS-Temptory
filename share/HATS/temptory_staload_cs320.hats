@@ -105,12 +105,29 @@ TEMPLIB_targetloc
 "libats/SATS/print.sats"
 #staload _ =
 "libats/DATS/print.dats"
+//
 (* ****** ****** *)
 //
 #staload
 "libats/SATS/stdio.sats"
 #staload _ =
 "libats/DATS/stdio.dats"
+//
+(* ****** ****** *)
+//
+#staload
+"libats/SATS/stream.sats"
+#staload _ =
+"libats/DATS/stream.dats"
+#staload _ =
+"libats/DATS/gseq_stream.dats"
+//
+(* ****** ****** *)
+//
+#staload
+"libats/SATS/stream_vt.sats"
+#staload _ =
+"libats/DATS/stream_vt.dats"
 //
 (* ****** ****** *)
 //
@@ -142,7 +159,7 @@ sexpdef optn = optn0
 #define none optn0_none
 #define some optn0_some
 
-#define sing(x) cons(x, nil)
+#define sing(x) cons(x, nil())
 
 (* ****** ****** *)
 

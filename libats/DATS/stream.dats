@@ -41,130 +41,111 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/bool.sats"
 #staload "./../SATS/gseq.sats"
-#staload "./../SATS/list.sats"
-#staload "./../SATS/list_vt.sats"
+#staload "./../SATS/stream.sats"
 
 (* ****** ****** *)
-//
+
 implement
-{x0}//tmp
-list0_vt_concat
-  (xss) =
+{x0}(*tmp*)
+stream_append
+  (xs, ys) =
 (
-case+ xss of
-| ~list0_vt_nil() =>
-   list0_vt_nil()
-| ~list0_vt_cons(xs0, xss) =>
-  (
-  case+ xss of
-  | ~list0_vt_nil() => xs0
-  | ~list0_vt_cons(xs1, xss) =>
-    (
-    let
-      var r0: ptr?
-    in
-      r0 := xs0; loop(r0, xs1, xss); r0
-    end
-    )
-  )
+  auxmain(xs, ys)
 ) where
 {
 //
-vtypedef xs = list0_vt(x0)
-vtypedef xss = list0_vt(xs)
-//
 fun
-loop
-( r0: &xs >> xs
-, xs1: xs, xss: xss): void =
+auxmain:
+$d2ctype
 (
-case+ r0 of
-| ~list0_vt_nil() =>
-  (
-  let
-    val () = (r0 := xs1)
-  in
-    case+ xss of
-    | ~list0_vt_nil
-       ((*void*)) => ()
-    | ~list0_vt_cons
-       (xs1, xss) => loop(r0, xs1, xss)
-  end
-  )
-| @list0_vt_cons(x0, r1) =>
-  (
-    loop(r1, xs1, xss); fold@(r0)
-  ) // end of [list0_vt_cons]
-)
-//
-} (* end of [list0_vt_concat] *)
-
-(* ****** ****** *)
-//
-implement
-{x0}//tmp
-list0_vt_append
-  (xs, ys) =
+stream_append<x0>
+) =
+lam(xs, ys) => $delay
 (
+//
 let
-  var r0: ptr?
+//
+val nx = !xs
+//
 in
-  r0 := xs; loop(r0, ys); r0
-end
-) where
-{
 //
-vtypedef xs = list0_vt(x0)
+case+ nx of
+| stream_nil() => !ys
+| stream_cons(x0, xs) =>
+  stream_cons(x0, auxmain(xs, ys))
 //
+end // end-of-let
+) (* end of [auxmain] *)
 //
-fun
-loop
-(xs0: &xs >> xs, ys0: xs): void =
-(
-case+ xs0 of
-| ~list0_vt_nil() =>
-  (xs0 := ys0)
-| @list0_vt_cons(x0, xs1) =>
-  (loop(xs1, ys0); fold@(xs0))
-)
-} (* end of [list0_vt_append] *)
-//
+} (* end of [stream_append] *)
+
 (* ****** ****** *)
 //
 implement
-{x0}//tmp
-list0_vt_revapp
-  (xs, ys) =
-(
-  loop(xs, ys)
-) where
+{x0}(*tmp*)
+stream_streamize
+  (xs) =
+  (auxmain(xs)) where
 {
 fun
-loop
-( xs0
-: list0_vt(x0)
-, ys0
-: list0_vt(x0)): list0_vt(x0) =
+auxmain:
+$d2ctype
 (
-case+ xs0 of
-| ~list0_vt_nil() => ys0
-| @list0_vt_cons(x0, xs1) =>
-  let
-    val xs2 = xs1
-    val ( ) = (xs1 := ys0)
-  in
-    fold@(xs0); loop(xs2, xs0)
-  end
-)
-} (* end of [list0_vt_revapp] *)
+stream_streamize<x0>
+) =
+lam(xs) => $ldelay
+(
 //
-implement
-{x0}//tmp
-list0_vt_reverse(xs) =
-(
-  list0_vt_revapp<x0>(xs, list0_vt_nil())
-) (* end of [list0_vt_reverse] *)
+case+ !xs of
+| stream_nil() =>
+  stream_vt_nil()
+| stream_cons(x0, xs) =>
+  stream_vt_cons(x0, auxmain(xs))
+//
+) (* end of [auxmain] *)
+} (* end of [stream_streamize] *)
 //
 (* ****** ****** *)
 
-(* end of [list_vt.dats] *)
+implement
+{x0}//tmp
+stream_forall(xs) =
+  (loop(xs)) where
+{
+//
+fun
+loop
+(xs: stream(x0)): bool =
+(
+case+ !xs of
+| stream_nil() => tt
+| stream_cons(x0, xs) =>
+  if
+  stream_forall$test<x0>(x0) then loop(xs) else ff
+)
+} (* end of [stream_forall] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+stream_foreach(xs) =
+  (loop(xs)) where
+{
+//
+fun
+loop
+(xs: stream(x0)): void =
+(
+case+ !xs of
+| stream_nil() => ()
+| stream_cons(x0, xs) =>
+  let
+    val () = stream_foreach$work<x0>(x0) in loop(xs)
+  end // end of [stream_cons]
+)
+} (* end of [stream_foreach] *)
+
+(* ****** ****** *)
+
+(* end of [stream.dats] *)
