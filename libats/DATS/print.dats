@@ -198,5 +198,47 @@ implement
 print$val<tup(a0,a1,a2)>(xs) = tuple3_print<a0,a1,a2>(xs)
 
 (* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+stream_print(xs) =
+(
+stream_print$beg<>();
+loop(0, xs);
+stream_print$end<>();
+) where
+{
+fun
+loop
+( i0: int
+, xs: stream(a)): void =
+(
+case+ !xs of
+| stream_nil() => ()
+| stream_cons(x0, xs) =>
+  (
+  if i0 > 0
+    then stream_print$sep<>();
+  // end of [if]
+  print$val<a>(x0); loop(i0+1, xs)
+  )
+)
+} (* end of [stream_print] *)
+//
+implement
+{}(*tmp*)
+stream_print$beg() = print_string("(")
+implement
+{}(*tmp*)
+stream_print$end() = print_string(")")
+implement
+{}(*tmp*)
+stream_print$sep() = print_string(",")
+//
+implement
+(a:tflt)
+print$val<stream(a)>(xs) = stream_print<a>(xs)
+//
+(* ****** ****** *)
 
 (* end of [print.dats] *)

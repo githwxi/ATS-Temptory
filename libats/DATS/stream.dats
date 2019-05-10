@@ -83,6 +83,16 @@ end // end-of-let
 //
 implement
 {x0}(*tmp*)
+stream_listize
+  (xs) =
+(
+gseq_listize<stream(x0)><x0>(xs)
+)
+//
+(* ****** ****** *)
+//
+implement
+{x0}(*tmp*)
 stream_streamize
   (xs) =
   (auxmain(xs)) where

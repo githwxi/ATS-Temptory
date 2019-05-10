@@ -50,6 +50,10 @@ stream_append
 //
 fun
 {x0:tflt}
+stream_listize
+  (xs: stream(x0)): list0_vt(x0)
+fun
+{x0:tflt}
 stream_streamize
   (xs: stream(x0)): stream_vt(x0)
 //

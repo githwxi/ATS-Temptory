@@ -163,5 +163,19 @@ tuple3_print
 #symload print with tuple3_print
 //
 (* ****** ****** *)
+//
+fun
+{a:tflt}
+stream_print
+(xs: stream(INV(a))): void
+//
+fun{}
+stream_print$beg((*void*)): void
+fun{}
+stream_print$end((*void*)): void
+fun{}
+stream_print$sep((*void*)): void
+//
+(* ****** ****** *)
 
 (* end of [print.sats] *)
