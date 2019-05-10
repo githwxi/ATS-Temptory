@@ -341,8 +341,8 @@ datavtype
 // vtflt+: covariant
 list0_vtflt_vtbox
   (a:vtflt+) =
-| list0_nil_vt(a) of ()
-| list0_cons_vt(a) of
+| list0_vt_nil(a) of ()
+| list0_vt_cons(a) of
   (a, list0_vtflt_vtbox(INV(a)))
 // end of [datavtype]
 //
@@ -354,9 +354,9 @@ datavtype
 // vtflt+: covariant
 list1_vtflt_int_vtbox
   (a:vtflt+, int) =
-| list1_nil_vt(a, 0) of ()
+| list1_vt_nil(a, 0) of ()
 | {n:int | n >= 0}
-  list1_cons_vt(a, n+1) of
+  list1_vt_cons(a, n+1) of
   (a, list1_vtflt_int_vtbox(INV(a), n))
 // end of [list_vtflt_int_vtbox]
 //

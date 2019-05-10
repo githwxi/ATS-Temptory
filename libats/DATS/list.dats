@@ -100,7 +100,7 @@ list0_foldright<xs><xs>(xss, list0_nil())
 typedef xs = list0(x0)
 implement
 list0_foldright$fopr<xs><xs>(xs, r0) = list0_append<x0>(xs, r0)
-}
+} (* end of [list0_concat] *)
 
 (* ****** ****** *)
 //

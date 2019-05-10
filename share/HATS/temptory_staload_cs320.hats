@@ -41,12 +41,25 @@ TEMPLIB_targetloc
 #staload _ =
 "libats/DATS/list.dats"
 //
+#staload _ =
+"libats/DATS/gseq_list0.dats"
+//
+(* ****** ****** *)
+//
+#staload
+"libats/SATS/list_vt.sats"
+#staload _ =
+"libats/DATS/list_vt.dats"
+//
 (* ****** ****** *)
 //
 #staload
 "libats/SATS/optn.sats"
 #staload _ =
 "libats/DATS/optn.dats"
+//
+#staload _ =
+"libats/DATS/gseq_optn0.dats"
 //
 (* ****** ****** *)
 //
