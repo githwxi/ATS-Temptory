@@ -87,18 +87,6 @@ case+ opt of
 | optn0_some(x0) => optn0_forall$test<x0>(x0)
 ) (* end of [optn0_forall] *)
 
-implement
-(x0:tflt)
-gseq_forall<optn0(x0)><x0>
-  (xs) =
-(
-  optn0_forall<x0>(xs)
-) where
-{
-implement
-optn0_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
-} (* end of [gseq_forall] *)
-
 (* ****** ****** *)
 
 implement
@@ -110,18 +98,6 @@ case+ opt of
 | optn0_none() => ()
 | optn0_some(x0) => optn0_foreach$work<x0>(x0)
 ) (* end of [optn0_foreach] *)
-
-implement
-(x0:tflt)
-gseq_foreach<optn0(x0)><x0>
-  (xs) =
-(
-  optn0_foreach<x0>(xs)
-) where
-{
-implement
-optn0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
-} (* end of [gseq_foreach] *)
 
 (* ****** ****** *)
 
