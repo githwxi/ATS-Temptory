@@ -28,6 +28,15 @@ implement
 gseq_map$fopr<char><int>(c0) = char0_ord(c0)
 }
 //
+val () =
+(
+assertloc(string0_forall(abc))
+) where
+{
+implement
+string0_forall<char>(c) = char0_islower(c)
+}
+//
 (* ****** ****** *)
 //
 val
@@ -60,7 +69,7 @@ implement
 fprint$val<int>
 (out, i0) =
 $extfcall
-(void, "fprintf", out, "%x", i0)
+(void, "fprintf", out, "%X", i0)
 in
 val () = println!("ord = ", ord)
 end//local

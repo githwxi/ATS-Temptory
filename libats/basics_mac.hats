@@ -34,7 +34,31 @@
 (* ****** ****** *)
 //
 #macdef
-ignoret(x) = () where { val x = ,(x) }
+ignoret(x) = { val x = ,(x) }
+//
+(* ****** ****** *)
+//
+(*
+** HX: short form
+*)
+#macdef
+orelse(x, y) =
+(if ,(x) then true else ,(y)): bool
+#macdef
+andalso(x, y) =
+(if ,(x) then ,(y) else false): bool
+//
+(* ****** ****** *)
+//
+#macdef
+exitloc(ecd) =
+exit_errmsg(,(ecd), $mylocation)
+//
+(* ****** ****** *)
+//
+#macdef
+assertloc(prop) =
+assert_errmsg(,(prop), $mylocation)
 //
 (* ****** ****** *)
 

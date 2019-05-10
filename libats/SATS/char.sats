@@ -93,6 +93,13 @@ char0_chr: sint -<> char = "mac#%"
 (* ****** ****** *)
 //
 fun
+char0_islower(char):<> bool = "mac#%"
+fun
+char0_isupper(char):<> bool = "mac#%"
+//
+(* ****** ****** *)
+//
+fun
 char0_tolower(char):<> char = "mac#%"
 fun
 char0_toupper(char):<> char = "mac#%"

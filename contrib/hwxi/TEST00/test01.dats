@@ -34,10 +34,17 @@ fact2
 if x > 0 then x * fact2(x-1) else 1
 //
 (* ****** ****** *)
-
-val () = println!("fact1(10) = ", fact1(10))
-val () = println!("fact2(10) = ", fact2(10))
-
+//
+val () =
+(
+  assertloc(fact1(10) = fact2(10))
+)
+//
+val () =
+  println!("fact1(10) = ", fact1(10))
+val () =
+  println!("fact2(10) = ", fact2(10))
+//
 (* ****** ****** *)
 
 (* end of [test01.dats] *)

@@ -74,6 +74,39 @@ atspre_prerr_newline()
 }
 
 /* ****** ****** */
+//
+ATSinline()
+atsvoid_t0ype
+atspre_assert_bool
+  (atstype_bool prop)
+{
+  if (!prop) exit(1) ; return ;
+} /* endfun */
+//
+#define atspre_assert_bool0 atspre_assert_bool
+#define atspre_assert_bool1 atspre_assert_bool
+//
+/* ****** ****** */
+//
+ATSinline()
+atsvoid_t0ype
+atspre_assert_errmsg_bool
+(
+  atstype_bool prop, atstype_string msg0
+)
+{
+  if
+  (!prop)
+  {
+    fprintf(stderr, "%s", (char*)msg0) ; exit(1) ;
+  } // end of [if]
+  return /*nothing*/ ;
+} /* endfun */
+//
+#define atspre_assert_errmsg_bool0 atspre_assert_errmsg_bool
+#define atspre_assert_errmsg_bool1 atspre_assert_errmsg_bool
+//
+/* ****** ****** */
 
 #include "libats/CATS/basics_gint.cats"
 #include "libats/CATS/basics_gptr.cats"

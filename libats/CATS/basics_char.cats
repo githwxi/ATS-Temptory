@@ -41,6 +41,10 @@ temptory_char0_chr(i0) ((char)i0)
 /* ****** ****** */
 
 #define \
+temptory_char0_islower(c) islower(c)
+#define \
+temptory_char0_isupper(c) isupper(c)
+#define \
 temptory_char0_tolower(c) tolower(c)
 #define \
 temptory_char0_toupper(c) toupper(c)
