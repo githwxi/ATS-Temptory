@@ -182,5 +182,23 @@ fun
 list0_foldright$fopr(x0: x0, r0: r0): r0
 //
 (* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_sing(x0): list0_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_free(list0_vt(x0)): void
+fun
+{x0:vtflt}
+list1_vt_free(list1_vt(x0)): void
+//
+#symload free with list0_vt_free of 10
+#symload free with list1_vt_free of 11
+//
+(* ****** ****** *)
 
 (* end of [list.sats] *)

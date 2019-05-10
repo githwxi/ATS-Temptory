@@ -41,6 +41,7 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/bool.sats"
 #staload "./../SATS/gseq.sats"
+#staload "./../SATS/list.sats"
 #staload "./../SATS/stream_vt.sats"
 
 (* ****** ****** *)
@@ -83,6 +84,34 @@ case+ xs of
   stream_vt_cons(x0, auxmain(xs))
 ) (* end of [auxmain] *)
 } (* end of [stream_vt_make_list0] *)
+//
+(* ****** ****** *)
+//
+implement
+{x0}(*tmp*)
+stream_vt_make_list0_vt
+  (xs) =
+  (auxmain(xs)) where
+{
+fun
+auxmain
+(
+xs: list0_vt(x0)
+) : stream_vt(x0) = $ldelay
+(
+(
+case+ xs of
+|
+~list0_vt_nil() =>
+ stream_vt_nil()
+|
+~list0_vt_cons(x0, xs) =>
+ stream_vt_cons(x0, auxmain(xs))
+)
+,
+list0_vt_free<x0>(xs)
+) (* end of [auxmain] *)
+} (* end of [stream_vt_make_list0_vt] *)
 //
 (* ****** ****** *)
 
