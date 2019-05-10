@@ -68,6 +68,13 @@ g1ofg0_list_vt
 //
 (* ****** ****** *)
 //
+castfn
+list0_vt2t
+{a:tflt}
+(list0_vt(INV(a))):<> list0(a)
+//
+(* ****** ****** *)
+//
 fun
 {x0:tflt}
 list0_iseqz(xs: list0(x0)): bool
@@ -113,6 +120,21 @@ list0_reverse(list0(x0)): list0(x0)
 //
 fun
 {x0:tflt}
+list0_listize
+(xs: list0(INV(x0))): list0_vt(x0)
+fun
+{x0:tflt}
+list0_rlistize
+(xs: list0(INV(x0))): list0_vt(x0)
+fun
+{x0:tflt}
+list0_streamize
+(xs: list0(INV(x0))): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
 list0_forall
 (xs: list0(INV(x0))): bool
 fun
@@ -128,6 +150,16 @@ list0_foreach
 fun
 {x0:tflt}
 list0_foreach$work(x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+list0_rforall
+(xs: list0(INV(x0))): bool
+fun
+{x0:tflt}
+list0_rforall$test(x0): bool
 //
 (* ****** ****** *)
 //

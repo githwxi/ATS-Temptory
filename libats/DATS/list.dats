@@ -170,69 +170,165 @@ list0_reverse(xs) =
 
 implement
 {x0}//tmp
-list0_forall(xs) =
+list0_listize
+  (xs) =
 (
-  loop(xs)
+let
+  var r0: ptr?
+in
+  loop(xs, r0); r0
+end
 ) where
 {
+//
+typedef xs = list0(x0)
+//
 fun
-loop(xs: list0(x0)): bool =
+loop
+( xs: xs
+, r0: &ptr? >> list0_vt(x0)
+) : void =
+(
 case+ xs of
-| list0_nil() => true
+| list0_nil() =>
+  (r0 := list0_vt_nil())
 | list0_cons(x0, xs) =>
-  if
-  list0_forall$test<x0>(x0) then loop(xs) else ff
-} (* end of [list0_forall] *)
+  {
+    val () =
+    (r0 := list0_vt_cons(x0, _))
+    val+list0_vt_cons(_, r1) = r0
+    val () = loop(xs, r1); prval () = fold@(r0)
+  } // end of [list0_cons]
+)
+} (* end of [list0_listize] *)
 
 (* ****** ****** *)
 
 implement
-(x0:tflt)
-gseq_forall<list0(x0)><x0>
+{x0}//tmp
+list0_rlistize
   (xs) =
 (
-  list0_forall<x0>(xs)
+loop(xs, list0_vt_nil())
 ) where
 {
+//
+typedef xs = list0(x0)
+vtypedef r0 = list0_vt(x0)
+//
+fun
+loop(xs: xs, r0: r0): r0 =
+(
+case+ xs of
+| list0_nil() => r0
+| list0_cons(x0, xs) =>
+  loop(xs, list0_vt_cons(x0, r0))
+)
+} (* end of [list0_rlistize] *)
+
+(* ****** ****** *)
+
 implement
-list0_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
-} (* end of [gseq_forall] *)
+{x0}//tmp
+list0_streamize
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+fun
+auxmain
+(
+xs: list0(x0)
+) : stream_vt(x0) = $ldelay
+(
+case+ xs of
+| list0_nil() =>
+  stream_vt_nil()
+| list0_cons(x0, xs) =>
+  stream_vt_cons(x0, auxmain(xs))
+)
+} (* end of [list0_streamize] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_forall(xs) =
+  (loop(xs)) where
+{
+//
+fun
+loop
+(xs: list0(x0)): bool =
+(
+case+ xs of
+| list0_nil() => tt
+| list0_cons(x0, xs) =>
+  if
+  list0_forall$test<x0>(x0) then loop(xs) else ff
+)
+} (* end of [list0_forall] *)
 
 (* ****** ****** *)
 
 implement
 {x0}//tmp
 list0_foreach(xs) =
-(
-  loop(xs)
-) where
+  (loop(xs)) where
 {
+//
 fun
-loop(xs: list0(x0)): void =
+loop
+(xs: list0(x0)): void =
+(
 case+ xs of
 | list0_nil() => ()
 | list0_cons(x0, xs) =>
   let
     val () = list0_foreach$work<x0>(x0) in loop(xs)
-  end
+  end // end of [list0_cons]
+)
 } (* end of [list0_foreach] *)
 
 (* ****** ****** *)
 
 implement
-(x0:tflt)
-gseq_foreach<list0(x0)><x0>
-  (xs) =
+{x0}//tmp
+list0_rforall(xs) =
 (
-  list0_foreach<x0>(xs)
+loop
+(list0_rlistize<x0>(xs))
 ) where
 {
-implement
-list0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
-} (* end of [gseq_foreach] *)
+//
+sexpdef xs = list0_vt(x0)
+//
+fun
+free
+(xs: xs): void =
+(
+case xs of
+| ~list0_vt_nil() => ()
+| ~list0_vt_cons(x0, xs) => free(xs)
+)
+fun
+loop(xs: xs): bool =
+(
+case+ xs of
+| ~list0_vt_nil() => tt
+| ~list0_vt_cons(x0, xs) =>
+  if
+  list0_rforall$test<x0>(x0)
+  then loop(xs) else let val () = free(xs) in ff end
+)
+} (* end of [list0_rforall] *)
 
 (* ****** ****** *)
-
+//
+// HX-2019-05-09:
+// tail-recursion
+//
 implement
 {x0}{r0}
 list0_foldleft
@@ -254,7 +350,33 @@ case+ xs of
 } (* end of [list0_foldleft] *)
 
 (* ****** ****** *)
-
+//
+// HX-2019-05-09:
+// tail-recursion
+//
+implement
+{x0}{r0}
+list0_foldright
+  (xs, r0) =
+(
+loop
+(list0_rlistize(xs), r0)
+) where
+{
+//
+sexpdef xs = list0_vt(x0)
+//
+fun
+loop
+(xs: xs, r0: r0): r0 =
+case+ xs of
+| ~list0_vt_nil() => r0
+| ~list0_vt_cons(x0, xs) =>
+   loop(xs, list0_foldright$fopr<x0><r0>(x0, r0))
+//  
+} (* end of [list0_foldright] *)
+//
+(*
 implement
 {x0}{r0}
 list0_foldright
@@ -274,7 +396,8 @@ case+ xs of
 | list0_cons(x0, xs) =>
   list0_foldright$fopr<x0><r0>(x0, auxlst(xs, r0))
 } (* end of [list0_foldright] *)
-
+*)
+//
 (* ****** ****** *)
 
 (* end of [list.dats] *)

@@ -51,6 +51,24 @@ gseq_length(xs): (int)
 fun
 {xs:tflt}
 {x0:tflt}
+gseq_listize
+  (xs: xs): list0_vt(x0)
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_rlistize
+  (xs: xs): list0_vt(x0)
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_streamize
+  (xs: xs): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
 gseq_forall(xs): bool
 fun
 {x0:tflt}
@@ -65,6 +83,26 @@ gseq_foreach(xs): void
 fun
 {x0:tflt}
 gseq_foreach$work(x0): void
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_rforall(xs): bool
+fun
+{x0:tflt}
+gseq_rforall$test(x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_rforeach(xs): void
+fun
+{x0:tflt}
+gseq_rforeach$work(x0): void
 //
 (* ****** ****** *)
 //
@@ -97,14 +135,6 @@ gseq_iforeach(xs): void
 fun
 {x0:tflt}
 gseq_iforeach$work(int, x0): void
-//
-(* ****** ****** *)
-//
-fun
-{xs:tflt}
-{x0:tflt}
-gseq_streamize
-  (xs: xs): stream_vt(x0)
 //
 (* ****** ****** *)
 //

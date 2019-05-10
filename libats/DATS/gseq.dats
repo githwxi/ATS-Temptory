@@ -40,6 +40,7 @@
 //
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gseq.sats"
+#staload "./../SATS/list.sats"
 //
 #staload UN = "./../SATS/unsafe.sats"
 //
@@ -66,11 +67,88 @@ val eqz = gseq_iseqz<xs><x0>(xs)
 } (* end of [gseq_isneqz] *)
 //
 (* ****** ****** *)
-
+//
 implement
 {xs}{x0}
 gseq_length(xs) =
-gseq_foldleft<xs><x0><int>(xs, 0)
+(
+gseq_foldleft<xs><x0><r0>(xs, 0)
+) where
+{
+//
+typedef r0 = int
+//
+implement
+gseq_foldleft$fopr<x0><r0>(r0, x0) = succ(r0)
+} (* end of [gseq_length] *)
+//
+(* ****** ****** *)
+
+(*
+HX-2019-05-09:
+This is wild, isn't it :)
+*)
+implement
+{xs}{x0}
+gseq_listize(xs) = let
+//
+vtypedef p0 = ptr
+//
+implement
+gseq_foldleft$fopr<x0><p0>
+  (p0, x0) =
+  (addr@(r1)) where
+{
+//
+extern
+praxi
+_assert_
+{vw:view}(vw):<prf> void
+extern
+castfn
+_castfn_
+{vt:vtbox}(vt):<fun> (ptr)
+//
+val xs =
+list0_vt_cons(x0, _)
+val+list0_vt_cons(x0, r1) = xs
+//
+val xs = _castfn_(xs)
+val () =
+$UN.ptr0_set<ptr>(p0, xs)
+//
+prval () = _assert_(view@x0)
+prval () = _assert_(view@r1)
+//
+} (* end of [gseq_foldleft$fopr] *)
+//
+var r0: ptr?
+val p0 = addr@(r0)
+val p1 =
+gseq_foldleft<xs><x0><p0>(xs, p0)
+//
+in
+  $UN.ptr0_set(p1, list0_vt_nil);
+  $UN.castvwtp0{list0_vt(x0)}(r0)
+end (* end of [gseq_listize] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}
+gseq_rlistize(xs) =
+(
+gseq_foldleft<xs><x0><r0>(xs, r0)
+) where
+{
+//
+val r0 = list0_vt_nil()
+//
+vtypedef r0 = list0_vt(x0)
+//
+implement
+gseq_foldleft$fopr<x0><r0>(r0, x0) = list0_vt_cons(x0, r0)
+} (* end of [gseq_rlistize] *)
 
 (* ****** ****** *)
 
@@ -146,6 +224,55 @@ end // end of [let]
 //
 in
   ignoret(gseq_forall<xs><x0>(xs))
+end // end of [let]
+//
+(* ****** ****** *)
+
+implement
+{xs}{x0}
+gseq_rforall(xs) =
+(
+loop
+(gseq_rlistize<xs><x0>(xs))
+) where
+{
+fun
+free
+(xs: list0_vt(x0)): void =
+(
+case xs of
+| ~list0_vt_nil() => ()
+| ~list0_vt_cons(x0, xs) => free(xs)
+)
+fun
+loop
+(xs: list0_vt(x0)): bool =
+(
+case+ xs of
+| ~list0_vt_nil() => tt
+| ~list0_vt_cons(x0, xs) =>
+  if
+  gseq_rforall$test<x0>(x0)
+  then loop(xs) else let val () = free(xs) in ff end
+)
+} (* end of [gseq_rforall] *)
+
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+gseq_rforeach(xs) =
+let
+//
+implement
+gseq_rforall$test<x0>(x0) =
+let
+val () =
+gseq_rforeach$work<x0>(x0) in true
+end // end of [let]
+//
+in
+  ignoret(gseq_rforall<xs><x0>(xs))
 end // end of [let]
 //
 (* ****** ****** *)

@@ -23,6 +23,12 @@ board_forall(board): bool
 extern
 fun{}
 board_forall$test(int): bool
+extern
+fun{}
+board_rforall(board): bool
+extern
+fun{}
+board_rforall$test(int): bool
 
 extern
 fun
@@ -76,12 +82,12 @@ fun
 board_print
 (xs: board): void =
 (
-gseq_foreach<board><int>
+gseq_rforeach<board><int>
   (xs)
 ) where
 {
 implement
-gseq_foreach$work<int>(x0) =
+gseq_rforeach$work<int>(x0) =
 (
   loop(0)
 ) where

@@ -67,6 +67,30 @@ gseq_length<list0(x0)><x0>
 ) (* end of [gseq_length] *)
 
 (* ****** ****** *)
+//
+implement
+(x0:tflt)
+gseq_listize<list0(x0)><x0>
+  (xs) =
+(
+  list0_listize<x0>(xs)
+) (* end of [gseq_listize] *)
+implement
+(x0:tflt)
+gseq_rlistize<list0(x0)><x0>
+  (xs) =
+(
+  list0_rlistize<x0>(xs)
+) (* end of [gseq_rlistize] *)
+implement
+(x0:tflt)
+gseq_streamize<list0(x0)><x0>
+  (xs) =
+(
+  list0_streamize<x0>(xs)
+) (* end of [gseq_streamize] *)
+//
+(* ****** ****** *)
 
 implement
 (x0:tflt)
@@ -93,6 +117,20 @@ gseq_foreach<list0(x0)><x0>
 implement
 list0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
 } (* end of [gseq_foreach] *)
+
+(* ****** ****** *)
+
+implement
+(x0:tflt)
+gseq_rforall<list0(x0)><x0>
+  (xs) =
+(
+  list0_rforall<x0>(xs)
+) where
+{
+implement
+list0_rforall$test<x0>(x0) = gseq_rforall$test<x0>(x0)
+} (* end of [gseq_rforall] *)
 
 (* ****** ****** *)
 
