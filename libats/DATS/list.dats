@@ -65,7 +65,7 @@ implement
 {x0}//tmp
 list0_length(xs) =
 (
-  loop(xs, 0)
+$effmask_all(loop(xs, 0))
 ) where
 {
 fun

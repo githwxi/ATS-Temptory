@@ -16,17 +16,38 @@ SHARE_TEMPTORY_STALOAD_CS320 1
 
 (* ****** ****** *)
 //
+(*
 #define
 TEMPLIB_targetloc
 "$TEMPTORY/libats" // for ATSPRE
+*)
 //
 (* ****** ****** *)
 //
 #staload
 "libats/SATS/gint.sats"
+//
+(* ****** ****** *)
+//
 #staload
 "libats/SATS/gptr.sats"
+#staload _ =
+"libats/DATS/gptr.dats"
 //
+(* ****** ****** *)
+
+#staload
+"libats/SATS/bool.sats"
+#staload _ =
+"libats/DATS/bool.dats"
+
+(* ****** ****** *)
+
+#staload
+"libats/SATS/char.sats"
+#staload _ =
+"libats/DATS/char.dats"
+
 (* ****** ****** *)
 //
 #staload
@@ -60,6 +81,23 @@ TEMPLIB_targetloc
 //
 #staload _ =
 "libats/DATS/gseq_optn0.dats"
+//
+(* ****** ****** *)
+
+#staload
+"libats/SATS/float.sats"
+#staload _ =
+"libats/DATS/float.dats"
+
+(* ****** ****** *)
+//
+#staload
+"libats/SATS/string.sats"
+#staload _ =
+"libats/DATS/string.dats"
+//
+#staload _ =
+"libats/DATS/gseq_string.dats"
 //
 (* ****** ****** *)
 //

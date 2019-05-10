@@ -107,6 +107,7 @@ typedef atstype_char *atstype_strptr ;
 */
 typedef void *atstype_ptr ;
 typedef void *atstype_ptrk ;
+typedef void *atstype_cptr ;
 /*
 ** HX: for references
 */
@@ -169,6 +170,11 @@ atstype_var atstype_struct
 #define \
 atstyvar_type(tflt) atstype_var
 //
+/* ****** ****** */
+
+typedef void* atstype_funptr ;
+typedef void* atstype_cloptr ;
+
 /* ****** ****** */
 
 #define atstkind_type(tknd) tknd

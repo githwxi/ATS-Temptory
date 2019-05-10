@@ -49,6 +49,18 @@ VERBOSE_PRELUDE
 #define RD(x) x // for commenting: read-only
 
 (* ****** ****** *)
+
+(*
+abstflt atstype_int // internal
+abstflt atstype_bool // internal
+abstflt atstype_uint // internal
+*)
+abstflt atstype_size // internal
+(*
+abstflt atstype_ssize // internal
+*)
+
+(* ****** ****** *)
 //
 // HX: unindexed type for pointers
 //
@@ -89,12 +101,26 @@ cptr_vtflt_tbox
   (a: vtflt) = $extype"atstype_cptr"
 abstbox
 cptr_vtflt_addr_tbox
-  (a:vtflt, l: addr) = cptr_vtflt_tbox(a)
+  (a:vtflt, l:addr) = cptr_vtflt_tbox(a)
+//
+sexpdef cptr = cptr_vtflt_tbox
+sexpdef cptr = cptr_vtflt_addr_tbox
+//
+sexpdef cptr0 = cptr_vtflt_tbox
+sexpdef cptr1 = cptr_vtflt_addr_tbox
 //
 typedef
-cptr0(a:vtflt) = cptr_vtflt_tbox(a)
+Cptr(a:vtflt) = [l:addr] cptr(a, l)
 typedef
-cptr1(a:vtflt, l:addr) = cptr_vtflt_addr_tbox(a, l)
+Cptr0(a:vtflt) = [l:agez] cptr(a, l)
+typedef
+Cptr1(a:vtflt) = [l:addr|l > null] cptr(a, l)
+//
+(*
+typedef
+Cptrnul(a:vtflt,l:addr) =
+  [l1:addr | l1 == null || l1 == l] cptr(a, l1)
+*)
 //
 (* ****** ****** *)
 
@@ -152,7 +178,7 @@ typedef
 ulint(i:int) = g1int_int_t0ype(ulint_tk, i)
 //
 typedef
-size = g0int_t0ype(ssize_tk)
+size = g0int_t0ype(usize_tk)
 typedef
 ssize = g0int_t0ype(ssize_tk)
 typedef
@@ -236,7 +262,7 @@ typedef scharNZ = [c:int8 | c != 0] schar(c)
 abstflt
 uchar_t0ype = $extype"atstype_uchar"
 abstflt
-uchar_int_t0ype (c:int) = uchar_t0ype
+uchar_int_t0ype(c:int) = uchar_t0ype
 //
 typedef uchar = uchar_t0ype // shorthand
 sexpdef uchar = uchar_int_t0ype // shorthand
@@ -246,41 +272,50 @@ typedef ucharNZ = [c:uint8 | c != 0] uchar(c)
 (* ****** ****** *)
 //
 abstbox
-string_type = ptr // = char* in C
+string_t1ype = $extype"atstype_string"
 abstbox
-string_int_type(n: int) = string_type
+string_int_t1ype(n: int) = string_t1ype
 //
 sexpdef
-string0 = string_type
+string = string_t1ype
 sexpdef
-string1 = string_int_type
+string = string_int_t1ype
 //
-sexpdef string = string1 // 2nd-select
-sexpdef string = string0 // 1st-select
+sexpdef
+string0 = string_t1ype
+sexpdef
+string1 = string_int_t1ype
 //
 typedef
-String = [n:int] string_int_type(n)
+String = [n:int] string(n)
 typedef
-String0 = [n:int | n >= 0] string_int_type(n)
+String0 = [n:int | n >= 0] string(n)
 typedef
-String1 = [n:int | n >= 1] string_int_type(n)
+String1 = [n:int | n >= 1] string(n)
 //
 (* ****** ****** *)
 //
 abstbox
-stropt_int_type(n:int) = ptr
+stropt_t1ype = string_t1ype
+abstbox
+stropt_int_t1ype(n:int) = stropt_t1ype
+//
+sexpdef
+stropt = stropt_t1ype
+sexpdef
+stropt = stropt_int_t1ype
+//
+sexpdef
+stropt0 = stropt_t1ype
+sexpdef
+stropt1 = stropt_int_t1ype
 //
 typedef
-stropt(n:int) = stropt_int_type(n)
-//
+Stropt = [n:int] stropt(n)
 typedef
-stropt = [n:int] stropt_int_type(n)
+Stropt0 = [n:int] stropt(n)
 typedef
-Stropt = [n:int] stropt_int_type(n)
-typedef
-Stropt0 = [n:int] stropt_int_type(n)
-typedef
-Stropt1 = [n:int | n >= 0] stropt_int_type(n)
+Stropt1 = [n:int | n >= 0] stropt(n)
 //
 (* ****** ****** *)
 //

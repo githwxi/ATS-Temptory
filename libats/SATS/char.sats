@@ -40,53 +40,56 @@ ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 //
-castfn
-ptr2cptr
-{a:vtflt}(p: ptr):<> cptr(a)
-castfn
-cptr2ptr
-{a:vtflt}(cp: cptr(a)):<> ptr
+fun
+g0lt_char_char
+( x: char
+, y: char):<> bool = "mac#%"
+fun
+g0gt_char_char
+( x: char
+, y: char):<> bool = "mac#%"
+fun
+g0eq_char_char
+( x: char
+, y: char):<> bool = "mac#%"
+//
+fun
+g0lte_char_char
+( x: char
+, y: char):<> bool = "mac#%"
+fun
+g0gte_char_char
+( x: char
+, y: char):<> bool = "mac#%"
+fun
+g0neq_char_char
+( x: char
+, y: char):<> bool = "mac#%"
+//
+#symload < with g0lt_char_char
+#symload > with g0gt_char_char
+#symload = with g0eq_char_char
+#symload <= with g0lte_char_char
+#symload >= with g0gte_char_char
+#symload != with g0neq_char_char
 //
 (* ****** ****** *)
 //
-castfn
-g0ofg1_ptr
-{l:addr}
-(p1: ptr1(l)):<> ptr0
-castfn
-g1ofg0_ptr
-(p0: ptr0):<> [l:addr] ptr1(l)
+fun{}
+char0_iseqz(char):<> bool
+fun{}
+char0_isneqz(char):<> bool
 //
-#symload g0ofg1 with g0ofg1_ptr
-#symload g1ofg0 with g1ofg0_ptr
+#symload iseqz with char0_iseqz
+#symload isneqz with char0_isneqz
+//
+(* ****** ****** *)
+//
+fun
+char0_tolower(char):<> char = "mac#%"
+fun
+char0_toupper(char):<> char = "mac#%"
 //
 (* ****** ****** *)
 
-fun
-g0add_ptr_int
-(ptr, bsz: int): ptr = "mac#%"
-fun
-g0sub_ptr_int
-(ptr, bsz: int): ptr = "mac#%"
-fun
-g0add_ptr_size
-(ptr, bsz: size): ptr = "mac#%"
-fun
-g0sub_ptr_size
-(ptr, bsz: size): ptr = "mac#%"
-
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-cptr0_succ(cp: cptr(a)): cptr(a)
-fun
-{a:vtflt}
-cptr0_pred(cp: cptr(a)): cptr(a)
-//
-#symload succ with cptr0_succ of 0
-#symload pred with cptr0_pred of 0
-//
-(* ****** ****** *)
-
-(* end of [gptr.sats] *)
+(* end of [char.sats] *)

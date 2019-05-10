@@ -140,11 +140,11 @@ gseq_iforeach$work(int, x0): void
 //
 fun
 {x0:tflt}
-{y0:tflt}
+{y0:vtflt}
 gseq_map$fopr(x0): (y0)
 fun
 {x0:tflt}
-{y0:tflt}
+{y0:vtflt}
 gseq_imap$fopr(int, x0): (y0)
 //
 (* ****** ****** *)

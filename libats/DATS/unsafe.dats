@@ -75,5 +75,14 @@ ptr0_set
 } (* end of [ptr0_set] *)
 
 (* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+cptr0_get(cp) = ptr0_get<a>(cptr2ptr(cp))
+implement
+{a}(*tmp*)
+cptr0_set(cp, x0) = ptr0_set<a>(cptr2ptr(cp), x0)
+//
+(* ****** ****** *)
 
 (* end of [unsafe.dats] *)

@@ -85,10 +85,19 @@ castvwtp1
 //
 fun
 {a:vtflt}
-ptr0_get(p0: ptr):<> (a)
+ptr0_get(p0: ptr): (a)
 fun
 {a:vtflt}
 ptr0_set(p0: ptr, x0: INV(a)):<!wrt> void
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+cptr0_get(cp: cptr(a)): (a)
+fun
+{a:vtflt}
+cptr0_set(cp: cptr(a), x: INV(a)):<!wrt> void
 //
 (* ****** ****** *)
 

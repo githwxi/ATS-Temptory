@@ -77,10 +77,10 @@ list0_vt2t
 //
 fun
 {x0:tflt}
-list0_iseqz(xs: list0(x0)): bool
+list0_iseqz(list0(x0)):<> bool
 fun
 {x0:tflt}
-list0_isneqz(xs: list0(x0)): bool
+list0_isneqz(list0(x0)):<> bool
 //
 #symload iseqz with list0_iseqz
 #symload isneqz with list0_isneqz
@@ -89,7 +89,7 @@ list0_isneqz(xs: list0(x0)): bool
 //
 fun
 {x0:tflt}
-list0_length(xs: list0(x0)): int
+list0_length(list0(x0)):<> (int)
 //
 #symload length with list0_length
 //

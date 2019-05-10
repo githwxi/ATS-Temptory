@@ -351,4 +351,75 @@ end // end of [let]
 //
 (* ****** ****** *)
 
+implement
+{xs}{x0}{y0}
+gseq_map_list(xs) = let
+//
+vtypedef p0 = ptr
+//
+implement
+gseq_foldleft$fopr<x0><p0>
+  (p0, x0) =
+  (addr@(r1)) where
+{
+//
+extern
+praxi
+_assert_
+{vw:view}(vw):<prf> void
+extern
+castfn
+_castfn_
+{vt:vtbox}(vt):<fun> (ptr)
+//
+val y0 =
+gseq_map$fopr<x0><y0>(x0)
+val ys = list0_vt_cons(y0, _)
+val+list0_vt_cons(y0, r1) = ys
+//
+val ys = _castfn_(ys)
+val () =
+$UN.ptr0_set<ptr>(p0, ys)
+//
+prval () = _assert_(view@y0)
+prval () = _assert_(view@r1)
+//
+} (* end of [gseq_foldleft$fopr] *)
+//
+var r0: ptr?
+val p0 = addr@(r0)
+val p1 =
+gseq_foldleft<xs><x0><p0>(xs, p0)
+//
+in
+  $UN.ptr0_set(p1, list0_vt_nil);
+  $UN.castvwtp0{list0_vt(y0)}(r0)
+end (* end of [gseq_map_list] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}{y0}
+gseq_map_rlist(xs) =
+(
+gseq_foldleft<xs><x0><r0>(xs, r0)
+) where
+{
+//
+val r0 = list0_vt_nil()
+//
+vtypedef r0 = list0_vt(y0)
+//
+implement
+gseq_foldleft$fopr<x0><r0>(r0, x0) =
+(
+  list0_vt_cons(y0, r0)
+) where
+{
+  val y0 = gseq_map$fopr<x0><y0>(x0)
+}
+} (* end of [gseq_map_rlist] *)
+
+(* ****** ****** *)
+
 (* end of [gseq.dats] *)

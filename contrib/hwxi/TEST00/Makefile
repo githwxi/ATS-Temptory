@@ -55,6 +55,13 @@ test04_dats.c: test04.dats; $(TEMPOPT) -cc -o $@ -d $<
 
 ######
 
+test05_dats: \
+test05_dats.c ; \
+$(GCC) -DATS_MEMALLOC_LIBC $(INCLUDE) -o $@ $<
+test05_dats.c: test05.dats; $(TEMPOPT) -cc -o $@ -d $<
+
+######
+
 regress:: \
 test01_dats; ./test01_dats
 regress:: \
@@ -63,6 +70,8 @@ regress:: \
 test03_dats; ./test03_dats
 regress:: \
 test04_dats; ./test04_dats
+regress:: \
+test05_dats; ./test05_dats
 
 ######
 
@@ -84,5 +93,6 @@ cleanall:: ; $(RMF) test01_dats
 cleanall:: ; $(RMF) test02_dats
 cleanall:: ; $(RMF) test03_dats
 cleanall:: ; $(RMF) test04_dats
+cleanall:: ; $(RMF) test05_dats
 
 ###### end of [Makefile] ######

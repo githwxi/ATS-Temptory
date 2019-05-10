@@ -33,6 +33,26 @@
 //
 /* ****** ****** */
 
+#define \
+temptory_char0_tolower(c) tolower(c)
+#define \
+temptory_char0_toupper(c) toupper(c)
+
+/* ****** ****** */
+
+#define \
+temptory_g0lt_char_char(x, y) (( x < y ) ? 1 : 0)
+#define \
+temptory_g0gt_char_char(x, y) (( x > y ) ? 1 : 0)
+#define \
+temptory_g0eq_char_char(x, y) (( x == y ) ? 1 : 0)
+#define \
+temptory_g0lte_char_char(x, y) (( x <= y ) ? 1 : 0)
+#define \
+temptory_g0gte_char_char(x, y) (( x >= y ) ? 1 : 0)
+#define \
+temptory_g0neq_char_char(x, y) (( x != y ) ? 1 : 0)
+
 /* ****** ****** */
 
 /* end of [basics_char.cats] */

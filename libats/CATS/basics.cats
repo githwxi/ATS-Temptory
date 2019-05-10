@@ -42,6 +42,7 @@
 
 /* ****** ****** */
 
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -75,6 +76,7 @@ atspre_prerr_newline()
 /* ****** ****** */
 
 #include "libats/CATS/basics_gint.cats"
+#include "libats/CATS/basics_gptr.cats"
 #include "libats/CATS/basics_bool.cats"
 #include "libats/CATS/basics_char.cats"
 #include "libats/CATS/basics_float.cats"

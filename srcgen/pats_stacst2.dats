@@ -1035,10 +1035,10 @@ end // end of [local]
 
 implement
 the_string_type =
-s2cstref_make("string_type")
+s2cstref_make("string_t1ype")
 implement
 the_string_int_type =
-s2cstref_make("string_int_type")
+s2cstref_make("string_int_t1ype")
 
 implement
 s2exp_string_type () =
