@@ -72,6 +72,16 @@ $effmask_all
 )
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string0_indexof(cs, c0) =
+(
+$effmask_all
+(gseq_indexof<string><char>(cs, c0))
+)
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)

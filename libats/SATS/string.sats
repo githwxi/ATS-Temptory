@@ -68,6 +68,14 @@ string0_length(string):<> (int)
 (* ****** ****** *)
 //
 fun{}
+string0_indexof
+  (cs: string, c0: char):<> (int)
+//
+#symload indexof with string0_indexof
+//
+(* ****** ****** *)
+//
+fun{}
 string0_forall(cs: string): bool
 fun{}
 string0_forall$test(c0: char): bool

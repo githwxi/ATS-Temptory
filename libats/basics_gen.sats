@@ -82,7 +82,7 @@ gclear$ref(x: &a >> a?):<!wrt> void
 //
 fun
 {a:vtflt}
-gequal$val(x: !a, y: !a):<> bool
+gequal$val(x: !INV(a), y: !a):<> bool
 //
 fun
 {a:vtflt}
@@ -92,7 +92,7 @@ gequal$ref(x: &INV(a), y: &a):<> bool
 (*
 fun
 {a:vtflt}
-tostring$val(x: !a):<> string
+tostring$val(x: !INV(a)):<> string
 fun
 {a:vtflt}
 tostring$ref(x: &INV(a)):<> string
@@ -101,7 +101,7 @@ tostring$ref(x: &INV(a)):<> string
 (*
 fun
 {a:vtflt}
-tostrptr$val(x: !a):<!wrt> Strptr1
+tostrptr$val(x: !INV(a)):<!wrt> Strptr1
 fun
 {a:vtflt}
 tostrptr$ref(x: &INV(a)):<!wrt> Strptr1

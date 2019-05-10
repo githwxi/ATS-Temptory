@@ -32,7 +32,11 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 /* ****** ****** */
-
+//
+#define \
+temptory_bool0_neg(x) \
+((x) ? atsbool_false : atsbool_true)
+//
 /* ****** ****** */
 
 /* end of [basics_bool.cats] */

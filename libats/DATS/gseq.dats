@@ -39,6 +39,7 @@
 (* ****** ****** *)
 //
 #staload "./../SATS/gint.sats"
+#staload "./../SATS/bool.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
 //
@@ -81,6 +82,40 @@ typedef r0 = int
 implement
 gseq_foldleft$fopr<x0><r0>(r0, x0) = succ(r0)
 } (* end of [gseq_length] *)
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+gseq_indexof
+  (xs, x0) =
+(
+let
+val
+test =
+gseq_exists<xs><x0>(xs)
+in
+if test
+then $UN.ptr0_get<int>(p0) else (~1)
+end
+) where
+{
+//
+var i0: int = ~1
+val p0 = addr@(i0)
+//
+implement
+gseq_exists$test<x0>
+  (x1) =
+(
+  gequal$val<x0>(x0, x1)
+) where
+{
+val i0 = $UN.ptr0_get<int>(p0)
+val () = $UN.ptr0_set<int>(p0, succ(i0))
+} (* end of [where] *)
+//
+} (* end of [gseq_indexof] *)
 //
 (* ****** ****** *)
 
@@ -180,6 +215,21 @@ in
 end // end of [let]
 )
 } (* end of [gseq_forall] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}
+gseq_exists(xs) =
+(
+not(gseq_forall<xs><x0>(xs))
+) where
+{
+//
+implement
+gseq_forall$test<x0>(x0) = not(gseq_exists$test<x0>(x0))
+//
+} (* end of [gseq_exists] *)
 
 (* ****** ****** *)
 //

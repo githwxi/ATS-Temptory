@@ -51,6 +51,13 @@ gseq_length(xs): (int)
 fun
 {xs:tflt}
 {x0:tflt}
+gseq_indexof(xs, x0): int
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
 gseq_listize
   (xs: xs): list0_vt(x0)
 fun
@@ -73,6 +80,14 @@ gseq_forall(xs): bool
 fun
 {x0:tflt}
 gseq_forall$test(x0): bool
+//
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_exists(xs): bool
+fun
+{x0:tflt}
+gseq_exists$test(x0): bool
 //
 (* ****** ****** *)
 //

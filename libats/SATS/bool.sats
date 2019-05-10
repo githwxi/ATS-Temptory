@@ -40,8 +40,12 @@ ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 //
-fun{}
-bool0_neg(bool): bool
+fun
+bool0_neg(bool): bool = "mac#%"
+//
+#symload ~ with bool0_neg of 10
+#symload not with bool0_neg of 10
+#symload neg with bool0_neg of 10
 //
 (* ****** ****** *)
 

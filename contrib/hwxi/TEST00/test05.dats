@@ -34,7 +34,7 @@ assertloc(string0_forall(abc))
 ) where
 {
 implement
-string0_forall<char>(c) = char0_islower(c)
+string0_forall$test<>(c) = char0_islower(c)
 }
 //
 (* ****** ****** *)
@@ -60,6 +60,16 @@ list0_vt2t
 implement
 gseq_map$fopr<char><int>(c0) = char0_ord(c0)
 }
+//
+val () =
+(
+assertloc(list0_forall(ABC))
+) where
+{
+implement
+list0_forall$test<char>(c) = char0_isupper(c)
+}
+//
 (* ****** ****** *)
 //
 val () = println!("abc = ", abc)
@@ -77,6 +87,9 @@ end//local
 val () = println!("ABC = ", ABC)
 //
 val () = println!("ORD = ", ORD)
+//
+val () = println!("indexof(abc,z) = ", indexof(abc, 'z'))
+val () = println!("indexof(abc,A) = ", indexof(abc, 'A'))
 //
 (* ****** ****** *)
 

@@ -53,6 +53,13 @@ temptory_g0abs_slint
 }
 
 /* ****** ****** */
+
+#define \
+temptory_g0neg_sint(x) (-x)
+#define \
+temptory_g1neg_sint(x) (-x)
+
+/* ****** ****** */
 //
 #define \
 temptory_g0succ_sint(x) (x + 1)

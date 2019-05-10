@@ -114,6 +114,21 @@ g0abs_slint
 (* ****** ****** *)
 //
 fun
+g0neg_sint
+(x: sint): sint = "mac#%"
+fun
+g1neg_sint
+{i:int}
+(x: sint(i)): sint(~i) = "mac#%"
+//
+#symload ~ with g0neg_sint of 10
+#symload ~ with g1neg_sint of 11
+#symload neg with g0neg_sint of 10
+#symload neg with g1neg_sint of 11
+//
+(* ****** ****** *)
+//
+fun
 {k1:tflt}
 {k2:tflt}
 g0int_succ
