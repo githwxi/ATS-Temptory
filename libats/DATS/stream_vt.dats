@@ -44,6 +44,47 @@
 #staload "./../SATS/stream_vt.sats"
 
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+stream_vt_make_nil() =
+$ldelay
+(stream_vt_nil(*void*))
+//
+implement
+{x0}(*tmp*)
+stream_vt_make_sing(x0) =
+$ldelay
+(
+let
+val xs =
+stream_vt_make_nil()
+in stream_vt_cons(x0, xs) end, gfree$val<x0>(x0)
+) (* stream_vt_make_sing *)
+//
+(* ****** ****** *)
+//
+implement
+{x0}(*tmp*)
+stream_vt_make_list0
+  (xs) =
+  (auxmain(xs)) where
+{
+fun
+auxmain
+(
+xs: list0(x0)
+) : stream_vt(x0) = $ldelay
+(
+case+ xs of
+| list0_nil() =>
+  stream_vt_nil()
+| list0_cons(x0, xs) =>
+  stream_vt_cons(x0, auxmain(xs))
+) (* end of [auxmain] *)
+} (* end of [stream_vt_make_list0] *)
+//
+(* ****** ****** *)
 
 implement
 {a}(*tmp*)

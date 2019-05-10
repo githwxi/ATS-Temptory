@@ -41,8 +41,50 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/bool.sats"
 #staload "./../SATS/gseq.sats"
+#staload "./../SATS/list.sats"
 #staload "./../SATS/stream.sats"
 
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+stream_make_nil() =
+$delay
+(stream_nil(*void*))
+implement
+{x0}(*tmp*)
+stream_make_sing(x0) =
+$delay
+(stream_cons(x0, stream_make_nil()))
+//
+implement
+{x0}(*tmp*)
+stream_make_list0
+  (xs) =
+  (auxmain(xs)) where
+{
+fun
+auxmain
+(
+xs: list0(x0)
+) : stream(x0) = $delay
+(
+case+ xs of
+| list0_nil() =>
+  stream_nil()
+| list0_cons(x0, xs) =>
+  stream_cons(x0, auxmain(xs))
+) (* end of [auxmain] *)
+} (* end of [stream_make_list0] *)
+//
+implement
+{x0}(*tmp*)
+stream_make_list0_vt
+  (xs) =
+(
+  stream_make_list0<x0>(list0_vt2t(xs))
+)
+//
 (* ****** ****** *)
 
 implement

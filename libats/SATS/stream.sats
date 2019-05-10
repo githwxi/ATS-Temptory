@@ -40,6 +40,31 @@ ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 //
+fun{}
+stream_make_nil
+{x0:tflt}
+((*void*)): stream(x0)
+fun
+{x0:tflt}
+stream_make_sing
+  (xs: x0): stream(x0)
+//
+fun
+{x0:tflt}
+stream_make_list0
+  (xs: list0(x0)): stream(x0)
+fun
+{x0:tflt}
+stream_make_list0_vt
+  (xs: list0_vt(x0)): stream(x0)
+//
+#symload
+stream_make with stream_make_list0
+#symload
+stream_make with stream_make_list0_vt
+//
+(* ****** ****** *)
+//
 fun
 {x0:tflt}
 stream_append
