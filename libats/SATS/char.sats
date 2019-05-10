@@ -86,6 +86,13 @@ char0_isneqz(char):<> bool
 (* ****** ****** *)
 //
 fun
+char0_ord: char -<> sint = "mac#%"
+fun
+char0_chr: sint -<> char = "mac#%"
+//
+(* ****** ****** *)
+//
+fun
 char0_tolower(char):<> char = "mac#%"
 fun
 char0_toupper(char):<> char = "mac#%"

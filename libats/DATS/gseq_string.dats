@@ -44,8 +44,13 @@
 
 (* ****** ****** *)
 
+typedef c0 = char
+typedef cs = string
+
+(* ****** ****** *)
+
 implement
-gseq_streamize<string><char>
+gseq_streamize<cs><c0>
   (cs) =
 (
   string0_streamize<>(cs)
@@ -54,27 +59,27 @@ gseq_streamize<string><char>
 (* ****** ****** *)
 
 implement
-gseq_forall<string><char>
+gseq_forall<cs><c0>
   (cs) =
 (
   string0_forall<>(cs)
 ) where
 {
 implement
-string0_forall$test<>(x0) = gseq_forall$test<char>(x0)
+string0_forall$test<>(x0) = gseq_forall$test<c0>(x0)
 } (* end of [gseq_forall] *)
 
 (* ****** ****** *)
 
 implement
-gseq_foreach<string><char>
+gseq_foreach<cs><c0>
   (cs) =
 (
   string0_foreach<>(cs)
 ) where
 {
 implement
-string0_foreach$work<>(x0) = gseq_foreach$work<char>(x0)
+string0_foreach$work<>(x0) = gseq_foreach$work<c0>(x0)
 } (* end of [gseq_foreach] *)
 
 (* ****** ****** *)

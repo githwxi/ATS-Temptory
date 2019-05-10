@@ -34,6 +34,13 @@
 /* ****** ****** */
 
 #define \
+temptory_char0_ord(c0) ((int)c0)
+#define \
+temptory_char0_chr(i0) ((char)i0)
+
+/* ****** ****** */
+
+#define \
 temptory_char0_tolower(c) tolower(c)
 #define \
 temptory_char0_toupper(c) toupper(c)
