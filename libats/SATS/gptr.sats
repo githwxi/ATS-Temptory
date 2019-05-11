@@ -88,5 +88,16 @@ cptr0_pred(cp: cptr(a)): cptr(a)
 #symload pred with cptr0_pred of 0
 //
 (* ****** ****** *)
+//
+fun
+{a:vtflt}
+g0add_cptr_size
+(cp0: cptr(a), bsz: size): cptr(a)
+fun
+{a:vtflt}
+g0sub_cptr_size
+(cp0: cptr(a), bsz: size): cptr(a)
+//
+(* ****** ****** *)
 
 (* end of [gptr.sats] *)

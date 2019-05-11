@@ -42,15 +42,32 @@ implement
 {a}//tmp
 cptr0_succ(cp) =
 (
-  ptr2cptr{a}
-  (g0add_ptr_size(cptr2ptr(cp), sizeof<a>))
+ptr2cptr{a}
+(g0add_ptr_size(cptr2ptr(cp), sizeof<a>))
 )
 implement
 {a}//tmp
 cptr0_pred(cp) =
 (
-  ptr2cptr{a}
-  (g0sub_ptr_size(cptr2ptr(cp), sizeof<a>))
+ptr2cptr{a}
+(g0sub_ptr_size(cptr2ptr(cp), sizeof<a>))
+)
+//
+(* ****** ****** *)
+//
+implement
+{a}//tmp
+g0add_cptr_size(cp, n0) =
+(
+ptr2cptr{a}
+(g0add_ptr_size(cptr2ptr(cp), n0*sizeof<a>))
+)
+implement
+{a}//tmp
+g0sub_cptr_size(cp, n0) =
+(
+ptr2cptr{a}
+(g0sub_ptr_size(cptr2ptr(cp), n0*sizeof<a>))
 )
 //
 (* ****** ****** *)

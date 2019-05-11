@@ -97,6 +97,15 @@ list0_length(list0(x0)):<> (int)
 //
 fun
 {x0:tflt}
+list0_indexof
+(list0(INV(x0)), elt: x0):<> (int)
+//
+#symload indexof with list0_indexof
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
 list0_concat
 (list0(list0(x0))): list0(x0)
 fun

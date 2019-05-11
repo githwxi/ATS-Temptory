@@ -88,8 +88,9 @@ val () = println!("ABC = ", ABC)
 //
 val () = println!("ORD = ", ORD)
 //
-val () = println!("indexof(abc,z) = ", indexof(abc, 'z'))
+val () = println!("indexof(abc,a) = ", indexof(abc, 'a'))
 val () = println!("indexof(abc,A) = ", indexof(abc, 'A'))
+val () = println!("indexof(ABC,Z) = ", indexof(ABC, 'Z'))
 //
 (* ****** ****** *)
 

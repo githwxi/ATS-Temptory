@@ -89,6 +89,16 @@ gseq_foldleft$fopr<x0><int>(r0, x0) = succ(r0)
 *)
 //
 (* ****** ****** *)
+//
+implement
+{x0}//tmp
+list0_indexof(xs, x0) =
+$effmask_all
+(
+  gseq_indexof<list0(x0)><x0>(xs, x0)
+) (* end of [list0_indexof] *)
+//
+(* ****** ****** *)
 
 implement
 {x0}//tmp
