@@ -140,7 +140,6 @@ end
 //
 vtypedef xs = list0_vt(x0)
 //
-//
 fun
 loop
 (xs0: &xs >> xs, ys0: xs): void =
@@ -189,6 +188,56 @@ list0_vt_reverse(xs) =
   list0_vt_revapp<x0>(xs, list0_vt_nil())
 ) (* end of [list0_vt_reverse] *)
 //
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_vt_foreach(xs) =
+  (loop(xs)) where
+{
+//
+fun
+loop
+(xs: list0_vt(x0)): void =
+(
+case+ xs of
+|
+~list0_vt_nil() => ()
+|
+~list0_vt_cons(x0, xs) =>
+ let
+ val () =
+ list0_vt_foreach$work<x0>(x0) in loop(xs)
+ end // end of [list0_vt_cons]
+) (* end of [loop] *)
+//
+} (* end of [list0_vt_foreach] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_vt_rforeach(xs) =
+  (loop(reverse(xs))) where
+{
+//
+fun
+loop
+(xs: list0_vt(x0)): void =
+(
+case+ xs of
+|
+~list0_vt_nil() => ()
+|
+~list0_vt_cons(x0, xs) =>
+ let
+ val () =
+ list0_vt_rforeach$work<x0>(x0) in loop(xs)
+ end // end of [list0_vt_cons]
+) (* end of [loop] *)
+//
+} (* end of [list0_vt_rforeach] *)
+
 (* ****** ****** *)
 
 (* end of [list_vt.dats] *)

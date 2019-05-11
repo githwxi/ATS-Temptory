@@ -7,7 +7,18 @@
 GCC=gcc \
 -std=c99 -D_XOPEN_SOURCE
 
+CPP=g++ \
+-fpermissive -w \
+-DATS_MEMALLOC_LIBC $(INCLUDE)
+
+RMF=rm -f
+
+######
+
 TEMPOPT= $(TEMPTORY)/bin/tempopt
+TEMPACC= $(TEMPTORY)/bin/tempacc
+# TEMPACC= \
+# $(TEMPTORY)/bin/tempacc -cleanaft
 
 ######
 
@@ -24,64 +35,40 @@ all:: test03_dats
 
 ######
 
-test00: \
-test00.dats; $(TEMPOPT) -tc -d $<
-
-######
-
-test01_dats: \
-test01_dats.c; $(GCC) $(INCLUDE) -o $@ $<
-test01_dats.c: test01.dats; $(TEMPOPT) -cc -o $@ -d $<
-
-######
-
-test02_dats: \
-test02_dats.c; $(GCC) $(INCLUDE) -o $@ $<
-test02_dats.c: test02.dats; $(TEMPOPT) -cc -o $@ -d $<
-
-######
-
-test03_dats: \
-test03_dats.c ; \
-$(GCC) -DATS_MEMALLOC_LIBC $(INCLUDE) -o $@ $<
-test03_dats.c: test03.dats; $(TEMPOPT) -cc -o $@ -d $<
-
-######
-
-test04_dats: \
-test04_dats.c ; \
-$(GCC) -DATS_MEMALLOC_LIBC $(INCLUDE) -o $@ $<
-test04_dats.c: test04.dats; $(TEMPOPT) -cc -o $@ -d $<
-
-######
-
-test05_dats: \
-test05_dats.c ; \
-$(GCC) -DATS_MEMALLOC_LIBC $(INCLUDE) -o $@ $<
-test05_dats.c: test05.dats; $(TEMPOPT) -cc -o $@ -d $<
-
-######
-
-regress:: \
-test01_dats; ./test01_dats
-regress:: \
-test02_dats; ./test02_dats
-regress:: \
-test03_dats; ./test03_dats
-regress:: \
-test04_dats; ./test04_dats
-regress:: \
-test05_dats; ./test05_dats
-
-######
-
 testall:: all
 testall:: regress
 testall:: cleanall
 
 ######
 
-RMF=rm -f
+test00: \
+test00.dats; $(TEMPACC) -tcats -d $<
+
+######
+
+test01_dats: test01.dats; $(TEMPACC) -o $@ $<
+test02_dats: test02.dats; $(TEMPACC) -o $@ $<
+
+######
+
+test03_dats: \
+test03.dats; $(TEMPACC) -DATS_MEMALLOC_LIBC -o $@ $<
+test04_dats: \
+test04.dats; $(TEMPACC) -DATS_MEMALLOC_LIBC -o $@ $<
+
+######
+
+test05_dats: \
+test05_dats.c; $(CPP) -o $@ $<
+test05_dats.c: test05.dats; $(TEMPOPT) -o $@ -d $<
+
+######
+
+regress:: test01_dats; ./test01_dats
+regress:: test02_dats; ./test02_dats
+regress:: test03_dats; ./test03_dats
+regress:: test04_dats; ./test04_dats
+regress:: test05_dats; ./test05_dats
 
 ######
 

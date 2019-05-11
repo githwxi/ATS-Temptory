@@ -68,7 +68,7 @@ If set, this variable should store the name of the C-compilation command.
 If not set, then the following default name is assumed:
 
 #textpre("\
-gcc -D_XOPEN_SOURCE -I${ATSHOME} -I${TEMPTORY}/ccomp/runtime -L${TEMPTORY}/ccomp/atslib/lib
+gcc -D_XOPEN_SOURCE -I${TEMPTORY} -I${TEMPTORY}/ccomp/runtime -L${TEMPTORY}/ccomp/atslib/lib
 ")
 
 </menu>

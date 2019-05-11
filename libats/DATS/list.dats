@@ -298,7 +298,8 @@ case+ xs of
   let
     val () = list0_foreach$work<x0>(x0) in loop(xs)
   end // end of [list0_cons]
-)
+) (* end of [loop] *)
+//
 } (* end of [list0_foreach] *)
 
 (* ****** ****** *)
@@ -326,13 +327,44 @@ fun
 loop(xs: xs): bool =
 (
 case+ xs of
-| ~list0_vt_nil() => tt
-| ~list0_vt_cons(x0, xs) =>
+|
+~list0_vt_nil() => tt
+|
+~list0_vt_cons(x0, xs) =>
   if
   list0_rforall$test<x0>(x0)
   then loop(xs) else let val () = free(xs) in ff end
-)
+) (* end of [loop] *)
+//
 } (* end of [list0_rforall] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_rforeach(xs) =
+(
+loop
+(list0_rlistize<x0>(xs))
+) where
+{
+//
+sexpdef xs = list0_vt(x0)
+//
+fun
+loop(xs: xs): void =
+(
+case+ xs of
+|
+~list0_vt_nil() => ()
+|
+~list0_vt_cons(x0, xs) =>
+ let
+   val () = list0_rforeach$work<x0>(x0) in loop(xs)
+ end // end of [list_vt_cons]
+) (* end of [loop] *)
+//
+} (* end of [list0_rforeach] *)
 
 (* ****** ****** *)
 //

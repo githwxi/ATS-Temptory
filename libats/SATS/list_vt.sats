@@ -74,19 +74,49 @@ list1_vt_free(list1_vt(INV(x0))): void
 //
 fun
 {x0:vtflt}
-list0_vt_concat
-(list0_vt(list0_vt(x0))): list0_vt(x0)
+list0_vt_append
+( xs: list0_vt(INV(x0))
+, ys: list0_vt(INV(x0))): list0_vt(x0)
+//
 fun
 {x0:vtflt}
-list0_vt_append
-(list0_vt(x0), list0_vt(x0)): list0_vt(x0)
+list0_vt_concat
+(list0_vt(list0_vt(INV(x0)))): list0_vt(x0)
+//
 fun
 {x0:vtflt}
 list0_vt_revapp
-(list0_vt(x0), list0_vt(x0)): list0_vt(x0)
+( xs: list0_vt(INV(x0))
+, ys: list0_vt(INV(x0))): list0_vt(x0)
 fun
 {x0:vtflt}
-list0_vt_reverse(list0_vt(x0)): list0_vt(x0)
+list0_vt_reverse
+  (xs: list0_vt(INV(x0))): list0_vt(x0)
+//
+#symload append with list0_vt_append
+#symload concat with list0_vt_concat
+#symload revapp with list0_vt_revapp
+#symload reverse with list0_vt_reverse
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_foreach
+(xs: list0_vt(INV(x0))): void
+fun
+{x0:vtflt}
+list0_vt_foreach$work(x0: x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_rforeach
+(xs: list0_vt(INV(x0))): void
+fun
+{x0:vtflt}
+list0_vt_rforeach$work(x0: x0): void
 //
 (* ****** ****** *)
 

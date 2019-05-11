@@ -92,22 +92,25 @@ list0_indexof
 //
 fun
 {x0:tflt}
-list0_concat
-(list0(list0(x0))): list0(x0)
+list0_append
+( xs: list0(INV(x0))
+, ys: list0(INV(x0))): list0(x0)
 fun
 {x0:tflt}
-list0_append
-(list0(x0), list0(x0)): list0(x0)
+list0_concat
+(list0(list0(INV(x0)))): list0(x0)
+//
 fun
 {x0:tflt}
 list0_revapp
-(list0(x0), list0(x0)): list0(x0)
+( xs: list0(INV(x0))
+, ys: list0(INV(x0))): list0(x0)
 fun
 {x0:tflt}
-list0_reverse(list0(x0)): list0(x0)
+list0_reverse(list0(INV(x0))): list0(x0)
 //
-#symload concat with list0_concat
 #symload append with list0_append
+#symload concat with list0_concat
 #symload revapp with list0_revapp
 #symload reverse with list0_reverse
 //
@@ -155,6 +158,16 @@ list0_rforall
 fun
 {x0:tflt}
 list0_rforall$test(x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+list0_rforeach
+(xs: list0(INV(x0))): void
+fun
+{x0:tflt}
+list0_rforeach$work(x0): void
 //
 (* ****** ****** *)
 //
