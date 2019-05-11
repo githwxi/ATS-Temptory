@@ -36,6 +36,8 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gptr.sats"
 //
+#staload UN = "./../SATS/unsafe.sats"
+//
 (* ****** ****** *)
 //
 implement
@@ -69,6 +71,61 @@ g0sub_cptr_size(cp, n0) =
 ptr2cptr{a}
 (g0sub_ptr_size(cptr2ptr(cp), n0*sizeof<a>))
 )
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+cptr0_forall(cp) = let
+//
+fun
+loop
+(p0: ptr, pz: ptr): bool =
+(
+if
+(p0 >= pz)
+then true else
+let
+val x0 =
+$UN.ptr0_get<a>(p0)
+val test =
+cptr0_forall$test<a>(x0)
+in // in-of-let
+if
+test
+then loop(p0+sizeof<a>, pz) else false
+end // end-of-let]
+)
+//
+in
+  loop(cptr2ptr(cp), cptr2ptr(cptr0_end<a>(cp)))
+end (* end of [cptr0_forall] *)
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+cptr0_foreach(cp) = let
+//
+fun
+loop
+(p0: ptr, pz: ptr): void =
+(
+if
+(p0 < pz)
+then let
+  val x0 =
+  $UN.ptr0_get<a>(p0)
+  val () =
+  cptr0_foreach$work<a>(x0)
+in // in-of-let
+  loop(p0+sizeof<a>, pz)
+end // end-of-let]
+)
+//
+in
+  loop(cptr2ptr(cp), cptr2ptr(cptr0_end<a>(cp)))
+end (* end of [cptr0_foreach] *)
 //
 (* ****** ****** *)
 

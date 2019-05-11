@@ -61,7 +61,35 @@ g1ofg0_ptr
 #symload g1ofg0 with g1ofg0_ptr
 //
 (* ****** ****** *)
-
+//
+fun
+g0lt_ptr_ptr
+(ptr, ptr): bool = "mac#%"
+fun
+g0gt_ptr_ptr
+(ptr, ptr): bool = "mac#%"
+fun
+g0eq_ptr_ptr
+(ptr, ptr): bool = "mac#%"
+fun
+g0lte_ptr_ptr
+(ptr, ptr): bool = "mac#%"
+fun
+g0gte_ptr_ptr
+(ptr, ptr): bool = "mac#%"
+fun
+g0neq_ptr_ptr
+(ptr, ptr): bool = "mac#%"
+//
+#symload < with g0lt_ptr_ptr of 10
+#symload > with g0gt_ptr_ptr of 10
+#symload = with g0eq_ptr_ptr of 10
+#symload <= with g0lte_ptr_ptr of 10
+#symload >= with g0gte_ptr_ptr of 10
+#symload != with g0neq_ptr_ptr of 10
+//
+(* ****** ****** *)
+//
 fun
 g0add_ptr_int
 (ptr, bsz: int): ptr = "mac#%"
@@ -74,7 +102,16 @@ g0add_ptr_size
 fun
 g0sub_ptr_size
 (ptr, bsz: size): ptr = "mac#%"
-
+//
+#symload + with g0add_ptr_int of 10
+#symload - with g0sub_ptr_int of 10
+#symload + with g0add_ptr_size of 10
+#symload - with g0sub_ptr_size of 10
+//
+(* ****** ****** *)
+//
+// HX: for C-pointers
+//
 (* ****** ****** *)
 //
 fun
@@ -84,8 +121,8 @@ fun
 {a:vtflt}
 cptr0_pred(cp: cptr(a)): cptr(a)
 //
-#symload succ with cptr0_succ of 0
-#symload pred with cptr0_pred of 0
+#symload succ with cptr0_succ of 10
+#symload pred with cptr0_pred of 10
 //
 (* ****** ****** *)
 //
@@ -97,6 +134,54 @@ fun
 {a:vtflt}
 g0sub_cptr_size
 (cp0: cptr(a), bsz: size): cptr(a)
+//
+#symload + with g0add_cptr_size of 10
+#symload - with g0sub_cptr_size of 10
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+cptr0_beg(cptr(a)): cptr(a)
+fun
+{a:vtflt}
+cptr0_end(cptr(a)): cptr(a)
+//
+(* ****** ****** *)
+//
+fun
+{a:tflt}
+cptr0_forall(cptr(a)): bool
+fun
+{a:tflt}
+cptr0_forall$test(x0: a): bool
+//
+(* ****** ****** *)
+//
+fun
+{a:tflt}
+cptr0_foreach(cptr(a)): void
+fun
+{a:tflt}
+cptr0_foreach$work(x0: a): void
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+cptr0_forall_ref(cptr(a)): bool
+fun
+{a:vtflt}
+cptr0_forall_ref$test(x0: &a >> a): bool
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+cptr0_foreach_ref(cptr(a)): void
+fun
+{a:vtflt}
+cptr0_foreach_ref$work(x0: &a >> a): void
 //
 (* ****** ****** *)
 
