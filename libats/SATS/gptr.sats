@@ -140,40 +140,10 @@ g0sub_cptr_size
 //
 (* ****** ****** *)
 //
-// HX-2019-05-11:
-// For handling one pointer
-//
-fun
-{a:vtflt}
-cptr0_beg(cptr(a)): cptr(a)
-fun
-{a:vtflt}
-cptr0_end(cptr(a)): cptr(a)
-//
-(* ****** ****** *)
-//
-// HX-2019-05-11:
-// For handling two pointers
-//
-fun
-{a:vtflt}
-cptr0_beg1(cptr(a)): cptr(a)
-fun
-{a:vtflt}
-cptr0_end1(cptr(a)): cptr(a)
-//
-fun
-{a:vtflt}
-cptr0_beg2(cptr(a)): cptr(a)
-fun
-{a:vtflt}
-cptr0_end2(cptr(a)): cptr(a)
-//
-(* ****** ****** *)
-//
 fun
 {a:tflt}
-cptr0_forall(cptr(a)): bool
+cptr0_forall
+(cptr(a), cptr(a)): bool
 fun
 {a:tflt}
 cptr0_forall$test(x0: a): bool
@@ -182,7 +152,8 @@ cptr0_forall$test(x0: a): bool
 //
 fun
 {a:tflt}
-cptr0_foreach(cptr(a)): void
+cptr0_foreach
+(cptr(a), cptr(a)): void
 fun
 {a:tflt}
 cptr0_foreach$work(x0: a): void
@@ -190,20 +161,22 @@ cptr0_foreach$work(x0: a): void
 (* ****** ****** *)
 //
 fun
-{a:vtflt}
-cptr0_forall_ref(cptr(a)): bool
+{a:tflt}
+cptr0_rforall
+(cptr(a), cptr(a)): bool
 fun
-{a:vtflt}
-cptr0_forall_ref$test(x0: &a >> a): bool
+{a:tflt}
+cptr0_rforall$test(x0: a): bool
 //
 (* ****** ****** *)
 //
 fun
-{a:vtflt}
-cptr0_foreach_ref(cptr(a)): void
+{a:tflt}
+cptr0_rforeach
+(cptr(a), cptr(a)): void
 fun
-{a:vtflt}
-cptr0_foreach_ref$work(x0: &a >> a): void
+{a:tflt}
+cptr0_rforeach$work(x0: a): void
 //
 (* ****** ****** *)
 

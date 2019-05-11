@@ -76,7 +76,8 @@ ptr2cptr{a}
 //
 implement
 {a}(*tmp*)
-cptr0_forall(cp) = let
+cptr0_forall
+  (cp0, cp1) = let
 //
 fun
 loop
@@ -93,19 +94,21 @@ cptr0_forall$test<a>(x0)
 in // in-of-let
 if
 test
-then loop(p0+sizeof<a>, pz) else false
+then
+loop(p0+sizeof<a>, pz) else false
 end // end-of-let]
 )
 //
 in
-  loop(cptr2ptr(cp), cptr2ptr(cptr0_end<a>(cp)))
+  loop(cptr2ptr{a}(cp0), cptr2ptr{a}(cp1))
 end (* end of [cptr0_forall] *)
 //
 (* ****** ****** *)
 //
 implement
 {a}(*tmp*)
-cptr0_foreach(cp) = let
+cptr0_foreach
+  (cp0, cp1) = let
 //
 fun
 loop
@@ -114,18 +117,76 @@ loop
 if
 (p0 < pz)
 then let
-  val x0 =
-  $UN.ptr0_get<a>(p0)
-  val () =
-  cptr0_foreach$work<a>(x0)
+val x0 =
+$UN.ptr0_get<a>(p0)
+val () =
+cptr0_foreach$work<a>(x0)
 in // in-of-let
-  loop(p0+sizeof<a>, pz)
+  loop( p0 + sizeof<a>, pz )
 end // end-of-let]
 )
 //
 in
-  loop(cptr2ptr(cp), cptr2ptr(cptr0_end<a>(cp)))
+  loop(cptr2ptr{a}(cp0), cptr2ptr{a}(cp1))
 end (* end of [cptr0_foreach] *)
+//
+(* ****** ****** *)
+//
+//
+implement
+{a}(*tmp*)
+cptr0_rforall
+  (cp1, cp0) = let
+//
+fun
+loop
+(p0: ptr, pa: ptr): bool =
+(
+if
+(p0 <= pa)
+then true else
+let
+val p0 =
+p0 - (sizeof<a>)
+val x0 =
+$UN.ptr0_get<a>(p0)
+val test =
+cptr0_forall$test<a>(x0)
+in // in-of-let
+if test then loop(p0, pa) else false
+end // end-of-let]
+)
+//
+in
+  loop(cptr2ptr{a}(cp0), cptr2ptr{a}(cp1))
+end (* end of [cptr0_rforall] *)
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+cptr0_rforeach
+  (cp1, cp0) = let
+//
+fun
+loop
+(p0: ptr, pa: ptr): void =
+(
+if
+(p0 > pa)
+then let
+val p0 =
+p0 - (sizeof<a>)
+val x0 =
+$UN.ptr0_get<a>(p0)
+val () =
+cptr0_foreach$work<a>(x0) in loop(p0, pa)
+end (* end of [loop] *)
+)
+//
+in
+  loop(cptr2ptr{a}(cp0), cptr2ptr{a}(cp1))
+end (* end of [cptr0_rforeach] *)
 //
 (* ****** ****** *)
 

@@ -39,5 +39,23 @@ ATS_PACKNAME "temptory"
 ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
+//
+datatype SINT2 = SINT2 of ()
+//
+fun{}
+SINT2_range$beg((*void*)): (sint)
+fun{}
+SINT2_range$end((*void*)): (sint)
+//
+(* ****** ****** *)
+//
+datatype CPTR2 = CPTR2 of ()
+//
+fun
+{a:vtflt} CPTR2_range$beg(): cptr(a)
+fun
+{a:vtflt} CPTR2_range$end(): cptr(a)
+//
+(* ****** ****** *)
 
 (* end of [range.sats] *)

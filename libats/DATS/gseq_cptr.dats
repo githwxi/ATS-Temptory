@@ -41,33 +41,44 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gptr.sats"
 #staload "./../SATS/gseq.sats"
+#staload "./../SATS/range.sats"
 
 (* ****** ****** *)
 
 implement
 (x0:tflt)
-gseq_forall<cptr0(x0)><x0>
+gseq_forall<CPTR2><x0>
   (xs) =
 (
-  cptr0_forall<x0>(xs)
+cptr0_forall<x0>(cp0, cp1)
 ) where
 {
+//
+val cp0 = CPTR2_range$beg<x0>()
+val cp1 = CPTR2_range$end<x0>()
+//
 implement
 cptr0_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
+//
 } (* end of [gseq_forall] *)
 
 (* ****** ****** *)
 
 implement
 (x0:tflt)
-gseq_foreach<cptr0(x0)><x0>
+gseq_foreach<CPTR2><x0>
   (xs) =
 (
-  cptr0_foreach<x0>(xs)
+cptr0_foreach<x0>(cp0, cp1)
 ) where
 {
+//
+val cp0 = CPTR2_range$beg<x0>()
+val cp1 = CPTR2_range$end<x0>()
+//
 implement
 cptr0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
+//
 } (* end of [gseq_foreach] *)
 
 (* ****** ****** *)

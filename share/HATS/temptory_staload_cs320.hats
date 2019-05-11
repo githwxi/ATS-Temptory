@@ -26,117 +26,94 @@ TEMPLIB_targetloc
 //
 #staload
 "libats/SATS/gint.sats"
-#staload _ =
-"libats/DATS/gint.dats"
-//
-(* ****** ****** *)
 //
 #staload
 "libats/SATS/gptr.sats"
-#staload _ =
-"libats/DATS/gptr.dats"
 //
-(* ****** ****** *)
-
 #staload
 "libats/SATS/bool.sats"
-#staload _ =
-"libats/DATS/bool.dats"
-
-(* ****** ****** *)
-
 #staload
 "libats/SATS/char.sats"
-#staload _ =
-"libats/DATS/char.dats"
-
-(* ****** ****** *)
 //
 #staload
 "libats/SATS/gseq.sats"
-#staload _ =
-"libats/DATS/gseq.dats"
 //
-(* ****** ****** *)
-//
-#staload _ =
-"libats/DATS/gseq_gint.dats"
-#staload _ =
-"libats/DATS/gseq_cptr.dats"
-//
-(* ****** ****** *)
+#staload
+"libats/SATS/range.sats"
 //
 #staload
 "libats/SATS/list.sats"
-#staload _ =
-"libats/DATS/list.dats"
+#staload
+"libats/SATS/optn.sats"
 //
-#staload _ =
-"libats/DATS/gseq_list0.dats"
-//
-(* ****** ****** *)
+#staload
+"libats/SATS/float.sats"
+#staload
+"libats/SATS/string.sats"
+#staload
+"libats/SATS/stream.sats"
 //
 #staload
 "libats/SATS/list_vt.sats"
-#staload _ =
-"libats/DATS/list_vt.dats"
-//
-(* ****** ****** *)
-//
 #staload
-"libats/SATS/optn.sats"
-#staload _ =
-"libats/DATS/optn.dats"
-//
-#staload _ =
-"libats/DATS/gseq_optn0.dats"
-//
-(* ****** ****** *)
-
-#staload
-"libats/SATS/float.sats"
-#staload _ =
-"libats/DATS/float.dats"
-
-(* ****** ****** *)
-//
-#staload
-"libats/SATS/string.sats"
-#staload _ =
-"libats/DATS/string.dats"
-//
-#staload _ =
-"libats/DATS/gseq_string.dats"
+"libats/SATS/stream_vt.sats"
 //
 (* ****** ****** *)
 //
 #staload
 "libats/SATS/print.sats"
-#staload _ =
-"libats/DATS/print.dats"
-//
-(* ****** ****** *)
-//
 #staload
 "libats/SATS/stdio.sats"
-#staload _ =
-"libats/DATS/stdio.dats"
 //
 (* ****** ****** *)
+
+#staload _ =
+"libats/DATS/gint.dats"
+#staload _ =
+"libats/DATS/gptr.dats"
+#staload _ =
+"libats/DATS/bool.dats"
+#staload _ =
+"libats/DATS/char.dats"
+#staload _ =
+"libats/DATS/gseq.dats"
 //
-#staload
-"libats/SATS/stream.sats"
+#staload _ =
+"libats/DATS/list.dats"
+#staload _ =
+"libats/DATS/optn.dats"
+//
+#staload _ =
+"libats/DATS/float.dats"
+#staload _ =
+"libats/DATS/string.dats"
 #staload _ =
 "libats/DATS/stream.dats"
+//
+#staload _ =
+"libats/DATS/list_vt.dats"
+#staload _ =
+"libats/DATS/stream_vt.dats"
+//
+#staload _ =
+"libats/DATS/gseq_gint.dats"
+#staload _ =
+"libats/DATS/gseq_cptr.dats"
+#staload _ =
+"libats/DATS/gseq_list0.dats"
+#staload _ =
+"libats/DATS/gseq_optn0.dats"
+#staload _ =
+"libats/DATS/gseq_string.dats"
 #staload _ =
 "libats/DATS/gseq_stream.dats"
 //
 (* ****** ****** *)
 //
-#staload
-"libats/SATS/stream_vt.sats"
 #staload _ =
-"libats/DATS/stream_vt.dats"
+"libats/DATS/print.dats"
+#staload _ =
+"libats/DATS/stdio.dats"
 //
 (* ****** ****** *)
 //
