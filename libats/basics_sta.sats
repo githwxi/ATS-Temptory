@@ -379,8 +379,6 @@ vtypedef
 strptr(l:addr) = strptr_addr_vtype(l)
 //
 vtypedef
-strptr = [l:addr] strptr(l)
-vtypedef
 Strptr = [l:addr] strptr(l)
 vtypedef
 Strptr0 = [l:addr] strptr(l)
@@ -388,18 +386,43 @@ vtypedef
 Strptr1 = [l:addr|l > null] strptr(l)
 //
 absvtbox
-strnptr_addr_int_vtype(l:addr, n:int) = ptr
+strnptr_addr_int_vtype(l:addr,n:int) = ptr
 vtypedef
-strnptr(l:addr, n:int) = strnptr_addr_int_vtype(l, n)
-vtypedef
-strnptr(n:int) = [l:addr] strnptr_addr_int_vtype(l, n)
+strnptr(l:addr,n:int) = strnptr_addr_int_vtype(l, n)
 //
 vtypedef
 Strnptr = [l:addr;n:int] strnptr(l, n)
 vtypedef
+Strnptr(n:int) = [l:addr] strnptr(l, n)
+//
+vtypedef
 Strnptr0 = [l:addr;n:int] strnptr(l, n)
 vtypedef
 Strnptr1 = [l:addr;n:int | n >= 0] strnptr(l, n)
+//
+(* ****** ****** *)
+//
+absvtbox
+string_vt1ype = $extype"atstype_string"
+absvtbox
+string_int_vt1ype(n: int) = string_vt1ype
+//
+vtypedef
+string_vt = string_vt1ype
+vtypedef
+string_vt(n:int) = string_int_vt1ype(n)
+//
+vtypedef
+string0_vt = string_vt1ype
+vtypedef
+string1_vt(n:int) = string_int_vt1ype(n)
+//
+vtypedef
+String_vt = [n:int] string_vt(n)
+vtypedef
+String0_vt = [n:int | n >= 0] string_vt(n)
+vtypedef
+String1_vt = [n:int | n >= 1] string_vt(n)
 //
 (* ****** ****** *)
 //

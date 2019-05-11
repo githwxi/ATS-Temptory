@@ -1,0 +1,76 @@
+(* ****** ****** *)
+//
+// HX-2019-05-09:
+// For ATS-Temptory
+//
+(* ****** ****** *)
+//
+#include
+"share/HATS\
+/temptory_staload_cs320.hats"
+//
+(* ****** ****** *)
+
+#define N 10
+
+(* ****** ****** *)
+
+implement main0() = ()
+
+(* ****** ****** *)
+//
+val () =
+(
+gseq_foreach<int><int>(N)
+) where
+{
+//
+typedef xs = sint
+typedef x0 = sint
+//
+implement
+gseq_foreach$work<x0>(i0) = println!("i0 = ", i0)
+//
+} (* end of [val] *)
+//
+(* ****** ****** *)
+//
+val
+fact =
+(
+gseq_foldleft<xs><x0><r0>(N, 1)
+) where
+{
+//
+typedef xs = sint
+typedef x0 = sint
+typedef r0 = sint
+//
+implement
+gseq_foldleft$fopr<x0><r0>(r0, i0) = r0 * (i0+1)
+} (* end of [val] *)
+//
+val ((*void*)) = println! ("fact(", N, ") = ", fact)
+//
+(* ****** ****** *)
+//
+val
+fact =
+(
+gseq_foldright<xs><x0><r0>(N, 1)
+) where
+{
+//
+typedef xs = sint
+typedef x0 = sint
+typedef r0 = sint
+//
+implement
+gseq_foldright$fopr<x0><r0>(i0, r0) = r0 * (i0+1)
+} (* end of [val] *)
+//
+val ((*void*)) = println! ("fact(", N, ") = ", fact)
+//
+(* ****** ****** *)
+
+(* end of [test06.dats] *)
