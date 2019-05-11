@@ -140,12 +140,34 @@ g0sub_cptr_size
 //
 (* ****** ****** *)
 //
+// HX-2019-05-11:
+// For handling one pointer
+//
 fun
 {a:vtflt}
 cptr0_beg(cptr(a)): cptr(a)
 fun
 {a:vtflt}
 cptr0_end(cptr(a)): cptr(a)
+//
+(* ****** ****** *)
+//
+// HX-2019-05-11:
+// For handling two pointers
+//
+fun
+{a:vtflt}
+cptr0_beg1(cptr(a)): cptr(a)
+fun
+{a:vtflt}
+cptr0_end1(cptr(a)): cptr(a)
+//
+fun
+{a:vtflt}
+cptr0_beg2(cptr(a)): cptr(a)
+fun
+{a:vtflt}
+cptr0_end2(cptr(a)): cptr(a)
 //
 (* ****** ****** *)
 //

@@ -42,6 +42,7 @@
 #staload "./../SATS/bool.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
+#staload "./../SATS/list_vt.sats"
 #staload "./../SATS/stream_vt.sats"
 
 (* ****** ****** *)

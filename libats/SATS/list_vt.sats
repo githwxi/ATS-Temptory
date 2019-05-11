@@ -40,6 +40,38 @@ ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 //
+castfn
+g0ofg1_list_vt
+{a:vtflt}
+(list1_vt(INV(a))):<> list0_vt(a)
+castfn
+g1ofg0_list_vt
+{a:vtflt}
+(list0_vt(INV(a))):<> list1_vt(a)
+//
+#symload g0ofg1 with g0ofg1_list_vt
+#symload g1ofg0 with g1ofg0_list_vt
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_sing(INV(x0)): list0_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_free(list0_vt(INV(x0))): void
+fun
+{x0:vtflt}
+list1_vt_free(list1_vt(INV(x0))): void
+//
+#symload free with list0_vt_free of 10
+#symload free with list1_vt_free of 11
+//
+(* ****** ****** *)
+//
 fun
 {x0:vtflt}
 list0_vt_concat

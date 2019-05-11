@@ -48,6 +48,30 @@
 //
 implement
 {x0}//tmp
+list0_vt_sing(x0) =
+list0_vt_cons(x0, list0_vt_nil())
+//
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
+list0_vt_free(xs) =
+  (loop(xs)) where
+{
+fun
+loop
+(xs: list0_vt(x0)): void =
+(
+case+ xs of
+| ~list0_vt_nil() => ()
+| ~list0_vt_cons(x0, xs) => (gfree$val(x0); loop(xs))
+) (* end of [loop] *)
+} (* end of [list_vt_free] *)
+//
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
 list0_vt_concat
   (xss) =
 (
