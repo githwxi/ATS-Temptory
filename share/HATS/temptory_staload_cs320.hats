@@ -57,6 +57,11 @@ TEMPLIB_targetloc
 //
 (* ****** ****** *)
 //
+#staload _ =
+"libats/DATS/gseq_cptr.dats"
+//
+(* ****** ****** *)
+//
 #staload
 "libats/SATS/list.sats"
 #staload _ =
