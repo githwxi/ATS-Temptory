@@ -356,6 +356,34 @@ end // end of [let]
 (* ****** ****** *)
 //
 implement
+{xs}{x0}{r0}
+gseq_foldright
+  (xs, r0) = let
+//
+var rr: r0 = r0
+val p0 = addr@(rr)
+//
+implement
+gseq_rforeach$work<x0>
+  (x0) = () where
+{
+val r0 =
+$UN.ptr0_get<r0>(p0)
+val r0 =
+gseq_foldright$fopr<x0><r0>(x0, r0)
+val () =
+$UN.ptr0_set<r0>(p0, r0)
+} (* end of [where] *)
+//
+in
+let
+val () = gseq_rforeach<xs><x0>(xs) in rr
+end
+end // end of [let]
+//
+(* ****** ****** *)
+//
+implement
 {xs}{x0}
 gseq_iforall(xs) =
 (

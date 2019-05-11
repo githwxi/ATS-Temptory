@@ -189,6 +189,10 @@ fun
 g1pred_sint
 {i:int}
 (x: sint(i)): sint(i-1) = "mac#%"
+//
+fun
+g0pred_uint
+(x: uint): uint = "mac#%"
 fun
 g1pred_uint
 {i:pos}
@@ -196,6 +200,7 @@ g1pred_uint
 //
 #symload pred with g0pred_sint of 10
 #symload pred with g1pred_sint of 11
+#symload pred with g0pred_uint of 10
 #symload pred with g1pred_uint of 11
 //
 (* ****** ****** *)
@@ -444,6 +449,69 @@ g1neq_sint_sint
 #symload <= with g1lte_sint_sint of 12
 #symload >= with g1gte_sint_sint of 12
 #symload != with g1neq_sint_sint of 12
+//
+(* ****** ****** *)
+//
+fun
+g0lt_uint_uint
+( x: uint
+, y: uint): bool = "mac#%"
+fun
+g0lte_uint_uint
+( x: uint
+, y: uint): bool = "mac#%"
+//
+fun
+g0gt_uint_uint
+( x: uint
+, y: uint): bool = "mac#%"
+fun
+g0gte_uint_uint
+( x: uint
+, y: uint): bool = "mac#%"
+//
+fun
+g0eq_uint_uint
+( x: uint
+, y: uint): bool = "mac#%"
+fun
+g0neq_uint_uint
+( x: uint
+, y: uint): bool = "mac#%"
+//
+(* ****** ****** *)
+//
+#symload < with g0lt_uint_uint of 10
+#symload > with g0gt_uint_uint of 10
+#symload = with g0eq_uint_uint of 10
+//
+#symload <= with g0lte_uint_uint of 10
+#symload >= with g0gte_uint_uint of 10
+#symload != with g0neq_uint_uint of 10
+//
+(* ****** ****** *)
+//
+// HX-2019-05-11:
+// For listization
+//
+(* ****** ****** *)
+//
+fun{}
+sint_listize(sint): list0_vt(sint)
+fun{}
+uint_listize(uint): list0_vt(uint)
+//
+(* ****** ****** *)
+//
+// HX-2019-05-11:
+// For streamization
+//
+(* ****** ****** *)
+//
+fun{}
+sint_streamize(sint): stream_vt(sint)
+fun{}
+uint_streamize(uint): stream_vt(uint)
 //
 (* ****** ****** *)
 

@@ -26,6 +26,8 @@ TEMPLIB_targetloc
 //
 #staload
 "libats/SATS/gint.sats"
+#staload _ =
+"libats/DATS/gint.dats"
 //
 (* ****** ****** *)
 //
@@ -57,6 +59,8 @@ TEMPLIB_targetloc
 //
 (* ****** ****** *)
 //
+#staload _ =
+"libats/DATS/gseq_gint.dats"
 #staload _ =
 "libats/DATS/gseq_cptr.dats"
 //

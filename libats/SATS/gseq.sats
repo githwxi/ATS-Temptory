@@ -136,6 +136,18 @@ gseq_foldleft$fopr(r0, x0): r0
 fun
 {xs:tflt}
 {x0:tflt}
+{r0:vtflt}
+gseq_foldright(xs, r0): r0
+fun
+{x0:tflt}
+{r0:vtflt}
+gseq_foldright$fopr(x0, r0): r0
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
 gseq_iforall(xs): bool
 fun
 {x0:tflt}
