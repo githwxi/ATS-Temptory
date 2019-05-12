@@ -210,7 +210,7 @@ list0_vt_reverse(xs) =
 
 implement
 {x0}//tmp
-list0_vt_foreach(xs) =
+list0_vt_foreach0(xs) =
   (loop(xs)) where
 {
 //
@@ -225,17 +225,17 @@ case+ xs of
 ~list0_vt_cons(x0, xs) =>
  let
  val () =
- list0_vt_foreach$work<x0>(x0) in loop(xs)
+ list0_vt_foreach0$work<x0>(x0) in loop(xs)
  end // end of [list0_vt_cons]
 ) (* end of [loop] *)
 //
-} (* end of [list0_vt_foreach] *)
+} (* end of [list0_vt_foreach0] *)
 
 (* ****** ****** *)
 
 implement
 {x0}{r0}//tmp
-list0_vt_foldleft
+list0_vt_foldleft0
   (xs, r0) =
   (loop(xs, r0)) where
 {
@@ -251,17 +251,17 @@ case+ xs of
 ~list0_vt_cons(x0, xs) =>
  let
  val r0 =
- list0_vt_foldleft$fopr<x0><r0>(r0, x0) in loop(xs, r0)
+ list0_vt_foldleft0$fopr<x0><r0>(r0, x0) in loop(xs, r0)
  end // end of [list0_vt_cons]
 ) (* end of [loop] *)
 //
-} (* end of [list0_vt_foldleft] *)
+} (* end of [list0_vt_foldleft0] *)
 
 (* ****** ****** *)
 
 implement
 {x0}//tmp
-list0_vt_foreach_ref
+list0_vt_foreach1_ref
   (xs) =
   (loop(xs)) where
 {
@@ -280,11 +280,11 @@ case+ xs0 of
  val cp =
  ptr2cptr{x0}(addr@x0)
  val () =
- list0_vt_foreach_ref$work<x0>(cp) in loop(xs1); fold@(xs0)
+ list0_vt_foreach1_ref$work<x0>(cp) in loop(xs1); fold@(xs0)
  end // end of [list0_vt_cons]
 ) (* end of [loop] *)
 //
-} (* end of [list0_vt_foreach_ref] *)
+} (* end of [list0_vt_foreach1_ref] *)
 
 (* ****** ****** *)
 

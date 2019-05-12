@@ -111,33 +111,33 @@ list0_vt_reverse
 //
 fun
 {x0:vtflt}
-list0_vt_foreach
+list0_vt_foreach0
 (xs: list0_vt(INV(x0))): void
 fun
 {x0:vtflt}
-list0_vt_foreach$work(x0: x0): void
+list0_vt_foreach0$work(x0: x0): void
 //
 (* ****** ****** *)
 //
 fun
 {x0:vtflt}
 {r0:vtflt}
-list0_vt_foldleft
+list0_vt_foldleft0
 (xs: list0_vt(INV(x0)), r0: r0): r0
 //
 fun
 {x0:vtflt}{r0:vtflt}
-list0_vt_foldleft$fopr(r0: r0, x0: x0): r0
+list0_vt_foldleft0$fopr(r0: r0, x0: x0): r0
 //
 (* ****** ****** *)
 //
 fun
 {x0:vtflt}
-list0_vt_foreach_ref
+list0_vt_foreach1_ref
 (xs: !list0_vt(INV(x0))): void
 fun
 {x0:vtflt}
-list0_vt_foreach_ref$work(cptr0(x0)): void
+list0_vt_foreach1_ref$work(cptr0(x0)): void
 //
 (* ****** ****** *)
 

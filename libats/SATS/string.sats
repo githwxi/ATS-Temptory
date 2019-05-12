@@ -61,6 +61,21 @@ string0_isneqz(string):<> bool
 (* ****** ****** *)
 //
 fun{}
+string0_length(string):<> (int)
+//
+#symload length with string0_length
+//
+(* ****** ****** *)
+//
+fun{}
+string0_indexof
+  (cs: string, c0: char):<> (int)
+//
+#symload indexof with string0_indexof
+//
+(* ****** ****** *)
+//
+fun{}
 string0_implode
 (cs: list0(char)): string
 fun{}
@@ -84,21 +99,6 @@ string0_make with string0_make_stream_vt
 (* ****** ****** *)
 //
 fun{}
-string0_length(string):<> (int)
-//
-#symload length with string0_length
-//
-(* ****** ****** *)
-//
-fun{}
-string0_indexof
-  (cs: string, c0: char):<> (int)
-//
-#symload indexof with string0_indexof
-//
-(* ****** ****** *)
-//
-fun{}
 string0_listize
   (cs: string): list0_vt(char)
 fun{}
@@ -118,6 +118,35 @@ fun{}
 string0_foreach(cs: string): void
 fun{}
 string0_foreach$work(c0: char): void
+//
+(* ****** ****** *)
+//
+// HX-2019-05-12:
+// For linear strings
+//
+(* ****** ****** *)
+//
+fun{}
+string0_vt_iseqz(!string_vt):<> bool
+fun{}
+string0_vt_isneqz(!string_vt):<> bool
+//
+#symload iseqz with string0_vt_iseqz
+#symload iseqz with string0_vt_isneqz
+//
+(* ****** ****** *)
+//
+fun{}
+string0_vt_length(!string_vt):<> (int)
+//
+#symload length with string0_vt_length
+//
+(* ****** ****** *)
+//
+fun{}
+string0_vt_foreach0(cs: string_vt): void
+fun{}
+string0_vt_foreach0$work(c0: char): void
 //
 (* ****** ****** *)
 

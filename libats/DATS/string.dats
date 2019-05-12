@@ -52,6 +52,45 @@
 
 implement
 {}(*tmp*)
+string0_iseqz(cs) =
+$effmask_all
+(
+iseqz
+($UN.cptr0_get(cptrof(cs)))
+)
+implement
+{}(*tmp*)
+string0_isneqz(cs) =
+$effmask_all
+(
+isneqz
+($UN.cptr0_get(cptrof(cs)))
+)
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string0_length(cs) =
+(
+$effmask_all
+(gseq_length<string><char>(cs))
+)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string0_indexof(cs, c0) =
+(
+$effmask_all
+(gseq_indexof<string><char>(cs, c0))
+)
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 string0_implode
   (cs) =
 (
@@ -103,13 +142,13 @@ val cp0 = $UN.calloc<char>(n0)
 //
 val cp1 =
 (
-list0_vt_foldleft<x0><r0>(cs, cp0)
+list0_vt_foldleft0<x0><r0>(cs, cp0)
 ) where
 {
   typedef x0 = char
   typedef r0 = cptr0(char)
   implement
-  list0_vt_foldleft$fopr<x0><r0>
+  list0_vt_foldleft0$fopr<x0><r0>
     (cp, c0) =
   (
     $UN.cptr0_set(cp, c0); cptr0_succ(cp)
@@ -120,45 +159,6 @@ val () = $UN.cptr0_set(cp1, CNUL)
 //
 } (* end of [string0_make_list0_vt] *)
 
-(* ****** ****** *)
-
-implement
-{}(*tmp*)
-string0_iseqz(cs) =
-$effmask_all
-(
-iseqz
-($UN.cptr0_get(cptrof(cs)))
-)
-implement
-{}(*tmp*)
-string0_isneqz(cs) =
-$effmask_all
-(
-isneqz
-($UN.cptr0_get(cptrof(cs)))
-)
-
-(* ****** ****** *)
-//
-implement
-{}(*tmp*)
-string0_length(cs) =
-(
-$effmask_all
-(gseq_length<string><char>(cs))
-)
-//
-(* ****** ****** *)
-//
-implement
-{}(*tmp*)
-string0_indexof(cs, c0) =
-(
-$effmask_all
-(gseq_indexof<string><char>(cs, c0))
-)
-//
 (* ****** ****** *)
 
 implement
