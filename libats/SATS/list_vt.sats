@@ -56,7 +56,16 @@ g1ofg0_list_vt
 //
 fun
 {x0:vtflt}
-list0_vt_sing(INV(x0)): list0_vt(x0)
+list0_vt_sing
+(x0: INV(x0)): list0_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_length
+(xs: !list0_vt(INV(x0))):<> int
+#symload length with list0_vt_length
 //
 (* ****** ****** *)
 //
@@ -107,6 +116,18 @@ list0_vt_foreach
 fun
 {x0:vtflt}
 list0_vt_foreach$work(x0: x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+{r0:vtflt}
+list0_vt_foldleft
+(xs: list0_vt(INV(x0)), r0: r0): r0
+//
+fun
+{x0:vtflt}{r0:vtflt}
+list0_vt_foldleft$fopr(r0: r0, x0: x0): r0
 //
 (* ****** ****** *)
 //

@@ -53,6 +53,23 @@ list0_vt_sing(x0) =
 list0_vt_cons(x0, list0_vt_nil())
 //
 (* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_vt_length(xs) =
+(
+$effmask_all(loop(xs, 0))
+) where
+{
+fun
+loop
+(xs: !list0_vt(x0), i0: int): int =
+case+ xs of
+| list0_vt_nil() => i0
+| list0_vt_cons(_, xs) => loop(xs, succ(i0))
+} (* end of [list0_length] *)
+
+(* ****** ****** *)
 //
 implement
 {x0}//tmp
@@ -213,6 +230,32 @@ case+ xs of
 ) (* end of [loop] *)
 //
 } (* end of [list0_vt_foreach] *)
+
+(* ****** ****** *)
+
+implement
+{x0}{r0}//tmp
+list0_vt_foldleft
+  (xs, r0) =
+  (loop(xs, r0)) where
+{
+//
+fun
+loop
+(xs: list0_vt(x0), r0: r0): r0 =
+(
+case+ xs of
+|
+~list0_vt_nil() => r0
+|
+~list0_vt_cons(x0, xs) =>
+ let
+ val r0 =
+ list0_vt_foldleft$fopr<x0><r0>(r0, x0) in loop(xs, r0)
+ end // end of [list0_vt_cons]
+) (* end of [loop] *)
+//
+} (* end of [list0_vt_foldleft] *)
 
 (* ****** ****** *)
 

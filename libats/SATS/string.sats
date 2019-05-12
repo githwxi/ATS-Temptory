@@ -61,6 +61,29 @@ string0_isneqz(string):<> bool
 (* ****** ****** *)
 //
 fun{}
+string0_implode
+(cs: list0(char)): string
+fun{}
+string0_make_list0
+(cs: list0(char)): string
+//
+fun{}
+string0_make_list0_vt
+(cs: list0_vt(char)): string
+fun{}
+string0_make_stream_vt
+(cs: list0_vt(char)): string
+//
+#symload
+string0_make with string0_make_list0
+#symload
+string0_make with string0_make_list0_vt
+#symload
+string0_make with string0_make_stream_vt
+//
+(* ****** ****** *)
+//
+fun{}
 string0_length(string):<> (int)
 //
 #symload length with string0_length
@@ -76,6 +99,15 @@ string0_indexof
 (* ****** ****** *)
 //
 fun{}
+string0_listize
+  (cs: string): list0_vt(char)
+fun{}
+string0_streamize
+  (cs: string): stream_vt(char)
+//
+(* ****** ****** *)
+//
+fun{}
 string0_forall(cs: string): bool
 fun{}
 string0_forall$test(c0: char): bool
@@ -86,13 +118,6 @@ fun{}
 string0_foreach(cs: string): void
 fun{}
 string0_foreach$work(c0: char): void
-//
-(* ****** ****** *)
-//
-fun{}
-string0_listize(string): list0_vt(char)
-fun{}
-string0_streamize(string): stream_vt(char)
 //
 (* ****** ****** *)
 

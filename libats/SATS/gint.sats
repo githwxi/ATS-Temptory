@@ -236,6 +236,71 @@ g1add_sint_sint
 #symload + with g0add_sint_sint of 10
 #symload + with g1add_sint_sint of 12
 //
+fun
+g0add_uint_uint
+( x: uint
+, y: uint): uint = "mac#%"
+fun
+g1add_uint_uint
+{i,j:int}
+( x: uint(i)
+, y: uint(j)): uint(i+j) = "mac#%"
+//
+#symload + with g0add_uint_uint of 10
+#symload + with g1add_uint_uint of 12
+//
+fun
+g0add_sint_ssize
+( x: sint
+, y: ssize): ssize = "mac#%"
+fun
+g0add_ssize_ssize
+( x: ssize
+, y: ssize): ssize = "mac#%"
+//
+fun
+g1add_sint_ssize
+{i,j:int}
+( x: sint(i)
+, y: ssize(j)): ssize(i+j) = "mac#%"
+fun
+g1add_ssize_ssize
+{i,j:int}
+( x: ssize(i)
+, y: ssize(j)): ssize(i+j) = "mac#%"
+//
+fun
+g0add_uint_usize
+( x: uint
+, y: usize): usize = "mac#%"
+fun
+g0add_usize_usize
+( x: usize
+, y: usize): usize = "mac#%"
+//
+fun
+g1add_sint_usize
+{i,j:int
+|i >= 0}
+( x: sint(i)
+, y: usize(j)): usize(i+j) = "mac#%"
+fun
+g1add_uint_usize
+{i,j:int}
+( x: uint(i)
+, y: usize(j)): usize(i+j) = "mac#%"
+fun
+g1add_usize_usize
+{i,j:int}
+( x: usize(i)
+, y: usize(j)): usize(i+j) = "mac#%"
+//
+#symload + with g0add_uint_usize of 10
+#symload + with g0add_usize_usize of 10
+#symload + with g1add_sint_usize of 12
+#symload + with g1add_uint_usize of 12
+#symload + with g1add_usize_usize of 12
+//
 (* ****** ****** *)
 //
 fun
@@ -321,16 +386,35 @@ g1mul_uint_uint
 #symload * with g1mul_uint_uint of 12
 //
 fun
+g0mul_uint_usize
+( x: uint
+, y: usize): usize = "mac#%"
+fun
 g0mul_usize_usize
 ( x: usize
 , y: usize): usize = "mac#%"
+//
+#symload * with g0mul_uint_usize of 10
+#symload * with g0mul_usize_usize of 10
+//
+fun
+g1mul_sint_usize
+{i,j:int
+|i >= 0}
+( x: sint(i)
+, y: usize(j)): usize(i*j) = "mac#%"
+fun
+g1mul_uint_usize
+{i,j:int}
+( x: uint(i)
+, y: usize(j)): usize(i*j) = "mac#%"
 fun
 g1mul_usize_usize
 {i,j:int}
 ( x: usize(i)
 , y: usize(j)): usize(i*j) = "mac#%"
 //
-#symload * with g0mul_usize_usize of 10
+#symload * with g1mul_sint_usize of 12
 #symload * with g1mul_usize_usize of 12
 //
 (* ****** ****** *)

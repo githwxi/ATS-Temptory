@@ -33,6 +33,7 @@
 
 (* ****** ****** *)
 
+#staload "./../SATS/gint.sats"
 #staload "./../SATS/gptr.sats"
 #staload "./../SATS/unsafe.sats"
 
@@ -49,7 +50,8 @@ ptr0_get
   (pf, fpf) =
   _assert_() where
   {
-    extern praxi _assert_ (): (a @ l, a? @ l -<lin,prf> void)
+    extern
+    praxi _assert_ (): (a @ l, a? @ l -<lin,prf> void)
   } // end of [prval]
   val x0 = !p0
   prval () = fpf(pf)
@@ -68,7 +70,8 @@ ptr0_set
   prval
   (pf, fpf) =
   _assert_ () where {
-    extern praxi _assert_ (): (a? @ l, a @ l -<lin,prf> void)
+    extern
+    praxi _assert_ (): (a? @ l, a @ l -<lin,prf> void)
   } // end of [prval]
   val () = !p0 := x0
   prval () = fpf (pf)
@@ -82,6 +85,26 @@ cptr0_get(cp) = ptr0_get<a>(cptr2ptr(cp))
 implement
 {a}(*tmp*)
 cptr0_set(cp, x0) = ptr0_set<a>(cptr2ptr(cp), x0)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+cfree{a}(cp0) =
+$extfcall(void, "ATS_FREE", cp0)
+//
+implement
+{a}(*tmp*)
+calloc_int(asz) =
+$extfcall(cptr0(a), "ATS_MALLOC", asz*sizeof<a>)
+implement
+{a}(*tmp*)
+calloc_uint(asz) =
+$extfcall(cptr0(a), "ATS_MALLOC", asz*sizeof<a>)
+implement
+{a}(*tmp*)
+calloc_size(asz) =
+$extfcall(cptr0(a), "ATS_MALLOC", asz*sizeof<a>)
 //
 (* ****** ****** *)
 

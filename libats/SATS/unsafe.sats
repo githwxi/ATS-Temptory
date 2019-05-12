@@ -122,9 +122,13 @@ calloc_int
 {n:nat}(asz: int(n)): cptr(a)
 fun
 {a:vtflt}
+calloc_uint(uint): cptr(a)
+fun
+{a:vtflt}
 calloc_size(size): cptr(a)
 //
 #symload calloc with calloc_int of 10
+#symload calloc with calloc_uint of 10
 #symload calloc with calloc_size of 10
 //
 (* ****** ****** *)
