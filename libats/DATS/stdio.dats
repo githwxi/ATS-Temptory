@@ -46,15 +46,15 @@ UNSAFE =
 implement
 {}(*tmp*)
 the_stdin() =
-$extval(FILEref, "stdin")
+$extval(FILEref, "atspre_stdin")
 implement
 {}(*tmp*)
 the_stdout() =
-$extval(FILEref, "stdout")
+$extval(FILEref, "atspre_stdout")
 implement
 {}(*tmp*)
 the_stderr() =
-$extval(FILEref, "stderr")
+$extval(FILEref, "atspre_stderr")
 
 (* ****** ****** *)
 //
@@ -63,11 +63,13 @@ implement
 fprint_newline
   (out) =
 {
-  val () =
-  $extfcall
-  (void, "fprintf", out, "\n")
-  val () =
-  $extfcall(void, "fflush", out)
+//
+val () =
+$extfcall
+(void, "atspre_fprintf", out, "\n")
+val () =
+$extfcall(void, "atspre_fflush", out)
+//
 } (* end of [fprint_newline] *)
 //
 (* ****** ****** *)
@@ -75,15 +77,15 @@ fprint_newline
 implement
 fprint$val<int>(out, x) =
 (
-  $extfcall
-  (void, "fprintf", out, "%i", x)
+$extfcall
+(void, "atspre_fprintf", out, "%i", x)
 )
 //
 implement
 fprint$val<bool>(out, x) =
 (
-$extfcall
-(void, "fprintf", out, rep)
+  $extfcall
+  (void, "atspre_fprintf", out, rep)
 ) where
 {
   val rep =
@@ -92,17 +94,19 @@ $extfcall
 //
 implement
 fprint$val<char>(out, x) =
-$extfcall(void, "fprintf", out, "%c", x)
+(
+  $extfcall
+  (void, "atspre_fprintf", out, "%c", x)
+)
 //
 implement
 fprint$val<string>(out, cs) =
-(
-$extfcall
-(void, "fprintf", out, "%s", cs)
-) where
-{
+let
   val cs = $UNSAFE.cast{charptr}(cs)
-}
+in
+  $extfcall
+  (void, "atspre_fprintf", out, "%s", cs)
+end // end of [fprint$val<string]
 //
 (* ****** ****** *)
 //
@@ -110,19 +114,19 @@ implement
 fprint$val<uint>(out, x) =
 (
   $extfcall
-  (void, "fprintf", out, "%u", x)
+  (void, "atspre_fprintf", out, "%u", x)
 )
 implement
 fprint$val<lint>(out, x) =
 (
   $extfcall
-  (void, "fprintf", out, "%li", x)
+  (void, "atspre_fprintf", out, "%li", x)
 )
 implement
 fprint$val<ulint>(out, x) =
 (
   $extfcall
-  (void, "fprintf", out, "%ul", x)
+  (void, "atspre_fprintf", out, "%lu", x)
 )
 //
 (* ****** ****** *)

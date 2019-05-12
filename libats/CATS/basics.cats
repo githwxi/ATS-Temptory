@@ -48,11 +48,21 @@
 
 /* ****** ****** */
 
+#define atspre_stdin stdin
+#define atspre_stdout stdout
+#define atspre_stderr stderr
+
+/* ****** ****** */
+
+#define atspre_fflush fflush
+#define atspre_fprintf fprintf
+
+/* ****** ****** */
+
 ATSinline()
 void
 atspre_exit
-(atstype_int ecd)
-{ exit(ecd); return; }
+(atstype_int ecd){ exit(ecd); return; }
 
 /* ****** ****** */
 
@@ -103,8 +113,10 @@ atspre_assert_errmsg_bool
   return /*nothing*/ ;
 } /* endfun */
 //
-#define atspre_assert_errmsg_bool0 atspre_assert_errmsg_bool
-#define atspre_assert_errmsg_bool1 atspre_assert_errmsg_bool
+#define \
+atspre_assert_errmsg_bool0 atspre_assert_errmsg_bool
+#define \
+atspre_assert_errmsg_bool1 atspre_assert_errmsg_bool
 //
 /* ****** ****** */
 
