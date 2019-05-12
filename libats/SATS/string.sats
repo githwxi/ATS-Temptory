@@ -41,6 +41,12 @@ ATS_EXTERN_PREFIX "temptory_"
 (* ****** ****** *)
 //
 castfn
+string0_vt2t
+(cs: string_vt):<> string
+//
+(* ****** ****** *)
+//
+castfn
 string0_ptrof(string):<> ptr
 castfn
 string0_cptrof(string):<> cptr(char)
@@ -140,6 +146,29 @@ fun{}
 string0_vt_length(!string_vt):<> (int)
 //
 #symload length with string0_vt_length
+//
+(* ****** ****** *)
+//
+fun{}
+string0_vt_implode
+(cs: list0(char)): string_vt
+fun{}
+string0_vt_make_list0
+(cs: list0(char)): string_vt
+//
+fun{}
+string0_vt_make_list0_vt
+(cs: list0_vt(char)): string_vt
+fun{}
+string0_vt_make_stream_vt
+(cs: list0_vt(char)): string_vt
+//
+#symload
+string0_vt_make with string0_vt_make_list0
+#symload
+string0_vt_make with string0_vt_make_list0_vt
+#symload
+string0_vt_make with string0_vt_make_stream_vt
 //
 (* ****** ****** *)
 //

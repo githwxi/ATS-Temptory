@@ -101,63 +101,17 @@ implement
 string0_make_list0
   (cs) =
 (
-  $UN.cast{string0}(cp0)
-) where
-{
-//
-val n0 =
-$UN.cast{uint}(length(cs))
-val cp0 = $UN.calloc<char>(n0)
-//
-val cp1 =
-(
-list0_foldleft<x0><r0>(cs, cp0)
-) where
-{
-  typedef x0 = char
-  typedef r0 = cptr0(char)
-  implement
-  list0_foldleft$fopr<x0><r0>
-    (cp, c0) =
-  (
-    $UN.cptr0_set(cp, c0); cptr0_succ(cp)
-  )
-} (* end of [val] *)
-//
-val () = $UN.cptr0_set(cp1, CNUL)
-//
-} (* end of [string0_make_list0] *)
+  string0_vt2t
+  (string0_vt_make_list0(cs))
+)
 implement
 {}(*tmp*)
 string0_make_list0_vt
   (cs) =
 (
-  $UN.cast{string0}(cp0)
-) where
-{
-//
-val n0 =
-$UN.cast{uint}(length(cs))
-val cp0 = $UN.calloc<char>(n0)
-//
-val cp1 =
-(
-list0_vt_foldleft0<x0><r0>(cs, cp0)
-) where
-{
-  typedef x0 = char
-  typedef r0 = cptr0(char)
-  implement
-  list0_vt_foldleft0$fopr<x0><r0>
-    (cp, c0) =
-  (
-    $UN.cptr0_set(cp, c0); cptr0_succ(cp)
-  )
-} (* end of [val] *)
-//
-val () = $UN.cptr0_set(cp1, CNUL)
-//
-} (* end of [string0_make_list0_vt] *)
+  string0_vt2t
+  (string0_vt_make_list0_vt(cs))
+)
 
 (* ****** ****** *)
 
@@ -236,6 +190,74 @@ isneqz(c0) then
 end // end of [loop]
 } (* end of [string0_foreach] *)
 //
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string0_vt_make_list0
+  (cs) =
+(
+$UN.castvwtp0{string0_vt}(cp0)
+) where
+{
+//
+val n0 =
+$UN.cast{uint}(length(cs))
+val cp0 = $UN.calloc<char>(n0)
+//
+val cp1 =
+(
+list0_foldleft<x0><r0>(cs, cp0)
+) where
+{
+  typedef x0 = char
+  typedef r0 = cptr0(char)
+  implement
+  list0_foldleft$fopr<x0><r0>
+    (cp, c0) =
+  (
+    $UN.cptr0_set(cp, c0); cptr0_succ(cp)
+  )
+} (* end of [val] *)
+//
+val () = $UN.cptr0_set(cp1, CNUL)
+//
+} (* end of [string0_vt_make_list0] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_vt_make_list0_vt
+  (cs) =
+(
+$UN.castvwtp0{string0_vt}(cp0)
+) where
+{
+//
+val n0 =
+$UN.cast{uint}(length(cs))
+val cp0 = $UN.calloc<char>(n0)
+//
+val cp1 =
+(
+list0_vt_foldleft0<x0><r0>(cs, cp0)
+) where
+{
+  typedef x0 = char
+  typedef r0 = cptr0(char)
+  implement
+  list0_vt_foldleft0$fopr<x0><r0>
+    (cp, c0) =
+  (
+    $UN.cptr0_set(cp, c0); cptr0_succ(cp)
+  )
+} (* end of [val] *)
+//
+val () = $UN.cptr0_set(cp1, CNUL)
+//
+} (* end of [string0_make_list0_vt] *)
+
 (* ****** ****** *)
 
 (* end of [string.dats] *)
