@@ -127,6 +127,40 @@ cptr0_pred(cp: cptr(a)): cptr(a)
 (* ****** ****** *)
 //
 fun
+g0lt_cptr_cptr
+{a:vtflt}
+(cptr(a), cptr(a)): bool = "mac#%"
+fun
+g0gt_cptr_cptr
+{a:vtflt}
+(cptr(a), cptr(a)): bool = "mac#%"
+fun
+g0eq_cptr_cptr
+{a:vtflt}
+(cptr(a), cptr(a)): bool = "mac#%"
+fun
+g0lte_cptr_cptr
+{a:vtflt}
+(cptr(a), cptr(a)): bool = "mac#%"
+fun
+g0gte_cptr_cptr
+{a:vtflt}
+(cptr(a), cptr(a)): bool = "mac#%"
+fun
+g0neq_cptr_cptr
+{a:vtflt}
+(cptr(a), cptr(a)): bool = "mac#%"
+//
+#symload < with g0lt_cptr_cptr of 10
+#symload > with g0gt_cptr_cptr of 10
+#symload = with g0eq_cptr_cptr of 10
+#symload <= with g0lte_cptr_cptr of 10
+#symload >= with g0gte_cptr_cptr of 10
+#symload != with g0neq_cptr_cptr of 10
+//
+(* ****** ****** *)
+//
+fun
 {a:vtflt}
 g0add_cptr_size
 (cp0: cptr(a), bsz: size): cptr(a)

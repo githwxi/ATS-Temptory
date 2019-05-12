@@ -33,36 +33,61 @@
 //
 (* ****** ****** *)
 
-#define
-ATS_PACKNAME "temptory"
-#define
-ATS_EXTERN_PREFIX "temptory_"
+#define tt true
+#define ff false
+
+(* ****** ****** *)
+
+#staload "./../SATS/gint.sats"
+#staload "./../SATS/gseq.sats"
+#staload "./../SATS/list.sats"
+#staload "./../SATS/list_vt.sats"
+#staload "./../SATS/stream_vt.sats"
 
 (* ****** ****** *)
 //
-datatype SINT2 = SINT2 of ()
-//
-fun{}
-SINT2_range$beg((*void*)): (sint)
-fun{}
-SINT2_range$end((*void*)): (sint)
-//
-fun{}
-SINT2_streamize(): stream_vt(sint)
-//
-(* ****** ****** *)
-//
-datatype CPTR2 = CPTR2 of ()
-//
-fun{}
-CPTR2_range$beg{a:vtflt}(): cptr(a)
-fun{}
-CPTR2_range$end{a:vtflt}(): cptr(a)
+implement
+{}(*tmp*)
+sint_streamize
+  (n0) =
+( auxmain(0) ) where
+{
 //
 fun
-{a:vtflt}
-CPTR2_streamize(): stream_vt(cptr(a))
+auxmain
+(i0: sint): stream_vt(sint) =
+$ldelay
+(
+if
+i0 >= n0
+then stream_vt_nil()
+else stream_vt_cons(i0, auxmain(succ(i0)))
+) (* end of [auxmain] *)
+//
+} (* end of [sint_streamize] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+uint_streamize
+  (n0) =
+( auxmain(0u) ) where
+{
+//
+fun
+auxmain
+(i0: uint): stream_vt(uint) =
+$ldelay
+(
+if
+i0 >= n0
+then stream_vt_nil()
+else stream_vt_cons(i0, auxmain(succ(i0)))
+) (* end of [auxmain] *)
+//
+} (* end of [uint_streamize] *)
 //
 (* ****** ****** *)
 
-(* end of [range.sats] *)
+(* end of [gint.dats] *)

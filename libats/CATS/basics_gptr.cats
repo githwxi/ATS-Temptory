@@ -34,6 +34,21 @@
 /* ****** ****** */
 
 #define \
+temptory_g0lt_ptr_ptr(p0, p1) ((void*)p0 < (void*)p1)
+#define \
+temptory_g0gt_ptr_ptr(p0, p1) ((void*)p0 > (void*)p1)
+#define \
+temptory_g0eq_ptr_ptr(p0, p1) ((void*)p0 == (void*)p1)
+#define \
+temptory_g0lte_ptr_ptr(p0, p1) ((void*)p0 <= (void*)p1)
+#define \
+temptory_g0gte_ptr_ptr(p0, p1) ((void*)p0 >= (void*)p1)
+#define \
+temptory_g0neq_ptr_ptr(p0, p1) ((void*)p0 != (void*)p1)
+
+/* ****** ****** */
+
+#define \
 temptory_g0add_ptr_int(ptr, bsz) (void*)((char*)(ptr)+(bsz))
 #define \
 temptory_g0sub_ptr_int(ptr, bsz) (void*)((char*)(ptr)-(bsz))
@@ -44,6 +59,21 @@ temptory_g0sub_ptr_int(ptr, bsz) (void*)((char*)(ptr)-(bsz))
 temptory_g0add_ptr_size(ptr, bsz) (void*)((char*)(ptr)+(bsz))
 #define \
 temptory_g0sub_ptr_size(ptr, bsz) (void*)((char*)(ptr)-(bsz))
+
+/* ****** ****** */
+
+#define \
+temptory_g0lt_cptr_cptr(p0, p1) ((void*)p0 < (void*)p1)
+#define \
+temptory_g0gt_cptr_cptr(p0, p1) ((void*)p0 > (void*)p1)
+#define \
+temptory_g0eq_cptr_cptr(p0, p1) ((void*)p0 == (void*)p1)
+#define \
+temptory_g0lte_cptr_cptr(p0, p1) ((void*)p0 <= (void*)p1)
+#define \
+temptory_g0gte_cptr_cptr(p0, p1) ((void*)p0 >= (void*)p1)
+#define \
+temptory_g0neq_cptr_cptr(p0, p1) ((void*)p0 != (void*)p1)
 
 /* ****** ****** */
 
