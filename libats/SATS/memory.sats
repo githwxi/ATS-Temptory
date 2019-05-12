@@ -43,7 +43,8 @@ ATS_EXTERN_PREFIX "temptory_"
 // HX-2013-08:
 // for memory initialization
 //
-fun minit_gc(): void = "mac#%"
+fun
+minit_gc(): void = "mac#%"
 //
 (* ****** ****** *)
 

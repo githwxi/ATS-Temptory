@@ -39,9 +39,7 @@
 (* ****** ****** *)
 //
 #staload "./../SATS/gint.sats"
-#staload "./../SATS/bool.sats"
 #staload "./../SATS/gseq.sats"
-#staload "./../SATS/list.sats"
 //
 #staload UN = "./../SATS/unsafe.sats"
 //
@@ -222,12 +220,17 @@ implement
 {xs}{x0}
 gseq_exists(xs) =
 (
-not(gseq_forall<xs><x0>(xs))
+if
+gseq_forall<xs><x0>(xs) then ff else tt
 ) where
 {
 //
 implement
-gseq_forall$test<x0>(x0) = not(gseq_exists$test<x0>(x0))
+gseq_forall$test<x0>(x0) = 
+(
+if
+gseq_exists$test<x0>(x0) then ff else tt
+)
 //
 } (* end of [gseq_exists] *)
 

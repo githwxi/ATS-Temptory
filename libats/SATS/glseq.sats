@@ -61,10 +61,136 @@ glseq_streamize
 fun
 {xs:vtflt}
 {x0:vtflt}
-glseq_foreach(xs): void
+glseq_listize1
+  (xs: xs): list0_vt(x0)
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_rlistize1
+  (xs: xs): list0_vt(x0)
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_streamize1
+  (xs: xs): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_forall0(xs): bool
 fun
 {x0:vtflt}
-glseq_foreach$work(x0): void
+glseq_forall0$test(x0): bool
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_exists0(xs): bool
+fun
+{x0:vtflt}
+glseq_exists0$test(x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_foreach0(xs): void
+fun
+{x0:vtflt}
+glseq_foreach0$work(x0): void
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+{r0:vtflt}
+glseq_foldleft0(xs, r0): r0
+fun
+{x0:vtflt}
+{r0:vtflt}
+glseq_foldleft0$fopr(r0, x0): r0
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+{r0:vtflt}
+glseq_foldright0(xs, r0): r0
+fun
+{x0:vtflt}
+{r0:vtflt}
+glseq_foldright0$fopr(x0, r0): r0
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_iforall0(xs): bool
+fun
+{x0:vtflt}
+glseq_iforall0$test(int, x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_iforeach0(xs): void
+fun
+{x0:vtflt}
+glseq_iforeach0$work(int, x0): void
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_forall1(!xs): bool
+fun
+{x0:vtflt}
+glseq_forall1$test(!x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_foreach1(!xs): void
+fun
+{x0:vtflt}
+glseq_foreach1$work(!x0): void
+//
+(* ****** ****** *)
+//
+(*
+#define
+glseq_forall glseq_forall0
+#define
+glseq_forall$test glseq_forall0$test
+#define
+glseq_foreach glseq_foreach0
+#define
+glseq_foreach$work glseq_foreach0$work
+*)
+//
+(* ****** ****** *)
+//
+(*
+#define
+glseq_foldleft glseq_foldleft0
+#define
+glseq_foldleft$fopr glseq_foldleft0$fopr
+#define
+glseq_foldright glseq_foldright0
+#define
+glseq_foldright$fopr glseq_foldright0$fopr
+*)
 //
 (* ****** ****** *)
 
