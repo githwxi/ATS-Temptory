@@ -179,6 +179,7 @@ string0_foreach(cs) =
 loop(string0_cptrof(cs))
 ) where
 {
+//
 fun
 loop(p0: cptr(char)): void =
 let
@@ -188,6 +189,7 @@ if
 isneqz(c0) then
 (string0_foreach$work<>(c0); loop(succ(p0)))
 end // end of [loop]
+//
 } (* end of [string0_foreach] *)
 //
 (* ****** ****** *)
@@ -258,6 +260,100 @@ val () = $UN.cptr0_set(cp1, CNUL)
 //
 } (* end of [string0_make_list0_vt] *)
 
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_vt_forall0
+  (cs) =
+(
+let
+val
+test =
+string0_vt_forall1<>(cs)
+val () = string0_vt_free(cs) in test
+end where
+{
+implement
+string0_vt_forall1$test<>(c0) = string0_vt_forall0$test<>(c0)
+}
+) (* end of [string0_vt_forall0] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_vt_foreach0
+  (cs) =
+(
+let
+val () =
+string0_vt_foreach1<>(cs) in string0_vt_free(cs)
+end where
+{
+implement
+string0_vt_foreach1$work<>(c0) = string0_vt_foreach0$work<>(c0)
+}
+) (* end of [string0_vt_foreach0] *)
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string0_vt_forall1(cs) =
+(
+loop(string0_vt_cptrof(cs))
+) where
+{
+//
+fun
+loop(p0: cptr(char)): bool =
+let
+  val c0 = $UN.cptr0_get(p0)
+in
+//
+if
+isneqz(c0)
+then
+let
+val
+test =
+string0_vt_forall1$test<>(c0)
+in
+if
+test
+then loop(succ(p0)) else false
+end
+else true // if
+end // end of [loop]
+//
+} (* end of [string0_vt_forall1] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string0_vt_foreach1(cs) =
+(
+loop(string0_vt_cptrof(cs))
+) where
+{
+//
+fun
+loop(p0: cptr(char)): void =
+let
+  val c0 = $UN.cptr0_get(p0)
+in
+if
+isneqz(c0)
+then
+let
+val () = string0_vt_foreach1$work<>(c0) in loop(succ(p0))
+end // end of [then]
+end // end of [loop]
+//
+} (* end of [string0_vt_foreach1] *)
+//
 (* ****** ****** *)
 
 (* end of [string.dats] *)

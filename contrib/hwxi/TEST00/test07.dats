@@ -18,8 +18,7 @@
 implement
 main0(argc, argv) =
 {
-val xs =
-listize_argc_argv(argc, argv)
+val xs = listize(argc, argv)
 val xs = g0ofg1(xs)
 val () = println!("argv[] = ", xs)
 val () = list0_vt_free(xs)

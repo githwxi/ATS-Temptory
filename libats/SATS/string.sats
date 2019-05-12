@@ -46,10 +46,17 @@ string0_vt2t
 //
 (* ****** ****** *)
 //
+// HX-2019-05-12:
+// For nonlin strings
+//
+(* ****** ****** *)
+//
 castfn
-string0_ptrof(string):<> ptr
+string0_ptrof
+  (cs: string):<> ptr
 castfn
-string0_cptrof(string):<> cptr(char)
+string0_cptrof
+  (cs: string):<> cptr(char)
 //
 #symload ptrof with string0_ptrof
 #symload cptrof with string0_cptrof
@@ -132,6 +139,24 @@ string0_foreach$work(c0: char): void
 //
 (* ****** ****** *)
 //
+castfn
+string0_vt_ptrof
+  (cs: !string_vt):<> ptr
+castfn
+string0_vt_cptrof
+  (cs: !string_vt):<> cptr(char)
+//
+#symload ptrof with string0_vt_ptrof
+#symload cptrof with string0_vt_cptrof
+//
+(* ****** ****** *)
+//
+fun
+string0_vt_free
+(cs: string_vt): void = "mac#%"
+//
+(* ****** ****** *)
+//
 fun{}
 string0_vt_iseqz(!string_vt):<> bool
 fun{}
@@ -173,9 +198,30 @@ string0_vt_make with string0_vt_make_stream_vt
 (* ****** ****** *)
 //
 fun{}
+string0_vt_forall0(cs: string_vt): bool
+fun{}
+string0_vt_forall0$test(c0: (char)): bool
+//
+(* ****** ****** *)
+//
+fun{}
 string0_vt_foreach0(cs: string_vt): void
 fun{}
 string0_vt_foreach0$work(c0: char): void
+//
+(* ****** ****** *)
+//
+fun{}
+string0_vt_forall1(cs: !string_vt): bool
+fun{}
+string0_vt_forall1$test(c0: (char)): bool
+//
+(* ****** ****** *)
+//
+fun{}
+string0_vt_foreach1(cs: !string_vt): void
+fun{}
+string0_vt_foreach1$work(c0: (char)): void
 //
 (* ****** ****** *)
 

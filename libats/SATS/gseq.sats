@@ -153,6 +153,14 @@ fun
 {x0:tflt}
 gseq_iforall$test(int, x0): bool
 //
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_iexists(xs): bool
+fun
+{x0:tflt}
+gseq_iexists$test(int, x0): bool
+//
 (* ****** ****** *)
 //
 fun

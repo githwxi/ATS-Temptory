@@ -32,7 +32,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 /* ****** ****** */
-
+//
+#define \
+temptory_string0_vt_free(cs) ATS_FREE(cs)
+//
 /* ****** ****** */
 
 /* end of [basics_string.cats] */

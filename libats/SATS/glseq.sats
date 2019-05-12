@@ -136,6 +136,14 @@ fun
 {x0:vtflt}
 glseq_iforall0$test(int, x0): bool
 //
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_iexists0(xs): bool
+fun
+{x0:vtflt}
+glseq_iexists0$test(int, x0): bool
+//
 (* ****** ****** *)
 //
 fun
@@ -156,6 +164,14 @@ fun
 {x0:vtflt}
 glseq_forall1$test(!x0): bool
 //
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_exists1(!xs): bool
+fun
+{x0:vtflt}
+glseq_exists1$test(!x0): bool
+//
 (* ****** ****** *)
 //
 fun
@@ -173,6 +189,13 @@ glseq_foreach1$work(!x0): void
 glseq_forall glseq_forall0
 #define
 glseq_forall$test glseq_forall0$test
+#define
+glseq_exists glseq_exists0
+#define
+glseq_exists$test glseq_exists0$test
+*)
+(* ****** ****** *)
+(*
 #define
 glseq_foreach glseq_foreach0
 #define

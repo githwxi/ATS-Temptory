@@ -99,7 +99,7 @@ let prval () = opt_unsome(x) in (x) end
 
 implement
 {}(*tmp*)
-listize_argc_argv
+argc_argv_listize
   {n}(argc, argv) = let
 //
 prval () =
@@ -155,15 +155,11 @@ if not(prop) then $raise AssertExn()
 //
 (* ****** ****** *)
 //
-implement
-(a:tflt)
-gcopy$val<a>(x0) = (x0)
+implement(a:tflt) gcopy$val<a>(x0) = (x0)
 //
 (* ****** ****** *)
 //
-implement
-(a:tflt)
-gfree$val<a>(x0) = ((*void*))
+implement(a:tflt) gfree$val<a>(x0) = ((*void*))
 //
 (* ****** ****** *)
 

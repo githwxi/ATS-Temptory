@@ -414,6 +414,26 @@ val () = $UN.ptr0_set<int>(p0, succ(i0))
 //
 implement
 {xs}{x0}
+gseq_iexists(xs) =
+(
+if
+gseq_iforall<xs><x0>(xs) then ff else tt
+) where
+{
+//
+implement
+gseq_iforall$test<x0>(i0, x0) = 
+(
+if
+gseq_iexists$test<x0>(i0, x0) then ff else tt
+)
+//
+} (* end of [gseq_iexists] *)
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
 gseq_iforeach(xs) =
 (
 ignoret

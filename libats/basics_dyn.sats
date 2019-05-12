@@ -504,27 +504,28 @@ lemma_argv_param
 //
 fun
 argv_get_at
-{n:int}{i:nat | i < n}
+{n:int}
+{i:nat|i < n}
 (argv: !argv(n), i: int(i)):<> string = "mac#%"
 fun
 argv_set_at
-{n:int}{i:nat | i < n}
+{n:int}
+{i:nat|i < n}
 (argv: !argv(n), i: int(i), x: string):<!wrt> void = "mac#%"
+//
+fun{}
+argc_argv_listize
+{n:int}
+( argc: int(n)
+, argv: !argv(n)): list1_vt(string, n)
 //
 #symload [] with argv_get_at
 #symload [] with argv_set_at
+#symload listize with argc_argv_listize
 //
 (* ****** ****** *)
 //
-fun{}
-listize_argc_argv
-  {n:int}
-  (argc: int(n), argv: !argv(n)): list1_vt(string, n)
-//
-(* ****** ****** *)
-//
-#symintr main0
-#symintr main1
+#symintr main0; #symintr main1
 //
 (* ****** ****** *)
 //
