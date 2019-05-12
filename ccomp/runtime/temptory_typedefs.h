@@ -147,6 +147,19 @@ atstype_exncon *atstype_exnconptr ;
 
 /* ****** ****** */
 //
+typedef void* atstype_arrptr ;
+//
+/*
+** HX: for arrays plus size info
+*/
+typedef
+ATSstruct
+{
+  atstype_arrptr ptr; atstype_size asz ;
+} atstype_arrpsz ;
+//
+/* ****** ****** */
+//
 // HX-2014-05:
 // making it not usable!!!
 //

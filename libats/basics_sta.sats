@@ -489,6 +489,18 @@ stadef
 mfree_libc_v = mfree_libc_addr_view
 //
 (* ****** ****** *)
+
+typedef
+bottom_t0ype_uni = {a:tflt} (a)
+typedef
+bottom_t0ype_exi = [a:tflt | false] (a)
+
+vtypedef
+bottom_vt0ype_uni = {a:vtflt} (a)
+vtypedef
+bottom_vt0ype_exi = [a:vtflt | false] (a)
+
+(* ****** ****** *)
 //
 (*
 //

@@ -120,6 +120,29 @@ atspre_assert_errmsg_bool1 atspre_assert_errmsg_bool
 //
 /* ****** ****** */
 
+ATSinline()
+atstype_string
+atspre_argv_get_at
+(
+  atstype_arrptr argv, atstype_int i
+)
+{
+  return (((atstype_string*)argv)[i]) ;
+} /* end of [atspre_argv_get_at] */
+
+ATSinline()
+atsvoid_t0ype
+atspre_argv_set_at
+(
+  atstype_arrptr argv
+, atstype_int i, atstype_string x
+)
+{
+  ((atstype_string*)argv)[i] = x ; return ;
+} /* end of [atspre_argv_set_at] */
+
+/* ****** ****** */
+
 #include "libats/CATS/basics_gint.cats"
 #include "libats/CATS/basics_gptr.cats"
 #include "libats/CATS/basics_bool.cats"

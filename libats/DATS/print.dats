@@ -41,6 +41,10 @@
 //
 (* ****** ****** *)
 
+#staload UN = "./../SATS/unsafe.sats"
+
+(* ****** ****** *)
+
 implement
 {a}(*tmp*)
 print$val(x) =
@@ -238,6 +242,38 @@ stream_print$sep() = print_string(",")
 implement
 (a:tflt)
 print$val<stream(a)>(xs) = stream_print<a>(xs)
+//
+(* ****** ****** *)
+//
+implement
+{a:vtflt}
+list0_vt_print(xs) =
+(
+list0_print$beg<>();
+loop(0, xs);
+list0_print$end<>();
+) where
+{
+fun
+loop
+( i0: int
+, xs: !list0_vt(a)): void =
+(
+case+ xs of
+| list0_vt_nil() => ()
+| list0_vt_cons(x0, xs) =>
+  (
+  if
+  (i0 > 0)
+  then list0_print$sep<>();
+  print$val<a>(x0); loop(i0+1, xs)
+  )
+)
+}
+//
+implement
+(a:vtflt)
+print$val<list0_vt(a)>(xs) = list0_vt_print<a>(xs)
 //
 (* ****** ****** *)
 

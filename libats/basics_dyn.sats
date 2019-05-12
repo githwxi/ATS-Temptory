@@ -46,7 +46,7 @@ VERBOSE_PRELUDE
 (* ****** ****** *)
 //
 fun
-patsopt_version(): string = "ext#%"
+tempopt_version(): string = "ext#%"
 //
 (* ****** ****** *)
 
@@ -129,7 +129,7 @@ cloptr_free
   {a:tflt}
   (cloptr(a)):<!wrt> void = "mac#%"
 //
-overload free with cloptr_free of 0
+#symload free with cloptr_free of 10
 //
 *)
 (* ****** ****** *)
@@ -149,8 +149,8 @@ lazy_vt_force
 // HX-2016-08:
 // this is assumed internally!
 //
-overload ! with lazy_force of 0
-overload ! with lazy_vt_force of 0
+#symload ! with lazy_force of 10
+#symload ! with lazy_vt_force of 10
 *)
 //
 (* ****** ****** *)
@@ -160,11 +160,11 @@ overload ! with lazy_vt_force of 0
 //
 fun
 lazy_vt_free
-  {a:vtflt}
-  (lazyval: lazy_vt(a)):<!wrt> void = "mac#%"
+{a:vtflt}
+(lazy_vt(a)):<!wrt> void = "mac#%"
 //
-#symload ~ with lazy_vt_free of 0
-#symload free with lazy_vt_free of 0
+#symload ~ with lazy_vt_free of 10
+#symload free with lazy_vt_free of 10
 //
 (* ****** ****** *)
 //
@@ -417,7 +417,8 @@ praxi
 opt_unsome{a:vtflt}
   (x: !opt(INV(a), true) >> a):<prf> void
 //
-fun{a:vtflt}
+fun
+{a:vtflt}
 opt_unsome_get(x: &opt(INV(a), true) >> a?): (a)
 //
 praxi
@@ -596,20 +597,25 @@ assert_bool1
   {b:bool}
   (prop: bool(b)):<!exn> [b] void = "mac#%"
 //
-#symload assert with assert_bool0 of 0
-#symload assert with assert_bool1 of 10
+#symload assert with assert_bool0 of 10
+#symload assert with assert_bool1 of 11
 //
 (* ****** ****** *)
+(*
 //
 fun{}
-assertexn_bool0 (x: bool):<!exn> void
+assertexn_bool0
+  (prop: bool):<!exn> void
 fun{}
-assertexn_bool1 {b:bool} (x: bool (b)):<!exn> [b] void
+assertexn_bool1
+  {b:bool}
+  (prop: bool (b)):<!exn> [b] void
 //
 #symintr assertexn
-#symload assertexn with assertexn_bool0 of 0
-#symload assertexn with assertexn_bool1 of 10
+#symload assertexn with assertexn_bool0 of 10
+#symload assertexn with assertexn_bool1 of 11
 //
+*)
 (* ****** ****** *)
 //
 fun
@@ -621,8 +627,8 @@ assert_errmsg_bool1
 (prop: bool(b), msg: string):<!exn> [b] void = "mac#%"
 //
 #symintr assert_errmsg
-#symload assert_errmsg with assert_errmsg_bool0 of 0
-#symload assert_errmsg with assert_errmsg_bool1 of 10
+#symload assert_errmsg with assert_errmsg_bool0 of 10
+#symload assert_errmsg with assert_errmsg_bool1 of 11
 //
 (* ****** ****** *)
 //
@@ -637,8 +643,8 @@ assert_errmsg2_bool1
 , msg1: string, msg2: string):<!exn> [b] void = "mac#%"
 //
 #symintr assert_errmsg2
-#symload assert_errmsg2 with assert_errmsg2_bool0 of 0
-#symload assert_errmsg2 with assert_errmsg2_bool1 of 10
+#symload assert_errmsg2 with assert_errmsg2_bool0 of 10
+#symload assert_errmsg2 with assert_errmsg2_bool1 of 11
 //
 (* ****** ****** *)
 

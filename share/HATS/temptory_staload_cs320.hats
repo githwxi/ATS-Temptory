@@ -115,6 +115,9 @@ TEMPLIB_targetloc
 #staload _ =
 "libats/DATS/stdio.dats"
 //
+#staload _ =
+"libats/DATS/basics.dats"
+//
 (* ****** ****** *)
 //
 #staload

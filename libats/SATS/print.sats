@@ -169,12 +169,28 @@ fun
 stream_print
 (xs: stream(INV(a))): void
 //
+#symload print with stream_print
+//
 fun{}
 stream_print$beg((*void*)): void
 fun{}
 stream_print$end((*void*)): void
 fun{}
 stream_print$sep((*void*)): void
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+list0_vt_print
+(xs: !list0_vt(INV(a))): void
+fun
+{a:vtflt}
+list1_vt_print
+(xs: !list1_vt(INV(a))): void
+//
+#symload print with list0_vt_print
+#symload print with list1_vt_print
 //
 (* ****** ****** *)
 
