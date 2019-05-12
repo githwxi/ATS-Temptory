@@ -180,6 +180,8 @@ ulint(i:int) = g1int_int_t0ype(ulint_tk, i)
 typedef
 size = g0int_t0ype(usize_tk)
 typedef
+size(i:int) = g1int_int_t0ype(usize_tk, i)
+typedef
 ssize = g0int_t0ype(ssize_tk)
 typedef
 ssize(i:int) = g1int_int_t0ype(ssize_tk, i)
@@ -457,6 +459,34 @@ tup4_vt
 sexpdef tup_vt = tup2_vt
 sexpdef tup_vt = tup3_vt
 sexpdef tup_vt = tup4_vt
+//
+(* ****** ****** *)
+//
+typedef
+bytes(n:int) = @[byte][n]
+viewdef
+bytes_v(l:addr, n:int) = bytes(n)@l
+//
+(* ****** ****** *)
+//
+// HX:
+// for memory deallocation
+// (with GC and without GC)
+//
+absview
+mfree_gc_addr_view(addr)
+stadef
+mfree_gc_v = mfree_gc_addr_view
+//
+absview
+mfree_ngc_addr_view(addr)
+stadef
+mfree_ngc_v = mfree_ngc_addr_view
+//
+absview
+mfree_libc_addr_view(addr) // libc-mfree
+stadef
+mfree_libc_v = mfree_libc_addr_view
 //
 (* ****** ****** *)
 //

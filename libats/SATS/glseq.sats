@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -32,92 +32,40 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#define
-ATS_PACKNAME "temptory"
-#define
-ATS_EXTERN_PREFIX "temptory_"
-
-(* ****** ****** *)
 //
-castfn
-g0ofg1_list_vt
-{a:vtflt}
-(list1_vt(INV(a))):<> list0_vt(a)
-castfn
-g1ofg0_list_vt
-{a:vtflt}
-(list0_vt(INV(a))):<> list1_vt(a)
-//
-#symload g0ofg1 with g0ofg1_list_vt
-#symload g1ofg0 with g1ofg0_list_vt
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_length(!xs): (int)
 //
 (* ****** ****** *)
 //
 fun
+{xs:vtflt}
 {x0:vtflt}
-list0_vt_sing(INV(x0)): list0_vt(x0)
+glseq_listize
+  (xs: xs): list0_vt(x0)
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_rlistize
+  (xs: xs): list0_vt(x0)
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_streamize
+  (xs: xs): stream_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
+{xs:vtflt}
 {x0:vtflt}
-list0_vt_free(list0_vt(INV(x0))): void
+glseq_foreach(xs): void
 fun
 {x0:vtflt}
-list1_vt_free(list1_vt(INV(x0))): void
-//
-#symload free with list0_vt_free of 10
-#symload free with list1_vt_free of 11
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_append
-( xs: list0_vt(INV(x0))
-, ys: list0_vt(INV(x0))): list0_vt(x0)
-//
-fun
-{x0:vtflt}
-list0_vt_concat
-(list0_vt(list0_vt(INV(x0)))): list0_vt(x0)
-//
-fun
-{x0:vtflt}
-list0_vt_revapp
-( xs: list0_vt(INV(x0))
-, ys: list0_vt(INV(x0))): list0_vt(x0)
-fun
-{x0:vtflt}
-list0_vt_reverse
-  (xs: list0_vt(INV(x0))): list0_vt(x0)
-//
-#symload append with list0_vt_append
-#symload concat with list0_vt_concat
-#symload revapp with list0_vt_revapp
-#symload reverse with list0_vt_reverse
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_foreach
-(xs: list0_vt(INV(x0))): void
-fun
-{x0:vtflt}
-list0_vt_foreach$work(x0: x0): void
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_foreach_ref
-(xs: !list0_vt(INV(x0))): void
-fun
-{x0:vtflt}
-list0_vt_foreach_ref$work(cptr0(x0)): void
+glseq_foreach$work(x0): void
 //
 (* ****** ****** *)
 
-(* end of [list_vt.sats] *)
+(* end of [glseq.sats] *)

@@ -40,84 +40,30 @@ ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 //
-castfn
-g0ofg1_list_vt
-{a:vtflt}
-(list1_vt(INV(a))):<> list0_vt(a)
-castfn
-g1ofg0_list_vt
-{a:vtflt}
-(list0_vt(INV(a))):<> list1_vt(a)
+// HX-2013-08:
+// for memory initialization
 //
-#symload g0ofg1 with g0ofg1_list_vt
-#symload g1ofg0 with g1ofg0_list_vt
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_sing(INV(x0)): list0_vt(x0)
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_free(list0_vt(INV(x0))): void
-fun
-{x0:vtflt}
-list1_vt_free(list1_vt(INV(x0))): void
-//
-#symload free with list0_vt_free of 10
-#symload free with list1_vt_free of 11
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_append
-( xs: list0_vt(INV(x0))
-, ys: list0_vt(INV(x0))): list0_vt(x0)
-//
-fun
-{x0:vtflt}
-list0_vt_concat
-(list0_vt(list0_vt(INV(x0)))): list0_vt(x0)
-//
-fun
-{x0:vtflt}
-list0_vt_revapp
-( xs: list0_vt(INV(x0))
-, ys: list0_vt(INV(x0))): list0_vt(x0)
-fun
-{x0:vtflt}
-list0_vt_reverse
-  (xs: list0_vt(INV(x0))): list0_vt(x0)
-//
-#symload append with list0_vt_append
-#symload concat with list0_vt_concat
-#symload revapp with list0_vt_revapp
-#symload reverse with list0_vt_reverse
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_foreach
-(xs: list0_vt(INV(x0))): void
-fun
-{x0:vtflt}
-list0_vt_foreach$work(x0: x0): void
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_foreach_ref
-(xs: !list0_vt(INV(x0))): void
-fun
-{x0:vtflt}
-list0_vt_foreach_ref$work(cptr0(x0)): void
+fun minit_gc(): void = "mac#%"
 //
 (* ****** ****** *)
 
-(* end of [list_vt.sats] *)
+fun
+mfree_gc
+{l:addr}{n:int}
+(
+  pfat: bytes(n)@l
+, pfgc: mfree_gc_v(l) | ptr(l)
+) :<!wrt> void = "mac#%"
+
+fun
+malloc_gc
+  {n:int}
+( bsz: size(n) ) :<!wrt>
+  [l:agz]
+(
+  bytes(n)@l, mfree_gc_v(l) | ptr(l)
+) = "mac#%" // endfun
+
+(* ****** ****** *)
+
+(* end of [memory.sats] *)

@@ -79,7 +79,7 @@ castvwtp0
 castfn
 castvwtp1
 {to:vtflt}
-{from:vtflt}(x: !INV(from)>>from):<> to
+{from:vtflt}(x0: !INV(from)>>from):<> to
 //
 (* ****** ****** *)
 //
@@ -97,7 +97,24 @@ fun
 cptr0_get(cp: cptr(a)): (a)
 fun
 {a:vtflt}
-cptr0_set(cp: cptr(a), x: INV(a)):<!wrt> void
+cptr0_set(cp: cptr(a), x0: INV(a)):<!wrt> void
+//
+(* ****** ****** *)
+//
+fun
+{(*tmp*)}
+cptr0_free
+{a:vtflt}(cptr(a)): void
+fun
+{a:vtflt}
+cptr0_alloc_int
+{n:nat}(asz: int(n)): cptr(a)
+fun
+{a:vtflt}
+cptr0_alloc_size(size): cptr(a)
+//
+#symload cptr0_alloc with cptr0_alloc_int
+#symload cptr0_alloc with cptr0_alloc_size
 //
 (* ****** ****** *)
 

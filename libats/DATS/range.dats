@@ -33,91 +33,61 @@
 //
 (* ****** ****** *)
 
-#define
-ATS_PACKNAME "temptory"
-#define
-ATS_EXTERN_PREFIX "temptory_"
+#staload "./../SATS/gint.sats"
+#staload "./../SATS/gptr.sats"
+#staload "./../SATS/gseq.sats"
+#staload "./../SATS/range.sats"
 
 (* ****** ****** *)
+
+implement
+{}(*tmp*)
+SINT2_streamize
+  ((*void*)) =
+  (auxmain(l0)) where
+{
 //
-castfn
-g0ofg1_list_vt
-{a:vtflt}
-(list1_vt(INV(a))):<> list0_vt(a)
-castfn
-g1ofg0_list_vt
-{a:vtflt}
-(list0_vt(INV(a))):<> list1_vt(a)
-//
-#symload g0ofg1 with g0ofg1_list_vt
-#symload g1ofg0 with g1ofg0_list_vt
-//
-(* ****** ****** *)
+val l0 = SINT2_range$beg<>()
+val u0 = SINT2_range$end<>()
 //
 fun
-{x0:vtflt}
-list0_vt_sing(INV(x0)): list0_vt(x0)
+auxmain
+(i0: sint): stream_vt(sint) =
+$ldelay
+(
+if
+i0 >= u0
+then stream_vt_nil()
+else stream_vt_cons(i0, auxmain(succ(i0)))
+) (* end of [auxmain] *)
 //
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_free(list0_vt(INV(x0))): void
-fun
-{x0:vtflt}
-list1_vt_free(list1_vt(INV(x0))): void
-//
-#symload free with list0_vt_free of 10
-#symload free with list1_vt_free of 11
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_append
-( xs: list0_vt(INV(x0))
-, ys: list0_vt(INV(x0))): list0_vt(x0)
-//
-fun
-{x0:vtflt}
-list0_vt_concat
-(list0_vt(list0_vt(INV(x0)))): list0_vt(x0)
-//
-fun
-{x0:vtflt}
-list0_vt_revapp
-( xs: list0_vt(INV(x0))
-, ys: list0_vt(INV(x0))): list0_vt(x0)
-fun
-{x0:vtflt}
-list0_vt_reverse
-  (xs: list0_vt(INV(x0))): list0_vt(x0)
-//
-#symload append with list0_vt_append
-#symload concat with list0_vt_concat
-#symload revapp with list0_vt_revapp
-#symload reverse with list0_vt_reverse
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_foreach
-(xs: list0_vt(INV(x0))): void
-fun
-{x0:vtflt}
-list0_vt_foreach$work(x0: x0): void
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_foreach_ref
-(xs: !list0_vt(INV(x0))): void
-fun
-{x0:vtflt}
-list0_vt_foreach_ref$work(cptr0(x0)): void
-//
+} (* end of [SINT2_streamize] *)
+
 (* ****** ****** *)
 
-(* end of [list_vt.sats] *)
+implement
+{a}(*tmp*)
+CPTR2_streamize
+  ((*void*)) =
+  (auxmain(l0)) where
+{
+//
+val l0 = CPTR2_range$beg<>{a}()
+val u0 = CPTR2_range$end<>{a}()
+//
+fun
+auxmain
+(i0: cptr(a)): stream_vt(cptr(a)) =
+$ldelay
+(
+if
+i0 >= u0
+then stream_vt_nil()
+else stream_vt_cons(i0, auxmain(succ(i0)))
+) (* end of [auxmain] *)
+//
+} (* end of [SINT2_streamize] *)
+
+(* ****** ****** *)
+
+(* end of [range.dats] *)

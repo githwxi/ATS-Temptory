@@ -39,6 +39,7 @@
 (* ****** ****** *)
 
 #staload "./../SATS/gint.sats"
+#staload "./../SATS/gptr.sats"
 #staload "./../SATS/bool.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
@@ -217,26 +218,30 @@ case+ xs of
 
 implement
 {x0}//tmp
-list0_vt_rforeach(xs) =
-  (loop(reverse(xs))) where
+list0_vt_foreach_ref
+  (xs) =
+  (loop(xs)) where
 {
 //
 fun
 loop
-(xs: list0_vt(x0)): void =
+( xs0
+: !list0_vt(x0)): void =
 (
-case+ xs of
+case+ xs0 of
 |
-~list0_vt_nil() => ()
+ list0_vt_nil() => ()
 |
-~list0_vt_cons(x0, xs) =>
+@list0_vt_cons(x0, xs1) =>
  let
+ val cp =
+ ptr2cptr{x0}(addr@x0)
  val () =
- list0_vt_rforeach$work<x0>(x0) in loop(xs)
+ list0_vt_foreach_ref$work<x0>(cp) in loop(xs1); fold@(xs0)
  end // end of [list0_vt_cons]
 ) (* end of [loop] *)
 //
-} (* end of [list0_vt_rforeach] *)
+} (* end of [list0_vt_foreach_ref] *)
 
 (* ****** ****** *)
 
