@@ -43,6 +43,7 @@
 #staload "./../SATS/bool.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
+#staload "./../SATS/glseq.sats"
 #staload "./../SATS/list_vt.sats"
 
 (* ****** ****** *)
@@ -264,6 +265,38 @@ list0_vt_reverse(xs) =
 
 implement
 {x0}//tmp
+list0_vt_forall0
+  (xs) =
+  (loop(xs)) where
+{
+//
+fun
+loop
+(xs: list0_vt(x0)): bool =
+(
+case+ xs of
+|
+~list0_vt_nil() => true
+|
+~list0_vt_cons(x0, xs) =>
+ let
+ val
+ test =
+ list0_vt_forall0$test<x0>(x0)
+ in
+ if
+ test
+ then loop(xs)
+ else (list0_vt_free<x0>(xs); false)
+ end // end of [list0_vt_cons]
+) (* end of [loop] *)
+//
+} (* end of [list0_vt_forall0] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
 list0_vt_foreach0
   (xs) =
   (loop(xs)) where
@@ -316,38 +349,6 @@ case+ xs of
 
 implement
 {x0}//tmp
-list0_vt_forall0
-  (xs) =
-  (loop(xs)) where
-{
-//
-fun
-loop
-(xs: list0_vt(x0)): bool =
-(
-case+ xs of
-|
-~list0_vt_nil() => true
-|
-~list0_vt_cons(x0, xs) =>
- let
- val
- test =
- list0_vt_forall0$test<x0>(x0)
- in
- if
- test
- then loop(xs)
- else (list0_vt_free<x0>(xs); false)
- end // end of [list0_vt_cons]
-) (* end of [loop] *)
-//
-} (* end of [list0_vt_forall0] *)
-
-(* ****** ****** *)
-
-implement
-{x0}//tmp
 list0_vt_rforall0(xs) =
 (
   list0_vt_forall0<x0>(xs)
@@ -392,6 +393,30 @@ case+ xs of
 
 implement
 {x0}//tmp
+list0_vt_foreach1
+  (xs) =
+  (loop(xs)) where
+{
+//
+fun
+loop
+(xs: !list0_vt(x0)): void =
+(
+case+ xs of
+| list0_vt_nil() => ()
+| list0_vt_cons(x0, xs) =>
+   let
+   val () =
+   list0_vt_foreach1$work<x0>(x0) in loop(xs)
+   end // end of [list0_vt_cons]
+) (* end of [loop] *)
+//
+} (* end of [list0_vt_foreach1] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
 list0_vt_rforall1(xs) =
 (
   list0_vt_forall0<x0>(xs)
@@ -409,6 +434,19 @@ list0_vt_rforall1(xs) =
   let val () = gfree$val<x0>(x0) in test end
   end
 } (* end of [list0_vt_rforall1] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_vt_rforeach1(xs) =
+(
+glseq_rforeach1<list0_vt(x0)><x0>(xs)
+) where
+{
+implement
+list0_vt_rforeach1$work<x0>(x0) = glseq_rforeach1$work<x0>(x0)
+}
 
 (* ****** ****** *)
 

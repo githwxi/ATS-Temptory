@@ -197,6 +197,16 @@ list0_vt_rforall1$test(!x0): bool
 //
 fun
 {x0:vtflt}
+list0_vt_rforeach1
+(xs: !list0_vt(INV(x0))): void
+fun
+{x0:vtflt}
+list0_vt_rforeach1$work(!x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 list0_vt_forall1_ref
 (xs: !list0_vt(INV(x0))): bool
 fun

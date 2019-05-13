@@ -75,6 +75,20 @@ list0_vt_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
 
 implement
 (x0:vtflt)
+glseq_foreach1<list0_vt(x0)><x0>
+  (xs) =
+(
+  list0_vt_foreach1<x0>(xs)
+) where
+{
+implement
+list0_vt_foreach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
+} (* end of [glseq_foreach1] *)
+
+(* ****** ****** *)
+
+implement
+(x0:vtflt)
 glseq_rforall1<list0_vt(x0)><x0>
   (xs) =
 (
