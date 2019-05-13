@@ -62,17 +62,19 @@ fun
 {xs:vtflt}
 {x0:vtflt}
 glseq_listize1
-  (xs: xs): list0_vt(x0)
+  (xs: !xs): list0_vt(x0)
 fun
 {xs:vtflt}
 {x0:vtflt}
 glseq_rlistize1
-  (xs: xs): list0_vt(x0)
+  (xs: !xs): list0_vt(x0)
+(*
 fun
 {xs:vtflt}
 {x0:vtflt}
 glseq_streamize1
-  (xs: xs): stream_vt(x0)
+  (xs: !xs): stream_vt(x0)
+*)
 //
 (* ****** ****** *)
 //

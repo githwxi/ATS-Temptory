@@ -40,6 +40,7 @@
 //
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/glseq.sats"
+#staload "./../SATS/list_vt.sats"
 //
 #staload UN = "./../SATS/unsafe.sats"
 //
@@ -209,6 +210,25 @@ end // end of [let]
 } (* end of [glseq_iforeach0] *)
 //
 (* ****** ****** *)
+
+implement
+{xs}{x0}
+glseq_rlistize1(xs) =
+(
+glseq_foldleft1<xs><x0><r0>
+  (xs, list0_vt_nil())
+) where
+{
+  vtypedef r0 = list0_vt(x0)
+  implement
+  glseq_foldleft1$fopr<x0><r0>
+    (r0, x0) =
+  (
+    list0_vt_cons(gcopy$val<x0>(x0), r0)
+  )
+} // end of [glseq_rlistize1]
+
+(* ****** ****** *)
 //
 implement
 {xs}{x0}
@@ -252,6 +272,42 @@ val () = $UN.ptr0_set<int>(p0, succ(i0))
 //
 } (* end of [glseq_iforall1] *)
 //
+(* ****** ****** *)
+
+implement
+{xs}{x0}
+glseq_rforall1(xs) =
+(
+loop
+(
+glseq_rlistize1<xs><x0>(xs)
+)
+) where
+{
+fun
+loop
+(xs: list0_vt(x0)): bool =
+(
+case+ xs of
+| ~list0_vt_nil() => tt
+| ~list0_vt_cons(x0, xs) =>
+  let
+  val
+  test =
+  glseq_rforall1$test<x0>(x0)
+  in
+  let
+    val () = gfree$val<x0>(x0)
+  in
+    if test
+      then loop(xs)
+      else (list0_vt_free<x0>(xs); false)
+    // end of [if]
+  end
+  end
+)
+} (* end of [glseq_rforall1] *)
+
 (* ****** ****** *)
 //
 implement
