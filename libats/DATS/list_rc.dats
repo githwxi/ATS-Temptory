@@ -103,11 +103,10 @@ refcnt_get0_elt(xs)
 in
 case+ nx of
 |
-~list0_rc_nil
-  ((*void*)) => r0
+~list0_rc_nil() => r0
 |
-~list0_rc_cons
-  (x0, xs) => (gfree$val<x0>(x0); loop(xs, succ(r0)))
+~list0_rc_cons(x0, xs) =>
+  (gfree$val<x0>(x0); loop(xs, succ(r0)))
 end
 )
 //
@@ -120,6 +119,30 @@ list0_rc_length1(xs) =
 list0_rc_length0<x0>(incref(xs))
 *)
 (* ****** ****** *)
+//
+implement
+{x0}//tmp
+list0_rc_free
+(rfc) =
+refcnt_decref(rfc)
+implement
+{x0}//tmp
+list0_rc_con_free(con) =
+(
+case+ con of
+|
+~list0_rc_nil() => ()
+|
+~list0_rc_cons(x0, xs) =>
+ (gfree$val<x0>(x0); list0_rc_free<x0>(xs))
+) (* end of [list0_rc_free_con] *)
+//
+implement
+(x0:vtflt)
+gfree$val<
+list0_rc_con(x0)>(con) = list0_rc_con_free<x0>(con)
+//
+(* ****** ****** *)
 
 implement
 {x0}//tmp
@@ -131,7 +154,9 @@ val
 =
 vtakeout(xs)
 val
-test = loop(!p0) in fpf(pf0); test
+test = loop(!p0)
+in
+test where {prval()=fpf(pf0)}
 end
 ) where
 {
@@ -158,7 +183,10 @@ case+ nx of
     (pf0,fpf|p0)
     =
     vtakeout(xs)
-    val test = loop(!p0) in fpf(pf0); test
+    val
+    test = loop(!p0)
+    in
+      test where {prval()=fpf(pf0)}
     end
     else false // end of [if]
   end
@@ -176,7 +204,12 @@ let
 val
 (pf0,fpf|p0)
 =
-vtakeout(xs) in loop(!p0); fpf(pf0)
+vtakeout(xs) in
+let
+val () = loop(!p0)
+in
+let prval () = fpf(pf0) in () end
+end
 end
 ) where
 {
@@ -193,7 +226,9 @@ case+ nx of
   let
     val () =
     list0_rc_foreach1$work<x0>(x0)
-    val (pf0,fpf|p0) = vtakeout(xs) in loop(!p0); fpf(pf0)
+    val (pf0,fpf|p0) = vtakeout(xs)
+  in
+    let val () = loop(!p0); prval () = fpf(pf0) in () end
   end
 )
 //

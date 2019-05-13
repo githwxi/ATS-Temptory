@@ -59,7 +59,7 @@ list0_rc
 fun
 {x0:vtflt}
 list0_rc_length
-(xs: !list0_rc(INV(x0))): int
+(xs: !list0_rc(x0)): int
 //
 #symload length with list0_rc_length
 //
@@ -67,8 +67,20 @@ list0_rc_length
 //
 fun
 {x0:vtflt}
+list0_rc_free(list0_rc(x0)): void
+fun
+{x0:vtflt}
+list0_rc_con_free(list0_rc_con(x0)): void
+//
+#symload free with list0_rc_free of 10
+#symload free with list0_rc_con_free of 10
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 list0_rc_forall1
-(xs: !list0_rc(INV(x0))): bool
+(xs: !list0_rc(x0)): bool
 fun
 {x0:vtflt}
 list0_rc_forall1$test(!x0): bool
@@ -78,10 +90,30 @@ list0_rc_forall1$test(!x0): bool
 fun
 {x0:vtflt}
 list0_rc_foreach1
-(xs: !list0_rc(INV(x0))): void
+(xs: !list0_rc(x0)): void
 fun
 {x0:vtflt}
 list0_rc_foreach1$work(!x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_rc_rforall1
+(xs: !list0_rc(x0)): bool
+fun
+{x0:vtflt}
+list0_rc_rforall1$test(!x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_rc_rforeach1
+(xs: !list0_rc(x0)): void
+fun
+{x0:vtflt}
+list0_rc_rforeach1$work(!x0): void
 //
 (* ****** ****** *)
 

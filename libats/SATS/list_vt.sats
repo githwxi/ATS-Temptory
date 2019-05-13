@@ -72,12 +72,8 @@ list0_vt_length
 fun
 {x0:vtflt}
 list0_vt_free(list0_vt(INV(x0))): void
-fun
-{x0:vtflt}
-list1_vt_free(list1_vt(INV(x0))): void
 //
 #symload free with list0_vt_free of 10
-#symload free with list1_vt_free of 11
 //
 (* ****** ****** *)
 //

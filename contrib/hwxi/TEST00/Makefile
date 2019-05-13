@@ -38,6 +38,7 @@ all:: test05_dats
 all:: test06_dats
 all:: test07_dats
 all:: test08_dats
+all:: test09_dats
 
 ######
 
@@ -85,6 +86,11 @@ test08.dats; $(TEMPACC) -DATS_MEMALLOC_LIBC -o $@ $<
 
 ######
 
+test09_dats: \
+test09.dats; $(TEMPACC) -DATS_MEMALLOC_LIBC -o $@ $<
+
+######
+
 regress:: test01_dats; ./test01_dats
 regress:: test02_dats; ./test02_dats
 regress:: test03_dats; ./test03_dats
@@ -93,6 +99,7 @@ regress:: test05_dats; ./test05_dats
 regress:: test06_dats; ./test06_dats
 regress:: test07_dats; ./test07_dats
 regress:: test08_dats; ./test08_dats
+regress:: test09_dats; ./test09_dats
 
 ######
 
@@ -108,5 +115,6 @@ cleanall:: ; $(RMF) test05_dats
 cleanall:: ; $(RMF) test06_dats
 cleanall:: ; $(RMF) test07_dats
 cleanall:: ; $(RMF) test08_dats
+cleanall:: ; $(RMF) test09_dats
 
 ###### end of [Makefile] ######

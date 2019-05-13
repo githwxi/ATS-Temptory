@@ -52,30 +52,34 @@ gfree$val<board>(xs) = board_free(xs)
 
 local
 
-absimpl board = list_vt(int)
+absimpl
+board = list_rc(int)
 
 in(*in-of-local*)
 
 implement
-board_nil() = nil_vt()
+board_nil() =
+refcnt(nil_rc())
 implement
 board_cons1(x0, xs) =
-let val xs = board_copy(xs) in cons_vt(x0, xs) end
+let
+val xs = board_copy(xs) in refcnt(cons_rc(x0, xs))
+end
 
 implement
-board_free(xs) = list0_vt_free(xs)
+board_free(xs) = decref(xs)
 implement
-board_copy(xs) = list0_vt_copy(xs)
+board_copy(xs) = incref(xs)
 
 implement
 {}//tmp
 board_forall1(xs) =
 (
-list0_vt_forall1<int>(xs)
+list0_rc_forall1<int>(xs)
 ) where
 {
 implement
-list0_vt_forall1$test<int>(x0) = board_forall1$test<>(x0)
+list0_rc_forall1$test<int>(x0) = board_forall1$test<>(x0)
 }
 
 end // end of [local]
@@ -225,4 +229,4 @@ glseq_iforeach0$work<board>(i, xs) =
 
 (* ****** ****** *)
 
-(* end of [test08.dats] *)
+(* end of [test09.dats] *)
