@@ -64,6 +64,8 @@ TEMPLIB_targetloc
 #staload
 "libats/SATS/list_vt.sats"
 #staload
+"libats/SATS/list_rc.sats"
+#staload
 "libats/SATS/stream_vt.sats"
 //
 (* ****** ****** *)
@@ -121,6 +123,8 @@ TEMPLIB_targetloc
 //
 #staload _ =
 "libats/DATS/list_vt.dats"
+#staload _ =
+"libats/DATS/list_rc.dats"
 #staload _ =
 "libats/DATS/stream_vt.dats"
 //
@@ -210,6 +214,16 @@ sexpdef optn_vt = optn0_vt
 #define cons1_vt list1_vt_cons
 #define none1_vt optn1_vt_none
 #define some1_vt optn1_vt_some
+
+(* ****** ****** *)
+
+sexpdef list_rc = list0_rc
+
+#define nil_rc list0_rc_nil
+#define cons_rc list0_rc_cons
+
+#define nil0_rc list0_rc_nil
+#define cons0_rc list0_rc_cons
 
 (* ****** ****** *)
 
