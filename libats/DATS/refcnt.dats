@@ -83,12 +83,20 @@ implement
 refcnt_incref
   (rfc) = let
 //
-val+@REFCNT(u, _) = rfc
-val ((*void*)) = u := succ(u)
+val+
+@REFCNT(u, _) = rfc
+//
+in
+let
+//
+val () =
+(u := succ(u))
+//
 prval () = fold@(rfc)
 //
 in
-  $UN.castvwtp1{refcnt(a)}(rfc)
+$UN.castvwtp1{refcnt(a)}(rfc)
+end
 end // end of [refcnt_incref]
 
 (* ****** ****** *)
@@ -106,16 +114,16 @@ if
 (u <= 1u)
 then
 (
-  gfree$val<a>(x); free@(rfc)
+gfree$val<a>(x); free@(rfc)
 )
 else
 {
 //
-  val () =
-  (u := pred(u))
+val () =
+(u := pred(u))
 //
-  prval () = fold@(rfc);
-  prval () = $UN.castvwtp0{void}(rfc)
+prval () = fold@(rfc)
+prval () = $UN.castvwtp0(rfc)
 //
 } (* end of [else] *)
 //

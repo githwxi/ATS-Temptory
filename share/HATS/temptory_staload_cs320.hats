@@ -59,6 +59,9 @@ TEMPLIB_targetloc
 "libats/SATS/glseq.sats"
 //
 #staload
+"libats/SATS/refcnt.sats"
+//
+#staload
 "libats/SATS/list_vt.sats"
 #staload
 "libats/SATS/stream_vt.sats"
@@ -112,6 +115,9 @@ TEMPLIB_targetloc
 //
 #staload _ =
 "libats/DATS/glseq.dats"
+//
+#staload _ =
+"libats/DATS/refcnt.dats"
 //
 #staload _ =
 "libats/DATS/list_vt.dats"
