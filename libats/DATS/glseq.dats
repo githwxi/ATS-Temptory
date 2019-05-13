@@ -271,5 +271,84 @@ in
 end // end of [glseq_rforeach1]
 //
 (* ****** ****** *)
+//
+implement
+{xs}{x0}{r0}
+glseq_foldleft1
+  (xs, r0) = let
+//
+var rr: r0 = r0
+val p0 = addr@(rr)
+//
+implement
+glseq_foreach1$work<x0>
+  (x0) = () where
+{
+val r0 =
+$UN.ptr0_get<r0>(p0)
+val r0 =
+glseq_foldleft1$fopr<x0><r0>(r0, x0)
+val () =
+$UN.ptr0_set<r0>(p0, r0)
+} (* end of [where] *)
+//
+in
+let
+val () = glseq_foreach1<xs><x0>(xs) in rr
+end
+end // end of [glseq_foldleft1]
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}{r0}
+glseq_foldright1
+  (xs, r0) = let
+//
+var rr: r0 = r0
+val p0 = addr@(rr)
+//
+implement
+glseq_rforeach1$work<x0>
+  (x0) = () where
+{
+val r0 =
+$UN.ptr0_get<r0>(p0)
+val r0 =
+glseq_foldright1$fopr<x0><r0>(x0, r0)
+val () =
+$UN.ptr0_set<r0>(p0, r0)
+} (* end of [where] *)
+//
+in
+let
+val () = glseq_rforeach1<xs><x0>(xs) in rr
+end
+end // end of [glseq_foldright1]
+//
+(* ****** ****** *)
+
+implement
+{xs}{x0}{y0}
+glseq_map1_rlist(xs) =
+(
+glseq_foldleft1<xs><x0><r0>
+  (xs, list0_vt_nil())
+) where
+{
+//
+vtypedef r0 = list0_vt(y0)
+//
+implement
+glseq_foldleft1$fopr<x0><r0>(r0, x0) =
+(
+  list0_vt_cons(y0, r0)
+) where
+{
+  val y0 = glseq_map1$fopr<x0><y0>(x0)
+}
+} (* end of [g1seq_map1_rlist] *)
+
+(* ****** ****** *)
 
 (* end of [glseq.dats] *)

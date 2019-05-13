@@ -59,8 +59,6 @@ end
 {
 //
 vtypedef
-xs = list0_rc(x0)
-vtypedef
 nx = list0_rc_con(x0)
 //
 fun
@@ -121,6 +119,86 @@ implement
 list0_rc_length1(xs) =
 list0_rc_length0<x0>(incref(xs))
 *)
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_rc_forall1(xs) =
+(
+let
+val
+(pf0,fpf|p0)
+=
+vtakeout(xs)
+val
+test = loop(!p0) in fpf(pf0); test
+end
+) where
+{
+//
+vtypedef
+nx = list0_rc_con(x0)
+//
+fun
+loop(nx: &nx): bool =
+(
+case+ nx of
+| list0_rc_nil() => tt
+| list0_rc_cons(x0, xs) =>
+  let
+    val
+    test =
+    list0_rc_forall1$test<x0>(x0)
+  in
+    if
+    test
+    then
+    let
+    val
+    (pf0,fpf|p0)
+    =
+    vtakeout(xs)
+    val test = loop(!p0) in fpf(pf0); test
+    end
+    else false // end of [if]
+  end
+)
+//
+} (* end of [list0_rc_forall1] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_rc_foreach1(xs) =
+(
+let
+val
+(pf0,fpf|p0)
+=
+vtakeout(xs) in loop(!p0); fpf(pf0)
+end
+) where
+{
+//
+vtypedef
+nx = list0_rc_con(x0)
+//
+fun
+loop(nx: &nx): void =
+(
+case+ nx of
+| list0_rc_nil() => ()
+| list0_rc_cons(x0, xs) =>
+  let
+    val () =
+    list0_rc_foreach1$work<x0>(x0)
+    val (pf0,fpf|p0) = vtakeout(xs) in loop(!p0); fpf(pf0)
+  end
+)
+//
+} (* end of [list0_rc_foreach1] *)
+
 (* ****** ****** *)
 
 (* end of [list_rc.dats] *)

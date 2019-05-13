@@ -64,5 +64,25 @@ list0_rc_length
 #symload length with list0_rc_length
 //
 (* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_rc_forall1
+(xs: !list0_rc(INV(x0))): bool
+fun
+{x0:vtflt}
+list0_rc_forall1$test(!x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_rc_foreach1
+(xs: !list0_rc(INV(x0))): void
+fun
+{x0:vtflt}
+list0_rc_foreach1$work(!x0): void
+//
+(* ****** ****** *)
 
 (* end of [list_rc.sats] *)

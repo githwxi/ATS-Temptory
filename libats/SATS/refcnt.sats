@@ -55,6 +55,12 @@ refcnt_make_elt(x0: a): refcnt(a)
 #symload refcnt with refcnt_make_elt
 //
 (* ****** ****** *)
+//
+fun
+{a:vtflt}
+refcnt_print(!refcnt(a)): void
+//
+(* ****** ****** *)
 
 fun
 {a:vtflt}

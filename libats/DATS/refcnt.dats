@@ -44,8 +44,37 @@ UN = "./../SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/gint.sats"
+#staload "./../SATS/print.sats"
 #staload "./../SATS/refcnt.sats"
 
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+refcnt_print(rfc) =
+let
+val
+(pf0,fpf|p0)
+=
+vtakeout(rfc)
+in
+print$val<a>(!p0); fpf(pf0)
+end // end of [refcnt_print]
+//
+implement
+(a:vtflt)
+print$val<refcnt(a)>
+(rfc) = refcnt_print<a>(rfc)
+//
+(* ****** ****** *)
+//
+implement
+(a:vtflt)
+gcopy$val<refcnt(a)>(x) = incref(x)
+implement
+(a:vtflt)
+gfree$val<refcnt(a)>(x) = decref(x)
+//
 (* ****** ****** *)
 //
 datavtype

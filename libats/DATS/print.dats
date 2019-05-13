@@ -34,7 +34,6 @@
 (* ****** ****** *)
 //
 #staload "./../SATS/gint.sats"
-#staload "./../SATS/list.sats"
 //
 #staload "./../SATS/print.sats"
 #staload "./../SATS/stdio.sats"

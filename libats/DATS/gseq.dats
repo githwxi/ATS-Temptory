@@ -326,7 +326,7 @@ end // end of [let]
 //
 in
   ignoret(gseq_rforall<xs><x0>(xs))
-end // end of [let]
+end // end of [gseq_rforeach]
 //
 (* ****** ****** *)
 //
@@ -354,7 +354,7 @@ in
 let
 val () = gseq_foreach<xs><x0>(xs) in rr
 end
-end // end of [let]
+end // end of [gseq_foldleft]
 //
 (* ****** ****** *)
 //
@@ -382,7 +382,7 @@ in
 let
 val () = gseq_rforeach<xs><x0>(xs) in rr
 end
-end // end of [let]
+end // end of [gseq_foldright]
 //
 (* ****** ****** *)
 //
@@ -503,11 +503,10 @@ implement
 {xs}{x0}{y0}
 gseq_map_rlist(xs) =
 (
-gseq_foldleft<xs><x0><r0>(xs, r0)
+gseq_foldleft<xs><x0><r0>
+  (xs, list0_vt_nil())
 ) where
 {
-//
-val r0 = list0_vt_nil()
 //
 vtypedef r0 = list0_vt(y0)
 //

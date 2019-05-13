@@ -187,6 +187,30 @@ glseq_foreach1$work(!x0): void
 fun
 {xs:vtflt}
 {x0:vtflt}
+{r0:vtflt}
+glseq_foldleft1(!xs, r0): r0
+fun
+{x0:vtflt}
+{r0:vtflt}
+glseq_foldleft1$fopr(r0, !x0): r0
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+{r0:vtflt}
+glseq_foldright1(!xs, r0): r0
+fun
+{x0:vtflt}
+{r0:vtflt}
+glseq_foldright1$fopr(!x0, r0): r0
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
 glseq_rforall1(!xs): bool
 fun
 {x0:vtflt}
@@ -211,6 +235,30 @@ glseq_iforall1(!xs): bool
 fun
 {x0:vtflt}
 glseq_iforall1$test(int, !x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+{y0:vtflt}
+glseq_map1$fopr(!x0): (y0)
+fun
+{x0:vtflt}
+{y0:vtflt}
+glseq_imap1$fopr(int, !x0): (y0)
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+{y0:vtflt}
+glseq_map1_list(!xs): list0_vt(y0)
+fun
+{xs:vtflt}
+{x0:vtflt}
+{y0:vtflt}
+glseq_map1_rlist(!xs): list0_vt(y0)
 //
 (* ****** ****** *)
 //
