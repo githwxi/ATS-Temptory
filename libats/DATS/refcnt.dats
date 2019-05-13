@@ -67,14 +67,55 @@ refcnt_make_elt(x0) = REFCNT(1u, x0)
 
 implement
 {a}(*tmp*)
-refcnt_get_cnt
+refcnt_get0_elt
+  (rfc) = let
+//
+val+
+@REFCNT(u, x) = rfc
+//
+in
+//
+if
+u <= 1u
+then let
+  val r = x
+  val () = free@(rfc) in r
+end // end of [then]
+else let
+  val r =
+  gcopy$val<a>(x)
+  val () = u := pred(u)
+  prval () = fold@(rfc)
+  prval () = $UN.castvwtp0(rfc) in r
+end // end of [else]
+//
+end // end of [refcnt_get0_elt]
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+refcnt_get1_elt
+  (rfc) = let
+//
+val+REFCNT(u, x) = rfc
+//
+in
+  gcopy$val<a>(x)
+end // end of [refcnt_get1_elt]
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+refcnt_get1_cnt
   (rfc) = let
 //
 val+REFCNT(u, _) = rfc
 //
 in
   $UN.cast{Intgte(1)}(u)
-end // end of [refcnt_get_count]
+end // end of [refcnt_get1_cnt]
 
 (* ****** ****** *)
 

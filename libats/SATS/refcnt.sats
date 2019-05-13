@@ -58,10 +58,13 @@ refcnt_make_elt(x0: a): refcnt(a)
 
 fun
 {a:vtflt}
-refcnt_get_elt(!refcnt(a)): (a)
+refcnt_get0_elt(refcnt(a)): (a)
 fun
 {a:vtflt}
-refcnt_get_cnt(!refcnt(a)): Intgte(1)
+refcnt_get1_elt(!refcnt(a)): (a)
+fun
+{a:vtflt}
+refcnt_get1_cnt(!refcnt(a)): Intgte(1)
 
 (* ****** ****** *)
 //
