@@ -1,7 +1,8 @@
 (* ****** ****** *)
 //
-// HX-2019-05-09:
-// For ATS-Temptory
+// HX-2019-05-12:
+// For ATS-Temptory:
+// A memory-clean example
 //
 (* ****** ****** *)
 //
@@ -164,7 +165,7 @@ else println!()
 (* ****** ****** *)
 
 fun
-board_check
+board_check1
 (x0: int, xs: !board): bool =
 (
 glseq_iforall1<board><int>(xs)
@@ -173,7 +174,7 @@ glseq_iforall1<board><int>(xs)
 implement
 glseq_iforall1$test<int>(i1, x1) =
 if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
-} (* end of [board_check] *)
+} (* end of [board_check1] *)
 
 (* ****** ****** *)
 //
@@ -192,7 +193,7 @@ extend
 if x0 < N then
 (
 if
-board_check(x0, xs)
+board_check1(x0, xs)
 then
 cons_vt(board_cons1(x0, xs), extend(xs, x0+1))
 else extend(xs, x0+1)
@@ -242,8 +243,8 @@ implement
 glseq_iforeach0$work<board>(i, xs) =
 (println!("Solution#", i+1, ":"); board_print0(xs); println!())
 }
-}
+} (* end of [main0] *)
 
 (* ****** ****** *)
 
-(* end of [test04.dats] *)
+(* end of [test08.dats] *)

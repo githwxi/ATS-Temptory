@@ -145,6 +145,26 @@ list0_vt_foreach0$work(x0: x0): void
 //
 fun
 {x0:vtflt}
+list0_vt_rforall0
+(xs: list0_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+list0_vt_rforall0$test(x0: x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_rforeach0
+(xs: list0_vt(INV(x0))): void
+fun
+{x0:vtflt}
+list0_vt_rforeach0$work(x0: x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 {r0:vtflt}
 list0_vt_foldleft0
 (xs: list0_vt(INV(x0)), r0: r0): r0
@@ -152,16 +172,6 @@ list0_vt_foldleft0
 fun
 {x0:vtflt}{r0:vtflt}
 list0_vt_foldleft0$fopr(r0: r0, x0: x0): r0
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-list0_vt_rforall0
-(xs: list0_vt(INV(x0))): bool
-fun
-{x0:vtflt}
-list0_vt_rforall0$test(x0: x0): bool
 //
 (* ****** ****** *)
 //
@@ -202,6 +212,18 @@ list0_vt_rforeach1
 fun
 {x0:vtflt}
 list0_vt_rforeach1$work(!x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+{r0:vtflt}
+list0_vt_foldleft1
+(xs: !list0_vt(INV(x0)), r0: r0): r0
+//
+fun
+{x0:vtflt}{r0:vtflt}
+list0_vt_foldleft1$fopr(r0: r0, x0: !x0): r0
 //
 (* ****** ****** *)
 //

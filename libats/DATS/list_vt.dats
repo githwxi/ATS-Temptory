@@ -367,6 +367,51 @@ list0_vt_rforall0(xs) =
 
 implement
 {x0}//tmp
+list0_vt_rforeach0(xs) =
+(
+  list0_vt_foreach0<x0>(xs)
+) where
+{
+  val xs =
+  list0_vt_reverse<x0>(xs)
+  implement
+  list0_vt_foreach0$work<x0>(x0) =
+  (
+    list0_vt_rforeach0$work<x0>(x0)
+  )
+} (* end of [list0_vt_rforeach0] *)
+
+(* ****** ****** *)
+
+implement
+{x0}{r0}//tmp
+list0_vt_foldleft0
+  (xs, r0) =
+(
+  loop(xs, r0)
+) where
+{
+//
+vtypedef
+xs = list0_vt(x0)
+//
+fun
+loop
+(xs: xs, r0: r0): r0 =
+(
+case+ xs of
+|
+~list0_vt_nil() => r0
+|
+~list0_vt_cons(x0, xs) =>
+ loop(xs, list0_vt_foldleft0$fopr<x0><r0>(r0, x0))
+)
+} (* end of [list0_foldleft0] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
 list0_vt_forall1(xs) =
   (loop(xs)) where
 {
@@ -447,6 +492,31 @@ glseq_rforeach1<list0_vt(x0)><x0>(xs)
 implement
 list0_vt_rforeach1$work<x0>(x0) = glseq_rforeach1$work<x0>(x0)
 }
+
+(* ****** ****** *)
+
+implement
+{x0}{r0}//tmp
+list0_vt_foldleft1
+  (xs, r0) =
+(
+  loop(xs, r0)
+) where
+{
+//
+vtypedef
+xs = list0_vt(x0)
+//
+fun
+loop
+(xs: !xs, r0: r0): r0 =
+(
+case+ xs of
+| list0_vt_nil() => r0
+| list0_vt_cons(x0, xs) =>
+  loop(xs, list0_vt_foldleft1$fopr<x0><r0>(r0, x0))
+)
+} (* end of [list0_foldleft1] *)
 
 (* ****** ****** *)
 
