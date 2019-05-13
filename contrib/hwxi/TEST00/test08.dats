@@ -173,7 +173,9 @@ glseq_iforall1<board><int>(xs)
 {
 implement
 glseq_iforall1$test<int>(i1, x1) =
-if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
+if
+(x0 != x1)
+then (abs(x0 - x1) != i1 + 1) else false
 } (* end of [board_check1] *)
 
 (* ****** ****** *)
@@ -206,9 +208,11 @@ boardlst_extend
 (xss: list_vt(board)): list_vt(board) =
 (
 case+ xss of
-| ~nil_vt() => nil_vt()
-| ~cons_vt(xs, xss) =>
-  (append(board_extend(xs), boardlst_extend(xss)))
+|
+~nil_vt() => nil_vt()
+|
+~cons_vt(xs, xss) =>
+ (append(board_extend(xs), boardlst_extend(xss)))
 )
 
 (* ****** ****** *)

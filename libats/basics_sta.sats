@@ -202,6 +202,13 @@ typedef
 ullint(i:int) = g1int_int_t0ype(ullint_tk, i)
 //
 (* ****** ****** *)
+
+typedef
+Intgt(i:int) = [a:int | a > i] int(a)
+typedef
+Intgte(i:int) = [a:int | a >= i] int(a)
+
+(* ****** ****** *)
 //
 abstflt
 bool_t0ype = $extype"atstype_bool"
