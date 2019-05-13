@@ -23,6 +23,12 @@ TEMPACC= $(TEMPTORY)/bin/tempacc
 
 ######
 
+MYLIBS :=
+MYLIBS += mylib.sats
+MYLIBS += mylib.dats
+
+######
+
 INCLUDE :=
 INCLUDE += -I${TEMPTORY}
 INCLUDE += -I${TEMPTORY}/ccomp/runtime 
@@ -39,6 +45,7 @@ all:: test06_dats
 all:: test07_dats
 all:: test08_dats
 all:: test09_dats
+all:: test10_dats
 
 ######
 
@@ -91,6 +98,12 @@ test09.dats; $(TEMPACC) -DATS_MEMALLOC_LIBC -o $@ $<
 
 ######
 
+test10_dats: \
+test10.dats; \
+$(TEMPACC) -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $< $(MYLIBS)
+
+######
+
 regress:: test01_dats; ./test01_dats
 regress:: test02_dats; ./test02_dats
 regress:: test03_dats; ./test03_dats
@@ -100,6 +113,7 @@ regress:: test06_dats; ./test06_dats
 regress:: test07_dats; ./test07_dats
 regress:: test08_dats; ./test08_dats
 regress:: test09_dats; ./test09_dats
+regress:: test10_dats; ./test10_dats
 
 ######
 
@@ -116,5 +130,6 @@ cleanall:: ; $(RMF) test06_dats
 cleanall:: ; $(RMF) test07_dats
 cleanall:: ; $(RMF) test08_dats
 cleanall:: ; $(RMF) test09_dats
+cleanall:: ; $(RMF) test10_dats
 
 ###### end of [Makefile] ######

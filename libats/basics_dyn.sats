@@ -462,8 +462,8 @@ sexpdef optn1(a:tflt) = [b:bool] optn1(a, b)
 datavtype
 optn0_vtflt_vtbox
   (a:vtflt) =
-  | optn0_none_vt(a)
-  | optn0_some_vt(a) of (INV(a))
+  | optn0_vt_none(a)
+  | optn0_vt_some(a) of (INV(a))
 // end of [option_vtflt_bool_vtbox]
 //
 sexpdef optn0_vt = optn0_vtflt_vtbox
@@ -475,8 +475,8 @@ optn1_vtflt_bool_vtbox
 (
   a:vtflt, bool
 ) = // option_vtflt_bool_vtbox
-  | optn1_none_vt(a, ff)
-  | optn1_some_vt(a, tt) of (INV(a))
+  | optn1_vt_none(a, ff)
+  | optn1_vt_some(a, tt) of (INV(a))
 // end of [option_vtflt_bool_vtbox]
 //
 sexpdef optn1_vt = optn1_vtflt_bool_vtbox

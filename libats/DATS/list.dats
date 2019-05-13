@@ -44,6 +44,11 @@
 
 (* ****** ****** *)
 
+#define none0_vt optn0_vt_none
+#define some0_vt optn0_vt_some
+
+(* ****** ****** *)
+
 implement
 {x0}//tmp
 list0_iseqz(xs) =
@@ -102,15 +107,99 @@ $effmask_all
 
 implement
 {x0}//tmp
-list0_concat(xss) =
+list0_head_exn(xs) =
 (
-list0_foldright<xs><xs>(xss, list0_nil())
+case+ xs of
+| list0_cons
+  (x0, _) => x0
+| list0_nil((*void*)) =>
+  $raise(ListSubscriptExn())
+)
+implement
+{x0}//tmp
+list0_head_opt(xs) =
+(
+case+ xs of
+| list0_nil() => none0_vt()
+| list0_cons(x0, _) => some0_vt(x0)
+)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_tail_exn(xs) =
+(
+case+ xs of
+| list0_cons
+  (_, xs) => xs
+| list0_nil((*void*)) =>
+  $raise(ListSubscriptExn())
+)
+implement
+{x0}//tmp
+list0_tail_opt(xs) =
+(
+case+ xs of
+| list0_nil() => none0_vt()
+| list0_cons(_, xs) => some0_vt(xs)
+)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_get_at_exn
+  (xs, i0) =
+(
+if
+(i0 >= 0)
+then
+loop(xs, i0)
+else
+$raise(ListSubscriptExn())
 ) where
 {
-typedef xs = list0(x0)
+fun
+loop
+(xs: list0(x0), i0: int): x0 =
+(
+case+ xs of
+| list0_nil() =>
+  $raise(ListSubscriptExn())
+| list0_cons(x0, xs) =>
+  if i0 <= 0 then x0 else loop(xs, i0-1)
+)
+} (* end of [list0_get_at_exn] *)
+
 implement
-list0_foldright$fopr<xs><xs>(xs, r0) = list0_append<x0>(xs, r0)
-} (* end of [list0_concat] *)
+{x0}//tmp
+list0_get_at_opt
+  (xs, i0) =
+(
+if
+(i0 >= 0)
+then loop(xs, i0) else none0_vt()
+) where
+{
+//
+vtypedef
+r0 = optn0_vt(x0)
+//
+fun
+loop(xs: list0(x0), i0: int): r0 =
+(
+case+ xs of
+| list0_nil() =>
+  (
+    none0_vt()
+  )
+| list0_cons(x0, xs) =>
+  if i0 <= 0
+    then some0_vt(x0) else loop(xs, i0-1)
+  // end of [if]
+)
+} (* end of [list0_get_at_opt] *)
 
 (* ****** ****** *)
 //
@@ -146,7 +235,25 @@ end
     } (* list0_cons *)
   ) (* end of [loop] *)
 } (* end of [list0_append] *)
-
+//
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
+list0_concat(xss) =
+(
+list0_foldright<xs><xs>(xss, list0_nil())
+) where
+{
+//
+typedef xs = list0(x0)
+typedef r0 = list0(x0)
+//
+implement
+list0_foldright$fopr<xs><r0>(xs, r0) = list0_append<x0>(xs, r0)
+//
+} (* end of [list0_concat] *)
+//
 (* ****** ****** *)
 //
 implement

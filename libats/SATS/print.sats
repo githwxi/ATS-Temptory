@@ -34,7 +34,7 @@
 (* ****** ****** *)
 //
 #define
-ATS_PACKNAME "temptory"
+ATS_PACKNAME "temptory."
 #define
 ATS_EXTERN_PREFIX "temptory_"
 //

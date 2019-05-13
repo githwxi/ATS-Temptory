@@ -34,9 +34,14 @@
 (* ****** ****** *)
 
 #define
-ATS_PACKNAME "temptory"
+ATS_PACKNAME "temptory."
 #define
 ATS_EXTERN_PREFIX "temptory_"
+
+(* ****** ****** *)
+
+exception
+ListSubscriptExn of ()
 
 (* ****** ****** *)
 //
@@ -88,6 +93,44 @@ list0_indexof
 (list0(INV(x0)), elt: x0):<> (int)
 //
 #symload indexof with list0_indexof
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+list0_head_exn
+(xs: list0(INV(x0))): (x0)
+fun
+{x0:tflt}
+list0_head_opt
+(xs: list0(INV(x0))): optn0_vt(x0)
+//
+fun
+{x0:tflt}
+list0_tail_exn
+(xs: list0(INV(x0))): list0(x0)
+fun
+{x0:tflt}
+list0_tail_opt
+(xs: list0(INV(x0))): optn0_vt(list0(x0))
+//
+#symload head with list0_head_exn
+#symload tail with list0_tail_exn
+#symload head_exn with list0_head_exn
+#symload tail_exn with list0_tail_exn
+#symload head_opt with list0_head_opt
+#symload tail_opt with list0_tail_opt
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+list0_get_at_exn
+(xs: list0(x0), i0: int): (x0) 
+fun
+{x0:tflt}
+list0_get_at_opt
+(xs: list0(x0), i0: int): optn0_vt(x0) 
 //
 (* ****** ****** *)
 //
