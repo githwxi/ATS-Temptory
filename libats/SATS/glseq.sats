@@ -184,6 +184,39 @@ glseq_foreach1$work(!x0): void
 //
 (* ****** ****** *)
 //
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_rforall1(!xs): bool
+fun
+{x0:vtflt}
+glseq_rforall1$test(!x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_rforeach1(!xs): void
+fun
+{x0:vtflt}
+glseq_rforeach1$work(!x0): void
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_iforall1(!xs): bool
+fun
+{x0:vtflt}
+glseq_iforall1$test(int, !x0): bool
+//
+(* ****** ****** *)
+//
+// HX-2019-05-12: for customization
+//
+(* ****** ****** *)
 (*
 #define
 glseq_forall glseq_forall0

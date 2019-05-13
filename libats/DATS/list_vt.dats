@@ -90,6 +90,60 @@ case+ xs of
 //
 implement
 {x0}//tmp
+list0_vt_copy(xs) =
+(
+let
+var r0: ptr? in loop(xs, r0); r0
+end
+) where
+{
+fun
+loop
+( xs: !list0_vt(x0)
+, r0: &ptr? >> list0_vt(x0)): void =
+(
+case+ xs of
+| list0_vt_nil() =>
+  (r0 := list0_vt_nil())
+| list0_vt_cons(x0, xs) =>
+  {
+    val x0 = gcopy$val<x0>(x0)
+    val () =
+    (r0 := list0_vt_cons(x0, _))
+    val+list0_vt_cons(_, r1) = r0
+    val () = loop(xs, r1); prval () = fold@(r0)
+  } (* end of [list0_vt_cons] *)
+)
+} (* end of [list0_vt_copy] *)
+//
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_vt_rcopy(xs) =
+(
+loop(xs, list0_vt_nil())
+) where
+{
+//
+vtypedef
+xs = list0_vt(x0)
+//
+fun
+loop
+(xs: !xs, r0: xs): xs =
+(
+case+ xs of
+| list0_vt_nil() => r0
+| list0_vt_cons(x0, xs) =>
+  loop(xs, list0_vt_cons(gcopy$val<x0>(x0), r0))
+) (* end of [loop] *)
+} (* end of [list_vt_rcopy] *)
+
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
 list0_vt_concat
   (xss) =
 (
@@ -210,7 +264,8 @@ list0_vt_reverse(xs) =
 
 implement
 {x0}//tmp
-list0_vt_foreach0(xs) =
+list0_vt_foreach0
+  (xs) =
   (loop(xs)) where
 {
 //
@@ -256,6 +311,104 @@ case+ xs of
 ) (* end of [loop] *)
 //
 } (* end of [list0_vt_foldleft0] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_vt_forall0
+  (xs) =
+  (loop(xs)) where
+{
+//
+fun
+loop
+(xs: list0_vt(x0)): bool =
+(
+case+ xs of
+|
+~list0_vt_nil() => true
+|
+~list0_vt_cons(x0, xs) =>
+ let
+ val
+ test =
+ list0_vt_forall0$test<x0>(x0)
+ in
+ if
+ test
+ then loop(xs)
+ else (list0_vt_free<x0>(xs); false)
+ end // end of [list0_vt_cons]
+) (* end of [loop] *)
+//
+} (* end of [list0_vt_forall0] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_vt_rforall0(xs) =
+(
+  list0_vt_forall0<x0>(xs)
+) where
+{
+  val xs =
+  list0_vt_reverse<x0>(xs)
+  implement
+  list0_vt_forall0$test<x0>(x0) =
+  (
+    list0_vt_rforall0$test<x0>(x0)
+  )
+} (* end of [list0_vt_rforall0] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_vt_forall1(xs) =
+  (loop(xs)) where
+{
+//
+fun
+loop
+(xs: !list0_vt(x0)): bool =
+(
+case+ xs of
+| list0_vt_nil() => true
+| list0_vt_cons(x0, xs) =>
+  let
+  val
+  test =
+  list0_vt_forall1$test<x0>(x0)
+  in
+    if test then loop(xs) else false
+  end // end of [list0_vt_cons]
+) (* end of [loop] *)
+//
+} (* end of [list0_vt_forall1] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_vt_rforall1(xs) =
+(
+  list0_vt_forall0<x0>(xs)
+) where
+{
+  val xs =
+  list0_vt_rcopy<x0>(xs)
+  implement
+  list0_vt_forall0$test<x0>(x0) =
+  let
+  val
+  test =
+  list0_vt_rforall1$test<x0>(x0)
+  in
+  let val () = gfree$val<x0>(x0) in test end
+  end
+} (* end of [list0_vt_rforall1] *)
 
 (* ****** ****** *)
 

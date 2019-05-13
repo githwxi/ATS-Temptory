@@ -53,6 +53,11 @@ TEMPLIB_targetloc
 #staload
 "libats/SATS/stream.sats"
 //
+(* ****** ****** *)
+//
+#staload
+"libats/SATS/glseq.sats"
+//
 #staload
 "libats/SATS/list_vt.sats"
 #staload
@@ -91,11 +96,6 @@ TEMPLIB_targetloc
 "libats/DATS/stream.dats"
 //
 #staload _ =
-"libats/DATS/list_vt.dats"
-#staload _ =
-"libats/DATS/stream_vt.dats"
-//
-#staload _ =
 "libats/DATS/gseq_gint.dats"
 #staload _ =
 "libats/DATS/gseq_cptr.dats"
@@ -108,6 +108,21 @@ TEMPLIB_targetloc
 #staload _ =
 "libats/DATS/gseq_stream.dats"
 //
+(* ****** ****** *)
+//
+#staload _ =
+"libats/DATS/glseq.dats"
+//
+#staload _ =
+"libats/DATS/list_vt.dats"
+#staload _ =
+"libats/DATS/stream_vt.dats"
+//
+(* ****** ****** *)
+
+#staload _ =
+"libats/DATS/glseq_list0.dats"
+
 (* ****** ****** *)
 //
 #staload _ =
@@ -141,6 +156,8 @@ _(*UNSAFE*) =
 sexpdef list = list0
 sexpdef optn = optn0
 
+(* ****** ****** *)
+
 #define :: list0_cons
 
 #define nil list0_nil
@@ -161,6 +178,32 @@ sexpdef optn = optn0
 #define cons1 list1_cons
 #define none1 optn1_none
 #define some1 optn1_some
+
+(* ****** ****** *)
+
+sexpdef list_vt = list0_vt
+sexpdef optn_vt = optn0_vt
+
+(* ****** ****** *)
+
+#define nil_vt list0_vt_nil
+#define cons_vt list0_vt_cons
+#define none_vt optn0_vt_none
+#define some_vt optn0_vt_some
+
+#define sing_vt(x) cons_vt(x, nil_vt())
+
+(* ****** ****** *)
+
+#define nil0_vt list0_vt_nil
+#define cons0_vt list0_vt_cons
+#define none0_vt optn0_vt_none
+#define some0_vt optn0_vt_some
+
+#define nil1_vt list1_vt_nil
+#define cons1_vt list1_vt_cons
+#define none1_vt optn1_vt_none
+#define some1_vt optn1_vt_some
 
 (* ****** ****** *)
 

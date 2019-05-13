@@ -83,6 +83,20 @@ list1_vt_free(list1_vt(INV(x0))): void
 //
 fun
 {x0:vtflt}
+list0_vt_copy
+(xs: !list0_vt(INV(x0))): list0_vt(x0)
+fun
+{x0:vtflt}
+list0_vt_rcopy
+(xs: !list0_vt(INV(x0))): list0_vt(x0)
+//
+#symload copy with list0_vt_copy of 10
+#symload rcopy with list0_vt_rcopy of 10
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 list0_vt_append
 ( xs: list0_vt(INV(x0))
 , ys: list0_vt(INV(x0))): list0_vt(x0)
@@ -111,6 +125,16 @@ list0_vt_reverse
 //
 fun
 {x0:vtflt}
+list0_vt_forall0
+(xs: list0_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+list0_vt_forall0$test(x0: x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 list0_vt_foreach0
 (xs: list0_vt(INV(x0))): void
 fun
@@ -128,6 +152,56 @@ list0_vt_foldleft0
 fun
 {x0:vtflt}{r0:vtflt}
 list0_vt_foldleft0$fopr(r0: r0, x0: x0): r0
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_rforall0
+(xs: list0_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+list0_vt_rforall0$test(x0: x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_forall1
+(xs: !list0_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+list0_vt_forall1$test(!x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_foreach1
+(xs: !list0_vt(INV(x0))): void
+fun
+{x0:vtflt}
+list0_vt_foreach1$work(!x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_rforall1
+(xs: !list0_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+list0_vt_rforall1$test(!x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_forall1_ref
+(xs: !list0_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+list0_vt_forall1_ref$test(cptr0(x0)): void
 //
 (* ****** ****** *)
 //

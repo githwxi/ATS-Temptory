@@ -5,20 +5,20 @@
 (***********************************************************************)
 
 (*
-** ATS/Postiats - Unleashing the Potential of Types!
-** Copyright (C) 2010-2019 Hongwei Xi, ATS Trustful Software, Inc.
+** ATS/Xanadu - Unleashing the Potential of Types!
+** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-**
+** 
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-**
+** 
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -27,98 +27,64 @@
 
 (* ****** ****** *)
 //
-// Author of the file:
-// Hongwei Xi (gmhwxiATgmailDOTcom)
-// Start Time: July, 2012
+// Author: Hongwei Xi
+// Start Time: February, 2019
+// Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-#include "libats/params.hats"
+#define tt true
+#define ff false
 
 (* ****** ****** *)
 
-#if
-VERBOSE_PRELUDE
-#then
-#print
-"Loading [basics_gen.sats] starts!\n"
-#endif // end of [VERBOSE_PRELUDE]
-
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-gcopy$val(x: !INV(a)): (a)
-//
-fun
-{a:vtflt}
-gcopy$ref(x: &INV(a)): (a)
-//
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-gfree$val(x0: INV(a)): void
-//
-(*
-fun
-{a:vtflt}
-gfree$ref(x: &INV(a) >> a?): void
-*)
-//
-(* ****** ****** *)
-
-(*
-fun
-{a:vtflt}
-ginit$ref(x: &a? >> INV(a)): void
-*)
+#staload "./../SATS/gint.sats"
+#staload "./../SATS/glseq.sats"
+#staload "./../SATS/list.sats"
+#staload "./../SATS/list_vt.sats"
 
 (* ****** ****** *)
 
-(*
-fun
-{a:vtflt}
-gclear$ref(x: &INV(a) >> a?): void
-*)
-
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-gequal$val(x: !INV(a), y: !a):<> bool
-//
-fun
-{a:vtflt}
-gequal$ref(x: &INV(a), y: &a):<> bool
-//
-(* ****** ****** *)
-(*
-fun
-{a:vtflt}
-tostring$val(x: !INV(a)):<> string
-fun
-{a:vtflt}
-tostring$ref(x: &INV(a)):<> string
-*)
-(* ****** ****** *)
-(*
-fun
-{a:vtflt}
-tostrptr$val(x: !INV(a)):<!wrt> Strptr1
-fun
-{a:vtflt}
-tostrptr$ref(x: &INV(a)):<!wrt> Strptr1
-*)
-(* ****** ****** *)
-
-#if
-VERBOSE_PRELUDE
-#then
-#print
-"Loading [basics_gen.sats] finishes!\n"
-#endif // end of [VERBOSE_PRELUDE]
+implement
+(x0:vtflt)
+glseq_forall0<list0_vt(x0)><x0>
+  (xs) =
+(
+  list0_vt_forall0<x0>(xs)
+) where
+{
+implement
+list0_vt_forall0$test<x0>(x0) = glseq_forall0$test<x0>(x0)
+} (* end of [glseq_forall0] *)
 
 (* ****** ****** *)
 
-(* end of [basics_gen.sats] *)
+implement
+(x0:vtflt)
+glseq_forall1<list0_vt(x0)><x0>
+  (xs) =
+(
+  list0_vt_forall1<x0>(xs)
+) where
+{
+implement
+list0_vt_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
+} (* end of [glseq_forall1] *)
+
+(* ****** ****** *)
+
+implement
+(x0:vtflt)
+glseq_rforall1<list0_vt(x0)><x0>
+  (xs) =
+(
+  list0_vt_rforall1<x0>(xs)
+) where
+{
+implement
+list0_vt_rforall1$test<x0>(x0) = glseq_rforall1$test<x0>(x0)
+} (* end of [glseq_rforall1] *)
+
+(* ****** ****** *)
+
+(* end of [glseq_list0.dats] *)
