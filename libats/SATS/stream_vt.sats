@@ -107,6 +107,13 @@ stream_vt_map$fopr(x0): y0
 fun
 {x0:vtflt}
 {y0:vtflt}
+stream_vt_map(xs: stream_vt(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+{y0:vtflt}
 stream_vt_mapopt$fopr(x0): y0
 fun
 {x0:vtflt}
@@ -115,10 +122,6 @@ fun
 {x0:vtflt}
 stream_vt_filter$test(!x0): bool
 //
-fun
-{x0:vtflt}
-{y0:vtflt}
-stream_vt_map(xs: stream_vt(x0)): stream_vt(y0)
 fun
 {x0:vtflt}
 {y0:vtflt}

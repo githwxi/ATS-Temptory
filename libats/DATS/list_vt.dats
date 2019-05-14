@@ -445,6 +445,42 @@ glseq_map0$fopr<x0><y0>(x0) = list0_vt_map0$fopr<x0><y0>(x0)
 } // list0_vt_map0_rlist
 //
 (* ****** ****** *)
+//
+implement
+{x0}{y0}
+list0_vt_imap0(xs) =
+list0_vt_imap0_list<x0><y0>(xs)
+//
+implement
+{x0}{y0}
+list0_vt_imap0_list(xs) =
+(
+  glseq_imap0_list<xs><x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+implement
+glseq_imap0$fopr<x0><y0>(i0, x0) = list0_vt_imap0$fopr<x0><y0>(i0, x0)
+//
+} // list0_vt_imap0_list
+implement
+{x0}{y0}
+list0_vt_imap0_rlist(xs) =
+(
+  glseq_imap0_rlist<xs><x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+implement
+glseq_imap0$fopr<x0><y0>(i0, x0) = list0_vt_imap0$fopr<x0><y0>(i0, x0)
+//
+} // list0_vt_imap0_rlist
+//
+(* ****** ****** *)
 
 implement
 {x0}//tmp
@@ -555,10 +591,82 @@ case+ xs of
 } (* end of [list0_foldleft1] *)
 
 (* ****** ****** *)
+//
+implement
+{x0}{y0}
+list0_vt_map1(xs) =
+list0_vt_map1_list<x0><y0>(xs)
+//
+implement
+{x0}{y0}
+list0_vt_map1_list(xs) =
+(
+  glseq_map1_list<xs><x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+implement
+glseq_map1$fopr<x0><y0>(x0) = list0_vt_map1$fopr<x0><y0>(x0)
+//
+} // list0_vt_map1_list
+implement
+{x0}{y0}
+list0_vt_map1_rlist(xs) =
+(
+  glseq_map1_rlist<xs><x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+implement
+glseq_map1$fopr<x0><y0>(x0) = list0_vt_map1$fopr<x0><y0>(x0)
+//
+} // list0_vt_map1_rlist
+//
+(* ****** ****** *)
+//
+implement
+{x0}{y0}
+list0_vt_imap1(xs) =
+list0_vt_imap1_list<x0><y0>(xs)
+//
+implement
+{x0}{y0}
+list0_vt_imap1_list(xs) =
+(
+  glseq_imap1_list<xs><x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+implement
+glseq_imap1$fopr<x0><y0>(i0, x0) = list0_vt_imap1$fopr<x0><y0>(i0, x0)
+//
+} // list0_vt_imap1_list
+implement
+{x0}{y0}
+list0_vt_imap1_rlist(xs) =
+(
+  glseq_imap1_rlist<xs><x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+implement
+glseq_imap1$fopr<x0><y0>(i0, x0) = list0_vt_imap1$fopr<x0><y0>(i0, x0)
+//
+} // list0_vt_imap1_rlist
+//
+(* ****** ****** *)
 
 implement
 {x0}//tmp
-list0_vt_foreach1_ref
+list0_vt_forall1_ref
   (xs) =
   (loop(xs)) where
 {
@@ -566,22 +674,59 @@ list0_vt_foreach1_ref
 fun
 loop
 ( xs0
-: !list0_vt(x0)): void =
+: !list0_vt(x0)): bool =
 (
 case+ xs0 of
 |
- list0_vt_nil() => ()
+ list0_vt_nil() => tt
 |
 @list0_vt_cons(x0, xs1) =>
  let
  val cp =
  ptr2cptr{x0}(addr@x0)
- val () =
- list0_vt_foreach1_ref$work<x0>(cp) in loop(xs1); fold@(xs0)
+ val test =
+ list0_vt_forall1_ref$test<x0>(cp)
+ in
+   if
+   test
+   then
+   let
+   val
+   test = loop(xs1) in fold@(xs0); test
+   end
+   else let prval () = fold@(xs0) in ff end
  end // end of [list0_vt_cons]
 ) (* end of [loop] *)
 //
-} (* end of [list0_vt_foreach1_ref] *)
+} (* end of [list0_vt_forall1_ref] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list0_vt_foreach1_ref
+  (xs) =
+(
+glseq_foreach1_ref<list0_vt(x0)><x0>(xs)
+) where
+{
+implement
+glseq_foreach1_ref$work<x0>(px) = list0_vt_foreach1_ref$work<x0>(px)
+}
+
+(* ****** ****** *)
+
+implement
+{x0}{r0}//tmp
+list0_vt_foldleft1_ref
+  (xs, r0) =
+(
+glseq_foldleft1_ref<list0_vt(x0)><x0><r0>(xs, r0)
+) where
+{
+implement
+glseq_foldleft1_ref$fopr<x0><r0>(r0, px) = list0_vt_foldleft1_ref$fopr<x0><r0>(r0, px)
+}
 
 (* ****** ****** *)
 

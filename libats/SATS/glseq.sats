@@ -180,6 +180,38 @@ fun
 glseq_map0_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
+
+(*
+fun
+{x0:vtflt}
+{y0:vtflt}
+glseq_filter0$test(x0): bool
+*)
+
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+{y0:vtflt}
+glseq_imap0$fopr(int, x0): (y0)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+{y0:vtflt}
+glseq_imap0_list(xs): list0_vt(y0)
+fun
+{xs:vtflt}
+{x0:vtflt}
+{y0:vtflt}
+glseq_imap0_rlist(xs): list0_vt(y0)
+fun
+{xs:vtflt}
+{x0:vtflt}
+{y0:vtflt}
+glseq_imap0_stream(xs): stream_vt(y0)
+//
+(* ****** ****** *)
 //
 fun
 {xs:vtflt}
@@ -343,6 +375,36 @@ glseq_foldleft$fopr glseq_foldleft0$fopr
 #define
 glseq_foldright$fopr glseq_foldright0$fopr
 *)
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_forall1_ref(xs: !xs): bool
+fun
+{x0:vtflt}
+glseq_forall1_ref$test(cptr0(x0)): bool
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_foreach1_ref(xs: !xs): void
+fun
+{x0:vtflt}
+glseq_foreach1_ref$work(cptr0(x0)): void
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+{r0:vtflt}
+glseq_foldleft1_ref(!xs, r0): r0
+fun
+{x0:vtflt}
+{r0:vtflt}
+glseq_foldleft1_ref$fopr(r0, cptr0(x0)): r0
 //
 (* ****** ****** *)
 

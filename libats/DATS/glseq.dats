@@ -117,7 +117,7 @@ implement
 glseq_forall0$test<x0>(x0) =
 let
 val () =
-glseq_foreach0$work<x0>(x0) in true
+glseq_foreach0$work<x0>(x0) in tt
 end // end of [let]
 //
 in
@@ -131,7 +131,7 @@ implement
 glseq_foldleft0
   (xs, r0) = let
 //
-var rr: r0 = r0
+var rr = (r0:r0)
 val p0 = addr@(rr)
 //
 implement
@@ -162,7 +162,7 @@ glseq_forall0<xs><x0>(xs)
 ) where
 {
 //
-var i0: int = 0
+var i0 = (0:int)
 val p0 = addr@(i0)
 //
 implement
@@ -214,7 +214,7 @@ implement
 glseq_iforall0$test<x0>(i0, x0) =
 let
 val () =
-glseq_iforeach0$work<x0>(i0, x0) in true
+glseq_iforeach0$work<x0>(i0, x0) in tt
 end // end of [let]
 //
 } (* end of [glseq_iforeach0] *)
@@ -303,6 +303,56 @@ stream_vt_map$fopr<x0><y0>(x0) = glseq_map0$fopr<x0><y0>(x0)
 (* ****** ****** *)
 
 implement
+{xs}{x0}{y0}
+glseq_imap0_list(xs) =
+(
+glseq_map0_list<xs><x0><y0>(xs)
+) where
+{
+//
+  var i0 = (0:int)
+  val p0 = addr@(i0)
+//
+  implement
+  glseq_map0$fopr<x0><y0>(x0) =
+  let
+    val i0 =
+    $UN.ptr0_get<int>(p0)
+    val () =
+    $UN.ptr0_set<int>(p0, i0+1)
+  in
+    glseq_imap0$fopr<x0><y0>(i0, x0)
+  end
+//
+} (* end of [glseq_imap0_list *)
+
+implement
+{xs}{x0}{y0}
+glseq_imap0_rlist(xs) =
+(
+glseq_map0_rlist<xs><x0><y0>(xs)
+) where
+{
+//
+  var i0 = (0:int)
+  val p0 = addr@(i0)
+//
+  implement
+  glseq_map0$fopr<x0><y0>(x0) =
+  let
+    val i0 =
+    $UN.ptr0_get<int>(p0)
+    val () =
+    $UN.ptr0_set<int>(p0, i0+1)
+  in
+    glseq_imap0$fopr<x0><y0>(i0, x0)
+  end
+//
+} (* end of [glseq_imap0_rlist *)
+
+(* ****** ****** *)
+
+implement
 {xs}{x0}
 glseq_rlistize1(xs) =
 (
@@ -330,7 +380,7 @@ implement
 glseq_forall1$test<x0>(x0) =
 let
 val () =
-glseq_foreach1$work<x0>(x0) in true
+glseq_foreach1$work<x0>(x0) in tt
 end // end of [let]
 //
 in
@@ -347,7 +397,7 @@ glseq_forall1<xs><x0>(xs)
 ) where
 {
 //
-var i0: int = 0
+var i0 = (0:int)
 val p0 = addr@(i0)
 //
 implement
@@ -412,7 +462,7 @@ implement
 glseq_rforall1$test<x0>(x0) =
 let
 val () =
-glseq_rforeach1$work<x0>(x0) in true
+glseq_rforeach1$work<x0>(x0) in tt
 end // end of [let]
 //
 in
@@ -426,7 +476,7 @@ implement
 glseq_foldleft1
   (xs, r0) = let
 //
-var rr: r0 = r0
+var rr = (r0:r0)
 val p0 = addr@(rr)
 //
 implement
@@ -454,7 +504,7 @@ implement
 glseq_foldright1
   (xs, r0) = let
 //
-var rr: r0 = r0
+var rr = (r0:r0)
 val p0 = addr@(rr)
 //
 implement
@@ -545,6 +595,98 @@ glseq_foldleft1$fopr<x0><r0>(r0, x0) =
 }
 } (* end of [g1seq_map1_rlist] *)
 
+(* ****** ****** *)
+
+implement
+{xs}{x0}{y0}
+glseq_imap1_list(xs) =
+(
+glseq_map1_list<xs><x0><y0>(xs)
+) where
+{
+//
+  var i0 = (0:int)
+  val p0 = addr@(i0)
+//
+  implement
+  glseq_map1$fopr<x0><y0>(x0) =
+  let
+    val i0 =
+    $UN.ptr0_get<int>(p0)
+    val () =
+    $UN.ptr0_set<int>(p0, i0+1) in glseq_imap1$fopr<x0><y0>(i0, x0)
+  end // end of [glseq_map1$fopr]
+//
+} (* end of [glseq_imap1_list *)
+
+implement
+{xs}{x0}{y0}
+glseq_imap1_rlist(xs) =
+(
+glseq_map1_rlist<xs><x0><y0>(xs)
+) where
+{
+//
+  var i0 = (0:int)
+  val p0 = addr@(i0)
+//
+  implement
+  glseq_map1$fopr<x0><y0>(x0) =
+  let
+    val i0 =
+    $UN.ptr0_get<int>(p0)
+    val () =
+    $UN.ptr0_set<int>(p0, i0+1) in glseq_imap1$fopr<x0><y0>(i0, x0)
+  end // end of [glseq_map1$fopr]
+//
+} (* end of [glseq_imap1_rlist *)
+
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+glseq_foreach1_ref(xs) =
+let
+//
+implement
+glseq_forall1_ref$test<x0>(x0) =
+let
+val () =
+glseq_foreach1_ref$work<x0>(x0) in tt
+end // end of [let]
+//
+in
+  ignoret(glseq_forall1_ref<xs><x0>(xs))
+end // end of [glseq_foreach1_ref]
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}{r0}
+glseq_foldleft1_ref
+  (xs, r0) = let
+//
+var rr = (r0:r0)
+val p0 = addr@(rr)
+//
+implement
+glseq_foreach1_ref$work<x0>
+  (px) = () where
+{
+val r0 =
+$UN.ptr0_get<r0>(p0)
+val r0 =
+glseq_foldleft1_ref$fopr<x0><r0>(r0, px)
+val () =
+$UN.ptr0_set<r0>(p0, r0)
+} (* end of [where] *)
+//
+in
+let
+val () = glseq_foreach1_ref<xs><x0>(xs) in rr
+end
+end // end of [glseq_foldleft1_ref]
+//
 (* ****** ****** *)
 
 (* end of [glseq.dats] *)

@@ -276,12 +276,20 @@ list0_map_stream
 //
 fun
 {x0:tflt}
+list0_filter$test(x0): bool
+fun
+{x0:tflt}
 {y0:vtflt}
 list0_mapopt$fopr(x0): (y0)
 fun
 {x0:tflt}
 list0_mapopt$test(x0): bool
 //
+fun
+{x0:tflt}
+list0_filter
+(xs: list0(INV(x0))): list0(x0)
+#symload filter with list0_filter
 fun
 {x0:tflt}
 {y0:tflt}
@@ -309,6 +317,42 @@ list0_mapopt_stream
 #symload mapopt_list with list0_mapopt_list
 #symload mapopt_rlist with list0_mapopt_rlist
 #symload mapopt_stream with list0_mapopt_stream
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_imap$fopr
+  (i0: int, x0: x0): (y0)
+//
+fun
+{x0:tflt}
+{y0:tflt}
+list0_imap
+(list0(INV(x0))): list0(y0)
+#symload imap with list0_imap
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_imap_list
+(xs: list0(INV(x0))): list0_vt(y0)
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_imap_rlist
+(xs: list0(INV(x0))): list0_vt(y0)
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_imap_stream
+(xs: list0(INV(x0))): stream_vt(y0)
+//
+#symload imap_list with list0_imap_list
+#symload imap_rlist with list0_imap_rlist
+#symload imap_stream with list0_imap_stream
 //
 (* ****** ****** *)
 

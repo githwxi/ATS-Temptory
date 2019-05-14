@@ -228,6 +228,9 @@ gseq_mapopt$fopr(x0): (y0)
 fun
 {x0:tflt}
 gseq_mapopt$test(x0): bool
+fun
+{x0:tflt}
+gseq_filter$test(x0): bool
 //
 (* ****** ****** *)
 //
