@@ -296,6 +296,7 @@ SOURCES := \
   pats_typerase_decl.dats \
   pats_ccomp.sats \
   pats_ccomp.dats \
+  pats_ccomp_error.dats \
   pats_ccomp_print.dats \
   pats_ccomp_hitype.dats \
   pats_ccomp_tmplab.dats \
@@ -542,6 +543,7 @@ TARGETS := \
   pats_typerase_decl_dats.c \
   pats_ccomp_sats.c \
   pats_ccomp_dats.c \
+  pats_ccomp_error_dats.c \
   pats_ccomp_print_dats.c \
   pats_ccomp_hitype_dats.c \
   pats_ccomp_tmplab_dats.c \
@@ -787,6 +789,7 @@ OBJECTS := \
   pats_typerase_decl_dats.o \
   pats_ccomp_sats.o \
   pats_ccomp_dats.o \
+  pats_ccomp_error_dats.o \
   pats_ccomp_print_dats.o \
   pats_ccomp_hitype_dats.o \
   pats_ccomp_tmplab_dats.o \
@@ -1509,6 +1512,9 @@ pats_ccomp_sats.o: pats_ccomp_sats.c; $(ATSCC) $(CFLAGS) -c $<
 
 pats_ccomp_dats.c: pats_ccomp.dats; $(ATSCC) $(DATSCC) -cc $<
 pats_ccomp_dats.o: pats_ccomp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+
+pats_ccomp_error_dats.c: pats_ccomp_error.dats; $(ATSCC) $(DATSCC) -cc $<
+pats_ccomp_error_dats.o: pats_ccomp_error_dats.c; $(ATSCC) $(CFLAGS) -c $<
 
 pats_ccomp_print_dats.c: pats_ccomp_print.dats; $(ATSCC) $(DATSCC) -cc $<
 pats_ccomp_print_dats.o: pats_ccomp_print_dats.c; $(ATSCC) $(CFLAGS) -c $<

@@ -1343,8 +1343,31 @@ case+ mat of
 | TMPCSTMATsome2
     (d2c, s2ess, flab) =>
     primval_make2_funlab(loc0, hse0, flab)
-| TMPCSTMATnone() =>
-    primval_tmpltcstmat(loc0, hse0, d2c, t2mas, mat)
+| TMPCSTMATnone () => 
+  //
+  // RK-2019-05-13:
+  // If we have traveled this far, 
+  //   there does not exist a template match 
+  //   for the given template arguments. 
+  // As a result, ouput error message and
+  //   add error to ccomp error list
+  // 
+  primval_tmpltcstmat
+    (loc0, hse0, d2c, t2mas, mat) where
+  {
+    macdef prtmperr (x) = fprint(stderr_ref, ,(x))
+    val () = (
+      emit_location(stderr_ref, loc0);
+      //fprint_tmpcstmat(stdout_ref, mat); 
+      prtmperr(": warning(template): template instance not found: ");
+      fprint_d2cst(stderr_ref, d2c);
+      prtmperr("<");
+      fpprint_t2mpmarglst(stderr_ref, t2mas);
+      prtmperr("\n")
+    )
+    val () = 
+    the_ccomperrlst_add (CCE_template_noimpl(loc0, d2c, t2mas))
+  }
   // end of [TMPCSTMATnone]
 //
 end // end of [ccomp_tmpcstmat]

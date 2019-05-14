@@ -387,6 +387,7 @@ dynload "pats_typerase_dynexp.dats"
 dynload "pats_typerase_decl.dats"
 //
 dynload "pats_ccomp.dats"
+dynload "pats_ccomp_error.dats"
 dynload "pats_ccomp_print.dats"
 //
 dynload "pats_ccomp_hitype.dats"
