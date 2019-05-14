@@ -44,6 +44,7 @@
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
 #staload "./../SATS/string.sats"
+#staload "./../SATS/glseq.sats"
 #staload "./../SATS/list_vt.sats"
 //
 #staload UN = "./../SATS/unsafe.sats"
@@ -112,6 +113,23 @@ string0_make_list0_vt
   string0_vt2t
   (string0_vt_make_list0_vt(cs))
 )
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_listize
+  (cs) =
+(
+  gseq_listize<string><char>(cs)
+) (* end of [string0_listize] *)
+implement
+{}(*tmp*)
+string0_rlistize
+  (cs) =
+(
+  gseq_rlistize<string><char>(cs)
+) (* end of [string0_rlistize] *)
 
 (* ****** ****** *)
 
@@ -192,6 +210,124 @@ end // end of [loop]
 //
 } (* end of [string0_foreach] *)
 //
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string0_rforall(cs) =
+  (loop1(p1)) where
+{
+//
+val p0 =
+string0_cptrof(cs)
+//
+val p1 = loop0(p0) where
+{
+fun
+loop0
+( p1
+: cptr(char)): cptr(char) =
+let
+val c1 = $UN.cptr0_get(p1)
+in
+//
+if
+iseqz(c1)
+then p1 else loop0(succ(p1))
+//
+end // end of [loop0]
+//
+} (* where *) // end of [val]
+//
+fun
+loop1(p1: cptr(char)): bool =
+(
+if
+p1 <= p0
+then true else
+let
+val p1 = pred(p1)
+val c1 = $UN.cptr0_get(p1)
+val
+test = string0_rforall$test<>(c1)
+in
+  if test then loop1(p1) else false
+end // end of [let]
+)
+//
+} (* end of [string0_rforall] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string0_rforeach(cs) =
+  (loop1(p1)) where
+{
+//
+val p0 =
+string0_cptrof(cs)
+//
+val p1 = loop0(p0) where
+{
+fun
+loop0
+( p1
+: cptr(char)): cptr(char) =
+let
+val c1 = $UN.cptr0_get(p1)
+in
+//
+if
+iseqz(c1)
+then p1 else loop0(succ(p1))
+//
+end // end of [loop0]
+//
+} (* where *) // end of [val]
+//
+fun
+loop1(p1: cptr(char)): void =
+(
+if
+p1 > p0
+then let
+val p1 = pred(p1)
+val c1 = $UN.cptr0_get(p1)
+in
+  (string0_rforeach$work<>(c1); loop1(p1))
+end // end of [let]
+)
+//
+} (* end of [string0_rforeach] *)
+//
+(* ****** ****** *)
+
+implement
+{r0}(*tmp*)
+string0_foldleft
+  (cs, r0) =
+(
+gseq_foldleft<string><char>(cs, r0)
+) where
+{
+typedef x0 = char
+implement
+gseq_foldleft$fopr<x0><r0>(r0, c0) = string0_foldleft$fopr<r0>(r0, c0)
+} (* end of [string0_foldleft] *)
+implement
+{r0}(*tmp*)
+string0_foldright
+  (cs, r0) =
+(
+gseq_foldright<string><char>(cs, r0)
+) where
+{
+typedef x0 = char
+implement
+gseq_foldright$fopr<x0><r0>(c0, r0) = string0_foldright$fopr<r0>(c0, r0)
+} (* end of [string0_foldright] *)
+
 (* ****** ****** *)
 //
 implement
@@ -353,6 +489,63 @@ end // end of [then]
 end // end of [loop]
 //
 } (* end of [string0_vt_foreach1] *)
+//
+(* ****** ****** *)
+//
+(*
+implement
+{r0}(*tmp*)
+string0_vt_foldleft1
+  (cs, r0) =
+(
+loop
+(string0_vt_cptrof(cs), r0)
+) where
+{
+//
+fun
+loop
+( p0
+: cptr(char), r0: r0): r0 =
+let
+  val c0 = $UN.cptr0_get(p0)
+in
+if
+isneqz(c0)
+then
+let
+val r0 =
+string0_vt_foldleft1$fopr<r0>(r0, c0) in loop(succ(p0), r0)
+end else r0
+end // end-of-let // end of [loop]
+//
+} (* end of [string0_vt_foldleft1] *)
+*)
+//
+implement
+{r0}(*tmp*)
+string0_vt_foldleft1
+  (cs, r0) =
+(
+glseq_foldleft1<string_vt><char>(cs, r0)
+) where
+{
+typedef x0 = char
+implement
+glseq_foldleft1$fopr<x0><r0>(r0, c0) = string0_vt_foldleft1$fopr<r0>(r0, c0)
+} (* end of [string0_vt_foldleft1] *)
+implement
+{r0}(*tmp*)
+string0_vt_foldright1
+  (cs, r0) =
+(
+glseq_foldright1<string_vt><char>(cs, r0)
+) where
+{
+typedef x0 = char
+implement
+glseq_foldright1$fopr<x0><r0>(c0, r0) = string0_vt_foldright1$fopr<r0>(c0, r0)
+} (* end of [string0_vt_foldright1] *)
 //
 (* ****** ****** *)
 

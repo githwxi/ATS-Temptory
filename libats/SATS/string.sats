@@ -115,6 +115,9 @@ fun{}
 string0_listize
   (cs: string): list0_vt(char)
 fun{}
+string0_rlistize
+  (cs: string): list0_vt(char)
+fun{}
 string0_streamize
   (cs: string): stream_vt(char)
 //
@@ -125,12 +128,40 @@ string0_forall(cs: string): bool
 fun{}
 string0_forall$test(c0: char): bool
 //
-(* ****** ****** *)
-//
 fun{}
 string0_foreach(cs: string): void
 fun{}
 string0_foreach$work(c0: char): void
+//
+(* ****** ****** *)
+//
+fun{}
+string0_rforall(cs: string): bool
+fun{}
+string0_rforall$test(c0: char): bool
+//
+fun{}
+string0_rforeach(cs: string): void
+fun{}
+string0_rforeach$work(c0: char): void
+//
+(* ****** ****** *)
+//
+fun
+{r0:vtflt}
+string0_foldleft(cs: string, r0: r0): r0
+fun
+{r0:vtflt}
+string0_foldleft$fopr(r0: r0, c0: char): r0
+//
+(* ****** ****** *)
+//
+fun
+{r0:vtflt}
+string0_foldright(cs: string, r0: r0): r0
+fun
+{r0:vtflt}
+string0_foldright$fopr(c0: char, r0: r0): r0
 //
 (* ****** ****** *)
 //
@@ -212,16 +243,34 @@ string0_vt_foreach0$work(c0: char): void
 (* ****** ****** *)
 //
 fun{}
-string0_vt_forall1(cs: !string_vt): bool
+string0_vt_forall1(!string_vt): bool
 fun{}
-string0_vt_forall1$test(c0: (char)): bool
+string0_vt_forall1$test(c0: char): bool
 //
 (* ****** ****** *)
 //
 fun{}
-string0_vt_foreach1(cs: !string_vt): void
+string0_vt_foreach1(!string_vt): void
 fun{}
-string0_vt_foreach1$work(c0: (char)): void
+string0_vt_foreach1$work(c0: char): void
+//
+(* ****** ****** *)
+//
+fun
+{r0:vtflt}
+string0_vt_foldleft1(!string_vt, r0): r0
+fun
+{r0:vtflt}
+string0_vt_foldleft1$fopr(r0: r0, c0: char): r0
+//
+(* ****** ****** *)
+//
+fun
+{r0:vtflt}
+string0_vt_foldright1(!string_vt, r0): r0
+fun
+{r0:vtflt}
+string0_vt_foldright1$fopr(c0: char, r0: r0): r0
 //
 (* ****** ****** *)
 

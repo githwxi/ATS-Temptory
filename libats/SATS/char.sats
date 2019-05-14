@@ -41,6 +41,29 @@ ATS_EXTERN_PREFIX "temptory_"
 (* ****** ****** *)
 //
 fun
+g0add_char_sint
+( x: char
+, y: sint):<> char = "mac#%"
+//
+#symload + with g0add_char_sint
+//
+(* ****** ****** *)
+//
+fun
+g0sub_char_char
+( x: char
+, y: char):<> sint = "mac#%"
+fun
+g0sub_char_sint
+( x: char
+, y: sint):<> char = "mac#%"
+//
+#symload - with g0sub_char_char
+#symload - with g0sub_char_sint
+//
+(* ****** ****** *)
+//
+fun
 g0lt_char_char
 ( x: char
 , y: char):<> bool = "mac#%"
