@@ -96,6 +96,14 @@ val () = println!("indexof(ABC,Z) = ", indexof(ABC, 'Z'))
 val
 ABC2 = string0_make(ABC)
 val () = println!("ABC2 = ", ABC2)
+val
+ABC3 =
+list0_vt2t(string0_listize(ABC2))
+val
+ABC4 =
+list0_vt2t(string0_rlistize(ABC2))
+val () = println!("ABC3 = ", ABC3)
+val () = println!("ABC4 = ", ABC4)
 
 (* ****** ****** *)
 

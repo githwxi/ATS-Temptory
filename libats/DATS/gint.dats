@@ -45,6 +45,122 @@
 #staload "./../SATS/stream_vt.sats"
 
 (* ****** ****** *)
+
+implement
+{}(*tmp*)
+sint_listize
+  (n0) =
+(
+loop
+(n0, list0_vt_nil())
+) where
+{
+//
+vtypedef
+r0 = list0_vt(sint)
+//
+fun
+loop
+(i0: int, r0: r0): r0 =
+(
+if
+(i0 <= 0)
+then r0 else
+let
+  val i0 = pred(i0)
+in
+  loop(i0, list0_vt_cons(i0, r0))
+end // end of [else]
+)
+} (* end of [sint_listize] *)
+
+implement
+{}(*tmp*)
+uint_listize
+  (n0) =
+(
+loop
+(n0, list0_vt_nil())
+) where
+{
+//
+vtypedef
+r0 = list0_vt(uint)
+//
+fun
+loop
+(i0: uint, r0: r0): r0 =
+(
+if
+(i0 <= 0u)
+then r0 else
+let
+  val i0 = pred(i0)
+in
+  loop(i0, list0_vt_cons(i0, r0))
+end // end of [else]
+)
+} (* end of [uint_listize] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+sint_rlistize
+  (n0) =
+(
+loop
+(0, list0_vt_nil())
+) where
+{
+//
+vtypedef
+r0 = list0_vt(sint)
+//
+fun
+loop
+(i0: int, r0: r0): r0 =
+(
+if
+(i0 >= n0)
+then r0 else
+let
+  val i1 = succ(i0)
+in
+  loop(i1, list0_vt_cons(i0, r0))
+end // end of [else]
+)
+} (* end of [sint_rlistize] *)
+
+implement
+{}(*tmp*)
+uint_rlistize
+  (n0) =
+(
+loop
+(0u, list0_vt_nil())
+) where
+{
+//
+vtypedef
+r0 = list0_vt(uint)
+//
+fun
+loop
+(i0: uint, r0: r0): r0 =
+(
+if
+(i0 >= n0)
+then r0 else
+let
+  val i1 = succ(i0)
+in
+  loop(i1, list0_vt_cons(i0, r0))
+end // end of [else]
+)
+} (* end of [uint_rlistize] *)
+
+(* ****** ****** *)
 //
 implement
 {}(*tmp*)
@@ -65,9 +181,7 @@ else stream_vt_cons(i0, auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 //
 } (* end of [sint_streamize] *)
-//
-(* ****** ****** *)
-//
+
 implement
 {}(*tmp*)
 uint_streamize

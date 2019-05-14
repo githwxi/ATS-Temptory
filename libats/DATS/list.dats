@@ -519,9 +519,11 @@ fun
 loop
 (xs: xs, r0: r0): r0 =
 case+ xs of
-| ~list0_vt_nil() => r0
-| ~list0_vt_cons(x0, xs) =>
-   loop(xs, list0_foldright$fopr<x0><r0>(x0, r0))
+|
+~list0_vt_nil() => r0
+|
+~list0_vt_cons(x0, xs) =>
+ loop(xs, list0_foldright$fopr<x0><r0>(x0, r0))
 //  
 } (* end of [list0_foldright] *)
 //
@@ -546,6 +548,143 @@ case+ xs of
   list0_foldright$fopr<x0><r0>(x0, auxlst(xs, r0))
 } (* end of [list0_foldright] *)
 *)
+//
+(* ****** ****** *)
+//
+implement
+{x0}{y0}//tmp
+list0_map(xs) =
+list0_vt2t
+(list0_map_list<x0><y0>(xs))
+//
+implement
+{x0}{y0}//tmp
+list0_map_list(xs) =
+(
+  gseq_map_list<list0(x0)><x0><y0>(xs)
+) where
+{
+implement
+gseq_map$fopr<x0><y0>(x0) = list0_map$fopr<x0><y0>(x0)
+}
+implement
+{x0}{y0}//tmp
+list0_map_rlist(xs) =
+(
+  gseq_map_rlist<list0(x0)><x0><y0>(xs)
+) where
+{
+implement
+gseq_map$fopr<x0><y0>(x0) = list0_map$fopr<x0><y0>(x0)
+}
+implement
+{x0}{y0}//tmp
+list0_map_stream(xs) =
+(
+  gseq_map_stream<list0(x0)><x0><y0>(xs)
+) where
+{
+implement
+gseq_map$fopr<x0><y0>(x0) = list0_map$fopr<x0><y0>(x0)
+}
+//
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
+list0_filter(xs) =
+(
+list0_vt2t
+(list0_mapopt_list<x0><x0>(xs))
+) where
+{
+implement
+list0_mapopt$test<x0>(x0) =
+list0_filter$test<x0>(x0)
+implement
+list0_mapopt$fopr<x0><x0>(x0) = x0
+}
+implement
+{x0}{y0}//tmp
+list0_mapopt(xs) =
+list0_vt2t
+(list0_mapopt_list<x0><y0>(xs))
+//
+implement
+{x0}{y0}//tmp
+list0_mapopt_list(xs) =
+(
+  gseq_mapopt_list<list0(x0)><x0><y0>(xs)
+) where
+{
+implement
+gseq_mapopt$test<x0>(x0) = list0_mapopt$test<x0>(x0)
+implement
+gseq_mapopt$fopr<x0><y0>(x0) = list0_mapopt$fopr<x0><y0>(x0)
+}
+implement
+{x0}{y0}//tmp
+list0_mapopt_rlist(xs) =
+(
+  gseq_mapopt_rlist<list0(x0)><x0><y0>(xs)
+) where
+{
+implement
+gseq_mapopt$test<x0>(x0) = list0_mapopt$test<x0>(x0)
+implement
+gseq_mapopt$fopr<x0><y0>(x0) = list0_mapopt$fopr<x0><y0>(x0)
+}
+implement
+{x0}{y0}//tmp
+list0_mapopt_stream(xs) =
+(
+  gseq_mapopt_stream<list0(x0)><x0><y0>(xs)
+) where
+{
+implement
+gseq_mapopt$test<x0>(x0) = list0_mapopt$test<x0>(x0)
+implement
+gseq_mapopt$fopr<x0><y0>(x0) = list0_mapopt$fopr<x0><y0>(x0)
+}
+//
+(* ****** ****** *)
+//
+implement
+{x0}{y0}//tmp
+list0_imap(xs) =
+list0_vt2t
+(list0_imap_list<x0><y0>(xs))
+//
+implement
+{x0}{y0}//tmp
+list0_imap_list(xs) =
+(
+  gseq_imap_list<list0(x0)><x0><y0>(xs)
+) where
+{
+implement
+gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
+}
+implement
+{x0}{y0}//tmp
+list0_imap_rlist(xs) =
+(
+  gseq_imap_rlist<list0(x0)><x0><y0>(xs)
+) where
+{
+implement
+gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
+}
+implement
+{x0}{y0}//tmp
+list0_imap_stream(xs) =
+(
+  gseq_imap_stream<list0(x0)><x0><y0>(xs)
+) where
+{
+implement
+gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
+}
 //
 (* ****** ****** *)
 

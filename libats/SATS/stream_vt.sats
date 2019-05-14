@@ -75,20 +75,89 @@ stream_vt_append
 //
 fun
 {x0:vtflt}
+stream_vt_listize
+(xs: stream_vt(x0)): list0_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+stream_vt_forall0
+(xs: stream_vt(x0)): bool
+fun
+{x0:vtflt}
+stream_vt_forall0$test(x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+stream_vt_foreach0
+(xs: stream_vt(x0)): void
+fun
+{x0:vtflt}
+stream_vt_foreach0$work(x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 {y0:vtflt}
 stream_vt_map$fopr(x0): y0
 fun
 {x0:vtflt}
 {y0:vtflt}
+stream_vt_map(xs: stream_vt(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+{y0:vtflt}
+stream_vt_mapopt$fopr(x0): y0
+fun
+{x0:vtflt}
+stream_vt_mapopt$test(!x0): bool
+fun
+{x0:vtflt}
 stream_vt_filter$test(!x0): bool
 //
 fun
 {x0:vtflt}
 {y0:vtflt}
-stream_vt_map(xs: stream_vt(x0)): stream_vt(y0)
+stream_vt_mapopt(xs: stream_vt(x0)): stream_vt(y0)
 fun
 {x0:vtflt}
 stream_vt_filter(xs: stream_vt(x0)): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+{y0:vtflt}
+stream_vt_imap$fopr(int, x0): y0
+fun
+{x0:vtflt}
+{y0:vtflt}
+stream_vt_imapopt$fopr(int, x0): y0
+fun
+{x0:vtflt}
+stream_vt_imapopt$test(int, !x0): bool
+fun
+{x0:vtflt}
+stream_vt_ifilter$test(int, !x0): bool
+//
+fun
+{x0:vtflt}
+{y0:vtflt}
+stream_vt_imap(xs: stream_vt(x0)): stream_vt(y0)
+fun
+{x0:vtflt}
+{y0:vtflt}
+stream_vt_imapopt(xs: stream_vt(x0)): stream_vt(y0)
+fun
+{x0:vtflt}
+stream_vt_ifilter(xs: stream_vt(x0)): stream_vt(x0)
 //
 (* ****** ****** *)
 

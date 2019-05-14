@@ -84,4 +84,30 @@ string0_foreach$work<>(x0) = gseq_foreach$work<c0>(x0)
 
 (* ****** ****** *)
 
+implement
+gseq_rforall<cs><c0>
+  (cs) =
+(
+  string0_rforall<>(cs)
+) where
+{
+implement
+string0_rforall$test<>(x0) = gseq_rforall$test<c0>(x0)
+} (* end of [gseq_rforall] *)
+
+(* ****** ****** *)
+
+implement
+gseq_rforeach<cs><c0>
+  (cs) =
+(
+  string0_rforeach<>(cs)
+) where
+{
+implement
+string0_rforeach$work<>(x0) = gseq_rforeach$work<c0>(x0)
+} (* end of [gseq_rforeach] *)
+
+(* ****** ****** *)
+
 (* end of [gseq_string.dats] *)

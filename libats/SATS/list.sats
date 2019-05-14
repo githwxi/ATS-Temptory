@@ -126,11 +126,15 @@ list0_tail_opt
 fun
 {x0:tflt}
 list0_get_at_exn
-(xs: list0(x0), i0: int): (x0) 
+(xs: list0(INV(x0)), i0: int): (x0) 
 fun
 {x0:tflt}
 list0_get_at_opt
-(xs: list0(x0), i0: int): optn0_vt(x0) 
+(xs: list0(INV(x0)), i0: int): optn0_vt(x0) 
+//
+#symload get_at with list0_get_at_exn
+#symload get_at_exn with list0_get_at_exn
+#symload get_at_opt with list0_get_at_opt
 //
 (* ****** ****** *)
 //
@@ -232,6 +236,123 @@ list0_foldleft$fopr(r0: r0, x0: x0): r0
 fun
 {x0:tflt}{r0:vtflt}
 list0_foldright$fopr(x0: x0, r0: r0): r0
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_map$fopr(x0): (y0)
+//
+fun
+{x0:tflt}
+{y0:tflt}
+list0_map
+(list0(INV(x0))): list0(y0)
+#symload map with list0_map
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_map_list
+(xs: list0(INV(x0))): list0_vt(y0)
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_map_rlist
+(xs: list0(INV(x0))): list0_vt(y0)
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_map_stream
+(xs: list0(INV(x0))): stream_vt(y0)
+//
+#symload map_list with list0_map_list
+#symload map_rlist with list0_map_rlist
+#symload map_stream with list0_map_stream
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+list0_filter$test(x0): bool
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_mapopt$fopr(x0): (y0)
+fun
+{x0:tflt}
+list0_mapopt$test(x0): bool
+//
+fun
+{x0:tflt}
+list0_filter
+(xs: list0(INV(x0))): list0(x0)
+#symload filter with list0_filter
+fun
+{x0:tflt}
+{y0:tflt}
+list0_mapopt
+(xs: list0(INV(x0))): list0(y0)
+#symload mapopt with list0_mapopt
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_mapopt_list
+(xs: list0(INV(x0))): list0_vt(y0)
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_mapopt_rlist
+(xs: list0(INV(x0))): list0_vt(y0)
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_mapopt_stream
+(xs: list0(INV(x0))): stream_vt(y0)
+//
+#symload mapopt_list with list0_mapopt_list
+#symload mapopt_rlist with list0_mapopt_rlist
+#symload mapopt_stream with list0_mapopt_stream
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_imap$fopr
+  (i0: int, x0: x0): (y0)
+//
+fun
+{x0:tflt}
+{y0:tflt}
+list0_imap
+(list0(INV(x0))): list0(y0)
+#symload imap with list0_imap
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_imap_list
+(xs: list0(INV(x0))): list0_vt(y0)
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_imap_rlist
+(xs: list0(INV(x0))): list0_vt(y0)
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_imap_stream
+(xs: list0(INV(x0))): stream_vt(y0)
+//
+#symload imap_list with list0_imap_list
+#symload imap_rlist with list0_imap_rlist
+#symload imap_stream with list0_imap_stream
 //
 (* ****** ****** *)
 

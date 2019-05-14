@@ -33,100 +33,22 @@
 //
 (* ****** ****** *)
 
-#define
-ATS_PACKNAME "temptory."
-#define
-ATS_EXTERN_PREFIX "temptory_"
+#define tt true
+#define ff false
+
+(* ****** ****** *)
+
+#staload "./../SATS/gint.sats"
+#staload "./../SATS/glseq.sats"
+#staload "./../SATS/list_vt.sats"
+#staload "./../SATS/stream_vt.sats"
 
 (* ****** ****** *)
 //
-fun
-g0add_char_sint
-( x: char
-, y: sint):<> char = "mac#%"
-//
-#symload + with g0add_char_sint
-//
-(* ****** ****** *)
-//
-fun
-g0sub_char_char
-( x: char
-, y: char):<> sint = "mac#%"
-fun
-g0sub_char_sint
-( x: char
-, y: sint):<> char = "mac#%"
-//
-#symload - with g0sub_char_char
-#symload - with g0sub_char_sint
-//
-(* ****** ****** *)
-//
-fun
-g0lt_char_char
-( x: char
-, y: char):<> bool = "mac#%"
-fun
-g0gt_char_char
-( x: char
-, y: char):<> bool = "mac#%"
-fun
-g0eq_char_char
-( x: char
-, y: char):<> bool = "mac#%"
-//
-fun
-g0lte_char_char
-( x: char
-, y: char):<> bool = "mac#%"
-fun
-g0gte_char_char
-( x: char
-, y: char):<> bool = "mac#%"
-fun
-g0neq_char_char
-( x: char
-, y: char):<> bool = "mac#%"
-//
-#symload < with g0lt_char_char
-#symload > with g0gt_char_char
-#symload = with g0eq_char_char
-#symload <= with g0lte_char_char
-#symload >= with g0gte_char_char
-#symload != with g0neq_char_char
-//
-(* ****** ****** *)
-//
-fun{}
-char0_iseqz(char):<> bool
-fun{}
-char0_isneqz(char):<> bool
-//
-#symload iseqz with char0_iseqz
-#symload isneqz with char0_isneqz
-//
-(* ****** ****** *)
-//
-fun
-char0_ord: char -<> sint = "mac#%"
-fun
-char0_chr: sint -<> char = "mac#%"
-//
-(* ****** ****** *)
-//
-fun
-char0_islower(char):<> bool = "mac#%"
-fun
-char0_isupper(char):<> bool = "mac#%"
-//
-(* ****** ****** *)
-//
-fun
-char0_tolower(char):<> char = "mac#%"
-fun
-char0_toupper(char):<> char = "mac#%"
+implement
+(x0:vtflt)
+glseq_streamize<stream_vt(x0)><x0>(xs) = xs
 //
 (* ****** ****** *)
 
-(* end of [char.sats] *)
+(* end of [gseq_stream.dats] *)

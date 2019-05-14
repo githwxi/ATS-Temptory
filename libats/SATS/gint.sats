@@ -587,6 +587,13 @@ uint_listize(uint): list0_vt(uint)
 //
 (* ****** ****** *)
 //
+fun{}
+sint_rlistize(sint): list0_vt(sint)
+fun{}
+uint_rlistize(uint): list0_vt(uint)
+//
+(* ****** ****** *)
+//
 // HX-2019-05-11:
 // For streamization
 //
@@ -597,6 +604,9 @@ sint_streamize(sint): stream_vt(sint)
 fun{}
 uint_streamize(uint): stream_vt(uint)
 //
+(* ****** ****** *)
+
+
 (* ****** ****** *)
 
 (* end of [gint.sats] *)

@@ -50,6 +50,16 @@ temptory_char0_tolower(c) tolower(c)
 temptory_char0_toupper(c) toupper(c)
 
 /* ****** ****** */
+//
+#define \
+temptory_g0add_char_sint(x, y) (x + y) // char
+//
+#define \
+temptory_g0sub_char_char(x, y) (x - y) // sint
+#define \
+temptory_g0sub_char_sint(x, y) (x - y) // char
+//
+/* ****** ****** */
 
 #define \
 temptory_g0lt_char_char(x, y) (( x < y ) ? 1 : 0)

@@ -101,4 +101,18 @@ list0_vt_rforall1$test<x0>(x0) = glseq_rforall1$test<x0>(x0)
 
 (* ****** ****** *)
 
+implement
+(x0:vtflt)
+glseq_forall1_ref<list0_vt(x0)><x0>
+  (xs) =
+(
+  list0_vt_forall1_ref<x0>(xs)
+) where
+{
+implement
+list0_vt_forall1_ref$test<x0>(x0) = glseq_forall1_ref$test<x0>(x0)
+} (* end of [glseq_forall1_ref] *)
+
+(* ****** ****** *)
+
 (* end of [glseq_list0.dats] *)
