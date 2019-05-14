@@ -42,6 +42,7 @@
 #staload "./../SATS/bool.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
+#staload "./../SATS/glseq.sats"
 #staload "./../SATS/list_vt.sats"
 #staload "./../SATS/stream_vt.sats"
 
@@ -162,13 +163,98 @@ end // end-of-let
 } (* end of [stream_vt_append] *)
 
 (* ****** ****** *)
+//
+implement
+{x0}(*tmp*)
+stream_vt_listize(xs) =
+(
+let
+var rr: ptr?
+val () = loop(xs, rr) in rr
+end
+) where
+{
+//
+vtypedef r0 = list0_vt(x0)
+vtypedef xs = stream_vt(x0)
+//
+fun
+loop
+( xs: xs
+, r0: &ptr? >> r0): void =
+(
+case+ !xs of
+|
+~stream_vt_nil() =>
+ (r0 := list0_vt_nil())
+|
+~stream_vt_cons(x0, xs) =>
+ {
+   val () =
+   (r0 := list0_vt_cons(x0, _))
+   val+list0_vt_cons(_, r1) = r0
+   val () = loop(xs, r1); prval () = fold@(r0)
+ }
+)
+} (* end of [stream_vt_listize] *)
+//
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+stream_vt_forall0
+  (xs) =
+  (loop(xs)) where
+{
+fun
+loop
+(xs: stream_vt(x0)): bool =
+(
+case+ !xs of
+|
+~stream_vt_nil() => tt
+|
+~stream_vt_cons(x0, xs) =>
+ let
+ val
+ test =
+ stream_vt_forall0$test<x0>(x0)
+ in
+   if test then loop(xs) else (~xs; false)
+ end // end of [stream_vt_cons]
+) (* end of [loop] *)
+} (* end of [stream_vt_forall0] *)
+
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+stream_vt_foreach0
+  (xs) =
+  (loop(xs)) where
+{
+fun
+loop
+(xs: stream_vt(x0)): void =
+(
+case+ !xs of
+|
+~stream_vt_nil() => ()
+|
+~stream_vt_cons(x0, xs) =>
+ let
+ val () =
+ stream_vt_foreach0$work<x0>(x0) in loop(xs)
+ end // end of [stream_vt_cons]
+) (* end of [loop] *)
+} (* end of [stream_vt_foreach0] *)
+
+(* ****** ****** *)
 
 implement
 {x0}{y0}(*tmp*)
 stream_vt_map(xs) =
-(
-  auxmain(xs)
-) where
+  (auxmain(xs)) where
 {
 //
 fun
@@ -209,6 +295,67 @@ case+ !xs of
 (* ****** ****** *)
 
 implement
+{x0}{y0}//tmp
+stream_vt_mapopt
+(
+  xs
+) = auxmain1(xs) where
+{
+//
+fnx
+auxmain1
+(
+xs: stream_vt(x0)
+) : stream_vt(y0) =
+$ldelay
+(auxmain2(xs), ~xs)
+//  
+and
+auxmain2
+(
+xs: stream_vt(x0)
+) : stream_vt_con(y0) =
+(
+//
+let
+val nx = !xs
+in
+//
+case+ (nx) of
+|
+~stream_vt_nil() =>
+ stream_vt_nil()
+|
+~stream_vt_cons(x0, xs) =>
+ let
+   val
+   test =
+   stream_vt_mapopt$test<x0>(x0)
+ in
+   if
+   test
+   then
+   (
+     stream_vt_cons(y0, auxmain1(xs))
+   ) where
+   {
+     val y0 =
+     stream_vt_mapopt$fopr<x0><y0>(x0)
+   }
+   else let
+     val () = gfree$val<x0>(x0) in auxmain2(xs)
+   end (* end of [else] *)
+ end // end of [stream_vt_cons]
+//
+end // end of [let]
+//
+) (* end of auxmain2 *)
+//
+} (* end of [stream_vt_mapopt] *)
+
+(* ****** ****** *)
+
+implement
 {x0}(*tmp*)
 stream_vt_filter
 (
@@ -216,7 +363,7 @@ stream_vt_filter
 ) = auxmain1(xs) where
 {
 //
-fun
+fnx
 auxmain1
 (
 xs: stream_vt(x0)
@@ -264,6 +411,115 @@ end // end of [let]
 ) (* end of auxmain2 *)
 //
 } (* end of [stream_vt_filter] *)
+
+(* ****** ****** *)
+
+implement
+{x0}{y0}(*tmp*)
+stream_vt_imap(xs) =
+  (auxmain(0, xs)) where
+{
+//
+fun
+auxmain
+(
+//
+i0: int
+,
+xs: stream_vt(x0)
+//
+) : stream_vt(y0) = $ldelay
+(
+//
+case+ !xs of
+//
+|
+~stream_vt_nil() =>
+ (
+  stream_vt_nil(*void*)
+ )
+|
+~stream_vt_cons(x0, xs) =>
+ let
+   val y0 =
+   stream_vt_imap$fopr<x0><y0>(i0, x0)
+ in
+   stream_vt_cons{y0}(y0, auxmain(i0+1, xs))
+ end (* end of [stream_vt_con] *)
+//
+,
+//
+(
+  lazy_vt_free(xs) // for freeing the stream!
+)
+//
+) (* end of [auxmain] *)
+//
+} (* end of [stream_vt_imap] *)
+
+(* ****** ****** *)
+
+implement
+{x0}{y0}//tmp
+stream_vt_imapopt
+( xs ) =
+auxmain1(0, xs) where
+{
+//
+fnx
+auxmain1
+(
+i0: int
+,
+xs: stream_vt(x0)
+) : stream_vt(y0) =
+$ldelay
+(auxmain2(0, xs), ~xs)
+//  
+and
+auxmain2
+(
+i0: int
+,
+xs: stream_vt(x0)
+) : stream_vt_con(y0) =
+(
+//
+let
+val nx = !xs
+in
+//
+case+ (nx) of
+|
+~stream_vt_nil() =>
+ stream_vt_nil()
+|
+~stream_vt_cons(x0, xs) =>
+ let
+   val
+   test =
+   stream_vt_imapopt$test<x0>(i0, x0)
+ in
+   if
+   test
+   then
+   (
+   stream_vt_cons(y0, auxmain1(i0+1, xs))
+   ) where
+   {
+     val y0 =
+     stream_vt_imapopt$fopr<x0><y0>(i0, x0)
+   }
+   else let
+     val () = gfree$val<x0>(x0) in auxmain2(i0+1, xs)
+   end (* end of [else] *)
+ end // end of [stream_vt_cons]
+//
+end // end of [let]
+//
+) (* end of auxmain2 *)
+//
+} (* end of [stream_vt_imapopt] *)
 
 (* ****** ****** *)
 

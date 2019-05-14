@@ -40,6 +40,7 @@
 //
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gseq.sats"
+#staload "./../SATS/stream_vt.sats"
 //
 #staload UN = "./../SATS/unsafe.sats"
 //
@@ -517,8 +518,242 @@ gseq_foldleft$fopr<x0><r0>(r0, x0) =
 ) where
 {
   val y0 = gseq_map$fopr<x0><y0>(x0)
-}
+} (* gseq_foldleft$fopr *)
 } (* end of [gseq_map_rlist] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}{y0}
+gseq_map_stream(xs) =
+(
+stream_vt_map<x0><y0>(xs)
+) where
+{
+//
+val xs = gseq_streamize<xs><x0>(xs)
+//
+implement
+stream_vt_map$fopr<x0><y0>(x0) = gseq_map$fopr<x0><y0>(x0)
+//
+} (* end of [gseq_map_stream] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}{y0}
+gseq_imap_list(xs) = let
+//
+var i0 = (0:int)
+val pi = addr@(i0)
+//
+vtypedef p0 = ptr
+//
+implement
+gseq_foldleft$fopr<x0><p0>
+  (p0, x0) =
+  (addr@(r1)) where
+{
+//
+extern
+praxi
+_assert_
+{vw:view}(vw):<prf> void
+extern
+castfn
+_castfn_
+{vt:vtbox}(vt):<fun> (ptr)
+//
+val i0 =
+$UN.ptr0_get<int>(pi)
+val () =
+$UN.ptr0_set<int>(pi, i0+1)
+val y0 =
+gseq_imap$fopr<x0><y0>(i0, x0)
+//
+val ys = list0_vt_cons(y0, _)
+val+list0_vt_cons(y0, r1) = ys
+//
+val ys = _castfn_(ys)
+val () =
+$UN.ptr0_set<ptr>(p0, ys)
+//
+prval () = _assert_(view@y0)
+prval () = _assert_(view@r1)
+//
+} (* end of [gseq_foldleft$fopr] *)
+//
+var r0: ptr?
+val p0 = addr@(r0)
+val p1 =
+gseq_foldleft<xs><x0><p0>(xs, p0)
+//
+in
+  $UN.ptr0_set(p1, list0_vt_nil);
+  $UN.castvwtp0{list0_vt(y0)}(r0)
+end (* end of [gseq_imap_list] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}{y0}
+gseq_imap_rlist(xs) =
+(
+gseq_foldleft<xs><x0><r0>
+  (xs, list0_vt_nil())
+) where
+{
+//
+var i0 = (0:int)
+val pi = addr@(i0)
+//
+vtypedef r0 = list0_vt(y0)
+//
+implement
+gseq_foldleft$fopr<x0><r0>(r0, x0) =
+(
+  list0_vt_cons(y0, r0)
+) where
+{
+  val i0 = $UN.ptr0_get<int>(pi)
+  val () = $UN.ptr0_set<int>(pi, i0+1)
+  val y0 = gseq_imap$fopr<x0><y0>(i0, x0)
+} (* gseq_foldleft$fopr *)
+} (* end of [gseq_imap_rlist] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}{y0}
+gseq_imap_stream(xs) =
+(
+stream_vt_imap<x0><y0>(xs)
+) where
+{
+//
+val xs = gseq_streamize<xs><x0>(xs)
+//
+implement
+stream_vt_imap$fopr<x0><y0>(i0, x0) = gseq_imap$fopr<x0><y0>(i0, x0)
+//
+} (* end of [gseq_imap_stream] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}{y0}
+gseq_mapopt_list(xs) = let
+//
+vtypedef p0 = ptr
+//
+implement
+gseq_foldleft$fopr<x0><p0>
+  (p0, x0) =
+(
+let
+val
+test =
+gseq_mapopt$test<x0>(x0)
+in
+//
+if
+test
+then
+(
+addr@(r1)
+) where
+{
+//
+extern
+praxi
+_assert_
+{vw:view}(vw):<prf> void
+extern
+castfn
+_castfn_
+{vt:vtbox}(vt):<fun> (ptr)
+//
+val y0 =
+gseq_mapopt$fopr<x0><y0>(x0)
+//
+val ys = list0_vt_cons(y0, _)
+val+list0_vt_cons(y0, r1) = ys
+//
+val ys = _castfn_(ys)
+val () =
+$UN.ptr0_set<ptr>(p0, ys)
+//
+prval () = _assert_(view@y0)
+prval () = _assert_(view@r1)
+//
+} else (p0) // end of [if]
+//
+end // end-of-let
+) (* end of [gseq_foldleft$fopr] *)
+//
+var r0: ptr?
+val p0 = addr@(r0)
+val p1 =
+gseq_foldleft<xs><x0><p0>(xs, p0)
+//
+in
+  $UN.ptr0_set(p1, list0_vt_nil);
+  $UN.castvwtp0{list0_vt(y0)}(r0)
+end (* end of [gseq_mapopt_list] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}{y0}
+gseq_mapopt_rlist(xs) =
+(
+gseq_foldleft<xs><x0><r0>
+  (xs, list0_vt_nil())
+) where
+{
+//
+vtypedef r0 = list0_vt(y0)
+//
+implement
+gseq_foldleft$fopr<x0><r0>(r0, x0) =
+(
+let
+val
+test =
+gseq_mapopt$test<x0>(x0)
+in
+if
+test
+then 
+(
+  list0_vt_cons(y0, r0)
+) where
+{
+  val y0 = gseq_mapopt$fopr<x0><y0>(x0)
+} else r0 // end of [if]
+end // end-of-let
+) // end of [gseq_foldleft$fopr]
+//
+} (* end of [gseq_mapopt_rlist] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}{y0}
+gseq_mapopt_stream(xs) =
+(
+stream_vt_mapopt<x0><y0>(xs)
+) where
+{
+//
+val xs = gseq_streamize<xs><x0>(xs)
+//
+implement
+stream_vt_mapopt$test<x0>(x0) = gseq_mapopt$test<x0>(x0)
+implement
+stream_vt_mapopt$fopr<x0><y0>(x0) = gseq_mapopt$fopr<x0><y0>(x0)
+//
+} (* end of [gseq_mapopt_stream] *)
 
 (* ****** ****** *)
 

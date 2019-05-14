@@ -409,6 +409,42 @@ case+ xs of
 } (* end of [list0_foldleft0] *)
 
 (* ****** ****** *)
+//
+implement
+{x0}{y0}
+list0_vt_map0(xs) =
+list0_vt_map0_list<x0><y0>(xs)
+//
+implement
+{x0}{y0}
+list0_vt_map0_list(xs) =
+(
+  glseq_map0_list<xs><x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+implement
+glseq_map0$fopr<x0><y0>(x0) = list0_vt_map0$fopr<x0><y0>(x0)
+//
+} // list0_vt_map0_list
+implement
+{x0}{y0}
+list0_vt_map0_rlist(xs) =
+(
+  glseq_map0_rlist<xs><x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+implement
+glseq_map0$fopr<x0><y0>(x0) = list0_vt_map0$fopr<x0><y0>(x0)
+//
+} // list0_vt_map0_rlist
+//
+(* ****** ****** *)
 
 implement
 {x0}//tmp

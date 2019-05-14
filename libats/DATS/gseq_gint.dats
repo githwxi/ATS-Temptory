@@ -54,6 +54,15 @@ gseq_listize<uint><uint>
 (* ****** ****** *)
 //
 implement
+gseq_rlistize<sint><sint>
+  (n0) = (sint_rlistize<>(n0))
+implement
+gseq_rlistize<uint><uint>
+  (n0) = (uint_rlistize<>(n0))
+//
+(* ****** ****** *)
+//
+implement
 gseq_streamize<sint><sint>
   (n0) = (sint_streamize<>(n0))
 implement

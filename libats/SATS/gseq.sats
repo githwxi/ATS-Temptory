@@ -177,12 +177,6 @@ fun
 {x0:tflt}
 {y0:vtflt}
 gseq_map$fopr(x0): (y0)
-fun
-{x0:tflt}
-{y0:vtflt}
-gseq_imap$fopr(int, x0): (y0)
-//
-(* ****** ****** *)
 //
 fun
 {xs:tflt}
@@ -204,6 +198,11 @@ gseq_map_stream(xs): stream_vt(y0)
 (* ****** ****** *)
 //
 fun
+{x0:tflt}
+{y0:vtflt}
+gseq_imap$fopr(int, x0): (y0)
+//
+fun
 {xs:tflt}
 {x0:tflt}
 {y0:vtflt}
@@ -219,6 +218,60 @@ fun
 {x0:tflt}
 {y0:vtflt}
 gseq_imap_stream(xs): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+gseq_mapopt$fopr(x0): (y0)
+fun
+{x0:tflt}
+gseq_mapopt$test(x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_mapopt_list(xs): list0_vt(y0)
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_mapopt_rlist(xs): list0_vt(y0)
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_mapopt_stream(xs): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+{y0:vtflt}
+gseq_imapopt$fopr(int, x0): (y0)
+fun
+{x0:tflt}
+gseq_imapopt$test(int, x0): bool
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_imapopt_list(xs): list0_vt(y0)
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_imapopt_rlist(xs): list0_vt(y0)
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_imapopt_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
 
