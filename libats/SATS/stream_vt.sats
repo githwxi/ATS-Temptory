@@ -76,9 +76,20 @@ stream_vt_make with stream_vt_make_list0_vt
 //
 fun
 {x0:vtflt}
+stream_vt_length
+(xs: stream_vt(INV(x0))): int
+//
+#symload length with stream_vt_length
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 stream_vt_append
 ( stream_vt(INV(x0))
 , stream_vt(INV(x0))): stream_vt(x0)
+//
+#symload append with stream_vt_append
 //
 (* ****** ****** *)
 //

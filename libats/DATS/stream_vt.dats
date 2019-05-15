@@ -128,6 +128,25 @@ list0_vt_free<x0>(xs)
 
 implement
 {a}(*tmp*)
+stream_vt_length
+  (xs) =
+  (loop(xs, 0)) where
+{
+fun
+loop
+(xs: stream_vt(a), r0: int): int =
+(
+case+ !xs of
+| ~stream_vt_nil() => r0
+| ~stream_vt_cons(x0, xs) =>
+   (gfree$val<a>(x0); loop(xs, r0+1))
+)
+} (* end of [stream_vt_length] *)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
 stream_vt_append
   (xs, ys) =
 (

@@ -43,6 +43,7 @@ UN = "libats/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/gint.sats"
+#staload "./../SATS/gptr.sats"
 #staload "./../SATS/bool.sats"
 #staload "./../SATS/char.sats"
 #staload "./../SATS/string.sats"
@@ -51,6 +52,58 @@ UN = "libats/SATS/unsafe.sats"
 //
 #staload "./../SATS/stdio.sats"
 #staload "./../SATS/filebas.sats"
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+FILEref_open_opt
+(fp0, fm0) = let
+//
+val fil =
+$extfcall
+(ptr0, "atspre_fopen", fp0, fm0)
+//
+in
+if
+iseqz(fil)
+then
+optn0_vt_none(*void*)
+else
+optn0_vt_some($UN.cast{FILEref}(fil))
+end // end of [FILEref_open]
+
+implement
+{}(*tmp*)
+FILEptr0_open_opt
+(fp0, fm0) = let
+//
+val fil =
+$extfcall
+(ptr0, "atspre_fopen", fp0, fm0)
+//
+in
+if
+iseqz(fil)
+then
+optn0_vt_none(*void*)
+else
+optn0_vt_some($UN.castvwtp0{FILEptr0}(fil))
+end // end of [FILEptr0_open]
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+FILEref_close(fil) =
+$extfcall
+(void, "atspre_fclose", fil)
+implement
+{}(*tmp*)
+FILEptr0_close(fil) =
+$extfcall
+( void
+, "atspre_fclose", $UN.castvwtp0{ptr}(fil))
 //
 (* ****** ****** *)
 

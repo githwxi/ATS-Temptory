@@ -54,6 +54,11 @@
 
 /* ****** ****** */
 
+#define atspre_fopen fopen
+#define atspre_fclose fclose
+
+/* ****** ****** */
+
 #define atspre_fgetc fgetc
 
 /* ****** ****** */

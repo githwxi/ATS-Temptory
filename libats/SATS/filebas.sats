@@ -43,6 +43,17 @@ ATS_EXTERN_PREFIX "temptory_"
 #staload "./stdio.sats"
 
 (* ****** ****** *)
+//
+fun{}
+FILEref_open_opt
+( fpath: string
+, fmode: string): optn0_vt(FILEref)
+fun{}
+FILEptr0_open_opt
+( fpath: string
+, fmode: string): optn0_vt(FILEptr0)
+//
+(* ****** ****** *)
 
 fun{}
 FILEref_close(FILEref): void

@@ -91,6 +91,16 @@ g0neq_ptr_ptr
 (* ****** ****** *)
 //
 fun
+ptr0_iseqz(ptr): bool = "mac#%"
+fun
+ptr0_isneqz(ptr): bool = "mac#%"
+//
+#symload iseqz with ptr0_iseqz
+#symload isneqz with ptr0_isneqz
+//
+(* ****** ****** *)
+//
+fun
 g0add_ptr_int
 (ptr, bsz: int): ptr = "mac#%"
 fun

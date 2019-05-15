@@ -34,6 +34,13 @@
 /* ****** ****** */
 
 #define \
+temptory_ptr0_iseqz(ptr) (ptr == (void*)0)
+#define \
+temptory_ptr0_isneqz(ptr) (ptr != (void*)0)
+
+/* ****** ****** */
+
+#define \
 temptory_g0lt_ptr_ptr(p0, p1) ((void*)p0 < (void*)p1)
 #define \
 temptory_g0gt_ptr_ptr(p0, p1) ((void*)p0 > (void*)p1)
