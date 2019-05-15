@@ -41,6 +41,7 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
+#staload "./../SATS/list_vt.sats"
 
 (* ****** ****** *)
 
@@ -686,6 +687,47 @@ implement
 gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
 }
 //
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+list0_mergesort$cmp
+(x1, x2) = gcompare$val<a>(x1, x2)
+implement
+{a}(*tmp*)
+list0_quicksort$cmp
+(x1, x2) = gcompare$val<a>(x1, x2)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+list0_mergesort(xs) =
+(
+list0_vt2t
+(
+list0_vt_mergesort<a>(list0_listize<a>(xs))
+)
+) where
+{
+implement
+list0_vt_mergesort$cmp<a>(x1, x2) = list0_mergesort$cmp<a>(x1, x2)
+} (* end of [list0_mergesort] *)
+
+implement
+{a}(*tmp*)
+list0_quicksort(xs) =
+(
+list0_vt2t
+(
+list0_vt_quicksort<a>(list0_listize<a>(xs))
+)
+) where
+{
+implement
+list0_vt_quicksort$cmp<a>(x1, x2) = list0_quicksort$cmp<a>(x1, x2)
+} (* end of [list0_quicksort] *)
+
 (* ****** ****** *)
 
 (* end of [list.dats] *)

@@ -32,6 +32,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 /* ****** ****** */
+
+#define temptory_strcmp strcmp
+
+/* ****** ****** */
 //
 #define \
 temptory_string0_vt_free(cs) ATS_FREE(cs)

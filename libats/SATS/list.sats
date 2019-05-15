@@ -355,5 +355,25 @@ list0_imap_stream
 #symload imap_stream with list0_imap_stream
 //
 (* ****** ****** *)
+//
+fun
+{a:tflt}
+list0_mergesort
+  (xs: list0(INV(a))): list0(a)
+fun
+{a:tflt}
+list0_mergesort$cmp(x1: a, x2: a): int(*sgn*)
+//
+(* ****** ****** *)
+//
+fun
+{a:tflt}
+list0_quicksort
+  (xs: list0(INV(a))): list0(a)
+fun
+{a:tflt}
+list0_quicksort$cmp(x1: a, x2: a): int(*sgn*)
+//
+(* ****** ****** *)
 
 (* end of [list.sats] *)

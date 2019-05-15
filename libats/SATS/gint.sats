@@ -455,29 +455,34 @@ g1div_sint_sint
 fun
 g0lt_sint_sint
 ( x: sint
-, y: sint): bool = "mac#%"
+, y: sint):<> bool = "mac#%"
 fun
 g0lte_sint_sint
 ( x: sint
-, y: sint): bool = "mac#%"
+, y: sint):<> bool = "mac#%"
 //
 fun
 g0gt_sint_sint
 ( x: sint
-, y: sint): bool = "mac#%"
+, y: sint):<> bool = "mac#%"
 fun
 g0gte_sint_sint
 ( x: sint
-, y: sint): bool = "mac#%"
+, y: sint):<> bool = "mac#%"
 //
 fun
 g0eq_sint_sint
 ( x: sint
-, y: sint): bool = "mac#%"
+, y: sint):<> bool = "mac#%"
 fun
 g0neq_sint_sint
 ( x: sint
-, y: sint): bool = "mac#%"
+, y: sint):<> bool = "mac#%"
+//
+fun
+g0cmp_sint_sint
+( x: sint
+, y: sint):<> sint = "mac#%"
 //
 (* ****** ****** *)
 //
@@ -489,40 +494,42 @@ g0neq_sint_sint
 #symload >= with g0gte_sint_sint of 10
 #symload != with g0neq_sint_sint of 10
 //
+#symload <=> with g0neq_sint_sint of 10
+//
 (* ****** ****** *)
 //
 fun
 g1lt_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i < j) = "mac#%"
+, y: sint(j)):<> bool(i < j) = "mac#%"
 fun
 g1lte_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i <= j) = "mac#%"
+, y: sint(j)):<> bool(i <= j) = "mac#%"
 //
 fun
 g1gt_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i > j) = "mac#%"
+, y: sint(j)):<> bool(i > j) = "mac#%"
 fun
 g1gte_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i >= j) = "mac#%"
+, y: sint(j)):<> bool(i >= j) = "mac#%"
 //
 fun
 g1eq_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i == j) = "mac#%"
+, y: sint(j)):<> bool(i == j) = "mac#%"
 fun
 g1neq_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i != j) = "mac#%"
+, y: sint(j)):<> bool(i != j) = "mac#%"
 //
 (* ****** ****** *)
 //
@@ -539,29 +546,34 @@ g1neq_sint_sint
 fun
 g0lt_uint_uint
 ( x: uint
-, y: uint): bool = "mac#%"
+, y: uint):<> bool = "mac#%"
 fun
 g0lte_uint_uint
 ( x: uint
-, y: uint): bool = "mac#%"
+, y: uint):<> bool = "mac#%"
 //
 fun
 g0gt_uint_uint
 ( x: uint
-, y: uint): bool = "mac#%"
+, y: uint):<> bool = "mac#%"
 fun
 g0gte_uint_uint
 ( x: uint
-, y: uint): bool = "mac#%"
+, y: uint):<> bool = "mac#%"
 //
 fun
 g0eq_uint_uint
 ( x: uint
-, y: uint): bool = "mac#%"
+, y: uint):<> bool = "mac#%"
 fun
 g0neq_uint_uint
 ( x: uint
-, y: uint): bool = "mac#%"
+, y: uint):<> bool = "mac#%"
+//
+fun
+g0cmp_uint_uint
+( x: uint
+, y: uint):<> sint = "mac#%"
 //
 (* ****** ****** *)
 //
@@ -572,6 +584,10 @@ g0neq_uint_uint
 #symload <= with g0lte_uint_uint of 10
 #symload >= with g0gte_uint_uint of 10
 #symload != with g0neq_uint_uint of 10
+//
+(*
+#symload <=> with g0cmp_uint_uint of 10
+*)
 //
 (* ****** ****** *)
 //

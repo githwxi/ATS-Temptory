@@ -86,11 +86,24 @@ gclear$ref(x: &INV(a) >> a?): void
 //
 fun
 {a:vtflt}
-gequal$val(x: !INV(a), y: !a):<> bool
+gequal$val
+(x: !INV(a), y: !INV(a)):<> bool
 //
 fun
 {a:vtflt}
-gequal$ref(x: &INV(a), y: &a):<> bool
+gequal$ref
+(x: &INV(a), y: &INV(a)):<> bool
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+gcompare$val
+(x: !INV(a), y: !INV(a)):<> (int)
+fun
+{a:vtflt}
+gcompare$ref
+(x: &INV(a), y: &INV(a)):<> (int)
 //
 (* ****** ****** *)
 (*

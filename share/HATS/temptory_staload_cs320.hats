@@ -166,6 +166,15 @@ _(*UNSAFE*) =
 "libats/DATS/unsafe.dats"
 //
 (* ****** ****** *)
+//
+#staload _ =
+"libats/DATS/list_vt_mergesort.dats"
+(*
+#staload _ =
+"libats/DATS/list_vt_quicksort.dats"
+*)
+//
+(* ****** ****** *)
 
 sexpdef list = list0
 sexpdef optn = optn0

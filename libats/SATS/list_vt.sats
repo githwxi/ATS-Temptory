@@ -403,5 +403,69 @@ fun
 list0_vt_foldleft1_ref$fopr(r0, cptr0(x0)): r0
 //
 (* ****** ****** *)
+//
+fun
+{a:vtflt}
+list0_vt_mergesort
+  (xs: list0_vt(INV(a))): list0_vt(a)
+fun
+{a:vtflt}
+list0_vt_mergesort$cmp(x1: &a, x2: &a): int(*sgn*)
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+list0_vt_quicksort
+  (xs: list0_vt(INV(a))): list0_vt(a)
+fun
+{a:vtflt}
+list0_vt_quicksort$cmp(x1: &a, x2: &a): int(*sgn*)
+//
+(* ****** ****** *)
+
+#symload mergesort with list0_vt_mergesort
+#symload quicksort with list0_vt_quicksort
+
+(* ****** ****** *)
+//
+prfun
+lemma_list1_vt_param
+{a:vtflt}{n:int}
+(!list1_vt(INV(a), n)): [n >= 0] void
+//
+(* ****** ****** *)
+
+fun
+{a:vtflt}
+list1_vt_length
+{n:int}(!list1_vt(INV(a), n)): int(n)
+
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+list1_vt_mergesort
+  {n:int}
+  (xs: list1_vt(INV(a), n)): list1_vt(a, n)
+fun
+{a:vtflt}
+list1_vt_mergesort$cmp(x1: &a, x2: &a): int(*sgn*)
+//
+fun
+{a:vtflt}
+list1_vt_quicksort
+  {n:int}
+  (xs: list1_vt(INV(a), n)): list1_vt(a, n)
+fun
+{a:vtflt}
+list1_vt_quicksort$cmp(x1: &a, x2: &a): int(*sgn*)
+//
+(* ****** ****** *)
+
+#symload mergesort with list1_vt_mergesort
+#symload quicksort with list1_vt_quicksort
+
+(* ****** ****** *)
 
 (* end of [list_vt.sats] *)

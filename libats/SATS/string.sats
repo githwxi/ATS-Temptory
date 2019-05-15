@@ -63,6 +63,12 @@ string0_cptrof
 //
 (* ****** ****** *)
 //
+fun
+strcmp
+(string, string): int = "mac#%"
+//
+(* ****** ****** *)
+//
 fun{}
 string0_iseqz(string):<> bool
 fun{}

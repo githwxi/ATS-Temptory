@@ -47,6 +47,10 @@
 #staload "./../SATS/list_vt.sats"
 
 (* ****** ****** *)
+
+#staload UN = "./../SATS/unsafe.sats"
+
+(* ****** ****** *)
 //
 implement
 {x0}//tmp
@@ -726,6 +730,20 @@ glseq_foldleft1_ref<list0_vt(x0)><x0><r0>(xs, r0)
 {
 implement
 glseq_foldleft1_ref$fopr<x0><r0>(r0, px) = list0_vt_foldleft1_ref$fopr<x0><r0>(r0, px)
+}
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+list1_vt_length
+{n}(xs) =
+$UN.cast{int(n)}(n0) where
+{
+val xs =
+$UN.castvwtp1{list0_vt(x0)}(xs)
+val n0 = list0_vt_length<x0>(xs)
+prval () = $UN.castvwtp0{void}(xs)
 }
 
 (* ****** ****** *)
