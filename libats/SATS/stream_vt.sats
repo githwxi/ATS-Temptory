@@ -52,11 +52,11 @@ stream_vt_make_sing
 fun
 {x0:tflt}
 stream_vt_make_list0
-  (xs: list0(x0)): stream_vt(x0)
+  (xs: list0(INV(x0))): stream_vt(x0)
 fun
 {x0:vtflt}
 stream_vt_make_list0_vt
-  (xs: list0_vt(x0)): stream_vt(x0)
+  (xs: list0_vt(INV(x0))): stream_vt(x0)
 //
 #symload
 stream_vt_make with stream_vt_make_list0
@@ -68,22 +68,22 @@ stream_vt_make with stream_vt_make_list0_vt
 fun
 {x0:vtflt}
 stream_vt_append
-( stream_vt(x0)
-, stream_vt(x0)): stream_vt(x0)
+( stream_vt(INV(x0))
+, stream_vt(INV(x0))): stream_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
 {x0:vtflt}
 stream_vt_listize
-(xs: stream_vt(x0)): list0_vt(x0)
+(xs: stream_vt(INV(x0))): list0_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
 {x0:vtflt}
 stream_vt_forall0
-(xs: stream_vt(x0)): bool
+(xs: stream_vt(INV(x0))): bool
 fun
 {x0:vtflt}
 stream_vt_forall0$test(x0): bool
@@ -93,7 +93,7 @@ stream_vt_forall0$test(x0): bool
 fun
 {x0:vtflt}
 stream_vt_foreach0
-(xs: stream_vt(x0)): void
+(xs: stream_vt(INV(x0))): void
 fun
 {x0:vtflt}
 stream_vt_foreach0$work(x0): void
@@ -107,7 +107,7 @@ stream_vt_map$fopr(x0): y0
 fun
 {x0:vtflt}
 {y0:vtflt}
-stream_vt_map(xs: stream_vt(x0)): stream_vt(y0)
+stream_vt_map(stream_vt(INV(x0))): stream_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -125,10 +125,10 @@ stream_vt_filter$test(!x0): bool
 fun
 {x0:vtflt}
 {y0:vtflt}
-stream_vt_mapopt(xs: stream_vt(x0)): stream_vt(y0)
+stream_vt_mapopt(stream_vt(INV(x0))): stream_vt(y0)
 fun
 {x0:vtflt}
-stream_vt_filter(xs: stream_vt(x0)): stream_vt(x0)
+stream_vt_filter(stream_vt(INV(x0))): stream_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -150,14 +150,14 @@ stream_vt_ifilter$test(int, !x0): bool
 fun
 {x0:vtflt}
 {y0:vtflt}
-stream_vt_imap(xs: stream_vt(x0)): stream_vt(y0)
+stream_vt_imap(stream_vt(INV(x0))): stream_vt(y0)
 fun
 {x0:vtflt}
 {y0:vtflt}
-stream_vt_imapopt(xs: stream_vt(x0)): stream_vt(y0)
+stream_vt_imapopt(stream_vt(INV(x0))): stream_vt(y0)
 fun
 {x0:vtflt}
-stream_vt_ifilter(xs: stream_vt(x0)): stream_vt(x0)
+stream_vt_ifilter(stream_vt(INV(x0))): stream_vt(x0)
 //
 (* ****** ****** *)
 

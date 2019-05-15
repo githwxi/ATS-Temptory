@@ -54,6 +54,10 @@
 
 /* ****** ****** */
 
+#define atspre_fgetc fgetc
+
+/* ****** ****** */
+
 #define atspre_fflush fflush
 #define atspre_fprintf fprintf
 

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2019
+// Start Time: February, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -40,68 +40,33 @@ ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 
-%{#
-//
-#ifdef \
-_TEMPTORY_LIBATS_SATS_STDIO_
-#else
-#define \
-_TEMPTORY_LIBATS_SATS_STDIO_
-#include <stdio.h>
-typedef char *charptr;
-#endif // _TEMPTORY_LIBATS_SATS_STDIO_
-//
-%}(* end of [%{#] *)
+#staload "./stdio.sats"
 
 (* ****** ****** *)
 
-typedef
-charptr = $extype"charptr"
+fun{}
+FILEref_close(FILEref): void
+fun{}
+FILEptr0_close(FILEptr): void
 
 (* ****** ****** *)
 //
-abstbox
-FILEref_tbox = ptr
-typedef
-FILEref = FILEref_tbox
-//
-absvtbox
-FILEptr0_vtbox = ptr
-absvtbox
-FILEptr1_vtbox(l:addr) = ptr
-vtypedef
-FILEptr0 = FILEptr0_vtbox
-vtypedef
-FILEptr1(l:addr) = FILEptr1_vtbox(l)
-//
-sexpdef FILEptr = FILEptr0
-sexpdef FILEptr = FILEptr1
+fun{}
+FILEref_streamize_char
+  (out: FILEref): stream_vt(int)
+fun{}
+FILEptr0_streamize_char
+  (out: FILEptr0): stream_vt(int)
 //
 (* ****** ****** *)
 //
 fun{}
-the_stdin(): FILEref // STDIN
+FILEref_streamize_line
+  (out: FILEref): stream_vt(string)
 fun{}
-the_stdout(): FILEref // STDOUT
-fun{}
-the_stderr(): FILEref // STDERR
-//
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-fprint$val
-(out: FILEref, x: !a): void
-fun
-{a:vtflt}
-fprint$ref
-(out: FILEref, x: &INV(a)): void
+FILEptr0_streamize_line
+  (out: FILEptr): stream_vt(string)
 //
 (* ****** ****** *)
 
-fun{}
-fprint_newline(out: FILEref): void
-
-(* ****** ****** *)
-
-(* end of [stdio.sats] *)
+(* end of [filebas.sats] *)
