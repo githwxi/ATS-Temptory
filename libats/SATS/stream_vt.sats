@@ -40,6 +40,15 @@ ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 //
+fun
+{x0:vtflt}
+stream_vt_sing
+( x0
+: INV(x0))
+: stream_vt_con(x0)
+//
+(* ****** ****** *)
+//
 fun{}
 stream_vt_make_nil
 {x0:vtflt}
@@ -47,7 +56,7 @@ stream_vt_make_nil
 fun
 {x0:vtflt}
 stream_vt_make_sing
-  (xs: x0): stream_vt(x0)
+(x0: INV(x0)): stream_vt(x0)
 //
 fun
 {x0:tflt}
@@ -75,8 +84,60 @@ stream_vt_append
 //
 fun
 {x0:vtflt}
+stream_vt_drop
+(
+xs: stream_vt(INV(x0))
+) : (int, stream_vt_con(x0))
+fun
+{x0:vtflt}
+stream_vt_drop$when(!x0): bool
+fun
+{x0:vtflt}
+stream_vt_drop$until(!x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+stream_vt_take
+(
+xs: stream_vt(INV(x0))
+) : (list0_vt(x0), stream_vt_con(x0))
+fun
+{x0:vtflt}
+stream_vt_take$when(!x0): bool
+fun
+{x0:vtflt}
+stream_vt_take$until(!x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 stream_vt_listize
 (xs: stream_vt(INV(x0))): list0_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+stream_vt_group_line
+( xs
+: stream_vt(INV(x0)))
+: stream_vt(list0_vt(x0))
+fun
+{x0:vtflt}
+stream_vt_group_line$iseol(!x0): bool
+//
+fun
+{x0:vtflt}
+stream_vt_group_word
+( xs
+: stream_vt(INV(x0)))
+: stream_vt(list0_vt(x0))
+fun
+{x0:vtflt}
+stream_vt_group_word$isalpha(!x0): bool
 //
 (* ****** ****** *)
 //
@@ -97,6 +158,16 @@ stream_vt_foreach0
 fun
 {x0:vtflt}
 stream_vt_foreach0$work(x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+stream_vt_iforeach0
+(xs: stream_vt(INV(x0))): void
+fun
+{x0:vtflt}
+stream_vt_iforeach0$work(int, x0): void
 //
 (* ****** ****** *)
 //

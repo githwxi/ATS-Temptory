@@ -49,6 +49,15 @@
 (* ****** ****** *)
 //
 implement
+{x0}(*tmp*)
+stream_vt_sing(x0) =
+stream_vt_cons
+( x0
+, stream_vt_make_nil())
+//
+(* ****** ****** *)
+//
+implement
 {}(*tmp*)
 stream_vt_make_nil() =
 $ldelay
@@ -166,6 +175,122 @@ end // end-of-let
 //
 implement
 {x0}(*tmp*)
+stream_vt_take$when(x0) = 
+not
+(stream_vt_take$until<x0>(x0))
+//
+implement
+{x0}(*tmp*)
+stream_vt_take(xs) =
+(
+let
+  var r0: ptr?
+  val nx = loop(xs, r0) in (r0, nx)
+end
+) where
+{
+vtypedef xs = stream_vt(x0)
+vtypedef nx = stream_vt_con(x0)
+fun
+loop
+( xs: xs
+, r0: &ptr? >> list0_vt(x0)): nx =
+let
+  val nx = !xs
+in
+case+ nx of
+|
+@stream_vt_nil() =>
+ let
+ val () =
+ (r0 := list0_vt_nil()) in fold@(nx); nx
+ end
+|
+@stream_vt_cons(x0, xs) =>
+ let
+ val
+ test =
+ stream_vt_take$when<x0>(x0)
+ in
+ if
+ test
+ then let
+   val xs = xs
+   val x0 = x0
+   val () = free@(nx)
+   val () =
+   (r0 := list0_vt_cons(x0, _))
+   val+list0_vt_cons(_, r1) = r0
+   val nx = loop(xs, r1); prval () = fold@(r0) in nx
+ end // end of [then]
+ else let
+ val () =
+ (r0 := list0_vt_nil()) in fold@(nx); nx
+ end // end of [else]
+ end // end of [stream_vt_cons]
+end
+}
+//
+(* ****** ****** *)
+//
+implement
+{x0}(*tmp*)
+stream_vt_drop$when(x0) = 
+not
+(stream_vt_drop$until<x0>(x0))
+//
+implement
+{x0}(*tmp*)
+stream_vt_drop(xs) =
+(
+let
+  var r0 = (0:int)
+  val nx = loop(xs, r0) in (r0, nx)
+end
+) where
+{
+vtypedef xs = stream_vt(x0)
+vtypedef nx = stream_vt_con(x0)
+fun
+loop
+( xs: xs
+, r0: &int >> int): nx =
+let
+  val nx = !xs
+in
+case+ nx of
+|
+@stream_vt_nil() =>
+ (fold@(nx); nx)
+|
+@stream_vt_cons(x0, xs) =>
+ let
+ val
+ test =
+ stream_vt_drop$when<x0>(x0)
+ in
+ if
+ test
+ then
+ (
+ loop(xs, r0)
+ ) where
+ {
+   val xs = xs
+   val () =
+   gfree$val<x0>(x0)
+   val () = free@(nx)
+   val () = (r0 := r0 + 1)
+ } (* end of [then] *)
+ else (fold@(nx); nx)
+ end // end of [stream_vt_cons]
+end
+}
+//
+(* ****** ****** *)
+//
+implement
+{x0}(*tmp*)
 stream_vt_listize(xs) =
 (
 let
@@ -198,6 +323,115 @@ case+ !xs of
 )
 } (* end of [stream_vt_listize] *)
 //
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+stream_vt_group_line
+  (xs) =
+  (auxmain(xs)) where
+{
+fun
+auxmain
+( xs
+: stream_vt(x0)) 
+: stream_vt(list0_vt(x0)) =
+$ldelay
+(
+let
+//
+val
+(ys, xs) =
+(
+stream_vt_take<x0>(xs)
+) where
+{
+implement
+stream_vt_take$until<x0>(x0) =
+stream_vt_group_line$iseol<x0>(x0)
+}
+//
+in
+case+ xs of
+|
+~stream_vt_nil() =>
+ (
+ case+ ys of
+ | ~list0_vt_nil _ => stream_vt_nil()
+ |  list0_vt_cons _ => stream_vt_sing(ys)
+ )
+|
+~stream_vt_cons(x0, xs) =>
+ let
+ val () =
+ gfree$val<x0>(x0) in stream_vt_cons(ys, auxmain(xs))
+ end
+end // end-of-let
+, lazy_vt_free(xs)
+) (* end of [auxmain] *)
+} (* end of [stream_vt_group_line] *)
+
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+stream_vt_group_word
+  (xs) =
+  (auxmain(xs)) where
+{
+fun
+auxmain
+( xs
+: stream_vt(x0)) 
+: stream_vt(list0_vt(x0)) =
+$ldelay
+(
+let
+//
+val
+(n0, xs) =
+(
+stream_vt_drop<x0>(xs)
+) where
+{
+implement
+stream_vt_drop$until<x0>(x0) =
+stream_vt_group_word$isalpha<x0>(x0)
+}
+//
+in
+case+ xs of
+|
+~stream_vt_nil() =>
+ stream_vt_nil()
+|
+~stream_vt_cons(y0, xs) =>
+ let
+ val
+ (ys, xs) =
+ (
+ stream_vt_take<x0>(xs)
+ ) where
+ {
+ implement
+ stream_vt_take$when<x0>(x0) =
+ stream_vt_group_word$isalpha<x0>(x0)
+ }
+ val ys = list0_vt_cons(y0, ys)
+ in
+ case+ xs of
+ | ~stream_vt_nil() =>
+    stream_vt_sing(ys)
+ | ~stream_vt_cons(x0, xs) =>
+    let
+    val () = gfree$val<x0>(x0)
+    in stream_vt_cons(ys, auxmain(xs)) end
+ end
+end // end-of-let
+, lazy_vt_free(xs)
+) (* end of [auxmain] *)
+} (* end of [stream_vt_group_word] *)
+
 (* ****** ****** *)
 
 implement
@@ -248,6 +482,31 @@ case+ !xs of
  end // end of [stream_vt_cons]
 ) (* end of [loop] *)
 } (* end of [stream_vt_foreach0] *)
+
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+stream_vt_iforeach0
+  (xs) =
+  (loop(0, xs)) where
+{
+fun
+loop
+( i0: int
+, xs: stream_vt(x0)): void =
+(
+case+ !xs of
+|
+~stream_vt_nil() => ()
+|
+~stream_vt_cons(x0, xs) =>
+ let
+ val () =
+ stream_vt_iforeach0$work<x0>(i0, x0) in loop(i0+1, xs)
+ end // end of [stream_vt_cons]
+) (* end of [loop] *)
+} (* end of [stream_vt_iforeach0] *)
 
 (* ****** ****** *)
 

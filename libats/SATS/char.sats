@@ -114,6 +114,11 @@ fun
 char0_chr: sint -<> char = "mac#%"
 //
 (* ****** ****** *)
+
+fun
+char0_isalpha(char):<> bool = "mac#%"
+
+(* ****** ****** *)
 //
 fun
 char0_islower(char):<> bool = "mac#%"

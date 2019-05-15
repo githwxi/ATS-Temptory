@@ -53,10 +53,10 @@ FILEptr0_close(FILEptr): void
 //
 fun{}
 FILEref_streamize_char
-  (out: FILEref): stream_vt(int)
+  (out: FILEref): stream_vt(char)
 fun{}
 FILEptr0_streamize_char
-  (out: FILEptr0): stream_vt(int)
+  (out: FILEptr0): stream_vt(char)
 //
 (* ****** ****** *)
 //
@@ -66,6 +66,20 @@ FILEref_streamize_line
 fun{}
 FILEptr0_streamize_line
   (out: FILEptr): stream_vt(string)
+//
+(* ****** ****** *)
+//
+fun{}
+FILEref_streamize_word
+  (out: FILEref): stream_vt(string)
+fun{}
+FILEref_streamize_word$isalpha(char): bool
+//
+fun{}
+FILEptr0_streamize_word
+  (out: FILEptr): stream_vt(string)
+fun{}
+FILEptr0_streamize_word$isalpha(char): bool
 //
 (* ****** ****** *)
 

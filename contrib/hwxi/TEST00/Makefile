@@ -12,6 +12,7 @@ ACC=gcc \
 # -fpermissive -w \
 # -DATS_MEMALLOC_LIBC $(INCLUDE)
 
+CAT=cat 
 RMF=rm -f
 
 ######
@@ -129,7 +130,7 @@ regress:: test08_dats; ./test08_dats
 regress:: test09_dats; ./test09_dats
 regress:: test10_dats; ./test10_dats
 regress:: test11_dats; ./test11_dats
-regress:: test12_dats; ./test12_dats
+regress:: test12_dats; ($(CAT) ./test12.dats | ./test12_dats)
 
 ######
 

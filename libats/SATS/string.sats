@@ -100,7 +100,7 @@ string0_make_list0_vt
 (cs: list0_vt(char)): string
 fun{}
 string0_make_stream_vt
-(cs: list0_vt(char)): string
+(cs: stream_vt(char)): string
 //
 #symload
 string0_make with string0_make_list0
