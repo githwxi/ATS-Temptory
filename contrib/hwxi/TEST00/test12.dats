@@ -42,7 +42,13 @@ stream_vt_iforeach0$work<string>(i0, l0) = println!("line#", i0, ": ", l0)
 *)
 //
 val ws =
+(
 FILEref_streamize_word(the_stdin())
+) where
+{
+implement
+FILEref_streamize_word$isalpha<>(c0) = char0_isalnum(c0)
+}
 val () =
 (
 stream_vt_iforeach0(ws)

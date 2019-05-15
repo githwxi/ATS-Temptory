@@ -114,10 +114,26 @@ fun
 char0_chr: sint -<> char = "mac#%"
 //
 (* ****** ****** *)
-
+//
 fun
 char0_isalpha(char):<> bool = "mac#%"
-
+fun
+char0_isalnum(char):<> bool = "mac#%"
+fun
+char0_iscntrl(char):<> bool = "mac#%"
+fun
+char0_isdigit(char):<> bool = "mac#%"
+fun
+char0_isgraph(char):<> bool = "mac#%"
+fun
+char0_isprint(char):<> bool = "mac#%"
+fun
+char0_ispunct(char):<> bool = "mac#%"
+fun
+char0_isspace(char):<> bool = "mac#%"
+fun
+char0_isxdigit(char):<> bool = "mac#%"
+//
 (* ****** ****** *)
 //
 fun

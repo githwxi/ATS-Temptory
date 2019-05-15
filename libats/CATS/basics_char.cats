@@ -42,6 +42,22 @@ temptory_char0_chr(i0) ((char)i0)
 
 #define \
 temptory_char0_isalpha(c) isalpha(c)
+#define \
+temptory_char0_isalnum(c) isalnum(c)
+#define \
+temptory_char0_iscntrl(c) iscntrl(c)
+#define \
+temptory_char0_isdigit(c) isdigit(c)
+#define \
+temptory_char0_isgraph(c) isgraph(c)
+#define \
+temptory_char0_isprint(c) isprint(c)
+#define \
+temptory_char0_isspace(c) isspace(c)
+#define \
+temptory_char0_ispunct(c) ispunct(c)
+#define \
+temptory_char0_isxdigit(c) isxdigit(c)
 
 /* ****** ****** */
 
