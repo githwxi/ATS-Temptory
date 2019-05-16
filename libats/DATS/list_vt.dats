@@ -268,6 +268,33 @@ list0_vt_reverse(xs) =
 (* ****** ****** *)
 
 implement
+{x0}(*tmp*)
+list0_vt_streamize
+  (xs) =
+(
+  auxmain(xs)
+)  where
+{
+//
+vtypedef xs = list0_vt(x0)
+vtypedef r0 = stream_vt(x0)
+//
+fun
+auxmain
+(xs: xs): r0 = $ldelay
+(
+case+ xs of
+| ~list0_vt_nil() =>
+   stream_vt_nil()
+| ~list0_vt_cons(x0, xs) =>
+   stream_vt_cons(x0, auxmain(xs))
+, list0_vt_free<x0>(xs)
+)
+} (* end of [list0_vt_streamize] *)
+
+(* ****** ****** *)
+
+implement
 {x0}//tmp
 list0_vt_forall0
   (xs) =

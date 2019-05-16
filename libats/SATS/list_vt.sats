@@ -121,6 +121,14 @@ list0_vt_reverse
 //
 fun
 {x0:vtflt}
+list0_vt_streamize
+( xs
+: list0_vt(INV(x0))): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 list0_vt_forall0
 (xs: list0_vt(INV(x0))): bool
 fun

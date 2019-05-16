@@ -131,26 +131,51 @@ array_v(INV(a), l, n) -<prf> (a @ l, array_v(a, l+sizeof(a), n-1))
 //
 fun
 {a:tflt}
-array_get_at
+array_get_at_sint
+{n:int}{i:nat | i < n}
+( arr
+: &(@[INV(a)][n]), sint(i)): (a)
+fun
+{a:tflt}
+array_set_at_sint
+{n:int}{i:nat | i < n}
+( arr
+: &(@[INV(a)][n]), sint(i), a): void
+//
+fun
+{a:tflt}
+array_get_at_size
 {n:int}{i:nat | i < n}
 ( arr
 : &(@[INV(a)][n]), size(i)): (a)
 fun
 {a:tflt}
-array_set_at
+array_set_at_size
 {n:int}{i:nat | i < n}
 ( arr
 : &(@[INV(a)][n]), size(i), a): void
 //
 fun
 {a:vtflt}
-array_getref_at
+array_getref_at_sint
+{n:int}{i:nat | i < n}
+( arr
+: &(array(INV(a),n)), sint(i)):<> cptr(a)
+fun
+{a:vtflt}
+array_getref_at_size
 {n:int}{i:nat | i < n}
 ( arr
 : &(array(INV(a),n)), size(i)):<> cptr(a)
 //
-#symload [] with array_get_at of 10
-#symload [] with array_set_at of 10
+#symload [] with array_get_at_sint of 10
+#symload [] with array_set_at_sint of 10
+#symload [] with array_get_at_size of 10
+#symload [] with array_set_at_size of 10
+#symload array_get_at with array_get_at_sint
+#symload array_get_at with array_get_at_size
+#symload array_set_at with array_set_at_sint
+#symload array_set_at with array_set_at_size
 //
 (* ****** ****** *)
 
@@ -167,6 +192,46 @@ array_ptr_alloc
   {n:int}
 ( asz: size(n) ) 
 : [l:agz] (array_v(a?,l,n), mfree_gc_v(l) | ptr(l))
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+array_forall
+{n:int}
+(&array(a, n), size(n)): bool
+fun
+{a:vtflt}
+array_forall$test(x: !(a)): bool
+//
+fun
+{a:vtflt}
+array_foreach
+{n:int}
+(&array(a, n), size(n)): void
+fun
+{a:vtflt}
+array_foreach$work(x: !(a)): void
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+array_rforall
+{n:int}
+(&array(a, n), size(n)): bool
+fun
+{a:vtflt}
+array_rforall$test(x: !(a)): bool
+//
+fun
+{a:vtflt}
+array_rforeach
+{n:int}
+(&array(a, n), size(n)): void
+fun
+{a:vtflt}
+array_rforeach$work(x: !(a)): void
 //
 (* ****** ****** *)
 //
@@ -214,8 +279,7 @@ fun
 {a:vtflt}
 array_quicksort_stdlib
   {n:int}
-( A0
-: &(@[INV(a)][n]) >> @[a][n], size(n), cmpfunref(a)
+(A0: &(@[INV(a)][n]) >> @[a][n], size(n), cmpfunref(a)
 ) : void // end of [array_quicksort_stdlib]
 
 (* ****** ****** *)
@@ -232,8 +296,99 @@ array_permute{n:int}
 //
 fun
 {(*void*)}
-array_permute$randint{n:int | n > 0}(size(n)): Sizelt(n)
+array_permute$randint{n:int|n > 0}(n: size(n)): Sizelt(n)
 //
+(* ****** ****** *)
+//
+// HX-2019-05:
+// For array-pointer and array-references
+//
+(* ****** ****** *)
+
+vtypedef
+arrayptr
+(a:vtflt,n:int) =
+[l:agez] arrayptr(a,l,n)
+
+(* ****** ****** *)
+
+fun{}
+arrayref_cptrof
+{a:vtflt}{n:int}
+(A: !arrayref(a, n)): cptr(a)
+
+(* ****** ****** *)
+
+fun
+{a:tflt}
+arrayref_get_at_sint
+{n:int}{i:nat | i < n}
+(A: arrayref(a, n), i: sint(i)): (a)
+fun
+{a:tflt}
+arrayref_set_at_sint
+{n:int}{i:nat | i < n}
+(A: arrayref(a, n), i: sint(i), x: a): void
+fun
+{a:tflt}
+arrayref_get_at_size
+{n:int}{i:nat | i < n}
+(A: arrayref(a, n), i: size(i)): (a)
+fun
+{a:tflt}
+arrayref_set_at_size
+{n:int}{i:nat | i < n}
+(A: arrayref(a, n), i: size(i), x: a): void
+
+#symload [] with arrayref_get_at_sint of 10
+#symload [] with arrayref_set_at_sint of 10
+#symload [] with arrayref_get_at_size of 10
+#symload [] with arrayref_set_at_size of 10
+#symload arrayref_get_at with arrayref_get_at_sint
+#symload arrayref_get_at with arrayref_get_at_size
+#symload arrayref_set_at with arrayref_set_at_sint
+#symload arrayref_set_at with arrayref_set_at_size
+
+(* ****** ****** *)
+
+fun{}
+arrayptr_cptrof
+{a:vtflt}
+{l:addr}{n:int}
+(A: !arrayptr(a, l, n)): cptr(a, l)
+
+(* ****** ****** *)
+
+fun
+{a:tflt}
+arrayptr_get_at_sint
+{n:int}{i:nat | i < n}
+(A: !arrayptr(a, n), i: sint(i)): (a)
+fun
+{a:tflt}
+arrayptr_set_at_sint
+{n:int}{i:nat | i < n}
+(A: !arrayptr(a, n), i: sint(i), x: a): void
+fun
+{a:tflt}
+arrayptr_get_at_size
+{n:int}{i:nat | i < n}
+(A: !arrayptr(a, n), i: size(i)): (a)
+fun
+{a:tflt}
+arrayptr_set_at_size
+{n:int}{i:nat | i < n}
+(A: !arrayptr(a, n), i: size(i), x: a): void
+
+#symload [] with arrayptr_get_at_sint of 10
+#symload [] with arrayptr_set_at_sint of 10
+#symload [] with arrayptr_get_at_size of 10
+#symload [] with arrayptr_set_at_size of 10
+#symload arrayptr_get_at with arrayptr_get_at_sint
+#symload arrayptr_get_at with arrayptr_get_at_size
+#symload arrayptr_set_at with arrayptr_set_at_sint
+#symload arrayptr_set_at with arrayptr_set_at_size
+
 (* ****** ****** *)
 
 (* end of [array.sats] *)

@@ -225,42 +225,42 @@ g0sub_cptr_size
 (* ****** ****** *)
 //
 fun
-{a:tflt}
+{a:vtflt}
 cptr0_forall
 (cptr(a), cptr(a)): bool
 fun
-{a:tflt}
-cptr0_forall$test(x0: a): bool
+{a:vtflt}
+cptr0_forall$test(x0: !a): bool
 //
 (* ****** ****** *)
 //
 fun
-{a:tflt}
+{a:vtflt}
 cptr0_foreach
 (cptr(a), cptr(a)): void
 fun
-{a:tflt}
-cptr0_foreach$work(x0: a): void
+{a:vtflt}
+cptr0_foreach$work(x0: !a): void
 //
 (* ****** ****** *)
 //
 fun
-{a:tflt}
+{a:vtflt}
 cptr0_rforall
 (cptr(a), cptr(a)): bool
 fun
-{a:tflt}
-cptr0_rforall$test(x0: a): bool
+{a:vtflt}
+cptr0_rforall$test(x0: !a): bool
 //
 (* ****** ****** *)
 //
 fun
-{a:tflt}
+{a:vtflt}
 cptr0_rforeach
 (cptr(a), cptr(a)): void
 fun
-{a:tflt}
-cptr0_rforeach$work(x0: a): void
+{a:vtflt}
+cptr0_rforeach$work(x0: !a): void
 //
 (* ****** ****** *)
 

@@ -123,16 +123,22 @@ val x0 =
 $UN.ptr0_get<a>(p0)
 val test =
 cptr0_forall$test<a>(x0)
-in // in-of-let
+//
+in (* in-of-let *)
+let
+prval () =
+$UN.cast2void(x0)
+in
 if
 test
 then
 loop(p0+sizeof<a>, pz) else false
-end // end-of-let]
+end
+end (* end-of-let *)
 )
 //
 in
-  loop(cptr2ptr{a}(cp0), cptr2ptr{a}(cp1))
+  loop(cptr2ptr(cp0), cptr2ptr(cp1))
 end (* end of [cptr0_forall] *)
 //
 (* ****** ****** *)
@@ -140,7 +146,13 @@ end (* end of [cptr0_forall] *)
 implement
 {a}(*tmp*)
 cptr0_foreach
-  (cp0, cp1) = let
+  (cp0, cp1) =
+(
+loop
+( cptr2ptr(cp0)
+, cptr2ptr(cp1) )
+) where
+{
 //
 fun
 loop
@@ -148,19 +160,21 @@ loop
 (
 if
 (p0 < pz)
-then let
+then
+let
 val x0 =
 $UN.ptr0_get<a>(p0)
 val () =
 cptr0_foreach$work<a>(x0)
-in // in-of-let
-  loop( p0 + sizeof<a>, pz )
-end // end-of-let]
+in (* in-of-let *)
+let
+prval () =
+$UN.cast2void(x0) in loop(p0+sizeof<a>, pz)
+end
+end (* end-of-let *)
 )
 //
-in
-  loop(cptr2ptr{a}(cp0), cptr2ptr{a}(cp1))
-end (* end of [cptr0_foreach] *)
+} (* end of [cptr0_foreach] *)
 //
 (* ****** ****** *)
 //
@@ -168,7 +182,13 @@ end (* end of [cptr0_foreach] *)
 implement
 {a}(*tmp*)
 cptr0_rforall
-  (cp1, cp0) = let
+  (cp1, cp0) =
+(
+loop
+( cptr2ptr(cp0)
+, cptr2ptr(cp1) )
+) where
+{
 //
 fun
 loop
@@ -184,21 +204,29 @@ val x0 =
 $UN.ptr0_get<a>(p0)
 val test =
 cptr0_forall$test<a>(x0)
-in // in-of-let
+in (* in-of-let *)
+let
+prval () =
+$UN.cast2void(x0) in
 if test then loop(p0, pa) else false
-end // end-of-let]
+end
+end (* end-of-let *)
 )
 //
-in
-  loop(cptr2ptr{a}(cp0), cptr2ptr{a}(cp1))
-end (* end of [cptr0_rforall] *)
+} (* end of [cptr0_rforall] *)
 //
 (* ****** ****** *)
 //
 implement
 {a}(*tmp*)
 cptr0_rforeach
-  (cp1, cp0) = let
+  (cp1, cp0) =
+(
+loop
+( cptr2ptr(cp0)
+, cptr2ptr(cp1) )
+) where
+{
 //
 fun
 loop
@@ -212,13 +240,15 @@ p0 - (sizeof<a>)
 val x0 =
 $UN.ptr0_get<a>(p0)
 val () =
-cptr0_foreach$work<a>(x0) in loop(p0, pa)
+cptr0_foreach$work<a>(x0)
+in
+let
+prval () =
+$UN.cast2void(x0) in loop(p0, pa) end
 end (* end of [loop] *)
 )
 //
-in
-  loop(cptr2ptr{a}(cp0), cptr2ptr{a}(cp1))
-end (* end of [cptr0_rforeach] *)
+} (* end of [cptr0_rforeach] *)
 //
 (* ****** ****** *)
 

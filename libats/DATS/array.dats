@@ -95,13 +95,89 @@ $UN.castvwtp0
 ) (* end of [array_ptr_alloc] *)
 
 (* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+array_forall
+  (A0, asz) =
+(
+let
+val pa = ptr2cptr{a}(addr@A0)
+in
+(
+  cptr0_forall<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_forall$test<a>(x) = array_forall$test<a>(x)
+}
+end // end of [array_forall]
+)
+//
+implement
+{a}(*tmp*)
+array_foreach
+  (A0, asz) =
+(
+let
+val pa = ptr2cptr{a}(addr@A0)
+in
+(
+  cptr0_foreach<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_foreach$work<a>(x) = array_foreach$work<a>(x)
+}
+end // end of [array_foreach]
+)
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+array_rforall
+  (A0, asz) =
+(
+let
+val pa = ptr2cptr{a}(addr@A0)
+in
+(
+  cptr0_rforall<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_rforall$test<a>(x) = array_rforall$test<a>(x)
+}
+end // end of [array_rforall]
+)
+//
+implement
+{a}(*tmp*)
+array_rforeach
+  (A0, asz) =
+(
+let
+val pa = ptr2cptr{a}(addr@A0)
+in
+(
+  cptr0_rforeach<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_rforeach$work<a>(x) = array_rforeach$work<a>(x)
+}
+end // end of [array_rforeach]
+)
+//
+(* ****** ****** *)
 
 implement
 {a}(*tmp*)
 array_permute
-  (A, asz) = let
+  (A0, asz) = let
 //
-prval() = lemma_array_param(A)
+prval() = lemma_array_param(A0)
 //
 fun
 loop
@@ -121,20 +197,23 @@ if
 nz >= 2
 then let
 //
-  val i =
-  array_permute$randint<>(nz)
-  prval
-  (pf1, pf2) = array_v_uncons(pf)
+val i =
+array_permute$randint<>(nz)
+prval
+(pf1, pf2) = array_v_uncons(pf)
 //
-  val () =
-  if i > 0 then
-  $UN.ptr0_exch<a>
-    (ptr0_add_size<a>(p0, i), !p0)
-  // end of [if]
-  val () =
-  loop(pf2 | ptr1_succ<a>(p0), pred(nz))
+val () =
+if i > 0 then
+$UN.ptr0_exch<a>
+  (ptr0_add_size<a>(p0, i), !p0)
+// end of [if]
+val () =
+loop
+(pf2|ptr1_succ<a>(p0), pred(nz))
 //
-  prval() = pf := array_v_cons(pf1, pf2)
+prval() =
+  (pf := array_v_cons(pf1, pf2))
+//
 in
   // nothing
 end // end of [if]
@@ -142,7 +221,7 @@ end // end of [if]
 end // end of [loop]
 //
 in
-  loop(view@(A) | addr@(A), asz)
+  loop(view@(A0) | addr@(A0), asz)
 end // end of [array_permute]
 
 (* ****** ****** *)

@@ -271,6 +271,11 @@ viewdef
 array_v
 (a:vtflt, l:addr, n:int) = @[a][n] @ l
 //
+abstbox
+arrayref_vtflt_int_tbox
+  (a:vtflt(*elt*), n:int(*size*)) = ptr
+sexpdef arrayref = arrayref_vtflt_int_tbox
+//
 absvtbox
 arrayptr_vtflt_addr_int_vtbox
 (a:vtflt+, l:addr, n:int(*size*)) = ptr(l)
@@ -281,14 +286,14 @@ arrayptr
 (a:vtflt, n:int) = [l:addr] arrayptr(a, l, n)
 //
 abstbox
-arrayref_vtflt_int_tbox
-  (a:vtflt(*elt*), n:int(*size*)) = ptr
-sexpdef arrayref = arrayref_vtflt_int_tbox
-//
-abstbox
 arrszref_vtflt_tbox(a: vtflt) = ptr
 typedef
 arrszref(a:vtflt) = arrszref_vtflt_tbox(a)
+//
+absvtbox
+arrszptr_vtflt_tbox(a: vtflt) = ptr
+vtypedef
+arrszptr(a:vtflt) = arrszptr_vtflt_tbox(a)
 //
 (* ****** ****** *)
 //
