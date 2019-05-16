@@ -38,7 +38,7 @@
 /* ****** ****** */
 //
 #define \
-temptory_string0_vt_free(cs) ATS_FREE(cs)
+temptory_string0_vt_free(cs) ATS_MFREE(cs)
 //
 /* ****** ****** */
 

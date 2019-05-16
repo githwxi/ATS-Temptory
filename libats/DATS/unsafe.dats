@@ -105,7 +105,7 @@ cptr0_set(cp, x0) = ptr0_set<a>(cptr2ptr(cp), x0)
 implement
 {}(*tmp*)
 cfree{a}(cp0) =
-$extfcall(void, "ATS_FREE", cp0)
+$extfcall(void, "ATS_MFREE", cp0)
 //
 implement
 {a}(*tmp*)
