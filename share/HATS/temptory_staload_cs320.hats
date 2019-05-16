@@ -173,6 +173,8 @@ _(*UNSAFE*) =
 (* ****** ****** *)
 //
 #staload _ =
+"libats/DATS/array_bsearch.dats"
+#staload _ =
 "libats/DATS/array_quicksort.dats"
 //
 #staload _ =

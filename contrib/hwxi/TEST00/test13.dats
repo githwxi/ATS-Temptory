@@ -69,7 +69,7 @@ iforeach0<x0>(ws)
 typedef x0 = string
 implement
 list0_vt_iforeach0$work<x0>(i0, w0) = println!("word#", i0, ": ", w0)
-
+}
 //
 (* ****** ****** *)
 

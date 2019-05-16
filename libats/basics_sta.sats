@@ -252,8 +252,9 @@ typedef byte = byte_t0ype // shorthand
 //
 // char is signed
 //
-sortdef int8 = {
-  i:int | ~128 <= i; i < 128
+sortdef sint8 =
+{
+i:int | ~128 <= i; i < 128
 } // end of [int8]
 sortdef uint8 =
   { i:int | 0 <= i; i < 256 }
@@ -267,8 +268,8 @@ char_int_t0ype(c:int) = char_t0ype
 typedef char = char_t0ype // shorthand
 sexpdef char = char_int_t0ype // shorthand
 //
-typedef Char = [c:int8] char(c)
-typedef charNZ = [c:int8 | c != 0] char(c)
+typedef Char = [c:sint8] char(c)
+typedef charNZ = [c:sint8|c != 0] char(c)
 //
 // signed characters
 //
@@ -280,8 +281,8 @@ schar_int_t0ype(c:int) = schar_t0ype
 typedef schar = schar_t0ype // shorthand
 sexpdef schar = schar_int_t0ype // shorthand
 //
-typedef Schar = [c:int8] schar(c)
-typedef scharNZ = [c:int8 | c != 0] schar(c)
+typedef Schar = [c:sint8] schar(c)
+typedef scharNZ = [c:sint8|c != 0] schar(c)
 //
 // unsigned characters
 //

@@ -36,7 +36,6 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gptr.sats"
 #staload "./../SATS/array.sats"
-#staload "./../SATS/list_vt.sats"
 
 (* ****** ****** *)
 

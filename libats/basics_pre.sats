@@ -369,7 +369,7 @@ sizeof(a : vtflt): int = sizeof_t0ype_int(a?)
 //
 (* ****** ****** *)
 
-sortdef nat = { i:int | i >= 0 }
+sortdef nat = { n:int | n >= 0 }
 sortdef nat1 = { n:nat | n < 1 } // for 0
 sortdef nat2 = { n:nat | n < 2 } // for 0, 1
 sortdef nat3 = { n:nat | n < 3 } // for 0, 1, 2
