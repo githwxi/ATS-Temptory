@@ -39,6 +39,17 @@
 #staload UN = "./../SATS/unsafe.sats"
 //
 (* ****** ****** *)
+
+implement
+{a}//tmp
+ptr0_succ(p0) =
+g0add_ptr_size(p0, sizeof<a>)
+implement
+{a}//tmp
+ptr0_pred(p0) =
+g0sub_ptr_size(p0, sizeof<a>)
+
+(* ****** ****** *)
 //
 implement
 {a}//tmp

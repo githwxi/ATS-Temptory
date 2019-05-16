@@ -62,6 +62,8 @@ TEMPLIB_targetloc
 "libats/SATS/refcnt.sats"
 //
 #staload
+"libats/SATS/array.sats"
+#staload
 "libats/SATS/list_vt.sats"
 #staload
 "libats/SATS/list_rc.sats"
@@ -124,6 +126,9 @@ TEMPLIB_targetloc
 "libats/DATS/refcnt.dats"
 //
 #staload _ =
+"libats/DATS/array.dats"
+//
+#staload _ =
 "libats/DATS/list_vt.dats"
 #staload _ =
 "libats/DATS/list_rc.dats"
@@ -168,11 +173,12 @@ _(*UNSAFE*) =
 (* ****** ****** *)
 //
 #staload _ =
+"libats/DATS/array_quicksort.dats"
+//
+#staload _ =
 "libats/DATS/list_vt_mergesort.dats"
-(*
 #staload _ =
 "libats/DATS/list_vt_quicksort.dats"
-*)
 //
 (* ****** ****** *)
 

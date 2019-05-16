@@ -28,7 +28,7 @@
 /* ****** ****** */
 //
 // Author: Hongwei Xi
-// Start Time: May, 2019
+// Start Time: February, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 /* ****** ****** */
@@ -64,267 +64,226 @@ temptory_g1neg_sint(x) (-x)
 #define \
 temptory_g0succ_sint(x) (x + 1)
 #define \
-temptory_g0pred_sint(x) (x - 1)
-//
-/* ****** ****** */
-//
-#define \
 temptory_g1succ_sint(x) (x + 1)
 #define \
-temptory_g1pred_sint(x) (x - 1)
+temptory_g0succ_uint(x) (x + 1)
+#define \
+temptory_g1succ_uint(x) (x + 1)
+#define \
+temptory_g0succ_ssize(x) (x + 1)
+#define \
+temptory_g1succ_ssize(x) (x + 1)
+#define \
+temptory_g0succ_usize(x) (x + 1)
+#define \
+temptory_g1succ_usize(x) (x + 1)
 //
+#define \
+temptory_g0pred_sint(x) (x - 1)
+#define \
+temptory_g1pred_sint(x) (x - 1)
+#define \
+temptory_g0pred_uint(x) (x - 1)
+#define \
+temptory_g1pred_uint(x) (x - 1)
+#define \
+temptory_g0pred_ssize(x) (x - 1)
+#define \
+temptory_g1pred_ssize(x) (x - 1)
+#define \
+temptory_g0pred_usize(x) (x - 1)
+#define \
+temptory_g1pred_usize(x) (x - 1)
+//
+/* ****** ****** */
+
+#define \
+temptory_g1cast_sint_usize(x) (x)
+
 /* ****** ****** */
 
 #define \
 temptory_g0add_sint_sint(x, y) (x + y)
 #define \
-temptory_g0sub_sint_sint(x, y) (x - y)
-#define \
-temptory_g0mul_sint_sint(x, y) (x * y)
-#define \
-temptory_g0div_sint_sint(x, y) (x / y)
-
-/* ****** ****** */
-
-#define \
 temptory_g1add_sint_sint(x, y) (x + y)
-#define \
-temptory_g1sub_sint_sint(x, y) (x - y)
-#define \
-temptory_g1mul_sint_sint(x, y) (x * y)
-#define \
-temptory_g1div_sint_sint(x, y) (x / y)
-
-/* ****** ****** */
-
 #define \
 temptory_g0add_uint_uint(x, y) (x + y)
 #define \
-temptory_g0sub_uint_uint(x, y) (x - y)
+temptory_g1add_uint_uint(x, y) (x + y)
 #define \
-temptory_g0mul_uint_uint(x, y) (x * y)
-#define \
-temptory_g0div_uint_uint(x, y) (x / y)
-
-/* ****** ****** */
-
+temptory_g0add_uint_uint(x, y) (x + y)
 #define \
 temptory_g1add_uint_uint(x, y) (x + y)
 #define \
+temptory_g0add_sint0_ssize(x, y) (x + y)
+#define \
+temptory_g0add_ssize_ssize(x, y) (x + y)
+#define \
+temptory_g1add_sint1_ssize(x, y) (x + y)
+#define \
+temptory_g1add_ssize_ssize(x, y) (x + y)
+#define \
+temptory_g0add_uint0_usize(x, y) (x + y)
+#define \
+temptory_g0add_usize_usize(x, y) (x + y)
+#define \
+temptory_g1add_sint1_usize(x, y) (x + y)
+#define \
+temptory_g1add_uint1_usize(x, y) (x + y)
+#define \
+temptory_g1add_usize_usize(x, y) (x + y)
+//
+/* ****** ****** */
+
+#define \
+temptory_g0sub_sint_sint(x, y) (x - y)
+#define \
+temptory_g1sub_sint_sint(x, y) (x - y)
+#define \
+temptory_g0sub_uint_uint(x, y) (x - y)
+#define \
 temptory_g1sub_uint_uint(x, y) (x - y)
 #define \
-temptory_g1mul_uint_uint(x, y) (x * y)
+temptory_g0sub_ssize_ssize(x, y) (x - y)
 #define \
-temptory_g1div_uint_uint(x, y) (x / y)
+temptory_g1sub_ssize_ssize(x, y) (x - y)
+#define \
+temptory_g0sub_usize_sint1(x, y) (x - y)
+#define \
+temptory_g0sub_usize_usize(x, y) (x - y)
+#define \
+temptory_g1sub_usize_usize(x, y) (x - y)
 
 /* ****** ****** */
 
 #define \
-temptory_g0lt_sint_sint(x, y) (( x < y ) ? 1 : 0)
+temptory_g0mul_sint_sint(x, y) (x * y)
 #define \
-temptory_g0gt_sint_sint(x, y) (( x > y ) ? 1 : 0)
+temptory_g1mul_sint_sint(x, y) (x * y)
 #define \
-temptory_g0eq_sint_sint(x, y) (( x == y ) ? 1 : 0)
+temptory_g0mul_uint_uint(x, y) (x * y)
 #define \
-temptory_g0lte_sint_sint(x, y) (( x <= y ) ? 1 : 0)
+temptory_g1mul_uint_uint(x, y) (x * y)
 #define \
-temptory_g0gte_sint_sint(x, y) (( x >= y ) ? 1 : 0)
+temptory_g0mul_ssize_ssize(x, y) (x * y)
 #define \
-temptory_g0neq_sint_sint(x, y) (( x != y ) ? 1 : 0)
+temptory_g1mul_ssize_ssize(x, y) (x * y)
+#define \
+temptory_g1mul_sint1_usize(x, y) (x * y)
+#define \
+temptory_g0mul_uint0_usize(x, y) (x * y)
+#define \
+temptory_g1mul_uint1_usize(x, y) (x * y)
+#define \
+temptory_g0mul_usize_usize(x, y) (x * y)
+#define \
+temptory_g1mul_usize_usize(x, y) (x * y)
+//
+/* ****** ****** */
+
+#define \
+temptory_g0div_sint_sint(x, y) (x / y)
+#define \
+temptory_g1div_sint_sint(x, y) (x / y)
+#define \
+temptory_g0div_uint_uint(x, y) (x / y)
+#define \
+temptory_g1div_uint_uint(x, y) (x / y)
+#define \
+temptory_g0div_usize_sint1(x, y) (x / y)
+#define \
+temptory_g1div_usize_sint1(x, y) (x / y)
+#define \
+temptory_g0div_usize_usize(x, y) (x / y)
+#define \
+temptory_g1div_usize_usize(x, y) (x / y)
+  
+/* ****** ****** */
+
+#define \
+temptory_g0lt_sint_sint(x, y) ((x < y) ? 1 : 0)
+#define \
+temptory_g0gt_sint_sint(x, y) ((x > y) ? 1 : 0)
+#define \
+temptory_g0eq_sint_sint(x, y) ((x == y) ? 1 : 0)
+#define \
+temptory_g0lte_sint_sint(x, y) ((x <= y) ? 1 : 0)
+#define \
+temptory_g0gte_sint_sint(x, y) ((x >= y) ? 1 : 0)
+#define \
+temptory_g0neq_sint_sint(x, y) ((x != y) ? 1 : 0)
 #define \
 temptory_g0cmp_sint_sint(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
 
 /* ****** ****** */
 
 #define \
-temptory_g1lt_sint_sint(x, y) (( x < y ) ? 1 : 0)
+temptory_g1lt_sint_sint(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g1gt_sint_sint(x, y) (( x > y ) ? 1 : 0)
+temptory_g1gt_sint_sint(x, y) ((x > y) ? 1 : 0)
 #define \
-temptory_g1eq_sint_sint(x, y) (( x == y ) ? 1 : 0)
+temptory_g1eq_sint_sint(x, y) ((x == y) ? 1 : 0)
 #define \
-temptory_g1lte_sint_sint(x, y) (( x <= y ) ? 1 : 0)
+temptory_g1lte_sint_sint(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g1gte_sint_sint(x, y) (( x >= y ) ? 1 : 0)
+temptory_g1gte_sint_sint(x, y) ((x >= y) ? 1 : 0)
 #define \
-temptory_g1neq_sint_sint(x, y) (( x != y ) ? 1 : 0)
-
-/* ****** ****** */
-//
-// HX: for uint
-//
-/* ****** ****** */
-//
+temptory_g1neq_sint_sint(x, y) ((x != y) ? 1 : 0)
 #define \
-temptory_g0succ_uint(x) (x + 1)
-#define \
-temptory_g0pred_uint(x) (x - 1)
-//
-/* ****** ****** */
-//
-#define \
-temptory_g1succ_uint(x) (x + 1)
-#define \
-temptory_g1pred_uint(x) (x - 1)
-//
-/* ****** ****** */
-
-#define \
-temptory_g0add_uint_uint(x, y) (x + y)
-#define \
-temptory_g0sub_uint_uint(x, y) (x - y)
-#define \
-temptory_g0mul_uint_uint(x, y) (x * y)
-#define \
-temptory_g0div_uint_uint(x, y) (x / y)
+temptory_g1cmp_sint_sint(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
 
 /* ****** ****** */
 
 #define \
-temptory_g1add_uint_uint(x, y) (x + y)
+temptory_g0lt_uint_uint(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g1sub_uint_uint(x, y) (x - y)
+temptory_g0gt_uint_uint(x, y) ((x > y) ? 1 : 0)
 #define \
-temptory_g1mul_uint_uint(x, y) (x * y)
+temptory_g0eq_uint_uint(x, y) ((x == y) ? 1 : 0)
 #define \
-temptory_g1div_uint_uint(x, y) (x / y)
-
-/* ****** ****** */
-
+temptory_g0lte_uint_uint(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g0lt_uint_uint(x, y) (( x < y ) ? 1 : 0)
+temptory_g0gte_uint_uint(x, y) ((x >= y) ? 1 : 0)
 #define \
-temptory_g0gt_uint_uint(x, y) (( x > y ) ? 1 : 0)
-#define \
-temptory_g0eq_uint_uint(x, y) (( x == y ) ? 1 : 0)
-#define \
-temptory_g0lte_uint_uint(x, y) (( x <= y ) ? 1 : 0)
-#define \
-temptory_g0gte_uint_uint(x, y) (( x >= y ) ? 1 : 0)
-#define \
-temptory_g0neq_uint_uint(x, y) (( x != y ) ? 1 : 0)
+temptory_g0neq_uint_uint(x, y) ((x != y) ? 1 : 0)
 #define \
 temptory_g0cmp_uint_uint(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
 
 /* ****** ****** */
-//
-// HX: for ssize
-//
-/* ****** ****** */
 
 #define \
-temptory_g0add_ssize_ssize(x, y) (x + y)
+temptory_g0lt_ssize_ssize(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g0sub_ssize_ssize(x, y) (x - y)
+temptory_g0gt_ssize_ssize(x, y) ((x > y) ? 1 : 0)
 #define \
-temptory_g0mul_ssize_ssize(x, y) (x * y)
+temptory_g0eq_ssize_ssize(x, y) ((x == y) ? 1 : 0)
 #define \
-temptory_g0div_ssize_ssize(x, y) (x / y)
-
-/* ****** ****** */
-
+temptory_g0lte_ssize_ssize(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g1add_ssize_ssize(x, y) (x + y)
+temptory_g0gte_ssize_ssize(x, y) ((x >= y) ? 1 : 0)
 #define \
-temptory_g1sub_ssize_ssize(x, y) (x - y)
+temptory_g0neq_ssize_ssize(x, y) ((x != y) ? 1 : 0)
 #define \
-temptory_g1mul_ssize_ssize(x, y) (x * y)
-#define \
-temptory_g1div_ssize_ssize(x, y) (x / y)
+temptory_g0cmp_ssize_ssize(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
 
 /* ****** ****** */
 
 #define \
-temptory_g0lt_ssize_ssize(x, y) (( x < y ) ? 1 : 0)
+temptory_g0lt_usize_usize(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g0gt_ssize_ssize(x, y) (( x > y ) ? 1 : 0)
+temptory_g0gt_usize_usize(x, y) ((x > y) ? 1 : 0)
 #define \
-temptory_g0eq_ssize_ssize(x, y) (( x == y ) ? 1 : 0)
+temptory_g0eq_usize_usize(x, y) ((x == y) ? 1 : 0)
 #define \
-temptory_g0lte_ssize_ssize(x, y) (( x <= y ) ? 1 : 0)
+temptory_g0lte_usize_usize(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g0gte_ssize_ssize(x, y) (( x >= y ) ? 1 : 0)
+temptory_g0lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g0neq_ssize_ssize(x, y) (( x != y ) ? 1 : 0)
-
-/* ****** ****** */
-//
-// HX: for ssize
-//
-/* ****** ****** */
-//
+temptory_g0gte_usize_usize(x, y) ((x >= y) ? 1 : 0)
 #define \
-temptory_g0add_sint_ssize(x, y) (x + y)
+temptory_g0neq_usize_usize(x, y) ((x != y) ? 1 : 0)
 #define \
-temptory_g0add_ssize_ssize(x, y) (x + y)
-//
-/* ****** ****** */
-//
-#define \
-temptory_g1add_sint_ssize(x, y) (x + y)
-#define \
-temptory_g1add_ssize_ssize(x, y) (x + y)
-//
-/* ****** ****** */
-//
-// HX: for usize
-//
-/* ****** ****** */
-//
-#define \
-temptory_g0add_sint_usize(x, y) (x + y)
-#define \
-temptory_g0add_uint_usize(x, y) (x + y)
-#define \
-temptory_g0add_usize_usize(x, y) (x + y)
-//
-#define \
-temptory_g0sub_usize_usize(x, y) (x - y)
-//
-#define \
-temptory_g0mul_uint_usize(x, y) (x * y)
-#define \
-temptory_g0mul_usize_usize(x, y) (x * y)
-//
-#define \
-temptory_g0div_usize_usize(x, y) (x / y)
-//
-/* ****** ****** */
-
-#define \
-temptory_g1add_sint_usize(x, y) (x + y)
-#define \
-temptory_g1add_uint_usize(x, y) (x + y)
-#define \
-temptory_g1add_usize_usize(x, y) (x + y)
-//
-#define \
-temptory_g1sub_usize_usize(x, y) (x - y)
-//
-#define \
-temptory_g1mul_sint_usize(x, y) (x * y)
-#define \
-temptory_g1mul_uint_usize(x, y) (x * y)
-#define \
-temptory_g1mul_usize_usize(x, y) (x * y)
-//
-#define \
-temptory_g1div_usize_usize(x, y) (x / y)
-
-/* ****** ****** */
-
-#define \
-temptory_g0lt_usize_usize(x, y) (( x < y ) ? 1 : 0)
-#define \
-temptory_g0gt_usize_usize(x, y) (( x > y ) ? 1 : 0)
-#define \
-temptory_g0eq_usize_usize(x, y) (( x == y ) ? 1 : 0)
-#define \
-temptory_g0lte_usize_usize(x, y) (( x <= y ) ? 1 : 0)
-#define \
-temptory_g0gte_usize_usize(x, y) (( x >= y ) ? 1 : 0)
-#define \
-temptory_g0neq_usize_usize(x, y) (( x != y ) ? 1 : 0)
+temptory_g0cmp_usize_usize(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
 
 /* ****** ****** */
 

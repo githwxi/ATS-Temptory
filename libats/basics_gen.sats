@@ -28,8 +28,8 @@
 (* ****** ****** *)
 //
 // Author of the file:
-// Hongwei Xi (gmhwxiATgmailDOTcom)
 // Start Time: July, 2012
+// Hongwei Xi (gmhwxiATgmailDOTcom)
 //
 (* ****** ****** *)
 

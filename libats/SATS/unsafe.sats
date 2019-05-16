@@ -58,7 +58,12 @@ eqbool_assert{b1,b2:bool}((*void*)): EQBOOL(b1,b2)
 castfn
 cast
 {to:tflt}
-{from:tflt} (x: INV(from)):<> (to)
+{from:tflt}(x: INV(from)):<> (to)
+//
+(* ****** ****** *)
+//
+praxi
+cast2void{a:view}(x: a):<prf> void
 //
 (* ****** ****** *)
 //
@@ -130,6 +135,26 @@ calloc_size(size): cptr(a)
 #symload calloc with calloc_int of 10
 #symload calloc with calloc_uint of 10
 #symload calloc with calloc_size of 10
+//
+(* ****** ****** *)
+//
+// HX: only if you know what you are doing ...
+//
+symintr ptr_vtake
+//
+castfn
+ptr0_vtake
+  {a:vtflt}
+(
+  p0: ptr
+) :<> [l:addr] (a@l, a@l -<lin,prf> void | ptr(l))
+castfn
+ptr1_vtake
+  {a:vtflt}{l:addr}
+  (p0: ptr(l)):<> (a@l, a@l -<lin,prf> void | ptr(l))
+//
+#symload ptr_vtake with ptr0_vtake of 0
+#symload ptr_vtake with ptr1_vtake of 10
 //
 (* ****** ****** *)
 

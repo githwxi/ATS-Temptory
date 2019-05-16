@@ -207,6 +207,23 @@ typedef
 Intgt(i:int) = [a:int | a > i] int(a)
 typedef
 Intgte(i:int) = [a:int | a >= i] int(a)
+typedef
+Intlt(i:int) = [a:int | a < i] int(a)
+typedef
+Intlte(i:int) = [a:int | a <= i] int(a)
+typedef
+Natlt(i:int) = [a:nat | a < i] int(a)
+typedef
+Natlte(i:int) = [a:nat | a <= i] int(a)
+
+typedef
+Sizegt(i:int) = [a:int | a > i] size(a)
+typedef
+Sizegte(i:int) = [a:int | a >= i] size(a)
+typedef
+Sizelt(i:int) = [a:int | a < i] size(a)
+typedef
+Sizelte(i:int) = [a:int | a <= i] size(a)
 
 (* ****** ****** *)
 //
@@ -507,6 +524,13 @@ bottom_vt0ype_uni = {a:vtflt} (a)
 vtypedef
 bottom_vt0ype_exi = [a:vtflt | false] (a)
 
+(* ****** ****** *)
+//
+typedef
+cmpfunval(a:vtflt) = (!a, !a) -> int(*sgn*)
+typedef
+cmpfunref(a:vtflt) = (&a, &a) -> int(*sgn*)
+//
 (* ****** ****** *)
 //
 (*

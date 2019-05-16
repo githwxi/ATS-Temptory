@@ -408,10 +408,50 @@ case+ xs of
 ~list0_vt_nil() => r0
 |
 ~list0_vt_cons(x0, xs) =>
- loop(xs, list0_vt_foldleft0$fopr<x0><r0>(r0, x0))
+ (
+   loop(xs, r0)
+ ) where
+ {
+   val r0 =
+   list0_vt_foldleft0$fopr<x0><r0>(r0, x0)
+ }
 )
 } (* end of [list0_foldleft0] *)
 
+(* ****** ****** *)
+//
+implement
+{x0}(*tmp*)
+list0_vt_iforall0(xs) =
+(
+  glseq_iforall0<xs><x0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+implement
+glseq_iforall0$test<x0>
+(i0, x0) = list0_vt_iforall0$test<x0>(i0, x0)
+//
+} (* end of [list0_vt_iforall0] *)
+//
+implement
+{x0}(*tmp*)
+list0_vt_iforeach0(xs) =
+(
+  glseq_iforeach0<xs><x0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+implement
+glseq_iforeach0$work<x0>
+(i0, x0) = list0_vt_iforeach0$work<x0>(i0, x0)
+//
+} (* end of [list0_vt_iforeach0] *)
+//
 (* ****** ****** *)
 //
 implement

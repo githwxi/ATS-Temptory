@@ -241,6 +241,38 @@ list0_foldright$fopr(x0: x0, r0: r0): r0
 //
 fun
 {x0:tflt}
+list0_iforall
+(xs: list0(INV(x0))): bool
+fun
+{x0:tflt}
+list0_iforall$test(int, x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+list0_iforeach
+(xs: list0(INV(x0))): void
+fun
+{x0:tflt}
+list0_iforeach$work(int, x0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+{r0:vtflt}
+list0_ifoldleft
+(xs: list0(INV(x0)), r0: r0): r0
+//
+fun
+{x0:tflt}{r0:vtflt}
+list0_ifoldleft$fopr(r0: r0, i0: int, x0: x0): r0
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
 {y0:vtflt}
 list0_map$fopr(x0): (y0)
 //

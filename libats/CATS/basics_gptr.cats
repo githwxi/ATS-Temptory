@@ -41,6 +41,22 @@ temptory_ptr0_isneqz(ptr) (ptr != (void*)0)
 /* ****** ****** */
 
 #define \
+temptory_g0add_ptr_int(ptr, bsz) (void*)((char*)(ptr)+(bsz))
+#define \
+temptory_g0sub_ptr_int(ptr, bsz) (void*)((char*)(ptr)-(bsz))
+#define \
+temptory_g0sub_ptr_ptr(ptr, beg) ((char*)(ptr)-(char*)(beg))
+
+/* ****** ****** */
+
+#define \
+temptory_g0add_ptr_size(ptr, bsz) (void*)((char*)(ptr)+(bsz))
+#define \
+temptory_g0sub_ptr_size(ptr, bsz) (void*)((char*)(ptr)-(bsz))
+
+/* ****** ****** */
+
+#define \
 temptory_g0lt_ptr_ptr(p0, p1) ((void*)p0 < (void*)p1)
 #define \
 temptory_g0gt_ptr_ptr(p0, p1) ((void*)p0 > (void*)p1)
@@ -52,20 +68,6 @@ temptory_g0lte_ptr_ptr(p0, p1) ((void*)p0 <= (void*)p1)
 temptory_g0gte_ptr_ptr(p0, p1) ((void*)p0 >= (void*)p1)
 #define \
 temptory_g0neq_ptr_ptr(p0, p1) ((void*)p0 != (void*)p1)
-
-/* ****** ****** */
-
-#define \
-temptory_g0add_ptr_int(ptr, bsz) (void*)((char*)(ptr)+(bsz))
-#define \
-temptory_g0sub_ptr_int(ptr, bsz) (void*)((char*)(ptr)-(bsz))
-
-/* ****** ****** */
-
-#define \
-temptory_g0add_ptr_size(ptr, bsz) (void*)((char*)(ptr)+(bsz))
-#define \
-temptory_g0sub_ptr_size(ptr, bsz) (void*)((char*)(ptr)-(bsz))
 
 /* ****** ****** */
 

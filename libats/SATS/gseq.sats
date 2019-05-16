@@ -131,8 +131,6 @@ fun
 {r0:vtflt}
 gseq_foldleft$fopr(r0, x0): r0
 //
-(* ****** ****** *)
-//
 fun
 {xs:tflt}
 {x0:tflt}
@@ -170,6 +168,18 @@ gseq_iforeach(xs): void
 fun
 {x0:tflt}
 gseq_iforeach$work(int, x0): void
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{r0:vtflt}
+gseq_ifoldleft(xs, r0): r0
+fun
+{x0:tflt}
+{r0:vtflt}
+gseq_ifoldleft$fopr(r0, int, x0): r0
 //
 (* ****** ****** *)
 //

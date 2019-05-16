@@ -127,8 +127,6 @@ fun
 {x0:vtflt}
 list0_vt_forall0$test(x0: x0): bool
 //
-(* ****** ****** *)
-//
 fun
 {x0:vtflt}
 list0_vt_foreach0
@@ -136,6 +134,9 @@ list0_vt_foreach0
 fun
 {x0:vtflt}
 list0_vt_foreach0$work(x0: x0): void
+//
+#symload forall0 with list0_vt_forall0
+#symload foreach0 with list0_vt_foreach0
 //
 (* ****** ****** *)
 //
@@ -147,8 +148,6 @@ fun
 {x0:vtflt}
 list0_vt_rforall0$test(x0: x0): bool
 //
-(* ****** ****** *)
-//
 fun
 {x0:vtflt}
 list0_vt_rforeach0
@@ -157,6 +156,9 @@ fun
 {x0:vtflt}
 list0_vt_rforeach0$work(x0: x0): void
 //
+#symload rforall0 with list0_vt_rforall0
+#symload rforeach0 with list0_vt_rforeach0
+//
 (* ****** ****** *)
 //
 fun
@@ -164,10 +166,32 @@ fun
 {r0:vtflt}
 list0_vt_foldleft0
 (xs: list0_vt(INV(x0)), r0: r0): r0
-//
 fun
 {x0:vtflt}{r0:vtflt}
 list0_vt_foldleft0$fopr(r0: r0, x0: x0): r0
+//
+#symload foldleft with list0_vt_foldleft0
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+list0_vt_iforall0
+(xs: list0_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+list0_vt_iforall0$test(i0: int, x0: x0): bool
+//
+fun
+{x0:vtflt}
+list0_vt_iforeach0
+(xs: list0_vt(INV(x0))): void
+fun
+{x0:vtflt}
+list0_vt_iforeach0$work(i0: int, x0: x0): void
+//
+#symload iforall0 with list0_vt_iforall0
+#symload iforeach0 with list0_vt_iforeach0
 //
 (* ****** ****** *)
 //
@@ -215,11 +239,14 @@ fun
 {x0:vtflt}
 list0_vt_filter0
 (xs: list0_vt(INV(x0))): list0_vt(x0)
+#symload filter0 with list0_vt_filter0
 fun
 {x0:vtflt}
 {y0:vtflt}
 list0_vt_mapopt0
 (xs: list0_vt(INV(x0))): list0_vt(y0)
+#symload mapopt0 with list0_vt_mapopt0
+//
 fun
 {x0:vtflt}
 {y0:vtflt}
@@ -230,6 +257,11 @@ fun
 {y0:vtflt}
 list0_vt_mapopt0_rlist
 (xs: list0_vt(INV(x0))): list0_vt(y0)
+//
+#symload
+mapopt0_list with list0_vt_mapopt0_list
+#symload
+mapopt0_rlist with list0_vt_mapopt0_rlist
 //
 (* ****** ****** *)
 //
@@ -270,8 +302,6 @@ fun
 {x0:vtflt}
 list0_vt_forall1$test(!x0): bool
 //
-(* ****** ****** *)
-//
 fun
 {x0:vtflt}
 list0_vt_foreach1
@@ -279,6 +309,9 @@ list0_vt_foreach1
 fun
 {x0:vtflt}
 list0_vt_foreach1$work(!x0): void
+//
+#symload forall1 with list0_vt_forall1
+#symload foreach1 with list0_vt_foreach1
 //
 (* ****** ****** *)
 //
@@ -290,8 +323,6 @@ fun
 {x0:vtflt}
 list0_vt_rforall1$test(!x0): bool
 //
-(* ****** ****** *)
-//
 fun
 {x0:vtflt}
 list0_vt_rforeach1
@@ -300,6 +331,9 @@ fun
 {x0:vtflt}
 list0_vt_rforeach1$work(!x0): void
 //
+#symload rforall1 with list0_vt_rforall1
+#symload rforeach1 with list0_vt_rforeach1
+//
 (* ****** ****** *)
 //
 fun
@@ -307,10 +341,11 @@ fun
 {r0:vtflt}
 list0_vt_foldleft1
 (xs: !list0_vt(INV(x0)), r0: r0): r0
-//
 fun
 {x0:vtflt}{r0:vtflt}
 list0_vt_foldleft1$fopr(r0: r0, x0: !x0): r0
+//
+#symload foldleft1 with list0_vt_foldleft1
 //
 (* ****** ****** *)
 //
@@ -407,26 +442,26 @@ list0_vt_foldleft1_ref$fopr(r0, cptr0(x0)): r0
 fun
 {a:vtflt}
 list0_vt_mergesort
-  (xs: list0_vt(INV(a))): list0_vt(a)
-fun
-{a:vtflt}
-list0_vt_mergesort$cmp(x1: &a, x2: &a): int(*sgn*)
-//
-(* ****** ****** *)
-//
+(xs: list0_vt(INV(a))): list0_vt(a)
 fun
 {a:vtflt}
 list0_vt_quicksort
-  (xs: list0_vt(INV(a))): list0_vt(a)
-fun
-{a:vtflt}
-list0_vt_quicksort$cmp(x1: &a, x2: &a): int(*sgn*)
+(xs: list0_vt(INV(a))): list0_vt(a)
 //
-(* ****** ****** *)
-
 #symload mergesort with list0_vt_mergesort
 #symload quicksort with list0_vt_quicksort
-
+//
+fun
+{a:vtflt} // (-)(0)(+)
+list0_vt_mergesort$cmp(x: &a, y: &a): int(*sgn*)
+fun
+{a:vtflt} // (-)(0)(+)
+list0_vt_quicksort$cmp(x: &a, y: &a): int(*sgn*)
+//
+(* ****** ****** *)
+//
+// HX-2019-05-15: for linear lists
+//
 (* ****** ****** *)
 //
 prfun
@@ -446,26 +481,24 @@ list1_vt_length
 fun
 {a:vtflt}
 list1_vt_mergesort
-  {n:int}
-  (xs: list1_vt(INV(a), n)): list1_vt(a, n)
-fun
-{a:vtflt}
-list1_vt_mergesort$cmp(x1: &a, x2: &a): int(*sgn*)
-//
+{ n:int }
+(xs: list1_vt(INV(a), n)): list1_vt(a, n)
 fun
 {a:vtflt}
 list1_vt_quicksort
-  {n:int}
-  (xs: list1_vt(INV(a), n)): list1_vt(a, n)
-fun
-{a:vtflt}
-list1_vt_quicksort$cmp(x1: &a, x2: &a): int(*sgn*)
+{ n:int }
+(xs: list1_vt(INV(a), n)): list1_vt(a, n)
 //
-(* ****** ****** *)
-
 #symload mergesort with list1_vt_mergesort
 #symload quicksort with list1_vt_quicksort
-
+//
+fun
+{a:vtflt}
+list1_vt_mergesort$cmp(x: &a, y: &a): int(*sgn*)
+fun
+{a:vtflt}
+list1_vt_quicksort$cmp(x: &a, y: &a): int(*sgn*)
+//
 (* ****** ****** *)
 
 (* end of [list_vt.sats] *)

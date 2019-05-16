@@ -64,22 +64,22 @@ g1ofg0_ptr
 //
 fun
 g0lt_ptr_ptr
-(ptr, ptr): bool = "mac#%"
+(ptr, ptr):<> bool = "mac#%"
 fun
 g0gt_ptr_ptr
-(ptr, ptr): bool = "mac#%"
+(ptr, ptr):<> bool = "mac#%"
 fun
 g0eq_ptr_ptr
-(ptr, ptr): bool = "mac#%"
+(ptr, ptr):<> bool = "mac#%"
 fun
 g0lte_ptr_ptr
-(ptr, ptr): bool = "mac#%"
+(ptr, ptr):<> bool = "mac#%"
 fun
 g0gte_ptr_ptr
-(ptr, ptr): bool = "mac#%"
+(ptr, ptr):<> bool = "mac#%"
 fun
 g0neq_ptr_ptr
-(ptr, ptr): bool = "mac#%"
+(ptr, ptr):<> bool = "mac#%"
 //
 #symload < with g0lt_ptr_ptr of 10
 #symload > with g0gt_ptr_ptr of 10
@@ -91,9 +91,9 @@ g0neq_ptr_ptr
 (* ****** ****** *)
 //
 fun
-ptr0_iseqz(ptr): bool = "mac#%"
+ptr0_iseqz(ptr):<> bool = "mac#%"
 fun
-ptr0_isneqz(ptr): bool = "mac#%"
+ptr0_isneqz(ptr):<> bool = "mac#%"
 //
 #symload iseqz with ptr0_iseqz
 #symload isneqz with ptr0_isneqz
@@ -101,20 +101,38 @@ ptr0_isneqz(ptr): bool = "mac#%"
 (* ****** ****** *)
 //
 fun
+{a:vtflt}
+ptr0_succ
+(p0: ptr):<> ptr // +sizeof(a)
+fun
+{a:vtflt}
+ptr0_pred
+(p0: ptr):<> ptr // -sizeof(a)
+//
+(* ****** ****** *)
+//
+fun
 g0add_ptr_int
-(ptr, bsz: int): ptr = "mac#%"
+(ptr, bsz: int):<> ptr = "mac#%"
+//
 fun
 g0sub_ptr_int
-(ptr, bsz: int): ptr = "mac#%"
+(ptr, bsz: int):<> ptr = "mac#%"
+fun
+g0sub_ptr_ptr
+(ptr, beg: ptr):<> size = "mac#%"
+//
 fun
 g0add_ptr_size
-(ptr, bsz: size): ptr = "mac#%"
+(ptr, bsz: size):<> ptr = "mac#%"
+//
 fun
 g0sub_ptr_size
-(ptr, bsz: size): ptr = "mac#%"
+(ptr, bsz: size):<> ptr = "mac#%"
 //
 #symload + with g0add_ptr_int of 10
 #symload - with g0sub_ptr_int of 10
+#symload - with g0sub_ptr_ptr of 10
 #symload + with g0add_ptr_size of 10
 #symload - with g0sub_ptr_size of 10
 //
@@ -126,10 +144,10 @@ g0sub_ptr_size
 //
 fun
 {a:vtflt}
-cptr0_succ(cp: cptr(a)): cptr(a)
+cptr0_succ(cp: cptr(a)):<> cptr(a)
 fun
 {a:vtflt}
-cptr0_pred(cp: cptr(a)): cptr(a)
+cptr0_pred(cp: cptr(a)):<> cptr(a)
 //
 #symload succ with cptr0_succ of 10
 #symload pred with cptr0_pred of 10
@@ -139,27 +157,27 @@ cptr0_pred(cp: cptr(a)): cptr(a)
 fun
 g0lt_cptr_cptr
 {a:vtflt}
-(cptr(a), cptr(a)): bool = "mac#%"
+(cptr(a), cptr(a)):<> bool = "mac#%"
 fun
 g0gt_cptr_cptr
 {a:vtflt}
-(cptr(a), cptr(a)): bool = "mac#%"
+(cptr(a), cptr(a)):<> bool = "mac#%"
 fun
 g0eq_cptr_cptr
 {a:vtflt}
-(cptr(a), cptr(a)): bool = "mac#%"
+(cptr(a), cptr(a)):<> bool = "mac#%"
 fun
 g0lte_cptr_cptr
 {a:vtflt}
-(cptr(a), cptr(a)): bool = "mac#%"
+(cptr(a), cptr(a)):<> bool = "mac#%"
 fun
 g0gte_cptr_cptr
 {a:vtflt}
-(cptr(a), cptr(a)): bool = "mac#%"
+(cptr(a), cptr(a)):<> bool = "mac#%"
 fun
 g0neq_cptr_cptr
 {a:vtflt}
-(cptr(a), cptr(a)): bool = "mac#%"
+(cptr(a), cptr(a)):<> bool = "mac#%"
 //
 #symload < with g0lt_cptr_cptr of 10
 #symload > with g0gt_cptr_cptr of 10
@@ -173,11 +191,11 @@ g0neq_cptr_cptr
 fun
 {a:vtflt}
 g0add_cptr_size
-(cp0: cptr(a), bsz: size): cptr(a)
+(cp0: cptr(a), bsz: size):<> cptr(a)
 fun
 {a:vtflt}
 g0sub_cptr_size
-(cp0: cptr(a), bsz: size): cptr(a)
+(cp0: cptr(a), bsz: size):<> cptr(a)
 //
 #symload + with g0add_cptr_size of 10
 #symload - with g0sub_cptr_size of 10

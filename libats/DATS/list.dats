@@ -553,6 +553,42 @@ case+ xs of
 (* ****** ****** *)
 //
 implement
+{x0}(*tmp*)
+list0_iforall(xs) =
+(
+  gseq_iforall<list0(x0)><x0>(xs)
+) where
+{
+implement
+gseq_iforall$test<x0>
+  (i0, x0) = list0_iforall$test<x0>(i0, x0)
+}
+implement
+{x0}(*tmp*)
+list0_iforeach(xs) =
+(
+  gseq_iforeach<list0(x0)><x0>(xs)
+) where
+{
+implement
+gseq_iforeach$work<x0>
+  (i0, x0) = list0_iforeach$work<x0>(i0, x0)
+}
+implement
+{x0}{r0}//tmp
+list0_ifoldleft(xs, r0) =
+(
+  gseq_ifoldleft<list0(x0)><x0>(xs, r0)
+) where
+{
+implement
+gseq_ifoldleft$fopr<x0><r0>
+  (r0, i0, x0) = list0_ifoldleft$fopr<x0>(r0, i0, x0)
+}
+//
+(* ****** ****** *)
+//
+implement
 {x0}{y0}//tmp
 list0_map(xs) =
 list0_vt2t
