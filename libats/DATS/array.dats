@@ -96,4 +96,55 @@ $UN.castvwtp0
 
 (* ****** ****** *)
 
+implement
+{a}(*tmp*)
+array_permute
+  (A, asz) = let
+//
+prval() = lemma_array_param(A)
+//
+fun
+loop
+{l:addr}{n:nat} .<n>.
+(
+pf: !array_v(a, l, n) | p0: ptr(l), nz: size(n)
+) : void = let
+//
+(*
+val () =
+  println! ("array_permute: loop")
+*)
+//
+in
+//
+if
+nz >= 2
+then let
+//
+  val i =
+  array_permute$randint<>(nz)
+  prval
+  (pf1, pf2) = array_v_uncons(pf)
+//
+  val () =
+  if i > 0 then
+  $UN.ptr0_exch<a>
+    (ptr0_add_size<a>(p0, i), !p0)
+  // end of [if]
+  val () =
+  loop(pf2 | ptr1_succ<a>(p0), pred(nz))
+//
+  prval() = pf := array_v_cons(pf1, pf2)
+in
+  // nothing
+end // end of [if]
+//
+end // end of [loop]
+//
+in
+  loop(view@(A) | addr@(A), asz)
+end // end of [array_permute]
+
+(* ****** ****** *)
+
 (* end of [array.dats] *)

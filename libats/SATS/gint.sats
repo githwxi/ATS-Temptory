@@ -823,6 +823,7 @@ g0neq_usize_sint1
 *)
 //
 (* ****** ****** *)
+//
 fun
 g1lt_usize_usize
 {i,j:int}
@@ -865,6 +866,52 @@ g1neq_usize_usize
 #symload != with g1neq_usize_usize of 12
 (*
 #symload <=> with g1cmp_usize_usize of 12
+*)
+//
+(* ****** ****** *)
+//
+fun
+g1lt_usize_sint1
+{i,j:int}
+( x: usize(i)
+, y: sint1(j)):<> bool(i < j) = "mac#%"
+fun
+g1lte_usize_sint1
+{i,j:int}
+( x: usize(i)
+, y: sint1(j)):<> bool(i <= j) = "mac#%"
+//
+fun
+g1gt_usize_sint1
+{i,j:int}
+( x: usize(i)
+, y: sint1(j)):<> bool(i > j) = "mac#%"
+fun
+g1gte_usize_sint1
+{i,j:int}
+( x: usize(i)
+, y: sint1(j)):<> bool(i >= j) = "mac#%"
+//
+fun
+g1eq_usize_sint1
+{i,j:int}
+( x: usize(i)
+, y: sint1(j)):<> bool(i == j) = "mac#%"
+fun
+g1neq_usize_sint1
+{i,j:int}
+( x: usize(i)
+, y: sint1(j)):<> bool(i != j) = "mac#%"
+//
+#symload < with g1lt_usize_sint1 of 12
+#symload > with g1gt_usize_sint1 of 12
+#symload = with g1eq_usize_sint1 of 12
+//
+#symload <= with g1lte_usize_sint1 of 12
+#symload >= with g1gte_usize_sint1 of 12
+#symload != with g1neq_usize_sint1 of 12
+(*
+#symload <=> with g1cmp_usize_sint1 of 12
 *)
 //
 (* ****** ****** *)

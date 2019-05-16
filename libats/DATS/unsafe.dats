@@ -42,7 +42,8 @@
 implement
 {a}(*tmp*)
 ptr0_get
-  (p0) = x0 where {
+  (p0) = x0 where
+{
   val
   [l:addr]
   p0 = g1ofg0_ptr(p0)
@@ -77,6 +78,19 @@ ptr0_set
   prval () = fpf (pf)
 } (* end of [ptr0_set] *)
 
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+ptr0_exch
+  (p0, x0) = () where
+{
+  val x1 = x0
+  val () =
+  (x0 := ptr0_get<a>(p0))
+  val () = ptr0_set<a>(p0, x1)
+}
+//
 (* ****** ****** *)
 //
 implement

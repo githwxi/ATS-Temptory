@@ -109,6 +109,17 @@ fun
 ptr0_pred
 (p0: ptr):<> ptr // -sizeof(a)
 //
+fun
+{a:vtflt}
+ptr0_add_size
+( p0: ptr
+, n0: size):<> ptr // +n0*sizeof(a)
+fun
+{a:vtflt}
+ptr0_sub_size
+( p0: ptr
+, n0: size):<> ptr // -n0*sizeof(a)
+//
 (* ****** ****** *)
 //
 fun
@@ -135,6 +146,17 @@ g0sub_ptr_size
 #symload - with g0sub_ptr_ptr of 10
 #symload + with g0add_ptr_size of 10
 #symload - with g0sub_ptr_size of 10
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+ptr1_succ
+{l:addr}(ptr(l)):<> ptr(l+sizeof(a))
+fun
+{a:vtflt}
+ptr1_pred
+{l:addr}(ptr(l)):<> ptr(l-sizeof(a))
 //
 (* ****** ****** *)
 //

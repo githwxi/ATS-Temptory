@@ -101,10 +101,14 @@ list1_vt2t
 //
 fun
 {a:vtflt}
-ptr0_get(p0: ptr): (a)
+ptr0_get(p0: ptr):<!wrt> (a)
 fun
 {a:vtflt}
 ptr0_set(p0: ptr, x0: INV(a)):<!wrt> void
+//
+fun
+{a:vtflt}
+ptr0_exch(p: ptr, x: &INV(a) >> a):<!wrt> void
 //
 (* ****** ****** *)
 //
@@ -140,8 +144,6 @@ calloc_size(size): cptr(a)
 //
 // HX: only if you know what you are doing ...
 //
-symintr ptr_vtake
-//
 castfn
 ptr0_vtake
   {a:vtflt}
@@ -152,9 +154,6 @@ castfn
 ptr1_vtake
   {a:vtflt}{l:addr}
   (p0: ptr(l)):<> (a@l, a@l -<lin,prf> void | ptr(l))
-//
-#symload ptr_vtake with ptr0_vtake of 0
-#symload ptr_vtake with ptr1_vtake of 10
 //
 (* ****** ****** *)
 
