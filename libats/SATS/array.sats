@@ -77,12 +77,12 @@ praxi
 lemma_array_param
 {a:vtflt}
 {l:addr}{n:int}
-(A0: &(@[INV(a)][n])): [n >= 0] void
+(A0: &array(INV(a),n)): [n >= 0] void
 prfun
 lemma_array_v_param
 {a:vtflt}
 {l:addr}{n:int}
-(pf: !array_v(INV(a), l, n)): [n >= 0] void
+(pf: !array_v(INV(a),l,n)): [n >= 0] void
 //
 (* ****** ****** *)
 //
@@ -130,11 +130,27 @@ array_v(INV(a), l, n) -<prf> (a @ l, array_v(a, l+sizeof(a), n-1))
 (* ****** ****** *)
 //
 fun
+{a:tflt}
+array_get_at
+{n:int}{i:nat | i < n}
+( arr
+: &(@[INV(a)][n]), size(i)): (a)
+fun
+{a:tflt}
+array_set_at
+{n:int}{i:nat | i < n}
+( arr
+: &(@[INV(a)][n]), size(i), a): void
+//
+fun
 {a:vtflt}
 array_getref_at
 {n:int}{i:nat | i < n}
 ( arr
-: &(@[INV(a)][n]), size(i)):<> cptr(a)
+: &(array(INV(a),n)), size(i)):<> cptr(a)
+//
+#symload [] with array_get_at of 10
+#symload [] with array_set_at of 10
 //
 (* ****** ****** *)
 

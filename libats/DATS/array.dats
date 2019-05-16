@@ -46,6 +46,23 @@
 //
 implement
 {a}(*tmp*)
+array_get_at
+  (A0, i) =
+$UN.cptr0_get
+(
+$UN.cast{cptr(a)}(addr@A0)+i
+)
+implement
+{a}(*tmp*)
+array_set_at
+  (A0, i, x) =
+$UN.cptr0_set
+(
+$UN.cast{cptr(a)}(addr@A0)+i, x
+)
+//
+implement
+{a}(*tmp*)
 array_getref_at
   (A0, i) =
   $UN.cast{cptr(a)}(addr@A0)+i
