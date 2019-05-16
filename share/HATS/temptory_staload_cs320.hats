@@ -139,6 +139,8 @@ TEMPLIB_targetloc
 
 #staload _ =
 "libats/DATS/glseq_list0.dats"
+#staload _ =
+"libats/DATS/glseq_array.dats"
 
 (* ****** ****** *)
 //

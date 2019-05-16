@@ -51,6 +51,7 @@ all:: test11_dats
 all:: test12_dats
 all:: test13_dats
 all:: test14_dats
+all:: test15_dats
 
 ######
 
@@ -133,6 +134,12 @@ $(TEMPACC) -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $< $(MYLIBS)
 
 ######
 
+test15_dats: \
+test15.dats; \
+$(TEMPACC) -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $< $(MYLIBS)
+
+######
+
 regress:: test01_dats; ./test01_dats
 regress:: test02_dats; ./test02_dats
 regress:: test03_dats; ./test03_dats
@@ -147,6 +154,7 @@ regress:: test11_dats; ./test11_dats
 regress:: test12_dats; ($(CAT) ./test12.dats | ./test12_dats)
 regress:: test13_dats; ./test13_dats
 regress:: test14_dats; ./test14_dats
+regress:: test15_dats; ./test15_dats
 
 ######
 
@@ -168,5 +176,6 @@ cleanall:: ; $(RMF) test11_dats
 cleanall:: ; $(RMF) test12_dats
 cleanall:: ; $(RMF) test13_dats
 cleanall:: ; $(RMF) test14_dats
+cleanall:: ; $(RMF) test15_dats
 
 ###### end of [Makefile] ######

@@ -41,10 +41,68 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/glseq.sats"
 //
+#staload "./../SATS/print.sats"
+//
 #staload "./../SATS/list_vt.sats"
 #staload "./../SATS/stream_vt.sats"
 //
 #staload UN = "./../SATS/unsafe.sats"
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+glseq_length(xs) =
+(
+glseq_foldleft1<xs><x0><r0>(xs, 0)
+) where
+{
+//
+typedef r0 = int
+//
+implement
+glseq_foldleft1$fopr<x0><r0>(r0, x0) = succ(r0)
+} (* end of [glseq_length] *)
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+glseq_print(xs) =
+{
+val () =
+glseq_print$beg()
+val n0 =
+glseq_foldleft1<xs><x0><r0>(xs, 0)
+val () =
+glseq_print$end()
+} where
+{
+typedef r0 = int
+//
+implement
+glseq_foldleft1$fopr<x0><r0>(r0, x0) =
+let
+val () =
+if
+(r0 > 0) then glseq_print$sep()
+val () = glseq_print$val<x0>(x0) in succ(r0)
+end
+} (* end of [glseq_print] *)
+//
+implement
+{}(*tmp*)
+glseq_print$beg() = print_string("(")
+implement
+{}(*tmp*)
+glseq_print$end() = print_string(")")
+implement
+{}(*tmp*)
+glseq_print$sep() = print_string(",")
+//
+implement
+{x0}(*tmp*)
+glseq_print$val(x0) = print$val<x0>(x0)
 //
 (* ****** ****** *)
 //
@@ -254,7 +312,7 @@ $UN.ptr0_set<ptr>(p0, ys)
 prval () = _assert_(view@y0)
 prval () = _assert_(view@r1)
 //
-} (* end of [gseq_foldleft$fopr] *)
+} (* end of [glseq_foldleft$fopr] *)
 //
 var r0: ptr?
 val p0 = addr@(r0)
@@ -560,7 +618,7 @@ $UN.ptr0_set<ptr>(p0, ys)
 prval () = _assert_(view@y0)
 prval () = _assert_(view@r1)
 //
-} (* end of [gseq_foldleft$fopr] *)
+} (* end of [glseq_foldleft$fopr] *)
 //
 var r0: ptr?
 val p0 = addr@(r0)
@@ -568,8 +626,7 @@ val p1 =
 glseq_foldleft1<xs><x0><p0>(xs, p0)
 //
 in
-  $UN.ptr0_set(p1, list0_vt_nil);
-  $UN.castvwtp0{list0_vt(y0)}(r0)
+  $UN.ptr0_set(p1, list0_vt_nil()); $UN.castvwtp0{list0_vt(y0)}(r0)
 end (* end of [glseq_map1_list] *)
 
 (* ****** ****** *)

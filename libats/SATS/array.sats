@@ -315,9 +315,14 @@ arrszref_make_list0_vt
   (xs: list0_vt(a)): arrszref(a)
 //
 fun{}
-arrszref_make_arrayref
+arrszref_cons
 {a:vtflt}{n:int}
 (arrayref(a, n), size(n)): arrszref(a)
+//
+#symload
+arrszref_make with arrszref_make_list0
+#symload
+arrszref_make with arrszref_make_list0_vt
 //
 (* ****** ****** *)
 //
@@ -387,16 +392,28 @@ arrayptr
 
 (* ****** ****** *)
 //
-fun{}
+castfn
+arrayref_ptrof
+{a:vtflt}{n:int}
+(A: arrayref(a, n)): ptr
+castfn
+arrayptr_ptrof
+{a:vtflt}
+{l:addr}{n:int}
+(A: !arrayptr(a, l, n)): ptr(l)
+//
+castfn
 arrayref_cptrof
 {a:vtflt}{n:int}
-(A: !arrayref(a, n)): cptr(a)
-fun{}
+(A: arrayref(a, n)): cptr(a)
+castfn
 arrayptr_cptrof
 {a:vtflt}
 {l:addr}{n:int}
 (A: !arrayptr(a, l, n)): cptr(a, l)
 //
+#symload ptrof with arrayref_ptrof
+#symload ptrof with arrayptr_ptrof
 #symload cptrof with arrayref_cptrof
 #symload cptrof with arrayptr_cptrof
 //

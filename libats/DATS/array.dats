@@ -36,7 +36,9 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gptr.sats"
 #staload "./../SATS/gseq.sats"
+#staload "./../SATS/list.sats"
 #staload "./../SATS/array.sats"
+#staload "./../SATS/list_vt.sats"
 
 (* ****** ****** *)
 
@@ -266,18 +268,100 @@ arrszref_vtflt_tbox(a) = arrszref(a)
 in (* in-of-local *)
 
 (* ****** ****** *)
-//
+
 implement
 {}(*tmp*)
-arrszref_make_arrayref
+arrszref_cons
   {a}{n}(A0, n0) =
 (
-  ARRSZREF( A0, n0 )
+let
+prval () =
+$UN.prop_assert{n>=0}() in ARRSZREF(A0, n0)
+end // end of [let]
+)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+arrszref_make_list0
+  (xs) =
+(
+let
+val n0 = length(xs)
+val n0 =
+$UN.cast{Intgte(0)}(n0)
+val A0 =
+arrayptr_make_none<a>(i2sz(n0))
+//
+val p0 = ptrof(A0)
+val p0 = ptr2cptr{a}(p0)
+//
+val pz =
+(
+list0_foldleft<x0><r0>(xs, p0)
 ) where
 {
-  prval () = $UN.prop_assert{n>=0}()
+typedef x0 = (a)
+typedef r0 = cptr(a)
+implement
+list0_foldleft$fopr<x0><r0>
+  (p0, x0) =
+( succ(p0) ) where
+{
+  val () = $UN.cptr0_set(p0, x0)
+}
 }
 //
+in
+let
+val A0 =
+$UN.castvwtp0(A0) in arrszref_cons(A0, i2sz(n0))
+end
+end // end of [let]
+) (* end of [arrszref_make_list0] *)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+arrszref_make_list0_vt
+  (xs) =
+(
+let
+val n0 = length(xs)
+val n0 =
+$UN.cast{Intgte(0)}(n0)
+val A0 =
+arrayptr_make_none<a>(i2sz(n0))
+//
+val p0 = ptrof(A0)
+val p0 = ptr2cptr{a}(p0)
+//
+val pz =
+(
+list0_vt_foldleft0<x0><r0>
+  (xs, p0)) where
+{
+vtypedef x0 = (a)
+vtypedef r0 = cptr(a)
+implement
+list0_vt_foldleft0$fopr<x0><r0>
+  (p0, x0) =
+( succ(p0) ) where
+{
+  val () = $UN.cptr0_set(p0, x0)
+}
+}
+//
+in
+let
+val A0 =
+$UN.castvwtp0(A0) in arrszref_cons(A0, i2sz(n0))
+end
+end // end of [let]
+) (* end of [arrszref_make_list0_vt] *)
+
 (* ****** ****** *)
 
 implement

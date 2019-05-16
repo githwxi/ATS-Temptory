@@ -43,6 +43,22 @@ glseq_length(!xs): (int)
 fun
 {xs:vtflt}
 {x0:vtflt}
+glseq_print(!xs): void
+fun{}
+glseq_print$beg(): void
+fun{}
+glseq_print$end(): void
+fun{}
+glseq_print$sep(): void
+fun
+{x0:vtflt}
+glseq_print$val(!x0): void
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
 glseq_listize
   (xs: xs): list0_vt(x0)
 fun
