@@ -393,21 +393,41 @@ arrayptr_set_at_size
 //
 fun
 {a:vtflt}
-arrayref_forall1
+arrayref_forall
 {n:int}
 (A: arrayref(a,n), size(n)): bool
 fun
 {a:vtflt}
-arrayref_forall1$test(x: !a): bool
+arrayref_forall$test(x: !a): bool
 //
 fun
 {a:vtflt}
-arrayref_foreach1
+arrayref_foreach
 {n:int}
 (A: arrayref(a,n), size(n)): void
 fun
 {a:vtflt}
-arrayref_foreach1$work(x: !a): void
+arrayref_foreach$work(x: !a): void
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+arrayref_rforall
+{n:int}
+(A: arrayref(a,n), size(n)): bool
+fun
+{a:vtflt}
+arrayref_rforall$test(x: !a): bool
+//
+fun
+{a:vtflt}
+arrayref_rforeach
+{n:int}
+(A: arrayref(a,n), size(n)): void
+fun
+{a:vtflt}
+arrayref_rforeach$work(x: !a): void
 //
 (* ****** ****** *)
 //
@@ -428,6 +448,26 @@ arrayptr_foreach1
 fun
 {a:vtflt}
 arrayptr_foreach1$work(x: !a): void
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+arrayptr_rforall1
+{n:int}
+(A: !arrayptr(a,n), size(n)): bool
+fun
+{a:vtflt}
+arrayptr_rforall1$test(x: !a): bool
+//
+fun
+{a:vtflt}
+arrayptr_rforeach1
+{n:int}
+(A: !arrayptr(a,n), size(n)): void
+fun
+{a:vtflt}
+arrayptr_rforeach1$work(x: !a): void
 //
 (* ****** ****** *)
 

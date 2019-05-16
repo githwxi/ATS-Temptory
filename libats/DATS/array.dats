@@ -255,7 +255,7 @@ end // end of [array_permute]
 //
 implement
 {a}(*tmp*)
-arrayref_forall1
+arrayref_forall
   (A0, asz) =
 (
 let
@@ -266,13 +266,13 @@ in
 ) where
 {
 implement
-cptr0_forall$test<a>(x) = array_forall$test<a>(x)
+cptr0_forall$test<a>(x) = arrayref_forall$test<a>(x)
 }
-end // end of [arrayref_forall1]
+end // end of [arrayref_forall]
 )
 implement
 {a}(*tmp*)
-arrayref_foreach1
+arrayref_foreach
   (A0, asz) =
 (
 let
@@ -283,9 +283,46 @@ in
 ) where
 {
 implement
-cptr0_foreach$work<a>(x) = array_foreach$work<a>(x)
+cptr0_foreach$work<a>(x) = arrayref_foreach$work<a>(x)
 }
-end // end of [arrayref_foreach1]
+end // end of [arrayref_foreach]
+)
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+arrayref_rforall
+  (A0, asz) =
+(
+let
+val pa = cptrof(A0)
+in
+(
+  cptr0_rforall<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_rforall$test<a>(x) = arrayref_rforall$test<a>(x)
+}
+end // end of [arrayref_rforall]
+)
+implement
+{a}(*tmp*)
+arrayref_rforeach
+  (A0, asz) =
+(
+let
+val pa = cptrof(A0)
+in
+(
+  cptr0_rforeach<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_rforeach$work<a>(x) = arrayref_rforeach$work<a>(x)
+}
+end // end of [arrayref_rforeach]
 )
 //
 (* ****** ****** *)
@@ -303,7 +340,7 @@ in
 ) where
 {
 implement
-cptr0_forall$test<a>(x) = array_forall$test<a>(x)
+cptr0_forall$test<a>(x) = arrayptr_forall1$test<a>(x)
 }
 end // end of [arrayptr_forall1]
 )
@@ -320,9 +357,46 @@ in
 ) where
 {
 implement
-cptr0_foreach$work<a>(x) = array_foreach$work<a>(x)
+cptr0_foreach$work<a>(x) = arrayptr_foreach1$work<a>(x)
 }
 end // end of [arrayptr_foreach1]
+)
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+arrayptr_rforall1
+  (A0, asz) =
+(
+let
+val pa = cptrof(A0)
+in
+(
+  cptr0_rforall<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_rforall$test<a>(x) = arrayptr_rforall1$test<a>(x)
+}
+end // end of [arrayptr_rforall1]
+)
+implement
+{a}(*tmp*)
+arrayptr_rforeach1
+  (A0, asz) =
+(
+let
+val pa = cptrof(A0)
+in
+(
+  cptr0_rforeach<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_rforeach$work<a>(x) = arrayptr_rforeach1$work<a>(x)
+}
+end // end of [arrayptr_rforeach1]
 )
 //
 (* ****** ****** *)
