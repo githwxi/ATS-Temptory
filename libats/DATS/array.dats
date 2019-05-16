@@ -249,7 +249,221 @@ end // end of [array_permute]
 (* ****** ****** *)
 //
 // HX-2019-05:
-// For array-pointer and array-references
+// For arrsz-ptrs and arrsz-refs
+//
+(* ****** ****** *)
+
+local
+//
+datatype
+arrszref
+(a:vtflt) =
+{n:nat}
+ARRSZREF of (arrayref(a,n), size(n))
+absimpl
+arrszref_vtflt_tbox(a) = arrszref(a)
+//
+in (* in-of-local *)
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+arrszref_make_arrayref
+  {a}{n}(A0, n0) =
+(
+  ARRSZREF( A0, n0 )
+) where
+{
+  prval () = $UN.prop_assert{n>=0}()
+}
+//
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+arrszref_get_at_sint
+  (AZ, i0) =
+(
+let
+val+
+ARRSZREF
+(A0, n0) = AZ
+in
+//
+let
+val
+i0 = i2sz(i0)
+in
+if
+i0 < n0
+then A0[i0] else $raise ArraySubscriptExn()
+end
+//
+end // end of [let]
+)
+implement
+{a}(*tmp*)
+arrszref_set_at_sint
+  (AZ, i0, x0) =
+(
+let
+val+
+ARRSZREF
+(A0, n0) = AZ
+in
+//
+let
+val
+i0 = i2sz(i0) in
+if
+i0 < n0
+then A0[i0] := x0 else $raise ArraySubscriptExn()
+end
+//
+end // end of [let]
+)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+arrszref_forall
+  (AZ) =
+(
+let
+val+
+ARRSZREF(A0, n0) = AZ
+in
+(
+arrayref_forall<a>(A0, n0)  
+) where
+{
+implement
+arrayref_forall$test<a>(x) = arrszref_forall$test<a>(x)
+}
+end // end of [let]
+)
+implement
+{a}(*tmp*)
+arrszref_foreach
+  (AZ) =
+(
+let
+val+
+ARRSZREF(A0, n0) = AZ
+in
+(
+arrayref_foreach<a>(A0, n0)  
+) where
+{
+implement
+arrayref_foreach$work<a>(x) = arrszref_foreach$work<a>(x)
+}
+end // end of [let]
+)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+arrszref_rforall
+  (AZ) =
+(
+let
+val+
+ARRSZREF(A0, n0) = AZ
+in
+(
+arrayref_rforall<a>(A0, n0)  
+) where
+{
+implement
+arrayref_rforall$test<a>(x) = arrszref_rforall$test<a>(x)
+}
+end // end of [let]
+)
+implement
+{a}(*tmp*)
+arrszref_rforeach
+  (AZ) =
+(
+let
+val+
+ARRSZREF(A0, n0) = AZ
+in
+(
+arrayref_rforeach<a>(A0, n0)  
+) where
+{
+implement
+arrayref_rforeach$work<a>(x) = arrszref_rforeach$work<a>(x)
+}
+end // end of [let]
+)
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+// HX-2019-05:
+// For array-ptrs and array-refs
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+arrayptr_make_none
+  (asz) =
+(
+$UN.castvwtp0($UN.calloc<a>(asz))
+)
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+arrayref_get_at_sint
+  (A0, i0) =
+(
+$UN.cptr0_get(cptrof(A0) + i0)
+)
+implement
+{a}(*tmp*)
+arrayref_set_at_sint
+  (A0, i0, x0) =
+(
+$UN.cptr0_set(cptrof(A0) + i0, x0)
+)
+implement
+{a}(*tmp*)
+arrayref_get_at_size
+  (A0, i0) =
+(
+$UN.cptr0_get(cptrof(A0) + i0)
+)
+implement
+{a}(*tmp*)
+arrayref_set_at_size
+  (A0, i0, x0) =
+(
+$UN.cptr0_set(cptrof(A0) + i0, x0)
+)
+//
+implement
+{a}(*tmp*)
+arrayptr_get_at_size
+  (A0, i0) =
+(
+$UN.cptr0_get(cptrof(A0) + i0)
+)
+implement
+{a}(*tmp*)
+arrayptr_set_at_size
+  (A0, i0, x0) =
+(
+$UN.cptr0_set(cptrof(A0) + i0, x0)
+)
 //
 (* ****** ****** *)
 //

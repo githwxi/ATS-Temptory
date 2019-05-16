@@ -40,6 +40,7 @@
 //
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gseq.sats"
+#staload "./../SATS/print.sats"
 #staload "./../SATS/stream_vt.sats"
 //
 #staload UN = "./../SATS/unsafe.sats"
@@ -81,6 +82,45 @@ typedef r0 = int
 implement
 gseq_foldleft$fopr<x0><r0>(r0, x0) = succ(r0)
 } (* end of [gseq_length] *)
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+gseq_print(xs) =
+{
+val () =
+gseq_print$beg()
+val n0 =
+gseq_foldleft<xs><x0><r0>(xs, 0)
+val () =
+gseq_print$end()
+} where
+{
+typedef r0 = int
+//
+implement
+gseq_foldleft$fopr<x0><r0>(r0, x0) =
+let
+val () =
+if r0 > 0 then gseq_print$sep()
+val () = gseq_print$val<x0>(x0) in succ(r0)
+end
+} (* end of [gseq_print] *)
+//
+implement
+{}(*tmp*)
+gseq_print$beg() = print_string("(")
+implement
+{}(*tmp*)
+gseq_print$end() = print_string(")")
+implement
+{}(*tmp*)
+gseq_print$sep() = print_string(",")
+//
+implement
+{x0}(*tmp*)
+gseq_print$val(x0) = print$val<x0>(x0)
 //
 (* ****** ****** *)
 //

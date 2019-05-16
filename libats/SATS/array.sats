@@ -301,7 +301,82 @@ array_permute$randint{n:int|n > 0}(n: size(n)): Sizelt(n)
 (* ****** ****** *)
 //
 // HX-2019-05:
-// For array-pointer and array-references
+// For arrsz-ptrs and arrsz-refs
+//
+(* ****** ****** *)
+//
+fun
+{a:tflt}
+arrszref_make_list0
+  (xs: list0(a)): arrszref(a)
+fun
+{a:vtflt}
+arrszref_make_list0_vt
+  (xs: list0_vt(a)): arrszref(a)
+//
+fun{}
+arrszref_make_arrayref
+{a:vtflt}{n:int}
+(arrayref(a, n), size(n)): arrszref(a)
+//
+(* ****** ****** *)
+//
+fun
+{a:tflt}
+arrszref_get_at_size
+(A: arrszref(a), i: size): (a)
+fun
+{a:tflt}
+arrszref_set_at_size
+(A: arrszref(a), i: size, x: a): void
+//
+fun
+{a:tflt}
+arrszref_get_at_sint
+{i:nat}
+(A: arrszref(a), i: sint(i)): (a)
+fun
+{a:tflt}
+arrszref_set_at_sint
+{i:nat}
+(A: arrszref(a), i: sint(i), x: a): void
+//
+(* ****** ****** *)
+
+fun
+{a:vtflt}
+arrszref_forall
+(A0: arrszref(a)): bool
+fun
+{a:vtflt}
+arrszref_forall$test(x: !a): bool
+fun
+{a:vtflt}
+arrszref_foreach
+(A0: arrszref(a)): void
+fun
+{a:vtflt}
+arrszref_foreach$work(x: !a): void
+
+fun
+{a:vtflt}
+arrszref_rforall
+(A0: arrszref(a)): bool
+fun
+{a:vtflt}
+arrszref_rforall$test(x: !a): bool
+fun
+{a:vtflt}
+arrszref_rforeach
+(A0: arrszref(a)): void
+fun
+{a:vtflt}
+arrszref_rforeach$work(x: !a): void
+
+(* ****** ****** *)
+//
+// HX-2019-05:
+// For array-ptrs and array-refs
 //
 (* ****** ****** *)
 
@@ -324,6 +399,23 @@ arrayptr_cptrof
 //
 #symload cptrof with arrayref_cptrof
 #symload cptrof with arrayptr_cptrof
+//
+(* ****** ****** *)
+//
+castfn
+arrayptr_refize
+{a:vtflt}
+{l:addr}{n:int}
+(arrayptr(a,l,n)): arrayref(a, n)
+//
+#symload refize with arrayptr_refize
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+arrayptr_make_none
+  {n:int}(size(n)): arrayptr(a?, n)
 //
 (* ****** ****** *)
 

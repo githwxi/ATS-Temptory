@@ -278,12 +278,12 @@ sexpdef arrayref = arrayref_vtflt_int_tbox
 //
 absvtbox
 arrayptr_vtflt_addr_int_vtbox
-(a:vtflt+, l:addr, n:int(*size*)) = ptr(l)
+(a:vtflt+,l:addr,n:int(*size*)) = ptr(l)
 sexpdef
 arrayptr = arrayptr_vtflt_addr_int_vtbox
 vtypedef
 arrayptr
-(a:vtflt, n:int) = [l:addr] arrayptr(a, l, n)
+(a:vtflt,n:int) = [l:addr] arrayptr(a,l,n)
 //
 abstbox
 arrszref_vtflt_tbox(a: vtflt) = ptr

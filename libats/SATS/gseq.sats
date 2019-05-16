@@ -51,6 +51,22 @@ gseq_length(xs): (int)
 fun
 {xs:tflt}
 {x0:tflt}
+gseq_print(xs): void
+fun{}
+gseq_print$beg(): void
+fun{}
+gseq_print$end(): void
+fun{}
+gseq_print$sep(): void
+fun
+{x0:tflt}
+gseq_print$val(x0): void
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
 gseq_indexof(xs, x0): int
 //
 (* ****** ****** *)
