@@ -228,6 +228,11 @@ val the_invar_vt0ype_vt0ype: s2cstref
 //
 (* ****** ****** *)
 
+val the_cptr_vtflt_tbox : s2cstref
+val the_cptr_vtflt_addr_tbox : s2cstref
+
+(* ****** ****** *)
+
 val the_vcopyenv_view_view : s2cstref
 val the_vcopyenv_vt0ype_vt0ype : s2cstref
 

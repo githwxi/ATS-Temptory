@@ -46,7 +46,7 @@
 //
 implement
 {a}(*tmp*)
-array_get_at
+array_get_at_sint
   (A0, i) =
 $UN.cptr0_get
 (
@@ -54,7 +54,7 @@ $UN.cast{cptr(a)}(addr@A0)+i
 )
 implement
 {a}(*tmp*)
-array_set_at
+array_set_at_sint
   (A0, i, x) =
 $UN.cptr0_set
 (
@@ -63,7 +63,29 @@ $UN.cast{cptr(a)}(addr@A0)+i, x
 //
 implement
 {a}(*tmp*)
-array_getref_at
+array_get_at_size
+  (A0, i) =
+$UN.cptr0_get
+(
+$UN.cast{cptr(a)}(addr@A0)+i
+)
+implement
+{a}(*tmp*)
+array_set_at_size
+  (A0, i, x) =
+$UN.cptr0_set
+(
+$UN.cast{cptr(a)}(addr@A0)+i, x
+)
+//
+implement
+{a}(*tmp*)
+array_getref_at_sint
+  (A0, i) =
+  $UN.cast{cptr(a)}(addr@A0)+i
+implement
+{a}(*tmp*)
+array_getref_at_size
   (A0, i) =
   $UN.cast{cptr(a)}(addr@A0)+i
 //
@@ -224,6 +246,85 @@ in
   loop(view@(A0) | addr@(A0), asz)
 end // end of [array_permute]
 
+(* ****** ****** *)
+//
+// HX-2019-05:
+// For array-pointer and array-references
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+arrayref_forall1
+  (A0, asz) =
+(
+let
+val pa = cptrof(A0)
+in
+(
+  cptr0_forall<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_forall$test<a>(x) = array_forall$test<a>(x)
+}
+end // end of [arrayref_forall1]
+)
+implement
+{a}(*tmp*)
+arrayref_foreach1
+  (A0, asz) =
+(
+let
+val pa = cptrof(A0)
+in
+(
+  cptr0_foreach<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_foreach$work<a>(x) = array_foreach$work<a>(x)
+}
+end // end of [arrayref_foreach1]
+)
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+arrayptr_forall1
+  (A0, asz) =
+(
+let
+val pa = cptrof(A0)
+in
+(
+  cptr0_forall<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_forall$test<a>(x) = array_forall$test<a>(x)
+}
+end // end of [arrayptr_forall1]
+)
+implement
+{a}(*tmp*)
+arrayptr_foreach1
+  (A0, asz) =
+(
+let
+val pa = cptrof(A0)
+in
+(
+  cptr0_foreach<a>(pa, pa + asz)
+) where
+{
+implement
+cptr0_foreach$work<a>(x) = array_foreach$work<a>(x)
+}
+end // end of [arrayptr_foreach1]
+)
+//
 (* ****** ****** *)
 
 (* end of [array.dats] *)

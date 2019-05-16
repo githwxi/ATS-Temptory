@@ -2216,6 +2216,17 @@ val () =
   val s2c1 = s2cstref_get_cst (the_string_int_type)
 } // end of [val]
 //
+//
+(*
+HX-2019-05-16: cptr1 <= cptr0
+*)
+//
+val () =
+  s2cst_add_sup (s2c1, s2c0) where {
+  val s2c0 = s2cstref_get_cst (the_cptr_vtflt_tbox)
+  val s2c1 = s2cstref_get_cst (the_cptr_vtflt_addr_tbox)
+} // end of [val]
+//
 } // end of [the_trans3_env_initialize]
 
 (* ****** ****** *)

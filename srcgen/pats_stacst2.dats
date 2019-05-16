@@ -1140,6 +1140,15 @@ end // end of [un_s2exp_ptr_addr_type]
 (* ****** ****** *)
 //
 implement
+the_cptr_vtflt_tbox =
+  s2cstref_make "cptr_vtflt_tbox"
+implement
+the_cptr_vtflt_addr_tbox =
+  s2cstref_make "cptr_vtflt_addr_tbox"
+//
+(* ****** ****** *)
+//
+implement
 the_atsvoid_t0ype =
   s2cstref_make "atsvoid_t0ype"
 //

@@ -48,6 +48,7 @@ implement
 {a}//tmp
 ptr0_pred(p0) =
 g0sub_ptr_size(p0, sizeof<a>)
+
 implement
 {a}//tmp
 ptr0_add_size(p0, n0) =
@@ -56,6 +57,15 @@ implement
 {a}//tmp
 ptr0_sub_size(p0, n0) =
 g0sub_ptr_size(p0, n0*sizeof<a>)
+
+implement
+{a}//tmp
+ptr0_add_sint(p0, n0) =
+g0add_ptr_size(p0, i2sz(n0)*sizeof<a>)
+implement
+{a}//tmp
+ptr0_sub_sint(p0, n0) =
+g0sub_ptr_size(p0, i2sz(n0)*sizeof<a>)
 
 (* ****** ****** *)
 //
@@ -102,6 +112,21 @@ g0sub_cptr_size(cp, n0) =
 (
 ptr2cptr{a}
 (g0sub_ptr_size(cptr2ptr(cp), n0*sizeof<a>))
+)
+//
+implement
+{a}//tmp
+g0add_cptr_sint(cp, n0) =
+(
+ptr2cptr{a}
+(g0add_ptr_size(cptr2ptr(cp), i2sz(n0)*sizeof<a>))
+)
+implement
+{a}//tmp
+g0sub_cptr_sint(cp, n0) =
+(
+ptr2cptr{a}
+(g0sub_ptr_size(cptr2ptr(cp), i2sz(n0)*sizeof<a>))
 )
 //
 (* ****** ****** *)

@@ -311,12 +311,20 @@ arrayptr
 [l:agez] arrayptr(a,l,n)
 
 (* ****** ****** *)
-
+//
 fun{}
 arrayref_cptrof
 {a:vtflt}{n:int}
 (A: !arrayref(a, n)): cptr(a)
-
+fun{}
+arrayptr_cptrof
+{a:vtflt}
+{l:addr}{n:int}
+(A: !arrayptr(a, l, n)): cptr(a, l)
+//
+#symload cptrof with arrayref_cptrof
+#symload cptrof with arrayptr_cptrof
+//
 (* ****** ****** *)
 
 fun
@@ -351,14 +359,6 @@ arrayref_set_at_size
 
 (* ****** ****** *)
 
-fun{}
-arrayptr_cptrof
-{a:vtflt}
-{l:addr}{n:int}
-(A: !arrayptr(a, l, n)): cptr(a, l)
-
-(* ****** ****** *)
-
 fun
 {a:tflt}
 arrayptr_get_at_sint
@@ -389,6 +389,46 @@ arrayptr_set_at_size
 #symload arrayptr_set_at with arrayptr_set_at_sint
 #symload arrayptr_set_at with arrayptr_set_at_size
 
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+arrayref_forall1
+{n:int}
+(A: arrayref(a,n), size(n)): bool
+fun
+{a:vtflt}
+arrayref_forall1$test(x: !a): bool
+//
+fun
+{a:vtflt}
+arrayref_foreach1
+{n:int}
+(A: arrayref(a,n), size(n)): void
+fun
+{a:vtflt}
+arrayref_foreach1$work(x: !a): void
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+arrayptr_forall1
+{n:int}
+(A: !arrayptr(a,n), size(n)): bool
+fun
+{a:vtflt}
+arrayptr_forall1$test(x: !a): bool
+//
+fun
+{a:vtflt}
+arrayptr_foreach1
+{n:int}
+(A: !arrayptr(a,n), size(n)): void
+fun
+{a:vtflt}
+arrayptr_foreach1$work(x: !a): void
+//
 (* ****** ****** *)
 
 (* end of [array.sats] *)

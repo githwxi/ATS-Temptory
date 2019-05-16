@@ -109,6 +109,8 @@ fun
 ptr0_pred
 (p0: ptr):<> ptr // -sizeof(a)
 //
+(* ****** ****** *)
+//
 fun
 {a:vtflt}
 ptr0_add_size
@@ -119,6 +121,24 @@ fun
 ptr0_sub_size
 ( p0: ptr
 , n0: size):<> ptr // -n0*sizeof(a)
+//
+fun
+{a:vtflt}
+ptr0_add_sint
+{i:nat}
+( p0: ptr
+, n0: sint(i)):<> ptr // +n0*sizeof(a)
+fun
+{a:vtflt}
+ptr0_sub_sint
+{i:nat}
+( p0: ptr
+, n0: sint(i)):<> ptr // -n0*sizeof(a)
+//
+#symload ptr0_add with ptr0_add_size
+#symload ptr0_sub with ptr0_sub_size
+#symload ptr0_add with ptr0_add_sint
+#symload ptr0_sub with ptr0_sub_sint
 //
 (* ****** ****** *)
 //
@@ -219,8 +239,21 @@ fun
 g0sub_cptr_size
 (cp0: cptr(a), bsz: size):<> cptr(a)
 //
+fun
+{a:vtflt}
+g0add_cptr_sint
+{i:nat}
+(cp0: cptr(a), bsz: sint(i)):<> cptr(a)
+fun
+{a:vtflt}
+g0sub_cptr_sint
+{i:nat}
+(cp0: cptr(a), bsz: sint(i)):<> cptr(a)
+//
 #symload + with g0add_cptr_size of 10
 #symload - with g0sub_cptr_size of 10
+#symload + with g0add_cptr_sint of 11
+#symload - with g0sub_cptr_sint of 11
 //
 (* ****** ****** *)
 //
