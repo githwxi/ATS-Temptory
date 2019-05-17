@@ -103,7 +103,8 @@ implement
 gseq_foldleft$fopr<x0><r0>(r0, x0) =
 let
 val () =
-if r0 > 0 then gseq_print$sep()
+if
+r0 > 0 then gseq_print$sep()
 val () = gseq_print$val<x0>(x0) in succ(r0)
 end
 } (* end of [gseq_print] *)
@@ -202,8 +203,8 @@ val p1 =
 gseq_foldleft<xs><x0><p0>(xs, p0)
 //
 in
-  $UN.ptr0_set(p1, list0_vt_nil);
-  $UN.castvwtp0{list0_vt(x0)}(r0)
+  $UN.ptr0_set
+  (p1, list0_vt_nil()); $UN.castvwtp0{list0_vt(x0)}(r0)
 end (* end of [gseq_listize] *)
 
 (* ****** ****** *)
@@ -562,8 +563,8 @@ val p1 =
 gseq_foldleft<xs><x0><p0>(xs, p0)
 //
 in
-  $UN.ptr0_set(p1, list0_vt_nil);
-  $UN.castvwtp0{list0_vt(y0)}(r0)
+  $UN.ptr0_set
+  (p1, list0_vt_nil()); $UN.castvwtp0{list0_vt(y0)}(r0)
 end (* end of [gseq_map_list] *)
 
 (* ****** ****** *)
@@ -657,8 +658,8 @@ val p1 =
 gseq_foldleft<xs><x0><p0>(xs, p0)
 //
 in
-  $UN.ptr0_set(p1, list0_vt_nil);
-  $UN.castvwtp0{list0_vt(y0)}(r0)
+  $UN.ptr0_set
+  (p1, list0_vt_nil()); $UN.castvwtp0{list0_vt(y0)}(r0)
 end (* end of [gseq_imap_list] *)
 
 (* ****** ****** *)
@@ -765,8 +766,8 @@ val p1 =
 gseq_foldleft<xs><x0><p0>(xs, p0)
 //
 in
-  $UN.ptr0_set(p1, list0_vt_nil);
-  $UN.castvwtp0{list0_vt(y0)}(r0)
+  $UN.ptr0_set
+  (p1, list0_vt_nil()); $UN.castvwtp0{list0_vt(y0)}(r0)
 end (* end of [gseq_mapopt_list] *)
 
 (* ****** ****** *)

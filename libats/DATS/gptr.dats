@@ -228,7 +228,7 @@ p0 - (sizeof<a>)
 val x0 =
 $UN.ptr0_get<a>(p0)
 val test =
-cptr0_forall$test<a>(x0)
+cptr0_rforall$test<a>(x0)
 in (* in-of-let *)
 let
 prval () =
@@ -265,7 +265,7 @@ p0 - (sizeof<a>)
 val x0 =
 $UN.ptr0_get<a>(p0)
 val () =
-cptr0_foreach$work<a>(x0)
+cptr0_rforeach$work<a>(x0)
 in
 let
 prval () =

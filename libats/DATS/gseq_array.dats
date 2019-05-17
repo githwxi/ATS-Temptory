@@ -39,63 +39,66 @@
 (* ****** ****** *)
 
 #staload "./../SATS/gint.sats"
-#staload "./../SATS/glseq.sats"
+#staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
 #staload "./../SATS/array.sats"
-#staload "./../SATS/list_vt.sats"
 
 (* ****** ****** *)
 
 implement
-(x0:vtflt)
-glseq_forall1<arrszref(x0)><x0>
+(x0:tflt)
+gseq_forall<arrszref(x0)><x0>
   (xs) =
 (
   arrszref_forall<x0>(xs)
 ) where
 {
   implement
-  arrszref_forall$test<x0>(x0) = glseq_forall1$test<x0>(x0)
-} (* end of [glseq_forall1] *)
+  arrszref_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
+} (* end of [gseq_forall] *)
+
+(* ****** ****** *)
 
 implement
-(x0:vtflt)
-glseq_foreach1<arrszref(x0)><x0>
+(x0:tflt)
+gseq_foreach<arrszref(x0)><x0>
   (xs) =
 (
   arrszref_foreach<x0>(xs)
 ) where
 {
   implement
-  arrszref_foreach$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
-} (* end of [glseq_foreach1] *)
+  arrszref_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
+} (* end of [gseq_foreach] *)
 
 (* ****** ****** *)
 
 implement
-(x0:vtflt)
-glseq_rforall1<arrszref(x0)><x0>
+(x0:tflt)
+gseq_rforall<arrszref(x0)><x0>
   (xs) =
 (
   arrszref_rforall<x0>(xs)
 ) where
 {
   implement
-  arrszref_rforall$test<x0>(x0) = glseq_rforall1$test<x0>(x0)
-} (* end of [glseq_rforall1] *)
+  arrszref_rforall$test<x0>(x0) = gseq_rforall$test<x0>(x0)
+} (* end of [gseq_rforall] *)
+
+(* ****** ****** *)
 
 implement
-(x0:vtflt)
-glseq_rforeach1<arrszref(x0)><x0>
+(x0:tflt)
+gseq_rforeach<arrszref(x0)><x0>
   (xs) =
 (
   arrszref_rforeach<x0>(xs)
 ) where
 {
   implement
-  arrszref_rforeach$work<x0>(x0) = glseq_rforeach1$work<x0>(x0)
-} (* end of [glseq_rforeach1] *)
+  arrszref_rforeach$work<x0>(x0) = gseq_rforeach$work<x0>(x0)
+} (* end of [gseq_rforeach] *)
 
 (* ****** ****** *)
 
-(* end of [glseq_array.dats] *)
+(* end of [gseq_array.dats] *)
