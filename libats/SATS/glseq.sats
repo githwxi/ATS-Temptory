@@ -125,6 +125,26 @@ glseq_foreach0$work(x0): void
 fun
 {xs:vtflt}
 {x0:vtflt}
+glseq_rforall0(xs): bool
+fun
+{x0:vtflt}
+glseq_rforall0$test(x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
+glseq_rforeach0(xs): void
+fun
+{x0:vtflt}
+glseq_rforeach0$work(x0): void
+//
+(* ****** ****** *)
+//
+fun
+{xs:vtflt}
+{x0:vtflt}
 {r0:vtflt}
 glseq_foldleft0(xs, r0): r0
 fun

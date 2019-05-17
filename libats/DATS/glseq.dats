@@ -183,6 +183,48 @@ in
 end // end of [let]
 //
 (* ****** ****** *)
+
+implement
+{xs}{x0}
+glseq_rforall0(xs) =
+(
+loop
+(glseq_rlistize<xs><x0>(xs))
+) where
+{
+fun
+loop
+(xs: list0_vt(x0)): bool =
+(
+case+ xs of
+| ~list0_vt_nil() => tt
+| ~list0_vt_cons(x0, xs) =>
+  if
+  glseq_rforall0$test<x0>(x0)
+  then loop(xs) else
+  let val () = list0_vt_free<x0>(xs) in ff end
+)
+} (* end of [glseq_rforall0] *)
+
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+glseq_rforeach0(xs) =
+let
+//
+implement
+glseq_rforall0$test<x0>(x0) =
+let
+val () =
+glseq_rforeach0$work<x0>(x0) in true
+end // end of [let]
+//
+in
+  ignoret(glseq_rforall0<xs><x0>(xs))
+end // end of [glseq_rforeach0]
+//
+(* ****** ****** *)
 //
 implement
 {xs}{x0}{r0}
@@ -208,7 +250,35 @@ in
 let
 val () = glseq_foreach0<xs><x0>(xs) in rr
 end
-end // end of [glseq_foreach0]
+end // end of [glseq_foldleft0]
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}{r0}
+glseq_foldright0
+  (xs, r0) = let
+//
+var rr: r0 = r0
+val p0 = addr@(rr)
+//
+implement
+glseq_rforeach0$work<x0>
+  (x0) = () where
+{
+val r0 =
+$UN.ptr0_get<r0>(p0)
+val r0 =
+glseq_foldright0$fopr<x0><r0>(x0, r0)
+val () =
+$UN.ptr0_set<r0>(p0, r0)
+} (* end of [where] *)
+//
+in
+let
+val () = glseq_rforeach0<xs><x0>(xs) in rr
+end
+end // end of [glseq_foldright0]
 //
 (* ****** ****** *)
 //
