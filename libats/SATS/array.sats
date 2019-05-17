@@ -305,6 +305,20 @@ array_permute$randint{n:int|n > 0}(n: size(n)): Sizelt(n)
 //
 (* ****** ****** *)
 //
+fun{}
+arrszref_cons
+{a:vtflt}{n:int}
+(arrayref(a,n), size(n)): arrszref(a)
+//
+fun{}
+arrszref_uncons
+{a:vtflt}{n:int}
+(
+AZ: arrayref(a, n)
+) : [n:nat] (arrayref(a, n), size(n))
+//
+(* ****** ****** *)
+//
 fun
 {a:tflt}
 arrszref_make_list0
@@ -313,11 +327,6 @@ fun
 {a:vtflt}
 arrszref_make_list0_vt
   (xs: list0_vt(a)): arrszref(a)
-//
-fun{}
-arrszref_cons
-{a:vtflt}{n:int}
-(arrayref(a, n), size(n)): arrszref(a)
 //
 #symload
 arrszref_make with arrszref_make_list0
@@ -426,6 +435,18 @@ arrayptr_refize
 (arrayptr(a,l,n)): arrayref(a, n)
 //
 #symload refize with arrayptr_refize
+//
+(* ****** ****** *)
+//
+castfn
+arrayptr_vtake
+{a:vtflt}
+{l:addr}{n:int}
+(
+A0: !arrayptr(a,l,n)
+) :
+( array_v(a, l, n)
+, array_v(a, l, n) -<lin,prf> void | ptr(l))
 //
 (* ****** ****** *)
 //

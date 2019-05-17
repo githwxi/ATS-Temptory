@@ -69,6 +69,11 @@
 
 /* ****** ****** */
 
+#define atspre_qsort qsort
+#define atspre_bsearch bsearch
+
+/* ****** ****** */
+
 ATSinline()
 void
 atspre_exit

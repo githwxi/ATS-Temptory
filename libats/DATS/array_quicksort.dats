@@ -377,7 +377,7 @@ implement
 array_quicksort_stdlib
   (A, asz, cmp) = let
 in
-  $extfcall(void, "atspre_array_qsort", addr@(A), asz, sizeof<a>, cmp)
+  $extfcall(void, "atspre_qsort", addr@(A), asz, sizeof<a>, cmp)
 end (* end of [array_quicksort_stdlib] *)
 
 (* ****** ****** *)

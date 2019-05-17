@@ -102,7 +102,7 @@ in
 //
 $extfcall
 (
-cptr(a), "atspre_array_bsearch", addr@(key), addr@(A), asz, sizeof<a>, cmp
+cptr(a), "atspre_bsearch", addr@(key), addr@(A), asz, sizeof<a>, cmp
 ) // end of [$extfcall]
 //
 end // end of [array_bsearch_stdlib]
