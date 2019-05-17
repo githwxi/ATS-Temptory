@@ -311,10 +311,9 @@ arrszref_cons
 (arrayref(a,n), size(n)): arrszref(a)
 //
 fun{}
-arrszref_uncons
-{a:vtflt}{n:int}
+arrszref_uncons{a:vtflt}
 (
-AZ: arrayref(a, n)
+AZ: arrszref(a)
 ) : [n:nat] (arrayref(a, n), size(n))
 //
 (* ****** ****** *)
@@ -389,6 +388,19 @@ arrszref_rforeach$work(x: !a): void
 
 (* ****** ****** *)
 //
+fun
+{a:vtflt}
+arrszref_quicksort(arrszref(a)): void
+fun
+{a:vtflt}
+arrszptr_quicksort(!arrszptr(a)): void
+(*
+arrszref_quicksort$cmp = array_quicksort$cmp
+arrszptr_quicksort$cmp = array_quicksort$cmp
+*)
+//
+(* ****** ****** *)
+//
 // HX-2019-05:
 // For array-ptrs and array-refs
 //
@@ -439,7 +451,7 @@ arrayptr_refize
 (* ****** ****** *)
 //
 castfn
-arrayptr_vtake
+arrayptr_vptrof
 {a:vtflt}
 {l:addr}{n:int}
 (
@@ -454,6 +466,17 @@ fun
 {a:vtflt}
 arrayptr_make_none
   {n:int}(size(n)): arrayptr(a?, n)
+//
+(* ****** ****** *)
+//
+castfn
+arrayref_decode
+{a:vtflt}{n:int}
+(A0: arrayref(a, n)): ref(array(a, n))
+castfn
+arrayref_encode
+{a:vtflt}{n:int}
+(r0: ref(array(a, n))): arrayref(a, n)
 //
 (* ****** ****** *)
 
@@ -598,6 +621,23 @@ arrayptr_rforeach1
 fun
 {a:vtflt}
 arrayptr_rforeach1$work(x: !a): void
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+arrayref_quicksort
+  {n:int}
+  (A0: arrayref(a, n), asz: size(n)): void
+fun
+{a:vtflt}
+arrayptr_quicksort
+  {n:int}
+  (A0: !arrayptr(a, n), asz: size(n)): void
+(*
+arrayref_quicksort$cmp = array_quicksort$cmp
+arrayptr_quicksort$cmp = array_quicksort$cmp
+*)
 //
 (* ****** ****** *)
 

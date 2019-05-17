@@ -44,27 +44,34 @@
 //
 implement
 {a}(*tmp*)
+list0_vt_mergesort(xs) =
+g0ofg1
+(
+list1_vt_mergesort<a>(g1ofg0(xs))
+) where
+{
+implement
+list1_vt_mergesort$cmp<a>
+(x1, x2) =
+list0_vt_mergesort$cmp<a>(x1, x2)
+}
+//
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
 list0_vt_mergesort$cmp
   (x1, x2) =
 (
   gcompare$ref<a>(x1, x2)
-) (* list_vt_mergesort$cmp *)
-//
-implement
-{a}(*tmp*)
-list0_vt_mergesort(xs) =
-g0ofg1
-(list1_vt_mergesort<a>(g1ofg0(xs)))
-//
-(* ****** ****** *)
-
+) // end of [list0_vt_mergesort$cmp]
 implement
 {a}(*tmp*)
 list1_vt_mergesort$cmp
   (x1, x2) =
 (
   gcompare$ref<a>(x1, x2)
-) // end of [list_vt_mergesort$cmp]
+) // end of [list0_vt_mergesort$cmp]
 
 (* ****** ****** *)
 //

@@ -35,6 +35,9 @@
 //
 #staload "./../SATS/gint.sats"
 //
+#staload "./../SATS/gseq.sats"
+#staload "./../SATS/glseq.sats"
+//
 #staload "./../SATS/print.sats"
 #staload "./../SATS/stdio.sats"
 //
@@ -243,9 +246,26 @@ implement
 print$val<stream(a)>(xs) = stream_print<a>(xs)
 //
 (* ****** ****** *)
+
+implement
+{a}(*tmp*)
+arrszref_print(AZ) =
+(
+glseq_print<arrszref(a)><a>(AZ);
+) where
+{
+implement
+gseq_print$beg<>() = array_print$beg<>()
+implement
+gseq_print$end<>() = array_print$end<>()
+implement
+gseq_print$sep<>() = array_print$sep<>()
+} (* end of [arrszref_print] *)
+
+(* ****** ****** *)
 //
 implement
-{a:vtflt}
+{a}(*tmp*)
 list0_vt_print(xs) =
 (
 list0_print$beg<>();

@@ -72,6 +72,37 @@ isneqz
 //
 implement
 {}(*tmp*)
+g0lt_str_str
+(x1, x2) = (strcmp(x1, x2) < 0)
+implement
+{}(*tmp*)
+g0gt_str_str
+(x1, x2) = (strcmp(x1, x2) > 0)
+implement
+{}(*tmp*)
+g0eq_str_str
+(x1, x2) = (strcmp(x1, x2) = 0)
+implement
+{}(*tmp*)
+g0lte_str_str
+(x1, x2) = (strcmp(x1, x2) <= 0)
+implement
+{}(*tmp*)
+g0gte_str_str
+(x1, x2) = (strcmp(x1, x2) >= 0)
+implement
+{}(*tmp*)
+g0neq_str_str
+(x1, x2) = (strcmp(x1, x2) != 0)
+//
+implement
+{}(*tmp*)
+g0cmp_str_str(x1, x2) = strcmp(x1, x2)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
 string0_length(cs) =
 (
 $effmask_all

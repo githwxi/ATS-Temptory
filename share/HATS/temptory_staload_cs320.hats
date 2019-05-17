@@ -29,6 +29,8 @@ TEMPLIB_targetloc
 //
 #staload
 "libats/SATS/gptr.sats"
+#staload
+"libats/SATS/gref.sats"
 //
 #staload
 "libats/SATS/bool.sats"
@@ -85,6 +87,8 @@ TEMPLIB_targetloc
 "libats/DATS/gint.dats"
 #staload _ =
 "libats/DATS/gptr.dats"
+#staload _ =
+"libats/DATS/gref.dats"
 #staload _ =
 "libats/DATS/bool.dats"
 #staload _ =

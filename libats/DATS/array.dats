@@ -35,6 +35,7 @@
 
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gptr.sats"
+#staload "./../SATS/gref.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
 #staload "./../SATS/array.sats"
@@ -268,7 +269,7 @@ arrszref_vtflt_tbox(a) = arrszref(a)
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
 {}(*tmp*)
 arrszref_cons
@@ -279,7 +280,11 @@ prval () =
 $UN.prop_assert{n>=0}() in ARRSZREF(A0, n0)
 end // end of [let]
 )
-
+implement
+{}(*tmp*)
+arrszref_uncons{a}(AZ) =
+let val ARRSZREF(A0, n0) = AZ in (A0, n0) end
+//
 (* ****** ****** *)
 
 implement
@@ -487,6 +492,18 @@ end // end of [let]
 )
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+arrszref_quicksort(AZ) =
+(
+arrayref_quicksort(A0, asz)
+) where
+{
+val(A0, asz) = arrszref_uncons(AZ)
+}
 
 (* ****** ****** *)
 //
@@ -697,6 +714,41 @@ cptr0_rforeach$work<a>(x) = arrayptr_rforeach1$work<a>(x)
 end // end of [arrayptr_rforeach1]
 )
 //
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+arrayref_quicksort
+  (A0, asz) =
+(
+$effmask_ref
+(
+array_quicksort<a>(!p0, asz)
+)
+) where
+{
+val r0 = arrayref_decode(A0)
+val (vbox(pf) | p0) = ref_vptrof(r0)
+} (* end of [arrayref_quicksort] *)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+arrayptr_quicksort
+  (A0, asz) =
+(
+let
+val () =
+array_quicksort<a>(!p0, asz) in
+  let prval () = fpf(pf0) in () end
+end
+) where
+{
+val
+(pf0, fpf | p0) = arrayptr_vptrof(A0)
+} (* end of [arrayref_quicksort] *)
+
 (* ****** ****** *)
 
 (* end of [array.dats] *)

@@ -63,12 +63,6 @@ string0_cptrof
 //
 (* ****** ****** *)
 //
-fun
-strcmp
-(string, string): int = "mac#%"
-//
-(* ****** ****** *)
-//
 fun{}
 string0_iseqz(string):<> bool
 fun{}
@@ -76,6 +70,48 @@ string0_isneqz(string):<> bool
 //
 #symload iseqz with string0_iseqz
 #symload iseqz with string0_isneqz
+//
+(* ****** ****** *)
+//
+fun{}
+g0lt_str_str
+(x: string, y: string):<> bool
+fun{}
+g0gt_str_str
+(x: string, y: string):<> bool
+fun{}
+g0eq_str_str
+(x: string, y: string):<> bool
+//
+fun{}
+g0lte_str_str
+(x: string, y: string):<> bool
+fun{}
+g0gte_str_str
+(x: string, y: string):<> bool
+fun{}
+g0neq_str_str
+(x: string, y: string):<> bool
+//
+fun{}
+g0cmp_str_str
+(x: string, y: string):<> sint
+//
+#symload < with g0lt_str_str of 10
+#symload > with g0gt_str_str of 10
+#symload = with g0eq_str_str of 10
+#symload <= with g0lte_str_str of 10
+#symload >= with g0gte_str_str of 10
+#symload != with g0neq_str_str of 10
+(*
+#symload <=> with g0cmp_str_str of 10
+*)
+//
+(* ****** ****** *)
+//
+fun
+strcmp
+(string, string):<> int = "mac#%"
 //
 (* ****** ****** *)
 //

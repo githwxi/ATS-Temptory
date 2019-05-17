@@ -169,14 +169,35 @@ fun
 stream_print
 (xs: stream(INV(a))): void
 //
-#symload print with stream_print
-//
 fun{}
 stream_print$beg((*void*)): void
 fun{}
 stream_print$end((*void*)): void
 fun{}
 stream_print$sep((*void*)): void
+//
+#symload print with stream_print
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+arrszref_print
+(AZ: arrszref(a)): void
+fun
+{a:vtflt}
+arrszptr_print
+(AZ: !arrszptr(a)): void
+//
+fun{}
+array_print$beg((*void*)): void
+fun{}
+array_print$end((*void*)): void
+fun{}
+array_print$sep((*void*)): void
+//
+#symload print with arrszref_print
+#symload print with arrszptr_print
 //
 (* ****** ****** *)
 //

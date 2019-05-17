@@ -20,11 +20,7 @@ val A0 =
 arrszref_make<int>(xs)
 //
 val () =
-print!("A0 = ")
-val () =
-gseq_print<arrszref(int)><int>(A0)
-val () =
-println!((*void*))
+println!("A0 = ", A0)
 //
 val () =
 print!("A0 = ")

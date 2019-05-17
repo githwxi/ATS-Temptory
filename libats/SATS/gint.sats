@@ -601,27 +601,43 @@ g1div_usize_usize
 #symload / with g1div_usize_usize of 12
 //
 (* ****** ****** *)
+
+fun
+g0mod_sint_sint
+( x: sint
+, y: sint):<> sint = "mac#%"
+#symload % with g0mod_sint_sint of 10
+fun
+g0mod_uint_uint
+( x: uint
+, y: uint):<> uint = "mac#%"
+#symload % with g0mod_uint_uint of 10
+fun
+g0mod_usize_usize
+( usize, usize ):<> usize = "mac#%"
+#symload % with g0mod_usize_usize of 10
+
+(* ****** ****** *)
 //
 fun
 g0lt_sint_sint
 ( x: sint
 , y: sint):<> bool = "mac#%"
 fun
-g0lte_sint_sint
-( x: sint
-, y: sint):<> bool = "mac#%"
-//
-fun
 g0gt_sint_sint
 ( x: sint
 , y: sint):<> bool = "mac#%"
 fun
-g0gte_sint_sint
+g0eq_sint_sint
 ( x: sint
 , y: sint):<> bool = "mac#%"
 //
 fun
-g0eq_sint_sint
+g0lte_sint_sint
+( x: sint
+, y: sint):<> bool = "mac#%"
+fun
+g0gte_sint_sint
 ( x: sint
 , y: sint):<> bool = "mac#%"
 fun

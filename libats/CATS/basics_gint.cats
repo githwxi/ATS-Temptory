@@ -201,6 +201,15 @@ temptory_g1div_usize_usize(x, y) (x / y)
 /* ****** ****** */
 
 #define \
+temptory_g0mod_sint_sint(x, y) (x % y)
+#define \
+temptory_g0mod_uint_uint(x, y) (x % y)
+#define \
+temptory_g0mod_usize_usize(x, y) (x % y)
+
+/* ****** ****** */
+
+#define \
 temptory_g0lt_sint_sint(x, y) ((x < y) ? 1 : 0)
 #define \
 temptory_g0gt_sint_sint(x, y) ((x > y) ? 1 : 0)
