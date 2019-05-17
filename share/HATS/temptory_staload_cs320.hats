@@ -113,6 +113,8 @@ TEMPLIB_targetloc
 #staload _ =
 "libats/DATS/gseq_optn0.dats"
 #staload _ =
+"libats/DATS/gseq_array.dats"
+#staload _ =
 "libats/DATS/gseq_string.dats"
 #staload _ =
 "libats/DATS/gseq_stream.dats"
