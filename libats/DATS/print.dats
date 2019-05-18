@@ -70,7 +70,7 @@ implement
 print_int(x) = print$val<int>(x)
 implement
 {}(*tmp*)
-print_sint(x) = print$val<sint>(x)
+print_ptr(x) = print$val<ptr>(x)
 implement
 {}(*tmp*)
 print_bool(x) = print$val<bool>(x)
@@ -86,6 +86,9 @@ print_string(cs) = print$val<string>(cs)
 
 (* ****** ****** *)
 
+implement
+{}(*tmp*)
+print_sint(i0) = print$val<sint>(i0)
 implement
 {}(*tmp*)
 print_uint(u0) = print$val<uint>(u0)

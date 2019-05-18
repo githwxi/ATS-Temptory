@@ -361,7 +361,7 @@ $effmask_all(auxqsort(addr@(A), asz, sizeof<a>))
 end (* end of [array_quicksort] *)
 
 (* ****** ****** *)
-
+//
 (*
 //
 // HX: [qsort] is in libc/stdlib
@@ -372,14 +372,16 @@ void qsort
   int(*compar)(const void *, const void *)
 ) ; // end of [qsort]
 *)
+//
 implement
 {a}(*tmp*)
-array_quicksort_stdlib
-  (A, asz, cmp) = let
-in
-  $extfcall(void, "atspre_qsort", addr@(A), asz, sizeof<a>, cmp)
-end (* end of [array_quicksort_stdlib] *)
-
+array_quicksort_libc
+  (A, asz, cmp) =
+(
+  $extfcall
+  (void, "atspre_qsort", addr@(A), asz, sizeof<a>, cmp)
+) (* end of [array_quicksort_libc] *)
+//
 (* ****** ****** *)
 
 (* end of [array_quicksort.dats] *)

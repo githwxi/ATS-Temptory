@@ -28,85 +28,51 @@
 (* ****** ****** *)
 
 (* Author: Hongwei Xi *)
-(* Start time: April, 2013 *)
-(* Authoremail: hwxiATcsDOTbuDOTedu *)
+(* Start time: Feburary, 2012 *)
+(* Authoremail: hwxi AT cs DOT bu DOT edu *)
 
 (* ****** ****** *)
 
-#staload "./../SATS/gint.sats"
-#staload "./../SATS/gptr.sats"
-#staload "./../SATS/array.sats"
+#staload "libats/SATS/gint.sats"
+#staload "libats/SATS/gptr.sats"
+#staload "libats/SATS/array.sats"
 
 (* ****** ****** *)
 
-#staload UN = "./../SATS/unsafe.sats"
+#staload "./../SATS/search.sats"
+
+(* ****** ****** *)
+
+#staload UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
 implement
 {a}(*tmp*)
-array_bsearch
-  {n}(A, asz) = let
-//
-prval () = lemma_array_param(A)
-//
-fun
-half
-{n:nat}.<>.
-(n:size(n)):<> size(n/2) = n/2
-fun
-loop
-{l,r:nat|l <= r; r <= n} .<r-l>.
+lfind_libc
+(k0, A0, asz, cmp) =
 (
-A0: &array(a, n), l: size(l), r: size(r)
-) :<> Sizelte(n) =
-(
-if
-(l < r)
-then let
-  val m = l + half(r-l)
-  val pm = addr@(A0.[m])
-  val (
-    pf, fpf | pm
-  ) = $UN.ptr0_vtake{a}(pm)
-  val sgn = array_bsearch$ford<a> (!pm)
-  prval () = fpf (pf)
+let
+var asz = asz
 in
-  if sgn <= 0 then loop(A0, l, m) else loop(A0, succ(m), r)
-end else l (* end of [if] *)
-)
-//
-in
-  loop (A, i2sz(0), asz)
-end (* end of [array_bsearch] *)
-
-(* ****** ****** *)
-
-(*
-//
-// HX: [bsearch] is in libc/stdlib
-//
-void *bsearch
-(
-  const void *key
-, const void *base
-, size_t nmemb, size_t size
-, int (*compar)(const void *, const void *)
-) ; // end of [bsearch]
-*)
-implement
-{a}(*tmp*)
-array_bsearch_libc
-  (A, asz, key, cmp) = let
-in
-//
 $extfcall
 ( cptr(a)
-, "atspre_bsearch", addr@(key), addr@(A), asz, sizeof<a>, cmp
-) // end of [$extfcall]
-//
-end // end of [array_bsearch_libc]
+, "atspre_lfind"
+, addr@(k0), addr@(A0), addr@(asz), sizeof<a>, cmp)
+end
+)
 
 (* ****** ****** *)
 
-(* end of [array_bsearch.dats] *)
+implement
+{}(*tmp*)
+hsearch_find(k0) =
+hsearch(ENTRY_cons(k0), FIND)
+implement
+{}(*tmp*)
+hsearch_enter(k0, x0) =
+hsearch(ENTRY_cons(k0, x0), ENTER)
+
+(* ****** ****** *)
+
+(* end of [search.dats] *)

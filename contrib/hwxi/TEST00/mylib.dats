@@ -9,6 +9,7 @@
 
 (*
 #include "libats/DATS/list.dats"
+#include "libats/DATS/array.dats"
 *)
 
 (* ****** ****** *)

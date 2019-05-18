@@ -57,7 +57,7 @@ print_newline((*void*)): void
 fun{}
 print_int(int): void
 fun{}
-print_sint(sint): void
+print_ptr(ptr): void
 fun{}
 print_bool(bool): void
 fun{}
@@ -72,7 +72,7 @@ print_string(string): void
 (*
 #symload print with print_int
 *)
-#symload print with print_sint
+#symload print with print_ptr
 #symload print with print_bool
 #symload print with print_char
 #symload print with print_double
@@ -80,6 +80,8 @@ print_string(string): void
 
 (* ****** ****** *)
 //
+fun{}
+print_sint(sint): void
 fun{}
 print_uint(uint): void
 //
@@ -97,6 +99,7 @@ print_sllint(sllint): void
 fun{}
 print_ullint(ullint): void
 //
+#symload print with print_sint
 #symload print with print_uint
 (*
 #symload print with print_lint

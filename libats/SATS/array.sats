@@ -251,7 +251,7 @@ array_bsearch
 *)
 fun
 {a:vtflt}
-array_bsearch_stdlib
+array_bsearch_libc
   {n:int}
 ( A0
 : &(@[INV(a)][n])
@@ -273,14 +273,16 @@ array_quicksort$cmp(x: &(a), y: &(a)): int(*sgn*)
 (* ****** ****** *)
 
 (*
-** HX: this one is based on [qsort] in [stdlib]
+** HX:
+** this one is based on [qsort] in [stdlib]
 *)
 fun
 {a:vtflt}
-array_quicksort_stdlib
+array_quicksort_libc
   {n:int}
-(A0: &(@[INV(a)][n]) >> @[a][n], size(n), cmpfunref(a)
-) : void // end of [array_quicksort_stdlib]
+(
+A0: &(@[INV(a)][n]) >> @[a][n], size(n), cmpfunref(a)
+) : void // end of [array_quicksort_libc]
 
 (* ****** ****** *)
 //

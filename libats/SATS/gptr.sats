@@ -185,6 +185,20 @@ ptr1_pred
 (* ****** ****** *)
 //
 fun
+cptr0_iseqz
+{a:vtflt}
+(cp: cptr(a)):<> bool = "mac#%"
+fun
+cptr0_isneqz
+{a:vtflt}
+(cp: cptr(a)):<> bool = "mac#%"
+//
+#symload iseqz with cptr0_iseqz
+#symload isneqz with cptr0_isneqz
+//
+(* ****** ****** *)
+//
+fun
 {a:vtflt}
 cptr0_succ(cp: cptr(a)):<> cptr(a)
 fun

@@ -41,6 +41,13 @@ temptory_ptr0_isneqz(ptr) (ptr != (void*)0)
 /* ****** ****** */
 
 #define \
+temptory_cptr0_iseqz(ptr) (ptr == (void*)0)
+#define \
+temptory_cptr0_isneqz(ptr) (ptr != (void*)0)
+
+/* ****** ****** */
+
+#define \
 temptory_g0add_ptr_int(ptr, bsz) (void*)((char*)(ptr)+(bsz))
 #define \
 temptory_g0sub_ptr_int(ptr, bsz) (void*)((char*)(ptr)-(bsz))

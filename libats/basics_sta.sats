@@ -204,6 +204,8 @@ ullint(i:int) = g1int_int_t0ype(ullint_tk, i)
 (* ****** ****** *)
 //
 typedef
+Int = [a:int] int(a)
+typedef
 Nat = [a:int | a >= 0] int(a)
 //
 typedef

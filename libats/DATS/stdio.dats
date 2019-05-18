@@ -75,6 +75,18 @@ $extfcall(void, "atspre_fflush", out)
 (* ****** ****** *)
 //
 implement
+fprint$val<int>(out, x) =
+(
+$extfcall
+(void, "atspre_fprintf", out, "%i", x)
+)
+implement
+fprint$val<ptr>(out, x) =
+(
+$extfcall
+(void, "atspre_fprintf", out, "%p", x)
+)
+implement
 fprint$val<sint>(out, x) =
 (
 $extfcall

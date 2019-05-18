@@ -213,7 +213,7 @@ temptory_g0gte_float_float(x, y) ((x >= y) ? 1 : 0)
 #define \
 temptory_g0neq_float_float(x, y) ((x != y) ? 1 : 0)
 #define \
-temptory_g0cmp_float_float(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
+temptory_g0cmp_float_float(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 
 /* ****** ****** */
 //
@@ -231,7 +231,7 @@ temptory_g0gte_double_double(x, y) ((x >= y) ? 1 : 0)
 temptory_g0neq_double_double(x, y) ((x != y) ? 1 : 0)
 //
 #define \
-temptory_g0cmp_double_double(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
+temptory_g0cmp_double_double(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 //
 /* ****** ****** */
 //
@@ -249,7 +249,7 @@ temptory_g0gte_ldouble_ldouble(x, y) ((x >= y) ? 1 : 0)
 temptory_g0neq_ldouble_ldouble(x, y) ((x != y) ? 1 : 0)
 //
 #define \
-temptory_g0cmp_ldouble_ldouble(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
+temptory_g0cmp_ldouble_ldouble(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 //
 /* ****** ****** */
 
@@ -283,7 +283,7 @@ temptory_g0gte_sint_float(x, y) ((x >= y) ? 1 : 0)
 temptory_g0neq_sint_float(x, y) ((x != y) ? 1 : 0)
 //
 #define \
-temptory_g0cmp_sint_float(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
+temptory_g0cmp_sint_float(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 //
 /* ****** ****** */
 //
@@ -301,7 +301,7 @@ temptory_g0gte_float_sint(x, y) ((x >= y) ? 1 : 0)
 temptory_g0neq_float_sint(x, y) ((x != y) ? 1 : 0)
 //
 #define \
-temptory_g0cmp_float_sint(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
+temptory_g0cmp_float_sint(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 //
 /* ****** ****** */
 //
@@ -319,7 +319,7 @@ temptory_g0gte_sint_double(x, y) ((x >= y) ? 1 : 0)
 temptory_g0neq_sint_double(x, y) ((x != y) ? 1 : 0)
 //
 #define \
-temptory_g0cmp_sint_double(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
+temptory_g0cmp_sint_double(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 //
 /* ****** ****** */
 //
@@ -337,7 +337,7 @@ temptory_g0gte_double_sint(x, y) ((x >= y) ? 1 : 0)
 temptory_g0neq_double_sint(x, y) ((x != y) ? 1 : 0)
 //
 #define \
-temptory_g0cmp_double_sint(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
+temptory_g0cmp_double_sint(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 //
 /* ****** ****** */
 //
@@ -355,7 +355,7 @@ temptory_g0gte_sint_ldouble(x, y) ((x >= y) ? 1 : 0)
 temptory_g0neq_sint_ldouble(x, y) ((x != y) ? 1 : 0)
 //
 #define \
-temptory_g0cmp_sint_ldouble(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
+temptory_g0cmp_sint_ldouble(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 //
 /* ****** ****** */
 //
@@ -373,7 +373,7 @@ temptory_g0gte_ldouble_sint(x, y) ((x >= y) ? 1 : 0)
 temptory_g0neq_ldouble_sint(x, y) ((x != y) ? 1 : 0)
 //
 #define \
-temptory_g0cmp_ldouble_sint(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
+temptory_g0cmp_ldouble_sint(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 //
 /* ****** ****** */
 

@@ -59,9 +59,11 @@ xs: list0_vt(x0)
 $ldelay
 (
 case+ xs of
-| ~list0_vt_nil() =>
-   stream_vt_nil()
-| ~list0_vt_cons(x0, xs) => auxmain2(x0, 1, xs)
+|
+~list0_vt_nil() =>
+ stream_vt_nil()
+|
+~list0_vt_cons(x0, xs) => auxmain2(x0, 1, xs)
 , list0_vt_free<x0>(xs)
 )
 and

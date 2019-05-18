@@ -89,12 +89,23 @@ g0neq_char_char
 ( x: char
 , y: char):<> bool = "mac#%"
 //
+fun
+g0cmp_char_char
+( x: char
+, y: char):<> sint = "mac#%"
+//
 #symload < with g0lt_char_char
 #symload > with g0gt_char_char
 #symload = with g0eq_char_char
 #symload <= with g0lte_char_char
 #symload >= with g0gte_char_char
 #symload != with g0neq_char_char
+//
+(*
+#symload <=> with g0cmp_char_char
+*)
+#symload g0cmp with g0cmp_char_char
+//
 //
 (* ****** ****** *)
 //

@@ -33,71 +33,34 @@
 //
 /* ****** ****** */
 
-#define \
-temptory_char0_ord(c0) ((int)c0)
-#define \
-temptory_char0_chr(i0) ((char)i0)
+#ifndef TEMPTORY_LIBC_CATS_SEARCH
+#define TEMPTORY_LIBC_SATS_SEARCH
 
 /* ****** ****** */
 
-#define \
-temptory_char0_isalpha(c) isalpha(c)
-#define \
-temptory_char0_isalnum(c) isalnum(c)
-#define \
-temptory_char0_iscntrl(c) iscntrl(c)
-#define \
-temptory_char0_isdigit(c) isdigit(c)
-#define \
-temptory_char0_isgraph(c) isgraph(c)
-#define \
-temptory_char0_isprint(c) isprint(c)
-#define \
-temptory_char0_isspace(c) isspace(c)
-#define \
-temptory_char0_ispunct(c) ispunct(c)
-#define \
-temptory_char0_isxdigit(c) isxdigit(c)
-
-/* ****** ****** */
-
-#define \
-temptory_char0_islower(c) islower(c)
-#define \
-temptory_char0_isupper(c) isupper(c)
-#define \
-temptory_char0_tolower(c) tolower(c)
-#define \
-temptory_char0_toupper(c) toupper(c)
-
-/* ****** ****** */
+#include <search.h>
 //
-#define \
-temptory_g0add_char_sint(x, y) (x + y) // char
+#define atspre_lfind lfind
 //
-#define \
-temptory_g0sub_char_char(x, y) (x - y) // sint
-#define \
-temptory_g0sub_char_sint(x, y) (x - y) // char
+# define \
+  temptory_libc_ENTRY_get_key(kx) (((ENTRY*)kx)->key)
+# define \
+  temptory_libc_ENTRY_get_data(kx) (((ENTRY*)kx)->data)
 //
-/* ****** ****** */
+# define \
+  temptory_libc_ENTRY_cons_key(k0) ((ENTRY){k0,(void*)0})
+# define \
+  temptory_libc_ENTRY_cons_key_data(k0, x0) ((ENTRY){k0,x0})
 //
-#define \
-temptory_g0lt_char_char(x, y) (( x < y ) ? 1 : 0)
-#define \
-temptory_g0gt_char_char(x, y) (( x > y ) ? 1 : 0)
-#define \
-temptory_g0eq_char_char(x, y) (( x == y ) ? 1 : 0)
-#define \
-temptory_g0lte_char_char(x, y) (( x <= y ) ? 1 : 0)
-#define \
-temptory_g0gte_char_char(x, y) (( x >= y ) ? 1 : 0)
-#define \
-temptory_g0neq_char_char(x, y) (( x != y ) ? 1 : 0)
-//
-#define \
-temptory_g0cmp_char_char(x, y) (( x < y ) ? -1 : ( x > y ) ? 1 : 0)
+# define \
+  temptory_libc_hcreate(nel) hcreate(nel)
+# define temptory_libc_hdestroy() hdestroy()
+# define temptory_libc_hsearch(itm, act) hsearch(itm, act)
 //
 /* ****** ****** */
 
-/* end of [basics_char.cats] */
+# endif// #ifndef TEMPTORY_LIBC_CATS_SEARCH
+
+/* ****** ****** */
+
+/* end of [search.cats] */
