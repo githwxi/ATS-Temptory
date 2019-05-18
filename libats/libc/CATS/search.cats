@@ -39,8 +39,16 @@
 /* ****** ****** */
 
 #include <search.h>
+
+/* ****** ****** */
 //
-#define atspre_lfind lfind
+typedef ENTRY atspre_ENTRY;
+typedef ACTION atspre_ACTION;
+//
+typedef \
+struct hsearch_data atspre_hsearch_data;
+//
+# define atspre_lfind lfind
 //
 # define \
   temptory_libc_ENTRY_get_key(kx) (((ENTRY*)kx)->key)
@@ -52,10 +60,21 @@
 # define \
   temptory_libc_ENTRY_cons_key_data(k0, x0) ((ENTRY){k0,x0})
 //
+/* ****** ****** */
+//
 # define \
   temptory_libc_hcreate(nel) hcreate(nel)
 # define temptory_libc_hdestroy() hdestroy()
 # define temptory_libc_hsearch(itm, act) hsearch(itm, act)
+//
+/* ****** ****** */
+//
+# define \
+  temptory_libc_hcreate_r(nel, htab) hcreate_r(nel, htab)
+# define \
+  temptory_libc_hdestroy_r(htab) hdestroy_r(htab)
+# define \
+  temptory_libc_hsearch(itm, act, rval, htab) hsearch_r(itm, act, rval, htab)
 //
 /* ****** ****** */
 

@@ -48,7 +48,13 @@ ATS_EXTERN_PREFIX "temptory_libc_"
 %} // end of [%{#]
 
 (* ****** ****** *)
-
+//
+(*
+typedef ieqz = int // succ/fail: 0/~0
+*)
+typedef inez = int // succ/fail: ~0/ 0
+//
+(* ****** ****** *)
 /*
 void
 *lfind
@@ -85,9 +91,11 @@ size_t size, int(*compar)(const void *, const void *)
 (* ****** ****** *)
 //
 abstflt
-ENTRY = $extype"ENTRY"
+ENTRY =
+$extype"atspre_ENTRY"
 abstflt
-ACTION = $extype"ACTION"
+ACTION =
+$extype"atspre_ACTION"
 //
 #macdef
 FIND =
@@ -124,14 +132,9 @@ ENTRY_get_data
 //
 // succ/fail: ~0/0
 //
-fun{}
-hcreate(nel: size): int
-(*
-fun{}
-hdestroy((*void*)): void
-*)
 fun
-hcreate(nel: size): int = "mac#%"
+hcreate
+(nel: size): inez = "mac#%"
 fun
 hdestroy((*void*)): void = "mac#%"
 //
@@ -146,6 +149,39 @@ hsearch_find
 fun{}
 hsearch_enter
 (k0: string, x0: string): cptr(ENTRY)
+//
+(* ****** ****** *)
+
+abstflt
+hsearch_data =
+$extype"atspre_hsearch_data"
+
+(* ****** ****** *)
+//
+fun
+hcreate_r
+( nel: size
+, htab
+: &hsearch_data? >> _ ): inez = "mac#%"
+//
+fun
+hdestroy_r
+( &hsearch_data >> _? ): void = "mac#%"
+//
+fun
+hsearch_r
+( itm: ENTRY
+, act: ACTION
+, rval: &cptr(ENTRY)? >> _
+, htab: &hsearch_data ): inez = "mac#%"
+//
+fun{}
+hsearch_r_find
+(k0: string, htab: &hsearch_data): cptr(ENTRY)
+fun{}
+hsearch_r_enter
+( k0: string
+, x0: string, htab: &hsearch_data): cptr(ENTRY)
 //
 (* ****** ****** *)
 

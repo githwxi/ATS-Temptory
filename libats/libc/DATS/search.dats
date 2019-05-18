@@ -75,4 +75,38 @@ hsearch(ENTRY_cons(k0, x0), ENTER)
 
 (* ****** ****** *)
 
+implement
+{}(*tmp*)
+hsearch_r_find
+(k0, htab) = let
+var
+rval:
+cptr(ENTRY)?
+val
+inez: int =
+hsearch_r
+(ENTRY_cons(k0), FIND, rval, htab)
+in
+if inez != 0 then rval else cptr0_null()
+end // end of [hsearch_r_find]
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+hsearch_r_enter
+(k0, x0, htab) = let
+var
+rval:
+cptr(ENTRY)?
+val
+inez: int =
+hsearch_r
+(ENTRY_cons(k0), ENTER, rval, htab)
+in
+if inez != 0 then rval else cptr0_null()
+end // end of [hsearch_r_enter]
+
+(* ****** ****** *)
+
 (* end of [search.dats] *)

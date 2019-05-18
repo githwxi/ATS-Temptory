@@ -184,6 +184,19 @@ ptr1_pred
 //
 (* ****** ****** *)
 //
+typedef
+cptr00(a:vtflt) = cptr0(cptr0(a))
+typedef
+cptr000(a:vtflt) = cptr0(cptr00(a))
+//
+(* ****** ****** *)
+//
+fun
+cptr0_null
+{a:vtflt}(): cptr0(a) = "mac#%"
+//
+(* ****** ****** *)
+//
 fun
 cptr0_iseqz
 {a:vtflt}

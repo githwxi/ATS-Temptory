@@ -32,6 +32,8 @@ hsearch_find("0")
 val () =
 assertloc(iseqz(cp))
 
+(* ****** ****** *)
+
 val cp =
 hsearch_enter("0", "0->a")
 val cp =
