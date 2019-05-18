@@ -993,40 +993,46 @@ end // end of [s2exp_uchar_int_t0ype]
 (* ****** ****** *)
 //
 implement
-the_float_kind = s2cstref_make "float_kind"
+the_float_kind = s2cstref_make "float_tk"
 implement
-the_double_kind = s2cstref_make "double_kind"
+the_double_kind = s2cstref_make "double_tk"
 implement
-the_ldouble_kind = s2cstref_make "ldouble_kind"
+the_ldouble_kind = s2cstref_make "ldouble_tk"
 //
 implement
 the_g0float_t0ype = s2cstref_make "g0float_t0ype"
 //
 local
 
-fun auxmain
-  (knd: s2cst): s2exp = let
-  val knd = s2exp_cst (knd)
-  val g0f = s2cstref_get_cst (the_g0float_t0ype)
+fun
+auxmain
+( knd
+: s2cst): s2exp = let
+//
+val knd =
+s2exp_cst(knd)
+val g0f =
+s2cstref_get_cst(the_g0float_t0ype)
+//
 in
-  s2exp_cstapp (g0f, list_sing (knd))
+  s2exp_cstapp(g0f, list_sing(knd))
 end // end of [auxmain]
 
 in // in of [local]
 
 implement
-s2exp_float_t0ype () =
-  auxmain (s2cstref_get_cst (the_float_kind))
+s2exp_float_t0ype() =
+  auxmain (s2cstref_get_cst(the_float_kind))
 // end of [s2exp_float_t0ype]
 
 implement
-s2exp_double_t0ype () =
-  auxmain (s2cstref_get_cst (the_double_kind))
+s2exp_double_t0ype() =
+  auxmain (s2cstref_get_cst(the_double_kind))
 // end of [s2exp_double_t0ype]
 
 implement
-s2exp_ldouble_t0ype () =
-  auxmain (s2cstref_get_cst (the_ldouble_kind))
+s2exp_ldouble_t0ype() =
+  auxmain (s2cstref_get_cst(the_ldouble_kind))
 // end of [s2exp_ldouble_t0ype]
 
 end // end of [local]

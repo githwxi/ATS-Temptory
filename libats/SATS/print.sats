@@ -57,38 +57,62 @@ print_newline((*void*)): void
 fun{}
 print_int(int): void
 fun{}
+print_sint(sint): void
+fun{}
 print_bool(bool): void
 fun{}
 print_char(char): void
-(*
 fun{}
 print_double(double): void
-*)
 fun{}
 print_string(string): void
 
 (* ****** ****** *)
 
+(*
 #symload print with print_int
+*)
+#symload print with print_sint
 #symload print with print_bool
 #symload print with print_char
-(*
 #symload print with print_double
-*)
 #symload print with print_string
 
 (* ****** ****** *)
-
+//
 fun{}
 print_uint(uint): void
+//
 fun{}
 print_lint(lint): void
-
-(* ****** ****** *)
-
+fun{}
+print_slint(slint): void
+//
+fun{}
+print_llint(llint): void
+fun{}
+print_sllint(sllint): void
+//
 #symload print with print_uint
+(*
 #symload print with print_lint
-
+*)
+#symload print with print_slint
+(*
+#symload print with print_llint
+*)
+#symload print with print_sllint
+//
+(* ****** ****** *)
+//
+fun{}
+print_float(float): void
+fun{}
+print_ldouble(ldouble): void
+//
+#symload print with print_float
+#symload print with print_ldouble
+//
 (* ****** ****** *)
 //
 fun

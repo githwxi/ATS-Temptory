@@ -75,10 +75,16 @@ $extfcall(void, "atspre_fflush", out)
 (* ****** ****** *)
 //
 implement
-fprint$val<int>(out, x) =
+fprint$val<sint>(out, x) =
 (
 $extfcall
 (void, "atspre_fprintf", out, "%i", x)
+)
+implement
+fprint$val<uint>(out, x) =
+(
+$extfcall
+(void, "atspre_fprintf", out, "%u", x)
 )
 //
 implement
@@ -111,19 +117,13 @@ end // end of [fprint$val<string]
 (* ****** ****** *)
 //
 implement
-fprint$val<uint>(out, x) =
-(
-  $extfcall
-  (void, "atspre_fprintf", out, "%u", x)
-)
-implement
-fprint$val<lint>(out, x) =
+fprint$val<ssize>(out, x) =
 (
   $extfcall
   (void, "atspre_fprintf", out, "%li", x)
 )
 implement
-fprint$val<ulint>(out, x) =
+fprint$val<usize>(out, x) =
 (
   $extfcall
   (void, "atspre_fprintf", out, "%lu", x)
@@ -135,10 +135,10 @@ fprint$val<slint>(out, x) =
   (void, "atspre_fprintf", out, "%li", x)
 )
 implement
-fprint$val<llint>(out, x) =
+fprint$val<ulint>(out, x) =
 (
   $extfcall
-  (void, "atspre_fprintf", out, "%lli", x)
+  (void, "atspre_fprintf", out, "%lu", x)
 )
 implement
 fprint$val<sllint>(out, x) =
@@ -156,22 +156,22 @@ fprint$val<ullint>(out, x) =
 (* ****** ****** *)
 
 implement
-fprint$val<float>(out, x) =
+fprint$val<float>(out, f0) =
 (
   $extfcall
-  (void, "atspre_fprintf", out, "%f", x)
+  (void, "atspre_fprintf", out, "%f", f0)
 )
 implement
-fprint$val<double>(out, x) =
+fprint$val<double>(out, f0) =
 (
   $extfcall
-  (void, "atspre_fprintf", out, "%f", x)
+  (void, "atspre_fprintf", out, "%f", f0)
 )
 implement
-fprint$val<ldouble>(out, x) =
+fprint$val<ldouble>(out, f0) =
 (
   $extfcall
-  (void, "atspre_fprintf", out, "%Lf", x)
+  (void, "atspre_fprintf", out, "%Lf", f0)
 )
 //
 (* ****** ****** *)

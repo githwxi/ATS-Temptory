@@ -70,14 +70,16 @@ implement
 print_int(x) = print$val<int>(x)
 implement
 {}(*tmp*)
+print_sint(x) = print$val<sint>(x)
+implement
+{}(*tmp*)
 print_bool(x) = print$val<bool>(x)
 implement
 {}(*tmp*)
 print_char(x) = print$val<char>(x)
-(*
 implement
+{}(*tmp*)
 print_double(f0) = print$val<double>(f0)
-*)
 implement
 {}(*tmp*)
 print_string(cs) = print$val<string>(cs)
@@ -86,10 +88,28 @@ print_string(cs) = print$val<string>(cs)
 
 implement
 {}(*tmp*)
-print_uint(x) = print$val<uint>(x)
+print_uint(u0) = print$val<uint>(u0)
 implement
 {}(*tmp*)
-print_lint(x) = print$val<lint>(x)
+print_lint(i0) = print$val<lint>(i0)
+implement
+{}(*tmp*)
+print_slint(i0) = print$val<slint>(i0)
+implement
+{}(*tmp*)
+print_llint(i0) = print$val<llint>(i0)
+implement
+{}(*tmp*)
+print_sllint(i0) = print$val<sllint>(i0)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+print_float(f0) = print$val<float>(f0)
+implement
+{}(*tmp*)
+print_ldouble(f0) = print$val<ldouble>(f0)
 
 (* ****** ****** *)
 //

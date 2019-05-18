@@ -244,16 +244,10 @@ g0float_t0ype(tknd:tflt) = tknd
 //
 sexpdef g0float = g0float_t0ype
 //
-(* ****** ****** *)
-
-typedef 
-float = g0float (float_tk)
+typedef float = g0float(float_tk)
+typedef double = g0float(double_tk)
+typedef ldouble = g0float(ldouble_tk)
 //
-typedef 
-double = g0float (double_tk)
-typedef 
-ldouble = g0float (ldouble_tk)
-
 (* ****** ****** *)
 //
 abstflt

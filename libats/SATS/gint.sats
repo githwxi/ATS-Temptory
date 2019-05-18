@@ -80,13 +80,14 @@ g1cast_sint_usize
 (x: sint(i)):<> usize(i) = "mac#%"
 //
 #symload
-cast with g0cast_sint_uint of 10
-#symload
-cast with g1cast_sint_uint of 12
-#symload
-cast with g1cast_sint_usize of 12
-#symload
 i2sz with g1cast_sint_usize of 12
+//
+#symload
+cast2uint with g0cast_sint_uint of 10
+#symload
+cast2uint with g1cast_sint_uint of 12
+#symload
+cast2usize with g1cast_sint_usize of 12
 //
 fun
 g0cast_sint_slint
@@ -97,9 +98,9 @@ g1cast_sint_slint
 (x: sint(i)):<> slint(i) = "mac#%"
 //
 #symload
-cast with g0cast_sint_slint of 10
+cast2slint with g0cast_sint_slint of 10
 #symload
-cast with g1cast_sint_slint of 12
+cast2slint with g1cast_sint_slint of 12
 //
 fun
 g0cast_slint_sllint
@@ -110,9 +111,9 @@ g1cast_slint_sllint
 (x: slint(i)):<> sllint(i) = "mac#%"
 //
 #symload
-cast with g0cast_slint_sllint of 10
+cast2sllint with g0cast_slint_sllint of 10
 #symload
-cast with g1cast_slint_sllint of 12
+cast2sllint with g1cast_slint_sllint of 12
 //
 (* ****** ****** *)
 //
