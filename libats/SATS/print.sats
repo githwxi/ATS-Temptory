@@ -87,21 +87,27 @@ fun{}
 print_lint(lint): void
 fun{}
 print_slint(slint): void
+fun{}
+print_ulint(ulint): void
 //
 fun{}
 print_llint(llint): void
 fun{}
 print_sllint(sllint): void
+fun{}
+print_ullint(ullint): void
 //
 #symload print with print_uint
 (*
 #symload print with print_lint
 *)
 #symload print with print_slint
+#symload print with print_ulint
 (*
 #symload print with print_llint
 *)
 #symload print with print_sllint
+#symload print with print_ullint
 //
 (* ****** ****** *)
 //

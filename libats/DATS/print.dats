@@ -97,10 +97,16 @@ implement
 print_slint(i0) = print$val<slint>(i0)
 implement
 {}(*tmp*)
+print_ulint(u0) = print$val<ulint>(u0)
+implement
+{}(*tmp*)
 print_llint(i0) = print$val<llint>(i0)
 implement
 {}(*tmp*)
 print_sllint(i0) = print$val<sllint>(i0)
+implement
+{}(*tmp*)
+print_ullint(u0) = print$val<ullint>(u0)
 
 (* ****** ****** *)
 
