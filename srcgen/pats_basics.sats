@@ -216,7 +216,7 @@ filprerr_ifdebug (x) =
 #define
 PATS_MAJOR_VERSION 0
 #define
-PATS_MINOR_VERSION 4
+PATS_MINOR_VERSION 0
 #define
 PATS_MICRO_VERSION 0
 //

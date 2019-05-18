@@ -58,6 +58,7 @@ typedef int atstype_int ;
 typedef int atstype_sint ;
 typedef unsigned int atstype_uint ;
 
+typedef long int atstype_lint ;
 typedef long int atstype_slint ;
 typedef unsigned long int atstype_ulint ;
 
@@ -65,6 +66,7 @@ typedef short int atstype_tint ;
 typedef unsigned short int atstype_utint ;
 
 typedef long long int atstype_llint ;
+typedef long long int atstype_sllint ;
 typedef unsigned long long int atstype_ullint ;
 
 /* ****** ****** */

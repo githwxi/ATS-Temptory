@@ -97,8 +97,10 @@ temptory_g1pred_usize(x) (x - 1)
 //
 /* ****** ****** */
 
+/*
 #define \
 temptory_g1cast_sint_usize(x) (x)
+*/
 
 /* ****** ****** */
 
@@ -331,6 +333,33 @@ temptory_g1gte_usize_sint1(x, y) ((x >= y) ? 1 : 0)
 temptory_g1neq_usize_sint1(x, y) ((x != y) ? 1 : 0)
 #define \
 temptory_g1cmp_usize_sint1(x, y) ( (x < y) ? -1 : (x > y) ? 1 : 0 )
+
+/* ****** ****** */
+
+ATSinline() atstype_uint
+temptory_g0cast_sint_uint
+  (atstype_sint x) { return ((atstype_uint)x) ; }
+
+ATSinline() atstype_uint
+temptory_g1cast_sint_uint
+  (atstype_sint x) { return ((atstype_uint)x) ; }
+
+ATSinline() atstype_slint
+temptory_g0cast_sint_slint
+  (atstype_sint x) { return ((atstype_slint)x) ; }
+
+ATSinline() atstype_slint
+temptory_g1cast_sint_slint
+  (atstype_sint x) { return ((atstype_slint)x) ; }
+
+ATSinline() atstype_sllint
+temptory_g0cast_slint_sllint
+  (atstype_slint x) { return ((atstype_sllint)x) ; }
+
+ATSinline() atstype_sllint
+temptory_g1cast_slint_sllint
+  (atstype_slint x) { return ((atstype_sllint)x) ; }
+
 
 /* ****** ****** */
 

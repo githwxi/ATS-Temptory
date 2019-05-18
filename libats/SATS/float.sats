@@ -39,6 +39,412 @@ ATS_PACKNAME "temptory."
 ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
+//
+fun
+{k1:tflt}
+{k2:tflt}
+g0float_cast
+(g0float(k1)):<> g0float(k2)
+//
+(* ****** ****** *)
+//
+fun
+g0cast_int_float
+(x: int):<> float = "mac#%"
+fun
+g0cast_int_double
+(x: int):<> double = "mac#%"
+fun
+g0cast_int_ldouble
+(x: int):<> ldouble = "mac#%"
+fun
+g0cast_lint_double
+(x: lint):<> double = "mac#%"
+//
+#symload
+cast with g0cast_int_float of 9
+#symload
+cast with g0cast_int_double of 9
+#symload
+cast with g0cast_int_ldouble of 9
+#symload
+cast with g0cast_lint_double of 9
+//
+fun
+g0cast_float_int
+(x: float):<> sint = "mac#%"
+fun
+g0cast_float_lint
+(x: float):<> lint = "mac#%"
+fun
+g0cast_float_llint
+(x: float):<> llint = "mac#%"
+//
+#symload
+cast with g0cast_float_int of 9
+#symload
+cast with g0cast_float_lint of 9
+#symload
+cast with g0cast_float_llint of 9
+//
+fun
+g0cast_double_int
+(x: double):<> sint = "mac#%"
+fun
+g0cast_double_lint
+(x: double):<> lint = "mac#%"
+fun
+g0cast_double_llint
+(x: double):<> llint = "mac#%"
+//
+#symload
+cast with g0cast_double_int of 9
+#symload
+cast with g0cast_double_lint of 9
+#symload
+cast with g0cast_double_llint of 9
+//
+fun
+g0cast_float_double
+(x: float):<> double = "mac#%"
+fun
+g0cast_double_float
+(x: double):<> float = "mac#%"
+//
+#symload
+cast with g0cast_float_double of 10
+#symload
+cast with g0cast_double_float of 12
+//
+(* ****** ****** *)
+//
+fun
+g0abs_float
+(x: float):<> float = "mac#%"
+#symload abs with g0abs_float of 10
+//
+fun
+g0abs_double
+(x: double):<> double = "mac#%"
+#symload abs with g0abs_double of 10
+//
+fun
+g0abs_ldouble
+(x: ldouble):<> ldouble = "mac#%"
+#symload abs with g0abs_ldouble of 10
+//
+(* ****** ****** *)
+//
+fun
+g0neg_float
+(x: float):<> float = "mac#%"
+fun
+g0neg_double
+(x: double):<> double = "mac#%"
+fun
+g0neg_ldouble
+(x: ldouble):<> ldouble = "mac#%"
+//
+#symload ~ with g0neg_float of 10
+#symload ~ with g0neg_double of 10
+#symload ~ with g0neg_ldouble of 10
+#symload neg with g0neg_float of 10
+#symload neg with g0neg_double of 10
+#symload neg with g0neg_ldouble of 10
+//
+(* ****** ****** *)
+//
+fun
+{k1:tflt}
+{k2:tflt}
+g0float_succ
+( g0float(k1) ):<> g0float(k2)
+//
+fun
+g0succ_float
+(x: float):<> float = "mac#%"
+#symload succ with g0succ_float of 10
+fun
+g0succ_double
+(x: double):<> double = "mac#%"
+#symload succ with g0succ_double of 10
+fun
+g0succ_ldouble
+(x: ldouble):<> ldouble = "mac#%"
+#symload succ with g0succ_ldouble of 10
+//
+(* ****** ****** *)
+//
+fun
+{k1:tflt}
+{k2:tflt}
+g0float_pred
+( g0float(k1) ):<> g0float(k2)
+//
+fun
+g0pred_float
+(x: float):<> float = "mac#%"
+#symload pred with g0pred_float of 10
+fun
+g0pred_double
+(x: double):<> double = "mac#%"
+#symload pred with g0pred_double of 10
+fun
+g0pred_ldouble
+(x: ldouble):<> ldouble = "mac#%"
+#symload pred with g0pred_ldouble of 10
+//
+(* ****** ****** *)
+//
+fun
+{k1
+,k2:tflt}
+{k3:tflt}
+g0float_add
+( g0float(k1)
+, g0float(k2)):<> g0float(k3)
+//
+(* ****** ****** *)
+//
+fun
+g0add_float_float
+( x: float
+, y: float):<> float = "mac#%"
+#symload + with g0add_float_float of 10
+fun
+g0add_double_double
+( x: double
+, y: double):<> double = "mac#%"
+#symload + with g0add_double_double of 10
+fun
+g0add_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> ldouble = "mac#%"
+#symload + with g0add_ldouble_ldouble of 10
+//
+(* ****** ****** *)
+//
+fun
+{k1
+,k2:tflt}
+{k3:tflt}
+g0float_sub
+( g0float(k1)
+, g0float(k2)):<> g0float(k3)
+//
+fun
+g0sub_float_float
+( x: float
+, y: float):<> float = "mac#%"
+#symload - with g0sub_float_float of 10
+fun
+g0sub_double_double
+( x: double
+, y: double):<> double = "mac#%"
+#symload - with g0sub_double_double of 10
+fun
+g0sub_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> ldouble = "mac#%"
+#symload - with g0sub_ldouble_ldouble of 10
+//
+(* ****** ****** *)
+//
+fun
+{k1
+,k2:tflt}
+{k3:tflt}
+g0float_mul
+( g0float(k1)
+, g0float(k2)):<> g0float(k3)
+fun
+g0mul_float_float
+( x: float
+, y: float):<> float = "mac#%"
+#symload * with g0mul_float_float of 10
+fun
+g0mul_double_double
+( x: double
+, y: double):<> double = "mac#%"
+#symload * with g0mul_double_double of 10
+fun
+g0mul_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> ldouble = "mac#%"
+#symload * with g0mul_ldouble_ldouble of 10
+//
+(* ****** ****** *)
+//
+fun
+{k1
+,k2:tflt}
+{k3:tflt}
+g0float_div
+( g0float(k1)
+, g0float(k2)):<> g0float(k3)
+//
+fun
+g0div_float_float
+( x: float
+, y: float):<> float = "mac#%"
+#symload / with g0div_float_float of 10
+fun
+g0div_double_double
+( x: double
+, y: double):<> double = "mac#%"
+#symload / with g0div_double_double of 10
+fun
+g0div_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> ldouble = "mac#%"
+#symload / with g0div_ldouble_ldouble of 10
+//
+(* ****** ****** *)
+
+fun
+g0mod_float_float
+( x: float
+, y: float):<> float = "mac#%"
+#symload % with g0mod_float_float of 10
+fun
+g0mod_double_double
+( x: double
+, y: double):<> double = "mac#%"
+#symload % with g0mod_double_double of 10
+fun
+g0mod_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> ldouble = "mac#%"
+#symload % with g0mod_ldouble_ldouble of 10
+
+(* ****** ****** *)
+//
+fun
+g0lt_float_float
+( x: float
+, y: float):<> bool = "mac#%"
+fun
+g0gt_float_float
+( x: float
+, y: float):<> bool = "mac#%"
+fun
+g0eq_float_float
+( x: float
+, y: float):<> bool = "mac#%"
+//
+fun
+g0lte_float_float
+( x: float
+, y: float):<> bool = "mac#%"
+fun
+g0gte_float_float
+( x: float
+, y: float):<> bool = "mac#%"
+fun
+g0neq_float_float
+( x: float
+, y: float):<> bool = "mac#%"
+//
+fun
+g0cmp_float_float
+( x: float
+, y: float):<> float = "mac#%"
+//
+#symload < with g0lt_float_float of 10
+#symload > with g0gt_float_float of 10
+#symload = with g0eq_float_float of 10
+#symload <= with g0lte_float_float of 10
+#symload >= with g0gte_float_float of 10
+#symload != with g0neq_float_float of 10
+(*
+#symload <=> with g0cmp_float_float of 10
+*)
+//
+(* ****** ****** *)
+//
+fun
+g0lt_double_double
+( x: double
+, y: double):<> bool = "mac#%"
+fun
+g0gt_double_double
+( x: double
+, y: double):<> bool = "mac#%"
+fun
+g0eq_double_double
+( x: double
+, y: double):<> bool = "mac#%"
+//
+fun
+g0lte_double_double
+( x: double
+, y: double):<> bool = "mac#%"
+fun
+g0gte_double_double
+( x: double
+, y: double):<> bool = "mac#%"
+fun
+g0neq_double_double
+( x: double
+, y: double):<> bool = "mac#%"
+//
+fun
+g0cmp_double_double
+( x: double
+, y: double):<> double = "mac#%"
+//
+#symload < with g0lt_double_double of 10
+#symload > with g0gt_double_double of 10
+#symload = with g0eq_double_double of 10
+#symload <= with g0lte_double_double of 10
+#symload >= with g0gte_double_double of 10
+#symload != with g0neq_double_double of 10
+(*
+#symload <=> with g0cmp_double_double of 10
+*)
+//
+(* ****** ****** *)
+//
+fun
+g0lt_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> bool = "mac#%"
+fun
+g0gt_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> bool = "mac#%"
+fun
+g0eq_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> bool = "mac#%"
+//
+fun
+g0lte_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> bool = "mac#%"
+fun
+g0gte_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> bool = "mac#%"
+fun
+g0neq_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> bool = "mac#%"
+//
+fun
+g0cmp_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> ldouble = "mac#%"
+//
+#symload < with g0lt_ldouble_ldouble of 10
+#symload > with g0gt_ldouble_ldouble of 10
+#symload = with g0eq_ldouble_ldouble of 10
+#symload <= with g0lte_ldouble_ldouble of 10
+#symload >= with g0gte_ldouble_ldouble of 10
+#symload != with g0neq_ldouble_ldouble of 10
+(*
+#symload <=> with g0cmp_ldouble_ldouble of 10
+*)
 
 (* ****** ****** *)
 
