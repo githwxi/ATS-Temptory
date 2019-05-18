@@ -442,7 +442,8 @@ $UN.castvwtp0{string0_vt}(cp0)
 //
 val n0 =
 $UN.cast{uint}(length(cs))
-val cp0 = $UN.calloc<char>(n0)
+val cp0 =
+$UN.calloc<char>(succ(n0))
 //
 val cp1 =
 (
@@ -476,7 +477,8 @@ $UN.castvwtp0{string0_vt}(cp0)
 //
 val n0 =
 $UN.cast{uint}(length(cs))
-val cp0 = $UN.calloc<char>(n0)
+val cp0 =
+$UN.calloc<char>(succ(n0))
 //
 val cp1 =
 (
