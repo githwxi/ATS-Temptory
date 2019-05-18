@@ -85,13 +85,24 @@ implement
 print_string(cs) = print$val<string>(cs)
 
 (* ****** ****** *)
-
+//
 implement
 {}(*tmp*)
 print_sint(i0) = print$val<sint>(i0)
 implement
 {}(*tmp*)
 print_uint(u0) = print$val<uint>(u0)
+//
+implement
+{}(*tmp*)
+print_size(i0) = print$val<size>(i0)
+implement
+{}(*tmp*)
+print_ssize(i0) = print$val<ssize>(i0)
+implement
+{}(*tmp*)
+print_usize(u0) = print$val<usize>(u0)
+//
 implement
 {}(*tmp*)
 print_lint(i0) = print$val<lint>(i0)
@@ -101,6 +112,7 @@ print_slint(i0) = print$val<slint>(i0)
 implement
 {}(*tmp*)
 print_ulint(u0) = print$val<ulint>(u0)
+//
 implement
 {}(*tmp*)
 print_llint(i0) = print$val<llint>(i0)
@@ -110,7 +122,7 @@ print_sllint(i0) = print$val<sllint>(i0)
 implement
 {}(*tmp*)
 print_ullint(u0) = print$val<ullint>(u0)
-
+//
 (* ****** ****** *)
 
 implement

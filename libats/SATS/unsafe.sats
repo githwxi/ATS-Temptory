@@ -34,7 +34,9 @@
 (* ****** ****** *)
 
 #define
-ATS_PACKNAME "LIBATS.unsafe"
+ATS_PACKNAME "temptory.unsafe."
+#define
+ATS_EXTERN_PREFIX "temptory_unsafe_"
 
 (* ****** ****** *)
 //
@@ -113,6 +115,23 @@ ptr0_exch(p: ptr, x: &INV(a) >> a):<!wrt> void
 (* ****** ****** *)
 //
 fun
+mfree(ptr): void = "mac#%"
+//
+fun
+malloc_sint
+{n:nat}(sint(n)): ptr0 = "mac#%"
+fun
+malloc_uint(uint): ptr0 = "mac#%"
+fun
+malloc_size(size): ptr0 = "mac#%"
+//
+#symload malloc with malloc_sint
+#symload malloc with malloc_uint
+#symload malloc with malloc_size
+//
+(* ****** ****** *)
+//
+fun
 {a:vtflt}
 cptr0_get(cp: cptr(a)): (a)
 fun
@@ -127,8 +146,9 @@ cfree
 {a:vtflt}(cptr(a)): void
 fun
 {a:vtflt}
-calloc_int
-{n:nat}(asz: int(n)): cptr(a)
+calloc_sint
+{n:nat}
+(asz: sint(n)): cptr(a)
 fun
 {a:vtflt}
 calloc_uint(uint): cptr(a)
@@ -136,9 +156,15 @@ fun
 {a:vtflt}
 calloc_size(size): cptr(a)
 //
-#symload calloc with calloc_int of 10
+#symload calloc with calloc_sint of 10
 #symload calloc with calloc_uint of 10
 #symload calloc with calloc_size of 10
+//
+(* ****** ****** *)
+//
+praxi
+topize_at
+{a:vtflt}{l:addr}(pf: a @ l): a? @ l
 //
 (* ****** ****** *)
 //
@@ -146,14 +172,14 @@ calloc_size(size): cptr(a)
 //
 castfn
 ptr0_vtake
-  {a:vtflt}
+{a:vtflt}
 (
   p0: ptr
 ) :<> [l:addr] (a@l, a@l -<lin,prf> void | ptr(l))
 castfn
 ptr1_vtake
-  {a:vtflt}{l:addr}
-  (p0: ptr(l)):<> (a@l, a@l -<lin,prf> void | ptr(l))
+{a:vtflt}{l:addr}
+(p0: ptr(l)):<> (a@l, a@l -<lin,prf> void | ptr(l))
 //
 (* ****** ****** *)
 

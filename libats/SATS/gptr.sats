@@ -180,6 +180,22 @@ ptr1_pred
 //
 (* ****** ****** *)
 //
+fun
+{a:vtflt}
+ptr1_alloc
+((*void*)):
+[l:agz](a? @ l, mfree_gc_v(l) | ptr(l))
+// end of [ptr_alloc]
+fun//{}
+ptr1_mfree
+{a:tflt}{l:addr}
+( pfgc
+: mfree_gc_v(l)
+, pfat: (a) @ l | p: ptr(l)):<!wrt> void = "mac#%"
+// end of [ptr1_mfree]
+//
+(* ****** ****** *)
+//
 // HX: for C-pointers
 //
 (* ****** ****** *)

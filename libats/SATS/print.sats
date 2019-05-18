@@ -86,6 +86,13 @@ fun{}
 print_uint(uint): void
 //
 fun{}
+print_size(size): void
+fun{}
+print_ssize(ssize): void
+fun{}
+print_usize(usize): void
+//
+fun{}
 print_lint(lint): void
 fun{}
 print_slint(slint): void
@@ -101,11 +108,15 @@ print_ullint(ullint): void
 //
 #symload print with print_sint
 #symload print with print_uint
+//
+#symload print with print_ssize
+#symload print with print_usize
 (*
 #symload print with print_lint
 *)
 #symload print with print_slint
 #symload print with print_ulint
+//
 (*
 #symload print with print_llint
 *)

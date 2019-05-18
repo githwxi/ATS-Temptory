@@ -109,16 +109,16 @@ $extfcall(void, "ATS_MFREE", cp0)
 //
 implement
 {a}(*tmp*)
-calloc_int(asz) =
-$extfcall(cptr0(a), "ATS_MALLOC", asz*sizeof<a>)
+calloc_sint(asz) =
+$extfcall(cptr0(a), "ATS_CALLOC", asz, sizeof<a>)
 implement
 {a}(*tmp*)
 calloc_uint(asz) =
-$extfcall(cptr0(a), "ATS_MALLOC", asz*sizeof<a>)
+$extfcall(cptr0(a), "ATS_CALLOC", asz, sizeof<a>)
 implement
 {a}(*tmp*)
 calloc_size(asz) =
-$extfcall(cptr0(a), "ATS_MALLOC", asz*sizeof<a>)
+$extfcall(cptr0(a), "ATS_CALLOC", asz, sizeof<a>)
 //
 (* ****** ****** *)
 

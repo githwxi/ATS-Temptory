@@ -83,6 +83,13 @@ $UN.cast
 (* ****** ****** *)
 //
 implement
+{a}(*tmp*)
+ptr1_alloc() =
+$UN.castvwtp0($UN.calloc_uint<a>(1u))
+//
+(* ****** ****** *)
+//
+implement
 {a}//tmp
 cptr0_succ(cp) =
 (

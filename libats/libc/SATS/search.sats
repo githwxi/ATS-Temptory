@@ -107,26 +107,27 @@ $extval(ACTION, "ENTER")
 (* ****** ****** *)
 //
 fun
+ENTRY_get_key
+(cptr(ENTRY)): string = "mac#%"
+fun
+ENTRY_get_data
+(cptr(ENTRY)): (ptr0) = "mac#%"
+//
+#symload .key with ENTRY_get_key
+#symload .data with ENTRY_get_data
+//
+fun
 ENTRY_cons_key
 (k0: string): ENTRY = "mac#%"
 fun
 ENTRY_cons_key_data
-(k0: string, x0: string): ENTRY = "mac#%"
+{data:tbox}
+(k0: string, x0: data): ENTRY = "mac#%"
 //
 #symload
 ENTRY_cons with ENTRY_cons_key
 #symload
 ENTRY_cons with ENTRY_cons_key_data
-//
-fun
-ENTRY_get_key
-  (kx: cptr(ENTRY)): string = "mac#%"
-fun
-ENTRY_get_data
-  (kx: cptr(ENTRY)): string = "mac#%"
-//
-#symload .key with ENTRY_get_key
-#symload .data with ENTRY_get_data
 //
 (* ****** ****** *)
 //
@@ -146,9 +147,10 @@ hsearch
 fun{}
 hsearch_find
 (k0: string): cptr(ENTRY)
-fun{}
+fun
+{data:tbox}
 hsearch_enter
-(k0: string, x0: string): cptr(ENTRY)
+(k0: string, x0: data): cptr(ENTRY)
 //
 (* ****** ****** *)
 
@@ -178,10 +180,71 @@ hsearch_r
 fun{}
 hsearch_r_find
 (k0: string, htab: &hsearch_data): cptr(ENTRY)
-fun{}
+fun
+{data:tbox}
 hsearch_r_enter
 ( k0: string
-, x0: string, htab: &hsearch_data): cptr(ENTRY)
+, x0: (data), htab: &hsearch_data): cptr(ENTRY)
+//
+(* ****** ****** *)
+//
+abstbox
+htabref_tbox =
+cptr0(hsearch_data)
+typedef htabref = htabref_tbox
+//
+absvtbox
+htabptr0_vtbox =
+cptr0(hsearch_data)
+vtypedef htabptr0 = htabptr0_vtbox
+//
+(* ****** ****** *)
+//
+fun{}
+htabref_create
+(cap: size): optn0_vt(htabref)
+fun{}
+htabref_destroy(htabref): void
+fun{}
+htabref_find
+( ht
+: htabref, k0: string): optn0_vt(cptr(ENTRY))
+fun
+{data:tbox}
+htabref_enter
+( ht: htabref
+, k0: string, x0: data): optn0_vt(cptr(ENTRY))
+//
+#symload find with htabref_find
+#symload enter with htabref_enter
+(*
+#symload create with htabref_create
+*)
+#symload destroy with htabref_destroy
+//
+(* ****** ****** *)
+//
+fun{}
+htabptr0_create
+(cap: size): optn0_vt(htabptr0)
+fun{}
+htabptr0_destroy(htabptr0): void
+fun{}
+htabptr0_find
+( ht
+: !htabptr0, k0: string): optn0_vt(cptr(ENTRY))
+fun
+{data:tbox}
+htabptr0_enter
+( ht: !htabptr0
+, k0: string, x0: (data)): optn0_vt(cptr(ENTRY))
+//
+#symload find with htabptr0_find
+#symload enter with htabptr0_enter
+(*
+#symload create with htabptr0_create
+*)
+#symload destroy with htabptr0_destroy
 //
 (* ****** ****** *)
 

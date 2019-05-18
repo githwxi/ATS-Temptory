@@ -164,6 +164,8 @@ atspre_argv_set_at
 #include "libats/CATS/basics_char.cats"
 #include "libats/CATS/basics_float.cats"
 #include "libats/CATS/basics_string.cats"
+
+#include "libats/CATS/basics_unsafe.cats"
     
 /* ****** ****** */
 

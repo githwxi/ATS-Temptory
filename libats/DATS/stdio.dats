@@ -100,6 +100,19 @@ $extfcall
 )
 //
 implement
+fprint$val<ssize>(out, x) =
+(
+$extfcall
+(void, "atspre_fprintf", out, "%li", x)
+)
+implement
+fprint$val<usize>(out, x) =
+(
+$extfcall
+(void, "atspre_fprintf", out, "%lu", x)
+)
+//
+implement
 fprint$val<bool>(out, x) =
 (
   $extfcall

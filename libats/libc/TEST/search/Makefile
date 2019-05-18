@@ -8,8 +8,11 @@ RMF=rm -f
 
 ######
 
-TEMPOPT= $(TEMPTORY)/bin/tempopt
-TEMPACC= $(TEMPTORY)/bin/tempacc
+TEMPOPT= \
+$(TEMPTORY)/bin/tempopt
+TEMPACC= \
+$(TEMPTORY)/bin/tempacc \
+-DATS_MEMALLOC_LIBC -D_GNU_SOURCE
 
 ######
 

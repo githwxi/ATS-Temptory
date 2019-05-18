@@ -39,6 +39,10 @@
 
 (* ****** ****** *)
 
+#staload "libats/SATS/print.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/search.sats"
 
 (* ****** ****** *)
@@ -69,7 +73,7 @@ implement
 hsearch_find(k0) =
 hsearch(ENTRY_cons(k0), FIND)
 implement
-{}(*tmp*)
+{a}(*tmp*)
 hsearch_enter(k0, x0) =
 hsearch(ENTRY_cons(k0, x0), ENTER)
 
@@ -93,7 +97,7 @@ end // end of [hsearch_r_find]
 (* ****** ****** *)
 
 implement
-{}(*tmp*)
+{a}(*tmp*)
 hsearch_r_enter
 (k0, x0, htab) = let
 var
@@ -102,10 +106,134 @@ cptr(ENTRY)?
 val
 inez: int =
 hsearch_r
-(ENTRY_cons(k0), ENTER, rval, htab)
+(ENTRY_cons(k0, x0), ENTER, rval, htab)
 in
 if inez != 0 then rval else cptr0_null()
 end // end of [hsearch_r_enter]
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+htabref_create(nel) =
+let
+//
+val
+(pf0, fpf | p0) =
+ptr1_alloc<hsearch_data>()
+val inez = hcreate_r(nel, !p0)
+//
+(*
+val
+((*void*)) =
+println!("htabref_create: p0 = ", p0)
+val
+((*void*)) =
+println!("htabref_create: nel = ", nel)
+val
+((*void*)) =
+println!("htabref_create: inez = ", inez)
+val
+((*void*)) =
+(
+$extfcall
+(void, "perror", "htabref_create: errno = "); println!()
+)
+*)
+//
+in
+if
+(inez = 0)
+then
+let
+val () =
+ptr1_mfree
+(fpf, $UN.topize_at(pf0) | p0)
+in
+optn0_vt_none()
+end
+else
+optn0_vt_some($UN.castvwtp0((pf0, fpf | p0)))
+end // end of [htabref_create]
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+htabref_destroy(htab) =
+$extfcall(void, "atspre_hdestroy_r", htab)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+htabref_find
+(htab, k0) = let
+//
+val p0 = $UN.cast{ptr}(htab)
+val (pf0, fpf | p0) =
+$UN.ptr0_vtake{hsearch_data}(p0)
+//
+val cp0 = hsearch_r_find<>(k0, !p0)
+//
+in
+let
+prval () = fpf(pf0)
+in
+  if
+  iseqz(cp0)
+  then optn0_vt_none() else optn0_vt_some(cp0)
+end
+end // end of [htabref_find]
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+htabref_enter
+(htab, k0, x0) = let
+//
+val p0 = $UN.cast{ptr}(htab)
+val (pf0, fpf | p0) =
+$UN.ptr0_vtake{hsearch_data}(p0)
+//
+val cp0 = hsearch_r_enter<a>(k0, x0, !p0)
+//
+in
+let
+prval () = fpf(pf0)
+in
+  if
+  iseqz(cp0)
+  then optn0_vt_none() else optn0_vt_some(cp0)
+end
+end // end of [htabref_enter]
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+htabptr0_create
+  (nel) =
+  $UN.castvwtp0(htabref_create(nel))
+implement
+{}(*tmp*)
+htabptr0_destroy
+  (htab) =
+  htabref_destroy($UN.castvwtp0(htab))
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+htabptr0_find
+(htab, k0) =
+htabref_find($UN.castvwtp1(htab), k0)
+implement
+{a}(*tmp*)
+htabptr0_enter
+(htab, k0, x0) =
+htabref_enter($UN.castvwtp1(htab), k0, x0)
 
 (* ****** ****** *)
 

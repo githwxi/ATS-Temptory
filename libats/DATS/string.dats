@@ -126,7 +126,9 @@ implement
 string0_alloc_size
   (n0) = cp where
 {
-val cp = $UN.calloc<char>(succ(n0))
+val cp =
+ptr2cptr{char}
+($UN.malloc(succ(n0)))
 val () = $UN.cptr0_set(cp+n0, CNUL)
 }
 implement
@@ -134,7 +136,9 @@ implement
 string0_alloc_sint
   (n0) = cp where
 {
-val cp = $UN.calloc<char>(succ(n0))
+val cp =
+ptr2cptr{char}
+($UN.malloc(succ(n0)))
 val () = $UN.cptr0_set(cp+n0, CNUL)
 }
 //
@@ -441,9 +445,12 @@ $UN.castvwtp0{string0_vt}(cp0)
 {
 //
 val n0 =
-$UN.cast{uint}(length(cs))
+length(cs)
+val n0 =
+$UN.cast{uint}(n0)
 val cp0 =
-$UN.calloc<char>(succ(n0))
+ptr2cptr{char}
+($UN.malloc(succ(n0)))
 //
 val cp1 =
 (

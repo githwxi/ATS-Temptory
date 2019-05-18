@@ -33,58 +33,18 @@
 //
 /* ****** ****** */
 
-#ifndef TEMPTORY_LIBC_CATS_SEARCH
-#define TEMPTORY_LIBC_SATS_SEARCH
+#define \
+temptory_unsafe_mfree(ptr) ATS_MFREE(ptr)
 
 /* ****** ****** */
 
-#include <errno.h>
-#include <search.h>
-
-/* ****** ****** */
-//
-typedef ENTRY atspre_ENTRY;
-typedef ACTION atspre_ACTION;
-//
-typedef \
-struct hsearch_data atspre_hsearch_data;
-//
-/* ****** ****** */
-
-# define atspre_lfind lfind
-# define atspre_hdestroy_r hdestroy_r
+#define \
+temptory_unsafe_malloc_sint(bsz) ATS_MALLOC(bsz)
+#define \
+temptory_unsafe_malloc_uint(bsz) ATS_MALLOC(bsz)
+#define \
+temptory_unsafe_malloc_size(bsz) ATS_MALLOC(bsz)
 
 /* ****** ****** */
 
-# define \
-  temptory_libc_ENTRY_get_key(kx) (((ENTRY*)kx)->key)
-# define \
-  temptory_libc_ENTRY_get_data(kx) (((ENTRY*)kx)->data)
-//
-# define \
-  temptory_libc_ENTRY_cons_key(k0) ((ENTRY){k0,(void*)0})
-# define \
-  temptory_libc_ENTRY_cons_key_data(k0, x0) ((ENTRY){k0,x0})
-//
-/* ****** ****** */
-//
-# define temptory_libc_hdestroy() hdestroy()
-# define temptory_libc_hcreate(nel) hcreate(nel)
-# define temptory_libc_hsearch(ent, act) hsearch(ent, act)
-//
-/* ****** ****** */
-//
-# define \
-  temptory_libc_hdestroy_r(htab) hdestroy_r(htab)
-# define \
-  temptory_libc_hcreate_r(nel, htab) hcreate_r(nel, htab)
-# define \
-  temptory_libc_hsearch_r(ent, act, rval, htab) hsearch_r(ent, act, (ENTRY**)rval, htab)
-//
-/* ****** ****** */
-
-# endif// #ifndef TEMPTORY_LIBC_CATS_SEARCH
-
-/* ****** ****** */
-
-/* end of [search.cats] */
+/* end of [basics_unsafe.cats] */
