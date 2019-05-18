@@ -128,6 +128,51 @@ fprint$val<ulint>(out, x) =
   $extfcall
   (void, "atspre_fprintf", out, "%lu", x)
 )
+implement
+fprint$val<slint>(out, x) =
+(
+  $extfcall
+  (void, "atspre_fprintf", out, "%li", x)
+)
+implement
+fprint$val<llint>(out, x) =
+(
+  $extfcall
+  (void, "atspre_fprintf", out, "%lli", x)
+)
+implement
+fprint$val<sllint>(out, x) =
+(
+  $extfcall
+  (void, "atspre_fprintf", out, "%lli", x)
+)
+implement
+fprint$val<ullint>(out, x) =
+(
+  $extfcall
+  (void, "atspre_fprintf", out, "%llu", x)
+)
+
+(* ****** ****** *)
+
+implement
+fprint$val<float>(out, x) =
+(
+  $extfcall
+  (void, "atspre_fprintf", out, "%f", x)
+)
+implement
+fprint$val<double>(out, x) =
+(
+  $extfcall
+  (void, "atspre_fprintf", out, "%f", x)
+)
+implement
+fprint$val<ldouble>(out, x) =
+(
+  $extfcall
+  (void, "atspre_fprintf", out, "%Lf", x)
+)
 //
 (* ****** ****** *)
 

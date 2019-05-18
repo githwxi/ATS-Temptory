@@ -226,6 +226,32 @@ typedef
 Sizelte(i:int) = [a:int | a <= i] size(a)
 
 (* ****** ****** *)
+
+abstflt 
+float_tk = $extype"atstype_float"
+abstflt
+double_tk = $extype"atstype_double"
+abstflt
+ldouble_tk = $extype"atstype_ldouble"
+
+(* ****** ****** *)
+//
+abstflt
+g0float_t0ype(tknd:tflt) = tknd
+//
+sexpdef g0float = g0float_t0ype
+//
+(* ****** ****** *)
+
+typedef 
+float = g0float (float_tk)
+//
+typedef 
+double = g0float (double_tk)
+typedef 
+ldouble = g0float (ldouble_tk)
+
+(* ****** ****** *)
 //
 abstflt
 bool_t0ype = $extype"atstype_bool"
