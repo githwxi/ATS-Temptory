@@ -113,6 +113,11 @@ val () =
 println!("blue: cp = ", cptr2ptr(cp))
 
 val cp =
+hsearch_find("foobar")
+val () =
+println!("foobar: cp = ", cptr2ptr(cp))
+
+val cp =
 hsearch_find("squash")
 val () =
 println!("squash: cp = ", cptr2ptr(cp))
