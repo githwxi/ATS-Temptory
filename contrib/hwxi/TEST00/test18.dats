@@ -68,7 +68,58 @@ in
 end
 
 (* ****** ****** *)
+//
+val
+inez =
+hcreate(i2sz(128*1024))
+//
+val () = assertloc(inez != 0)
+//
+(* ****** ****** *)
 
+typedef word = string
+
+(* ****** ****** *)
+
+val-
+~some_vt(words) =
+FILEref_open_opt
+("/usr/share/dict/words", "r")
+//
+val
+words =
+FILEref_streamize_word(words)
+//
+val () =
+(
+stream_vt_foreach0<word>(words)
+) where
+{
+implement
+stream_vt_foreach0$work<word>(w0) =
+ignoret
+(hsearch_enter<ptr>(w0, ptr0_null()))
+}
+//
+(* ****** ****** *)
+
+val cp =
+hsearch_find("red")
+val () =
+println!("red: cp = ", cptr2ptr(cp))
+val cp =
+hsearch_find("blue")
+val () =
+println!("blue: cp = ", cptr2ptr(cp))
+
+val cp =
+hsearch_find("squash")
+val () =
+println!("squash: cp = ", cptr2ptr(cp))
+val cp =
+hsearch_find("zucchini")
+val () =
+println!("zucchini: cp = ", cptr2ptr(cp))
 
 (* ****** ****** *)
 

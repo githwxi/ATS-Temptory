@@ -63,6 +63,11 @@ g1ofg0_ptr
 (* ****** ****** *)
 //
 fun
+ptr0_null(): ptr0 = "mac#%"
+//
+(* ****** ****** *)
+//
+fun
 g0lt_ptr_ptr
 (ptr, ptr):<> bool = "mac#%"
 fun
@@ -201,9 +206,15 @@ ptr1_mfree
 (* ****** ****** *)
 //
 typedef
-cptr00(a:vtflt) = cptr0(cptr0(a))
+cptr00
+(a:vtflt) = cptr0(cptr0(a))
 typedef
-cptr000(a:vtflt) = cptr0(cptr00(a))
+cptr000
+(a:vtflt) = cptr0(cptr00(a))
+//
+(* ****** ****** *)
+//
+#symload ptrof with cptr2ptr
 //
 (* ****** ****** *)
 //

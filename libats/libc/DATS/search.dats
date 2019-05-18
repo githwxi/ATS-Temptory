@@ -157,17 +157,58 @@ optn0_vt_some($UN.castvwtp0((pf0, fpf | p0)))
 end // end of [htabref_create]
 
 (* ****** ****** *)
-
+//
 implement
 {}(*tmp*)
 htabref_destroy(htab) =
+(
+$UN.mfree($UN.cast{ptr}(htab))
+) where
+{
+val () =
 $extfcall(void, "atspre_hdestroy_r", htab)
-
+} (* end of [htabref_destroy] *)
+//
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
 htabref_find
+(htab, k0) = let
+//
+val p0 = $UN.cast{ptr}(htab)
+val (pf0, fpf | p0) =
+$UN.ptr0_vtake{hsearch_data}(p0)
+//
+val cp0 = hsearch_r_find<>(k0, !p0)
+//
+in
+  let prval () = fpf(pf0) in cp0 end
+end // end of [htabref_find]
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+htabref_enter
+(htab, k0, x0) = let
+//
+val p0 = $UN.cast{ptr}(htab)
+val (pf0, fpf | p0) =
+$UN.ptr0_vtake{hsearch_data}(p0)
+//
+val cp0 =
+  hsearch_r_enter<a>(k0, x0, !p0)
+//
+in
+  let prval () = fpf(pf0) in cp0 end
+end // end of [htabref_enter]
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+htabref_find_opt
 (htab, k0) = let
 //
 val p0 = $UN.cast{ptr}(htab)
@@ -184,13 +225,11 @@ in
   iseqz(cp0)
   then optn0_vt_none() else optn0_vt_some(cp0)
 end
-end // end of [htabref_find]
-
-(* ****** ****** *)
+end // end of [htabref_find_opt]
 
 implement
 {a}(*tmp*)
-htabref_enter
+htabref_enter_opt
 (htab, k0, x0) = let
 //
 val p0 = $UN.cast{ptr}(htab)
@@ -207,7 +246,7 @@ in
   iseqz(cp0)
   then optn0_vt_none() else optn0_vt_some(cp0)
 end
-end // end of [htabref_enter]
+end // end of [htabref_enter_opt]
 
 (* ****** ****** *)
 //
@@ -223,18 +262,37 @@ htabptr0_destroy
   htabref_destroy($UN.castvwtp0(htab))
 //
 (* ****** ****** *)
-
+//
 implement
 {}(*tmp*)
 htabptr0_find
 (htab, k0) =
-htabref_find($UN.castvwtp1(htab), k0)
+(
+  htabref_find($UN.castvwtp1(htab), k0)
+)
+implement
+{}(*tmp*)
+htabptr0_find_opt
+(htab, k0) =
+(
+  htabref_find_opt($UN.castvwtp1(htab), k0)
+)
+//
 implement
 {a}(*tmp*)
 htabptr0_enter
 (htab, k0, x0) =
-htabref_enter($UN.castvwtp1(htab), k0, x0)
-
+(
+  htabref_enter($UN.castvwtp1(htab), k0, x0)
+)
+implement
+{a}(*tmp*)
+htabptr0_enter_opt
+(htab, k0, x0) =
+(
+  htabref_enter_opt($UN.castvwtp1(htab), k0, x0)
+)
+//
 (* ****** ****** *)
 
 (* end of [search.dats] *)

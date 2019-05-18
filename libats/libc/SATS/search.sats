@@ -208,19 +208,32 @@ htabref_destroy(htabref): void
 fun{}
 htabref_find
 ( ht
+: htabref, k0: string): cptr(ENTRY)
+fun{}
+htabref_find_opt
+( ht
 : htabref, k0: string): optn0_vt(cptr(ENTRY))
 fun
 {data:tbox}
 htabref_enter
 ( ht: htabref
+, k0: string, x0: data): cptr(ENTRY)
+fun
+{data:tbox}
+htabref_enter_opt
+( ht: htabref
 , k0: string, x0: data): optn0_vt(cptr(ENTRY))
 //
-#symload find with htabref_find
-#symload enter with htabref_enter
 (*
 #symload create with htabref_create
 *)
 #symload destroy with htabref_destroy
+//
+#symload find with htabref_find
+#symload find_opt with htabref_find_opt
+//
+#symload enter with htabref_enter
+#symload enter_opt with htabref_enter_opt
 //
 (* ****** ****** *)
 //
@@ -232,19 +245,32 @@ htabptr0_destroy(htabptr0): void
 fun{}
 htabptr0_find
 ( ht
+: !htabptr0, k0: string): cptr(ENTRY)
+fun{}
+htabptr0_find_opt
+( ht
 : !htabptr0, k0: string): optn0_vt(cptr(ENTRY))
 fun
 {data:tbox}
 htabptr0_enter
 ( ht: !htabptr0
+, k0: string, x0: (data)): cptr(ENTRY)
+fun
+{data:tbox}
+htabptr0_enter_opt
+( ht: !htabptr0
 , k0: string, x0: (data)): optn0_vt(cptr(ENTRY))
 //
-#symload find with htabptr0_find
-#symload enter with htabptr0_enter
 (*
 #symload create with htabptr0_create
 *)
 #symload destroy with htabptr0_destroy
+//
+#symload find with htabptr0_find
+#symload find_opt with htabptr0_find_opt
+//
+#symload enter with htabptr0_enter
+#symload enter_opt with htabptr0_enter_opt
 //
 (* ****** ****** *)
 

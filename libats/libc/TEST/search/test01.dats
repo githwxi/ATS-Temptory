@@ -61,36 +61,36 @@ val-
 ~some0_vt(ht) =
 htabref_create(i2sz(1024))
 //
-val-
-~none0_vt() = find(ht, "0")
-val-
-~none0_vt() = find(ht, "1")
-val-
-~none0_vt() = find(ht, "2")
+val () =
+assertloc(iseqz(find(ht, "0")))
+val () =
+assertloc(iseqz(find(ht, "1")))
+val () =
+assertloc(iseqz(find(ht, "2")))
 //
 val-
 ~some0_vt(cp) =
-enter(ht, "0", "0 -> a")
+ enter_opt(ht, "0", "0 -> a")
 val-
 ~some0_vt(cp) =
-enter(ht, "1", "1 -> b")
+ enter_opt(ht, "1", "1 -> b")
 //
 val-
-~some0_vt(cp) = find(ht, "1")
+~some0_vt(cp) = find_opt(ht, "1")
 val () =
 println!
 ("cp.data() = ", $UN.cast{string}(cp.data()))
 val-
-~some0_vt(cp) = find(ht, "0")
+~some0_vt(cp) = find_opt(ht, "0")
 val () =
 println!
 ("cp.data() = ", $UN.cast{string}(cp.data()))
 //
-val-~none0_vt() = find(ht, "2")
+val-~none0_vt() = find_opt(ht, "2")
 //
 (* ****** ****** *)
 
-val () = htabref_destroy(ht)
+val ((*void*)) = htabref_destroy(ht)
 
 (* ****** ****** *)
 
