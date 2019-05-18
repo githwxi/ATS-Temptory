@@ -131,6 +131,38 @@ string0_indexof
 (* ****** ****** *)
 //
 fun{}
+string0_alloc_size
+  (bsz: size): cptr0(char)
+fun{}
+string0_alloc_sint
+  {n:nat}(int(n)): cptr0(char)
+//
+#symload
+string0_alloc with string0_alloc_size
+#symload
+string0_alloc with string0_alloc_sint
+//
+(* ****** ****** *)
+//
+fun{}
+string0_map
+(src: string): string
+fun{}
+string0_map$fopr(char): char
+//
+fun{}
+string0_tolower
+(src: string): string
+fun{}
+string0_toupper
+(src: string): string
+//
+#symload tolower with string0_tolower
+#symload toupper with string0_toupper
+//
+(* ****** ****** *)
+//
+fun{}
 string0_implode
 (cs: list0(char)): string
 fun{}

@@ -116,6 +116,30 @@ char0_chr: sint -<> char = "mac#%"
 (* ****** ****** *)
 //
 fun
+char0_islower
+  (c0: char):<> bool = "mac#%"
+fun
+char0_isupper
+  (c0: char):<> bool = "mac#%"
+//
+#symload islower with char0_islower
+#symload isupper with char0_isupper
+//
+(* ****** ****** *)
+//
+fun
+char0_tolower
+  (c0: char):<> char = "mac#%"
+fun
+char0_toupper
+  (c0: char):<> char = "mac#%"
+//
+#symload tolower with char0_tolower
+#symload toupper with char0_toupper
+//
+(* ****** ****** *)
+//
+fun
 char0_isalpha(char):<> bool = "mac#%"
 fun
 char0_isalnum(char):<> bool = "mac#%"
@@ -133,20 +157,6 @@ fun
 char0_isspace(char):<> bool = "mac#%"
 fun
 char0_isxdigit(char):<> bool = "mac#%"
-//
-(* ****** ****** *)
-//
-fun
-char0_islower(char):<> bool = "mac#%"
-fun
-char0_isupper(char):<> bool = "mac#%"
-//
-(* ****** ****** *)
-//
-fun
-char0_tolower(char):<> char = "mac#%"
-fun
-char0_toupper(char):<> char = "mac#%"
 //
 (* ****** ****** *)
 

@@ -128,6 +128,8 @@ fun
 stream_vt_listize
 (xs: stream_vt(INV(x0))): list0_vt(x0)
 //
+#symload listize with stream_vt_listize
+//
 (* ****** ****** *)
 //
 fun

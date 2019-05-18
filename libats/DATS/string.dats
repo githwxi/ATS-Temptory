@@ -120,6 +120,76 @@ $effmask_all
 )
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string0_alloc_size
+  (n0) = cp where
+{
+val cp = $UN.calloc<char>(succ(n0))
+val () = $UN.cptr0_set(cp+n0, CNUL)
+}
+implement
+{}(*tmp*)
+string0_alloc_sint
+  (n0) = cp where
+{
+val cp = $UN.calloc<char>(succ(n0))
+val () = $UN.cptr0_set(cp+n0, CNUL)
+}
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_map(cs) =
+(
+  $UN.cast{string0}(pa)
+) where
+{
+val n0 = length(cs)
+val n0 = $UN.cast{Nat}(n0)
+val pa = string0_alloc(n0)
+val pz =
+(
+  string0_foldleft<r0>(cs, pa)
+) where
+{
+  typedef r0 = cptr0(char)
+  implement
+  string0_foldleft$fopr<r0>(cp, c0) =
+  let
+    val () =
+    $UN.cptr0_set
+    (cp, string0_map$fopr<>(c0)) in succ(cp)
+  end
+} (* end of [val] *)
+} (* end of [string0_map] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_tolower(cs) =
+(
+  string0_map<>(cs)
+) where
+{
+  implement
+  string0_map$fopr<>(c0) = tolower(c0)
+}
+implement
+{}(*tmp*)
+string0_toupper(cs) =
+(
+  string0_map<>(cs)
+) where
+{
+  implement
+  string0_map$fopr<>(c0) = toupper(c0)
+}
+
+(* ****** ****** *)
 
 implement
 {}(*tmp*)

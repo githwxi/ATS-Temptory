@@ -202,7 +202,10 @@ typedef
 ullint(i:int) = g1int_int_t0ype(ullint_tk, i)
 //
 (* ****** ****** *)
-
+//
+typedef
+Nat = [a:int | a >= 0] int(a)
+//
 typedef
 Intgt(i:int) = [a:int | a > i] int(a)
 typedef
@@ -215,7 +218,7 @@ typedef
 Natlt(i:int) = [a:nat | a < i] int(a)
 typedef
 Natlte(i:int) = [a:nat | a <= i] int(a)
-
+//
 typedef
 Sizegt(i:int) = [a:int | a > i] size(a)
 typedef
@@ -224,7 +227,7 @@ typedef
 Sizelt(i:int) = [a:int | a < i] size(a)
 typedef
 Sizelte(i:int) = [a:int | a <= i] size(a)
-
+//
 (* ****** ****** *)
 //
 abstflt

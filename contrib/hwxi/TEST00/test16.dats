@@ -14,6 +14,11 @@
 implement main0() = ()
 
 (* ****** ****** *)
+
+typedef word = string
+typedef nword = (int, word)
+
+(* ****** ****** *)
 //
 val
 MobyDick = "DATA/2701-0.txt"
@@ -25,14 +30,19 @@ val
 (MobyDick) =
 FILEref_streamize_word(MobyDick)
 val
-(MobyDick) = stream_vt_listize(MobyDick)
+(MobyDick) =
+(
+glseq_map0_list<
+stream_vt(word)><word><word>(MobyDick)
+) where
+{
+implement
+glseq_map0$fopr<word><word>(x0) = tolower(x0)
+}
 val
-(MobyDick) = list0_vt_mergesort(MobyDick)
+(MobyDick) = mergesort(MobyDick)
 //
 (* ****** ****** *)
-
-typedef word = string
-typedef nword = (int, word)
 
 val nwordlst =
 (
