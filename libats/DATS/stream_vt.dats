@@ -803,6 +803,43 @@ end // end of [let]
 
 implement
 {x0}(*tmp*)
+stream_vt_forall0_ref
+  (xs) =
+  (loop(xs)) where
+{
+fun
+loop
+(xs: stream_vt(x0)): bool =
+(
+let
+val nx = !xs
+in
+case+ nx of
+|
+~stream_vt_nil() => true
+|
+@stream_vt_cons(x0, xs) =>
+ let
+ val
+ test =
+ stream_vt_forall0_ref$test<x0>(x0)
+ in
+   if
+   test
+   then
+   let
+   val xs = xs in free@(nx); loop(xs)
+   end
+   else (lazy_vt_free(xs); free@(nx); false)
+ end // end of [stream_vt_cons]
+end // end of [let]
+) (* end of [loop] *)
+} (* end of [stream_vt_forall0_ref] *)
+
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
 stream_vt_foreach0_ref
   (xs) =
   (loop(xs)) where
