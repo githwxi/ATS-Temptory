@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,80 +28,98 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2019
+// Start Time: February, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
 #define
-ATS_PACKNAME "temptory."
+ATS_PACKNAME "temptory.libc."
 #define
-ATS_EXTERN_PREFIX "temptory_"
+ATS_EXTERN_PREFIX "temptory_libc_"
 
 (* ****** ****** *)
 
 %{#
 //
-#ifdef \
-TEMPTORY_LIBATS_SATS_STDIO
-#else
-#define \
-TEMPTORY_LIBATS_SATS_STDIO
-#include <stdio.h>
-typedef char *charptr;
-#endif // TEMPTORY_LIBATS_SATS_STDIO
+#include \
+"libats/libc/CATS/dirent.cats"
 //
-%}(* end of [%{#] *)
-
-(* ****** ****** *)
-
-typedef
-charptr = $extype"charptr"
+%} // end of [%{#]
 
 (* ****** ****** *)
 //
-abstbox
-FILEref_tbox = ptr
-typedef
-FILEref = FILEref_tbox
-//
-absvtbox
-FILEptr0_vtbox = ptr
-absvtbox
-FILEptr1_vtbox(l:addr) = ptr
-vtypedef
-FILEptr0 = FILEptr0_vtbox
-vtypedef
-FILEptr1(l:addr) = FILEptr1_vtbox(l)
-//
-sexpdef FILEptr = FILEptr0
-sexpdef FILEptr = FILEptr1
+typedef ieqz = int // succ/fail: 0/~0
+(*
+typedef inez = int // succ/fail: ~0/ 0
+*)
 //
 (* ****** ****** *)
 //
-fun{}
-the_stdin(): FILEref // STDIN
-fun{}
-the_stdout(): FILEref // STDOUT
-fun{}
-the_stderr(): FILEref // STDERR
+abstflt
+DIR = $extype"atspre_DIR"
+abstflt
+dirent = $extype"atspre_dirent"
+//
+(* ****** ****** *)
+
+fun
+dirent_get_d_name
+(ent: &dirent): cptr(char) = "mac#%"
+fun
+direntp_get_d_name
+(ent: cptr(dirent)): cptr(char) = "mac#%"
+//
+#symload .d_name with dirent_get_d_name
+#symload .d_name with direntp_get_d_name
 //
 (* ****** ****** *)
 //
 fun
-{a:vtflt}
-fprint$val
-(out: FILEref, x: !a): void
+opendir(strcst): cptr0(DIR) = "mac#%"
 fun
-{a:vtflt}
-fprint$ref
-(out: FILEref, x: &INV(a)): void
+closedir(cptr(DIR)): (ieqz) = "mac#%"
+//
+(* ****** ****** *)
+//
+fun
+readdir
+(dir: cptr0(DIR)): cptr0(dirent) = "mac#%"
 //
 (* ****** ****** *)
 
-fun{}
-fprint_newline(out: FILEref): void
+fun
+readdir_r
+( dir: cptr(DIR)
+, ent: &dirent? >> _
+, res: &cptr(dirent)? >> _): ieqz = "mac#%"
 
 (* ****** ****** *)
 
-(* end of [stdio.sats] *)
+fun
+telldir
+(dir: cptr(DIR)): llint = "mac#%"
+fun
+seekdir
+(dir: cptr(DIR), loc: llint): void = "mac#%"
+
+(* ****** ****** *)
+
+fun rewinddir(dir: cptr(DIR)): void = "mac#%"
+
+(* ****** ****** *)
+//
+fun{}
+readdir_forall(cptr(DIR)): bool
+fun{}
+readdir_forall$test(ent: cptr(dirent)): bool
+//
+(* ****** ****** *)
+//
+fun{}
+readdir_r_streamize
+  (dir: cptr(DIR)): stream_vt(dirent)
+//
+(* ****** ****** *)
+
+(* end of [dirent.sats] *)

@@ -244,5 +244,23 @@ fun
 stream_vt_ifilter(stream_vt(INV(x0))): stream_vt(x0)
 //
 (* ****** ****** *)
+//
+fun
+{x0:vtflt}
+stream_vt_forall0_ref
+(xs: stream_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+stream_vt_forall0_ref$test(&x0 >> _?): bool
+//
+fun
+{x0:vtflt}
+stream_vt_foreach0_ref
+(xs: stream_vt(INV(x0))): void
+fun
+{x0:vtflt}
+stream_vt_foreach0_ref$work(&x0 >> _?): void
+//
+(* ****** ****** *)
 
 (* end of [stream_vt.sats] *)

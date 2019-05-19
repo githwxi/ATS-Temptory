@@ -46,12 +46,12 @@ ATS_EXTERN_PREFIX "temptory_"
 //
 fun{}
 FILEref_open_opt
-( fpath: string
-, fmode: string): optn0_vt(FILEref)
+( fpath: strcst
+, fmode: strcst): optn0_vt(FILEref)
 fun{}
 FILEptr0_open_opt
-( fpath: string
-, fmode: string): optn0_vt(FILEptr0)
+( fpath: strcst
+, fmode: strcst): optn0_vt(FILEptr0)
 //
 (* ****** ****** *)
 

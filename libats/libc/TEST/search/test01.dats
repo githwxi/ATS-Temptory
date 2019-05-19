@@ -1,5 +1,5 @@
 /*
-HX: for testing search
+HX: for testing [search]
 */
 
 (* ****** ****** *)

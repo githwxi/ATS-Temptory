@@ -143,12 +143,26 @@ val () = $UN.cptr0_set(cp+n0, CNUL)
 }
 //
 (* ****** ****** *)
-
+//
 implement
 {}(*tmp*)
 string0_map(cs) =
 (
-  $UN.cast{string0}(pa)
+string0_vt2t
+(
+string0_map_vt(cs)
+)
+) where
+{
+implement
+string0_map_vt$fopr<>(c0) = string0_map$fopr<>(c0)
+}
+//
+implement
+{}(*tmp*)
+string0_map_vt(cs) =
+(
+$UN.castvwtp0{string0_vt}(pa)
 ) where
 {
 val n0 = length(cs)
@@ -168,10 +182,20 @@ val pz =
     (cp, string0_map$fopr<>(c0)) in succ(cp)
   end
 } (* end of [val] *)
-} (* end of [string0_map] *)
-
+} (* end of [string0_map_vt] *)
+//
 (* ****** ****** *)
 
+implement
+{}(*tmp*)
+string0_copy(cs) =
+(
+  string0_map<>(cs)
+) where
+{
+  implement
+  string0_map$fopr<>(c0) = (c0)
+}
 implement
 {}(*tmp*)
 string0_tolower(cs) =

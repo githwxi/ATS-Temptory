@@ -334,6 +334,11 @@ sexpdef
 string = string_int_t1ype
 //
 sexpdef
+strcst = string_t1ype // const
+sexpdef
+strcst = string_int_t1ype // const
+//
+sexpdef
 string0 = string_t1ype
 sexpdef
 string1 = string_int_t1ype

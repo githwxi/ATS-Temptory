@@ -149,6 +149,20 @@ string0_map
 (src: string): string
 fun{}
 string0_map$fopr(char): char
+fun{}
+string0_map_vt
+(src: string): string_vt
+fun{}
+string0_map_vt$fopr(char): char
+//
+fun{}
+string0_copy
+(src: string): string
+fun{}
+string0_copy_vt
+(src: string): string_vt
+//
+(* ****** ****** *)
 //
 fun{}
 string0_tolower

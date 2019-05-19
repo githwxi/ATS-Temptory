@@ -801,4 +801,34 @@ end // end of [let]
 
 (* ****** ****** *)
 
+implement
+{x0}(*tmp*)
+stream_vt_foreach0_ref
+  (xs) =
+  (loop(xs)) where
+{
+fun
+loop
+(xs: stream_vt(x0)): void =
+(
+let
+val nx = !xs
+in
+case+ nx of
+|
+~stream_vt_nil() => ()
+|
+@stream_vt_cons(x0, xs) =>
+ let
+ val () =
+ stream_vt_foreach0_ref$work<x0>(x0)
+ in
+ let val xs = xs in free@(nx); loop(xs) end
+ end // end of [stream_vt_cons]
+end // end of [let]
+) (* end of [loop] *)
+} (* end of [stream_vt_foreach0_ref] *)
+
+(* ****** ****** *)
+
 (* end of [stream_vt.dats] *)
