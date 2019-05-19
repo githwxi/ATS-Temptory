@@ -61,6 +61,18 @@ list0_vt_sing
 //
 (* ****** ****** *)
 //
+fun{}
+list0_vt_iseqz
+{x0:tflt}(!list0_vt(x0)):<> bool
+fun{}
+list0_vt_isneqz
+{x0:tflt}(!list0_vt(x0)):<> bool
+//
+#symload iseqz with list0_vt_iseqz
+#symload isneqz with list0_vt_isneqz
+//
+(* ****** ****** *)
+//
 fun
 {x0:vtflt}
 list0_vt_length

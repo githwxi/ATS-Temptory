@@ -51,14 +51,14 @@
 (* ****** ****** *)
 
 implement
-{x0}//tmp
+{}(*tmp*)
 list0_iseqz(xs) =
 (
 case+ xs of
 | list0_nil _ => tt | list0_cons _ => ff
 )
 implement
-{x0}//tmp
+{}(*tmp*)
 list0_isneqz(xs) =
 (
 case+ xs of

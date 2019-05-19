@@ -60,6 +60,23 @@ list0_vt_cons(x0, list0_vt_nil())
 (* ****** ****** *)
 
 implement
+{}(*tmp*)
+list0_vt_iseqz(xs) =
+(
+case+ xs of
+| list0_vt_nil _ => tt | list0_vt_cons _ => ff
+)
+implement
+{}(*tmp*)
+list0_vt_isneqz(xs) =
+(
+case+ xs of
+| list0_vt_nil _ => ff | list0_vt_cons _ => tt
+)
+
+(* ****** ****** *)
+
+implement
 {x0}//tmp
 list0_vt_length(xs) =
 (

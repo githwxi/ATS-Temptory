@@ -66,12 +66,12 @@ list0_vt2t
 //
 (* ****** ****** *)
 //
-fun
-{x0:tflt}
-list0_iseqz(list0(x0)):<> bool
-fun
-{x0:tflt}
-list0_isneqz(list0(x0)):<> bool
+fun{}
+list0_iseqz
+{x0:tflt}(list0(x0)):<> bool
+fun{}
+list0_isneqz
+{x0:tflt}(list0(x0)):<> bool
 //
 #symload iseqz with list0_iseqz
 #symload isneqz with list0_isneqz
