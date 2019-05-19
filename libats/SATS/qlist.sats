@@ -40,10 +40,10 @@ ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 //
-abstbox
-qlist_vtflt_tbox(a:vtflt+) = ptr
+absvtbox
+qlist_vtflt_vtbox(a:vtflt+) = ptr
 vtypedef
-qlist(a:vtflt) = qlist_vtflt_tbox(a)
+qlist(a:vtflt) = qlist_vtflt_vtbox(a)
 //
 (* ****** ****** *)
 //
@@ -56,6 +56,21 @@ qlist_isneqz
 //
 #symload iseqz with qlist_iseqz
 #symload isneqz with qlist_isneqz
+//
+(* ****** ****** *)
+//
+fun{}
+qlist_print$beg(): void
+fun{}
+qlist_print$end(): void
+fun{}
+qlist_print$sep(): void
+fun
+{a:vtflt}
+qlist_print
+(xs: !qlist(INV(a))): void
+//
+#symload print with qlist_print
 //
 (* ****** ****** *)
 //

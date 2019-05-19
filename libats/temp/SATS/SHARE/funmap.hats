@@ -170,7 +170,6 @@ fun{}
 funmap_print$sep(): void // ";"
 fun{}
 funmap_print$mapto(): void // "->"
-//
 fun
 {k0,x0:tflt}
 funmap_print

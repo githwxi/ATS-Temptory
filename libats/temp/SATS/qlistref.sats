@@ -35,115 +35,115 @@
 //
 #define
 ATS_PACKNAME
-"temptory.temp.slistref"
+"temptory.temp.qlistref"
 //
 (* ****** ****** *)
 //
 abstbox
-slistref_vtflt_tbox(a:vtflt) = ptr
+qlistref_vtflt_tbox(a:vtflt) = ptr
 //
 typedef
-slistref(a:vtflt) = slistref_vtflt_tbox(a)
+qlistref(a:vtflt) = qlistref_vtflt_tbox(a)
 //
 (* ****** ****** *)
 //
 fun{}
-slistref_nil
-  {a:vtflt}((*void*)): slistref(a)
+qlistref_nil
+  {a:vtflt}((*void*)): qlistref(a)
 fun{}
-slistref_make_nil
-  {a:vtflt}((*void*)): slistref(a)
+qlistref_make_nil
+  {a:vtflt}((*void*)): qlistref(a)
 //
 (* ****** ****** *)
 //
 fun
 {a:vtflt}
-slistref_iseqz(slistref(a)): bool
+qlistref_iseqz(qlistref(a)): bool
 fun
 {a:vtflt}
-slistref_isneqz(slistref(a)): bool
+qlistref_isneqz(qlistref(a)): bool
 //
-#symload iseqz with slistref_iseqz
-#symload isneqz with slistref_isneqz
+#symload iseqz with qlistref_iseqz
+#symload isneqz with qlistref_isneqz
 //
 (* ****** ****** *)
 //
 fun
 {a:vtflt}
-slistref_size(slistref(a)): size
+qlistref_size(qlistref(a)): size
 fun
 {a:vtflt}
-slistref_length(slistref(a)): sint
+qlistref_length(qlistref(a)): sint
 //
-#symload size with slistref_size
-#symload length with slistref_length
+#symload size with qlistref_size
+#symload length with qlistref_length
 //
 (* ****** ****** *)
 //
 fun
 {a:vtflt}
-slistref_insert
-(stk: slistref(a), x0: a): void
+qlistref_insert
+(stk: qlistref(a), x0: a): void
 //
-#symload insert with slistref_insert
+#symload insert with qlistref_insert
 //
 (* ****** ****** *)
 //
 fun
 {a:vtflt}
-slistref_takeout
-  (stk: slistref(a)): (a)
+qlistref_takeout
+  (stk: qlistref(a)): (a)
 fun
 {a:vtflt}
-slistref_takeout_opt
-  (stk: slistref(a)): optn0_vt(a)
+qlistref_takeout_opt
+  (stk: qlistref(a)): optn0_vt(a)
 fun
 {a:vtflt}
-slistref_takeout_all
-  (stk: slistref(a)): list0_vt(a)
+qlistref_takeout_all
+  (stk: qlistref(a)): list0_vt(a)
 //
 #symload
-takeout with slistref_takeout
+takeout with qlistref_takeout
 #symload
-takeout_opt with slistref_takeout_opt
+takeout_opt with qlistref_takeout_opt
 #symload
-takeout_all with slistref_takeout_all
+takeout_all with qlistref_takeout_all
 //
 (* ****** ****** *)
 //
 fun{}
-slistref_print$beg(): void // "("
+qlistref_print$beg(): void // "("
 fun{}
-slistref_print$end(): void // ")"
+qlistref_print$end(): void // ")"
 fun{}
-slistref_print$sep(): void // ";"
+qlistref_print$sep(): void // ";"
 //
 fun
 {a:vtflt}
-slistref_print(slistref(a)): void
+qlistref_print(qlistref(a)): void
 //
-#symload print with slistref_print
-//
-(* ****** ****** *)
-//
-fun
-{x0:vtflt}
-slistref_forall1
-(stk: slistref(x0)): bool
-fun
-{x0:vtflt}
-slistref_forall1$test(x0: !x0): bool
+#symload print with qlistref_print
 //
 (* ****** ****** *)
 //
 fun
 {x0:vtflt}
-slistref_foreach1
-(stk: slistref(x0)): void
+qlistref_forall1
+(stk: qlistref(x0)): bool
 fun
 {x0:vtflt}
-slistref_foreach1$work(x0: !x0): void
+qlistref_forall1$test(x0: !x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+qlistref_foreach1
+(stk: qlistref(x0)): void
+fun
+{x0:vtflt}
+qlistref_foreach1$work(x0: !x0): void
 //
 (* ****** ****** *)
 
-(* end of [slistref.sats] *)
+(* end of [qlistref.sats] *)

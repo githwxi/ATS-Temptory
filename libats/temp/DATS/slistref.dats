@@ -280,15 +280,6 @@ end // end of [slistref_foreach1]
 end // end of [local]
 
 (* ****** ****** *)
-//
-implement
-slistref_print$beg<>() = print("(")
-implement
-slistref_print$end<>() = print(")")
-implement
-slistref_print$sep<>() = print(",")
-//
-(* ****** ****** *)
 
 implement
 {x0}(*tmp*)
@@ -321,6 +312,15 @@ slistref_foreach1$work<x0>
 } (* end of [where] *)
 } (* end of [slistref_print] *)
 
+(* ****** ****** *)
+//
+implement
+slistref_print$beg<>() = print("(")
+implement
+slistref_print$end<>() = print(")")
+implement
+slistref_print$sep<>() = print(",")
+//
 (* ****** ****** *)
 //
 implement
