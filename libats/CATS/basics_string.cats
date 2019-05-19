@@ -36,6 +36,16 @@
 #define temptory_strcmp strcmp
 
 /* ****** ****** */
+/*
+ATSinline()
+atstype_bool
+atspre_string_equal
+( atstype_string cs1
+, atstype_string cs2 )
+{ return \
+  (strcmp(cs1, cs2) == 0) ? 1 : 0 ; }
+*/
+/* ****** ****** */
 //
 #define \
 temptory_string0_vt_free(cs) ATS_MFREE(cs)

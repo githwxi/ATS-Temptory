@@ -49,6 +49,11 @@
 #staload
 "libats/SATS/list_vt.sats"
 
+#staload
+"libats/SATS/print.sats"
+#staload
+"libats/SATS/stdio.sats"
+
 (* ****** ****** *)
 //
 #staload
@@ -203,7 +208,7 @@ fun loop
 //
 case+ kxs1 of
 |
-list0_nil() =>
+list0_nil((*void*)) =>
 let
   val () =
   list0_vt_free<kx>(kxs2)
@@ -212,8 +217,7 @@ in
   { prval () = opt_none{x0}(r0) }
 end // end of [list0_nil]
 |
-list0_cons
-(kx1, kxs1) =>
+list0_cons(kx1, kxs1) =>
 (
   if
   equal_key_key<k0>(k0, kx1.0)
@@ -226,7 +230,7 @@ list0_cons
     val () =
     m0 :=
     (
-    list0_vt_foldleft0<kx>(kxs2, kxs1)
+    list0_vt_foldleft0<kx><r0>(kxs2, kxs1)
     ) where
     {
     typedef r0 = list0(kx)

@@ -35,10 +35,14 @@
 
 implement
 {k0}(*tmp*)
-equal_key_key(k1, k2) = gequal$val<k0>(k1, k2)
+equal_key_key
+(k1, k2) =
+gequal$val<k0>(k1, k2)
 implement
 {k0}(*tmp*)
-compare_key_key(k1, k2) = gcompare$val<k0>(k1, k2)
+compare_key_key
+(k1, k2) =
+gcompare$val<k0>(k1, k2)
 
 (* ****** ****** *)
 //
@@ -158,6 +162,52 @@ optn0_vt_none{x0}((*void*))
 { prval () = opt_unnone{x0}(res) }
 //
 end // end of [funmap_takeout_opt]
+
+(* ****** ****** *)
+//
+implement
+funmap_print$beg<>() = print("(")
+implement
+funmap_print$end<>() = print(")")
+implement
+funmap_print$sep<>() = print(",")
+implement
+funmap_print$mapto<>() = print("->")
+//
+(* ****** ****** *)
+
+implement
+{k0,x0:tflt}
+funmap_print(map) =
+(
+funmap_print$beg<>();
+funmap_foreach<k0,x0>(map);
+funmap_print$end<>();
+) where
+{
+//
+var i0 = (0:int)
+//
+val p0 =
+$UN.cast{ref(int)}(addr@i0)
+//
+implement
+funmap_foreach$work<k0,x0>(k0, x0) =
+(
+let
+val i0 = !p0
+val () = !p0 := i0 + 1
+in
+if
+(i0 > 0)
+then
+funmap_print$sep<>();
+//
+print$val<k0>(k0); funmap_print$mapto<>(); print$val<x0>(x0);
+//
+end
+) (* end of [where] *)
+} (* end of [funmap_print] *)
 
 (* ****** ****** *)
 

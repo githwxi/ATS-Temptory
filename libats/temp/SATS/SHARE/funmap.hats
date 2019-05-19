@@ -86,6 +86,9 @@ fun
 {k0,x0:tflt}
 funmap_length(m0: map(k0, INV(x0))): (int)
 //
+#symload size with funmap_size
+#symload length with funmap_length
+//
 (* ****** ****** *)
 //
 fun
@@ -98,6 +101,9 @@ fun
 {k0,x0:tflt}
 funmap_search_opt
 (m0: map(k0, INV(x0)), k0: k0): optn0_vt(x0)
+//
+#symload search with funmap_search
+#symload search_opt with funmap_search_opt
 //
 (* ****** ****** *)
 //
@@ -115,34 +121,21 @@ funmap_insert
 , r0: &x0? >> opt(x0, b)): #[b:bool] bool(b)
 fun
 {k0,x0:tflt}
+funmap_insert_any
+(m0: &map(k0, INV(x0)) >> _, k0, x0): void
+fun
+{k0,x0:tflt}
 funmap_insert_opt
-(m0: &map(k0, INV(x0)) >> _, k0, x0): optn0_vt(x0)
-
-(* ****** ****** *)
+( m0
+: &map(k0, INV(x0)) >> _, k0, x0): optn0_vt(x0)
 //
 // HX-2012-12:
-// insertion always happens regardless whether
-// [k0] is associated with some item in [map] or not
+// insertion always happens regardless
+// whether [k0] is associated in [map]
 //
-fun
-{k0,x0:tflt}
-funmap_insert_any
-(m0: &map(k0, INV(x0)) >> _, k0: k0, x0: x0): void
-//
-(* ****** ****** *)
-//
-fun
-{k0,x0:tflt}
-funmap_takeout
-( m0
-: &map(k0, INV(x0)) >> _
-, k0: k0
-, res: &x0? >> opt(x0, b)) : #[b:bool] bool(b)
-//
-fun
-{k0,x0:tflt}
-funmap_takeout_opt
-(map: &map(k0, INV(x0)) >> _, k0: k0) : optn0_vt (x0)
+#symload insert with funmap_insert
+#symload insert_any with funmap_insert_any
+#symload insert_opt with funmap_insert_opt
 //
 (* ****** ****** *)
 //
@@ -150,24 +143,40 @@ fun
 {k0,x0:tflt}
 funmap_remove
 (map: &map(k0, INV(x0)) >> _, k0: k0): bool
+fun
+{k0,x0:tflt}
+funmap_takeout
+( m0
+: &map(k0, INV(x0)) >> _
+, k0: k0
+, res: &x0? >> opt(x0, b)) : #[b:bool] bool(b)
+fun
+{k0,x0:tflt}
+funmap_takeout_opt
+( map
+: &map(k0, INV(x0)) >> _, k0: k0) : optn0_vt(x0)
+//
+#symload remove with funmap_remove
+#symload takeout with funmap_takeout
+#symload takeout_opt with funmap_takeout_opt
 //
 (* ****** ****** *)
 //
 fun{}
-print_funmap$beg(): void // "("
+funmap_print$beg(): void // "("
 fun{}
-print_funmap$end(): void // ")"
+funmap_print$end(): void // ")"
 fun{}
-print_funmap$sep(): void // ";"
+funmap_print$sep(): void // ";"
 fun{}
-print_funmap$mapto(): void // "->"
+funmap_print$mapto(): void // "->"
 //
 fun
 {k0,x0:tflt}
-print_funmap
+funmap_print
 (map: map(k0, INV(x0))): void
 //
-#symload print with print_funmap
+#symload print with funmap_print
 //
 (* ****** ****** *)
 //

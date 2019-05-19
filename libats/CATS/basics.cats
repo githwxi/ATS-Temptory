@@ -69,6 +69,10 @@
 
 /* ****** ****** */
 
+#define atspre_strcmp strcmp
+
+/* ****** ****** */
+
 #define atspre_qsort qsort
 #define atspre_bsearch bsearch
 

@@ -1,0 +1,19 @@
+######
+#
+# A simple Makefile
+#
+######
+
+all:: testall
+
+######
+
+testall:: ; \
+make -C funmap -f Makefile testall
+
+######
+
+cleanall:: ; \
+make -C funmap -f Makefile cleanall
+
+###### end of [Makefile] ######

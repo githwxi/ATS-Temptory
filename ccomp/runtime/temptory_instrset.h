@@ -244,7 +244,9 @@ ATSfunclo_clo(pmv, targs, tres) ((tres(*)targs)(((ATStyclo()*)pmv)->cfun))
 #define ATSCKpat_bool(pmv, pat) ((pmv)==pat)
 #define ATSCKpat_char(pmv, pat) ((pmv)==pat)
 #define ATSCKpat_float(pmv, pat) ((pmv)==pat)
-#define ATSCKpat_string(pmv, pat) (atspre_string_equal(pmv, pat))
+//
+#define \
+ATSCKpat_string(pmv, pat) (atspre_strcmp(pmv, pat)==0)
 //
 /*
 ** a datatype should not contain more than 1024 constructors!

@@ -49,14 +49,14 @@ implement
 gseq_iseqz<list0(x0)><x0>
   (xs) =
 (
-  list0_iseqz<x0>(xs)
+  list0_iseqz<>{x0}(xs)
 ) (* end of [gseq_iseqz] *)
 implement
 (x0:tflt)
 gseq_isneqz<list0(x0)><x0>
   (xs) =
 (
-  list0_isneqz<x0>(xs)
+  list0_isneqz<>{x0}(xs)
 ) (* end of [gseq_isneqz] *)
 implement
 (x0:tflt)

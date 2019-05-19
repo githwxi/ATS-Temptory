@@ -173,16 +173,28 @@ gfree$val<a>(x0) = ((*void*))
 (* ****** ****** *)
 //
 implement
+{a}(*tmp*)
+gequal$ref
+(x1, x2) =
+gequal$val<a>(x1, x2)
+implement
+{a}(*tmp*)
+gequal$val(x1, x2) =
+(gcompare$val<a>(x1, x2) = 0)
+//
+(* ****** ****** *)
+//
+implement
 {a:vtflt}
 gcompare$ref
 (x1, x2) = gcompare$val<a>(x1, x2)
 //
 implement
 gcompare$val<sint>
-(i1, i2) = g0cmp_sint_sint(i2, i2)
+(i1, i2) = g0cmp_sint_sint(i1, i2)
 implement
 gcompare$val<uint>
-(u1, u2) = g0cmp_uint_uint(u2, u2)
+(u1, u2) = g0cmp_uint_uint(u1, u2)
 implement
 gcompare$val<string>
 (cs1, cs2) = $effmask_all(strcmp(cs1, cs2))
