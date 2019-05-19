@@ -212,22 +212,6 @@ end
 (* ****** ****** *)
 
 implement
-{k0,x0}
-funmap_forall
-  (map) =
-(
-list0_forall<kx>(map)
-) where
-{
-//
-typedef kx = (k0, x0)
-//
-implement
-list0_forall$test<kx>(kx) = funmap_forall$test(kx.0, kx.1)
-//
-} (* end of [funmap_forall] *)
-
-implement
 (k0:tflt
 ,x0:tflt)
 gseq_forall<map(k0,x0)><(k0, x0)>(map) =
@@ -236,39 +220,21 @@ gseq_forall<map(k0,x0)><(k0, x0)>(map) =
 ) where
 {
 implement
-funmap_forall$test<k0,x0>
-  (k0, x0) = gseq_forall$test<(k0,x0)>((k0, x0))
+funmap_forall$test<k0,x0>(k0,x0) = gseq_forall$test<(k0,x0)>((k0,x0))
 }
 
 (* ****** ****** *)
 
 implement
-{k0,x0}
-funmap_foreach
-  (map) =
-(
-list0_foreach<kx>(map)
-) where
-{
-//
-typedef kx = (k0, x0)
-//
-implement
-list0_foreach$work<kx>(kx) = funmap_foreach$work(kx.0, kx.1)
-//
-} (* end of [funmap_foreach] *)
-
-implement
 (k0:tflt
 ,x0:tflt)
-gseq_foreach<map(k0,x0)><(k0, x0)>(map) =
+gseq_foreach<map(k0,x0)><(k0,x0)>(map) =
 (
   funmap_foreach<k0,x0>(map)
 ) where
 {
 implement
-funmap_foreach$work<k0,x0>
-  (k0, x0) = gseq_foreach$work<(k0,x0)>((k0, x0))
+funmap_foreach$work<k0,x0>(k0,x0) = gseq_foreach$work<(k0,x0)>((k0,x0))
 }
 
 (* ****** ****** *)
