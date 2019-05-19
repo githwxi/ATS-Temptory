@@ -42,23 +42,31 @@ ATS_EXTERN_PREFIX "temptory_"
 
 castfn
 ref_ptrof
-{a:vtflt}(r: ref(a)):<> [l:agz] ptr(l)
+{a:vtflt}
+(r0: ref(a)):<> [l:agz] ptr(l)
 castfn
 ref_cptrof
-{a:vtflt}(r: ref(a)):<> [l:agz] cptr(a, l)
+{a:vtflt}
+(r0: ref(a)):<> [l:agz] cptr(a, l)
 castfn
 ref_vptrof
 {a:vtflt}
-(r: ref(a)):<> [l:agz] (vbox(a @ l) | ptr(l))
+(r0: ref(a)):<> [l:agz] (vbox(a @ l) | ptr(l))
 
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+ref_make_elt(a): ref(a)
+//
+#symload ref with ref_make_elt
+//
 (* ****** ****** *)
 
 fun
-{a:tflt}
-ref_get_elt(ref(a)): (a)
+{a: tflt} ref_get_elt(ref(a)): (a)
 fun
-{a:tflt}
-ref_set_elt(ref(a), a): void
+{a: tflt} ref_set_elt(ref(a), a): void
 
 (* ****** ****** *)
 //

@@ -252,40 +252,4 @@ list0_cons(kx1, kxs1) =>
 
 (* ****** ****** *)
 
-implement
-{k0,x0}
-funmap_forall
-  (map) =
-(
-list0_forall<kx>(map)
-) where
-{
-//
-typedef kx = (k0, x0)
-//
-implement
-list0_forall$test<kx>(kx) = funmap_forall$test(kx.0, kx.1)
-//
-} (* end of [funmap_forall] *)
-
-(* ****** ****** *)
-
-implement
-{k0,x0}
-funmap_foreach
-  (map) =
-(
-list0_foreach<kx>(map)
-) where
-{
-//
-typedef kx = (k0, x0)
-//
-implement
-list0_foreach$work<kx>(kx) = funmap_foreach$work(kx.0, kx.1)
-//
-} (* end of [funmap_foreach] *)
-
-(* ****** ****** *)
-
 (* end of [funmap_list.dats] *)

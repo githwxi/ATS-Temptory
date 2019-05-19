@@ -43,6 +43,20 @@
 
 implement
 {a}(*tmp*)
+ref_make_elt(x0) =
+let
+val
+(pf0
+,fpf|p0) = ptr1_alloc<a>()
+in
+  !p0 := x0;
+  $UN.castvwtp0((pf0,fpf|p0))
+end // end of [ref_make_elt]
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
 ref_get_elt
   (r0) = !p0 where
 {
