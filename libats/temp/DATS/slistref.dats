@@ -69,11 +69,19 @@ slist =
 lam(a:vtflt) => list0_vt(a)
 //
 (* ****** ****** *)
+
+local
+
+(* ****** ****** *)
 //
 absimpl
 slistref_vtflt_tbox
   (a:vtflt) = ref(slist(a))
 //
+(* ****** ****** *)
+
+in (*in-of-local*)
+
 (* ****** ****** *)
 //
 implement
@@ -226,6 +234,54 @@ end (* end of [slistref_takeout_all] *)
 (* ****** ****** *)
 //
 implement
+{x0}(*tmp*)
+slistref_forall1
+  (stk) = let
+//
+val
+(vbox(pf)|p0) = ref_vptrof(stk)
+//
+in
+$effmask_ref
+(
+  list0_vt_forall1<x0>(!p0)
+) where
+{
+implement
+list0_vt_forall1$test<x0>
+  (x0) =
+  slistref_forall1$test<x0>(x0)
+}
+end // end of [slistref_forall1]
+//
+implement
+{x0}(*tmp*)
+slistref_foreach1
+  (stk) = let
+//
+val
+(vbox(pf)|p0) = ref_vptrof(stk)
+//
+in
+$effmask_ref
+(
+  list0_vt_foreach1<x0>(!p0)
+) where
+{
+implement
+list0_vt_foreach1$work<x0>
+  (x0) =
+  slistref_foreach1$work<x0>(x0)
+}
+end // end of [slistref_foreach1]
+//
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
 slistref_print$beg<>() = print("(")
 implement
 slistref_print$end<>() = print(")")
@@ -268,27 +324,6 @@ slistref_foreach1$work<x0>
 (* ****** ****** *)
 //
 implement
-{x0}(*tmp*)
-slistref_forall1
-  (stk) = let
-//
-val
-(vbox(pf)|p0) = ref_vptrof(stk)
-//
-in
-$effmask_ref
-(
-  list0_vt_forall1<x0>(!p0)
-) where
-{
-implement
-list0_vt_forall1$test<x0>
-  (x0) =
-  slistref_forall1$test<x0>(x0)
-}
-end // end of [slistref_forall1]
-//
-implement
 (x0:tflt)
 glseq_forall1<slistref(x0)><x0>
   (stk) =
@@ -299,29 +334,6 @@ glseq_forall1<slistref(x0)><x0>
 implement
 slistref_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
 }
-//
-(* ****** ****** *)
-//
-implement
-{x0}(*tmp*)
-slistref_foreach1
-  (stk) = let
-//
-val
-(vbox(pf)|p0) = ref_vptrof(stk)
-//
-in
-$effmask_ref
-(
-  list0_vt_foreach1<x0>(!p0)
-) where
-{
-implement
-list0_vt_foreach1$work<x0>
-  (x0) =
-  slistref_foreach1$work<x0>(x0)
-}
-end // end of [slistref_foreach1]
 //
 implement
 (x0:tflt)
