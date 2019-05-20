@@ -46,4 +46,11 @@ val () = println!("xs = ", xs)
 
 (* ****** ****** *)
 
+val () = insert(xs, 0)
+val () = insert(xs, 1)
+val () = insert(xs, 2)
+val-tt = (3 = qlist_length(xs))
+
+(* ****** ****** *)
+
 (* end of [test19.dats] *)

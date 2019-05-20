@@ -107,6 +107,30 @@ case+ xs of
 )
 
 (* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+qlist_size(xs) =
+(
+i2sz
+(qlist_length<a>(xs))
+)
+implement
+{a}(*tmp*)
+qlist_length(xs) =
+(
+case+ xs of
+| QLIST(qf, qr) =>
+  let
+    val rf =
+    $UN.castvwtp0{list0_vt(a)}(qf)
+    val n0 = list0_vt_length<a>(rf)
+  in
+    let prval () = $UN.cast2void(rf) in n0 end
+  end
+)
+//
+(* ****** ****** *)
 
 implement
 {a}(*tmp*)
@@ -175,20 +199,35 @@ qlist_remove
   (xs) =
 (
 let
+var res: a?
 val
 opt =
-qlist_takeout_opt<a>(xs)
+qlist_takeout<a>(xs, res)
 in
-case+ opt of
-| ~optn0_vt_none() => ff
-| ~optn0_vt_some(x0) => (gfree$val(x0); tt)
+//
+if
+opt
+then
+let
+prval () =
+opt_unsome{a}(res)
+in
+  gfree$val<a>(res); opt
+end
+else
+let
+prval () = opt_unnone{a}(res) in opt
+end
+//
 end // end of [qlist_remove]
 )
 //
+(* ****** ****** *)
+//
 implement
 {a}(*tmp*)
-qlist_takeout_opt
-  (xs) =
+qlist_takeout
+  (xs, res) =
 (
 case+ xs of
 |
@@ -201,22 +240,74 @@ case+ xs of
    case+ rx of
    | ~list0_vt_nil() =>
       let
-      prval () = fold@(xs) in optn0_vt_none()
+      prval () = fold@(xs)
+      prval () = opt_none{a}(res) in ff
       end
    | ~list0_vt_cons(x0, rx) =>
       let
+        val () =
+        (res := x0)
         val rx =
         $UN.castvwtp0{ptr}(rx)
         val () =
         (qf := rx)
         val () =
-        if iseqz(rx) then qr := rx(*null*)
+        if iseqz(rx) then qr := rx(*0*)
       in
-        let prval () = fold@(xs) in optn0_vt_some(x0) end
+        let
+        prval () = fold@(xs)
+        prval () = opt_some{a}(res) in tt
+        end
       end (* end of [list0_vt_cons] *)
  end
 ) (* end of [qlist_takeout_out] *)
 //
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+qlist_takeout_opt
+  (xs) = let
+//
+var res: a?
+//
+val
+found =
+qlist_takeout<a>(xs, res)
+//
+in (* in-of-let *)
+//
+if
+found
+then
+(
+optn0_vt_some{a}(res)
+) where
+{ prval () = opt_unsome{a}(res) }
+else
+(
+optn0_vt_none{a}((*void*))
+) where
+{ prval () = opt_unnone{a}(res) }
+//
+end (* end of [qlist_takeout_out] *)
+//
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+qlist_free(xs) =
+list0_vt_free<a>
+(qlist_freeout<a>(xs))
+implement
+{a}(*tmp*)
+qlist_freeout(xs) =
+(
+case+ xs of
+| ~QLIST(qf, qr) =>
+   $UN.castvwtp0{list0_vt(a)}(qf)
+) (* end of [qlist_freeout] *)
+
 (* ****** ****** *)
  
 implement

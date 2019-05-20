@@ -83,9 +83,10 @@ list0_vt_length(xs) =
 $effmask_all(loop(xs, 0))
 ) where
 {
+typedef r0 = Intgte(0)
 fun
 loop
-(xs: !list0_vt(x0), i0: int): int =
+(xs: !list0_vt(x0), i0: r0): r0 =
 case+ xs of
 | list0_vt_nil() => i0
 | list0_vt_cons(_, xs) => loop(xs, succ(i0))

@@ -75,8 +75,14 @@ list0_vt_isneqz
 //
 fun
 {x0:vtflt}
+list0_vt_size
+(xs: !list0_vt(INV(x0))):<> size
+fun
+{x0:vtflt}
 list0_vt_length
-(xs: !list0_vt(INV(x0))):<> int
+(xs: !list0_vt(INV(x0))):<> Intgte(0)
+//
+#symload size with list0_vt_size
 #symload length with list0_vt_length
 //
 (* ****** ****** *)

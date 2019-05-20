@@ -69,6 +69,20 @@ qlist_isneqz
 (* ****** ****** *)
 //
 fun
+{x0:vtflt}
+qlist_size
+(xs: !qlist(x0)): size
+fun
+{x0:vtflt}
+qlist_length
+(xs: !qlist(x0)): Intgte(0)
+//
+#symload size with qlist_size
+#symload length with qlist_length
+//
+(* ****** ****** *)
+//
+fun
 {a:vtflt}
 qlist_insert
 (xs: !qlist(INV(a)), a): void
@@ -78,9 +92,14 @@ qlist_insert
 (* ****** ****** *)
 //
 fun
-{a:tflt}
+{a:vtflt}
 qlist_remove
 (xs: !qlist(INV(a))): bool
+fun
+{a:vtflt}
+qlist_takeout
+( xs: !qlist(INV(a))
+, r0: &a? >> opt(a, b)): #[b:bool] bool(b)
 fun
 {a:vtflt}
 qlist_takeout_opt
@@ -93,6 +112,18 @@ qlist_takeout_all
 #symload remove with qlist_remove
 #symload takeout_opt with qlist_takeout_opt
 #symload takeout_all with qlist_takeout_all
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+qlist_free(qlist(INV(a))): void
+fun
+{a:vtflt}
+qlist_freeout(qlist(INV(a))): list0_vt(a)
+//
+#symload free with qlist_free of 10
+#symload freeout with qlist_freeout of 10
 //
 (* ****** ****** *)
 //
