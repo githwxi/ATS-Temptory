@@ -49,10 +49,16 @@ slistref(a:vtflt) = slistref_vtflt_tbox(a)
 //
 fun{}
 slistref_nil
-  {a:vtflt}((*void*)): slistref(a)
+{a:vtflt}((*void*)): slistref(a)
 fun{}
 slistref_make_nil
-  {a:vtflt}((*void*)): slistref(a)
+{a:vtflt}((*void*)): slistref(a)
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+slistref_sing(x: a): slistref(a)
 //
 (* ****** ****** *)
 //

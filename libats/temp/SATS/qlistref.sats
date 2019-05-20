@@ -49,10 +49,16 @@ qlistref(a:vtflt) = qlistref_vtflt_tbox(a)
 //
 fun{}
 qlistref_nil
-  {a:vtflt}((*void*)): qlistref(a)
+{a:vtflt}((*void*)): qlistref(a)
 fun{}
 qlistref_make_nil
-  {a:vtflt}((*void*)): qlistref(a)
+{a:vtflt}((*void*)): qlistref(a)
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+qlistref_sing(x: a): qlistref(a)
 //
 (* ****** ****** *)
 //

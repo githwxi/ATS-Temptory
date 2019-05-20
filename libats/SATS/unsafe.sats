@@ -89,15 +89,25 @@ castvwtp1
 {from:vtflt}(x0: !INV(from)>>from):<> to
 //
 (* ****** ****** *)
+//
+castfn
+string0_vt2t
+(cs: !string0_vt):<> string0
+castfn
+string1_vt2t
+{n:int}
+(cs: !string1_vt(n)):<> string1(n)
+//
+(* ****** ****** *)
 
 castfn
 {a:tflt}
 list0_vt2t
-(xs: !list0_vt(a)): list0(a)
+(xs: !list0_vt(a)):<> list0(a)
 castfn
 {a:tflt}
 list1_vt2t
-{n:int}(xs: !list1_vt(a, n)): list1(a, n)
+{n:int}(xs: !list1_vt(a, n)):<> list1(a, n)
 
 (* ****** ****** *)
 //

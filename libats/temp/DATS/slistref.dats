@@ -96,6 +96,17 @@ slistref_make_nil
   ref<slist(a)>(list0_vt_nil())
 //
 (* ****** ****** *)
+
+implement
+{a}(*tmp*)
+slistref_sing(x0) =
+let
+  val stk = slistref_nil<>()
+in
+  slistref_insert<a>(stk, x0); stk
+end // end of [slistref_sing]
+
+(* ****** ****** *)
 //
 implement
 {a}(*tmp*)

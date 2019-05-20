@@ -641,7 +641,11 @@ stream_vt_filter
 ) = auxmain1(xs) where
 {
 //
-fnx
+(*
+HX-2019-05:
+fnx // bug!!!
+*)
+fun
 auxmain1
 (
 xs: stream_vt(x0)

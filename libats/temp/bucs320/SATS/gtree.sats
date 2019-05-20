@@ -27,27 +27,56 @@
 
 (* ****** ****** *)
 
-(*
-** A functional map
-** implementation based on lists
-*)
-
-(* ****** ****** *)
-
 (* Author: Hongwei Xi *)
-(* Start time: December, 2012 *)
+(* Start time: February, 2019 *)
 (* Authoremail: hwxiATcsDOTbuDOTedu *)
 
 (* ****** ****** *)
 //
 #define
 ATS_PACKNAME
-"temptory.temp.funmap_list."
+"temptory.temp.cs320.gtree."
 //
 (* ****** ****** *)
 //
-#include "./SHARE/funmap.hats"
+fun
+{node:tflt}
+gtree_node_children
+  (nx: node): list0(node)
+//
+(* ****** ****** *)
+//
+fun
+{node:tflt}
+gtree_store_insert
+  (nx: node): void
+fun
+{node:tflt}
+gtree_store_insert_list
+  (nxs: list0(node)): void
 //
 (* ****** ****** *)
 
-(* end of [funmap_list.sats] *)
+fun
+{node:tflt}
+gtree_store_choose_opt
+  ((*void*)): optn0_vt(node)
+
+(* ****** ****** *)
+//
+fun
+{node:tflt}
+gtree_streamize(node): stream_vt(node)
+//
+(* ****** ****** *)
+//
+fun
+{node:tflt}
+gtree_streamize_dfs(node): stream_vt(node)
+fun
+{node:tflt}
+gtree_streamize_bfs(node): stream_vt(node)
+//
+(* ****** ****** *)
+
+(* end of [cs320_gtree.sats] *)
