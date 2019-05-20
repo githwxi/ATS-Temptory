@@ -38,6 +38,11 @@
 
 (* ****** ****** *)
 
+#define none0_vt optn0_vt_none
+#define some0_vt optn0_vt_some
+
+(* ****** ****** *)
+
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
@@ -45,8 +50,7 @@
 
 (* ****** ****** *)
 
-#define none0_vt optn0_vt_none
-#define some0_vt optn0_vt_some
+#staload UN = "./../SATS/unsafe.sats"
 
 (* ****** ****** *)
 
@@ -212,6 +216,81 @@ case+ xs of
 } (* end of [list0_get_at_opt] *)
 
 (* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+list0_drop
+  (xs, i0) =
+(
+  loop(xs, i0)
+) where
+{
+//
+fun
+loop
+( xs
+: list0(x0), i0: int) : list0(x0) =
+if
+i0 <= 0
+then xs
+else
+(
+case+ xs of
+| list0_nil() => list0_nil()
+| list0_cons(_, xs) => loop(xs, pred(i0))
+)
+//
+} (* end of [list0_drop] *)
+
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+list0_take
+  (xs, i0) =
+(
+let
+var r0: ptr?
+in
+  loop(xs, i0, r0); r0
+end
+) where
+{
+//
+fun
+loop
+( xs
+: list0(x0), i0: int
+, r0: &ptr? >> list0_vt(x0)
+) : void =
+if
+i0 <= 0
+then
+(r0 := list0_vt_nil())
+else
+(
+case+ xs of
+| list0_nil() =>
+  ( r0 :=
+    list0_vt_nil() )
+| list0_cons(x0, xs) =>
+  (
+  let
+    val () =
+    ( r0 :=
+      list0_vt_cons
+      {x0}(x0, _(*r1*)) )
+    val+
+    list0_vt_cons(_, r1) = r0
+  in
+    loop(xs, pred(i0), r1); fold@(r0)
+  end
+  )
+)
+//
+} (* end of [list0_take] *)
+
+(* ****** ****** *)
 //
 implement
 {x0}//tmp
@@ -293,6 +372,125 @@ list0_reverse(xs) =
   list0_revapp<x0>(xs, list0_nil())
 ) (* end of [list0_reverse] *)
 //
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+list0_split
+  (xs) =
+(
+let
+var r0: ptr?
+and r1: ptr?
+in
+loop(xs, r0, r1); (r0, r1)
+end
+) where
+{
+//
+fun
+loop
+( xs: list0(x0)
+, r0: &ptr? >> list0_vt(x0)
+, r1: &ptr? >> list0_vt(x0)
+) : void =
+(
+case+ xs of
+| list0_nil() =>
+  (
+  r0 := list0_vt_nil();
+  r1 := list0_vt_nil();
+  )
+| list0_cons(x0, xs) => let
+    val c0 =
+    list0_split$choose<x0>(x0)
+  in
+    if
+    (c0 <= 0)
+    then let
+      val () =
+      ( r0 :=
+        list0_vt_cons(x0, _) )
+      val+
+      list0_vt_cons(_, rx) = r0 in loop(xs, rx, r1); fold@(r0)
+    end
+    else let
+      val () =
+      ( r1 :=
+        list0_vt_cons(x0, _) )
+      val+
+      list0_vt_cons(_, rx) = r1 in loop(xs, r0, rx); fold@(r1)
+    end
+  end (* end of [list0_cons] *)
+)
+//
+} (* end of [list0_split] *)
+
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+list0_merge
+  (xs, ys) =
+(
+let
+var r0: ptr?
+in
+  loop(xs, ys, r0); r0
+end
+) where
+{
+//
+fun
+loop
+( xs0: list0(x0)
+, ys0: list0(x0)
+, res: &ptr? >> list0_vt(x0)
+) : void =
+(
+case+ xs0 of
+| list0_nil() =>
+  ( res :=
+    list0_listize<x0>(ys0) )
+| list0_cons(x0, xs1) =>
+  (
+  case+ ys0 of
+  | list0_nil() =>
+    ( res :=
+      list0_listize<x0>(xs0)
+    )
+  | list0_cons(y0, ys1) => let
+      val c0 =
+      list0_merge$choose<x0>(x0, y0)
+    in
+      if
+      (c0 <= 0)
+      then
+      let
+        val () =
+        res :=
+        list0_vt_cons(x0, _)
+        val+
+        list0_vt_cons(x0, rsx) = res
+      in
+        loop(xs1, ys0, rsx); fold@(res)
+      end
+      else
+      let
+        val () =
+        res :=
+        list0_vt_cons(y0, _)
+        val+
+        list0_vt_cons(y0, rsx) = res
+      in
+        loop(xs0, ys1, rsx); fold@(res)
+      end
+    end
+  ) (* end of [list0_cons] *)
+)
+//
+} (* end of [list0_merge] *)
+
 (* ****** ****** *)
 
 implement
@@ -772,6 +970,134 @@ list0_vt_quicksort<a>(list0_listize<a>(xs))
 implement
 list0_vt_quicksort$cmp<a>(x1, x2) = list0_quicksort$cmp<a>(x1, x2)
 } (* end of [list0_quicksort] *)
+
+(* ****** ****** *)
+//
+// HX-2019-05:
+// For lists indexed by length
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+list1_iseqz(xs) =
+(
+case+ xs of
+| list1_nil _ => tt | list1_cons _ => ff
+)
+implement
+{}(*tmp*)
+list1_isneqz(xs) =
+(
+case+ xs of
+| list1_nil _ => ff | list1_cons _ => tt
+)
+
+(* ****** ****** *)
+//
+implement
+{x0}(*tmp*)
+list1_length(xs) =
+($UN.cast(list0_length<x0>(g0ofg1(xs))))
+//
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+list1_get_at
+  (xs, i0) =
+(
+  loop(xs, i0)
+) where
+{
+//
+fun
+loop
+{n:int}
+{i:nat|i < n}
+( xs
+: list1(x0, n), i0: int(i)
+) : x0 =
+case+ xs of
+| list1_cons(x0, xs) =>
+  if i0 = 0 then x0 else loop(xs, pred(i0))
+//
+} (* end of [list1_get_at] *)
+
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+list1_drop
+  (xs, i0) =
+(
+  loop(xs, i0)
+) where
+{
+//
+fun
+loop
+{n:int}
+{i:nat|i <= n}
+(
+xs: list1(x0, n), i0: int(i)
+) : list1(x0, n-i) =
+if
+i0 = 0
+then xs
+else
+(
+case+ xs of
+| list1_cons(_, xs) => loop(xs, pred(i0))
+)
+//
+} (* end of [list1_drop] *)
+
+(* ****** ****** *)
+
+implement
+{x0}(*tmp*)
+list1_take
+  (xs, i0) =
+(
+let
+var r0: ptr?
+in
+  loop(xs, i0, r0); r0
+end
+) where
+{
+//
+fun
+loop
+{n:int}
+{i:nat|i <= n}
+( xs
+: list1(x0,n), i0: int(i)
+, r0: &ptr? >> list1_vt(x0, i)): void =
+if
+i0 = 0
+then
+(r0 := list1_vt_nil())
+else
+(
+case+ xs of
+| list1_cons(x0, xs) =>
+  (
+  let
+    val () =
+    ( r0 :=
+      list1_vt_cons
+      {x0}{0}(x0, _(*r1*)) )
+    val+
+    list1_vt_cons(_, r1) = r0
+  in
+    loop(xs, pred(i0), r1); fold@(r0)
+  end
+  )
+)
+//
+} (* end of [list1_take] *)
 
 (* ****** ****** *)
 

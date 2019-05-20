@@ -31,6 +31,7 @@ INCLUDE += -I${TEMPTORY}/ccomp/runtime
 all:: test01_dats
 all:: test02_dats
 all:: test03_dats
+all:: test04_dats
 
 ######
 
@@ -55,9 +56,15 @@ test03.dats; $(TEMPACC) -o $@ $<
 
 ######
 
+test04_dats: \
+test04.dats; $(TEMPACC) -o $@ $<
+
+######
+
 regress:: test01_dats; ./test01_dats
 regress:: test02_dats; ./test02_dats
 regress:: test03_dats; ./test03_dats
+regress:: test04_dats; ./test04_dats
 
 ######
 
@@ -68,5 +75,6 @@ cleanall:: clean
 cleanall:: ; $(RMF) test01_dats
 cleanall:: ; $(RMF) test02_dats
 cleanall:: ; $(RMF) test03_dats
+cleanall:: ; $(RMF) test04_dats
 
 ###### end of [Makefile] ######

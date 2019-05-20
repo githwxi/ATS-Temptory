@@ -47,6 +47,30 @@ typedef uint1(i:int) = uint(i)
 
 (* ****** ****** *)
 //
+castfn
+g0ofg1_sint
+{i:int}(i: sint(i)):<> sint
+castfn
+g1ofg0_sint
+(i: sint):<> [i:int] sint(i)
+//
+#symload g0ofg1 with g0ofg1_sint
+#symload g1ofg0 with g1ofg0_sint
+//
+(* ****** ****** *)
+//
+castfn
+g0ofg1_size
+{i:int}(i: size(i)):<> size
+castfn
+g1ofg0_size
+(i: size):<> [i:int] size(i)
+//
+#symload g0ofg1 with g0ofg1_size
+#symload g1ofg0 with g1ofg0_size
+//
+(* ****** ****** *)
+//
 fun
 {k1:tflt}
 {k2:tflt}

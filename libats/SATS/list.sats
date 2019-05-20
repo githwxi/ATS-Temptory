@@ -137,10 +137,22 @@ fun
 list0_get_at_opt
 (xs: list0(INV(x0)), i0: int): optn0_vt(x0) 
 //
+#symload [] with list0_get_at_exn
 #symload get_at with list0_get_at_exn
 #symload get_at_exn with list0_get_at_exn
 #symload get_at_opt with list0_get_at_opt
 //
+(* ****** ****** *)
+
+fun
+{x0:tflt}
+list0_drop
+(list0(x0), i0: int): list0(x0)
+fun
+{x0:tflt}
+list0_take
+(list0(x0), i0: int): list0_vt(x0)
+
 (* ****** ****** *)
 //
 fun
@@ -166,6 +178,38 @@ list0_reverse(list0(INV(x0))): list0(x0)
 #symload concat with list0_concat
 #symload revapp with list0_revapp
 #symload reverse with list0_reverse
+//
+(* ****** ****** *)
+//
+(*
+// HX-2019-05:
+// [split$choose] returns 0/1
+// to indicate whether the current
+// element joins the 1st or 2nd returned list
+// [merge$choose] returns 0/1 to
+// indicate which element, from either the
+// 1st or 2nd list, currently joins the returned list
+*)
+//
+fun
+{x0:tflt}
+list0_split
+( xs
+: list0(x0)
+) :
+(list0_vt(x0), list0_vt(x0))
+fun
+{x0:tflt}
+list0_split$choose(x0): sint
+//
+fun
+{x0:tflt}
+list0_merge
+( xs: list0(x0)
+, ys: list0(x0)): list0_vt(x0)
+fun
+{x0:tflt}
+list0_merge$choose(x0, x0): sint
 //
 (* ****** ****** *)
 //
@@ -411,6 +455,68 @@ fun
 {a:tflt}
 list0_quicksort$cmp(x1: a, x2: a): int(*sgn*)
 //
+(* ****** ****** *)
+//
+// HX-2019-05:
+// For lists indexed by length
+//
+(* ****** ****** *)
+//
+fun{}
+list1_iseqz
+{x0:tflt}{n:int}
+(xs: list1(x0, n)):<> bool(n==0)
+fun{}
+list1_isneqz
+{x0:tflt}{n:int}
+(xs: list1(x0, n)):<> bool(n > 0)
+//
+#symload iseqz with list1_iseqz
+#symload isneqz with list1_isneqz
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+list1_size
+{n:int}
+(xs: list1(INV(x0))):<> size(n)
+fun
+{x0:tflt}
+list1_length
+{n:int}
+(xs: list1(INV(x0))):<> sint(n)
+//
+#symload size with list1_size
+#symload length with list1_length
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+list1_get_at
+{n:int}{i:nat|i < n}
+( xs
+: list1(INV(x0), n), i0: int(i)): (x0)
+//
+#symload [] with list1_get_at of 10
+#symload get_at with list1_get_at of 10
+//
+(* ****** ****** *)
+
+fun
+{x0:tflt}
+list1_drop
+{n:int}{i:nat|i <= n}
+( xs
+: list1(INV(x0), n), i0: int(i)): list1(x0, n-i)
+fun
+{x0:tflt}
+list1_take
+{n:int}{i:nat|i <= n}
+( xs
+: list1(INV(x0), n), i0: int(i)): list1_vt(x0, i)
+
 (* ****** ****** *)
 
 (* end of [list.sats] *)
