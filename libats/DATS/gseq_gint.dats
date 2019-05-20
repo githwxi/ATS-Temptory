@@ -71,29 +71,29 @@ gseq_streamize<uint><uint>
 //
 (* ****** ****** *)
 
+
 implement
 gseq_forall<sint><sint>
   (n0) =
-( loop(0) ) where
+(
+  sint_forall<>(n0)
+) where
 {
-//
-fun
-loop
-(i0: sint): bool =
-if
-i0 >= n0
-then true else
-let
-val
-test =
+implement
+sint_forall$test<>(i0) =
 gseq_forall$test<sint>(i0)
-in
-if
-test
-then loop(succ(i0)) else false
-end (* end of [loop] *)
-//
-} (* end of [gseq_forall] *)
+}
+implement
+gseq_foreach<sint><sint>
+  (n0) =
+(
+  sint_foreach<>(n0)
+) where
+{
+implement
+sint_foreach$work<>(i0) =
+gseq_foreach$work<sint>(i0)
+}
 
 (* ****** ****** *)
 

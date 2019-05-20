@@ -77,6 +77,33 @@ gseq_iforall$test<int>(i0, x1) =
 
 (* ****** ****** *)
 
+fun
+board_print
+(xs: board): void =
+(
+gseq_rforeach<board><int>
+  (xs)
+) where
+{
+implement
+gseq_rforeach$work<int>(x0) =
+(
+  loop(0); println!()
+) where
+{
+  fun
+  loop(i0: int): void =
+  if
+  (i0 < N)
+  then
+  (if i0 = x0 then print"Q " else print". "; loop(i0+1))
+}
+}
+
+#symload print with board_print
+
+(* ****** ****** *)
+
 implement
 gtree_node_children<board>
   (xs) =
@@ -115,8 +142,7 @@ stream_vt_iforeach0
 ) where
 {
 implement
-stream_vt_iforeach0$work<board>(i0, xs) =
-(print!("Solution#", i0+1, ":\t"); gseq_print<board><int>(xs); println!())
+stream_vt_iforeach0$work<board>(i0, xs) = println!("Solution#", i0+1, ":\n", xs)
 }
 
 (* ****** ****** *)

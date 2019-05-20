@@ -48,6 +48,45 @@
 
 implement
 {}(*tmp*)
+sint_forall
+  (n0) =
+( loop(0) ) where
+{
+fun
+loop(i0: int): bool =
+if
+(i0 >= n0)
+then true else
+(
+  if
+  sint_forall$test<>(i0)
+  then loop(succ(i0)) else false
+)
+}
+implement
+{}(*tmp*)
+sint_foreach
+  (n0) =
+( loop(0) ) where
+{
+fun
+loop(i0: int): void =
+if
+(i0 >= n0)
+then
+(
+// nothing
+)
+else
+(
+sint_foreach$work<>(i0); loop(succ(i0))
+)
+}
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 sint_listize
   (n0) =
 (

@@ -937,6 +937,17 @@ g1neq_usize_sint1
 // For listization
 //
 (* ****** ****** *)
+
+fun{}
+sint_forall(sint): bool
+fun{}
+sint_forall$test(sint): bool
+fun{}
+sint_foreach(sint): void
+fun{}
+sint_foreach$work(sint): void
+
+(* ****** ****** *)
 //
 fun{}
 sint_listize(sint): list0_vt(sint)
