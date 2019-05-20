@@ -4,7 +4,10 @@
 #
 ######
 
-all:: testall
+all:: ; \
+make -C dirent -f Makefile all
+all:: ; \
+make -C search -f Makefile all
 
 ######
 

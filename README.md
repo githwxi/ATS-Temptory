@@ -1,2 +1,2 @@
-# ATS-Temptry
+# ATS-Temptory
 For supporting template-based programming
