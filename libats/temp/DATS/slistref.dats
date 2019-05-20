@@ -140,10 +140,7 @@ slistref_size
   (stk) =
 (
 i2sz
-(
-$UN.cast{Intgte(0)}
 (list0_vt_length<a>(!p0))
-)
 ) where
 {
 //

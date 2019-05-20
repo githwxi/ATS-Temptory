@@ -2,7 +2,7 @@
 (*
 HX:
 For
-testing gtree_streamize_dfs
+testing gtree_streamize_bfs
 *)
 (* ****** ****** *)
 //
@@ -13,7 +13,7 @@ testing gtree_streamize_dfs
 (* ****** ****** *)
 
 #staload _ =
-"libats/temp/DATS/slistref.dats"
+"libats/temp/DATS/qlistref.dats"
 
 (* ****** ****** *)
 
@@ -97,7 +97,7 @@ gseq_mapopt$fopr<int><board>(x0) = board_cons(x0, xs)
 
 val
 the_solutions =
-gtree_streamize_dfs<board>(board_nil())
+gtree_streamize_bfs<board>(board_nil())
 val
 the_solutions =
 (
@@ -105,7 +105,7 @@ stream_vt_filter<board>(the_solutions)
 ) where
 {
 implement
-stream_vt_filter$test<board>(xs) = (gseq_length<board><int>(xs) => N)
+stream_vt_filter$test<board>(xs) = (gseq_length<board><int>(xs) >= N)
 }
 
 val () =
@@ -125,4 +125,4 @@ implement main0() = ()
 
 (* ****** ****** *)
 
-(* end of [test01.dats] *)
+(* end of [test02.dats] *)
