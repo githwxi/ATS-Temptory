@@ -148,7 +148,7 @@ qlist_forall0
 (xs: qlist(INV(x0))): bool
 fun
 {x0:vtflt}
-qlist_forall1$test(x0: x0): bool
+qlist_forall0$test(x0: x0): bool
 //
 fun
 {x0:vtflt}

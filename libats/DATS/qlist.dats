@@ -309,9 +309,34 @@ case+ xs of
 ) (* end of [qlist_freeout] *)
 
 (* ****** ****** *)
+
+implement
+(x0:vtflt)
+qlist_forall0<x0>
+  (xs) =
+(
+list0_vt_forall0<x0>(qlist_freeout<x0>(xs))
+) where
+{
+implement
+list0_vt_forall0$test<x0>(x0) = qlist_forall0$test<x0>(x0)
+}
+implement
+(x0:vtflt)
+qlist_foreach0<x0>
+  (xs) =
+(
+list0_vt_foreach0<x0>(qlist_freeout<x0>(xs))
+) where
+{
+implement
+list0_vt_foreach0$work<x0>(x0) = qlist_foreach0$work<x0>(x0)
+}
+
+(* ****** ****** *)
  
 implement
-(x0:tflt)
+(x0:vtflt)
 qlist_forall1<x0>
   (xs) =
 (
@@ -338,7 +363,7 @@ list0_vt_forall1$test<x0>(x0) = qlist_forall1$test<x0>(x0)
 (* ****** ****** *)
 
 implement
-(x0:tflt)
+(x0:vtflt)
 qlist_foreach1<x0>
   (xs) =
 (
@@ -411,7 +436,35 @@ qlist_print$sep<>() = print(",")
 (* ****** ****** *)
 //
 implement
-(x0:tflt)
+(x0:vtflt)
+glseq_forall0<qlist(x0)><x0>
+  (xs) =
+(
+  qlist_forall0<x0>(xs)
+) where
+{
+implement
+qlist_forall0$test<x0>(x0) = glseq_forall0$test<x0>(x0)
+}
+//
+(* ****** ****** *)
+//
+implement
+(x0:vtflt)
+glseq_foreach0<qlist(x0)><x0>
+  (xs) =
+(
+  qlist_foreach0<x0>(xs)
+) where
+{
+implement
+qlist_foreach0$work<x0>(x0) = glseq_foreach0$work<x0>(x0)
+}
+//
+(* ****** ****** *)
+//
+implement
+(x0:vtflt)
 glseq_forall1<qlist(x0)><x0>
   (xs) =
 (
@@ -425,7 +478,7 @@ qlist_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
 (* ****** ****** *)
 //
 implement
-(x0:tflt)
+(x0:vtflt)
 glseq_foreach1<qlist(x0)><x0>
   (xs) =
 (
