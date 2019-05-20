@@ -78,7 +78,7 @@ case+ opt of
  val xs =
  divconq_divide<i><o>(x0)
  val r0 =
- divconq_conquer<i><o>(x0, xs)
+ divconq_conquer<i><o>(xs)
  } (* end of [where] *)
 |
 ~optn0_vt_some(y0) => y0
@@ -90,7 +90,7 @@ end // end of [divconq_solve_beg]
 implement
 {i}{o}//tmp
 divconq_conquer
-  (x0, xs) = r0 where
+  (xs) = r0 where
 {
 //
 val rs =
@@ -105,7 +105,7 @@ divconq_solve_rec<i><o>(x0)
 }
 //
 val r0 =
-divconq_conquer_cmb<i><o>(x0, rs)
+divconq_conquer_cmb<i><o>(rs)
 //
 } (* end of [divconq_conquer] *)
 //

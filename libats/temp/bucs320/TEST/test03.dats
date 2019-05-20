@@ -31,7 +31,7 @@ divconq_divide<i><o>
 (x) =
 g0ofg1($list1{i}(x+11))
 implement
-divconq_conquer_cmb<i><o>(x0, rs) =
+divconq_conquer_cmb<i><o>(rs) =
 (
 f91(r1)
 ) where
@@ -63,7 +63,7 @@ divconq_divide<i><o>
 (x) =
 g0ofg1($list1{i}(x-1, x-2))
 implement
-divconq_conquer_cmb<i><o>(x0, rs) =
+divconq_conquer_cmb<i><o>(rs) =
 (
 r1 + r2
 ) where

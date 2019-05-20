@@ -106,7 +106,7 @@ end
 //
 implement
 divconq_conquer_cmb<i><o>
-  (xs, rs) =
+  (rs) =
 (
 list0_vt2t
 (list0_merge<a>(r1, r2))

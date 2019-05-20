@@ -49,12 +49,12 @@ and
 divconq_solve_rec(i): o
 //
 (* ****** ****** *)
-
+//
 fun
 {i:tflt}
 {o:tflt}
 divconq_solve_opt(i): optn0_vt(o)
-
+//
 (* ****** ****** *)
 //
 fun
@@ -65,9 +65,9 @@ divconq_divide(i): list0(i)
 fun
 {i:tflt}
 {o:tflt}
-divconq_conquer(i, list0(i)): o
+divconq_conquer(list0(i)): o
 and
-divconq_conquer_cmb(i, list0(o)): o
+divconq_conquer_cmb(list0(o)): o
 //
 (* ****** ****** *)
 
