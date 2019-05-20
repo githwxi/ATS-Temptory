@@ -22,10 +22,6 @@ implement main0() = ()
 
 (* ****** ****** *)
 
-#infix <=>
-
-(* ****** ****** *)
-
 val cs =
 "dacbzxyeffghhjkilmaabcdewwvutsrropq"
 val cs =

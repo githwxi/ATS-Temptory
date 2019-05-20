@@ -80,9 +80,14 @@ list0_isneqz
 //
 fun
 {x0:tflt}
+list0_size
+(xs: list0(INV(x0))):<> size
+fun
+{x0:tflt}
 list0_length
-(xs: list0(INV(x0))):<> (int)
+(xs: list0(INV(x0))):<> Intgte(0)
 //
+#symload size with list0_size
 #symload length with list0_length
 //
 (* ****** ****** *)

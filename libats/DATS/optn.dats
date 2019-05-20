@@ -45,7 +45,7 @@
 (* ****** ****** *)
 //
 implement
-{x0}//tmp
+{}//tmp
 optn0_iseqz
   (opt) =
 (
@@ -55,7 +55,7 @@ case+ opt of
 )
 //
 implement
-{x0}//tmp
+{}//tmp
 optn0_isneqz
   (opt) =
 (
@@ -66,6 +66,13 @@ case+ opt of
 //
 (* ****** ****** *)
 //
+implement
+{x0}//tmp
+optn0_size
+  (opt) =
+(
+i2sz(optn0_length<x0>(opt))
+)
 implement
 {x0}//tmp
 optn0_length

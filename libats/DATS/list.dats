@@ -69,14 +69,23 @@ case+ xs of
 //
 implement
 {x0}//tmp
+list0_size(xs) =
+(
+i2sz(list0_length<x0>(xs))
+)
+implement
+{x0}//tmp
 list0_length(xs) =
 (
 $effmask_all(loop(xs, 0))
 ) where
 {
+//
+typedef r0 = Intgte(0)
+//
 fun
 loop
-(xs: list0(x0), i0: int): int =
+(xs: list0(x0), i0: r0): r0 =
 case+ xs of
 | list0_nil() => i0
 | list0_cons(_, xs) => loop(xs, succ(i0))

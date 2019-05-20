@@ -33,6 +33,11 @@
 //
 (* ****** ****** *)
 
+#define tt true
+#define ff false
+
+(* ****** ****** *)
+
 #staload
 UN = "./../SATS/unsafe.sats"
 
@@ -67,6 +72,27 @@ in (* in-of-local *)
 
 implement
 {}(*tmp*)
+qlist_nil() =
+(
+QLIST(null, null)
+) where
+{
+  val null = ptr0_null()
+}
+implement
+{}(*tmp*)
+qlist_make_nil() =
+(
+QLIST(null, null)
+) where
+{
+  val null = ptr0_null()
+}
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 qlist_iseqz(xs) =
 (
 case+ xs of
@@ -79,6 +105,171 @@ qlist_isneqz(xs) =
 case+ xs of
 | QLIST(qf, qr) => isneqz(qf)
 )
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+qlist_insert
+  (xs, x0) =
+(
+case+ xs of
+|
+@QLIST(qf, qr) =>
+ let
+   val r0 =
+   list0_vt_cons(x0, _)
+   val+
+   list0_vt_cons(_, r1) = r0
+   val rr = qr
+   val () = (qr := addr@(r1))
+   val () = (r1 := list0_vt_nil())
+ in
+   let
+   prval () = fold@(r0)
+   in
+     let
+     val r0 =
+     $UN.castvwtp0{ptr}(r0)
+     in
+       if
+       isneqz(rr)
+       then
+       $UN.ptr0_set<ptr>(rr, r0);
+       if iseqz(qf) then qf := r0; fold@(xs);
+     end
+   end
+ end // end of [QLIST]
+)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+qlist_takeout_all
+  (xs) =
+(
+case+ xs of
+|
+@QLIST(qf, qr) =>
+ if
+ iseqz(qf)
+ then
+ (fold@(xs); list0_vt_nil())
+ else
+ let
+ val rf = qf
+ val null = ptr0_null()
+ in
+   qf := null;
+   qr := null; fold@(xs);
+   $UN.castvwtp0{list0_vt(a)}(rf)
+ end
+) (* end of [qlist_takeout_all] *)
+
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+qlist_remove
+  (xs) =
+(
+let
+val
+opt =
+qlist_takeout_opt<a>(xs)
+in
+case+ opt of
+| ~optn0_vt_none() => ff
+| ~optn0_vt_some(x0) => (gfree$val(x0); tt)
+end // end of [qlist_remove]
+)
+//
+implement
+{a}(*tmp*)
+qlist_takeout_opt
+  (xs) =
+(
+case+ xs of
+|
+@QLIST(qf, qr) =>
+ let
+   val rx =
+   $UN.castvwtp0
+   {list0_vt(a)}(qf)
+ in
+   case+ rx of
+   | ~list0_vt_nil() =>
+      let
+      prval () = fold@(xs) in optn0_vt_none()
+      end
+   | ~list0_vt_cons(x0, rx) =>
+      let
+        val rx =
+        $UN.castvwtp0{ptr}(rx)
+        val () =
+        (qf := rx)
+        val () =
+        if iseqz(rx) then qr := rx(*null*)
+      in
+        let prval () = fold@(xs) in optn0_vt_some(x0) end
+      end (* end of [list0_vt_cons] *)
+ end
+) (* end of [qlist_takeout_out] *)
+//
+(* ****** ****** *)
+ 
+implement
+(x0:tflt)
+qlist_forall1<x0>
+  (xs) =
+(
+let
+prval () = $UN.cast2void(ys) in test
+end
+) where
+{
+//
+val+QLIST(qf, qr) = xs
+//
+val ys =
+$UN.castvwtp0(qf)
+val test =
+(
+list0_vt_forall1<x0>(ys)
+) where
+{
+implement
+list0_vt_forall1$test<x0>(x0) = qlist_forall1$test<x0>(x0)
+}
+} (* end of [qlist_forall1] *)
+
+(* ****** ****** *)
+
+implement
+(x0:tflt)
+qlist_foreach1<x0>
+  (xs) =
+(
+let
+prval () = $UN.cast2void(ys) in test
+end
+) where
+{
+//
+val+QLIST(qf, qr) = xs
+//
+val ys =
+$UN.castvwtp0(qf)
+val test =
+(
+list0_vt_foreach1<x0>(ys)
+) where
+{
+implement
+list0_vt_foreach1$work<x0>(x0) = qlist_foreach1$work<x0>(x0)
+}
+} (* end of [qlist_foreach1] *)
 
 (* ****** ****** *)
 

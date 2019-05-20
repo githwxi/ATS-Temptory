@@ -48,14 +48,51 @@ qlist(a:vtflt) = qlist_vtflt_vtbox(a)
 (* ****** ****** *)
 //
 fun{}
+qlist_nil{a:vtflt}(): qlist(a)
+fun{}
+qlist_make_nil{a:vtflt}(): qlist(a)
+//
+(* ****** ****** *)
+//
+fun{}
 qlist_iseqz
-{a:vtflt}(xs: !qlist(a)): bool
+{a:vtflt}
+(xs: !qlist(INV(a))): bool
 fun{}
 qlist_isneqz
-{a:vtflt}(xs: !qlist(a)): bool
+{a:vtflt}
+(xs: !qlist(INV(a))): bool
 //
 #symload iseqz with qlist_iseqz
 #symload isneqz with qlist_isneqz
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+qlist_insert
+(xs: !qlist(INV(a)), a): void
+//
+#symload insert with qlist_insert
+//
+(* ****** ****** *)
+//
+fun
+{a:tflt}
+qlist_remove
+(xs: !qlist(INV(a))): bool
+fun
+{a:vtflt}
+qlist_takeout_opt
+(xs: !qlist(INV(a))): optn0_vt(a)
+fun
+{a:vtflt}
+qlist_takeout_all
+(xs: !qlist(INV(a))): list0_vt(a)
+//
+#symload remove with qlist_remove
+#symload takeout_opt with qlist_takeout_opt
+#symload takeout_all with qlist_takeout_all
 //
 (* ****** ****** *)
 //

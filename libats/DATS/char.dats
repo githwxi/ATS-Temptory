@@ -53,6 +53,8 @@ char0_isneqz(c0) = (c0 != NUL)
 //
 implement
 gequal$val<char>(c1, c2) = g0eq_char_char(c1, c2)
+implement
+gcompare$val<char>(c1, c2) = g0cmp_char_char(c1, c2)
 //
 (* ****** ****** *)
 

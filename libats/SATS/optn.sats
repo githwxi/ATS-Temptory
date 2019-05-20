@@ -68,12 +68,14 @@ g1ofg0_optn_vt
 //
 (* ****** ****** *)
 //
-fun
+fun{}
+optn0_iseqz
 {x0:tflt}
-optn0_iseqz(xs: optn0(x0)): bool
-fun
+(xs: optn0(x0)): bool
+fun{}
+optn0_isneqz
 {x0:tflt}
-optn0_isneqz(xs: optn0(x0)): bool
+(xs: optn0(x0)): bool
 //
 #symload iseqz with optn0_iseqz
 #symload isneqz with optn0_isneqz
@@ -82,8 +84,14 @@ optn0_isneqz(xs: optn0(x0)): bool
 //
 fun
 {x0:tflt}
-optn0_length(xs: optn0(x0)): int
+optn0_size
+(xs: optn0(x0)): size
+fun
+{x0:tflt}
+optn0_length
+(xs: optn0(x0)): Intgte(0)
 //
+#symload size with optn0_size
 #symload length with optn0_length
 //
 (* ****** ****** *)

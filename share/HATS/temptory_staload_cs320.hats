@@ -66,9 +66,13 @@ TEMPLIB_targetloc
 #staload
 "libats/SATS/array.sats"
 #staload
+"libats/SATS/qlist.sats"
+#staload
 "libats/SATS/list_vt.sats"
 #staload
 "libats/SATS/list_rc.sats"
+#staload
+"libats/SATS/optn_vt.sats"
 #staload
 "libats/SATS/stream_vt.sats"
 //
@@ -82,7 +86,18 @@ TEMPLIB_targetloc
 "libats/SATS/filebas.sats"
 //
 (* ****** ****** *)
-
+//
+// HX-2019-05:
+// For statically loading
+// code implementing templates
+//
+(* ****** ****** *)
+//
+#staload _ =
+"libats/DATS/basics.dats"
+//
+(* ****** ****** *)
+//
 #staload _ =
 "libats/DATS/gint.dats"
 #staload _ =
@@ -135,9 +150,13 @@ TEMPLIB_targetloc
 "libats/DATS/array.dats"
 //
 #staload _ =
+"libats/DATS/qlist.dats"
+#staload _ =
 "libats/DATS/list_vt.dats"
 #staload _ =
 "libats/DATS/list_rc.dats"
+#staload _ =
+"libats/DATS/optn_vt.dats"
 #staload _ =
 "libats/DATS/stream_vt.dats"
 //
@@ -151,9 +170,6 @@ TEMPLIB_targetloc
 "libats/DATS/glseq_stream.dats"
 
 (* ****** ****** *)
-//
-#staload _ =
-"libats/DATS/basics.dats"
 //
 #staload _ =
 "libats/DATS/print.dats"
