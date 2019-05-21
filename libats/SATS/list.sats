@@ -66,6 +66,12 @@ list0_vt2t
 //
 (* ****** ****** *)
 //
+fun
+{x0:tflt}
+list0_sing(INV(x0)): list0(x0)
+//
+(* ****** ****** *)
+//
 fun{}
 list0_iseqz
 {x0:tflt}(list0(x0)):<> bool

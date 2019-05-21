@@ -69,7 +69,7 @@ test05.dats; $(TEMPACC) -o $@ $<
 ######
 
 test06_dats: \
-test06.dats; $(TEMPACC) -o $@ $<
+test06.dats; $(TEMPACC) -o $@ $< $(MYLIBS)
 
 ######
 

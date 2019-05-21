@@ -95,6 +95,18 @@ stream_vt_append
 //
 fun
 {x0:vtflt}
+stream_vt_find
+( xs
+: stream_vt(INV(x0))
+) : stream_vt_con(x0)
+fun
+{x0:vtflt}
+stream_vt_find$test(x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 stream_vt_drop
 (
 xs: stream_vt(INV(x0))

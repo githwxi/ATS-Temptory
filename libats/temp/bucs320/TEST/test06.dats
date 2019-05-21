@@ -188,14 +188,136 @@ end
   : !lword(n)
   , i0: int(i)): list0_vt(string(n)) =
   (
-  if (i0 < n0) then append(word_neighbors_at(w1, i0), auxlst(w1, i0+1)) else list0_vt_nil()
+  if
+  (i0 < n0)
+  then append(word_neighbors_at(w1, i0), auxlst(w1, i0+1))
+  else list0_vt_nil()
   )
 }
 
 (* ****** ****** *)
 
+(*
 val waters = word_neighbors_all("water")
 val ((*void*)) = println!("waters = ", waters)
+*)
+
+(* ****** ****** *)
+
+typedef
+wpath = list0(word)
+
+extern
+fun
+doublet
+( w0: word
+, w1: word): optn_vt(wpath)
+
+(* ****** ****** *)
+
+local
+//
+#staload _ =
+"libats/temp/DATS/qlistref.dats"
+//
+in
+//
+implement
+doublet(w0, w1) =
+(
+let
+val
+nxs =
+graph_streamize_bfs<node>
+  (list0_sing(w0))
+val
+nxs =
+(
+stream_vt_filter<node>(nxs)
+) where
+{
+implement
+stream_vt_filter$test<node>(nx0) =
+(nx0[0] = w1)
+(*
+where
+{
+val () = println!("nx0[0] = ", nx0[0])
+}
+*)
+}
+in
+case+ !nxs of
+| ~stream_vt_nil() => lnone()
+| ~stream_vt_cons(nx0, nxs) => (~nxs; lsome(nx0))
+end
+) where
+{
+//
+typedef node = wpath
+//
+val null = ptr0_null()
+//
+val-
+~lsome(ht0) =
+htabref_create(i2sz(128*1024))
+//
+implement
+graph_node_mark<node>
+(nx) =
+{
+val-
+~lsome _ =
+htabref_enter_opt<ptr>
+  (ht0, nx[0], null)
+}
+//
+implement
+graph_node_is_marked<node>
+(nx) =
+case+
+htabref_find_opt<>(ht0, nx[0])
+of | ~lsome _ => true | ~lnone() => false 
+//
+implement
+graph_node_neighbors<node>
+  (nx0) =
+(
+list0_vt2t
+(
+list0_vt_map0<word><node>
+(word_neighbors_all(nx0[0]))
+)
+) where
+{
+  implement
+  list0_vt_map0$fopr<word><node>(w0) = list0_cons(w0, nx0)
+}
+//
+} (* end of [doublet] *)
+//
+end // end of [local]
+
+(* ****** ****** *)
+
+val-
+~lsome(ws) = doublet("poor", "rich")
+val ((*void*)) =
+let val ws = reverse_vt(ws) in println!(ws); free(ws) end
+
+(* ****** ****** *)
+
+val-
+~lsome(ws) = doublet("flour", "bread")
+val ((*void*)) =
+let val ws = reverse_vt(ws) in println!(ws); free(ws) end
+
+(* ****** ****** *)
+
+val-
+~lsome(ws) = doublet("water", "blood")
+val ((*void*)) =
+let val ws = reverse_vt(ws) in println!(ws); free(ws) end
 
 (* ****** ****** *)
 

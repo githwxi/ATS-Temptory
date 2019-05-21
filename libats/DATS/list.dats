@@ -53,6 +53,13 @@
 #staload UN = "./../SATS/unsafe.sats"
 
 (* ****** ****** *)
+//
+implement
+{x0}//tmp
+list0_sing(x0) =
+list0_cons(x0, list0_nil())
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
