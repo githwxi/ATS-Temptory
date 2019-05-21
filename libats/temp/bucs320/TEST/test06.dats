@@ -220,6 +220,10 @@ local
 //
 #staload _ =
 "libats/temp/DATS/qlistref.dats"
+(*
+#staload _ =
+"libats/temp/DATS/slistref.dats"
+*)
 //
 in
 //
@@ -310,6 +314,13 @@ let val ws = reverse_vt(ws) in println!(ws); free(ws) end
 
 val-
 ~lsome(ws) = doublet("flour", "bread")
+val ((*void*)) =
+let val ws = reverse_vt(ws) in println!(ws); free(ws) end
+
+(* ****** ****** *)
+
+val-
+~lsome(ws) = doublet("river", "flood")
 val ((*void*)) =
 let val ws = reverse_vt(ws) in println!(ws); free(ws) end
 
