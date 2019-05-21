@@ -43,11 +43,28 @@ ATS_EXTERN_PREFIX "temptory_"
 castfn
 string0_vt2t
 (cs: string_vt):<> string
+castfn
+string1_vt2t
+{n:int}
+(cs: string_vt(n)):<> string(n)
 //
 (* ****** ****** *)
 //
 // HX-2019-05-12:
 // For nonlin strings
+//
+(* ****** ****** *)
+//
+castfn
+g0ofg1_string
+{i:int}
+(cs: string(i)):<> string
+castfn
+g1ofg0_string
+(cs: string):<> [i:int] string(i)
+//
+#symload g0ofg1 with g0ofg1_string
+#symload g1ofg0 with g1ofg0_string
 //
 (* ****** ****** *)
 //
@@ -116,8 +133,11 @@ strcmp
 (* ****** ****** *)
 //
 fun{}
-string0_length(string):<> (int)
+string0_size(string):<> size
+fun{}
+string0_length(string):<> Intgte(0)
 //
+#symload size with string0_size
 #symload length with string0_length
 //
 (* ****** ****** *)
@@ -156,11 +176,12 @@ fun{}
 string0_map_vt$fopr(char): char
 //
 fun{}
-string0_copy
-(src: string): string
+string0_copy(string): string
 fun{}
-string0_copy_vt
-(src: string): string_vt
+string0_copy_vt(string): string_vt
+//
+#symload copy with string0_copy
+#symload copy_vt with string0_copy_vt
 //
 (* ****** ****** *)
 //
@@ -259,6 +280,19 @@ string0_foldright$fopr(c0: char, r0: r0): r0
 (* ****** ****** *)
 //
 castfn
+g0ofg1_string_vt
+{i:int}
+(cs: string_vt(i)):<> string_vt
+castfn
+g1ofg0_string_vt
+(cs: string_vt):<> [i:int] string_vt(i)
+//
+#symload g0ofg1 with g0ofg1_string_vt
+#symload g1ofg0 with g1ofg0_string_vt
+//
+(* ****** ****** *)
+//
+castfn
 string0_vt_ptrof
   (cs: !string_vt):<> ptr
 castfn
@@ -274,12 +308,16 @@ fun
 string0_vt_free
 (cs: string_vt): void = "mac#%"
 //
+#symload free with string0_vt_free
+//
 (* ****** ****** *)
 //
 fun{}
-string0_vt_iseqz(!string_vt):<> bool
+string0_vt_iseqz
+(cs: !string_vt):<> bool
 fun{}
-string0_vt_isneqz(!string_vt):<> bool
+string0_vt_isneqz
+(cs: !string_vt):<> bool
 //
 #symload iseqz with string0_vt_iseqz
 #symload iseqz with string0_vt_isneqz
@@ -287,8 +325,13 @@ string0_vt_isneqz(!string_vt):<> bool
 (* ****** ****** *)
 //
 fun{}
-string0_vt_length(!string_vt):<> (int)
+string0_vt_size
+(cs: !string_vt):<> size
+fun{}
+string0_vt_length
+(cs: !string_vt):<> Intgte(0)
 //
+#symload size with string0_vt_size
 #symload length with string0_vt_length
 //
 (* ****** ****** *)
@@ -359,6 +402,131 @@ string0_vt_foldright1(!string_vt, r0): r0
 fun
 {r0:vtflt}
 string0_vt_foldright1$fopr(c0: char, r0: r0): r0
+//
+(* ****** ****** *)
+//
+// HX-2019-05:
+// For nonlin
+// strings indexed by length
+//
+(* ****** ****** *)
+//
+castfn
+string1_ptrof
+{n:int}
+(cs: string(n)):<> ptr
+castfn
+string1_cptrof
+{n:int}
+(cs: string(n)):<> cptr(char)
+//
+#symload ptrof with string1_ptrof of 11
+#symload cptrof with string1_cptrof of 11
+//
+(* ****** ****** *)
+//
+fun{}
+string1_get_at_sint
+{n:int}
+{i:nat|i < n}
+(cs: string(n), i0: int(i)): char
+fun{}
+string1_get_at_size
+{n:int}
+{i:nat|i < n}
+(cs: string(n), i0: size(i)): char
+//
+#symload [] with string1_get_at_sint
+#symload [] with string1_get_at_size
+//
+(* ****** ****** *)
+//
+fun{}
+string1_size
+{n:int}(string(n)): size(n)
+fun{}
+string1_length
+{n:int}(string(n)): [n >= 0] sint(n)
+//
+#symload size with string1_size of 11
+#symload length with string1_length of 11
+//
+(* ****** ****** *)
+//
+fun{}
+string1_copy
+{n:int}(src: string(n)): string(n)
+fun{}
+string1_copy_vt
+{n:int}(src: string(n)): string_vt(n)
+//
+#symload copy with string1_copy of 11
+#symload copy_vt with string1_copy_vt of 11
+//
+(* ****** ****** *)
+//
+// HX-2019-05:
+// For lstrings indexed by length
+//
+(* ****** ****** *)
+//
+castfn
+string1_vt_ptrof
+{n:int}
+(cs: !string_vt(n)):<> ptr
+castfn
+string1_vt_cptrof
+{n:int}
+(cs: !string_vt(n)):<> cptr(char)
+//
+#symload ptrof with string1_vt_ptrof of 11
+#symload cptrof with string1_vt_cptrof of 11
+//
+(* ****** ****** *)
+//
+fun{}
+string1_vt_get_at_sint
+{n:int}
+{i:nat|i < n}
+(cs: !string_vt(n), i0: int(i)): char
+fun{}
+string1_vt_get_at_size
+{n:int}
+{i:nat|i < n}
+(cs: !string_vt(n), i0: size(i)): char
+//
+#symload [] with string1_vt_get_at_sint
+#symload [] with string1_vt_get_at_size
+//
+(* ****** ****** *)
+//
+fun{}
+string1_vt_set_at_sint
+{n:int}
+{i:nat|i < n}
+( cs: !string_vt(n)
+, i0: int(i), c0: char): void
+fun{}
+string1_vt_set_at_size
+{n:int}
+{i:nat|i < n}
+( cs: !string_vt(n)
+, i0: size(i), c0: char): void
+//
+#symload [] with string1_vt_set_at_sint
+#symload [] with string1_vt_set_at_size
+//
+(* ****** ****** *)
+//
+fun{}
+string1_vt_size
+{n:int}(!string_vt(n)): size(n)
+fun{}
+string1_vt_length
+{n:int}(!string_vt(n)): [n >= 0] sint(n)
+//
+#symload size with string1_vt_size of 11
+#symload length with string1_vt_length of 11
 //
 (* ****** ****** *)
 

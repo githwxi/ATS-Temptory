@@ -86,9 +86,9 @@ case+ opt of
  let
    val
    nxs =
-   gtree_node_children(nx0)
+   gtree_node_children<node>(nx0)
    val () =
-   gtree_store_insert_list(nxs)
+   gtree_store_insert_list<node>(nxs)
  in
    stream_vt_cons(nx0, auxmain())
  end
@@ -113,7 +113,7 @@ qlistref_sing<node>(nx0)
 implement
 gtree_store_insert<node>
 (nx0) =
-qlistref_insert(store, nx0)
+qlistref_insert<node>(store, nx0)
 //
 implement
 gtree_store_insert_list<node>
@@ -124,11 +124,14 @@ gtree_store_insert_list<node>
 {
 implement
 list0_foreach$work<node>
-(nx0) = gtree_store_insert<node>(nx0)
+(nx0) =
+(
+  gtree_store_insert<node>(nx0)
+)
 }
 //
 implement
-gtree_store_choose_opt<node>() = qlistref_takeout_opt(store)
+gtree_store_choose_opt<node>() = qlistref_takeout_opt<node>(store)
 //
 } (* end of [gtree_streamize_bfs] *)
 
@@ -150,7 +153,7 @@ slistref_sing<node>(nx0)
 implement
 gtree_store_insert<node>
 (nx0) =
-slistref_insert(store, nx0)
+slistref_insert<node>(store, nx0)
 //
 implement
 gtree_store_insert_list<node>
@@ -161,11 +164,14 @@ gtree_store_insert_list<node>
 {
 implement
 list0_rforeach$work<node>
-(nx0) = gtree_store_insert(nx0)
+(nx0) =
+(
+  gtree_store_insert<node>(nx0)
+)
 }
 //
 implement
-gtree_store_choose_opt<node>() = slistref_takeout_opt(store)
+gtree_store_choose_opt<node>() = slistref_takeout_opt<node>(store)
 //
 } (* end of [gtree_streamize_dfs] *)
 

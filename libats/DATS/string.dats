@@ -103,6 +103,13 @@ g0cmp_str_str(x1, x2) = strcmp(x1, x2)
 //
 implement
 {}(*tmp*)
+string0_size(cs) =
+(
+$effmask_all
+(gseq_size<string><char>(cs))
+)
+implement
+{}(*tmp*)
 string0_length(cs) =
 (
 $effmask_all
@@ -179,7 +186,7 @@ val pz =
   let
     val () =
     $UN.cptr0_set
-    (cp, string0_map$fopr<>(c0)) in succ(cp)
+    (cp, string0_map_vt$fopr<>(c0)) in succ(cp)
   end
 } (* end of [val] *)
 } (* end of [string0_map_vt] *)
@@ -196,6 +203,19 @@ string0_copy(cs) =
   implement
   string0_map$fopr<>(c0) = (c0)
 }
+implement
+{}(*tmp*)
+string0_copy_vt(cs) =
+(
+  string0_map_vt<>(cs)
+) where
+{
+  implement
+  string0_map_vt$fopr<>(c0) = (c0)
+}
+
+(* ****** ****** *)
+
 implement
 {}(*tmp*)
 string0_tolower(cs) =
@@ -459,6 +479,40 @@ gseq_foldright$fopr<x0><r0>(c0, r0) = string0_foldright$fopr<r0>(c0, r0)
 
 (* ****** ****** *)
 //
+// HX: For linear strings
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string0_vt_iseqz(cs) =
+$effmask_all
+(
+iseqz
+($UN.cptr0_get(cptrof(cs)))
+)
+implement
+{}(*tmp*)
+string0_vt_isneqz(cs) =
+$effmask_all
+(
+isneqz
+($UN.cptr0_get(cptrof(cs)))
+)
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_vt_size(cs) = 
+string0_size($UN.string0_vt2t(cs))
+implement
+{}(*tmp*)
+string0_vt_length(cs) = 
+string0_length($UN.string0_vt2t(cs))
+
+(* ****** ****** *)
+//
 implement
 {}(*tmp*)
 string0_vt_make_list0
@@ -681,6 +735,70 @@ implement
 glseq_foldright1$fopr<x0><r0>(c0, r0) = string0_vt_foldright1$fopr<r0>(c0, r0)
 } (* end of [string0_vt_foldright1] *)
 //
+(* ****** ****** *)
+//
+// HX-2019-05:
+// For strings indexed by length
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string1_get_at_sint
+(cs, i0) =
+$UN.cptr0_get(cptrof(cs)+i0)
+implement
+{}(*tmp*)
+string1_get_at_size
+(cs, i0) =
+$UN.cptr0_get(cptrof(cs)+i0)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string1_size
+(cs) = $UN.cast(string0_size(cs))
+implement
+{}(*tmp*)
+string1_length
+(cs) = $UN.cast(string0_length(cs))
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string1_vt_get_at_sint
+(cs, i0) =
+$UN.cptr0_get(cptrof(cs)+i0)
+implement
+{}(*tmp*)
+string1_vt_get_at_size
+(cs, i0) =
+$UN.cptr0_get(cptrof(cs)+i0)
+//
+implement
+{}(*tmp*)
+string1_vt_set_at_sint
+(cs, i0, c0) =
+$UN.cptr0_set(cptrof(cs)+i0, c0)
+implement
+{}(*tmp*)
+string1_vt_set_at_size
+(cs, i0, c0) =
+$UN.cptr0_set(cptrof(cs)+i0, c0)
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string1_copy(cs) = 
+$UN.castvwtp0(string0_copy(cs))
+implement
+{}(*tmp*)
+string1_copy_vt(cs) = 
+$UN.castvwtp0(string0_copy_vt(cs))
+
 (* ****** ****** *)
 
 (* end of [string.dats] *)

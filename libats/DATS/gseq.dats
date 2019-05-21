@@ -71,13 +71,27 @@ val eqz = gseq_iseqz<xs><x0>(xs)
 //
 implement
 {xs}{x0}
+gseq_size(xs) =
+(
+gseq_foldleft<xs><x0><r0>
+  (xs, i2sz(0))
+) where
+{
+//
+typedef r0 = size
+//
+implement
+gseq_foldleft$fopr<x0><r0>(r0, x0) = succ(r0)
+} (* end of [gseq_size] *)
+implement
+{xs}{x0}
 gseq_length(xs) =
 (
 gseq_foldleft<xs><x0><r0>(xs, 0)
 ) where
 {
 //
-typedef r0 = int
+typedef r0 = Intgte(0)
 //
 implement
 gseq_foldleft$fopr<x0><r0>(r0, x0) = succ(r0)

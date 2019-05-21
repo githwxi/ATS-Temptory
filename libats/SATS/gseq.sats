@@ -44,7 +44,11 @@ gseq_isneqz(xs): bool
 fun
 {xs:tflt}
 {x0:tflt}
-gseq_length(xs): (int)
+gseq_size(xs): size
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_length(xs): Intgte(0)
 //
 (* ****** ****** *)
 //

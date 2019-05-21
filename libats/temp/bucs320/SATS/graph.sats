@@ -36,55 +36,68 @@
 (*
 HX-2019-05:
 For
-streamizng generic trees
+streamizng generic graphs
 *)
 //
 (* ****** ****** *)
 //
 #define
 ATS_PACKNAME
-"temptory.temp.cs320.gtree."
+"temptory.temp.cs320.graph."
 //
 (* ****** ****** *)
 //
 fun
 {node:tflt}
-gtree_node_children
+graph_node_neighbors
   (nx: node): list0(node)
 //
 (* ****** ****** *)
 //
 fun
 {node:tflt}
-gtree_store_insert
+graph_store_insert
   (nx: node): void
 fun
 {node:tflt}
-gtree_store_insert_list
+graph_store_insert_list
   (nxs: list0(node)): void
 //
 (* ****** ****** *)
 
 fun
 {node:tflt}
-gtree_store_choose_opt
+graph_store_choose_opt
   ((*void*)): optn0_vt(node)
 
 (* ****** ****** *)
 //
 fun
 {node:tflt}
-gtree_streamize(node): stream_vt(node)
+graph_node_mark(node): void
+fun
+{node:tflt}
+graph_node_unmark(node): void
+//
+fun
+{node:tflt}
+graph_node_is_marked(node): bool
 //
 (* ****** ****** *)
 //
 fun
 {node:tflt}
-gtree_streamize_dfs(node): stream_vt(node)
+graph_streamize(node): stream_vt(node)
+//
+(* ****** ****** *)
+//
 fun
 {node:tflt}
-gtree_streamize_bfs(node): stream_vt(node)
+graph_streamize_dfs(node): stream_vt(node)
+fun
+{node:tflt}
+graph_streamize_bfs(node): stream_vt(node)
 //
 (* ****** ****** *)
 
-(* end of [cs320_gtree.sats] *)
+(* end of [cs320_graph.sats] *)
