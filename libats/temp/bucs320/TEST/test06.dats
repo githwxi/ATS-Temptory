@@ -3,6 +3,7 @@
 HX:
 For testing
 graph streamization
+BTW, hsearh is HORRIBLE!!!
 *)
 (* ****** ****** *)
 //
