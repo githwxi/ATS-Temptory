@@ -162,22 +162,55 @@ list0_append
 , ys: list0(INV(x0))): list0(x0)
 fun
 {x0:tflt}
-list0_concat
-(list0(list0(INV(x0)))): list0(x0)
+list0_append_vt
+( xs: list0(INV(x0))
+, ys: list0_vt(INV(x0))): list0_vt(x0)
+//
+fun
+{x0:tflt}
+list0_concat:
+list0(list0(INV(x0)))->list0(x0)
+fun
+{x0:tflt}
+list0_concat_vt:
+list0(list0(INV(x0)))->list0_vt(x0)
+//
+#symload append with list0_append
+#symload concat with list0_concat
+#symload append_vt with list0_append_vt
+#symload concat_vt with list0_concat_vt
+//
+(* ****** ****** *)
 //
 fun
 {x0:tflt}
 list0_revapp
-( xs: list0(INV(x0))
-, ys: list0(INV(x0))): list0(x0)
+( xs
+: list0(INV(x0))
+, ys
+: list0(INV(x0))): list0(x0)
 fun
 {x0:tflt}
-list0_reverse(list0(INV(x0))): list0(x0)
+list0_reverse
+( xs
+: list0(INV(x0))): list0(x0)
 //
-#symload append with list0_append
-#symload concat with list0_concat
+fun
+{x0:tflt}
+list0_revapp_vt
+( xs
+: list0(INV(x0))
+, ys
+: list0_vt(INV(x0))): list0_vt(x0)
+fun
+{x0:tflt}
+list0_reverse_vt
+(xs: list0(INV(x0))): list0_vt(x0)
+//
 #symload revapp with list0_revapp
 #symload reverse with list0_reverse
+#symload revapp_vt with list0_revapp_vt
+#symload reverse_vt with list0_reverse_vt
 //
 (* ****** ****** *)
 //

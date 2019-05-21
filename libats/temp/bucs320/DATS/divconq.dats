@@ -44,7 +44,7 @@
 (* ****** ****** *)
 //
 implement
-{i}{o}
+{i}{o}//tmp
 divconq_solve(x0) =
 (
   divconq_solve_beg<i><o>(x0)
@@ -52,7 +52,7 @@ divconq_solve(x0) =
 (* ****** ****** *)
 //
 implement
-{i}{o}
+{i}{o}//tmp
 divconq_solve_rec(x0) =
 (
   divconq_solve_beg<i><o>(x0)

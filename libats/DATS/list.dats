@@ -329,19 +329,76 @@ end
 //
 implement
 {x0}//tmp
+list0_append_vt
+  (xs, ys) =
+(
+let
+val ys = list0_vt2t(ys)
+in
+$UN.castvwtp0
+{list0_vt(x0)}
+(list0_append<x0>(xs, ys))
+end // end of [list0_append_vt]
+)
+//
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
 list0_concat(xss) =
 (
-list0_foldright<xs><xs>(xss, list0_nil())
+list0_foldright<xs><r0>
+  (xss, list0_nil())
 ) where
 {
 //
 typedef xs = list0(x0)
 typedef r0 = list0(x0)
 //
+fun
+append
+( xs
+: list0(x0)
+, ys
+: list0(x0)
+) : list0(x0) =
+(
+case+ ys of
+| list0_nil _ => xs
+| list0_cons _ => list0_append<x0>(xs, ys)
+)
+//
 implement
-list0_foldright$fopr<xs><r0>(xs, r0) = list0_append<x0>(xs, r0)
+list0_foldright$fopr<xs><r0>(xs, r0) = append(xs, r0)
 //
 } (* end of [list0_concat] *)
+//
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
+list0_concat_vt(xss) =
+(
+list0_foldright<xs><r0>
+  (xss, list0_vt_nil())
+) where
+{
+//
+typedef xs = list0(x0)
+vtypedef r0 = list0_vt(x0)
+//
+fun
+append
+( xs
+: list0(x0)
+, ys
+: list0_vt(x0)
+) : list0_vt(x0) = list0_append_vt<x0>(xs, ys)
+//
+implement
+list0_foldright$fopr<xs><r0>(xs, r0) = append(xs, r0)
+//
+} (* end of [list0_concat_vt] *)
 //
 (* ****** ****** *)
 //
@@ -369,8 +426,45 @@ implement
 {x0}//tmp
 list0_reverse(xs) =
 (
-  list0_revapp<x0>(xs, list0_nil())
-) (* end of [list0_reverse] *)
+list0_revapp<x0>(xs, list0_nil())
+)
+//
+(* ****** ****** *)
+//
+implement
+{x0}//tmp
+list0_revapp_vt
+  (xs, ys) =
+(
+let
+val ys = list0_vt2t(ys)
+in
+$UN.castvwtp0
+{list0_vt(x0)}
+(list0_revapp<x0>(xs, ys))
+end // end of [list0_revapp_vt]
+)
+//
+implement
+{x0}//tmp
+list0_reverse_vt(xs) =
+(
+  loop(xs, list0_vt_nil())
+) where
+{
+  fun
+  loop
+  ( xs
+  : list0(x0)
+  , ys
+  : list0_vt(x0)
+  ) : list0_vt(x0) =
+  (
+  case+ xs of
+  | list0_nil() => ys
+  | list0_cons(x0, xs) => loop(xs, list0_vt_cons(x0, ys))
+  )
+} (* end of [list0_reverse_vt] *)
 //
 (* ****** ****** *)
 

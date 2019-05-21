@@ -238,24 +238,44 @@ sexpdef optn = optn0
 
 (* ****** ****** *)
 
+sexpdef llist = list0_vt
+sexpdef loptn = optn0_vt
+
 sexpdef list_vt = list0_vt
 sexpdef optn_vt = optn0_vt
 
 (* ****** ****** *)
 
+#define lnil list0_vt_nil
+#define lcons list0_vt_cons
+#define lnone optn0_vt_none
+#define lsome optn0_vt_some
+#define lsing(x) cons_vt(x, nil_vt())
+
 #define nil_vt list0_vt_nil
 #define cons_vt list0_vt_cons
 #define none_vt optn0_vt_none
 #define some_vt optn0_vt_some
-
 #define sing_vt(x) cons_vt(x, nil_vt())
 
 (* ****** ****** *)
+
+#define lnil0 list0_vt_nil
+#define lcons0 list0_vt_cons
+#define lnone0 optn0_vt_none
+#define lsome0 optn0_vt_some
 
 #define nil0_vt list0_vt_nil
 #define cons0_vt list0_vt_cons
 #define none0_vt optn0_vt_none
 #define some0_vt optn0_vt_some
+
+(* ****** ****** *)
+
+#define lnil1 list1_vt_nil
+#define lcons1 list1_vt_cons
+#define lnone1 optn1_vt_none
+#define lsome1 optn1_vt_some
 
 #define nil1_vt list1_vt_nil
 #define cons1_vt list1_vt_cons
@@ -265,6 +285,8 @@ sexpdef optn_vt = optn0_vt
 (* ****** ****** *)
 
 sexpdef list_rc = list0_rc
+
+(* ****** ****** *)
 
 #define nil_rc list0_rc_nil
 #define cons_rc list0_rc_cons
