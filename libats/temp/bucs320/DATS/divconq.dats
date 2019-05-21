@@ -79,6 +79,8 @@ case+ opt of
  divconq_divide<i><o>(x0)
  val r0 =
  divconq_conquer<i><o>(xs)
+ val () =
+ divconq_conquer_aft<i><o>(x0, r0)
  } (* end of [where] *)
 |
 ~optn0_vt_some(y0) => y0
@@ -108,6 +110,12 @@ val r0 =
 divconq_conquer_cmb<i><o>(rs)
 //
 } (* end of [divconq_conquer] *)
+//
+(* ****** ****** *)
+//
+implement
+{i}{o}//tmp
+divconq_conquer_aft(x0, r0) = ()
 //
 (* ****** ****** *)
 

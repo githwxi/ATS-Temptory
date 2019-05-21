@@ -69,7 +69,11 @@ divconq_conquer(list0(i)): o
 and
 divconq_conquer_cmb(list0(o)): o
 //
+fun
+{i:tflt}
+{o:tflt}
+divconq_conquer_aft(i, o): void
+//
 (* ****** ****** *)
-
 
 (* end of [cs320_divconq.sats] *)
