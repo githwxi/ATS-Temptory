@@ -173,8 +173,8 @@ array_getref_at_size
 #symload [] with array_get_at_size of 10
 #symload [] with array_set_at_size of 10
 #symload array_get_at with array_get_at_sint
-#symload array_get_at with array_get_at_size
 #symload array_set_at with array_set_at_sint
+#symload array_get_at with array_get_at_size
 #symload array_set_at with array_set_at_size
 //
 (* ****** ****** *)

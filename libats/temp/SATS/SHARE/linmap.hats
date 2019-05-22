@@ -93,16 +93,16 @@ linmap_search
 , k0: !k0, r0: &x0? >> opt(x0, b)
 ) : #[b:bool] bool(b) (*found*) // endfun
 
-fun{
-key:t0p;itm:vt0p
-} linmap_search_ref
-  (map: !map (key, INV(itm)), k0: key): cptr0(itm)
+fun
+{k0,x0:vtflt}
+linmap_search_ref
+(map: !map(k0, INV(x0)), k0: !k0): cptr0(x0)
 // end of [linmap_search_ref]
 
-fun{
-key:t0p;itm:t0p
-} linmap_search_opt
-  (map: !map (key, INV(itm)), k0: key): Option_vt (itm)
+fun
+{k0,x0:vtflt}
+linmap_search_opt
+(map: !map(k0, INV(x0)), k0: !k0): optn0_vt(x0)
 // end of [linmap_search_opt]
 
 (* ****** ****** *)
@@ -112,147 +112,51 @@ key:t0p;itm:t0p
 // item associated with [k0] in [map] while the
 // item is stored in [res] instead.
 //
-fun{
-key:t0p;itm:vt0p
-} linmap_insert
-(
-  &map (key, INV(itm)) >> _, key, itm, res: &itm? >> opt(itm, b)
+fun
+{k0,x0:vtflt}
+linmap_insert
+( map
+: &map(k0, INV(x0)) >> _
+, k0: k0, x0: x0, res: &x0? >> opt(x0, b)
 ) : #[b:bool] bool(b) // endfun
-fun{
-key:t0p;itm:vt0p
-} linmap_insert_opt
-  (map: &map(key, INV(itm)) >> _, k0: key, x0: itm): Option_vt(itm)
+fun
+{k0,x0:vtflt}
+linmap_insert_opt
+( map
+: &map(k0, INV(x0)) >> _, k0: k0, x0: x0): optn0_vt(x0)
 // end of [linmap_insert_opt]
-
+//
 (* ****** ****** *)
 //
 // HX-2012-12:
 // insertion always happens regardless whether
 // [k0] is associated with some item in [map]
 //
-fun{
-key:t0p;itm:vt0p
-} linmap_insert_any
-  (map: &map (key, INV(itm)) >> _, k0: key, x0: itm): void
+fun
+{k0,x0:vtflt}
+linmap_insert_any
+(map: &map(k0, INV(x0)) >> _, k0: k0, x0: x0): void
 // end of [linmap_insert_any]
-
+//
 (* ****** ****** *)
-
-fun{
-key:t0p;itm:vt0p
-} linmap_takeout
-(
-  &map (key, INV(itm)) >> _, key, res: &itm? >> opt (itm, b)
-) : #[b:bool] bool(b) // endfun
-fun{
-key:t0p;itm:vt0p
-} linmap_takeout_opt
-  (map: &map (key, INV(itm)) >> _, k0: key): Option_vt (itm)
+//
+fun
+{k0,x0:vtflt}
+linmap_remove
+(map: &map(k0, INV(x0)) >> _, k0: !k0): bool
+//
+fun
+{k0,x0:vtflt}
+linmap_takeout
+( map
+: &map(k0, INV(x0)) >> _
+, k0: !k0, res: &x0? >> opt(x0,b)): #[b:bool] bool(b)
+fun
+{k0,x0:vtflt}
+linmap_takeout_opt
+( map: &map(k0, INV(x0)) >> _, k0: !k0 ): optn0_vt(x0)
 // end of [linmap_takeout_opt]
-
-(* ****** ****** *)
-
-fun{
-key:t0p;itm:t0p
-} linmap_remove (
-  map: &map (key, INV(itm)) >> _, k0: key): bool
-// end of [linmap_remove]
-
-(* ****** ****** *)
 //
-fun{
-} fprint_linmap$sep (out: FILEref): void // "; "
-fun{
-} fprint_linmap$mapto (out: FILEref): void // "->"
-//
-fun{
-key,itm:t@ype
-} fprint_linmap
-  (out: FILEref, map: !map (key, INV(itm))): void
-//
-overload fprint with fprint_linmap
-//
-(* ****** ****** *)
-
-fun
-{key:t0p
-;itm:vt0p}
-{env:vt0p}
-linmap_foreach$fwork
-  (k: key, x: &itm >> _, env: &(env) >> _): void
-// end of [linmap_foreach$fwork]
-
-fun{
-key:t0p;itm:vt0p
-} linmap_foreach (map: !map (key, INV(itm))): void
-// end of [linmap_foreach]
-
-fun
-{key:t0p
-;itm:vt0p}
-{env:vt0p}
-linmap_foreach_env
-  (map: !map (key, INV(itm)), env: &(env) >> _): void
-// end of [linmap_foreach_env]
-
-(* ****** ****** *)
-
-fun{
-key:t0p;itm:t0p
-} linmap_free (map: map (key, INV(itm))):<!wrt> void
-
-(* ****** ****** *)
-
-fun{
-itm:vt0p
-} linmap_freelin$clear (x: &itm >> _?):<!wrt> void
-fun{
-key:t0p;itm:vt0p
-} linmap_freelin (map: map (key, INV(itm))):<!wrt> void
-
-(* ****** ****** *)
-//
-// HX-2013:
-// a linmap can be properly freed only if it is empty
-//
-fun{
-key:t0p;itm:vt0p
-} linmap_free_ifnil
-(
-  map: !map (key, INV(itm)) >> opt(map(key, itm), b)
-) :<!wrt> #[b:bool] bool(b) (*~freed*) // endfun
-//
-(* ****** ****** *)
-//
-// HX: traversal fashion is unspecified
-//
-(* ****** ****** *)
-//
-fun
-{key:t0p
-;itm:vt0p}
-{ki2:vt0p}
-linmap_flistize$fopr (k: key, x: itm): ki2
-fun
-{key:t0p
-;itm:vt0p}
-{ki2:vt0p}
-linmap_flistize (map: map (key, INV(itm))): List0_vt(ki2)
-//
-(* ****** ****** *)
-
-fun
-{key:t0p
-;itm:vt0p}
-linmap_listize
-  (map: map (key, INV(itm))):<!wrt> List0_vt@(key, itm)
-// end of [linmap_listize]
-fun{
-key,itm:t0p
-} linmap_listize1
-  (map: !map (key, INV(itm))):<!wrt> List0_vt@(key, itm)
-// end of [linmap_listize1]
-
 (* ****** ****** *)
 
 (* end of [linmap.hats] *)
