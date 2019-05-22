@@ -223,11 +223,18 @@ HASHMAP(A0, cap, i2sz(0))
 vtypedef
 chain = chain(k0, x0)
 //
-//
+(*
 val c0 =
-$UN.castvwtp0{ptr}(chain_nil{k0,x0}())
-val A0 = arrayptr_make_elt<ptr>(cap, c0)
-val A0 = $UN.castvwtp0{arrayptr(chain, m)}(A0)
+chain_nil{k0,x0}()
+val c0 =
+$UN.castvwtp0{ptr}(c0)
+val A0 =
+arrayptr_make_elt<ptr>(cap, c0)
+val A0 =
+$UN.castvwtp0{arrayptr(chain,m)}(A0)
+*)
+val A0 = $UN.calloc<ptr>(cap)
+val A0 = $UN.castvwtp0{arrayptr(chain,m)}(A0)
 //
 } (* end of [hashmap_make_nil] *)
 //
@@ -487,6 +494,7 @@ chain = chain(k0, x0)
 val+
 @HASHMAP(A1, cap1, n0) = map
 //
+(*
 val c0 =
 chain_nil{k0,x0}()
 val c0 =
@@ -495,6 +503,13 @@ val A2 =
 arrayptr_make_elt<ptr>(cap2, c0)
 val A2 =
 $UN.castvwtp0{arrayptr(chain, m2)}(A2)
+*)
+//
+val A2 =
+$UN.calloc<ptr>(cap2)
+val A2 =
+$UN.castvwtp0{arrayptr(chain, m2)}(A2)
+//
 local
 val A2 = cptrof(A2)
 in(* in-of-local *)

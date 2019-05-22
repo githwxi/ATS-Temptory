@@ -265,7 +265,7 @@ prval
 //
 val () =
 if i > 0 then
-$UN.ptr0_exch<a>
+$UN.ptr0_exch_ref<a>
   (ptr0_add_size<a>(p0, i), !p0)
 // end of [if]
 val () =
@@ -584,6 +584,18 @@ val(A0, asz) = arrszref_uncons(AZ)
 // For array-ptrs and array-refs
 //
 (* ****** ****** *)
+
+implement
+{}(*tmp*)
+arrayptr_free{a}(A0) =
+(
+$extfcall(void, "ATS_MFREE", A0)
+) where
+{
+  val A0 = $UN.castvwtp0{ptr}(A0)
+}
+
+(* ****** ****** *)
 //
 implement
 {a}(*tmp*)
@@ -592,6 +604,40 @@ arrayptr_make_none
 (
 $UN.castvwtp0($UN.calloc<a>(asz))
 )
+//
+implement
+{a}(*tmp*)
+arrayptr_make_elt
+  {n}(asz, x0) =
+let
+val A0 =
+arrayptr_make_none<a>
+  (asz)
+val () =
+( loop(p0, p1) ) where
+{
+//
+val p0 = ptrof(A0)
+val p0 = ptr2cptr{a}(p0)
+val p1 = (p0 + asz)
+//
+fun
+loop
+( p0: cptr(a)
+, p1: cptr(a)): void =
+(
+if
+(p0 < p1)
+then
+loop(succ(p0), p1) where
+{
+val () = $UN.cptr0_set<a>(p0, x0)
+}
+) (* end of [loop] *)
+} (* end of [where] *)
+in
+  $UN.castvwtp0{arrayptr(a,n)}(A0)
+end // end of [arrayptr_make_elt]
 //
 (* ****** ****** *)
 //

@@ -203,9 +203,8 @@ linmap_print$sep(): void // ";"
 fun{}
 linmap_print$mapto(): void // "->"
 fun
-{k0,x0:tflt}
-linmap_print
-(map: !map(k0, INV(x0))): void
+{k0,x0:vtflt}
+linmap_print(map: !map(k0, INV(x0))): void
 //
 #symload print with linmap_print
 //

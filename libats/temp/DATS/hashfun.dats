@@ -78,7 +78,9 @@ libats_inthash_jenkins
 implement
 {}(*tmp*)
 inthash_jenkins(key) =
-$extfcall(uint32, "libats_inthash_jenkins", key)
+$extfcall
+( uint32
+, "temptory_inthash_jenkins", key)
 //
 (* ****** ****** *)
 

@@ -90,8 +90,6 @@ hashmap_size
 {k0,x0:vtflt}
 (map: !hmap(k0, INV(x0))):<> Sizegte(0)
 // end of [hashmap_size]
-
-(* ****** ****** *)
 //
 // HX: the array size of the hashtable
 //
@@ -100,6 +98,9 @@ hashmap_capacity
 {k0,x0:vtflt}
 (map: !hmap(k0, INV(x0))):<> Sizegte(1)
 // end of [hashmap_capacity]
+//
+#symload size with hashmap_size
+#symload capacity with hashmap_capacity
 //
 (* ****** ****** *)
 //
@@ -147,6 +148,10 @@ hashmap_insert_opt
 : !hmap(k0, INV(x0)), k0: k0, x0: x0): optn0_vt(x0)
 // end of [hashmap_insert_opt]
 //
+#symload insert with hashmap_insert
+#symload insert_any with hashmap_insert_any
+#symload insert_opt with hashmap_insert_opt
+//
 (* ****** ****** *)
 //
 fun
@@ -167,6 +172,10 @@ hashmap_takeout_opt
 (map: !hmap(k0, INV(x0)), k0: !k0): optn0_vt(x0)
 // end of [hashmap_takeout_opt]
 //
+#symload remove with hashmap_remove
+#symload takeout with hashmap_takeout
+#symload takeout_opt with hashmap_takeout_opt
+//
 (* ****** ****** *)
 //
 fun
@@ -174,6 +183,8 @@ fun
 hashmap_takeout_all
 (map: !hmap(k0, INV(x0))): list0_vt(@(k0, x0))
 // end of [hashmap_takeout_all]
+//
+#symload takeout_all with hashmap_takeout_all
 //
 (* ****** ****** *)
 //
@@ -184,6 +195,22 @@ hashmap_reset_capacity
 fun
 {k0,x0:vtflt}
 hashmap_adjust_capacity(!hmap(k0, INV(x0))): bool
+//
+(* ****** ****** *)
+//
+fun{}
+hashmap_print$beg(): void // "("
+fun{}
+hashmap_print$end(): void // ")"
+fun{}
+hashmap_print$sep(): void // ";"
+fun{}
+hashmap_print$mapto(): void // "->"
+fun
+{k0,x0:vtflt}
+hashmap_print(map: !hmap(k0, INV(x0))): void
+//
+#symload print with hashmap_print
 //
 (* ****** ****** *)
 

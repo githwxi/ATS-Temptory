@@ -271,7 +271,11 @@ temptory_g0mod_sint_sint(x, y) (x % y)
 #define \
 temptory_g0mod_uint_uint(x, y) (x % y)
 #define \
+temptory_g1mod_uint_uint(x, y) (x % y)
+#define \
 temptory_g0mod_usize_usize(x, y) (x % y)
+#define \
+temptory_g1mod_usize_usize(x, y) (x % y)
 
 /* ****** ****** */
 

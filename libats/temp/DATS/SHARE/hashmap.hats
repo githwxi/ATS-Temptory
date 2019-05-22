@@ -44,6 +44,27 @@ equal_key_key = gequal$val<k0>
 //
 (* ****** ****** *)
 //
+implement
+hash_key<int>(i0) =
+$UN.cast{ulint}
+(
+inthash_jenkins($UN.cast{uint32}(i0))
+)
+implement
+hash_key<uint>(i0) =
+$UN.cast{ulint}
+(
+inthash_jenkins($UN.cast{uint32}(i0))
+)
+implement
+hash_key<usize>(i0) =
+$UN.cast{ulint}
+(
+inthash_jenkins($UN.cast{uint32}(i0))
+)
+//
+(* ****** ****** *)
+//
 // HX: 31 and 37 are top choices
 //
 implement
@@ -199,6 +220,34 @@ opt_unnone{x0}(res) in optn0_vt_none{x0}((*void*))
 end // end of [if]
 //
 end // end of [hashmap_takeout_opt]
+
+(* ****** ****** *)
+//
+implement
+hashmap_print$beg<>() = print("(")
+implement
+hashmap_print$end<>() = print(")")
+implement
+hashmap_print$sep<>() = print(",")
+implement
+hashmap_print$mapto<>() = print("->")
+//
+(* ****** ****** *)
+
+implement
+{k0,x0:vtflt}
+hashmap_print(map) =
+(
+hashmap_print$beg<>();
+(
+print!
+("cap(", cap, "); ", "hsz(", hsz, ")")
+) where
+{
+ val cap = capacity(map) and hsz = size(map)
+} ;
+hashmap_print$end<>();
+) (* end of [hashmap_print] *)
 
 (* ****** ****** *)
 

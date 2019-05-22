@@ -196,7 +196,6 @@ end // end of [if]
 end // end of [linmap_takeout_opt]
 
 (* ****** ****** *)
-
 //
 implement
 linmap_print$beg<>() = print("(")
