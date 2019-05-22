@@ -141,8 +141,6 @@ linmap_insert_opt
 : &map(k0, INV(x0)) >> _, k0: k0, x0: x0): optn0_vt(x0)
 // end of [linmap_insert_opt]
 //
-(* ****** ****** *)
-//
 // HX-2012-12:
 // insertion always happens regardless whether
 // [k0] is associated with some item in [map]

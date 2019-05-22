@@ -69,10 +69,10 @@ map_vtbox
 
 implement
 {}(*tmp*)
-linmap_nil () = list0_vt_nil()
+linmap_nil() = list0_vt_nil()
 implement
 {}(*tmp*)
-linmap_make_nil () = list0_vt_nil()
+linmap_make_nil() = list0_vt_nil()
 
 (* ****** ****** *)
 
@@ -136,6 +136,67 @@ vtypedef kx = @(k0, x0)
 in
   map := list0_vt_cons{kx}((k0, x0), map)
 end // end of [linmap_insert_any]
+
+(* ****** ****** *)
+
+implement
+{k0,x0}//tmp
+linmap_takeout
+  (map, k0, r0) =
+(
+  loop (map, k0, r0)
+) where
+{
+//
+vtypedef kx = @(k0, x0)
+vtypedef kxs = list0_vt(kx)
+//
+fun
+loop
+( m0
+: &list0_vt(kx) >> _
+, k0: !k0, r0: &x0? >> opt(x0, b)
+) : #[b:bool] bool(b) =
+(
+//
+case+ m0 of
+|
+@list0_vt_nil() =>
+ let
+    prval () = fold@(m0)
+    prval () = opt_none{x0}(r0) in ff
+ end // end of [list_vt_nil]
+|
+@list0_vt_cons
+   (kx, m1) => let
+   val iseq =
+   equal_key_key<k0>(k0, kx.0)
+ in
+   if
+   iseq
+   then
+   let
+     val () = r0 := kx.1
+     val () = gfree$val<k0>(kx.0)
+     val m1 = m1
+     val () = free@(m0)
+     val () = (m0 := m1)
+   in
+     let
+     prval () = opt_some{x0}(r0) in tt
+     end
+   end // end of [then]
+   else
+   let
+     val opt = loop(m1, k0, r0)
+   in
+     let prval () = fold@(m0) in opt end
+   end // end of [else]
+ end // end of [list_vt_cons]
+//
+) (* end of [loop] *)
+//
+} (* end of [linmap_takeout] *)
 
 (* ****** ****** *)
 

@@ -162,8 +162,8 @@ if
 takeout
 then
 let
-prval() =
-opt_unsome{x0}(res) in
+prval() = opt_unsome{x0}(res)
+in
 let val () = gfree$ref<x0>(res) in tt end
 end
 else
