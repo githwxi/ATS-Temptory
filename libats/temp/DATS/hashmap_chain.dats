@@ -214,20 +214,22 @@ hashmap_make_nil<k0,x0>(cap)
 implement
 {k0,x0}
 hashmap_make_nil
-([m:int]cap) = let
+([m:int]cap) =
+(
+HASHMAP(A0, cap, i2sz(0))
+) where
+{
 //
 vtypedef
 chain = chain(k0, x0)
 //
 //
-val p0 =
+val c0 =
 $UN.castvwtp0{ptr}(chain_nil{k0,x0}())
-val A0 = arrayptr_make_elt<ptr>(cap, p0)
+val A0 = arrayptr_make_elt<ptr>(cap, c0)
 val A0 = $UN.castvwtp0{arrayptr(chain, m)}(A0)
 //
-in
-  HASHMAP(A0, cap, i2sz(0))
-end // end of [hashmap_make_nil]
+} (* end of [hashmap_make_nil] *)
 //
 (* ****** ****** *)
 
@@ -459,6 +461,92 @@ let
 val () = (n0 := i2sz(0)) in fold@(map); res
 end
 end // end of [hashmap_takeout_all]
+
+(* ****** ****** *)
+
+implement
+{k0,x0}
+hashmap_reset_capacity
+( map, [m2:int]cap2 ) =
+(
+let
+//
+val () = A1 := A2
+val () = cap1 := cap2
+//
+prval() = fold@(map) in true(*always!*)
+end
+) where
+{
+//
+vtypedef
+kx = @(k0, x0)
+vtypedef
+chain = chain(k0, x0)
+//
+val+
+@HASHMAP(A1, cap1, n0) = map
+//
+val c0 =
+chain_nil{k0,x0}()
+val c0 =
+$UN.castvwtp0{ptr}(c0)
+val A2 =
+arrayptr_make_elt<ptr>(cap2, c0)
+val A2 =
+$UN.castvwtp0{arrayptr(chain, m2)}(A2)
+local
+val A2 = cptrof(A2)
+in(* in-of-local *)
+fun loop1
+(
+  kxs: list0_vt(kx)
+) : void =
+(
+case+ kxs of
+|
+~list0_vt_nil() => ()
+|
+~list0_vt_cons(kx0, kxs) =>
+ (
+ let
+ prval () = fpf(pf0) in loop1(kxs)
+ end
+ )  where
+ {
+   val k0 = kx0.0
+   val x0 = kx0.1
+   val h0 =
+   hash_key<k0>(k0)
+   val h0 =
+   $UN.cast{size}(h0)
+   val i0 =
+   g1mod_usize_usize(g1ofg0(h0), cap2)
+   val pi = (A2 + i0)
+   val
+   (pf0, fpf | pi) = $UN.cptr0_vtake(pi)
+   val () = chain_insert_any<k0,x0>(!pi, k0, x0)
+ } (* end of [list0_vt_cons] *)
+)
+fun loop2
+( p0: cptr(chain)
+, p1: cptr(chain)): void =
+if
+(p0 < p1)
+then let
+  val kxs =
+  $UN.cptr0_exch(p0, chain_nil())
+  val kxs = chain_listize<k0,x0>(kxs)
+in
+  let val () = loop1(kxs) in loop2(succ(p0), p1) end
+end // end of [then]
+end // end of [local]
+//
+val () =
+let val p0 = cptrof(A1) in loop2(p0, p0+cap1) end
+val () = arrayptr_free($UN.castvwtp0{arrayptr(ptr,0)}(A1))
+//
+} (* end of [hashmap_reset_capacity] *)
 
 (* ****** ****** *)
 //

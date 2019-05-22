@@ -492,6 +492,13 @@ arrayptr_make_none
 //
 (* ****** ****** *)
 //
+fun{}
+arrayptr_free
+{a:vtflt}
+{l:addr}{n:int}(arrayptr(a?, l, n)): void
+//
+(* ****** ****** *)
+//
 castfn
 arrayref_decode
 {a:vtflt}{n:int}
