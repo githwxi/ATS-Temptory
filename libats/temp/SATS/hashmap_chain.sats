@@ -64,4 +64,3 @@ chain(k0:vtflt,x0:vtflt) = chain_vtbox(k0, x0)
 (* ****** ****** *)
 
 (* end of [hashmap_chain.sats] *)
-
