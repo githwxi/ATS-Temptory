@@ -43,7 +43,7 @@ streamizng generic trees
 //
 #define
 ATS_PACKNAME
-"temptory.temp.cs320.gtree."
+"temptory.temp.bucs320."
 //
 (* ****** ****** *)
 //

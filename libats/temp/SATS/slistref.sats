@@ -35,7 +35,7 @@
 //
 #define
 ATS_PACKNAME
-"temptory.temp.slistref"
+"temptory.temp.slistref."
 //
 (* ****** ****** *)
 //

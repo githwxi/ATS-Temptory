@@ -35,7 +35,7 @@
 //
 #define
 ATS_PACKNAME
-"temptory.temp.tvalue"
+"temptory.temp.tvalue."
 //
 (* ****** ****** *)
 //

@@ -35,7 +35,7 @@
 //
 #define
 ATS_PACKNAME
-"temptory.temp.cs320.divconq."
+"temptory.temp.bucs320."
 //
 (* ****** ****** *)
 //

@@ -31,6 +31,12 @@
 // A collection of hash functions
 //
 (* ****** ****** *)
+//
+#define
+ATS_PACKNAME
+"temptory.temp.hashfun."
+//
+(* ****** ****** *)
 
 %{#
 #include \
