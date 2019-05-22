@@ -383,6 +383,34 @@ g1add_usize_usize
 (* ****** ****** *)
 //
 fun
+g0add_slint_slint
+( x: slint
+, y: slint):<> slint = "mac#%"
+#symload + with g0add_slint_slint of 10
+fun
+g1add_slint_slint
+{i,j:int}
+( x: slint(i)
+, y: slint(j)):<> slint(i+j) = "mac#%"
+#symload + with g1add_slint_slint of 12
+//
+(* ****** ****** *)
+//
+fun
+g0add_ulint_ulint
+( x: ulint
+, y: ulint):<> ulint = "mac#%"
+#symload + with g0add_ulint_ulint of 10
+fun
+g1add_ulint_ulint
+{i,j:int}
+( x: ulint(i)
+, y: ulint(j)):<> ulint(i+j) = "mac#%"
+#symload + with g1add_ulint_ulint of 12
+//
+(* ****** ****** *)
+//
+fun
 {k1
 ,k2:tflt}
 {k3:tflt}
@@ -546,6 +574,34 @@ g1mul_usize_usize
 ( x: usize(i)
 , y: usize(j)):<> usize(i*j) = "mac#%"
 #symload * with g1mul_usize_usize of 12
+//
+(* ****** ****** *)
+//
+fun
+g0mul_slint_slint
+( x: slint
+, y: slint):<> slint = "mac#%"
+#symload * with g0mul_slint_slint of 10
+//
+fun
+g1mul_slint_slint
+{i,j:int}
+( x: slint(i)
+, y: slint(j)):<> slint(i*j) = "mac#%"
+#symload * with g1mul_slint_slint of 12
+//
+fun
+g0mul_ulint_ulint
+( x: ulint
+, y: ulint):<> ulint = "mac#%"
+#symload * with g0mul_ulint_ulint of 10
+//
+fun
+g1mul_ulint_ulint
+{i,j:int}
+( x: ulint(i)
+, y: ulint(j)):<> ulint(i*j) = "mac#%"
+#symload * with g1mul_ulint_ulint of 12
 //
 (* ****** ****** *)
 //
@@ -996,6 +1052,59 @@ fun{}
 sint_streamize(sint): stream_vt(sint)
 fun{}
 uint_streamize(uint): stream_vt(uint)
+//
+(* ****** ****** *)
+//
+// HX-2019-05:
+// For fixed-sized integers
+//
+(* ****** ****** *)
+//
+abstflt
+sint8_tk =
+$extype"atstype_sint8"
+abstflt
+uint8_tk =
+$extype"atstype_uint8"
+//
+typedef sint8 = g0int_t0ype(sint8_tk)
+typedef uint8 = g0int_t0ype(uint8_tk)
+//
+(* ****** ****** *)
+//
+abstflt
+sint16_tk =
+$extype"atstype_sint16"
+abstflt
+uint16_tk =
+$extype"atstype_uint16"
+//
+typedef sint16 = g0int_t0ype(sint16_tk)
+typedef uint16 = g0int_t0ype(uint16_tk)
+//
+(* ****** ****** *)
+//
+abstflt
+sint32_tk =
+$extype"atstype_sint32"
+abstflt
+uint32_tk =
+$extype"atstype_uint32"
+//
+typedef sint32 = g0int_t0ype(sint32_tk)
+typedef uint32 = g0int_t0ype(uint32_tk)
+//
+(* ****** ****** *)
+//
+abstflt
+sint64_tk =
+$extype"atstype_sint64"
+abstflt
+uint64_tk =
+$extype"atstype_uint64"
+//
+typedef sint64 = g0int_t0ype(sint64_tk)
+typedef uint64 = g0int_t0ype(uint64_tk)
 //
 (* ****** ****** *)
 

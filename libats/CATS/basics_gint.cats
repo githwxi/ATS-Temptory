@@ -179,6 +179,18 @@ temptory_g1add_uint1_usize(x, y) (x + y)
 temptory_g1add_usize_usize(x, y) (x + y)
 //
 /* ****** ****** */
+//
+#define \
+temptory_g0add_slint_slint(x, y) (x + y)
+#define \
+temptory_g1add_slint_slint(x, y) (x + y)
+//
+#define \
+temptory_g0add_ulint_ulint(x, y) (x + y)
+#define \
+temptory_g1add_ulint_ulint(x, y) (x + y)
+//
+/* ****** ****** */
 
 #define \
 temptory_g0sub_sint_sint(x, y) (x - y)
@@ -223,6 +235,15 @@ temptory_g1mul_uint1_usize(x, y) (x * y)
 temptory_g0mul_usize_usize(x, y) (x * y)
 #define \
 temptory_g1mul_usize_usize(x, y) (x * y)
+//
+#define \
+temptory_g0mul_slint_slint(x, y) (x * y)
+#define \
+temptory_g1mul_slint_slint(x, y) (x * y)
+#define \
+temptory_g0mul_ulint_ulint(x, y) (x * y)
+#define \
+temptory_g1mul_ulint_uline(x, y) (x * y)
 //
 /* ****** ****** */
 

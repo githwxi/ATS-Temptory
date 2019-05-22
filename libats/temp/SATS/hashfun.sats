@@ -5,7 +5,7 @@
 (***********************************************************************)
 
 (*
-** ATS/Xanadu - Unleashing the Potential of Types!
+** ATS/Postiats - Unleashing the Potential of Types!
 ** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
@@ -27,99 +27,36 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: February, 2019
-// Authoremail: gmhwxiATgmailDOTcom
+// HX-2013-09:
+// A collection of hash functions
 //
-(* ****** ****** *)
-
-#define
-ATS_PACKNAME "temptory.libc."
-#define
-ATS_EXTERN_PREFIX "temptory_libc_"
-
 (* ****** ****** *)
 
 %{#
-//
 #include \
-"libats/libc/CATS/dirent.cats"
-//
+"libats/temp/CATS/hashfun.cats"
 %} // end of [%{#]
 
 (* ****** ****** *)
 //
-typedef ieqz = int // succ/fail: 0/~0
-(*
-typedef inez = int // succ/fail: ~0/ 0
-*)
-//
-(* ****** ****** *)
-//
-abstflt
-DIR = $extype"atspre_DIR"
-abstflt
-dirent = $extype"atspre_dirent"
-//
-(* ****** ****** *)
-
-fun
-dirent_get_d_name
-(ent: &dirent): cptr(char) = "mac#%"
-fun
-direntp_get_d_name
-(ent: cptr(dirent)): cptr(char) = "mac#%"
-//
-#symload .d_name with dirent_get_d_name
-#symload .d_name with direntp_get_d_name
-//
-(* ****** ****** *)
-//
-fun
-opendir(strcst): cptr0(DIR) = "mac#%"
-fun
-closedir(cptr(DIR)): (ieqz) = "mac#%"
-//
-(* ****** ****** *)
-//
-fun
-readdir
-(dir: cptr0(DIR)): cptr0(dirent) = "mac#%"
-//
-(* ****** ****** *)
-
-fun
-readdir_r
-( dir: cptr(DIR)
-, ent: &dirent? >> _
-, res: &cptr(dirent)? >> _): ieqz = "mac#%"
-
-(* ****** ****** *)
-
-fun
-telldir
-(dir: cptr(DIR)): llint = "mac#%"
-fun
-seekdir
-(dir: cptr(DIR), loc: llint): void = "mac#%"
-
-(* ****** ****** *)
-
-fun
-rewinddir(dir: cptr(DIR)): void = "mac#%"
-
-(* ****** ****** *)
-//
-fun{}
-readdir_forall(cptr(DIR)): bool
-fun{}
-readdir_forall$test(ent: cptr(dirent)): bool
+#staload "libats/SATS/gint.sats"
 //
 (* ****** ****** *)
 //
 fun{}
-readdir_r_streamize(dir: cptr(DIR)): stream_vt(dirent)
+inthash_jenkins(uint32):<> uint32
+//
+(* ****** ****** *)
+/*
+** HX:
+** res(0) = H0
+** res(i+1) = K*res(i) + str[i]
+*/
+fun{}
+string_hash_multiplier
+(K: ulint, H0: ulint, key: string):<> ulint
+// end of [string_hash_multiplier]
 //
 (* ****** ****** *)
 
-(* end of [dirent.sats] *)
+(* end of [hashfun.sats] *)
