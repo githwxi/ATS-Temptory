@@ -115,12 +115,90 @@ opt
 then let
   prval () =
   opt_unsome{x0}(res) in optn0_vt_some{x0}(res)
-end else let
+end // end of [then
+else let
   prval () =
   opt_unnone{x0}(res) in optn0_vt_none{x0}((*void*))
-end // end of [if]
+end // end of [else]
 //
 end // end of [hashmap_search_opt]
+
+(* ****** ****** *)
+
+implement
+{k0,x0}//tmp
+hashmap_insert_opt
+  (map, k0, x0) = let
+//
+var res: x0?
+//
+val opt =
+hashmap_insert<k0,x0>(map, k0, x0, res)
+//
+in
+//
+if
+opt
+then let
+  prval () =
+  opt_unsome{x0}(res) in optn0_vt_some{x0}(res)
+end // end of [then]
+else let
+  prval () =
+  opt_unnone{x0}(res) in optn0_vt_none{x0}((*void*))
+end // end of [else]
+//
+end // end of [hashmap_insert_opt]
+
+(* ****** ****** *)
+
+implement
+{k0,x0}
+hashmap_remove
+  (map, k0) = let
+//
+var res: x0?
+//
+val takeout =
+hashmap_takeout<k0,x0>(map, k0, res)
+//
+in
+if
+takeout
+then
+let
+prval() = opt_unsome{x0}(res)
+in
+let val () = gfree$ref<x0>(res) in tt end
+end
+else
+let prval() = opt_unnone{x0}(res) in ff end
+end // end of [hashmap_remove]
+
+(* ****** ****** *)
+
+implement
+{k0,x0}
+hashmap_takeout_opt
+  (map, k0) = let
+//
+var res: x0?
+val opt =
+hashmap_takeout<k0,x0>(map, k0, res)
+//
+in (* in-of-let *)
+//
+if
+opt
+then let
+prval () =
+opt_unsome{x0}(res) in optn0_vt_some{x0}(res)
+end else let
+prval () =
+opt_unnone{x0}(res) in optn0_vt_none{x0}((*void*))
+end // end of [if]
+//
+end // end of [hashmap_takeout_opt]
 
 (* ****** ****** *)
 
