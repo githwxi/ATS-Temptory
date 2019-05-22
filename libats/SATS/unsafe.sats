@@ -187,9 +187,22 @@ ptr0_vtake
   p0: ptr
 ) :<> [l:addr] (a@l, a@l -<lin,prf> void | ptr(l))
 castfn
+cptr0_vtake
+{a:vtflt}
+(
+  cp: cptr(a)
+) :<> [l:addr] (a@l, a@l -<lin,prf> void | ptr(l))
+//
+(* ****** ****** *)
+//
+castfn
 ptr1_vtake
 {a:vtflt}{l:addr}
 (p0: ptr(l)):<> (a@l, a@l -<lin,prf> void | ptr(l))
+castfn
+cptr1_vtake
+{a:vtflt}{l:addr}
+(cp: cptr(a,l)):<> (a@l, a@l -<lin,prf> void | ptr(l))
 //
 (* ****** ****** *)
 

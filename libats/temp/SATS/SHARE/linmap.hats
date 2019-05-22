@@ -53,36 +53,51 @@ map(k0:vtflt,x0:vtflt) = map_vtbox(k0, x0)
 //
 fun
 {k0:vtflt}
-equal_key_key(k1: !k0, k2: !k0):<> bool
+equal_key_key
+(k1: !k0, k2: !k0):<> bool
 fun
 {k0:vtflt}
-compare_key_key(k1: !k0, k2: !k0):<> sint
+compare_key_key
+(k1: !k0, k2: !k0):<> sint
 //
 (* ****** ****** *)
 //
 fun{}
-linmap_nil{k0,x0:vtflt}(): map(k0, x0)
+linmap_nil
+{k0,x0:vtflt}(): map(k0, x0)
 fun{}
-linmap_make_nil{k0,x0:vtflt}(): map(k0, x0)
+linmap_make_nil
+{k0,x0:vtflt}(): map(k0, x0)
 //
 (* ****** ****** *)
 //
 fun{}
 linmap_iseqz
-{k0,x0:vtflt}(map: !map(k0, INV(x0))): bool
+{k0,x0:vtflt}
+(map: !map(k0, INV(x0))): bool
 fun{}
 linmap_isneqz
-{k0,x0:vtflt}(map: !map(k0, INV(x0))): bool
+{k0,x0:vtflt}
+(map: !map(k0, INV(x0))): bool
 //
 (* ****** ****** *)
 //
 fun
 {k0,x0:vtflt}
-linmap_size(map: !map(k0, INV(x0))): size
+linmap_size
+(map: !map(k0, INV(x0))): size
 fun
 {k0,x0:vtflt}
-linmap_length(map: !map(k0, INV(x0))): Intgte(0)
+linmap_length
+(map: !map(k0, INV(x0))): Intgte(0)
 //
+(* ****** ****** *)
+
+fun
+{k0,x0:vtflt}
+linmap_free
+( map: map(k0, INV(x0)) ): void
+
 (* ****** ****** *)
 
 fun
