@@ -37,6 +37,8 @@
 "libats/SATS/gint.sats"
 #staload
 "libats/SATS/string.sats"
+#staload
+"libats/SATS/list_vt.sats"
 
 (* ****** ****** *)
 
@@ -163,13 +165,31 @@ if not(prop) then $raise AssertExn()
 implement
 (a:tflt)
 gcopy$val<a>(x0) = (x0)
+implement
+(a:vtflt)
+gcopy$ref<a>(x0) = gcopy$val<a>(x0)
 //
+(* ****** ****** *)
+
+implement
+(a:vtflt)
+gcopy$val<list0_vt(a)>(xs) = list0_vt_copy<a>(xs)
+
 (* ****** ****** *)
 //
 implement
 (a:tflt)
 gfree$val<a>(x0) = ((*void*))
+implement
+(a:vtflt)
+gfree$ref<a>(x0) = gfree$val<a>(x0)
 //
+(* ****** ****** *)
+
+implement
+(a:vtflt)
+gfree$val<list0_vt(a)>(xs) = list0_vt_free<a>(xs)
+
 (* ****** ****** *)
 //
 implement

@@ -50,47 +50,83 @@
 implement
 {a}(*tmp*)
 array_get_at_sint
-  (A0, i) =
-$UN.cptr0_get
-(
-$UN.cast{cptr(a)}(addr@A0)+i
-)
+  (A0, i0) = let
+//
+val pi =
+ptr0_add<a>(addr@A0, i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val x0 = gcopy$ref<a>(!pi)
+//
+in
+  let prval () = fpf(pf0) in x0 end
+end // end of [array_get_at_sint]
 implement
 {a}(*tmp*)
 array_set_at_sint
-  (A0, i, x) =
-$UN.cptr0_set
-(
-$UN.cast{cptr(a)}(addr@A0)+i, x
-)
+  (A0, i0, x0) = let
+//
+val pi =
+ptr0_add<a>(addr@A0, i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val () = gfree$ref<a>(!pi)
+//
+in
+let
+  val () = !pi := x0; prval () = fpf(pf0) in ()
+end
+end // end of [array_set_at_sint]
 //
 implement
 {a}(*tmp*)
 array_get_at_size
-  (A0, i) =
-$UN.cptr0_get
-(
-$UN.cast{cptr(a)}(addr@A0)+i
-)
+  (A0, i0) = let
+//
+val pi =
+ptr0_add<a>(addr@A0, i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val x0 = gcopy$ref<a>(!pi)
+//
+in
+let prval () = fpf(pf0) in x0 end
+end // end of [array_get_at_size]
 implement
 {a}(*tmp*)
 array_set_at_size
-  (A0, i, x) =
-$UN.cptr0_set
-(
-$UN.cast{cptr(a)}(addr@A0)+i, x
-)
+  (A0, i0, x0) = let
+//
+val pi =
+ptr0_add<a>(addr@A0, i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val () = gfree$ref<a>(!pi)
+//
+in
+let
+val () = !pi := x0; prval () = fpf(pf0) in ()
+end
+end // end of [array_set_at_size]
 //
 implement
 {a}(*tmp*)
 array_getref_at_sint
-  (A0, i) =
-  $UN.cast{cptr(a)}(addr@A0)+i
+  (A0, i0) =
+(
+  $UN.cast{cptr(a)}(addr@A0)+i0
+)
 implement
 {a}(*tmp*)
 array_getref_at_size
-  (A0, i) =
-  $UN.cast{cptr(a)}(addr@A0)+i
+  (A0, i0) =
+(
+  $UN.cast{cptr(a)}(addr@A0)+i0
+)
 //
 (* ****** ****** *)
 //
@@ -289,6 +325,42 @@ let val ARRSZREF(A0, n0) = AZ in (A0, n0) end
 
 implement
 {a}(*tmp*)
+arrszref_make_elt
+  (n0, x0) = let
+//
+val n0 = g1ofg0(n0)
+//
+val A0 =
+arrayptr_make_none<a>(n0)
+//
+val p0 = ptrof( A0 )
+val p0 = ptr2cptr{a}( p0 )
+//
+in
+(
+let
+val () =
+loop(p0, p0 + n0)
+val A0 =
+$UN.castvwtp0(A0) in arrszref_cons(A0, n0)
+end
+) where
+{
+  fun
+  loop(p0: cptr(a), p1: cptr(a)): void =
+  (
+  if
+  (p0 < p1)
+  then
+  ($UN.cptr0_set(p0, x0); loop(succ(p0), p1))
+  )
+}
+end // end of [arrszref_make_elt]
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
 arrszref_make_list0
   (xs) =
 (
@@ -407,7 +479,8 @@ val
 i0 = i2sz(i0) in
 if
 i0 < n0
-then A0[i0] := x0 else $raise ArraySubscriptExn()
+then (A0[i0] := x0)
+else (gfree$val<a>(x0); $raise ArraySubscriptExn())
 end
 //
 end // end of [let]
@@ -525,46 +598,136 @@ $UN.castvwtp0($UN.calloc<a>(asz))
 implement
 {a}(*tmp*)
 arrayref_get_at_sint
-  (A0, i0) =
-(
-$UN.cptr0_get(cptrof(A0) + i0)
-)
+  (A0, i0) = let
+//
+val pi =
+ptr0_add<a>(ptrof(A0), i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val x0 = gcopy$ref<a>(!pi)
+//
+in
+let prval () = fpf(pf0) in x0 end
+end // end of [arrayref_get_at_sint]
 implement
 {a}(*tmp*)
 arrayref_set_at_sint
-  (A0, i0, x0) =
-(
-$UN.cptr0_set(cptrof(A0) + i0, x0)
-)
+  (A0, i0, x0) = let
+//
+val pi =
+ptr0_add<a>(ptrof(A0), i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val () = gfree$ref<a>(!pi)
+//
+in
+let
+val () = !pi := x0; prval () = fpf(pf0) in ()
+end
+end // end of [arrayref_set_at_sint]
+//
 implement
 {a}(*tmp*)
 arrayref_get_at_size
-  (A0, i0) =
-(
-$UN.cptr0_get(cptrof(A0) + i0)
-)
+  (A0, i0) = let
+//
+val pi =
+ptr0_add<a>(ptrof(A0), i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val x0 = gcopy$ref<a>(!pi)
+//
+in
+let prval () = fpf(pf0) in x0 end
+end // end of [arrayref_get_at_size]
 implement
 {a}(*tmp*)
 arrayref_set_at_size
-  (A0, i0, x0) =
-(
-$UN.cptr0_set(cptrof(A0) + i0, x0)
-)
+  (A0, i0, x0) = let
+//
+val pi =
+ptr0_add<a>(ptrof(A0), i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val () = gfree$ref<a>(!pi)
+//
+in
+let
+val () = !pi := x0; prval () = fpf(pf0) in ()
+end
+end // end of [arrayref_set_at_size]
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+arrayptr_get_at_sint
+  (A0, i0) = let
+//
+val pi =
+ptr0_add<a>(ptrof(A0), i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val x0 = gcopy$ref<a>(!pi)
+//
+in
+let prval () = fpf(pf0) in x0 end
+end // end of [arrayptr_get_at_sint]
+implement
+{a}(*tmp*)
+arrayptr_set_at_sint
+  (A0, i0, x0) = let
+//
+val pi =
+ptr0_add<a>(ptrof(A0), i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val () = gfree$ref<a>(!pi)
+//
+in
+let
+val () = !pi := x0; prval () = fpf(pf0) in ()
+end
+end // end of [arrayptr_set_at_sint]
 //
 implement
 {a}(*tmp*)
 arrayptr_get_at_size
-  (A0, i0) =
-(
-$UN.cptr0_get(cptrof(A0) + i0)
-)
+  (A0, i0) = let
+//
+val pi =
+ptr0_add<a>(ptrof(A0), i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val x0 = gcopy$ref<a>(!pi)
+//
+in
+let prval () = fpf(pf0) in x0 end
+end // end of [arrayptr_get_at_size]
 implement
 {a}(*tmp*)
 arrayptr_set_at_size
-  (A0, i0, x0) =
-(
-$UN.cptr0_set(cptrof(A0) + i0, x0)
-)
+  (A0, i0, x0) = let
+//
+val pi =
+ptr0_add<a>(ptrof(A0), i0)
+val
+(pf0,fpf|pi) =
+$UN.ptr0_vtake{a}(pi)
+val () = gfree$ref<a>(!pi)
+//
+in
+let
+val () = !pi := x0; prval () = fpf(pf0) in ()
+end
+end // end of [arrayptr_set_at_size]
 //
 (* ****** ****** *)
 //

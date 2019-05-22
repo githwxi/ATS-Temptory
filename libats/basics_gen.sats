@@ -58,13 +58,10 @@ gcopy$ref(x: &INV(a)): (a)
 //
 fun
 {a:vtflt}
-gfree$val(x0: INV(a)): void
-//
-(*
+gfree$val(x: INV(a)): void
 fun
 {a:vtflt}
 gfree$ref(x: &INV(a) >> a?): void
-*)
 //
 (* ****** ****** *)
 

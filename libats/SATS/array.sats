@@ -130,26 +130,26 @@ array_v(INV(a), l, n) -<prf> (a @ l, array_v(a, l+sizeof(a), n-1))
 (* ****** ****** *)
 //
 fun
-{a:tflt}
+{a:vtflt}
 array_get_at_sint
 {n:int}{i:nat | i < n}
 ( arr
 : &(@[INV(a)][n]), sint(i)): (a)
 fun
-{a:tflt}
+{a:vtflt}
 array_set_at_sint
 {n:int}{i:nat | i < n}
 ( arr
 : &(@[INV(a)][n]), sint(i), a): void
 //
 fun
-{a:tflt}
+{a:vtflt}
 array_get_at_size
 {n:int}{i:nat | i < n}
 ( arr
 : &(@[INV(a)][n]), size(i)): (a)
 fun
-{a:tflt}
+{a:vtflt}
 array_set_at_size
 {n:int}{i:nat | i < n}
 ( arr
@@ -322,6 +322,13 @@ AZ: arrszref(a)
 //
 fun
 {a:tflt}
+arrszref_make_elt
+  (size, x0: a): arrszref(a)
+//
+(* ****** ****** *)
+//
+fun
+{a:tflt}
 arrszref_make_list0
   (xs: list0(a)): arrszref(a)
 fun
@@ -337,24 +344,33 @@ arrszref_make with arrszref_make_list0_vt
 (* ****** ****** *)
 //
 fun
-{a:tflt}
+{a:vtflt}
 arrszref_get_at_size
 (A: arrszref(a), i: size): (a)
 fun
-{a:tflt}
+{a:vtflt}
 arrszref_set_at_size
 (A: arrszref(a), i: size, x: a): void
 //
 fun
-{a:tflt}
+{a:vtflt}
 arrszref_get_at_sint
 {i:nat}
 (A: arrszref(a), i: sint(i)): (a)
 fun
-{a:tflt}
+{a:vtflt}
 arrszref_set_at_sint
 {i:nat}
 (A: arrszref(a), i: sint(i), x: a): void
+//
+#symload [] with arrszref_get_at_size
+#symload [] with arrszref_set_at_size
+#symload [] with arrszref_get_at_sint
+#symload [] with arrszref_set_at_sint
+#symload arrszref_get_at with arrszref_get_at_sint
+#symload arrszref_set_at with arrszref_set_at_sint
+#symload arrszref_get_at with arrszref_get_at_size
+#symload arrszref_set_at with arrszref_set_at_size
 //
 (* ****** ****** *)
 
@@ -483,22 +499,22 @@ arrayref_encode
 (* ****** ****** *)
 
 fun
-{a:tflt}
+{a:vtflt}
 arrayref_get_at_sint
 {n:int}{i:nat | i < n}
 (A: arrayref(a, n), i: sint(i)): (a)
 fun
-{a:tflt}
+{a:vtflt}
 arrayref_set_at_sint
 {n:int}{i:nat | i < n}
 (A: arrayref(a, n), i: sint(i), x: a): void
 fun
-{a:tflt}
+{a:vtflt}
 arrayref_get_at_size
 {n:int}{i:nat | i < n}
 (A: arrayref(a, n), i: size(i)): (a)
 fun
-{a:tflt}
+{a:vtflt}
 arrayref_set_at_size
 {n:int}{i:nat | i < n}
 (A: arrayref(a, n), i: size(i), x: a): void
@@ -508,29 +524,29 @@ arrayref_set_at_size
 #symload [] with arrayref_get_at_size of 10
 #symload [] with arrayref_set_at_size of 10
 #symload arrayref_get_at with arrayref_get_at_sint
-#symload arrayref_get_at with arrayref_get_at_size
 #symload arrayref_set_at with arrayref_set_at_sint
+#symload arrayref_get_at with arrayref_get_at_size
 #symload arrayref_set_at with arrayref_set_at_size
 
 (* ****** ****** *)
 
 fun
-{a:tflt}
+{a:vtflt}
 arrayptr_get_at_sint
 {n:int}{i:nat | i < n}
 (A: !arrayptr(a, n), i: sint(i)): (a)
 fun
-{a:tflt}
+{a:vtflt}
 arrayptr_set_at_sint
 {n:int}{i:nat | i < n}
 (A: !arrayptr(a, n), i: sint(i), x: a): void
 fun
-{a:tflt}
+{a:vtflt}
 arrayptr_get_at_size
 {n:int}{i:nat | i < n}
 (A: !arrayptr(a, n), i: size(i)): (a)
 fun
-{a:tflt}
+{a:vtflt}
 arrayptr_set_at_size
 {n:int}{i:nat | i < n}
 (A: !arrayptr(a, n), i: size(i), x: a): void
@@ -540,8 +556,8 @@ arrayptr_set_at_size
 #symload [] with arrayptr_get_at_size of 10
 #symload [] with arrayptr_set_at_size of 10
 #symload arrayptr_get_at with arrayptr_get_at_sint
-#symload arrayptr_get_at with arrayptr_get_at_size
 #symload arrayptr_set_at with arrayptr_set_at_sint
+#symload arrayptr_get_at with arrayptr_get_at_size
 #symload arrayptr_set_at with arrayptr_set_at_size
 
 (* ****** ****** *)
