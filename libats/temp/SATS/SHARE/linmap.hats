@@ -171,5 +171,25 @@ linmap_takeout_opt
 // end of [linmap_takeout_opt]
 //
 (* ****** ****** *)
+//
+fun
+{k0,x0:vtflt}
+linmap_forall1
+(map: !map(k0, INV(x0))): bool
+fun
+{k0,x0:vtflt}
+linmap_forall1$test(k0: !k0, x0: !x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{k0,x0:vtflt}
+linmap_foreach1
+(map: !map(k0, INV(x0))): void
+fun
+{k0,x0:vtflt}
+linmap_foreach1$work(k0: !k0, x0: !x0): void
+//
+(* ****** ****** *)
 
 (* end of [linmap.hats] *)

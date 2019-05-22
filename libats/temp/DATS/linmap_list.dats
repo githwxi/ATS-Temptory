@@ -200,4 +200,68 @@ case+ m0 of
 
 (* ****** ****** *)
 
+implement
+{k0,x0}//tmp
+linmap_forall1(map) =
+  ( loop(map) ) where
+{
+//
+vtypedef kx = @(k0, x0)
+//
+fun
+loop
+(m0: !list0_vt(kx) >> _): bool =
+(
+case+ m0 of
+|
+@list0_vt_nil() =>
+ (fold@(m0); true)
+|
+@list0_vt_cons(kx, m1) =>
+ let
+   val test =
+   linmap_forall1$test<k0,x0>(kx.0, kx.1)
+ in
+   if
+   test
+   then
+   let
+   val opt = loop(m1) in fold@(m0); opt
+   end
+   else
+   let prval () = fold@(m0) in false end
+ end
+)
+} (* end of [linmap_forall1] *)
+
+(* ****** ****** *)
+
+implement
+{k0,x0}//tmp
+linmap_foreach1(map) =
+  ( loop(map) ) where
+{
+//
+vtypedef kx = @(k0, x0)
+//
+fun
+loop
+(m0: !list0_vt(kx) >> _): void =
+(
+case+ m0 of
+|
+ list0_vt_nil() => ()
+|
+@list0_vt_cons(kx, m1) =>
+ let
+ val () =
+ linmap_foreach1$work<k0,x0>(kx.0, kx.1)
+ in
+   let val () = loop(m1) in fold@(m0) end
+ end
+)
+} (* end of [linmap_foreach1] *)
+
+(* ****** ****** *)
+
 (* end of [linmap_list.dats] *)

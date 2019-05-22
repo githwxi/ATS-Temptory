@@ -38,12 +38,9 @@ ATS_PACKNAME
 "temptory.temp.linmap_list."
 //
 (* ****** ****** *)
-
+//
 #include "./SHARE/linmap.hats"
-(*
-#include "./SHARE/linmap_node.hats"
-*)
-
+//
 (* ****** ****** *)
 
 (* end of [linmap_list.sats] *)
