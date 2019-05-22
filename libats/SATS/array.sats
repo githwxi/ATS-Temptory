@@ -481,6 +481,11 @@ A0: !arrayptr(a,l,n)
 (* ****** ****** *)
 //
 fun
+{a:tflt}
+arrayptr_make_elt
+  {n:int}
+  (size(n), x0: a): arrayptr(a, n)
+fun
 {a:vtflt}
 arrayptr_make_none
   {n:int}(size(n)): arrayptr(a?, n)

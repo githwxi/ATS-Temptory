@@ -64,7 +64,7 @@ g0ofg1_size
 {i:int}(i: size(i)):<> size
 castfn
 g1ofg0_size
-(i: size):<> [i:int] size(i)
+(i: size):<> [i:nat] size(i)
 //
 #symload g0ofg1 with g0ofg1_size
 #symload g1ofg0 with g1ofg0_size
@@ -693,11 +693,17 @@ g0mod_uint_uint
 ( x: uint
 , y: uint):<> uint = "mac#%"
 #symload % with g0mod_uint_uint of 10
+//
 fun
 g0mod_usize_usize
 ( usize, usize ):<> usize = "mac#%"
 #symload % with g0mod_usize_usize of 10
-
+fun
+g1mod_usize_usize
+{i:int;j:int|j > 0}
+( usize(i), usize(j) ):<> Sizelt(j) = "mac#%"
+#symload % with g1mod_usize_usize of 12
+//
 (* ****** ****** *)
 //
 fun

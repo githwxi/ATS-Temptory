@@ -72,6 +72,11 @@ hashmap$recapacitize(): int
 (* ****** ****** *)
 
 fun
+{k0
+,x0:vtflt}
+hashmap_nil
+(cap: Sizegte(1)): hmap(k0, x0)
+fun
 {k0,x0:vtflt}
 hashmap_make_nil
 (cap: Sizegte(1)): hmap(k0, x0)
