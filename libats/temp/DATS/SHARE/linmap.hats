@@ -197,4 +197,51 @@ end // end of [linmap_takeout_opt]
 
 (* ****** ****** *)
 
+//
+implement
+linmap_print$beg<>() = print("(")
+implement
+linmap_print$end<>() = print(")")
+implement
+linmap_print$sep<>() = print(",")
+implement
+linmap_print$mapto<>() = print("->")
+//
+(* ****** ****** *)
+
+implement
+{k0,x0:vtflt}
+linmap_print(map) =
+(
+linmap_print$beg<>();
+linmap_foreach1<k0,x0>(map);
+linmap_print$end<>();
+) where
+{
+//
+var i0 = (0:int)
+//
+val p0 =
+$UN.cast{ref(int)}(addr@i0)
+//
+implement
+linmap_foreach1$work<k0,x0>(k0, x0) =
+(
+let
+val i0 = !p0
+val () = !p0 := i0 + 1
+in
+if
+(i0 > 0)
+then
+linmap_print$sep<>();
+//
+print$val<k0>(k0); linmap_print$mapto<>(); print$val<x0>(x0);
+//
+end
+) (* end of [where] *)
+} (* end of [linmap_print] *)
+
+(* ****** ****** *)
+
 (* end of [linmap.hats] *)

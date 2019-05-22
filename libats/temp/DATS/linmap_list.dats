@@ -48,6 +48,13 @@
 (* ****** ****** *)
 
 #staload
+"libats/SATS/print.sats"
+#staload
+"libats/SATS/stdio.sats"
+
+(* ****** ****** *)
+
+#staload
 "./../SATS/linmap_list.sats"
 
 (* ****** ****** *)

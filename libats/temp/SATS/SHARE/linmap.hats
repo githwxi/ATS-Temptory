@@ -80,6 +80,9 @@ linmap_isneqz
 {k0,x0:vtflt}
 (map: !map(k0, INV(x0))): bool
 //
+#symload iseqz with linmap_iseqz
+#symload isneqz with linmap_isneqz
+//
 (* ****** ****** *)
 //
 fun
@@ -90,6 +93,9 @@ fun
 {k0,x0:vtflt}
 linmap_length
 (map: !map(k0, INV(x0))): Intgte(0)
+//
+#symload size with linmap_size
+#symload length with linmap_length
 //
 (* ****** ****** *)
 
@@ -134,12 +140,6 @@ linmap_insert
 : &map(k0, INV(x0)) >> _
 , k0: k0, x0: x0, res: &x0? >> opt(x0, b)
 ) : #[b:bool] bool(b) // endfun
-fun
-{k0,x0:vtflt}
-linmap_insert_opt
-( map
-: &map(k0, INV(x0)) >> _, k0: k0, x0: x0): optn0_vt(x0)
-// end of [linmap_insert_opt]
 //
 // HX-2012-12:
 // insertion always happens regardless whether
@@ -150,6 +150,17 @@ fun
 linmap_insert_any
 (map: &map(k0, INV(x0)) >> _, k0: k0, x0: x0): void
 // end of [linmap_insert_any]
+//
+fun
+{k0,x0:vtflt}
+linmap_insert_opt
+( map
+: &map(k0, INV(x0)) >> _, k0: k0, x0: x0): optn0_vt(x0)
+// end of [linmap_insert_opt]
+//
+#symload insert with linmap_insert
+#symload insert_any with linmap_insert_any
+#symload insert_opt with linmap_insert_opt
 //
 (* ****** ****** *)
 //
@@ -169,6 +180,27 @@ fun
 linmap_takeout_opt
 ( map: &map(k0, INV(x0)) >> _, k0: !k0 ): optn0_vt(x0)
 // end of [linmap_takeout_opt]
+//
+#symload remove with linmap_remove
+#symload takeout with linmap_takeout
+#symload takeout_opt with linmap_takeout_opt
+//
+(* ****** ****** *)
+//
+fun{}
+linmap_print$beg(): void // "("
+fun{}
+linmap_print$end(): void // ")"
+fun{}
+linmap_print$sep(): void // ";"
+fun{}
+linmap_print$mapto(): void // "->"
+fun
+{k0,x0:tflt}
+linmap_print
+(map: !map(k0, INV(x0))): void
+//
+#symload print with linmap_print
 //
 (* ****** ****** *)
 //
