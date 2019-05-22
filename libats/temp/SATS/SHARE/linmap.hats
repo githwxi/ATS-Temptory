@@ -102,7 +102,14 @@ linmap_length
 fun
 {k0,x0:vtflt}
 linmap_free
-( map: map(k0, INV(x0)) ): void
+(map: map(k0, INV(x0))): void
+
+(* ****** ****** *)
+
+fun
+{k0,x0:vtflt}
+linmap_listize
+(map: map(k0, INV(x0))): list0_vt(@(k0, x0))
 
 (* ****** ****** *)
 

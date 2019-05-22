@@ -83,6 +83,14 @@ ptr0_set
 implement
 {a}(*tmp*)
 ptr0_exch
+  (p0, x0) = x1 where
+{
+  val x1 = ptr0_get<a>(p0)
+  val () = ptr0_set<a>(p0, x0)
+}
+implement
+{a}(*tmp*)
+ptr0_exch_ref
   (p0, x0) = () where
 {
   val x1 = x0
@@ -99,6 +107,12 @@ cptr0_get(cp) = ptr0_get<a>(cptr2ptr(cp))
 implement
 {a}(*tmp*)
 cptr0_set(cp, x0) = ptr0_set<a>(cptr2ptr(cp), x0)
+implement
+{a}(*tmp*)
+cptr0_exch(cp, x0) = ptr0_exch<a>(cptr2ptr(cp), x0)
+implement
+{a}(*tmp*)
+cptr0_exch_ref(cp, x0) = ptr0_exch_ref<a>(cptr2ptr(cp), x0)
 //
 (* ****** ****** *)
 //

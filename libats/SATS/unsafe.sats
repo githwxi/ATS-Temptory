@@ -113,14 +113,17 @@ list1_vt2t
 //
 fun
 {a:vtflt}
-ptr0_get(p0: ptr):<!wrt> (a)
+ptr0_get(p0: ptr): (a)
 fun
 {a:vtflt}
-ptr0_set(p0: ptr, x0: INV(a)):<!wrt> void
+ptr0_set(p0: ptr, x0: a): void
 //
 fun
 {a:vtflt}
-ptr0_exch(p: ptr, x: &INV(a) >> a):<!wrt> void
+ptr0_exch(p: ptr, x0: a): (a)
+fun
+{a:vtflt}
+ptr0_exch_ref(p: ptr, x0: &a >> a): void
 //
 (* ****** ****** *)
 //
@@ -146,7 +149,14 @@ fun
 cptr0_get(cp: cptr(a)): (a)
 fun
 {a:vtflt}
-cptr0_set(cp: cptr(a), x0: INV(a)):<!wrt> void
+cptr0_set(cp: cptr(a), x0: a): void
+//
+fun
+{a:vtflt}
+cptr0_exch(cp: cptr(a), x0: a): (a)
+fun
+{a:vtflt}
+cptr0_exch_ref(cp: cptr(a), x0: &a >> a): void
 //
 (* ****** ****** *)
 //

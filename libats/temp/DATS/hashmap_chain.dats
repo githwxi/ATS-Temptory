@@ -80,6 +80,14 @@ chain_nil
 {k0,x0:vtflt}(): chain(k0, x0)
 //
 (* ****** ****** *)
+
+extern
+fun
+{k0,x0:vtflt}
+chain_listize
+(chain(k0, x0)): list0_vt(@(k0, x0))
+
+(* ****** ****** *)
 //
 extern
 fun
@@ -139,9 +147,22 @@ $LM.equal_key_key = equal_key_key<k0>
 implement
 {}(*tmp*)
 chain_nil() = $LM.linmap_nil<>()
+
+(* ****** ****** *)
+//
 implement
 {k0,x0}
-chain_search_ref = $LM.linmap_search_ref<k0,x0>
+chain_listize
+  (map) =
+  $LM.linmap_listize<k0,x0>(map)
+//
+(* ****** ****** *)
+
+implement
+{k0,x0}
+chain_search_ref
+(map, k0) =
+$LM.linmap_search_ref<k0,x0>(map, k0)
 
 (* ****** ****** *)
 
@@ -390,6 +411,54 @@ val () =
 val () = if yn then n0 := pred(n0) // removed
 //
 } (* end of [hashmap_takeout] *)
+
+(* ****** ****** *)
+
+implement
+{k0,x0}//tmp
+hashmap_takeout_all
+  (map) = let
+//
+val+@HASHMAP(A0, cap, n0) = map
+//
+val pa = cptrof(A0)
+val pz = (pa + cap)
+val res =
+(
+loop(pa, pz, res)
+) where
+{
+//
+vtypedef kx = @(k0, x0)
+vtypedef kxs = list0_vt(kx)
+vtypedef chain = chain(k0, x0)
+//
+fun
+loop
+( pa: cptr(chain)
+, pz: cptr(chain)
+, res: list0_vt(kx)): list0_vt(kx) =
+(
+if
+(pa >= pz)
+then res
+else let
+  val pz = pred(pz)
+  val kxs =
+  $UN.cptr0_exch(pz, chain_nil())
+  val kxs = chain_listize<k0,x0>(kxs)
+in
+  loop(pa, pz, list0_vt_append(kxs, res))
+end // end of [then]
+)
+val res = list0_vt_nil{kx}((*void*))
+}
+//
+in
+let
+val () = (n0 := i2sz(0)) in fold@(map); res
+end
+end // end of [hashmap_takeout_all]
 
 (* ****** ****** *)
 //

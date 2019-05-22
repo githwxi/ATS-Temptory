@@ -114,6 +114,12 @@ linmap_free(map) = list0_vt_free<(k0,x0)>(map)
 
 implement
 {k0,x0}//tmp
+linmap_listize(map) = (map) (*list0_vt((k0, x0))*)
+
+(* ****** ****** *)
+
+implement
+{k0,x0}//tmp
 linmap_insert
 (map, k0, x0, r0) =
 let
