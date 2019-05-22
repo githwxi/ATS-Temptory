@@ -57,4 +57,71 @@ string_hash_multiplier(31UL, 61803398875UL, k0)
 //
 (* ****** ****** *)
 
+implement{}
+hashmap$recapacitize () = 1 // HX: default: resizable
+
+(* ****** ****** *)
+
+implement
+{k0,x0}//tmp
+hashmap_search
+(map, k0, res) = let
+//
+val cp =
+hashmap_search_ref<k0,x0>(map, k0)
+//
+in
+//
+if
+isneqz(cp)
+then let
+//
+  val
+  (pf0, fpf | p0) =
+  $UN.cptr0_vtake(cp)
+//
+  val () =
+  (res := gcopy$ref(!p0))
+//
+  prval () = fpf(pf0)
+  prval () = opt_some{x0}(res)
+//
+in
+  true
+end else let
+  prval () = opt_none{x0}(res)
+in
+  false
+end // end of [if]
+//
+end // end of [hashtbl_search]
+
+(* ****** ****** *)
+
+implement
+{k0,x0}//tmp
+hashmap_search_opt
+  (map, k0) = let
+//
+var res: x0?
+//
+val opt =
+hashmap_search<k0,x0>(map, k0, res)
+//
+in
+//
+if
+opt
+then let
+  prval () =
+  opt_unsome{x0}(res) in optn0_vt_some{x0}(res)
+end else let
+  prval () =
+  opt_unnone{x0}(res) in optn0_vt_none{x0}((*void*))
+end // end of [if]
+//
+end // end of [hashmap_search_opt]
+
+(* ****** ****** *)
+
 (* end of [hashmap.hats] *)
