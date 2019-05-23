@@ -4,15 +4,15 @@
 // For ATS-Temptory
 //
 (* ****** ****** *)
-//
-#include
-"share/HATS\
-/temptory_staload_cs320.hats"
-//
-(* ****** ****** *)
 
 implement main0() = ()
 
+(* ****** ****** *)
+//
+#include
+"share/HATS\
+/temptory_staload_bucs320.hats"
+//
 (* ****** ****** *)
 
 val xs = qlist_nil{int}()

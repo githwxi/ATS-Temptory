@@ -91,6 +91,14 @@ hmapref_search_opt
 //
 fun
 {k0,x0:vtflt}
+hmapref_insert
+( map
+: href(k0, x0)
+, k0: k0, x0: x0
+, res: &x0? >> opt(x0, b)
+) : #[b:bool] bool(b) // end-of-fun
+fun
+{k0,x0:vtflt}
 hmapref_insert_any
 (map: href(k0, x0), k0: k0, x0: x0): void
 fun
@@ -99,6 +107,7 @@ hmapref_insert_opt
 ( map
 : href(k0, x0), k0: k0, x0: x0): optn0_vt(x0)
 //
+#symload insert with hmapref_insert
 #symload insert_any with hmapref_insert_any
 #symload insert_opt with hmapref_insert_opt
 //

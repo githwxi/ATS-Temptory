@@ -43,7 +43,11 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 
-#staload "./hashmap_chain.sats"
+#staload "./hmapref.sats"
+
+(* ****** ****** *)
+
+abstbox tobject
 
 (* ****** ****** *)
 //
@@ -55,14 +59,14 @@ taggedval =
 | TVint of int
 | TVptr of ptr
 //
+| TVflt of double
+| TVstr of string
+//
 | TVarr of tarray0
 | TVlst of tvalist
 | TVobj of tobject
 //
 | TVfun of tcloref
-//
-| TVfloat of double
-| TVstring of string
 //
 where
 tvalue = taggedval
@@ -70,18 +74,133 @@ and
 tvalist = list0(tvalue)
 and
 tarray0 = arrszref(tvalue)
+(*
 and
 tobject = hmapref(string, tvalue)
+*)
 and
 tcloref = (tvalist) -<cloref1> tvalue
 //
 (* ****** ****** *)
 //
-fun
-print_tvalue(tvalue): void
+fun{}
+tvalue_print(tvalue): void
+fun{}
+tobject_print(tobject): void
 //
-#symload print with print_tvalue
+#symload print with tvalue_print
+#symload print with tobject_print
 //
 (* ****** ****** *)
 
-(* end of [tvalue.sats] *)
+#macdef
+TVint_un(x0) =
+(
+case+
+,(x0)
+of // case+
+| TVint(x) => x
+| _(*non-int*) =>
+  let val () = assertloc(false) in exit(1) end
+) : int // end of [TVint_un]
+
+(* ****** ****** *)
+
+#macdef
+TVptr_un(x0) =
+(
+case+
+,(x0)
+of // case+
+| TVptr(x) => x
+| _(*non-int*) =>
+  let val () = assertloc(false) in exit(1) end
+) : int // end of [TVptr_un]
+
+(* ****** ****** *)
+
+#macdef
+TVflt_un(x0) =
+(
+case+
+,(x0)
+of // case+
+| TVflt(x) => x
+| _(*non-int*) =>
+  let val () = assertloc(false) in exit(1) end
+) : int // end of [TVflt_un]
+#macdef
+TVstr_un(x0) =
+(
+case+
+,(x0)
+of // case+
+| TVstr(x) => x
+| _(*non-int*) =>
+  let val () = assertloc(false) in exit(1) end
+) : int // end of [TVstr_un]
+
+(* ****** ****** *)
+
+#macdef
+TVlst_un(x0) =
+(
+case+
+,(x0)
+of // case+
+| TVlst(x) => x
+| _(*non-int*) =>
+  let val () = assertloc(false) in exit(1) end
+) : int // end of [TVlst_un]
+
+(* ****** ****** *)
+
+#macdef
+TVobj_un(x0) =
+(
+case+
+,(x0)
+of // case+
+| TVobj(x) => x
+| _(*non-int*) =>
+  let val () = assertloc(false) in exit(1) end
+) : int // end of [TVobj_un]
+
+(* ****** ****** *)
+
+#macdef
+TVfun_un(x0) =
+(
+case+
+,(x0)
+of // case+
+| TVfun(x) => x
+| _(*non-int*) =>
+  let val () = assertloc(false) in exit(1) end
+) : int // end of [TVfun_un]
+
+(* ****** ****** *)
+//
+fun{}
+tvalue_iseqz(tvalue): bool
+fun{}
+tvalue_isneqz(tvalue): bool
+//
+#symload iseqz with tvalue_iseqz
+#symload isneqz with tvalue_isneqz
+//
+(* ****** ****** *)
+//
+fun{}
+tobject_get_at
+(obj: tobject, k0: string): tvalue
+fun{}
+tobject_set_at
+(obj: tobject, k0: string, x0: tvalue): void
+//
+#symload [] with tobject_get_at of 10
+#symload [] with tobject_set_at of 10
+//
+(* ****** ****** *)
+
+(* end of [taggedval.sats] *)

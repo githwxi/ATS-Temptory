@@ -10,9 +10,9 @@
 (* ****** ****** *)
 
 #ifndef
-SHARE_TEMPTORY_STALOAD_CS320
+SHARE_TEMPTORY_STALOAD_BUCS320
 #define
-SHARE_TEMPTORY_STALOAD_CS320 1
+SHARE_TEMPTORY_STALOAD_BUCS320 1
 
 (* ****** ****** *)
 //
@@ -295,9 +295,27 @@ sexpdef list_rc = list0_rc
 #define cons0_rc list0_rc_cons
 
 (* ****** ****** *)
+//
+#staload
+"libats/temp/SATS/hmapref.sats"
+#staload _ =
+"libats/temp/DATS/hmapref.dats"
+#staload _ =
+"libats/temp/DATS/hashfun.dats"
+#staload _ =
+"libats/temp/DATS/linmap_list.dats"
+#staload _ =
+"libats/temp/DATS/hashmap_chain.dats"
+//
+(* ****** ****** *)
 
-#endif // SHARE_TEMPTORY_STALOAD_CS320
+#staload
+"libats/temp/SATS/taggedval.sats"
 
 (* ****** ****** *)
 
-(* end of [temptory_staload_cs320.hats] *)
+#endif // SHARE_TEMPTORY_STALOAD_BUCS320
+
+(* ****** ****** *)
+
+(* end of [temptory_staload_bucs320.hats] *)

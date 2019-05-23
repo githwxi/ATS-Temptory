@@ -10,24 +10,8 @@ implement main1() = ( 0 )
 //
 #include
 "share/HATS\
-/temptory_staload_cs320.hats"
+/temptory_staload_bucs320.hats"
 //
-(* ****** ****** *)
-
-#staload
-"libats/temp/SATS/hmapref.sats"
-
-(* ****** ****** *)
-
-#staload
-"libats/temp/DATS/hmapref.dats"
-#staload
-"libats/temp/DATS/hashfun.dats"
-#staload
-"libats/temp/DATS/linmap_list.dats"
-#staload
-"libats/temp/DATS/hashmap_chain.dats"
-
 (* ****** ****** *)
 //
 typedef k0 = string

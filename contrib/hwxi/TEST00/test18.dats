@@ -4,10 +4,14 @@
 // For ATS-Temptory
 //
 (* ****** ****** *)
+
+implement main0() = ()
+
+(* ****** ****** *)
 //
 #include
 "share/HATS\
-/temptory_staload_cs320.hats"
+/temptory_staload_bucs320.hats"
 //
 (* ****** ****** *)
 
@@ -15,10 +19,6 @@
 "libats/libc/SATS/search.sats"
 #staload _ =
 "libats/libc/DATS/search.dats"
-
-(* ****** ****** *)
-
-implement main0() = ()
 
 (* ****** ****** *)
 

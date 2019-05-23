@@ -1,24 +1,24 @@
+(* ****** ****** *)
 /*
 HX: for testing [search]
 */
-
-(* ****** ****** *)
-//
-#include
-"share/HATS\
-/temptory_staload_cs320.hats"
-//
 (* ****** ****** *)
 
 implement main1() = 0
 
 (* ****** ****** *)
-
+//
+#include
+"share/HATS\
+/temptory_staload_bucs320.hats"
+//
+(* ****** ****** *)
+//
 #staload
 "./../../SATS/search.sats"
 #staload _ =
 "./../../DATS/search.dats"
-
+//
 (* ****** ****** *)
 
 val () =

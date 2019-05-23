@@ -10,13 +10,12 @@ implement main1() = ( 0 )
 //
 #include
 "share/HATS\
-/temptory_staload_cs320.hats"
+/temptory_staload_bucs320.hats"
 //
 (* ****** ****** *)
 
 #staload
-"libats\
-/temp/SATS/hashmap_chain.sats"
+"./../../SATS/hashmap_chain.sats"
 
 (* ****** ****** *)
 

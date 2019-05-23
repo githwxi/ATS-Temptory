@@ -130,7 +130,7 @@ hashmap_insert
 ( map
 : !hmap(k0, INV(x0))
 , k0: k0, x0: x0
-, res: &x0? >> opt(x0, b)) : #[b:bool] bool(b)
+, res: &x0? >> opt(x0, b)): #[b:bool] bool(b)
 fun
 {k0,x0:vtflt}
 hashmap_insert_any

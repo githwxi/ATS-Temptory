@@ -1,17 +1,17 @@
+(* ****** ****** *)
 /*
-HX: for testing [funmap]
+HX: for testing [qlistref]
 */
+(* ****** ****** *)
+
+implement main1() = 0
 
 (* ****** ****** *)
 //
 #include
 "share/HATS\
-/temptory_staload_cs320.hats"
+/temptory_staload_bucs320.hats"
 //
-(* ****** ****** *)
-
-implement main1() = 0
-
 (* ****** ****** *)
 
 local

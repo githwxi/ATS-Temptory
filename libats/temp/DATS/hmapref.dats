@@ -128,6 +128,17 @@ end (* end of [hmapref_search_opt] *)
 
 implement
 {k0,x0}
+hmapref_insert
+(map, k0, x0, res) = let
+val map = ref2ptr(map)
+val opt =
+hashmap_insert<k0,x0>(map, k0, x0, res)
+in
+  let prval () = $UN.cast2void(map) in opt end
+end (* end of [hmapref_insert] *)
+
+implement
+{k0,x0}
 hmapref_insert_any
   (map, k0, x0) = let
 val map = ref2ptr(map)

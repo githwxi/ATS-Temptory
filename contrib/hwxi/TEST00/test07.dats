@@ -7,7 +7,7 @@
 //
 #include
 "share/HATS\
-/temptory_staload_cs320.hats"
+/temptory_staload_bucs320.hats"
 //
 (* ****** ****** *)
 
@@ -18,9 +18,11 @@
 implement
 main0(argc, argv) =
 {
-val xs = listize(argc, argv)
+val xs =
+listize(argc, argv)
 val xs = g0ofg1(xs)
-val () = println!("argv[] = ", xs)
+val () =
+println!("argv[] = ", xs)
 val () = list0_vt_free(xs)
 } (* end of [main0] *)
 
