@@ -123,6 +123,21 @@ ptr2cptr{a}
 //
 implement
 {a}//tmp
+g0add_cptr_uint(cp, n0) =
+(
+ptr2cptr{a}
+(g0add_ptr_size(cptr2ptr(cp), n0*sizeof<a>))
+)
+implement
+{a}//tmp
+g0sub_cptr_uint(cp, n0) =
+(
+ptr2cptr{a}
+(g0sub_ptr_size(cptr2ptr(cp), n0*sizeof<a>))
+)
+//
+implement
+{a}//tmp
 g0add_cptr_sint(cp, n0) =
 (
 ptr2cptr{a}

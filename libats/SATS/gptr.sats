@@ -150,7 +150,6 @@ ptr0_sub_sint
 fun
 g0add_ptr_int
 (ptr, bsz: int):<> ptr = "mac#%"
-//
 fun
 g0sub_ptr_int
 (ptr, bsz: int):<> ptr = "mac#%"
@@ -159,9 +158,15 @@ g0sub_ptr_ptr
 (ptr, beg: ptr):<> size = "mac#%"
 //
 fun
+g0add_ptr_uint
+(ptr, bsz: uint):<> ptr = "mac#%"
+fun
+g0sub_ptr_uint
+(ptr, bsz: uint):<> ptr = "mac#%"
+//
+fun
 g0add_ptr_size
 (ptr, bsz: size):<> ptr = "mac#%"
-//
 fun
 g0sub_ptr_size
 (ptr, bsz: size):<> ptr = "mac#%"
@@ -169,6 +174,8 @@ g0sub_ptr_size
 #symload + with g0add_ptr_int of 10
 #symload - with g0sub_ptr_int of 10
 #symload - with g0sub_ptr_ptr of 10
+#symload + with g0add_ptr_uint of 10
+#symload - with g0sub_ptr_uint of 10
 #symload + with g0add_ptr_size of 10
 #symload - with g0sub_ptr_size of 10
 //
@@ -286,6 +293,15 @@ g0neq_cptr_cptr
 //
 fun
 {a:vtflt}
+g0add_cptr_uint
+(cp0: cptr(a), bsz: uint):<> cptr(a)
+fun
+{a:vtflt}
+g0sub_cptr_uint
+(cp0: cptr(a), bsz: uint):<> cptr(a)
+//
+fun
+{a:vtflt}
 g0add_cptr_size
 (cp0: cptr(a), bsz: size):<> cptr(a)
 fun
@@ -304,6 +320,8 @@ g0sub_cptr_sint
 {i:nat}
 (cp0: cptr(a), bsz: sint(i)):<> cptr(a)
 //
+#symload + with g0add_cptr_uint of 10
+#symload - with g0sub_cptr_uint of 10
 #symload + with g0add_cptr_size of 10
 #symload - with g0sub_cptr_size of 10
 #symload + with g0add_cptr_sint of 11

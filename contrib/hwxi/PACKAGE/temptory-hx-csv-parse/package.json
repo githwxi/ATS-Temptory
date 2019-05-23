@@ -1,0 +1,31 @@
+{
+"name":
+"temptory-hx-csv-parse"
+,
+"version": "1.0.0"
+,
+"description":
+"This package is for CSV-related parsing"
+,
+"main": "N/A"
+,
+"scripts": {}
+,
+  "keywords": [
+    "ATS",
+    "CSV",
+    "Temptory",
+    "Excel-sheet"
+  ]
+,
+"author": "Hongwei Xi <gmhwxi@gmail.com>"
+,
+"license": "MIT"
+,
+"note-for-me": "The package is stored at ${TEMPTORY}/contrib/hwxi/PACKAGE/."
+,
+"repository": {
+  "url":
+  "https://github.com/ats-lang/ATS-Temptory/tree/master/contrib/hwxi/PACKAGE/temptory-hx-csv-parse"
+}
+}

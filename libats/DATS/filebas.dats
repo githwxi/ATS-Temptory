@@ -187,6 +187,25 @@ implement
 FILEref_streamize_line
   (inp) =
 (
+$UN.castvwtp0
+(FILEref_streamize_line_vt<>(inp))
+)
+implement
+{}(*tmp*)
+FILEptr0_streamize_line
+  (inp) =
+(
+$UN.castvwtp0
+(FILEptr0_streamize_line_vt<>(inp))
+)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+FILEref_streamize_line_vt
+  (inp) =
+(
 stream_vt_map<x0><y0>
 (
 stream_vt_group_line<char>(cs)
@@ -201,15 +220,15 @@ stream_vt_group_line$iseol<char>(c0) = (c0 = EOL)
 }
 ) where
 {
-vtypedef y0 = string
+vtypedef y0 = string_vt
 vtypedef x0 = list0_vt(char)
 implement
-stream_vt_map$fopr<x0><y0>(x0) = string0_make_list0_vt<>(x0)
-} (* end of [FILEref_streamize_line] *)
+stream_vt_map$fopr<x0><y0>(x0) = string0_vt_make_list0_vt<>(x0)
+} (* end of [FILEref_streamize_line_vt] *)
 
 implement
 {}(*tmp*)
-FILEptr0_streamize_line
+FILEptr0_streamize_line_vt
   (inp) =
 (
 stream_vt_map<x0><y0>
@@ -226,17 +245,41 @@ stream_vt_group_line$iseol<char>(c0) = (c0 = EOL)
 }
 ) where
 {
-vtypedef y0 = string
+vtypedef y0 = string_vt
 vtypedef x0 = list0_vt(char)
 implement
-stream_vt_map$fopr<x0><y0>(x0) = string0_make_list0_vt<>(x0)
-} (* end of [FILEptr0_streamize_line] *)
+stream_vt_map$fopr<x0><y0>(x0) = string0_vt_make_list0_vt<>(x0)
+} (* end of [FILEptr0_streamize_line_vt] *)
 
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
 FILEref_streamize_word
+  (inp) =
+(
+$UN.castvwtp0
+(FILEref_streamize_word_vt<>(inp))
+)
+implement
+{}(*tmp*)
+FILEptr0_streamize_word
+  (inp) =
+(
+$UN.castvwtp0
+(FILEptr0_streamize_word_vt<>(inp))
+)
+//
+implement
+FILEref_streamize_word$isalpha<>(c0) = char0_isalpha(c0)
+implement
+FILEptr0_streamize_word$isalpha<>(c0) = char0_isalpha(c0)
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+FILEref_streamize_word_vt
   (inp) =
 (
 stream_vt_map<x0><y0>
@@ -254,15 +297,15 @@ stream_vt_group_word$isalpha<char>
 }
 ) where
 {
-vtypedef y0 = string
+vtypedef y0 = string_vt
 vtypedef x0 = list0_vt(char)
 implement
-stream_vt_map$fopr<x0><y0>(x0) = string0_make_list0_vt<>(x0)
+stream_vt_map$fopr<x0><y0>(x0) = string0_vt_make_list0_vt<>(x0)
 } (* end of [FILEref_streamize_word] *)
 
 implement
 {}(*tmp*)
-FILEptr0_streamize_word
+FILEptr0_streamize_word_vt
   (inp) =
 (
 stream_vt_map<x0><y0>
@@ -280,16 +323,11 @@ stream_vt_group_word$isalpha<char>
 }
 ) where
 {
-vtypedef y0 = string
+vtypedef y0 = string_vt
 vtypedef x0 = list0_vt(char)
 implement
-stream_vt_map$fopr<x0><y0>(x0) = string0_make_list0_vt<>(x0)
+stream_vt_map$fopr<x0><y0>(x0) = string0_vt_make_list0_vt<>(x0)
 } (* end of [FILEptr0_streamize_word] *)
-
-implement
-FILEref_streamize_word$isalpha<>(c0) = char0_isalpha(c0)
-implement
-FILEptr0_streamize_word$isalpha<>(c0) = char0_isalpha(c0)
 
 (* ****** ****** *)
 

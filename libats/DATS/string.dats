@@ -262,6 +262,14 @@ string0_make_list0_vt
   string0_vt2t
   (string0_vt_make_list0_vt(cs))
 )
+implement
+{}(*tmp*)
+string0_make_rlist0_vt
+  (cs) =
+(
+  string0_vt2t
+  (string0_vt_make_rlist0_vt(cs))
+)
 
 (* ****** ****** *)
 
@@ -515,6 +523,17 @@ string0_length($UN.string0_vt2t(cs))
 //
 implement
 {}(*tmp*)
+string0_vt_nil() =
+let
+val cs = list0_nil()
+in
+string0_vt_make_list0<>(cs)
+end // end of [let]
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
 string0_vt_make_list0
   (cs) =
 (
@@ -580,9 +599,97 @@ list0_vt_foldleft0<x0><r0>(cs, cp0)
   )
 } (* end of [val] *)
 //
-val () = $UN.cptr0_set(cp1, CNUL)
+// HX:
+// calloc makes it unnecessary
+val ( ) = $UN.cptr0_set(cp1, CNUL)
 //
 } (* end of [string0_make_list0_vt] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_vt_make_rlist0_vt
+  (cs) =
+(
+$UN.castvwtp0{string0_vt}(cp0)
+) where
+{
+//
+val n0 =
+$UN.cast{uint}(length(cs))
+val cp0 =
+$UN.calloc<char>(succ(n0))
+//
+val cp1 = cp0 + n0
+//
+// HX:
+// calloc makes it unnecessary:
+val ( ) = $UN.cptr0_set(cp1, CNUL)
+//
+val cp0 =
+(
+list0_vt_foldleft0<x0><r0>(cs, cp1)
+) where
+{
+  typedef x0 = char
+  typedef r0 = cptr0(char)
+  implement
+  list0_vt_foldleft0$fopr<x0><r0>
+    (cp, c0) =
+  (
+  let
+    val cp =
+    cptr0_pred(cp) in $UN.cptr0_set(cp, c0); cp
+  end
+  )
+} (* end of [val] *)
+//
+} (* end of [string0_make_rlist0_vt] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_vt_append
+  (cs1, cs2) = let
+//
+val n12 =
+( length(cs1)
++ length(cs2))
+//
+val cp0 =
+$UN.calloc<char>(succ(n12))
+//
+val cp1 =
+(
+string0_vt_foldleft1<r0>(cs1, cp0)
+) where
+{
+typedef r0 = cptr(char)
+implement
+string0_vt_foldleft1$fopr<r0>
+  (r0, x0) =
+  ($UN.cptr0_set(r0, x0); succ(r0))
+}
+val cp2 =
+(
+string0_vt_foldleft1<r0>(cs1, cp1)
+) where
+{
+typedef r0 = cptr(char)
+implement
+string0_vt_foldleft1$fopr<r0>
+  (r0, x0) =
+  ($UN.cptr0_set(r0, x0); succ(r0))
+}
+//
+in
+let
+val () =
+$UN.cptr0_set(cp2, CNUL)
+in $UN.castvwtp0{string0_vt}(cp0) end
+end // end of [string0_vt_append]
 
 (* ****** ****** *)
 

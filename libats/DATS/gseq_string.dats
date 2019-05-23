@@ -66,7 +66,7 @@ gseq_forall<cs><c0>
 ) where
 {
 implement
-string0_forall$test<>(x0) = gseq_forall$test<c0>(x0)
+string0_forall$test<>(c0) = gseq_forall$test<c0>(c0)
 } (* end of [gseq_forall] *)
 
 (* ****** ****** *)
@@ -79,7 +79,7 @@ gseq_foreach<cs><c0>
 ) where
 {
 implement
-string0_foreach$work<>(x0) = gseq_foreach$work<c0>(x0)
+string0_foreach$work<>(c0) = gseq_foreach$work<c0>(c0)
 } (* end of [gseq_foreach] *)
 
 (* ****** ****** *)
@@ -92,7 +92,7 @@ gseq_rforall<cs><c0>
 ) where
 {
 implement
-string0_rforall$test<>(x0) = gseq_rforall$test<c0>(x0)
+string0_rforall$test<>(c0) = gseq_rforall$test<c0>(c0)
 } (* end of [gseq_rforall] *)
 
 (* ****** ****** *)
@@ -105,7 +105,7 @@ gseq_rforeach<cs><c0>
 ) where
 {
 implement
-string0_rforeach$work<>(x0) = gseq_rforeach$work<c0>(x0)
+string0_rforeach$work<>(c0) = gseq_rforeach$work<c0>(c0)
 } (* end of [gseq_rforeach] *)
 
 (* ****** ****** *)

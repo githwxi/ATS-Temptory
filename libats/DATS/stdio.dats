@@ -130,15 +130,6 @@ fprint$val<char>(out, x) =
   (void, "atspre_fprintf", out, "%c", x)
 )
 //
-implement
-fprint$val<string>(out, cs) =
-let
-  val cs = $UNSAFE.cast{charptr}(cs)
-in
-  $extfcall
-  (void, "atspre_fprintf", out, "%s", cs)
-end // end of [fprint$val<string]
-//
 (* ****** ****** *)
 //
 implement
@@ -199,6 +190,26 @@ fprint$val<ldouble>(out, f0) =
   (void, "atspre_fprintf", out, "%Lf", f0)
 )
 //
+(* ****** ****** *)
+
+implement
+fprint$val<string>(out, cs) =
+let
+  val cs =
+  $UNSAFE.cast{charptr}(cs)
+in
+  $extfcall(void, "atspre_fprintf", out, "%s", cs)
+end // end of [fprint$val<string>]
+
+implement
+fprint$val<string_vt>(out, cs) =
+let
+  val cs =
+  $UNSAFE.castvwtp1{charptr}(cs)
+in
+  $extfcall(void, "atspre_fprintf", out, "%s", cs)
+end // end of [fprint$val<string>]
+
 (* ****** ****** *)
 
 (* end of [stdio.dats] *)

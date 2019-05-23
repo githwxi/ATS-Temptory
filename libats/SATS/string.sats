@@ -208,6 +208,9 @@ fun{}
 string0_make_list0_vt
 (cs: list0_vt(char)): string
 fun{}
+string0_make_rlist0_vt
+(cs: list0_vt(char)): string
+fun{}
 string0_make_stream_vt
 (cs: stream_vt(char)): string
 //
@@ -337,6 +340,9 @@ string0_vt_length
 (* ****** ****** *)
 //
 fun{}
+string0_vt_nil(): string_vt
+//
+fun{}
 string0_vt_implode
 (cs: list0(char)): string_vt
 fun{}
@@ -345,6 +351,9 @@ string0_vt_make_list0
 //
 fun{}
 string0_vt_make_list0_vt
+(cs: list0_vt(char)): string_vt
+fun{}
+string0_vt_make_rlist0_vt
 (cs: list0_vt(char)): string_vt
 fun{}
 string0_vt_make_stream_vt
@@ -356,6 +365,13 @@ string0_vt_make with string0_vt_make_list0
 string0_vt_make with string0_vt_make_list0_vt
 #symload
 string0_vt_make with string0_vt_make_stream_vt
+//
+(* ****** ****** *)
+//
+fun{}
+string0_vt_append
+( cs2: !string0_vt
+, cs1: !string0_vt): string0_vt
 //
 (* ****** ****** *)
 //

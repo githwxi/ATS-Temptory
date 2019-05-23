@@ -33,97 +33,57 @@
 //
 (* ****** ****** *)
 
-#define
-ATS_PACKNAME "temptory."
-#define
-ATS_EXTERN_PREFIX "temptory_"
+#define tt true
+#define ff false
 
 (* ****** ****** *)
 
-#staload "./stdio.sats"
+#staload "./../SATS/gint.sats"
+#staload "./../SATS/glseq.sats"
+#staload "./../SATS/string.sats"
 
 (* ****** ****** *)
-//
-fun{}
-FILEref_open_opt
-( fpath: strcst
-, fmode: strcst): optn0_vt(FILEref)
-fun{}
-FILEptr0_open_opt
-( fpath: strcst
-, fmode: strcst): optn0_vt(FILEptr0)
-//
-(* ****** ****** *)
 
-fun{}
-FILEref_close(FILEref): void
-fun{}
-FILEptr0_close(FILEptr): void
+typedef c0 = char
+vtypedef cs = string_vt
 
 (* ****** ****** *)
-//
-fun{}
-FILEref_streamize_char
-  (out: FILEref): stream_vt(char)
-fun{}
-FILEptr0_streamize_char
-  (out: FILEptr0): stream_vt(char)
-//
-(* ****** ****** *)
-//
-fun{}
-FILEref_streamize_line
-  (out: FILEref): stream_vt(string)
-fun{}
-FILEptr0_streamize_line
-  (out: FILEptr): stream_vt(string)
-//
-//
-fun{}
-FILEref_streamize_line_vt
-  (out: FILEref): stream_vt(string_vt)
-fun{}
-FILEptr0_streamize_line_vt
-  (out: FILEptr): stream_vt(string_vt)
-//
-(* ****** ****** *)
-//
-fun{}
-FILEref_streamize_word
-  (out: FILEref): stream_vt(string)
-fun{}
-FILEref_streamize_word$isalpha(char): bool
-//
-fun{}
-FILEptr0_streamize_word
-  (out: FILEptr): stream_vt(string)
-fun{}
-FILEptr0_streamize_word$isalpha(char): bool
-//
-(* ****** ****** *)
-//
-fun{}
-FILEref_streamize_word_vt
-  (out: FILEref): stream_vt(string_vt)
+
 (*
-fun{}
-FILEref_streamize_word$isalpha(char): bool
-==
-fun{}
-FILEref_streamize_word_vt$isalpha(char): bool
+implement
+glseq_streamize<cs><c0>
+  (cs) =
+(
+  string0_vt_streamize<>(cs)
+) // end of [glseq_streamize]
 *)
-//
-fun{}
-FILEptr0_streamize_word_vt
-  (out: FILEptr): stream_vt(string_vt)
-(*
-fun{}
-FILEptr0_streamize_word$isalpha(char): bool
-==
-fun{}
-FILEptr0_streamize_word$_vtisalpha(char): bool
-*)
-//
+
 (* ****** ****** *)
 
-(* end of [filebas.sats] *)
+implement
+glseq_forall1<cs><c0>
+  (cs) =
+(
+  string0_vt_forall1<>(cs)
+) where
+{
+implement
+string0_vt_forall1$test<>(c0) = glseq_forall1$test<c0>(c0)
+} (* end of [gseq_forall] *)
+
+(* ****** ****** *)
+
+implement
+glseq_foreach1<cs><c0>
+  (cs) =
+(
+  string0_vt_foreach1<>(cs)
+) where
+{
+implement
+string0_vt_foreach1$work<>(c0) = glseq_foreach1$work<c0>(c0)
+} (* end of [gseq_foreach] *)
+
+(* ****** ****** *)
+
+(* end of [glseq_string.dats] *)

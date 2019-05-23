@@ -241,6 +241,11 @@ gfree$ref<a2>(xs.2) in ignoret(0) end
 (* ****** ****** *)
 
 implement
+gfree$val<string_vt>(cs) = string0_vt_free(cs)
+
+(* ****** ****** *)
+
+implement
 (a:vtflt)
 gfree$val<list0_vt(a)>(xs) = list0_vt_free<a>(xs)
 
