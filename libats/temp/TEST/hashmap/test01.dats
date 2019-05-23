@@ -82,6 +82,9 @@ val-
 val-
 ~none_vt
  () = insert_opt(map, 7, "7")
+val-
+~none_vt
+ () = insert_opt(map, 8, "8")
 //
 val () = println!("map = ", map)
 //

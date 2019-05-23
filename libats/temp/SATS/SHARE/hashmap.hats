@@ -212,5 +212,15 @@ hashmap_print(map: !hmap(k0, INV(x0))): void
 #symload print with hashmap_print
 //
 (* ****** ****** *)
+//
+fun
+{k0,x0:vtflt}
+hashmap_foreach1
+(map: !hmap(k0, INV(x0))): void
+fun
+{k0,x0:vtflt}
+hashmap_foreach1$work(k0: !k0, x0: !x0): void
+//
+(* ****** ****** *)
 
 (* end of [hashmap.hats] *)

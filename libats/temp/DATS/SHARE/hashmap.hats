@@ -238,6 +238,7 @@ hashmap_print$mapto<>() = print("->")
 //
 (* ****** ****** *)
 
+(*
 implement
 {k0,x0:vtflt}
 hashmap_print(map) =
@@ -252,6 +253,42 @@ print!
 } ;
 hashmap_print$end<>();
 ) (* end of [hashmap_print] *)
+*)
+
+(* ****** ****** *)
+
+implement
+{k0,x0:vtflt}
+hashmap_print(map) =
+(
+hashmap_print$beg<>();
+hashmap_foreach1<k0,x0>(map);
+hashmap_print$end<>();
+) where
+{
+//
+var i0 = (0:int)
+//
+val p0 =
+$UN.cast{ref(int)}(addr@i0)
+//
+implement
+hashmap_foreach1$work<k0,x0>(k0, x0) =
+(
+let
+val i0 = !p0
+val () = !p0 := i0 + 1
+in
+if
+(i0 > 0)
+then
+hashmap_print$sep<>();
+//
+print$val<k0>(k0); hashmap_print$mapto<>(); print$val<x0>(x0);
+//
+end
+) (* end of [where] *)
+} (* end of [hashmap_print] *)
 
 (* ****** ****** *)
 
