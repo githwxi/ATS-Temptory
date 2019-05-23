@@ -64,21 +64,20 @@ equal_key_key
 
 (* ****** ****** *)
 //
-// HX: for recapacitizing policy
+(*
+HX:
+Resizing policy:
+Resizing is allowed by default
+*)
 //
 fun{}
-hashmap$recapacitize(): int
+hashmap$resizable((*void*)): int
 //
 (* ****** ****** *)
 
 fun
-{k0
-,x0:vtflt}
-hashmap_nil
-(cap: Sizegte(1)): hmap(k0, x0)
-fun
 {k0,x0:vtflt}
-hashmap_make_nil
+hashmap_make_hcap
 (cap: Sizegte(1)): hmap(k0, x0)
 
 (* ****** ****** *)
@@ -94,13 +93,13 @@ hashmap_size
 // HX: the array size of the hashtable
 //
 fun{}
-hashmap_capacity
+hashmap_hcap
 {k0,x0:vtflt}
 (map: !hmap(k0, INV(x0))):<> Sizegte(1)
-// end of [hashmap_capacity]
+// end of [hashmap_hcap]
 //
 #symload size with hashmap_size
-#symload capacity with hashmap_capacity
+#symload hcap with hashmap_hcap
 //
 (* ****** ****** *)
 //
@@ -190,11 +189,11 @@ hashmap_takeout_all
 //
 fun
 {k0,x0:vtflt}
-hashmap_reset_capacity
-(map: !hmap(k0, INV(x0)), cap2: Sizegte(1)): bool
+hashmap_reset_hcap
+(map: !hmap(k0, INV(x0)), cap: Sizegte(1)): bool
 fun
 {k0,x0:vtflt}
-hashmap_adjust_capacity(!hmap(k0, INV(x0))): bool
+hashmap_adjust_hcap(map: !hmap(k0, INV(x0))): bool
 //
 (* ****** ****** *)
 //

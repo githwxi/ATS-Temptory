@@ -37,8 +37,8 @@ typedef kx = (k0, x0)
 //
 val
 map =
-hashmap_nil<k0,x0>
-(i2sz(1024))
+hashmap_make_hcap<k0,x0>
+  (i2sz(1))
 val () =
 assertloc(size(map) = 0)
 //
@@ -69,6 +69,23 @@ val-tt = remove(map, 0) // found
 val-ff = remove(map, 3) // ~found
 //
 val () = println!("map = ", map)
+//
+val-
+~none_vt
+ () = insert_opt(map, 4, "4")
+val-
+~none_vt
+ () = insert_opt(map, 5, "5")
+val-
+~none_vt
+ () = insert_opt(map, 6, "6")
+val-
+~none_vt
+ () = insert_opt(map, 7, "7")
+//
+val () = println!("map = ", map)
+//
+val ((*freed*)) = hashmap_free<k0,x0>(map)
 //
 end // end of [local]
 

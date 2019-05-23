@@ -163,13 +163,17 @@ if not(prop) then $raise AssertExn()
 (* ****** ****** *)
 //
 implement
+{a}(*tmp*)
+gcopy$ref(x0) = gcopy$val<a>(x0)
+//
+(* ****** ****** *)
+
+implement
 (a:tflt)
 gcopy$val<a>(x0) = (x0)
 implement
-(a:vtflt)
-gcopy$ref<a>(x0) = gcopy$val<a>(x0)
-//
-(* ****** ****** *)
+(a:tflt)
+gcopy$ref<a>(x0) = (x0)
 
 implement
 (a:vtflt)
@@ -178,11 +182,61 @@ gcopy$val<list0_vt(a)>(xs) = list0_vt_copy<a>(xs)
 (* ****** ****** *)
 //
 implement
+{a}(*tmp*)
+gfree$ref(x0) = gfree$val<a>(x0)
+//
+(* ****** ****** *)
+//
+implement
 (a:tflt)
 gfree$val<a>(x0) = ((*void*))
 implement
-(a:vtflt)
-gfree$ref<a>(x0) = gfree$val<a>(x0)
+(a:tflt)
+gfree$ref<a>(x0) = ((*void*))
+//
+implement
+(a0:vtflt
+,a1:vtflt)
+gfree$val<(a0,a1)>(xs) =
+let
+val () =
+gfree$val<a0>(xs.0)
+val () =
+gfree$val<a1>(xs.1) in ignoret(0) end
+implement
+(a0:vtflt
+,a1:vtflt)
+gfree$ref<(a0,a1)>(xs) =
+let
+val () =
+gfree$ref<a0>(xs.0)
+val () =
+gfree$ref<a1>(xs.1) in ignoret(0) end
+//
+implement
+(a0:vtflt
+,a1:vtflt
+,a2:vtflt)
+gfree$val<(a0,a1,a2)>(xs) =
+let
+val () =
+gfree$val<a0>(xs.0)
+val () =
+gfree$val<a1>(xs.1)
+val () =
+gfree$val<a2>(xs.2) in ignoret(0) end
+implement
+(a0:vtflt
+,a1:vtflt
+,a2:vtflt)
+gfree$ref<(a0,a1,a2)>(xs) =
+let
+val () =
+gfree$ref<a0>(xs.0)
+val () =
+gfree$ref<a1>(xs.1)
+val () =
+gfree$ref<a2>(xs.2) in ignoret(0) end
 //
 (* ****** ****** *)
 

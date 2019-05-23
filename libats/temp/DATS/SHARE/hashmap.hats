@@ -77,10 +77,14 @@ string_hash_multiplier(31UL, 61803398875UL, k0)
 *)
 //
 (* ****** ****** *)
-
+//
+(*
+HX:
+Default: resizable
+*)
 implement{}
-hashmap$recapacitize () = 1 // HX: default: resizable
-
+hashmap$resizable() = 1
+//
 (* ****** ****** *)
 
 implement
@@ -244,7 +248,7 @@ print!
 ("cap(", cap, "); ", "hsz(", hsz, ")")
 ) where
 {
- val cap = capacity(map) and hsz = size(map)
+ val cap = hcap(map) and hsz = size(map)
 } ;
 hashmap_print$end<>();
 ) (* end of [hashmap_print] *)

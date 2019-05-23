@@ -84,8 +84,15 @@ chain_nil
 extern
 fun
 {k0,x0:vtflt}
+chain_free(chain(k0, INV(x0))): void
+
+(* ****** ****** *)
+
+extern
+fun
+{k0,x0:vtflt}
 chain_listize
-(chain(k0, x0)): list0_vt(@(k0, x0))
+(chain(k0, INV(x0))): list0_vt(@(k0, x0))
 
 (* ****** ****** *)
 //
@@ -93,7 +100,7 @@ extern
 fun
 {k0,x0:vtflt}
 chain_search_ref
-  (kxs: !chain(k0, x0), k0: !k0): cptr0(x0)
+(kxs: !chain(k0, INV(x0)), k0: !k0): cptr0(x0)
 // end of [chain_search_ref]
 //
 (* ****** ****** *)
@@ -110,8 +117,8 @@ extern
 fun
 {k0,x0:vtflt}
 chain_insert_any
-  (kxs: &chain(k0, x0) >> _, k0, x0): void
-// end of [chain_insert_any]
+( kxs
+: &chain(k0, INV(x0)) >> _, k0: k0, x0: x0): void
 //
 (* ****** ****** *)
 
@@ -148,6 +155,14 @@ implement
 {}(*tmp*)
 chain_nil() = $LM.linmap_nil<>()
 
+(* ****** ****** *)
+//
+implement
+{k0,x0}
+chain_free
+  (map) =
+  $LM.linmap_free<k0,x0>(map)
+//
 (* ****** ****** *)
 //
 implement
@@ -208,12 +223,7 @@ hashmap_vtbox(k0:vtflt, x0:vtflt) = hashmap(k0, x0)
 //
 implement
 {k0,x0}
-hashmap_nil(cap) =
-hashmap_make_nil<k0,x0>(cap)
-//
-implement
-{k0,x0}
-hashmap_make_nil
+hashmap_make_hcap
 ([m:int]cap) =
 (
 HASHMAP(A0, cap, i2sz(0))
@@ -257,14 +267,55 @@ end // end of [hashmap_size]
 
 implement
 {}(*tmp*)
-hashmap_capacity
+hashmap_hcap
   (map) = let
 //
 val+
 HASHMAP
 (A0, cap, ntot) = map in (cap)
 //
-end // end of [hashmap_get_capacity]
+end // end of [hashmap_get_hcap]
+
+(* ****** ****** *)
+
+implement
+{k0,x0}//tmp
+hashmap_free
+  (map) = let
+//
+val+
+~HASHMAP
+ (A0, cap, n0) = map
+//
+val () =
+(
+  loop(p0, p0 + cap)
+) where
+{
+//
+val p0 = cptrof(A0)
+//
+vtypedef
+chain = chain(k0, x0)
+//
+fun
+loop
+( p0: cptr(chain)
+, p1: cptr(chain)): void =
+(
+if
+(p0 < p1)
+then let
+  val kxs = $UN.cptr0_get(p0)
+in
+  chain_free<k0,x0>(kxs); loop(succ(p0), p1)
+end (* end of [then] *)
+)
+//
+} (* end of [where] *)
+in
+arrayptr_free($UN.castvwtp0{arrayptr(ptr,0)}(A0))
+end // end of [hashmap_free]
 
 (* ****** ****** *)
 
@@ -333,11 +384,14 @@ not(yn)
 then
 (
   if
-  hashmap$recapacitize() > 0
+  hashmap$resizable() > 0
   then
   let
   val
-  cap = hashmap_adjust_capacity<k0,x0>(map) in ()
+  cap =
+  hashmap_adjust_hcap<k0,x0>(map)
+  in
+    ((*nothing*))
   end // end of [then] // end of [if]
 )
 //
@@ -377,11 +431,14 @@ end // end of [val]
 val () =
 (
   if
-  hashmap$recapacitize() > 0
+  hashmap$resizable() > 0
   then
   let
   val
-  cap = hashmap_adjust_capacity<k0,x0>(map) in ()
+  cap =
+  hashmap_adjust_hcap<k0,x0>(map)
+  in
+    (*nothing*)
   end // end of [then] // end of [if]
 )
 //
@@ -473,7 +530,7 @@ end // end of [hashmap_takeout_all]
 
 implement
 {k0,x0}
-hashmap_reset_capacity
+hashmap_reset_hcap
 ( map, [m2:int]cap2 ) =
 (
 let
@@ -511,8 +568,10 @@ val A2 =
 $UN.castvwtp0{arrayptr(chain, m2)}(A2)
 //
 local
-val A2 = cptrof(A2)
+val
+A2 = cptrof(A2)
 in(* in-of-local *)
+//
 fun loop1
 (
   kxs: list0_vt(kx)
@@ -553,15 +612,19 @@ then let
   $UN.cptr0_exch(p0, chain_nil())
   val kxs = chain_listize<k0,x0>(kxs)
 in
-  let val () = loop1(kxs) in loop2(succ(p0), p1) end
+  let
+  val () = loop1(kxs) in loop2(succ(p0), p1)
+  end
 end // end of [then]
 end // end of [local]
 //
 val () =
-let val p0 = cptrof(A1) in loop2(p0, p0+cap1) end
-val () = arrayptr_free($UN.castvwtp0{arrayptr(ptr,0)}(A1))
+let val p0 =
+cptrof(A1) in loop2(p0, p0+cap1) end
+val () =
+arrayptr_free($UN.castvwtp0{arrayptr(ptr,0)}(A1))
 //
-} (* end of [hashmap_reset_capacity] *)
+} (* end of [hashmap_reset_hcap] *)
 
 (* ****** ****** *)
 //
@@ -573,7 +636,7 @@ re-implement if needed
 //
 implement
 {k0,x0}//tmp
-hashmap_adjust_capacity
+hashmap_adjust_hcap
   (map) = let
 //
 val+HASHMAP(A0, cap, n0) = map
@@ -584,10 +647,10 @@ if
 (i2sz(5) * cap <= n0)
 then
 (
-hashmap_reset_capacity<k0,x0>(map, cap + cap)
+hashmap_reset_hcap<k0,x0>(map, cap + cap)
 ) else false // end of [if]
 //
-end // end of [hashmap_adjust_capacity]
+end // end of [hashmap_adjust_hcap]
 //
 (* ****** ****** *)
 

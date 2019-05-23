@@ -104,8 +104,36 @@ loop
 (xs: list0_vt(x0)): void =
 (
 case+ xs of
-| ~list0_vt_nil() => ()
-| ~list0_vt_cons(x0, xs) => (gfree$val(x0); loop(xs))
+|
+~list0_vt_nil() => ()
+|
+@list0_vt_cons(x0, xs1) =>
+ let
+ val () = gfree$ref<x0>(x0)
+ in
+ let val xs1 = xs1 in free@(xs); loop(xs1) end
+ end (* end of [list0_vt_cons] *)
+) (* end of [loop] *)
+} (* end of [list_vt_free] *)
+//
+implement
+(x0:vtbox)
+list0_vt_free<x0>
+  (xs) =
+  (loop(xs)) where
+{
+fun
+loop
+(xs: list0_vt(x0)): void =
+(
+case+ xs of
+|
+~list0_vt_nil() => ()
+|
+~list0_vt_cons(x0, xs) =>
+ let
+ val () = gfree$val<x0>(x0) in loop(xs)
+ end (* end of [list0_vt_cons] *)
 ) (* end of [loop] *)
 } (* end of [list_vt_free] *)
 //
