@@ -74,6 +74,27 @@ UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
 //
+implement
+{}(*tmp*)
+hashmap$hcap() = 64
+implement
+{k0,x0}//tmp
+hashmap_make() =
+hashmap_make_hcap
+(i2sz(hashmap$hcap<>()))
+//
+(* ****** ****** *)
+//
+absvtbox
+chain_vtbox
+(k0:vtflt, x0:vtflt+) = ptr
+//
+(* ****** ****** *)
+
+sexpdef chain = chain_vtbox
+
+(* ****** ****** *)
+//
 extern
 fun{}
 chain_nil

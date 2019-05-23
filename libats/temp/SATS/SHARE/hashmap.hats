@@ -33,13 +33,6 @@
 
 (* ****** ****** *)
 //
-abstbox
-hmapref_tbox
-(k0:vtflt, x0:vtflt+) = ptr
-typedef
-hmapref
-(k0:vtflt, x0:vtflt) = hmapref_tbox(k0, x0)
-//
 absvtbox
 hashmap_vtbox
 (k0:vtflt, x0:vtflt+) = ptr
@@ -49,7 +42,6 @@ hashmap
 //
 (* ****** ****** *)
 
-sexpdef href = hmapref
 sexpdef hmap = hashmap
 
 (* ****** ****** *)
@@ -74,15 +66,12 @@ fun{}
 hashmap$resizable((*void*)): int
 //
 (* ****** ****** *)
-
-fun
-{k0,x0:vtflt}
-hashmap_make_hcap
-(cap: Sizegte(1)): hmap(k0, x0)
-
-(* ****** ****** *)
 //
-// HX: the number of stored elements
+(*
+HX:
+[size] is the
+number of stored elements
+*)
 //
 fun{}
 hashmap_size
@@ -107,6 +96,8 @@ fun
 {k0,x0:vtflt}
 hashmap_free(map: hmap(k0, INV(x0))): void
 //
+#symload free with hashmap_free
+//
 (* ****** ****** *)
 //
 fun
@@ -126,6 +117,10 @@ fun
 hashmap_search_opt
 (map: !hmap(k0, INV(x0)), k0: !k0): optn0_vt(x0)
 // end of [hashmap_search_opt]
+//
+#symload search with hashmap_search
+#symload search_ref with hashmap_search_ref
+#symload search_opt with hashmap_search_opt
 //
 (* ****** ****** *)
 //
@@ -207,7 +202,8 @@ fun{}
 hashmap_print$mapto(): void // "->"
 fun
 {k0,x0:vtflt}
-hashmap_print(map: !hmap(k0, INV(x0))): void
+hashmap_print
+(map: !hmap(k0, INV(x0))): void
 //
 #symload print with hashmap_print
 //

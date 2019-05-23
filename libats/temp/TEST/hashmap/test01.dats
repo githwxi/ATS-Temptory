@@ -1,6 +1,10 @@
+(* ****** ****** *)
 /*
 HX: for testing [hashmap]
 */
+(* ****** ****** *)
+
+implement main1() = ( 0 )
 
 (* ****** ****** *)
 //
@@ -10,14 +14,13 @@ HX: for testing [hashmap]
 //
 (* ****** ****** *)
 
-implement main1() = 0
+#staload
+"libats\
+/temp/SATS/hashmap_chain.sats"
 
 (* ****** ****** *)
 
 local
-
-#staload
-"./../../SATS/hashmap_chain.sats"
 
 #staload _ =
 "./../../DATS/hashfun.dats"
@@ -71,22 +74,21 @@ val-ff = remove(map, 3) // ~found
 val () = println!("map = ", map)
 //
 val-
-~none_vt
- () = insert_opt(map, 4, "4")
+~none_vt() = insert_opt(map, 4, "4")
 val-
-~none_vt
- () = insert_opt(map, 5, "5")
+~none_vt() = insert_opt(map, 5, "5")
 val-
-~none_vt
- () = insert_opt(map, 6, "6")
+~none_vt() = insert_opt(map, 6, "6")
 val-
-~none_vt
- () = insert_opt(map, 7, "7")
+~none_vt() = insert_opt(map, 7, "7")
 val-
-~none_vt
- () = insert_opt(map, 8, "8")
+~none_vt() = insert_opt(map, 8, "8")
+val-
+~none_vt() = insert_opt(map, 9, "9")
 //
-val () = println!("map = ", map)
+(* ****** ****** *)
+//
+val ((*void*)) = println!("map = ", map)
 //
 val ((*freed*)) = hashmap_free<k0,x0>(map)
 //

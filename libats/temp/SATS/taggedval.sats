@@ -35,7 +35,7 @@
 //
 #define
 ATS_PACKNAME
-"temptory.temp.tvalue."
+"temptory.temp.taggedval."
 //
 (* ****** ****** *)
 //
@@ -47,7 +47,8 @@ ATS_PACKNAME
 
 (* ****** ****** *)
 //
-datatype tvalue =
+datatype
+taggedval =
 //
 | TVnil of ()
 //
@@ -64,13 +65,15 @@ datatype tvalue =
 | TVstring of string
 //
 where
+tvalue = taggedval
+and
 tvalist = list0(tvalue)
 and
 tarray0 = arrszref(tvalue)
 and
 tobject = hmapref(string, tvalue)
 and
-tcloref = tvalist -<cloref> tvalue
+tcloref = (tvalist) -<cloref1> tvalue
 //
 (* ****** ****** *)
 //

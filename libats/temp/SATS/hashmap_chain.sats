@@ -54,12 +54,21 @@ ATS_PACKNAME
 #include "./SHARE/hashmap.hats"
 //
 (* ****** ****** *)
-
-absvtbox
-chain_vtbox
-(k0:vtflt, x0:vtflt+) = ptr
-vtypedef
-chain(k0:vtflt,x0:vtflt) = chain_vtbox(k0, x0)
+//
+(*
+HX:
+[hcap] is the size of
+the initially created array (of buckets)
+*)
+//
+fun{}
+hashmap$hcap((*void*)): Intgte(1)
+fun
+{k0,x0:vtflt}
+hashmap_make((*default*)): hmap(k0, x0)
+fun
+{k0,x0:vtflt}
+hashmap_make_hcap(cap: Sizegte(1)): hmap(k0, x0)
 
 (* ****** ****** *)
 
