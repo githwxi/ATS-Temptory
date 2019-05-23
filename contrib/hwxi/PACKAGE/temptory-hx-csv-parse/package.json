@@ -11,9 +11,10 @@
 ,
 "scripts": {}
 ,
-  "keywords": [
+"keywords": [
     "ATS",
     "CSV",
+    "CSV-parsing",
     "Temptory",
     "Excel-sheet"
   ]
