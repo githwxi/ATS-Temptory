@@ -51,13 +51,25 @@ val-
 ~lnone() = insert_opt(themap, "f", "F")
 //
 val ((*void*)) =
+println!("themap = ", themap)
+val ((*void*)) =
 println!("size(themap) = ", size(themap))
 //
 val-true = remove(themap, "a")
 val-true = remove(themap, "b")
 val-false = remove(themap, "x")
 val-false = remove(themap, "y")
+val-
+~lnone() = insert_opt(themap, "x", "X")
+val-
+~lnone() = insert_opt(themap, "y", "Y")
+val-
+~lsome("E") = insert_opt(themap, "e", "X")
+val-
+~lsome("F") = insert_opt(themap, "f", "Y")
 //
+val ((*void*)) =
+println!("themap = ", themap)
 val ((*void*)) =
 println!("size(themap) = ", size(themap))
 //
