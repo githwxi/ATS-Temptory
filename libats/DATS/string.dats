@@ -255,7 +255,7 @@ implement
 {}(*tmp*)
 string0_copy_vt(cs) =
 (
-$UN.castvwtp0{string_vt}(cs)
+$UN.castvwtp0{string_vt}(p0)
 ) where
 {
 val p0 =

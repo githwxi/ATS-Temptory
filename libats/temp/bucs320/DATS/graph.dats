@@ -54,6 +54,11 @@
 (* ****** ****** *)
 
 #staload
+"libats/SATS/print.sats"
+
+(* ****** ****** *)
+
+#staload
 UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
@@ -98,6 +103,9 @@ case+ opt of
  end
 end
 ) (* end of [$ldelay] *)
+//
+val () = graph_store_insert(nx0)
+//
 } (* end of [graph_streamize] *)
 
 (* ****** ****** *)
@@ -111,8 +119,9 @@ graph_streamize<node>
   (nx0)
 ) where
 {
-val store =
-qlistref_sing<node>(nx0)
+val
+store =
+qlistref_nil<>{node}()
 //
 implement
 graph_store_insert<node>
@@ -165,7 +174,7 @@ graph_streamize<node>
 {
 val
 store =
-slistref_sing<node>(nx0)
+slistref_nil<>{node}()
 //
 implement
 graph_store_insert<node>

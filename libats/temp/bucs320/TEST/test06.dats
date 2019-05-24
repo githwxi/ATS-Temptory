@@ -9,7 +9,7 @@ BTW, hsearh is HORRIBLE!!!
 //
 #include
 "share/HATS\
-/temptory_staload_cs320.hats"
+/temptory_staload_bucs320.hats"
 //
 (* ****** ****** *)
 
@@ -105,6 +105,7 @@ word_neighbors_at
 , i0: int(i)
 ) : list0_vt(string(n)) =
 (
+//
 let
 val c0 = w0[i0]
 val ws = 
@@ -255,7 +256,7 @@ in
 case+ !nxs of
 | ~stream_vt_nil() => lnone()
 | ~stream_vt_cons(nx0, nxs) => (~nxs; lsome(nx0))
-end
+end (* end-of-let *)
 ) where
 {
 //

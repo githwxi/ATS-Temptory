@@ -7,7 +7,7 @@ For testing divconq
 //
 #include
 "share/HATS\
-/temptory_staload_cs320.hats"
+/temptory_staload_bucs320.hats"
 //
 (* ****** ****** *)
 

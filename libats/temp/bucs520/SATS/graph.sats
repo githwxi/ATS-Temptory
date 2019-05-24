@@ -43,7 +43,7 @@ streamizng generic graphs
 //
 #define
 ATS_PACKNAME
-"temptory.temp.bucs320."
+"temptory.temp.bucs520."
 //
 (* ****** ****** *)
 //

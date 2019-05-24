@@ -50,6 +50,11 @@
 (* ****** ****** *)
 
 #staload
+"libats/SATS/print.sats"
+
+(* ****** ****** *)
+
+#staload
 UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
@@ -94,6 +99,9 @@ case+ opt of
  end
 end
 ) (* end of [$ldelay] *)
+//
+val () = gtree_store_insert<node>(nx0)
+//
 } (* end of [gtree_streamize] *)
 
 (* ****** ****** *)
@@ -107,8 +115,9 @@ gtree_streamize<node>
   (nx0)
 ) where
 {
-val store =
-qlistref_sing<node>(nx0)
+val
+store =
+qlistref_nil<>{node}()
 //
 implement
 gtree_store_insert<node>
@@ -148,7 +157,7 @@ gtree_streamize<node>
 {
 val
 store =
-slistref_sing<node>(nx0)
+slistref_nil<>{node}()
 //
 implement
 gtree_store_insert<node>
