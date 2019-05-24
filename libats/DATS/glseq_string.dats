@@ -49,14 +49,12 @@ vtypedef cs = string_vt
 
 (* ****** ****** *)
 
-(*
 implement
 glseq_streamize<cs><c0>
   (cs) =
 (
   string0_vt_streamize<>(cs)
 ) // end of [glseq_streamize]
-*)
 
 (* ****** ****** *)
 

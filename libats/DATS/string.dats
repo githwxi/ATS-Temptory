@@ -150,6 +150,35 @@ val () = $UN.cptr0_set(cp+n0, CNUL)
 }
 //
 (* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_append
+  (cs1, cs2) =
+(
+string0_vt2t
+(string0_append_vt<>(cs1, cs2))
+)
+implement
+{}(*tmp*)
+string0_append_vt
+  (cs1, cs2) =
+  ( res ) where
+{
+//
+val cs1_ =
+$UN.string0_t2vt(cs1)
+val cs2_ =
+$UN.string0_t2vt(cs2)
+val res =
+string0_vt_append<>(cs1_, cs2_)
+//
+prval () = $UN.cast2void(cs1_)
+prval () = $UN.cast2void(cs2_)
+//
+} (* end of [string0_append_vt] *)
+
+(* ****** ****** *)
 //
 implement
 {}(*tmp*)
@@ -690,6 +719,42 @@ val () =
 $UN.cptr0_set(cp2, CNUL)
 in $UN.castvwtp0{string0_vt}(cp0) end
 end // end of [string0_vt_append]
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+string0_vt_streamize
+  (cs) =
+(
+  auxmain(cptrof(cs), cs)
+) where
+{
+fun
+auxmain
+(
+cp: cptr(char), cs: string_vt
+) : stream_vt(char) =
+$ldelay
+(
+let
+val c0 = $UN.cptr0_get(cp)
+in
+if
+iseqz(c0)
+then
+let
+val () =
+string0_vt_free(cs) in stream_vt_nil()
+end
+else
+(
+  stream_vt_cons(c0, auxmain(succ(cp), cs))
+) (* end of [if] *)
+end // end of [let]
+, string0_vt_free(cs) // called when it is freed
+)
+} (* end of [string0_vt_streamize] *)
 
 (* ****** ****** *)
 

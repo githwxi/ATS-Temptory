@@ -165,6 +165,15 @@ string0_alloc with string0_alloc_sint
 (* ****** ****** *)
 //
 fun{}
+string0_append
+  (string0, string0): string
+fun{}
+string0_append_vt
+  (string0, string0): string_vt
+//
+(* ****** ****** *)
+//
+fun{}
 string0_map
 (src: string): string
 fun{}
@@ -370,8 +379,14 @@ string0_vt_make with string0_vt_make_stream_vt
 //
 fun{}
 string0_vt_append
-( cs2: !string0_vt
-, cs1: !string0_vt): string0_vt
+( cs2: !string_vt
+, cs1: !string_vt): string_vt
+//
+(* ****** ****** *)
+//
+fun{}
+string0_vt_streamize
+  (cs: string_vt): stream_vt(char)
 //
 (* ****** ****** *)
 //

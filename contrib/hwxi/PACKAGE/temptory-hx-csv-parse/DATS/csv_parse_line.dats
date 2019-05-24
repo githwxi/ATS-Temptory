@@ -5,6 +5,12 @@
 // Start time: the 17th of July, 2016
 //
 (* ****** ****** *)
+(*
+HX:
+Please find a detailed specification of CSV:
+super-csv.github.io/super-csv/csv_specification.html
+*)
+(* ****** ****** *)
 //
 #staload
 "libats/SATS/gint.sats"

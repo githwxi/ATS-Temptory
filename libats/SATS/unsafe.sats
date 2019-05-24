@@ -91,6 +91,14 @@ castvwtp1
 (* ****** ****** *)
 //
 castfn
+string0_t2vt
+(cs: string0):<> string0_vt
+castfn
+string1_t2vt
+{n:int}
+(cs: string1(n)):<> string1_vt(n)
+//
+castfn
 string0_vt2t
 (cs: !string0_vt):<> string0
 castfn
