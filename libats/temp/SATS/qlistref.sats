@@ -41,9 +41,14 @@ ATS_PACKNAME
 //
 abstbox
 qlistref_vtflt_tbox(a:vtflt) = ptr
-//
 typedef
 qlistref(a:vtflt) = qlistref_vtflt_tbox(a)
+(*
+absvtbox
+qlistptr_vtflt_vtbox(a:vtflt) = ptr
+vtypedef
+qlistptr(a:vtflt) = qlistptr_vtflt_vtbox(a)
+*)
 //
 (* ****** ****** *)
 //

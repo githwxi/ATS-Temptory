@@ -41,10 +41,15 @@ ATS_PACKNAME
 //
 abstbox
 slistref_vtflt_tbox(a:vtflt) = ptr
-//
 typedef
 slistref(a:vtflt) = slistref_vtflt_tbox(a)
 //
+(*
+abstbox
+slistptr_vtflt_vtbox(a:vtflt) = ptr
+typedef
+slistptr(a:vtflt) = slistptr_vtflt_vtbox(a)
+*)
 (* ****** ****** *)
 //
 fun{}

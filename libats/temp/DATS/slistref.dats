@@ -75,8 +75,8 @@ local
 (* ****** ****** *)
 //
 absimpl
-slistref_vtflt_tbox
-  (a:vtflt) = ref(slist(a))
+slistref_vtflt_tbox =
+lam(a:vtflt)=>ref(slist(a))
 //
 (* ****** ****** *)
 

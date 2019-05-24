@@ -74,8 +74,8 @@ local
 (* ****** ****** *)
 //
 absimpl
-qlistref_vtflt_tbox
-  (a:vtflt) = ref(qlist(a))
+qlistref_vtflt_tbox =
+lam(a:vtflt)=>ref(qlist(a))
 //
 (* ****** ****** *)
 
