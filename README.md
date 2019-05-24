@@ -10,9 +10,10 @@ to see that the style of template-based programming as is supported in
 ATS-Temptory is of disruptive nature. One might even compare this
 style of programming to OOP during its early days.
 
+HX-2019-05-24:
+
 At this point, I am taking a break from implementing ATS-Xanadu.  I
 plan to concentrate on developing ATS-Temptory. In particular, I would
-like to use ATS-Temptory as a vehicle to demonstrate that some of the
-great powers of template-based programming in helping greatly increase
+like to use ATS-Temptory as a vehicle to demonstrate some of the
+powers of template-based programming in helping greatly increase
 programming productivity.
-
