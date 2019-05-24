@@ -37,16 +37,19 @@
 "./../SATS/gtree.sats"
 
 (* ****** ****** *)
-
+//
+#staload
+"libats/SATS/qlist.sats"
 #staload
 "libats/SATS/list_vt.sats"
+//
 #staload
 "libats\
 /temp/SATS/slistref.sats"
 #staload
 "libats\
 /temp/SATS/qlistref.sats"
-
+//
 (* ****** ****** *)
 
 #staload
@@ -136,11 +139,13 @@ implement
 gtree_store_free<node>
   ((*void*)) =
 let
-val nxs =
-qlistref_takeout_all(store)
+val ref =
+$UN.cast{ptr}(store)
+val qxs =
+$UN.ptr0_get<qlist(node)>(ref)
 in
-  list0_vt_free(nxs);
-  $UN.mfree($UN.cast{ptr}(store))
+  $UN.mfree(ref);
+  qlist_free<node>(qxs)
 end
 //
 implement
@@ -187,11 +192,13 @@ implement
 gtree_store_free<node>
   ((*void*)) =
 let
+val ref =
+$UN.cast{ptr}(store)
 val nxs =
-slistref_takeout_all(store)
+$UN.ptr0_get<list0_vt(node)>(ref)
 in
-  list0_vt_free(nxs);
-  $UN.mfree($UN.cast{ptr}(store))
+  $UN.mfree(ref);
+  list0_vt_free<node>(nxs)
 end
 //
 implement
