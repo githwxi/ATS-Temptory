@@ -36,7 +36,7 @@
 (*
 HX-2019-05:
 For
-streamizng generic graphs
+streamizng generic trees
 *)
 //
 (* ****** ****** *)
@@ -49,60 +49,47 @@ ATS_PACKNAME
 //
 fun
 {node:vtflt}
-graph_store_free(): void
+gtree_store_free(): void
 //
 (* ****** ****** *)
 //
 fun
 {node:vtflt}
-graph_store_insert
+gtree_store_insert
   (nx: node): void
 fun
 {node:vtflt}
-graph_store_insert_list
+gtree_store_insert_list
   (nxs: list0_vt(node)): void
 //
 (* ****** ****** *)
 
 fun
 {node:vtflt}
-graph_store_choose_opt
+gtree_store_choose_opt
   ((*void*)): optn0_vt(node)
 
 (* ****** ****** *)
 //
 fun
 {node:vtflt}
-graph_node_mark(!node): void
-fun
-{node:vtflt}
-graph_node_unmark(!node): void
-//
-fun
-{node:vtflt}
-graph_node_is_marked(!node): bool
+gtree_streamize(node): stream_vt(node)
 //
 (* ****** ****** *)
 //
 fun
 {node:vtflt}
-graph_streamize(node): stream_vt(node)
+gtree_streamize_dfs(node): stream_vt(node)
+fun
+{node:vtflt}
+gtree_streamize_bfs(node): stream_vt(node)
 //
 (* ****** ****** *)
 //
 fun
 {node:vtflt}
-graph_streamize_dfs(node): stream_vt(node)
-fun
-{node:vtflt}
-graph_streamize_bfs(node): stream_vt(node)
-//
-(* ****** ****** *)
-//
-fun
-{node:vtflt}
-graph_node_neighbors(nx0: !node): list0_vt(node)
+gtree_node_children(nx0: !node): list0_vt(node)
 //
 (* ****** ****** *)
 
-(* end of [cs520_graph.sats] *)
+(* end of [cs520_gtree.sats] *)
