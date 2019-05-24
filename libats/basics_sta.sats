@@ -323,8 +323,14 @@ typedef ucharNZ = [c:uint8 | c != 0] uchar(c)
 //
 (* ****** ****** *)
 //
+typedef
+charptr:tbox =
+$extype"atstype_string"
+//
+(* ****** ****** *)
+//
 abstbox
-string_t1ype = $extype"atstype_string"
+string_t1ype = charptr
 abstbox
 string_int_t1ype(n: int) = string_t1ype
 //

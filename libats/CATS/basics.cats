@@ -49,6 +49,10 @@
 
 /* ****** ****** */
 
+typedef char *charptr;
+
+/* ****** ****** */
+
 #define atspre_stdin stdin
 #define atspre_stdout stdout
 #define atspre_stderr stderr
@@ -70,6 +74,7 @@
 /* ****** ****** */
 
 #define atspre_strcmp strcmp
+#define atspre_strcpy strcpy
 
 /* ****** ****** */
 

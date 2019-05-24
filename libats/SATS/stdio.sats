@@ -48,7 +48,6 @@ TEMPTORY_LIBATS_SATS_STDIO
 #define \
 TEMPTORY_LIBATS_SATS_STDIO
 #include <stdio.h>
-typedef char *charptr;
 #endif // TEMPTORY_LIBATS_SATS_STDIO
 //
 %}(* end of [%{#] *)

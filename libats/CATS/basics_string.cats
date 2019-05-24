@@ -34,6 +34,7 @@
 /* ****** ****** */
 
 #define temptory_strcmp strcmp
+#define temptory_strcpy strcpy
 
 /* ****** ****** */
 /*

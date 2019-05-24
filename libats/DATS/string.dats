@@ -222,6 +222,7 @@ val pz =
 //
 (* ****** ****** *)
 
+(*
 implement
 {}(*tmp*)
 string0_copy(cs) =
@@ -242,7 +243,32 @@ string0_copy_vt(cs) =
   implement
   string0_map_vt$fopr<>(c0) = (c0)
 }
-
+*)
+implement
+{}(*tmp*)
+string0_copy(cs) =
+(
+string0_vt2t(string0_copy_vt(cs))
+)
+//
+implement
+{}(*tmp*)
+string0_copy_vt(cs) =
+(
+$UN.castvwtp0{string_vt}(cs)
+) where
+{
+val p0 =
+$UN.malloc(succ(length(cs)))
+val p0 = $UN.cast{charptr}(p0)
+val cs = $UN.cast{charptr}(cs)
+val () =
+(
+  $extfcall
+  (void, "atspre_strcpy", p0, cs)
+)
+} (* end of [string0_copy_vt] *)
+//
 (* ****** ****** *)
 
 implement

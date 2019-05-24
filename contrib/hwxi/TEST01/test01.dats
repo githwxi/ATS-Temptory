@@ -30,7 +30,7 @@ println!
 val-
 ~lsome(inp) =
 FILEref_open_opt
-("./DATA/test02.csv", "r")
+("./DATA/test01.csv", "r")
 
 (* ****** ****** *)
 
