@@ -21,6 +21,9 @@ typedef kx = (k0, x0)
 val
 themap = hmapref_make<k0,x0>()
 //
+val () = insert_any(themap, "0", "0")
+val () = insert_any(themap, "1", "1")
+//
 val-
 ~lnone() = insert_opt(themap, "a", "A")
 val-
@@ -51,6 +54,11 @@ val-
 ~lsome("E") = insert_opt(themap, "e", "X")
 val-
 ~lsome("F") = insert_opt(themap, "f", "Y")
+//
+val-
+~lsome("X") = search_opt(themap, "e")
+val-
+~lsome("Y") = search_opt(themap, "f")
 //
 val ((*void*)) =
 println!("themap = ", themap)

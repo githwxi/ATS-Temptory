@@ -96,8 +96,10 @@ implement
 {}//tmp
 hmapref_size
   (map) = let
+//
 val map = ref2ptr(map)
 val res = hashmap_size<>(map)
+//
 in
   let prval () = $UN.cast2void(map) in res end
 end (* end of [hmapref_size] *)
@@ -108,9 +110,11 @@ implement
 {k0,x0}
 hmapref_search_ref
   (map, k0) = let
+//
 val map = ref2ptr(map)
 val res =
 hashmap_search_ref<k0,x0>(map, k0)
+//
 in
   let prval () = $UN.cast2void(map) in res end
 end (* end of [hmapref_search_ref] *)
@@ -119,9 +123,11 @@ implement
 {k0,x0}
 hmapref_search_opt
   (map, k0) = let
+//
 val map = ref2ptr(map)
 val opt =
 hashmap_search_opt<k0,x0>(map, k0)
+//
 in
   let prval () = $UN.cast2void(map) in opt end
 end (* end of [hmapref_search_opt] *)
@@ -129,7 +135,9 @@ end (* end of [hmapref_search_opt] *)
 implement
 {k0,x0}
 hmapref_insert
-(map, k0, x0, res) = let
+(map, k0, x0, res) =
+let
+//
 val map = ref2ptr(map)
 val opt =
 hashmap_insert<k0,x0>(map, k0, x0, res)
@@ -141,9 +149,11 @@ implement
 {k0,x0}
 hmapref_insert_any
   (map, k0, x0) = let
+//
 val map = ref2ptr(map)
 val res =
 hashmap_insert_any<k0,x0>(map, k0, x0)
+//
 in
   let prval () = $UN.cast2void(map) in ( ) end
 end (* end of [hmapref_insert_any] *)
@@ -152,9 +162,11 @@ implement
 {k0,x0}
 hmapref_insert_opt
   (map, k0, x0) = let
+//
 val map = ref2ptr(map)
 val opt =
 hashmap_insert_opt<k0,x0>(map, k0, x0)
+//
 in
   let prval () = $UN.cast2void(map) in opt end
 end (* end of [hmapref_insert_opt] *)
@@ -163,9 +175,11 @@ implement
 {k0,x0}
 hmapref_remove
   (map, k0) = let
+//
 val map = ref2ptr(map)
 val opt =
 hashmap_remove<k0,x0>(map, k0)
+//
 in
   let prval () = $UN.cast2void(map) in opt end
 end (* end of [hmapref_remove] *)
@@ -173,12 +187,29 @@ implement
 {k0,x0}
 hmapref_takeout_opt
   (map, k0) = let
+//
 val map = ref2ptr(map)
 val opt =
 hashmap_takeout_opt<k0,x0>(map, k0)
+//
 in
   let prval () = $UN.cast2void(map) in opt end
 end (* end of [hmapref_takeout_opt] *)
+
+(* ****** ****** *)
+
+implement
+{k0,x0}
+hmapref_takeout_all
+  (map) = let
+//
+val map = ref2ptr(map)
+val kxs =
+hashmap_takeout_all<k0,x0>(map)
+//
+in
+  let prval () = $UN.cast2void(map) in kxs end
+end (* end of [hmapref_takeout_all] *)
 
 (* ****** ****** *)
 

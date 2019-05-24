@@ -258,5 +258,13 @@ list1_vt_print
 #symload print with list1_vt_print
 //
 (* ****** ****** *)
+//
+fun{}
+string0_vt_print
+(cs: !string_vt): void
+//
+#symload print with string0_vt_print
+//
+(* ****** ****** *)
 
 (* end of [print.sats] *)

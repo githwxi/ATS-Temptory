@@ -45,6 +45,10 @@ hmapref
 sexpdef href = hmapref
 
 (* ****** ****** *)
+(*
+//
+HX-2019-05-24:
+This is all in [hashfun]
 //
 fun
 {k0:vtflt}
@@ -54,6 +58,7 @@ fun
 equal_key_key
 (k1: !k0, k2: !k0):<> bool
 //
+*)
 (* ****** ****** *)
 //
 fun{}
@@ -124,6 +129,15 @@ hmapref_takeout_opt
 //
 #symload remove with hmapref_remove
 #symload takeout_opt with hmapref_takeout_opt
+//
+(* ****** ****** *)
+//
+fun
+{k0,x0:vtflt}
+hmapref_takeout_all
+  (map: href(k0, x0)): list0_vt(@(k0, x0))
+//
+#symload takeout_all with hmapref_takeout_all
 //
 (* ****** ****** *)
 //

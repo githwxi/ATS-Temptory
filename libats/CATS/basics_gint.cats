@@ -77,6 +77,10 @@ temptory_g1succ_ssize(x) (x + 1)
 temptory_g0succ_usize(x) (x + 1)
 #define \
 temptory_g1succ_usize(x) (x + 1)
+#define \
+temptory_g0succ_ulint(x) (x + 1)
+#define \
+temptory_g1succ_ulint(x) (x + 1)
 //
 #define \
 temptory_g0pred_sint(x) (x - 1)

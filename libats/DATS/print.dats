@@ -333,8 +333,16 @@ case+ xs of
 //
 implement
 (a:vtflt)
-print$val<list0_vt(a)>(xs) = list0_vt_print<a>(xs)
+print$val<list0_vt(a)> = list0_vt_print<a>
 //
+(* ****** ****** *)
+
+implement
+string0_vt_print<>(cs) =
+print_string($UN.string0_vt2t(cs))
+implement
+print$val<string_vt>(cs) = string0_vt_print<>(cs)
+
 (* ****** ****** *)
 
 (* end of [print.dats] *)

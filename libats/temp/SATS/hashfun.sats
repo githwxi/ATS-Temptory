@@ -44,6 +44,16 @@ ATS_PACKNAME
 %} // end of [%{#]
 
 (* ****** ****** *)
+
+fun
+{k0:vtflt}
+hash_key(k0: !k0):<> ulint
+fun
+{k0:vtflt}
+equal_key_key
+(k1: !k0, k2: !k0):<> bool
+
+(* ****** ****** *)
 //
 #staload "libats/SATS/gint.sats"
 //

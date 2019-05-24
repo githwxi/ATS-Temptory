@@ -183,11 +183,12 @@ implement
 $LM.equal_key_key = equal_key_key<k0>
 
 (* ****** ****** *)
-
+//
 implement
 {}(*tmp*)
-chain_nil() = $LM.linmap_nil<>()
-
+chain_nil() =
+$LM.linmap_nil<>((*void*))
+//
 (* ****** ****** *)
 //
 implement

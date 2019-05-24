@@ -120,6 +120,51 @@ linmap_listize(map) = (map) (*list0_vt((k0, x0))*)
 
 implement
 {k0,x0}//tmp
+linmap_search_ref
+  (map, k0) =
+(
+  loop(map, k0)
+) where
+{
+//
+vtypedef kx = @(k0, x0)
+vtypedef kxs = list0_vt(kx)
+//
+fun
+loop
+(kxs: !kxs, k0: !k0): cptr(x0) =
+(
+case+ kxs of
+|
+ list0_vt_nil() =>
+ cptr0_null{x0}()
+|
+@list0_vt_cons(kx0, kxs1) =>
+ let
+ val
+ iseq =
+ equal_key_key<k0>(k0, kx0.0)
+ in
+   if
+   iseq
+   then
+   let
+     val px0 = addr@(kx0.1)
+   in
+     fold@(kxs); ptr2cptr{x0}(px0)
+   end
+   else
+   let
+     val res = loop(kxs1, k0) in fold@(kxs); res
+   end
+ end (* end of [list0_vt_cons] *)
+)
+} (* end of [linmap_search_ref] *)
+
+(* ****** ****** *)
+
+implement
+{k0,x0}//tmp
 linmap_insert
 (map, k0, x0, r0) =
 let
@@ -157,7 +202,7 @@ implement
 linmap_takeout
   (map, k0, r0) =
 (
-  loop (map, k0, r0)
+  loop(map, k0, r0)
 ) where
 {
 //

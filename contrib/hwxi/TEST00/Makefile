@@ -17,8 +17,10 @@ RMF=rm -f
 
 ######
 
-TEMPOPT= $(TEMPTORY)/bin/tempopt
-TEMPACC= $(TEMPTORY)/bin/tempacc
+TEMPOPT= \
+$(TEMPTORY)/bin/tempopt
+TEMPACC= \
+$(TEMPTORY)/bin/tempacc -O2
 # TEMPACC= \
 # $(TEMPTORY)/bin/tempacc -cleanaft
 

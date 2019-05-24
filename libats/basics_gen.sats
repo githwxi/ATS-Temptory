@@ -48,6 +48,12 @@ VERBOSE_PRELUDE
 //
 fun
 {a:vtflt}
+gself$val(INV(a)):<> (a)
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
 gcopy$val(x: !INV(a)): (a)
 //
 fun

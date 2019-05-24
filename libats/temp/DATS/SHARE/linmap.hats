@@ -34,9 +34,11 @@
 (* ****** ****** *)
 //
 // HX: shared by linmap_list
+(*
 // HX: shared by linmap_avltree
 // HX: shared by linmap_randbst
 // HX: shared by linmap_skiplist
+*)
 //
 (* ****** ****** *)
 //

@@ -220,6 +220,17 @@ g1succ_usize
 (x: usize(i)):<> usize(i+1) = "mac#%"
 #symload succ with g1succ_usize of 11
 //
+fun
+g0succ_ulint
+(x: ulint):<> ulint = "mac#%"
+#symload succ with g0succ_ulint of 10
+fun
+g1succ_ulint
+{i:int}
+(x: ulint(i)):<> ulint(i+1) = "mac#%"
+#symload succ with g1succ_ulint of 11
+//
+//
 (* ****** ****** *)
 //
 fun
