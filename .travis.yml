@@ -50,7 +50,7 @@ script:
   # Building Temptory
   - cd $TEMPTORY
   - (cd srcgen && make -f Makefile)
-  - (cp -f srcgen/tempopt bin/tempopt)
+  - (cp -f srcgen/BUILD/tempopt bin/.)
   # Building tempacc
   - (cd utils/tempacc&&make copy build)
   - (cp utils/tempacc/BUILD/tempacc bin/.)
