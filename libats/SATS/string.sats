@@ -124,6 +124,8 @@ g0cmp_str_str
 #symload <=> with g0cmp_str_str of 10
 *)
 //
+#symload compare with g0cmp_str_str of 10
+//
 (* ****** ****** *)
 //
 fun

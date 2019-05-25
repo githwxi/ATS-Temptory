@@ -484,6 +484,8 @@ fun
 {a:tflt}
 list0_mergesort$cmp(x1: a, x2: a): int(*sgn*)
 //
+#symload mergesort with list0_mergesort
+//
 (* ****** ****** *)
 //
 fun
@@ -493,6 +495,8 @@ list0_quicksort
 fun
 {a:tflt}
 list0_quicksort$cmp(x1: a, x2: a): int(*sgn*)
+//
+#symload quicksort with list0_quicksort
 //
 (* ****** ****** *)
 //
