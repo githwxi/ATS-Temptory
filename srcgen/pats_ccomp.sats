@@ -2517,4 +2517,16 @@ fun ccomp_main
 
 (* ****** ****** *)
 
+//
+// RK-2019-05-13
+// 
+datatype ccomperr =
+  | CCE_template_noimpl of (loc_t, d2cst, t2mpmarglst)
+// end of [ccomperr]
+
+fun the_ccomperrlst_add (x: ccomperr): void
+fun the_ccomperrlst_finalize (): void // cleanup all the errors
+
+(* ****** ****** *)
+
 (* end of [pats_ccomp.sats] *)

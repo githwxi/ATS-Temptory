@@ -68,6 +68,12 @@ exception PATSOPT_TRANS4_EXN of ()
 (*
 exception PATSOPT_TYPERASE_EXN of ()
 *)
+// 
+// RK-2019-05-13:
+// adding exception for templates
+// without implementations
+//
+exception PATSOPT_CCOMP_EXN of ()
 //
 (* ****** ****** *)
 
