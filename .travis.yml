@@ -1,1 +1,48 @@
-travis-ci/travis.yml
+---
+os:
+  - linux
+
+language: c
+
+node_js:
+  - "5.10.1"
+
+env:
+  - export NODE_VERSION="5.10.1"
+
+addons:
+  apt:
+    packages:
+      - libgc-dev
+      - libgmp-dev
+
+before_install:
+  - date
+  - cd ${HOME}
+  # Setting-up
+  - export ATSHOME=${HOME}/ats-lang-anairiats-0.2.12
+  - export ATSHOMERELOC=ATS-0.2.12
+  - export TEMPTORY=${TRAVIS_BUILD_DIR}
+  - export PATH=${PATH}:${TEMPTORY}/bin
+  - export GCC=gcc
+  - export CLANG=clang
+
+install:
+  - ${TRAVIS_BUILD_DIR}/travis-ci/install-ats1.sh 0.2.12
+
+after_install:
+  - date
+
+before_script:
+  - date
+
+script:
+  - cd $TEMPTORY
+  - (cd srcgen && make -f Makefile)
+  - (cp -f srcgen/tempopt bin/temopt)
+  - echo 'running unit-tests...'
+  - (cd libats/libc && make -f Makefile_test testall)
+  - (cd libats/temp && make -f Makefile_test testall)
+
+after_script:
+  - date
