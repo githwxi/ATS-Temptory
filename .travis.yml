@@ -47,13 +47,14 @@ script:
   # Building ATS2
   - cd ${PATSHOME}
   - ./configure&&make CC=${GCC} all
-  # Building tempacc
-  - (cd utils/tempacc&&make copy build)
-  - (cp utils/tempacc/BUILD/tempacc bin/.)
   # Building Temptory
   - cd $TEMPTORY
   - (cd srcgen && make -f Makefile)
   - (cp -f srcgen/tempopt bin/temopt)
+  # Building tempacc
+  - (cd utils/tempacc&&make copy build)
+  - (cp utils/tempacc/BUILD/tempacc bin/.)
+  # Testing of all sorts
   - echo 'running unit-tests...'
   - (cd libats/libc/TEST && make -f Makefile testall)
   - (cd libats/temp/TEST && make -f Makefile testall)
