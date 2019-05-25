@@ -46,8 +46,12 @@ script:
   - (cd srcgen && make -f Makefile)
   - (cp -f srcgen/tempopt bin/temopt)
   - echo 'running unit-tests...'
-  - (cd libats/libc && make -f Makefile_test testall)
-  - (cd libats/temp && make -f Makefile_test testall)
+  - (cd libats/libc/TEST && make -f Makefile testall)
+  - (cd libats/temp/TEST && make -f Makefile testall)
+  - (cd libats/temp/bucs320/TEST && make -f Makefile testall)
+  - (cd libats/temp/bucs520/TEST && make -f Makefile testall)
+  - (cd contrib/hwxi/TEST00 && make -f Makefile testall)
+  - (cd contrib/hwxi/TEST01 && make -f Makefile testall)
 
 after_script:
   - date
