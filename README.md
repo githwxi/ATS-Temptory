@@ -1,6 +1,12 @@
 # ATS-Temptory
 For supporting template-based programming
 
+## Build Status
+
+* [![Build Status](https://travis-ci.org/githwxi/ATS-Temptory.svg?branch=master)](https://travis-ci.org/githwxi/ATS-Temptory) Ubuntu
+
+## Project Description
+
 ATS-Temptory can be seen as a repackaging of ATS-Postiats.
   
 Compared with ATS-Postiats, the core library of ATS-Temptory is

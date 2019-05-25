@@ -1,0 +1,67 @@
+---
+os:
+  - linux
+
+language: c
+
+node_js:
+  - "5.10.1"
+
+env:
+  - export NODE_VERSION="5.10.1"
+
+addons:
+  apt:
+    packages:
+      - libgc-dev
+      - libgmp-dev
+
+before_install:
+  - date
+  - cd ${HOME}
+  # Setting-up
+  - export ATSHOME=${HOME}/ATS1
+  - export ATSHOMERELOC=ATS-0.2.12
+  - export PATSHOME=${HOME}/ATS2
+  - export PATH=${PATH}:${PATSHOME}/bin
+  - export TEMPTORY=${TRAVIS_BUILD_DIR}
+  - export PATH=${PATH}:${TEMPTORY}/bin
+  - export GCC=gcc
+  - export CLANG=clang
+
+install:
+  - ${TRAVIS_BUILD_DIR}/travis-ci/install-ats1.sh 0.2.12
+  - ${TRAVIS_BUILD_DIR}/travis-ci/install-ats2.sh 0.3.12
+
+after_install:
+  - date
+
+before_script:
+  - date
+
+script:
+  # Building ATS1
+  - cd ${ATSHOME}
+  # ./configure&&make CC=${GCC} all
+  - ./configure&&make CC=${GCC} all_ngc
+  # Building ATS2
+  - cd ${PATSHOME}
+  - ./configure&&make CC=${GCC} all
+  # Building Temptory
+  - cd $TEMPTORY
+  - (cd srcgen && make -f Makefile)
+  - (cp -f srcgen/tempopt bin/tempopt)
+  # Building tempacc
+  - (cd utils/tempacc&&make copy build)
+  - (cp utils/tempacc/BUILD/tempacc bin/.)
+  # Testing of all sorts
+  - echo 'running unit-tests...'
+  - (cd libats/libc/TEST && make -f Makefile testall)
+  - (cd libats/temp/TEST && make -f Makefile testall)
+  - (cd libats/temp/bucs320/TEST && make -f Makefile testall)
+  - (cd libats/temp/bucs520/TEST && make -f Makefile testall)
+  - (cd contrib/hwxi/TEST00 && make -f Makefile testall)
+  - (cd contrib/hwxi/TEST01 && make -f Makefile testall)
+
+after_script:
+  - date
