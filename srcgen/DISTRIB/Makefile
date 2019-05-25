@@ -104,7 +104,7 @@ srcget_home:: ; $(CPF) ../../CHANGES-contrib $(ATSDIST)/
 copy_to_build_dir:: ; \
 $(CPRF) $(TEMPTORYBUILD)/LICENSE ATS-Temptory
 copy_to_build_dir:: ; \
-$(CPRF) $(TEMPTORYBUILD)/README ATS-Temptory
+$(CPRF) $(TEMPTORYBUILD)/README.md ATS-Temptory
 copy_to_build_dir:: ; \
 $(CPRF) $(TEMPTORYBUILD)/VERSION ATS-Temptory
 copy_to_build_dir:: ; \
