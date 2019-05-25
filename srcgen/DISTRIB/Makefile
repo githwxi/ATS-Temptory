@@ -51,55 +51,9 @@ all::
 #
 ######
 #
-atspackaging:: srcget_home
-atspackaging:: srcget_share
-#
-#
-######
-#
-atspackaging:: srcget_dist_cleanup
-#
 atspackaging:: ; (cd ATS-Postiats && ./autogen.sh)
 #
 ######
-
-srcget_home:: ; $(CPF) ../../AUTHORS $(ATSDIST)/
-srcget_home:: ; $(CPF) ../../COPYING $(ATSDIST)/
-srcget_home:: ; $(CPF) ../../INSTALL $(ATSDIST)/
-srcget_home:: ; $(CPF) ../../VERSION $(ATSDIST)/
-srcget_home:: ; $(CPF) ../../CHANGES-ats2 $(ATSDIST)/
-srcget_home:: ; $(CPF) ../../CHANGES-contrib $(ATSDIST)/
-#srcget_home:: ; $(CPF) ../../configure.ac $(ATSDIST)/
-#srcget_home:: ; $(CPF) ../../config.mk.in $(ATSDIST)/
-#srcget_home:: ; $(CPF) ../../bin/patscc_env.sh.in $(ATSDIST)/bin/
-#srcget_home:: ; $(CPF) ../../bin/myatscc_env.sh.in $(ATSDIST)/bin/
-#srcget_home:: ; $(CPF) ../../bin/patsopt_env.sh.in $(ATSDIST)/bin/
-
-######
-#
-# srcget_share:: ; \
-#   $(CPF) ../../share/Makefile.gen $(ATSDIST)/share/.
-# srcget_share:: ; \
-#   $(CPF) ../../share/atspre_define.hats $(ATSDIST)/share/.
-# srcget_share:: ; \
-#   $(CPF) ../../share/atspre_staload.hats $(ATSDIST)/share/.
-# srcget_share:: ; \
-#   $(CPF) ../../share/atspre_staload_libats_ML.hats $(ATSDIST)/share/.
-# srcget_share:: ; \
-#   $(CPF) ../../share/H/pats_atslib.h $(ATSDIST)/share/H/.
-# srcget_share:: ; \
-#   $(CPF) ../../share/HATS/atspre_define_pkgreloc.hats $(ATSDIST)/share/HATS/.
-# srcget_share:: ; \
-#   $(CPF) ../../share/HATS/atspre_staload_prelude.hats $(ATSDIST)/share/HATS/.
-# srcget_share:: ; \
-#   $(CPF) ../../share/HATS/atspre_staload_libats_ML.hats $(ATSDIST)/share/HATS/.
-# srcget_share:: ; \
-#   $(CPF) ../../share/HATS/atslib_staload_libats_libc.hats $(ATSDIST)/share/HATS/.
-# #
-# srcget_share:: ; $(CPF) ../../share/atsmake-pre.mk $(ATSDIST)/share/.
-# srcget_share:: ; $(CPF) ../../share/atsmake-post.mk $(ATSDIST)/share/.
-# #
-# ######
 
 copy_to_build_dir:: ; \
 $(CPRF) $(TEMPTORYBUILD)/LICENSE ATS-Temptory
