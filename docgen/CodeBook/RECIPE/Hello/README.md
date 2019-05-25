@@ -57,4 +57,7 @@ which should generate an executable of the name *Hello_dats*. By executing
 << Hello, world!
 ```
 
+It is not surprising to see the word `whale` as the first noun in the list
+(word#22): The novel is all about whales and whaling!
+
 Happy programming in ATS-Temptory!!!
