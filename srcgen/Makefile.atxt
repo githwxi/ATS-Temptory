@@ -459,17 +459,19 @@ fun aux
     case+ 0 of
     | _ when isSATS(x) => let
         val x1 = extrem(x)
-        val x2 = sprintf("  %s_sats.c \\\n", @(x1))
-        val res = atext_strptr(x2)
+        val x2 =
+	sprintf("BUILD/%s_sats.c \\\n", @(x1))
+        val x2 = atext_strptr(x2)
       in
-        list_cons (res, aux (xs))
+        list_cons(x2, aux(xs))
       end
     | _ when isDATS(x) => let
         val x1 = extrem(x)
-        val x2 = sprintf("  %s_dats.c \\\n", @(x1))
-        val res = atext_strptr(x2)
+        val x2 =
+	sprintf("BUILD/%s_dats.c \\\n", @(x1))
+        val x2 = atext_strptr(x2)
       in
-        list_cons (res, aux (xs))
+        list_cons(x2, aux(xs))
       end
     | _ => aux (xs)
     )
@@ -501,18 +503,18 @@ fun aux
     | _ when
         isSATS(x) => let
         val x1 = extrem(x)
-        val x2 = sprintf("  %s_sats.o \\\n", @(x1))
-        val res = atext_strptr(x2)
+        val x2 = sprintf("BUILD/%s_sats.o \\\n", @(x1))
+        val x2 = atext_strptr(x2)
       in
-        list_cons(res, aux(xs))
+        list_cons(x2, aux(xs))
       end // end of [isSATS]
     | _ when
         isDATS(x) => let
         val x1 = extrem(x)
-        val x2 = sprintf("  %s_dats.o \\\n", @(x1))
-        val res = atext_strptr(x2)
+        val x2 = sprintf("BUILD/%s_dats.o \\\n", @(x1))
+        val x2 = atext_strptr(x2)
       in
-        list_cons(res, aux(xs))
+        list_cons(x2, aux(xs))
       end // end of [isDATS]
     | _ => aux (xs)
     )
@@ -538,12 +540,12 @@ case+ 0 of
     val src1 = extrem (src)
     val line1 = sprintf
     (
-      "%s_sats.c: %s.sats; $(ATSCC) $(DATSCC) -cc $<\n", @(src1, src1)
+      "BUILD/%s_sats.c: %s.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<\n", @(src1, src1)
     ) // end of [val]
     val line1 = atext_strptr(line1)
     val line2 = sprintf
     (
-      "%s_sats.o: %s_sats.c; $(ATSCC) $(CFLAGS) -c $<\n\n", @(src1, src1)
+      "BUILD/%s_sats.o: BUILD/%s_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<\n\n", @(src1, src1)
     ) // end of [val]
     val line2 = atext_strptr(line2)
   in
@@ -557,13 +559,13 @@ case+ 0 of
 //
     val line1 = sprintf
     (
-      "%s_dats.c: %s.dats; $(ATSCC) $(DATSCC) -cc $<\n", @(src1, src1)
+      "BUILD/%s_dats.c: %s.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<\n", @(src1, src1)
     ) // end of [val]
     val line1 = atext_strptr(line1)
 //
     val line2 = sprintf
     (
-      "%s_dats.o: %s_dats.c; $(ATSCC) $(CFLAGS) -c $<\n\n", @(src1, src1)
+      "BUILD/%s_dats.o: BUILD/%s_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<\n\n", @(src1, src1)
     ) // end of [val]
     val line2 = atext_strptr(line2)
 //
@@ -619,7 +621,7 @@ export ATSCCOMP=$(CC)
 #
 ######
 
-ATSCC=$(ATSHOME)/bin/atscc
+ATS1CC=$(ATSHOME)/bin/atscc
 ATSOPT=$(ATSHOME)/bin/atsopt
 
 ######
@@ -680,8 +682,8 @@ SOURCESdyn := $(filter %.dats, $(SOURCES))
 
 TARGETS := \\
 #TARGETS_process()
-TARGETS += pats_main_dats.c
-TARGETS += pats_main_none_dats.c
+TARGETS += BUILD/pats_main_dats.c
+TARGETS += BUILD/pats_main_none_dats.c
 
 ######
 
@@ -701,7 +703,7 @@ all:: tempopt
 #
 tempopt:: $(TARGETS)
 tempopt:: $(OBJECTS) ; \\
-$(ATSCC) $(CFLAGS) $(GCFLAG) \\
+$(ATS1CC) $(CFLAGS) $(GCFLAG) \\
 -o $@ pats_main.dats $(OBJECTS) $(LIBATS) $(LIBGMP)
 #
 cleanall:: ; $(RMF) tempopt
@@ -711,7 +713,7 @@ cleanall:: ; $(RMF) tempopt
 libatsopt:: $(TARGETS)
 #
 libatsopt:: $(OBJECTS) \
-  pats_main_none_dats.o; $(ARR) libatsopt.a $^
+BUILD/pats_main_none_dats.o; $(ARR) libatsopt.a $^
 #
 ######
 #
@@ -725,18 +727,16 @@ BUILD/tempopt: ; make -C BUILD -j8 -f Makefile tempopt
 CBOOT:: CBOOTgmp
 ######
 #
-CBOOTgmp:: ; $(CPF) pats_*.hats CBOOT
 CBOOTgmp:: ; $(CPF) pats_*.cats CBOOT
-CBOOTgmp:: ; $(CPF) pats_*_sats.c CBOOT
-CBOOTgmp:: ; $(CPF) pats_*_dats.c CBOOT
+CBOOTgmp:: ; $(CPF) BUILD/pats_*_sats.c CBOOT
+CBOOTgmp:: ; $(CPF) BUILD/pats_*_dats.c CBOOT
 CBOOTgmp:: ; $(CPF) Makefile_CBOOTgmp CBOOT/Makefile
 #
 ######
 #
-CBOOTint:: ; $(CPF) pats_*.hats CBOOT
 CBOOTint:: ; $(CPF) pats_*.cats CBOOT
-CBOOTint:: ; $(CPF) pats_*_sats.c CBOOT
-CBOOTint:: ; $(CPF) pats_*_dats.c CBOOT
+CBOOTint:: ; $(CPF) BUILD/pats_*_sats.c CBOOT
+CBOOTint:: ; $(CPF) BUILD/pats_*_dats.c CBOOT
 CBOOTint:: ; $(CPF) Makefile_CBOOTint CBOOT/Makefile
 #
 ######
@@ -748,12 +748,13 @@ TAGATS:: ; $(ATSOPT) --output-a $@ --taggen -s $(SOURCESsta) -d $(SOURCESdyn)
 #
 #process_compile_lines()
 #
-pats_main_dats.c: \\
-  pats_main.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
-pats_main_none_dats.c: \\
-  pats_main.dats; $(ATSOPT) $(DATSCC) -DATS PATSOPT_MAIN_NONE -o $@ -d $<
+BUILD/pats_main_dats.c: \\
+  pats_main.dats ; $(ATSOPT) $(DATSCC) -o $@ -d $<
 #
-pats_main_none_dats.o: pats_main_none_dats.c; $(ATSCC) $(CFLAGS) -c -o $@ $<
+BUILD/pats_main_none_dats.o: \\
+BUILD/pats_main_none_dats.c; $(ATSOPT) $(CFLAGS) -o $@ $<
+BUILD/pats_main_none_dats.c: \\
+  pats_main.dats ; $(ATSOPT) $(DATSCC) -DATS PATSOPT_MAIN_NONE -o $@ -d $<
 #
 ######
 #
@@ -790,8 +791,9 @@ $(WCL) \
 ######
 
 clean:: ; $(RMF) $(DIR)/*~
-clean:: ; $(RMF) $(DIR)/*_?ats.o
 clean:: ; $(RMF) $(DIR)/*_?ats.c
+clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.o
+clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.c
 
 cleanall:: clean
 cleanall:: ; $(RMF) TAGATS

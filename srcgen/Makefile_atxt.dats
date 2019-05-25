@@ -91,7 +91,7 @@ srcRename
 
 
 (*
-Makefile.atxt: 1485(line=87, offs=1) -- 11684(line=603, offs=3)
+Makefile.atxt: 1485(line=87, offs=1) -- 11752(line=605, offs=3)
 *)
 
 //
@@ -468,17 +468,19 @@ fun aux
     case+ 0 of
     | _ when isSATS(x) => let
         val x1 = extrem(x)
-        val x2 = sprintf("  %s_sats.c \\\n", @(x1))
-        val res = atext_strptr(x2)
+        val x2 =
+	sprintf("BUILD/%s_sats.c \\\n", @(x1))
+        val x2 = atext_strptr(x2)
       in
-        list_cons (res, aux (xs))
+        list_cons(x2, aux(xs))
       end
     | _ when isDATS(x) => let
         val x1 = extrem(x)
-        val x2 = sprintf("  %s_dats.c \\\n", @(x1))
-        val res = atext_strptr(x2)
+        val x2 =
+	sprintf("BUILD/%s_dats.c \\\n", @(x1))
+        val x2 = atext_strptr(x2)
       in
-        list_cons (res, aux (xs))
+        list_cons(x2, aux(xs))
       end
     | _ => aux (xs)
     )
@@ -510,18 +512,18 @@ fun aux
     | _ when
         isSATS(x) => let
         val x1 = extrem(x)
-        val x2 = sprintf("  %s_sats.o \\\n", @(x1))
-        val res = atext_strptr(x2)
+        val x2 = sprintf("BUILD/%s_sats.o \\\n", @(x1))
+        val x2 = atext_strptr(x2)
       in
-        list_cons(res, aux(xs))
+        list_cons(x2, aux(xs))
       end // end of [isSATS]
     | _ when
         isDATS(x) => let
         val x1 = extrem(x)
-        val x2 = sprintf("  %s_dats.o \\\n", @(x1))
-        val res = atext_strptr(x2)
+        val x2 = sprintf("BUILD/%s_dats.o \\\n", @(x1))
+        val x2 = atext_strptr(x2)
       in
-        list_cons(res, aux(xs))
+        list_cons(x2, aux(xs))
       end // end of [isDATS]
     | _ => aux (xs)
     )
@@ -547,12 +549,12 @@ case+ 0 of
     val src1 = extrem (src)
     val line1 = sprintf
     (
-      "%s_sats.c: %s.sats; $(ATSCC) $(DATSCC) -cc $<\n", @(src1, src1)
+      "BUILD/%s_sats.c: %s.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<\n", @(src1, src1)
     ) // end of [val]
     val line1 = atext_strptr(line1)
     val line2 = sprintf
     (
-      "%s_sats.o: %s_sats.c; $(ATSCC) $(CFLAGS) -c $<\n\n", @(src1, src1)
+      "BUILD/%s_sats.o: BUILD/%s_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<\n\n", @(src1, src1)
     ) // end of [val]
     val line2 = atext_strptr(line2)
   in
@@ -566,13 +568,13 @@ case+ 0 of
 //
     val line1 = sprintf
     (
-      "%s_dats.c: %s.dats; $(ATSCC) $(DATSCC) -cc $<\n", @(src1, src1)
+      "BUILD/%s_dats.c: %s.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<\n", @(src1, src1)
     ) // end of [val]
     val line1 = atext_strptr(line1)
 //
     val line2 = sprintf
     (
-      "%s_dats.o: %s_dats.c; $(ATSCC) $(CFLAGS) -c $<\n\n", @(src1, src1)
+      "BUILD/%s_dats.o: BUILD/%s_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<\n\n", @(src1, src1)
     ) // end of [val]
     val line2 = atext_strptr(line2)
 //
@@ -611,31 +613,31 @@ end // end of [local]
 
 
 (*
-Makefile.atxt: 12444(line=674, offs=2) -- 12461(line=674, offs=19)
+Makefile.atxt: 12513(line=676, offs=2) -- 12530(line=676, offs=19)
 *)
 val __tok1 = SOURCES_process()
 val () = theAtextMap_insert_str ("__tok1", __tok1)
 
 (*
-Makefile.atxt: 12573(line=682, offs=2) -- 12590(line=682, offs=19)
+Makefile.atxt: 12642(line=684, offs=2) -- 12659(line=684, offs=19)
 *)
 val __tok2 = TARGETS_process()
 val () = theAtextMap_insert_str ("__tok2", __tok2)
 
 (*
-Makefile.atxt: 12676(line=689, offs=2) -- 12693(line=689, offs=19)
+Makefile.atxt: 12757(line=691, offs=2) -- 12774(line=691, offs=19)
 *)
 val __tok3 = OBJECTS_process()
 val () = theAtextMap_insert_str ("__tok3", __tok3)
 
 (*
-Makefile.atxt: 13904(line=749, offs=2) -- 13927(line=749, offs=25)
+Makefile.atxt: 13938(line=749, offs=2) -- 13961(line=749, offs=25)
 *)
 val __tok4 = process_compile_lines()
 val () = theAtextMap_insert_str ("__tok4", __tok4)
 
 (*
-Makefile.atxt: 14877(line=801, offs=1) -- 14950(line=803, offs=3)
+Makefile.atxt: 14983(line=803, offs=1) -- 15056(line=805, offs=3)
 *)
 
 implement main () = fprint_filsub (stdout_ref, "Makefile_atxt.txt")

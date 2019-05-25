@@ -16,7 +16,7 @@ export ATSCCOMP=$(CC)
 #
 ######
 
-ATSCC=$(ATSHOME)/bin/atscc
+ATS1CC=$(ATSHOME)/bin/atscc
 ATSOPT=$(ATSHOME)/bin/atsopt
 
 ######
@@ -329,489 +329,489 @@ SOURCESdyn := $(filter %.dats, $(SOURCES))
 ######
 
 TARGETS := \
-  pats_error_sats.c \
-  pats_error_dats.c \
-  pats_intinf_sats.c \
-  pats_intinf_dats.c \
-  pats_counter_sats.c \
-  pats_counter_dats.c \
-  pats_utils_sats.c \
-  pats_utils_dats.c \
-  pats_global_sats.c \
-  pats_global_dats.c \
-  pats_basics_sats.c \
-  pats_basics_dats.c \
-  pats_comarg_sats.c \
-  pats_comarg_dats.c \
-  pats_stamp_sats.c \
-  pats_stamp_dats.c \
-  pats_symbol_sats.c \
-  pats_symbol_dats.c \
-  pats_filename_sats.c \
-  pats_filename_dats.c \
-  pats_filename_reloc_dats.c \
-  pats_location_sats.c \
-  pats_location_dats.c \
-  pats_jsonize_sats.c \
-  pats_jsonize_dats.c \
-  pats_errmsg_sats.c \
-  pats_errmsg_dats.c \
-  pats_reader_sats.c \
-  pats_reader_dats.c \
-  pats_lexbuf_sats.c \
-  pats_lexbuf_dats.c \
-  pats_lexing_sats.c \
-  pats_lexing_dats.c \
-  pats_lexing_print_dats.c \
-  pats_lexing_error_dats.c \
-  pats_lexing_token_dats.c \
-  pats_label_sats.c \
-  pats_label_dats.c \
-  pats_effect_sats.c \
-  pats_effect_dats.c \
-  pats_fixity_sats.c \
-  pats_fixity_prec_dats.c \
-  pats_fixity_fxty_dats.c \
-  pats_syntax_sats.c \
-  pats_syntax_dats.c \
-  pats_syntax_print_dats.c \
-  pats_depgen_sats.c \
-  pats_depgen_dats.c \
-  pats_taggen_sats.c \
-  pats_taggen_dats.c \
-  pats_tokbuf_sats.c \
-  pats_tokbuf_dats.c \
-  pats_parsing_sats.c \
-  pats_parsing_dats.c \
-  pats_parsing_error_dats.c \
-  pats_parsing_util_dats.c \
-  pats_parsing_kwds_dats.c \
-  pats_parsing_base_dats.c \
-  pats_parsing_e0xp_dats.c \
-  pats_parsing_sort_dats.c \
-  pats_parsing_staexp_dats.c \
-  pats_parsing_p0at_dats.c \
-  pats_parsing_dynexp_dats.c \
-  pats_parsing_decl_dats.c \
-  pats_parsing_toplevel_dats.c \
-  pats_symmap_sats.c \
-  pats_symmap_dats.c \
-  pats_symenv_sats.c \
-  pats_symenv_dats.c \
-  pats_staexp1_sats.c \
-  pats_staexp1_dats.c \
-  pats_staexp1_print_dats.c \
-  pats_dynexp1_sats.c \
-  pats_dynexp1_dats.c \
-  pats_dynexp1_print_dats.c \
-  pats_trans1_sats.c \
-  pats_trans1_env_sats.c \
-  pats_trans1_env_dats.c \
-  pats_e1xpval_sats.c \
-  pats_e1xpval_dats.c \
-  pats_e1xpval_error_dats.c \
-  pats_trans1_error_dats.c \
-  pats_trans1_e0xp_dats.c \
-  pats_trans1_effect_dats.c \
-  pats_trans1_sort_dats.c \
-  pats_trans1_staexp_dats.c \
-  pats_trans1_p0at_dats.c \
-  pats_trans1_syndef_dats.c \
-  pats_trans1_dynexp_dats.c \
-  pats_trans1_decl_dats.c \
-  pats_staexp2_sats.c \
-  pats_staexp2_dats.c \
-  pats_stacst2_sats.c \
-  pats_stacst2_dats.c \
-  pats_staexp2_print_dats.c \
-  pats_staexp2_pprint_dats.c \
-  pats_staexp2_sort_dats.c \
-  pats_staexp2_scst_dats.c \
-  pats_staexp2_svar_dats.c \
-  pats_staexp2_svvar_dats.c \
-  pats_staexp2_hole_dats.c \
-  pats_staexp2_ctxt_dats.c \
-  pats_staexp2_dcon_dats.c \
-  pats_staexp2_skexp_dats.c \
-  pats_staexp2_szexp_dats.c \
-  pats_staexp2_util_sats.c \
-  pats_staexp2_util1_dats.c \
-  pats_staexp2_util2_dats.c \
-  pats_staexp2_util3_dats.c \
-  pats_staexp2_error_sats.c \
-  pats_staexp2_error_dats.c \
-  pats_staexp2_solve_sats.c \
-  pats_staexp2_solve_dats.c \
-  pats_patcst2_sats.c \
-  pats_patcst2_dats.c \
-  pats_dynexp2_sats.c \
-  pats_dynexp2_dats.c \
-  pats_dyncst2_sats.c \
-  pats_dyncst2_dats.c \
-  pats_dynexp2_print_dats.c \
-  pats_dynexp2_dcst_dats.c \
-  pats_dynexp2_dvar_dats.c \
-  pats_dynexp2_dmac_dats.c \
-  pats_dynexp2_util_dats.c \
-  pats_dynexp2_mapgen_dats.c \
-  pats_trans2_sats.c \
-  pats_namespace_sats.c \
-  pats_namespace_dats.c \
-  pats_trans2_env_sats.c \
-  pats_trans2_env_dats.c \
-  pats_trans2_error_dats.c \
-  pats_trans2_sort_dats.c \
-  pats_trans2_staexp_dats.c \
-  pats_trans2_p1at_dats.c \
-  pats_trans2_dynexp_dats.c \
-  pats_trans2_impdec_dats.c \
-  pats_trans2_decl_dats.c \
-  pats_codegen2_sats.c \
-  pats_codegen2_dats.c \
-  pats_codegen2_util_dats.c \
-  pats_codegen2_absrec_dats.c \
-  pats_codegen2_datype_dats.c \
-  pats_codegen2_fprint_dats.c \
-  pats_jsonize_synent2_sats.c \
-  pats_jsonize_synent2_dats.c \
-  pats_dynexp3_sats.c \
-  pats_dynexp3_dats.c \
-  pats_dynexp3_print_dats.c \
-  pats_trans3_sats.c \
-  pats_trans3_error_dats.c \
-  pats_trans3_util_dats.c \
-  pats_trans3_env_sats.c \
-  pats_trans3_env_dats.c \
-  pats_trans3_env_print_dats.c \
-  pats_trans3_env_scst_dats.c \
-  pats_trans3_env_svar_dats.c \
-  pats_trans3_env_termet_dats.c \
-  pats_trans3_env_effect_dats.c \
-  pats_trans3_env_dvar_dats.c \
-  pats_trans3_env_lamlp_dats.c \
-  pats_trans3_env_pfman_dats.c \
-  pats_trans3_env_lstate_dats.c \
-  pats_dmacro2_sats.c \
-  pats_dmacro2_dats.c \
-  pats_dmacro2_print_dats.c \
-  pats_dmacro2_eval0_dats.c \
-  pats_dmacro2_eval1_dats.c \
-  pats_trans3_p2at_dats.c \
-  pats_trans3_patcon_dats.c \
-  pats_trans3_syncst_dats.c \
-  pats_trans3_dynexp_up_dats.c \
-  pats_trans3_dynexp_dn_dats.c \
-  pats_trans3_appsym_dats.c \
-  pats_trans3_caseof_dats.c \
-  pats_trans3_selab_dats.c \
-  pats_trans3_ptrof_dats.c \
-  pats_trans3_viewat_dats.c \
-  pats_trans3_deref_dats.c \
-  pats_trans3_assgn_dats.c \
-  pats_trans3_xchng_dats.c \
-  pats_trans3_lvalres_dats.c \
-  pats_trans3_fldfrat_dats.c \
-  pats_trans3_looping_dats.c \
-  pats_trans3_decl_dats.c \
-  pats_lintprgm_sats.c \
-  pats_lintprgm_dats.c \
-  pats_lintprgm_print_dats.c \
-  pats_lintprgm_myint_dats.c \
-  pats_lintprgm_solve_dats.c \
-  pats_constraint3_sats.c \
-  pats_constraint3_dats.c \
-  pats_constraint3_print_dats.c \
-  pats_constraint3_mapgen_dats.c \
-  pats_constraint3_jsonize_dats.c \
-  pats_constraint3_init_dats.c \
-  pats_constraint3_simplify_dats.c \
-  pats_constraint3_icnstr_dats.c \
-  pats_constraint3_solve_dats.c \
-  pats_histaexp_sats.c \
-  pats_histaexp_dats.c \
-  pats_histaexp_print_dats.c \
-  pats_histaexp_funlab_dats.c \
-  pats_hidynexp_sats.c \
-  pats_hidynexp_dats.c \
-  pats_hidynexp_print_dats.c \
-  pats_hidynexp_util_dats.c \
-  pats_typerase_sats.c \
-  pats_typerase_error_dats.c \
-  pats_typerase_staexp_dats.c \
-  pats_typerase_dynexp_dats.c \
-  pats_typerase_decl_dats.c \
-  pats_ccomp_sats.c \
-  pats_ccomp_dats.c \
-  pats_ccomp_print_dats.c \
-  pats_ccomp_hitype_dats.c \
-  pats_ccomp_tmplab_dats.c \
-  pats_ccomp_tmpvar_dats.c \
-  pats_ccomp_d2env_dats.c \
-  pats_ccomp_funlab_dats.c \
-  pats_ccomp_funent_dats.c \
-  pats_ccomp_util_dats.c \
-  pats_ccomp_ccompenv_dats.c \
-  pats_ccomp_instrseq_dats.c \
-  pats_ccomp_hipat_dats.c \
-  pats_ccomp_dynexp_dats.c \
-  pats_ccomp_caseof_dats.c \
-  pats_ccomp_claulst_dats.c \
-  pats_ccomp_lazyeval_dats.c \
-  pats_ccomp_trywith_dats.c \
-  pats_ccomp_looping_dats.c \
-  pats_ccomp_decl_dats.c \
-  pats_ccomp_subst_dats.c \
-  pats_ccomp_environ_dats.c \
-  pats_ccomp_template_dats.c \
-  pats_ccomp_emit_dats.c \
-  pats_ccomp_emit2_dats.c \
-  pats_ccomp_emit3_dats.c \
-  pats_ccomp_main_dats.c \
+BUILD/pats_error_sats.c \
+BUILD/pats_error_dats.c \
+BUILD/pats_intinf_sats.c \
+BUILD/pats_intinf_dats.c \
+BUILD/pats_counter_sats.c \
+BUILD/pats_counter_dats.c \
+BUILD/pats_utils_sats.c \
+BUILD/pats_utils_dats.c \
+BUILD/pats_global_sats.c \
+BUILD/pats_global_dats.c \
+BUILD/pats_basics_sats.c \
+BUILD/pats_basics_dats.c \
+BUILD/pats_comarg_sats.c \
+BUILD/pats_comarg_dats.c \
+BUILD/pats_stamp_sats.c \
+BUILD/pats_stamp_dats.c \
+BUILD/pats_symbol_sats.c \
+BUILD/pats_symbol_dats.c \
+BUILD/pats_filename_sats.c \
+BUILD/pats_filename_dats.c \
+BUILD/pats_filename_reloc_dats.c \
+BUILD/pats_location_sats.c \
+BUILD/pats_location_dats.c \
+BUILD/pats_jsonize_sats.c \
+BUILD/pats_jsonize_dats.c \
+BUILD/pats_errmsg_sats.c \
+BUILD/pats_errmsg_dats.c \
+BUILD/pats_reader_sats.c \
+BUILD/pats_reader_dats.c \
+BUILD/pats_lexbuf_sats.c \
+BUILD/pats_lexbuf_dats.c \
+BUILD/pats_lexing_sats.c \
+BUILD/pats_lexing_dats.c \
+BUILD/pats_lexing_print_dats.c \
+BUILD/pats_lexing_error_dats.c \
+BUILD/pats_lexing_token_dats.c \
+BUILD/pats_label_sats.c \
+BUILD/pats_label_dats.c \
+BUILD/pats_effect_sats.c \
+BUILD/pats_effect_dats.c \
+BUILD/pats_fixity_sats.c \
+BUILD/pats_fixity_prec_dats.c \
+BUILD/pats_fixity_fxty_dats.c \
+BUILD/pats_syntax_sats.c \
+BUILD/pats_syntax_dats.c \
+BUILD/pats_syntax_print_dats.c \
+BUILD/pats_depgen_sats.c \
+BUILD/pats_depgen_dats.c \
+BUILD/pats_taggen_sats.c \
+BUILD/pats_taggen_dats.c \
+BUILD/pats_tokbuf_sats.c \
+BUILD/pats_tokbuf_dats.c \
+BUILD/pats_parsing_sats.c \
+BUILD/pats_parsing_dats.c \
+BUILD/pats_parsing_error_dats.c \
+BUILD/pats_parsing_util_dats.c \
+BUILD/pats_parsing_kwds_dats.c \
+BUILD/pats_parsing_base_dats.c \
+BUILD/pats_parsing_e0xp_dats.c \
+BUILD/pats_parsing_sort_dats.c \
+BUILD/pats_parsing_staexp_dats.c \
+BUILD/pats_parsing_p0at_dats.c \
+BUILD/pats_parsing_dynexp_dats.c \
+BUILD/pats_parsing_decl_dats.c \
+BUILD/pats_parsing_toplevel_dats.c \
+BUILD/pats_symmap_sats.c \
+BUILD/pats_symmap_dats.c \
+BUILD/pats_symenv_sats.c \
+BUILD/pats_symenv_dats.c \
+BUILD/pats_staexp1_sats.c \
+BUILD/pats_staexp1_dats.c \
+BUILD/pats_staexp1_print_dats.c \
+BUILD/pats_dynexp1_sats.c \
+BUILD/pats_dynexp1_dats.c \
+BUILD/pats_dynexp1_print_dats.c \
+BUILD/pats_trans1_sats.c \
+BUILD/pats_trans1_env_sats.c \
+BUILD/pats_trans1_env_dats.c \
+BUILD/pats_e1xpval_sats.c \
+BUILD/pats_e1xpval_dats.c \
+BUILD/pats_e1xpval_error_dats.c \
+BUILD/pats_trans1_error_dats.c \
+BUILD/pats_trans1_e0xp_dats.c \
+BUILD/pats_trans1_effect_dats.c \
+BUILD/pats_trans1_sort_dats.c \
+BUILD/pats_trans1_staexp_dats.c \
+BUILD/pats_trans1_p0at_dats.c \
+BUILD/pats_trans1_syndef_dats.c \
+BUILD/pats_trans1_dynexp_dats.c \
+BUILD/pats_trans1_decl_dats.c \
+BUILD/pats_staexp2_sats.c \
+BUILD/pats_staexp2_dats.c \
+BUILD/pats_stacst2_sats.c \
+BUILD/pats_stacst2_dats.c \
+BUILD/pats_staexp2_print_dats.c \
+BUILD/pats_staexp2_pprint_dats.c \
+BUILD/pats_staexp2_sort_dats.c \
+BUILD/pats_staexp2_scst_dats.c \
+BUILD/pats_staexp2_svar_dats.c \
+BUILD/pats_staexp2_svvar_dats.c \
+BUILD/pats_staexp2_hole_dats.c \
+BUILD/pats_staexp2_ctxt_dats.c \
+BUILD/pats_staexp2_dcon_dats.c \
+BUILD/pats_staexp2_skexp_dats.c \
+BUILD/pats_staexp2_szexp_dats.c \
+BUILD/pats_staexp2_util_sats.c \
+BUILD/pats_staexp2_util1_dats.c \
+BUILD/pats_staexp2_util2_dats.c \
+BUILD/pats_staexp2_util3_dats.c \
+BUILD/pats_staexp2_error_sats.c \
+BUILD/pats_staexp2_error_dats.c \
+BUILD/pats_staexp2_solve_sats.c \
+BUILD/pats_staexp2_solve_dats.c \
+BUILD/pats_patcst2_sats.c \
+BUILD/pats_patcst2_dats.c \
+BUILD/pats_dynexp2_sats.c \
+BUILD/pats_dynexp2_dats.c \
+BUILD/pats_dyncst2_sats.c \
+BUILD/pats_dyncst2_dats.c \
+BUILD/pats_dynexp2_print_dats.c \
+BUILD/pats_dynexp2_dcst_dats.c \
+BUILD/pats_dynexp2_dvar_dats.c \
+BUILD/pats_dynexp2_dmac_dats.c \
+BUILD/pats_dynexp2_util_dats.c \
+BUILD/pats_dynexp2_mapgen_dats.c \
+BUILD/pats_trans2_sats.c \
+BUILD/pats_namespace_sats.c \
+BUILD/pats_namespace_dats.c \
+BUILD/pats_trans2_env_sats.c \
+BUILD/pats_trans2_env_dats.c \
+BUILD/pats_trans2_error_dats.c \
+BUILD/pats_trans2_sort_dats.c \
+BUILD/pats_trans2_staexp_dats.c \
+BUILD/pats_trans2_p1at_dats.c \
+BUILD/pats_trans2_dynexp_dats.c \
+BUILD/pats_trans2_impdec_dats.c \
+BUILD/pats_trans2_decl_dats.c \
+BUILD/pats_codegen2_sats.c \
+BUILD/pats_codegen2_dats.c \
+BUILD/pats_codegen2_util_dats.c \
+BUILD/pats_codegen2_absrec_dats.c \
+BUILD/pats_codegen2_datype_dats.c \
+BUILD/pats_codegen2_fprint_dats.c \
+BUILD/pats_jsonize_synent2_sats.c \
+BUILD/pats_jsonize_synent2_dats.c \
+BUILD/pats_dynexp3_sats.c \
+BUILD/pats_dynexp3_dats.c \
+BUILD/pats_dynexp3_print_dats.c \
+BUILD/pats_trans3_sats.c \
+BUILD/pats_trans3_error_dats.c \
+BUILD/pats_trans3_util_dats.c \
+BUILD/pats_trans3_env_sats.c \
+BUILD/pats_trans3_env_dats.c \
+BUILD/pats_trans3_env_print_dats.c \
+BUILD/pats_trans3_env_scst_dats.c \
+BUILD/pats_trans3_env_svar_dats.c \
+BUILD/pats_trans3_env_termet_dats.c \
+BUILD/pats_trans3_env_effect_dats.c \
+BUILD/pats_trans3_env_dvar_dats.c \
+BUILD/pats_trans3_env_lamlp_dats.c \
+BUILD/pats_trans3_env_pfman_dats.c \
+BUILD/pats_trans3_env_lstate_dats.c \
+BUILD/pats_dmacro2_sats.c \
+BUILD/pats_dmacro2_dats.c \
+BUILD/pats_dmacro2_print_dats.c \
+BUILD/pats_dmacro2_eval0_dats.c \
+BUILD/pats_dmacro2_eval1_dats.c \
+BUILD/pats_trans3_p2at_dats.c \
+BUILD/pats_trans3_patcon_dats.c \
+BUILD/pats_trans3_syncst_dats.c \
+BUILD/pats_trans3_dynexp_up_dats.c \
+BUILD/pats_trans3_dynexp_dn_dats.c \
+BUILD/pats_trans3_appsym_dats.c \
+BUILD/pats_trans3_caseof_dats.c \
+BUILD/pats_trans3_selab_dats.c \
+BUILD/pats_trans3_ptrof_dats.c \
+BUILD/pats_trans3_viewat_dats.c \
+BUILD/pats_trans3_deref_dats.c \
+BUILD/pats_trans3_assgn_dats.c \
+BUILD/pats_trans3_xchng_dats.c \
+BUILD/pats_trans3_lvalres_dats.c \
+BUILD/pats_trans3_fldfrat_dats.c \
+BUILD/pats_trans3_looping_dats.c \
+BUILD/pats_trans3_decl_dats.c \
+BUILD/pats_lintprgm_sats.c \
+BUILD/pats_lintprgm_dats.c \
+BUILD/pats_lintprgm_print_dats.c \
+BUILD/pats_lintprgm_myint_dats.c \
+BUILD/pats_lintprgm_solve_dats.c \
+BUILD/pats_constraint3_sats.c \
+BUILD/pats_constraint3_dats.c \
+BUILD/pats_constraint3_print_dats.c \
+BUILD/pats_constraint3_mapgen_dats.c \
+BUILD/pats_constraint3_jsonize_dats.c \
+BUILD/pats_constraint3_init_dats.c \
+BUILD/pats_constraint3_simplify_dats.c \
+BUILD/pats_constraint3_icnstr_dats.c \
+BUILD/pats_constraint3_solve_dats.c \
+BUILD/pats_histaexp_sats.c \
+BUILD/pats_histaexp_dats.c \
+BUILD/pats_histaexp_print_dats.c \
+BUILD/pats_histaexp_funlab_dats.c \
+BUILD/pats_hidynexp_sats.c \
+BUILD/pats_hidynexp_dats.c \
+BUILD/pats_hidynexp_print_dats.c \
+BUILD/pats_hidynexp_util_dats.c \
+BUILD/pats_typerase_sats.c \
+BUILD/pats_typerase_error_dats.c \
+BUILD/pats_typerase_staexp_dats.c \
+BUILD/pats_typerase_dynexp_dats.c \
+BUILD/pats_typerase_decl_dats.c \
+BUILD/pats_ccomp_sats.c \
+BUILD/pats_ccomp_dats.c \
+BUILD/pats_ccomp_print_dats.c \
+BUILD/pats_ccomp_hitype_dats.c \
+BUILD/pats_ccomp_tmplab_dats.c \
+BUILD/pats_ccomp_tmpvar_dats.c \
+BUILD/pats_ccomp_d2env_dats.c \
+BUILD/pats_ccomp_funlab_dats.c \
+BUILD/pats_ccomp_funent_dats.c \
+BUILD/pats_ccomp_util_dats.c \
+BUILD/pats_ccomp_ccompenv_dats.c \
+BUILD/pats_ccomp_instrseq_dats.c \
+BUILD/pats_ccomp_hipat_dats.c \
+BUILD/pats_ccomp_dynexp_dats.c \
+BUILD/pats_ccomp_caseof_dats.c \
+BUILD/pats_ccomp_claulst_dats.c \
+BUILD/pats_ccomp_lazyeval_dats.c \
+BUILD/pats_ccomp_trywith_dats.c \
+BUILD/pats_ccomp_looping_dats.c \
+BUILD/pats_ccomp_decl_dats.c \
+BUILD/pats_ccomp_subst_dats.c \
+BUILD/pats_ccomp_environ_dats.c \
+BUILD/pats_ccomp_template_dats.c \
+BUILD/pats_ccomp_emit_dats.c \
+BUILD/pats_ccomp_emit2_dats.c \
+BUILD/pats_ccomp_emit3_dats.c \
+BUILD/pats_ccomp_main_dats.c \
 
-TARGETS += pats_main_dats.c
-TARGETS += pats_main_none_dats.c
+TARGETS += BUILD/pats_main_dats.c
+TARGETS += BUILD/pats_main_none_dats.c
 
 ######
 
 OBJECTS := \
-  pats_error_sats.o \
-  pats_error_dats.o \
-  pats_intinf_sats.o \
-  pats_intinf_dats.o \
-  pats_counter_sats.o \
-  pats_counter_dats.o \
-  pats_utils_sats.o \
-  pats_utils_dats.o \
-  pats_global_sats.o \
-  pats_global_dats.o \
-  pats_basics_sats.o \
-  pats_basics_dats.o \
-  pats_comarg_sats.o \
-  pats_comarg_dats.o \
-  pats_stamp_sats.o \
-  pats_stamp_dats.o \
-  pats_symbol_sats.o \
-  pats_symbol_dats.o \
-  pats_filename_sats.o \
-  pats_filename_dats.o \
-  pats_filename_reloc_dats.o \
-  pats_location_sats.o \
-  pats_location_dats.o \
-  pats_jsonize_sats.o \
-  pats_jsonize_dats.o \
-  pats_errmsg_sats.o \
-  pats_errmsg_dats.o \
-  pats_reader_sats.o \
-  pats_reader_dats.o \
-  pats_lexbuf_sats.o \
-  pats_lexbuf_dats.o \
-  pats_lexing_sats.o \
-  pats_lexing_dats.o \
-  pats_lexing_print_dats.o \
-  pats_lexing_error_dats.o \
-  pats_lexing_token_dats.o \
-  pats_label_sats.o \
-  pats_label_dats.o \
-  pats_effect_sats.o \
-  pats_effect_dats.o \
-  pats_fixity_sats.o \
-  pats_fixity_prec_dats.o \
-  pats_fixity_fxty_dats.o \
-  pats_syntax_sats.o \
-  pats_syntax_dats.o \
-  pats_syntax_print_dats.o \
-  pats_depgen_sats.o \
-  pats_depgen_dats.o \
-  pats_taggen_sats.o \
-  pats_taggen_dats.o \
-  pats_tokbuf_sats.o \
-  pats_tokbuf_dats.o \
-  pats_parsing_sats.o \
-  pats_parsing_dats.o \
-  pats_parsing_error_dats.o \
-  pats_parsing_util_dats.o \
-  pats_parsing_kwds_dats.o \
-  pats_parsing_base_dats.o \
-  pats_parsing_e0xp_dats.o \
-  pats_parsing_sort_dats.o \
-  pats_parsing_staexp_dats.o \
-  pats_parsing_p0at_dats.o \
-  pats_parsing_dynexp_dats.o \
-  pats_parsing_decl_dats.o \
-  pats_parsing_toplevel_dats.o \
-  pats_symmap_sats.o \
-  pats_symmap_dats.o \
-  pats_symenv_sats.o \
-  pats_symenv_dats.o \
-  pats_staexp1_sats.o \
-  pats_staexp1_dats.o \
-  pats_staexp1_print_dats.o \
-  pats_dynexp1_sats.o \
-  pats_dynexp1_dats.o \
-  pats_dynexp1_print_dats.o \
-  pats_trans1_sats.o \
-  pats_trans1_env_sats.o \
-  pats_trans1_env_dats.o \
-  pats_e1xpval_sats.o \
-  pats_e1xpval_dats.o \
-  pats_e1xpval_error_dats.o \
-  pats_trans1_error_dats.o \
-  pats_trans1_e0xp_dats.o \
-  pats_trans1_effect_dats.o \
-  pats_trans1_sort_dats.o \
-  pats_trans1_staexp_dats.o \
-  pats_trans1_p0at_dats.o \
-  pats_trans1_syndef_dats.o \
-  pats_trans1_dynexp_dats.o \
-  pats_trans1_decl_dats.o \
-  pats_staexp2_sats.o \
-  pats_staexp2_dats.o \
-  pats_stacst2_sats.o \
-  pats_stacst2_dats.o \
-  pats_staexp2_print_dats.o \
-  pats_staexp2_pprint_dats.o \
-  pats_staexp2_sort_dats.o \
-  pats_staexp2_scst_dats.o \
-  pats_staexp2_svar_dats.o \
-  pats_staexp2_svvar_dats.o \
-  pats_staexp2_hole_dats.o \
-  pats_staexp2_ctxt_dats.o \
-  pats_staexp2_dcon_dats.o \
-  pats_staexp2_skexp_dats.o \
-  pats_staexp2_szexp_dats.o \
-  pats_staexp2_util_sats.o \
-  pats_staexp2_util1_dats.o \
-  pats_staexp2_util2_dats.o \
-  pats_staexp2_util3_dats.o \
-  pats_staexp2_error_sats.o \
-  pats_staexp2_error_dats.o \
-  pats_staexp2_solve_sats.o \
-  pats_staexp2_solve_dats.o \
-  pats_patcst2_sats.o \
-  pats_patcst2_dats.o \
-  pats_dynexp2_sats.o \
-  pats_dynexp2_dats.o \
-  pats_dyncst2_sats.o \
-  pats_dyncst2_dats.o \
-  pats_dynexp2_print_dats.o \
-  pats_dynexp2_dcst_dats.o \
-  pats_dynexp2_dvar_dats.o \
-  pats_dynexp2_dmac_dats.o \
-  pats_dynexp2_util_dats.o \
-  pats_dynexp2_mapgen_dats.o \
-  pats_trans2_sats.o \
-  pats_namespace_sats.o \
-  pats_namespace_dats.o \
-  pats_trans2_env_sats.o \
-  pats_trans2_env_dats.o \
-  pats_trans2_error_dats.o \
-  pats_trans2_sort_dats.o \
-  pats_trans2_staexp_dats.o \
-  pats_trans2_p1at_dats.o \
-  pats_trans2_dynexp_dats.o \
-  pats_trans2_impdec_dats.o \
-  pats_trans2_decl_dats.o \
-  pats_codegen2_sats.o \
-  pats_codegen2_dats.o \
-  pats_codegen2_util_dats.o \
-  pats_codegen2_absrec_dats.o \
-  pats_codegen2_datype_dats.o \
-  pats_codegen2_fprint_dats.o \
-  pats_jsonize_synent2_sats.o \
-  pats_jsonize_synent2_dats.o \
-  pats_dynexp3_sats.o \
-  pats_dynexp3_dats.o \
-  pats_dynexp3_print_dats.o \
-  pats_trans3_sats.o \
-  pats_trans3_error_dats.o \
-  pats_trans3_util_dats.o \
-  pats_trans3_env_sats.o \
-  pats_trans3_env_dats.o \
-  pats_trans3_env_print_dats.o \
-  pats_trans3_env_scst_dats.o \
-  pats_trans3_env_svar_dats.o \
-  pats_trans3_env_termet_dats.o \
-  pats_trans3_env_effect_dats.o \
-  pats_trans3_env_dvar_dats.o \
-  pats_trans3_env_lamlp_dats.o \
-  pats_trans3_env_pfman_dats.o \
-  pats_trans3_env_lstate_dats.o \
-  pats_dmacro2_sats.o \
-  pats_dmacro2_dats.o \
-  pats_dmacro2_print_dats.o \
-  pats_dmacro2_eval0_dats.o \
-  pats_dmacro2_eval1_dats.o \
-  pats_trans3_p2at_dats.o \
-  pats_trans3_patcon_dats.o \
-  pats_trans3_syncst_dats.o \
-  pats_trans3_dynexp_up_dats.o \
-  pats_trans3_dynexp_dn_dats.o \
-  pats_trans3_appsym_dats.o \
-  pats_trans3_caseof_dats.o \
-  pats_trans3_selab_dats.o \
-  pats_trans3_ptrof_dats.o \
-  pats_trans3_viewat_dats.o \
-  pats_trans3_deref_dats.o \
-  pats_trans3_assgn_dats.o \
-  pats_trans3_xchng_dats.o \
-  pats_trans3_lvalres_dats.o \
-  pats_trans3_fldfrat_dats.o \
-  pats_trans3_looping_dats.o \
-  pats_trans3_decl_dats.o \
-  pats_lintprgm_sats.o \
-  pats_lintprgm_dats.o \
-  pats_lintprgm_print_dats.o \
-  pats_lintprgm_myint_dats.o \
-  pats_lintprgm_solve_dats.o \
-  pats_constraint3_sats.o \
-  pats_constraint3_dats.o \
-  pats_constraint3_print_dats.o \
-  pats_constraint3_mapgen_dats.o \
-  pats_constraint3_jsonize_dats.o \
-  pats_constraint3_init_dats.o \
-  pats_constraint3_simplify_dats.o \
-  pats_constraint3_icnstr_dats.o \
-  pats_constraint3_solve_dats.o \
-  pats_histaexp_sats.o \
-  pats_histaexp_dats.o \
-  pats_histaexp_print_dats.o \
-  pats_histaexp_funlab_dats.o \
-  pats_hidynexp_sats.o \
-  pats_hidynexp_dats.o \
-  pats_hidynexp_print_dats.o \
-  pats_hidynexp_util_dats.o \
-  pats_typerase_sats.o \
-  pats_typerase_error_dats.o \
-  pats_typerase_staexp_dats.o \
-  pats_typerase_dynexp_dats.o \
-  pats_typerase_decl_dats.o \
-  pats_ccomp_sats.o \
-  pats_ccomp_dats.o \
-  pats_ccomp_print_dats.o \
-  pats_ccomp_hitype_dats.o \
-  pats_ccomp_tmplab_dats.o \
-  pats_ccomp_tmpvar_dats.o \
-  pats_ccomp_d2env_dats.o \
-  pats_ccomp_funlab_dats.o \
-  pats_ccomp_funent_dats.o \
-  pats_ccomp_util_dats.o \
-  pats_ccomp_ccompenv_dats.o \
-  pats_ccomp_instrseq_dats.o \
-  pats_ccomp_hipat_dats.o \
-  pats_ccomp_dynexp_dats.o \
-  pats_ccomp_caseof_dats.o \
-  pats_ccomp_claulst_dats.o \
-  pats_ccomp_lazyeval_dats.o \
-  pats_ccomp_trywith_dats.o \
-  pats_ccomp_looping_dats.o \
-  pats_ccomp_decl_dats.o \
-  pats_ccomp_subst_dats.o \
-  pats_ccomp_environ_dats.o \
-  pats_ccomp_template_dats.o \
-  pats_ccomp_emit_dats.o \
-  pats_ccomp_emit2_dats.o \
-  pats_ccomp_emit3_dats.o \
-  pats_ccomp_main_dats.o \
+BUILD/pats_error_sats.o \
+BUILD/pats_error_dats.o \
+BUILD/pats_intinf_sats.o \
+BUILD/pats_intinf_dats.o \
+BUILD/pats_counter_sats.o \
+BUILD/pats_counter_dats.o \
+BUILD/pats_utils_sats.o \
+BUILD/pats_utils_dats.o \
+BUILD/pats_global_sats.o \
+BUILD/pats_global_dats.o \
+BUILD/pats_basics_sats.o \
+BUILD/pats_basics_dats.o \
+BUILD/pats_comarg_sats.o \
+BUILD/pats_comarg_dats.o \
+BUILD/pats_stamp_sats.o \
+BUILD/pats_stamp_dats.o \
+BUILD/pats_symbol_sats.o \
+BUILD/pats_symbol_dats.o \
+BUILD/pats_filename_sats.o \
+BUILD/pats_filename_dats.o \
+BUILD/pats_filename_reloc_dats.o \
+BUILD/pats_location_sats.o \
+BUILD/pats_location_dats.o \
+BUILD/pats_jsonize_sats.o \
+BUILD/pats_jsonize_dats.o \
+BUILD/pats_errmsg_sats.o \
+BUILD/pats_errmsg_dats.o \
+BUILD/pats_reader_sats.o \
+BUILD/pats_reader_dats.o \
+BUILD/pats_lexbuf_sats.o \
+BUILD/pats_lexbuf_dats.o \
+BUILD/pats_lexing_sats.o \
+BUILD/pats_lexing_dats.o \
+BUILD/pats_lexing_print_dats.o \
+BUILD/pats_lexing_error_dats.o \
+BUILD/pats_lexing_token_dats.o \
+BUILD/pats_label_sats.o \
+BUILD/pats_label_dats.o \
+BUILD/pats_effect_sats.o \
+BUILD/pats_effect_dats.o \
+BUILD/pats_fixity_sats.o \
+BUILD/pats_fixity_prec_dats.o \
+BUILD/pats_fixity_fxty_dats.o \
+BUILD/pats_syntax_sats.o \
+BUILD/pats_syntax_dats.o \
+BUILD/pats_syntax_print_dats.o \
+BUILD/pats_depgen_sats.o \
+BUILD/pats_depgen_dats.o \
+BUILD/pats_taggen_sats.o \
+BUILD/pats_taggen_dats.o \
+BUILD/pats_tokbuf_sats.o \
+BUILD/pats_tokbuf_dats.o \
+BUILD/pats_parsing_sats.o \
+BUILD/pats_parsing_dats.o \
+BUILD/pats_parsing_error_dats.o \
+BUILD/pats_parsing_util_dats.o \
+BUILD/pats_parsing_kwds_dats.o \
+BUILD/pats_parsing_base_dats.o \
+BUILD/pats_parsing_e0xp_dats.o \
+BUILD/pats_parsing_sort_dats.o \
+BUILD/pats_parsing_staexp_dats.o \
+BUILD/pats_parsing_p0at_dats.o \
+BUILD/pats_parsing_dynexp_dats.o \
+BUILD/pats_parsing_decl_dats.o \
+BUILD/pats_parsing_toplevel_dats.o \
+BUILD/pats_symmap_sats.o \
+BUILD/pats_symmap_dats.o \
+BUILD/pats_symenv_sats.o \
+BUILD/pats_symenv_dats.o \
+BUILD/pats_staexp1_sats.o \
+BUILD/pats_staexp1_dats.o \
+BUILD/pats_staexp1_print_dats.o \
+BUILD/pats_dynexp1_sats.o \
+BUILD/pats_dynexp1_dats.o \
+BUILD/pats_dynexp1_print_dats.o \
+BUILD/pats_trans1_sats.o \
+BUILD/pats_trans1_env_sats.o \
+BUILD/pats_trans1_env_dats.o \
+BUILD/pats_e1xpval_sats.o \
+BUILD/pats_e1xpval_dats.o \
+BUILD/pats_e1xpval_error_dats.o \
+BUILD/pats_trans1_error_dats.o \
+BUILD/pats_trans1_e0xp_dats.o \
+BUILD/pats_trans1_effect_dats.o \
+BUILD/pats_trans1_sort_dats.o \
+BUILD/pats_trans1_staexp_dats.o \
+BUILD/pats_trans1_p0at_dats.o \
+BUILD/pats_trans1_syndef_dats.o \
+BUILD/pats_trans1_dynexp_dats.o \
+BUILD/pats_trans1_decl_dats.o \
+BUILD/pats_staexp2_sats.o \
+BUILD/pats_staexp2_dats.o \
+BUILD/pats_stacst2_sats.o \
+BUILD/pats_stacst2_dats.o \
+BUILD/pats_staexp2_print_dats.o \
+BUILD/pats_staexp2_pprint_dats.o \
+BUILD/pats_staexp2_sort_dats.o \
+BUILD/pats_staexp2_scst_dats.o \
+BUILD/pats_staexp2_svar_dats.o \
+BUILD/pats_staexp2_svvar_dats.o \
+BUILD/pats_staexp2_hole_dats.o \
+BUILD/pats_staexp2_ctxt_dats.o \
+BUILD/pats_staexp2_dcon_dats.o \
+BUILD/pats_staexp2_skexp_dats.o \
+BUILD/pats_staexp2_szexp_dats.o \
+BUILD/pats_staexp2_util_sats.o \
+BUILD/pats_staexp2_util1_dats.o \
+BUILD/pats_staexp2_util2_dats.o \
+BUILD/pats_staexp2_util3_dats.o \
+BUILD/pats_staexp2_error_sats.o \
+BUILD/pats_staexp2_error_dats.o \
+BUILD/pats_staexp2_solve_sats.o \
+BUILD/pats_staexp2_solve_dats.o \
+BUILD/pats_patcst2_sats.o \
+BUILD/pats_patcst2_dats.o \
+BUILD/pats_dynexp2_sats.o \
+BUILD/pats_dynexp2_dats.o \
+BUILD/pats_dyncst2_sats.o \
+BUILD/pats_dyncst2_dats.o \
+BUILD/pats_dynexp2_print_dats.o \
+BUILD/pats_dynexp2_dcst_dats.o \
+BUILD/pats_dynexp2_dvar_dats.o \
+BUILD/pats_dynexp2_dmac_dats.o \
+BUILD/pats_dynexp2_util_dats.o \
+BUILD/pats_dynexp2_mapgen_dats.o \
+BUILD/pats_trans2_sats.o \
+BUILD/pats_namespace_sats.o \
+BUILD/pats_namespace_dats.o \
+BUILD/pats_trans2_env_sats.o \
+BUILD/pats_trans2_env_dats.o \
+BUILD/pats_trans2_error_dats.o \
+BUILD/pats_trans2_sort_dats.o \
+BUILD/pats_trans2_staexp_dats.o \
+BUILD/pats_trans2_p1at_dats.o \
+BUILD/pats_trans2_dynexp_dats.o \
+BUILD/pats_trans2_impdec_dats.o \
+BUILD/pats_trans2_decl_dats.o \
+BUILD/pats_codegen2_sats.o \
+BUILD/pats_codegen2_dats.o \
+BUILD/pats_codegen2_util_dats.o \
+BUILD/pats_codegen2_absrec_dats.o \
+BUILD/pats_codegen2_datype_dats.o \
+BUILD/pats_codegen2_fprint_dats.o \
+BUILD/pats_jsonize_synent2_sats.o \
+BUILD/pats_jsonize_synent2_dats.o \
+BUILD/pats_dynexp3_sats.o \
+BUILD/pats_dynexp3_dats.o \
+BUILD/pats_dynexp3_print_dats.o \
+BUILD/pats_trans3_sats.o \
+BUILD/pats_trans3_error_dats.o \
+BUILD/pats_trans3_util_dats.o \
+BUILD/pats_trans3_env_sats.o \
+BUILD/pats_trans3_env_dats.o \
+BUILD/pats_trans3_env_print_dats.o \
+BUILD/pats_trans3_env_scst_dats.o \
+BUILD/pats_trans3_env_svar_dats.o \
+BUILD/pats_trans3_env_termet_dats.o \
+BUILD/pats_trans3_env_effect_dats.o \
+BUILD/pats_trans3_env_dvar_dats.o \
+BUILD/pats_trans3_env_lamlp_dats.o \
+BUILD/pats_trans3_env_pfman_dats.o \
+BUILD/pats_trans3_env_lstate_dats.o \
+BUILD/pats_dmacro2_sats.o \
+BUILD/pats_dmacro2_dats.o \
+BUILD/pats_dmacro2_print_dats.o \
+BUILD/pats_dmacro2_eval0_dats.o \
+BUILD/pats_dmacro2_eval1_dats.o \
+BUILD/pats_trans3_p2at_dats.o \
+BUILD/pats_trans3_patcon_dats.o \
+BUILD/pats_trans3_syncst_dats.o \
+BUILD/pats_trans3_dynexp_up_dats.o \
+BUILD/pats_trans3_dynexp_dn_dats.o \
+BUILD/pats_trans3_appsym_dats.o \
+BUILD/pats_trans3_caseof_dats.o \
+BUILD/pats_trans3_selab_dats.o \
+BUILD/pats_trans3_ptrof_dats.o \
+BUILD/pats_trans3_viewat_dats.o \
+BUILD/pats_trans3_deref_dats.o \
+BUILD/pats_trans3_assgn_dats.o \
+BUILD/pats_trans3_xchng_dats.o \
+BUILD/pats_trans3_lvalres_dats.o \
+BUILD/pats_trans3_fldfrat_dats.o \
+BUILD/pats_trans3_looping_dats.o \
+BUILD/pats_trans3_decl_dats.o \
+BUILD/pats_lintprgm_sats.o \
+BUILD/pats_lintprgm_dats.o \
+BUILD/pats_lintprgm_print_dats.o \
+BUILD/pats_lintprgm_myint_dats.o \
+BUILD/pats_lintprgm_solve_dats.o \
+BUILD/pats_constraint3_sats.o \
+BUILD/pats_constraint3_dats.o \
+BUILD/pats_constraint3_print_dats.o \
+BUILD/pats_constraint3_mapgen_dats.o \
+BUILD/pats_constraint3_jsonize_dats.o \
+BUILD/pats_constraint3_init_dats.o \
+BUILD/pats_constraint3_simplify_dats.o \
+BUILD/pats_constraint3_icnstr_dats.o \
+BUILD/pats_constraint3_solve_dats.o \
+BUILD/pats_histaexp_sats.o \
+BUILD/pats_histaexp_dats.o \
+BUILD/pats_histaexp_print_dats.o \
+BUILD/pats_histaexp_funlab_dats.o \
+BUILD/pats_hidynexp_sats.o \
+BUILD/pats_hidynexp_dats.o \
+BUILD/pats_hidynexp_print_dats.o \
+BUILD/pats_hidynexp_util_dats.o \
+BUILD/pats_typerase_sats.o \
+BUILD/pats_typerase_error_dats.o \
+BUILD/pats_typerase_staexp_dats.o \
+BUILD/pats_typerase_dynexp_dats.o \
+BUILD/pats_typerase_decl_dats.o \
+BUILD/pats_ccomp_sats.o \
+BUILD/pats_ccomp_dats.o \
+BUILD/pats_ccomp_print_dats.o \
+BUILD/pats_ccomp_hitype_dats.o \
+BUILD/pats_ccomp_tmplab_dats.o \
+BUILD/pats_ccomp_tmpvar_dats.o \
+BUILD/pats_ccomp_d2env_dats.o \
+BUILD/pats_ccomp_funlab_dats.o \
+BUILD/pats_ccomp_funent_dats.o \
+BUILD/pats_ccomp_util_dats.o \
+BUILD/pats_ccomp_ccompenv_dats.o \
+BUILD/pats_ccomp_instrseq_dats.o \
+BUILD/pats_ccomp_hipat_dats.o \
+BUILD/pats_ccomp_dynexp_dats.o \
+BUILD/pats_ccomp_caseof_dats.o \
+BUILD/pats_ccomp_claulst_dats.o \
+BUILD/pats_ccomp_lazyeval_dats.o \
+BUILD/pats_ccomp_trywith_dats.o \
+BUILD/pats_ccomp_looping_dats.o \
+BUILD/pats_ccomp_decl_dats.o \
+BUILD/pats_ccomp_subst_dats.o \
+BUILD/pats_ccomp_environ_dats.o \
+BUILD/pats_ccomp_template_dats.o \
+BUILD/pats_ccomp_emit_dats.o \
+BUILD/pats_ccomp_emit2_dats.o \
+BUILD/pats_ccomp_emit3_dats.o \
+BUILD/pats_ccomp_main_dats.o \
 
 
 ######
@@ -827,7 +827,7 @@ all:: tempopt
 #
 tempopt:: $(TARGETS)
 tempopt:: $(OBJECTS) ; \
-$(ATSCC) $(CFLAGS) $(GCFLAG) \
+$(ATS1CC) $(CFLAGS) $(GCFLAG) \
 -o $@ pats_main.dats $(OBJECTS) $(LIBATS) $(LIBGMP)
 #
 cleanall:: ; $(RMF) tempopt
@@ -836,7 +836,7 @@ cleanall:: ; $(RMF) tempopt
 #
 libatsopt:: $(TARGETS)
 #
-libatsopt:: $(OBJECTS)   pats_main_none_dats.o; $(ARR) libatsopt.a $^
+libatsopt:: $(OBJECTS) BUILD/pats_main_none_dats.o; $(ARR) libatsopt.a $^
 #
 ######
 #
@@ -850,18 +850,16 @@ BUILD/tempopt: ; make -C BUILD -j8 -f Makefile tempopt
 CBOOT:: CBOOTgmp
 ######
 #
-CBOOTgmp:: ; $(CPF) pats_*.hats CBOOT
 CBOOTgmp:: ; $(CPF) pats_*.cats CBOOT
-CBOOTgmp:: ; $(CPF) pats_*_sats.c CBOOT
-CBOOTgmp:: ; $(CPF) pats_*_dats.c CBOOT
+CBOOTgmp:: ; $(CPF) BUILD/pats_*_sats.c CBOOT
+CBOOTgmp:: ; $(CPF) BUILD/pats_*_dats.c CBOOT
 CBOOTgmp:: ; $(CPF) Makefile_CBOOTgmp CBOOT/Makefile
 #
 ######
 #
-CBOOTint:: ; $(CPF) pats_*.hats CBOOT
 CBOOTint:: ; $(CPF) pats_*.cats CBOOT
-CBOOTint:: ; $(CPF) pats_*_sats.c CBOOT
-CBOOTint:: ; $(CPF) pats_*_dats.c CBOOT
+CBOOTint:: ; $(CPF) BUILD/pats_*_sats.c CBOOT
+CBOOTint:: ; $(CPF) BUILD/pats_*_dats.c CBOOT
 CBOOTint:: ; $(CPF) Makefile_CBOOTint CBOOT/Makefile
 #
 ######
@@ -871,728 +869,729 @@ TAGATS:: ; $(ATSOPT) --output-a $@ --taggen -s $(SOURCESsta) -d $(SOURCESdyn)
 
 ######
 #
-pats_error_sats.c: pats_error.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_error_sats.o: pats_error_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_error_sats.c: pats_error.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_error_sats.o: BUILD/pats_error_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_error_dats.c: pats_error.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_error_dats.o: pats_error_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_error_dats.c: pats_error.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_error_dats.o: BUILD/pats_error_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_intinf_sats.c: pats_intinf.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_intinf_sats.o: pats_intinf_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_intinf_sats.c: pats_intinf.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_intinf_sats.o: BUILD/pats_intinf_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_intinf_dats.c: pats_intinf.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_intinf_dats.o: pats_intinf_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_intinf_dats.c: pats_intinf.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_intinf_dats.o: BUILD/pats_intinf_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_counter_sats.c: pats_counter.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_counter_sats.o: pats_counter_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_counter_sats.c: pats_counter.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_counter_sats.o: BUILD/pats_counter_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_counter_dats.c: pats_counter.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_counter_dats.o: pats_counter_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_counter_dats.c: pats_counter.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_counter_dats.o: BUILD/pats_counter_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_utils_sats.c: pats_utils.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_utils_sats.o: pats_utils_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_utils_sats.c: pats_utils.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_utils_sats.o: BUILD/pats_utils_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_utils_dats.c: pats_utils.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_utils_dats.o: pats_utils_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_utils_dats.c: pats_utils.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_utils_dats.o: BUILD/pats_utils_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_global_sats.c: pats_global.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_global_sats.o: pats_global_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_global_sats.c: pats_global.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_global_sats.o: BUILD/pats_global_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_global_dats.c: pats_global.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_global_dats.o: pats_global_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_global_dats.c: pats_global.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_global_dats.o: BUILD/pats_global_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_basics_sats.c: pats_basics.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_basics_sats.o: pats_basics_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_basics_sats.c: pats_basics.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_basics_sats.o: BUILD/pats_basics_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_basics_dats.c: pats_basics.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_basics_dats.o: pats_basics_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_basics_dats.c: pats_basics.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_basics_dats.o: BUILD/pats_basics_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_comarg_sats.c: pats_comarg.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_comarg_sats.o: pats_comarg_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_comarg_sats.c: pats_comarg.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_comarg_sats.o: BUILD/pats_comarg_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_comarg_dats.c: pats_comarg.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_comarg_dats.o: pats_comarg_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_comarg_dats.c: pats_comarg.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_comarg_dats.o: BUILD/pats_comarg_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_stamp_sats.c: pats_stamp.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_stamp_sats.o: pats_stamp_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_stamp_sats.c: pats_stamp.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_stamp_sats.o: BUILD/pats_stamp_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_stamp_dats.c: pats_stamp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_stamp_dats.o: pats_stamp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_stamp_dats.c: pats_stamp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_stamp_dats.o: BUILD/pats_stamp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_symbol_sats.c: pats_symbol.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_symbol_sats.o: pats_symbol_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_symbol_sats.c: pats_symbol.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_symbol_sats.o: BUILD/pats_symbol_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_symbol_dats.c: pats_symbol.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_symbol_dats.o: pats_symbol_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_symbol_dats.c: pats_symbol.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_symbol_dats.o: BUILD/pats_symbol_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_filename_sats.c: pats_filename.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_filename_sats.o: pats_filename_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_filename_sats.c: pats_filename.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_filename_sats.o: BUILD/pats_filename_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_filename_dats.c: pats_filename.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_filename_dats.o: pats_filename_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_filename_dats.c: pats_filename.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_filename_dats.o: BUILD/pats_filename_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_filename_reloc_dats.c: pats_filename_reloc.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_filename_reloc_dats.o: pats_filename_reloc_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_filename_reloc_dats.c: pats_filename_reloc.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_filename_reloc_dats.o: BUILD/pats_filename_reloc_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_location_sats.c: pats_location.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_location_sats.o: pats_location_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_location_sats.c: pats_location.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_location_sats.o: BUILD/pats_location_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_location_dats.c: pats_location.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_location_dats.o: pats_location_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_location_dats.c: pats_location.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_location_dats.o: BUILD/pats_location_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_jsonize_sats.c: pats_jsonize.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_jsonize_sats.o: pats_jsonize_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_jsonize_sats.c: pats_jsonize.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_jsonize_sats.o: BUILD/pats_jsonize_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_jsonize_dats.c: pats_jsonize.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_jsonize_dats.o: pats_jsonize_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_jsonize_dats.c: pats_jsonize.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_jsonize_dats.o: BUILD/pats_jsonize_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_errmsg_sats.c: pats_errmsg.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_errmsg_sats.o: pats_errmsg_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_errmsg_sats.c: pats_errmsg.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_errmsg_sats.o: BUILD/pats_errmsg_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_errmsg_dats.c: pats_errmsg.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_errmsg_dats.o: pats_errmsg_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_errmsg_dats.c: pats_errmsg.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_errmsg_dats.o: BUILD/pats_errmsg_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_reader_sats.c: pats_reader.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_reader_sats.o: pats_reader_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_reader_sats.c: pats_reader.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_reader_sats.o: BUILD/pats_reader_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_reader_dats.c: pats_reader.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_reader_dats.o: pats_reader_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_reader_dats.c: pats_reader.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_reader_dats.o: BUILD/pats_reader_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lexbuf_sats.c: pats_lexbuf.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_lexbuf_sats.o: pats_lexbuf_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lexbuf_sats.c: pats_lexbuf.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_lexbuf_sats.o: BUILD/pats_lexbuf_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lexbuf_dats.c: pats_lexbuf.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_lexbuf_dats.o: pats_lexbuf_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lexbuf_dats.c: pats_lexbuf.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_lexbuf_dats.o: BUILD/pats_lexbuf_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lexing_sats.c: pats_lexing.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_lexing_sats.o: pats_lexing_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lexing_sats.c: pats_lexing.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_lexing_sats.o: BUILD/pats_lexing_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lexing_dats.c: pats_lexing.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_lexing_dats.o: pats_lexing_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lexing_dats.c: pats_lexing.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_lexing_dats.o: BUILD/pats_lexing_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lexing_print_dats.c: pats_lexing_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_lexing_print_dats.o: pats_lexing_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lexing_print_dats.c: pats_lexing_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_lexing_print_dats.o: BUILD/pats_lexing_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lexing_error_dats.c: pats_lexing_error.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_lexing_error_dats.o: pats_lexing_error_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lexing_error_dats.c: pats_lexing_error.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_lexing_error_dats.o: BUILD/pats_lexing_error_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lexing_token_dats.c: pats_lexing_token.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_lexing_token_dats.o: pats_lexing_token_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lexing_token_dats.c: pats_lexing_token.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_lexing_token_dats.o: BUILD/pats_lexing_token_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_label_sats.c: pats_label.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_label_sats.o: pats_label_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_label_sats.c: pats_label.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_label_sats.o: BUILD/pats_label_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_label_dats.c: pats_label.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_label_dats.o: pats_label_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_label_dats.c: pats_label.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_label_dats.o: BUILD/pats_label_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_effect_sats.c: pats_effect.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_effect_sats.o: pats_effect_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_effect_sats.c: pats_effect.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_effect_sats.o: BUILD/pats_effect_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_effect_dats.c: pats_effect.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_effect_dats.o: pats_effect_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_effect_dats.c: pats_effect.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_effect_dats.o: BUILD/pats_effect_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_fixity_sats.c: pats_fixity.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_fixity_sats.o: pats_fixity_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_fixity_sats.c: pats_fixity.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_fixity_sats.o: BUILD/pats_fixity_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_fixity_prec_dats.c: pats_fixity_prec.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_fixity_prec_dats.o: pats_fixity_prec_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_fixity_prec_dats.c: pats_fixity_prec.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_fixity_prec_dats.o: BUILD/pats_fixity_prec_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_fixity_fxty_dats.c: pats_fixity_fxty.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_fixity_fxty_dats.o: pats_fixity_fxty_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_fixity_fxty_dats.c: pats_fixity_fxty.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_fixity_fxty_dats.o: BUILD/pats_fixity_fxty_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_syntax_sats.c: pats_syntax.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_syntax_sats.o: pats_syntax_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_syntax_sats.c: pats_syntax.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_syntax_sats.o: BUILD/pats_syntax_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_syntax_dats.c: pats_syntax.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_syntax_dats.o: pats_syntax_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_syntax_dats.c: pats_syntax.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_syntax_dats.o: BUILD/pats_syntax_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_syntax_print_dats.c: pats_syntax_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_syntax_print_dats.o: pats_syntax_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_syntax_print_dats.c: pats_syntax_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_syntax_print_dats.o: BUILD/pats_syntax_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_depgen_sats.c: pats_depgen.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_depgen_sats.o: pats_depgen_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_depgen_sats.c: pats_depgen.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_depgen_sats.o: BUILD/pats_depgen_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_depgen_dats.c: pats_depgen.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_depgen_dats.o: pats_depgen_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_depgen_dats.c: pats_depgen.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_depgen_dats.o: BUILD/pats_depgen_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_taggen_sats.c: pats_taggen.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_taggen_sats.o: pats_taggen_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_taggen_sats.c: pats_taggen.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_taggen_sats.o: BUILD/pats_taggen_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_taggen_dats.c: pats_taggen.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_taggen_dats.o: pats_taggen_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_taggen_dats.c: pats_taggen.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_taggen_dats.o: BUILD/pats_taggen_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_tokbuf_sats.c: pats_tokbuf.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_tokbuf_sats.o: pats_tokbuf_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_tokbuf_sats.c: pats_tokbuf.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_tokbuf_sats.o: BUILD/pats_tokbuf_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_tokbuf_dats.c: pats_tokbuf.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_tokbuf_dats.o: pats_tokbuf_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_tokbuf_dats.c: pats_tokbuf.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_tokbuf_dats.o: BUILD/pats_tokbuf_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_sats.c: pats_parsing.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_sats.o: pats_parsing_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_sats.c: pats_parsing.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_parsing_sats.o: BUILD/pats_parsing_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_dats.c: pats_parsing.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_dats.o: pats_parsing_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_dats.c: pats_parsing.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_dats.o: BUILD/pats_parsing_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_error_dats.c: pats_parsing_error.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_error_dats.o: pats_parsing_error_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_error_dats.c: pats_parsing_error.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_error_dats.o: BUILD/pats_parsing_error_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_util_dats.c: pats_parsing_util.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_util_dats.o: pats_parsing_util_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_util_dats.c: pats_parsing_util.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_util_dats.o: BUILD/pats_parsing_util_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_kwds_dats.c: pats_parsing_kwds.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_kwds_dats.o: pats_parsing_kwds_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_kwds_dats.c: pats_parsing_kwds.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_kwds_dats.o: BUILD/pats_parsing_kwds_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_base_dats.c: pats_parsing_base.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_base_dats.o: pats_parsing_base_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_base_dats.c: pats_parsing_base.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_base_dats.o: BUILD/pats_parsing_base_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_e0xp_dats.c: pats_parsing_e0xp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_e0xp_dats.o: pats_parsing_e0xp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_e0xp_dats.c: pats_parsing_e0xp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_e0xp_dats.o: BUILD/pats_parsing_e0xp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_sort_dats.c: pats_parsing_sort.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_sort_dats.o: pats_parsing_sort_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_sort_dats.c: pats_parsing_sort.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_sort_dats.o: BUILD/pats_parsing_sort_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_staexp_dats.c: pats_parsing_staexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_staexp_dats.o: pats_parsing_staexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_staexp_dats.c: pats_parsing_staexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_staexp_dats.o: BUILD/pats_parsing_staexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_p0at_dats.c: pats_parsing_p0at.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_p0at_dats.o: pats_parsing_p0at_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_p0at_dats.c: pats_parsing_p0at.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_p0at_dats.o: BUILD/pats_parsing_p0at_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_dynexp_dats.c: pats_parsing_dynexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_dynexp_dats.o: pats_parsing_dynexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_dynexp_dats.c: pats_parsing_dynexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_dynexp_dats.o: BUILD/pats_parsing_dynexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_decl_dats.c: pats_parsing_decl.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_decl_dats.o: pats_parsing_decl_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_decl_dats.c: pats_parsing_decl.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_decl_dats.o: BUILD/pats_parsing_decl_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_parsing_toplevel_dats.c: pats_parsing_toplevel.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_parsing_toplevel_dats.o: pats_parsing_toplevel_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_parsing_toplevel_dats.c: pats_parsing_toplevel.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_parsing_toplevel_dats.o: BUILD/pats_parsing_toplevel_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_symmap_sats.c: pats_symmap.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_symmap_sats.o: pats_symmap_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_symmap_sats.c: pats_symmap.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_symmap_sats.o: BUILD/pats_symmap_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_symmap_dats.c: pats_symmap.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_symmap_dats.o: pats_symmap_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_symmap_dats.c: pats_symmap.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_symmap_dats.o: BUILD/pats_symmap_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_symenv_sats.c: pats_symenv.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_symenv_sats.o: pats_symenv_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_symenv_sats.c: pats_symenv.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_symenv_sats.o: BUILD/pats_symenv_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_symenv_dats.c: pats_symenv.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_symenv_dats.o: pats_symenv_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_symenv_dats.c: pats_symenv.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_symenv_dats.o: BUILD/pats_symenv_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp1_sats.c: pats_staexp1.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp1_sats.o: pats_staexp1_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp1_sats.c: pats_staexp1.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_staexp1_sats.o: BUILD/pats_staexp1_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp1_dats.c: pats_staexp1.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp1_dats.o: pats_staexp1_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp1_dats.c: pats_staexp1.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp1_dats.o: BUILD/pats_staexp1_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp1_print_dats.c: pats_staexp1_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp1_print_dats.o: pats_staexp1_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp1_print_dats.c: pats_staexp1_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp1_print_dats.o: BUILD/pats_staexp1_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp1_sats.c: pats_dynexp1.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp1_sats.o: pats_dynexp1_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp1_sats.c: pats_dynexp1.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_dynexp1_sats.o: BUILD/pats_dynexp1_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp1_dats.c: pats_dynexp1.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp1_dats.o: pats_dynexp1_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp1_dats.c: pats_dynexp1.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp1_dats.o: BUILD/pats_dynexp1_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp1_print_dats.c: pats_dynexp1_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp1_print_dats.o: pats_dynexp1_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp1_print_dats.c: pats_dynexp1_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp1_print_dats.o: BUILD/pats_dynexp1_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_sats.c: pats_trans1.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_sats.o: pats_trans1_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_sats.c: pats_trans1.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_trans1_sats.o: BUILD/pats_trans1_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_env_sats.c: pats_trans1_env.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_env_sats.o: pats_trans1_env_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_env_sats.c: pats_trans1_env.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_trans1_env_sats.o: BUILD/pats_trans1_env_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_env_dats.c: pats_trans1_env.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_env_dats.o: pats_trans1_env_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_env_dats.c: pats_trans1_env.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans1_env_dats.o: BUILD/pats_trans1_env_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_e1xpval_sats.c: pats_e1xpval.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_e1xpval_sats.o: pats_e1xpval_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_e1xpval_sats.c: pats_e1xpval.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_e1xpval_sats.o: BUILD/pats_e1xpval_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_e1xpval_dats.c: pats_e1xpval.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_e1xpval_dats.o: pats_e1xpval_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_e1xpval_dats.c: pats_e1xpval.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_e1xpval_dats.o: BUILD/pats_e1xpval_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_e1xpval_error_dats.c: pats_e1xpval_error.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_e1xpval_error_dats.o: pats_e1xpval_error_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_e1xpval_error_dats.c: pats_e1xpval_error.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_e1xpval_error_dats.o: BUILD/pats_e1xpval_error_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_error_dats.c: pats_trans1_error.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_error_dats.o: pats_trans1_error_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_error_dats.c: pats_trans1_error.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans1_error_dats.o: BUILD/pats_trans1_error_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_e0xp_dats.c: pats_trans1_e0xp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_e0xp_dats.o: pats_trans1_e0xp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_e0xp_dats.c: pats_trans1_e0xp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans1_e0xp_dats.o: BUILD/pats_trans1_e0xp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_effect_dats.c: pats_trans1_effect.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_effect_dats.o: pats_trans1_effect_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_effect_dats.c: pats_trans1_effect.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans1_effect_dats.o: BUILD/pats_trans1_effect_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_sort_dats.c: pats_trans1_sort.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_sort_dats.o: pats_trans1_sort_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_sort_dats.c: pats_trans1_sort.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans1_sort_dats.o: BUILD/pats_trans1_sort_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_staexp_dats.c: pats_trans1_staexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_staexp_dats.o: pats_trans1_staexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_staexp_dats.c: pats_trans1_staexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans1_staexp_dats.o: BUILD/pats_trans1_staexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_p0at_dats.c: pats_trans1_p0at.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_p0at_dats.o: pats_trans1_p0at_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_p0at_dats.c: pats_trans1_p0at.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans1_p0at_dats.o: BUILD/pats_trans1_p0at_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_syndef_dats.c: pats_trans1_syndef.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_syndef_dats.o: pats_trans1_syndef_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_syndef_dats.c: pats_trans1_syndef.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans1_syndef_dats.o: BUILD/pats_trans1_syndef_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_dynexp_dats.c: pats_trans1_dynexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_dynexp_dats.o: pats_trans1_dynexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_dynexp_dats.c: pats_trans1_dynexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans1_dynexp_dats.o: BUILD/pats_trans1_dynexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans1_decl_dats.c: pats_trans1_decl.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans1_decl_dats.o: pats_trans1_decl_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans1_decl_dats.c: pats_trans1_decl.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans1_decl_dats.o: BUILD/pats_trans1_decl_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_sats.c: pats_staexp2.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_sats.o: pats_staexp2_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_sats.c: pats_staexp2.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_staexp2_sats.o: BUILD/pats_staexp2_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_dats.c: pats_staexp2.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_dats.o: pats_staexp2_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_dats.c: pats_staexp2.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_dats.o: BUILD/pats_staexp2_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_stacst2_sats.c: pats_stacst2.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_stacst2_sats.o: pats_stacst2_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_stacst2_sats.c: pats_stacst2.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_stacst2_sats.o: BUILD/pats_stacst2_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_stacst2_dats.c: pats_stacst2.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_stacst2_dats.o: pats_stacst2_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_stacst2_dats.c: pats_stacst2.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_stacst2_dats.o: BUILD/pats_stacst2_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_print_dats.c: pats_staexp2_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_print_dats.o: pats_staexp2_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_print_dats.c: pats_staexp2_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_print_dats.o: BUILD/pats_staexp2_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_pprint_dats.c: pats_staexp2_pprint.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_pprint_dats.o: pats_staexp2_pprint_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_pprint_dats.c: pats_staexp2_pprint.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_pprint_dats.o: BUILD/pats_staexp2_pprint_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_sort_dats.c: pats_staexp2_sort.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_sort_dats.o: pats_staexp2_sort_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_sort_dats.c: pats_staexp2_sort.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_sort_dats.o: BUILD/pats_staexp2_sort_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_scst_dats.c: pats_staexp2_scst.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_scst_dats.o: pats_staexp2_scst_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_scst_dats.c: pats_staexp2_scst.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_scst_dats.o: BUILD/pats_staexp2_scst_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_svar_dats.c: pats_staexp2_svar.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_svar_dats.o: pats_staexp2_svar_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_svar_dats.c: pats_staexp2_svar.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_svar_dats.o: BUILD/pats_staexp2_svar_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_svvar_dats.c: pats_staexp2_svvar.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_svvar_dats.o: pats_staexp2_svvar_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_svvar_dats.c: pats_staexp2_svvar.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_svvar_dats.o: BUILD/pats_staexp2_svvar_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_hole_dats.c: pats_staexp2_hole.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_hole_dats.o: pats_staexp2_hole_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_hole_dats.c: pats_staexp2_hole.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_hole_dats.o: BUILD/pats_staexp2_hole_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_ctxt_dats.c: pats_staexp2_ctxt.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_ctxt_dats.o: pats_staexp2_ctxt_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_ctxt_dats.c: pats_staexp2_ctxt.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_ctxt_dats.o: BUILD/pats_staexp2_ctxt_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_dcon_dats.c: pats_staexp2_dcon.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_dcon_dats.o: pats_staexp2_dcon_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_dcon_dats.c: pats_staexp2_dcon.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_dcon_dats.o: BUILD/pats_staexp2_dcon_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_skexp_dats.c: pats_staexp2_skexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_skexp_dats.o: pats_staexp2_skexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_skexp_dats.c: pats_staexp2_skexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_skexp_dats.o: BUILD/pats_staexp2_skexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_szexp_dats.c: pats_staexp2_szexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_szexp_dats.o: pats_staexp2_szexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_szexp_dats.c: pats_staexp2_szexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_szexp_dats.o: BUILD/pats_staexp2_szexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_util_sats.c: pats_staexp2_util.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_util_sats.o: pats_staexp2_util_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_util_sats.c: pats_staexp2_util.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_staexp2_util_sats.o: BUILD/pats_staexp2_util_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_util1_dats.c: pats_staexp2_util1.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_util1_dats.o: pats_staexp2_util1_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_util1_dats.c: pats_staexp2_util1.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_util1_dats.o: BUILD/pats_staexp2_util1_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_util2_dats.c: pats_staexp2_util2.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_util2_dats.o: pats_staexp2_util2_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_util2_dats.c: pats_staexp2_util2.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_util2_dats.o: BUILD/pats_staexp2_util2_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_util3_dats.c: pats_staexp2_util3.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_util3_dats.o: pats_staexp2_util3_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_util3_dats.c: pats_staexp2_util3.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_util3_dats.o: BUILD/pats_staexp2_util3_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_error_sats.c: pats_staexp2_error.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_error_sats.o: pats_staexp2_error_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_error_sats.c: pats_staexp2_error.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_staexp2_error_sats.o: BUILD/pats_staexp2_error_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_error_dats.c: pats_staexp2_error.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_error_dats.o: pats_staexp2_error_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_error_dats.c: pats_staexp2_error.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_error_dats.o: BUILD/pats_staexp2_error_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_solve_sats.c: pats_staexp2_solve.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_solve_sats.o: pats_staexp2_solve_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_solve_sats.c: pats_staexp2_solve.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_staexp2_solve_sats.o: BUILD/pats_staexp2_solve_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_staexp2_solve_dats.c: pats_staexp2_solve.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_staexp2_solve_dats.o: pats_staexp2_solve_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_staexp2_solve_dats.c: pats_staexp2_solve.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_staexp2_solve_dats.o: BUILD/pats_staexp2_solve_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_patcst2_sats.c: pats_patcst2.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_patcst2_sats.o: pats_patcst2_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_patcst2_sats.c: pats_patcst2.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_patcst2_sats.o: BUILD/pats_patcst2_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_patcst2_dats.c: pats_patcst2.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_patcst2_dats.o: pats_patcst2_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_patcst2_dats.c: pats_patcst2.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_patcst2_dats.o: BUILD/pats_patcst2_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp2_sats.c: pats_dynexp2.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp2_sats.o: pats_dynexp2_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp2_sats.c: pats_dynexp2.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_dynexp2_sats.o: BUILD/pats_dynexp2_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp2_dats.c: pats_dynexp2.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp2_dats.o: pats_dynexp2_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp2_dats.c: pats_dynexp2.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp2_dats.o: BUILD/pats_dynexp2_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dyncst2_sats.c: pats_dyncst2.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_dyncst2_sats.o: pats_dyncst2_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dyncst2_sats.c: pats_dyncst2.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_dyncst2_sats.o: BUILD/pats_dyncst2_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dyncst2_dats.c: pats_dyncst2.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dyncst2_dats.o: pats_dyncst2_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dyncst2_dats.c: pats_dyncst2.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dyncst2_dats.o: BUILD/pats_dyncst2_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp2_print_dats.c: pats_dynexp2_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp2_print_dats.o: pats_dynexp2_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp2_print_dats.c: pats_dynexp2_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp2_print_dats.o: BUILD/pats_dynexp2_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp2_dcst_dats.c: pats_dynexp2_dcst.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp2_dcst_dats.o: pats_dynexp2_dcst_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp2_dcst_dats.c: pats_dynexp2_dcst.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp2_dcst_dats.o: BUILD/pats_dynexp2_dcst_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp2_dvar_dats.c: pats_dynexp2_dvar.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp2_dvar_dats.o: pats_dynexp2_dvar_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp2_dvar_dats.c: pats_dynexp2_dvar.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp2_dvar_dats.o: BUILD/pats_dynexp2_dvar_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp2_dmac_dats.c: pats_dynexp2_dmac.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp2_dmac_dats.o: pats_dynexp2_dmac_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp2_dmac_dats.c: pats_dynexp2_dmac.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp2_dmac_dats.o: BUILD/pats_dynexp2_dmac_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp2_util_dats.c: pats_dynexp2_util.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp2_util_dats.o: pats_dynexp2_util_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp2_util_dats.c: pats_dynexp2_util.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp2_util_dats.o: BUILD/pats_dynexp2_util_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp2_mapgen_dats.c: pats_dynexp2_mapgen.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp2_mapgen_dats.o: pats_dynexp2_mapgen_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp2_mapgen_dats.c: pats_dynexp2_mapgen.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp2_mapgen_dats.o: BUILD/pats_dynexp2_mapgen_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans2_sats.c: pats_trans2.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans2_sats.o: pats_trans2_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans2_sats.c: pats_trans2.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_trans2_sats.o: BUILD/pats_trans2_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_namespace_sats.c: pats_namespace.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_namespace_sats.o: pats_namespace_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_namespace_sats.c: pats_namespace.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_namespace_sats.o: BUILD/pats_namespace_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_namespace_dats.c: pats_namespace.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_namespace_dats.o: pats_namespace_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_namespace_dats.c: pats_namespace.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_namespace_dats.o: BUILD/pats_namespace_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans2_env_sats.c: pats_trans2_env.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans2_env_sats.o: pats_trans2_env_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans2_env_sats.c: pats_trans2_env.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_trans2_env_sats.o: BUILD/pats_trans2_env_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans2_env_dats.c: pats_trans2_env.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans2_env_dats.o: pats_trans2_env_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans2_env_dats.c: pats_trans2_env.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans2_env_dats.o: BUILD/pats_trans2_env_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans2_error_dats.c: pats_trans2_error.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans2_error_dats.o: pats_trans2_error_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans2_error_dats.c: pats_trans2_error.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans2_error_dats.o: BUILD/pats_trans2_error_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans2_sort_dats.c: pats_trans2_sort.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans2_sort_dats.o: pats_trans2_sort_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans2_sort_dats.c: pats_trans2_sort.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans2_sort_dats.o: BUILD/pats_trans2_sort_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans2_staexp_dats.c: pats_trans2_staexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans2_staexp_dats.o: pats_trans2_staexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans2_staexp_dats.c: pats_trans2_staexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans2_staexp_dats.o: BUILD/pats_trans2_staexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans2_p1at_dats.c: pats_trans2_p1at.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans2_p1at_dats.o: pats_trans2_p1at_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans2_p1at_dats.c: pats_trans2_p1at.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans2_p1at_dats.o: BUILD/pats_trans2_p1at_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans2_dynexp_dats.c: pats_trans2_dynexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans2_dynexp_dats.o: pats_trans2_dynexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans2_dynexp_dats.c: pats_trans2_dynexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans2_dynexp_dats.o: BUILD/pats_trans2_dynexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans2_impdec_dats.c: pats_trans2_impdec.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans2_impdec_dats.o: pats_trans2_impdec_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans2_impdec_dats.c: pats_trans2_impdec.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans2_impdec_dats.o: BUILD/pats_trans2_impdec_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans2_decl_dats.c: pats_trans2_decl.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans2_decl_dats.o: pats_trans2_decl_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans2_decl_dats.c: pats_trans2_decl.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans2_decl_dats.o: BUILD/pats_trans2_decl_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_codegen2_sats.c: pats_codegen2.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_codegen2_sats.o: pats_codegen2_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_codegen2_sats.c: pats_codegen2.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_codegen2_sats.o: BUILD/pats_codegen2_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_codegen2_dats.c: pats_codegen2.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_codegen2_dats.o: pats_codegen2_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_codegen2_dats.c: pats_codegen2.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_codegen2_dats.o: BUILD/pats_codegen2_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_codegen2_util_dats.c: pats_codegen2_util.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_codegen2_util_dats.o: pats_codegen2_util_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_codegen2_util_dats.c: pats_codegen2_util.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_codegen2_util_dats.o: BUILD/pats_codegen2_util_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_codegen2_absrec_dats.c: pats_codegen2_absrec.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_codegen2_absrec_dats.o: pats_codegen2_absrec_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_codegen2_absrec_dats.c: pats_codegen2_absrec.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_codegen2_absrec_dats.o: BUILD/pats_codegen2_absrec_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_codegen2_datype_dats.c: pats_codegen2_datype.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_codegen2_datype_dats.o: pats_codegen2_datype_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_codegen2_datype_dats.c: pats_codegen2_datype.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_codegen2_datype_dats.o: BUILD/pats_codegen2_datype_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_codegen2_fprint_dats.c: pats_codegen2_fprint.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_codegen2_fprint_dats.o: pats_codegen2_fprint_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_codegen2_fprint_dats.c: pats_codegen2_fprint.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_codegen2_fprint_dats.o: BUILD/pats_codegen2_fprint_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_jsonize_synent2_sats.c: pats_jsonize_synent2.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_jsonize_synent2_sats.o: pats_jsonize_synent2_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_jsonize_synent2_sats.c: pats_jsonize_synent2.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_jsonize_synent2_sats.o: BUILD/pats_jsonize_synent2_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_jsonize_synent2_dats.c: pats_jsonize_synent2.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_jsonize_synent2_dats.o: pats_jsonize_synent2_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_jsonize_synent2_dats.c: pats_jsonize_synent2.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_jsonize_synent2_dats.o: BUILD/pats_jsonize_synent2_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp3_sats.c: pats_dynexp3.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp3_sats.o: pats_dynexp3_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp3_sats.c: pats_dynexp3.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_dynexp3_sats.o: BUILD/pats_dynexp3_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp3_dats.c: pats_dynexp3.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp3_dats.o: pats_dynexp3_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp3_dats.c: pats_dynexp3.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp3_dats.o: BUILD/pats_dynexp3_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dynexp3_print_dats.c: pats_dynexp3_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dynexp3_print_dats.o: pats_dynexp3_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dynexp3_print_dats.c: pats_dynexp3_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dynexp3_print_dats.o: BUILD/pats_dynexp3_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_sats.c: pats_trans3.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_sats.o: pats_trans3_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_sats.c: pats_trans3.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_trans3_sats.o: BUILD/pats_trans3_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_error_dats.c: pats_trans3_error.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_error_dats.o: pats_trans3_error_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_error_dats.c: pats_trans3_error.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_error_dats.o: BUILD/pats_trans3_error_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_util_dats.c: pats_trans3_util.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_util_dats.o: pats_trans3_util_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_util_dats.c: pats_trans3_util.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_util_dats.o: BUILD/pats_trans3_util_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_sats.c: pats_trans3_env.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_sats.o: pats_trans3_env_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_sats.c: pats_trans3_env.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_trans3_env_sats.o: BUILD/pats_trans3_env_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_dats.c: pats_trans3_env.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_dats.o: pats_trans3_env_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_dats.c: pats_trans3_env.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_env_dats.o: BUILD/pats_trans3_env_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_print_dats.c: pats_trans3_env_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_print_dats.o: pats_trans3_env_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_print_dats.c: pats_trans3_env_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_env_print_dats.o: BUILD/pats_trans3_env_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_scst_dats.c: pats_trans3_env_scst.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_scst_dats.o: pats_trans3_env_scst_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_scst_dats.c: pats_trans3_env_scst.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_env_scst_dats.o: BUILD/pats_trans3_env_scst_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_svar_dats.c: pats_trans3_env_svar.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_svar_dats.o: pats_trans3_env_svar_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_svar_dats.c: pats_trans3_env_svar.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_env_svar_dats.o: BUILD/pats_trans3_env_svar_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_termet_dats.c: pats_trans3_env_termet.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_termet_dats.o: pats_trans3_env_termet_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_termet_dats.c: pats_trans3_env_termet.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_env_termet_dats.o: BUILD/pats_trans3_env_termet_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_effect_dats.c: pats_trans3_env_effect.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_effect_dats.o: pats_trans3_env_effect_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_effect_dats.c: pats_trans3_env_effect.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_env_effect_dats.o: BUILD/pats_trans3_env_effect_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_dvar_dats.c: pats_trans3_env_dvar.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_dvar_dats.o: pats_trans3_env_dvar_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_dvar_dats.c: pats_trans3_env_dvar.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_env_dvar_dats.o: BUILD/pats_trans3_env_dvar_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_lamlp_dats.c: pats_trans3_env_lamlp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_lamlp_dats.o: pats_trans3_env_lamlp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_lamlp_dats.c: pats_trans3_env_lamlp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_env_lamlp_dats.o: BUILD/pats_trans3_env_lamlp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_pfman_dats.c: pats_trans3_env_pfman.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_pfman_dats.o: pats_trans3_env_pfman_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_pfman_dats.c: pats_trans3_env_pfman.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_env_pfman_dats.o: BUILD/pats_trans3_env_pfman_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_env_lstate_dats.c: pats_trans3_env_lstate.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_env_lstate_dats.o: pats_trans3_env_lstate_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_env_lstate_dats.c: pats_trans3_env_lstate.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_env_lstate_dats.o: BUILD/pats_trans3_env_lstate_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dmacro2_sats.c: pats_dmacro2.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_dmacro2_sats.o: pats_dmacro2_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dmacro2_sats.c: pats_dmacro2.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_dmacro2_sats.o: BUILD/pats_dmacro2_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dmacro2_dats.c: pats_dmacro2.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dmacro2_dats.o: pats_dmacro2_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dmacro2_dats.c: pats_dmacro2.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dmacro2_dats.o: BUILD/pats_dmacro2_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dmacro2_print_dats.c: pats_dmacro2_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dmacro2_print_dats.o: pats_dmacro2_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dmacro2_print_dats.c: pats_dmacro2_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dmacro2_print_dats.o: BUILD/pats_dmacro2_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dmacro2_eval0_dats.c: pats_dmacro2_eval0.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dmacro2_eval0_dats.o: pats_dmacro2_eval0_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dmacro2_eval0_dats.c: pats_dmacro2_eval0.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dmacro2_eval0_dats.o: BUILD/pats_dmacro2_eval0_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_dmacro2_eval1_dats.c: pats_dmacro2_eval1.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_dmacro2_eval1_dats.o: pats_dmacro2_eval1_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_dmacro2_eval1_dats.c: pats_dmacro2_eval1.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_dmacro2_eval1_dats.o: BUILD/pats_dmacro2_eval1_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_p2at_dats.c: pats_trans3_p2at.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_p2at_dats.o: pats_trans3_p2at_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_p2at_dats.c: pats_trans3_p2at.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_p2at_dats.o: BUILD/pats_trans3_p2at_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_patcon_dats.c: pats_trans3_patcon.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_patcon_dats.o: pats_trans3_patcon_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_patcon_dats.c: pats_trans3_patcon.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_patcon_dats.o: BUILD/pats_trans3_patcon_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_syncst_dats.c: pats_trans3_syncst.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_syncst_dats.o: pats_trans3_syncst_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_syncst_dats.c: pats_trans3_syncst.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_syncst_dats.o: BUILD/pats_trans3_syncst_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_dynexp_up_dats.c: pats_trans3_dynexp_up.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_dynexp_up_dats.o: pats_trans3_dynexp_up_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_dynexp_up_dats.c: pats_trans3_dynexp_up.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_dynexp_up_dats.o: BUILD/pats_trans3_dynexp_up_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_dynexp_dn_dats.c: pats_trans3_dynexp_dn.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_dynexp_dn_dats.o: pats_trans3_dynexp_dn_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_dynexp_dn_dats.c: pats_trans3_dynexp_dn.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_dynexp_dn_dats.o: BUILD/pats_trans3_dynexp_dn_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_appsym_dats.c: pats_trans3_appsym.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_appsym_dats.o: pats_trans3_appsym_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_appsym_dats.c: pats_trans3_appsym.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_appsym_dats.o: BUILD/pats_trans3_appsym_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_caseof_dats.c: pats_trans3_caseof.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_caseof_dats.o: pats_trans3_caseof_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_caseof_dats.c: pats_trans3_caseof.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_caseof_dats.o: BUILD/pats_trans3_caseof_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_selab_dats.c: pats_trans3_selab.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_selab_dats.o: pats_trans3_selab_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_selab_dats.c: pats_trans3_selab.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_selab_dats.o: BUILD/pats_trans3_selab_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_ptrof_dats.c: pats_trans3_ptrof.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_ptrof_dats.o: pats_trans3_ptrof_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_ptrof_dats.c: pats_trans3_ptrof.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_ptrof_dats.o: BUILD/pats_trans3_ptrof_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_viewat_dats.c: pats_trans3_viewat.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_viewat_dats.o: pats_trans3_viewat_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_viewat_dats.c: pats_trans3_viewat.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_viewat_dats.o: BUILD/pats_trans3_viewat_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_deref_dats.c: pats_trans3_deref.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_deref_dats.o: pats_trans3_deref_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_deref_dats.c: pats_trans3_deref.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_deref_dats.o: BUILD/pats_trans3_deref_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_assgn_dats.c: pats_trans3_assgn.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_assgn_dats.o: pats_trans3_assgn_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_assgn_dats.c: pats_trans3_assgn.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_assgn_dats.o: BUILD/pats_trans3_assgn_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_xchng_dats.c: pats_trans3_xchng.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_xchng_dats.o: pats_trans3_xchng_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_xchng_dats.c: pats_trans3_xchng.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_xchng_dats.o: BUILD/pats_trans3_xchng_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_lvalres_dats.c: pats_trans3_lvalres.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_lvalres_dats.o: pats_trans3_lvalres_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_lvalres_dats.c: pats_trans3_lvalres.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_lvalres_dats.o: BUILD/pats_trans3_lvalres_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_fldfrat_dats.c: pats_trans3_fldfrat.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_fldfrat_dats.o: pats_trans3_fldfrat_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_fldfrat_dats.c: pats_trans3_fldfrat.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_fldfrat_dats.o: BUILD/pats_trans3_fldfrat_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_looping_dats.c: pats_trans3_looping.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_looping_dats.o: pats_trans3_looping_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_looping_dats.c: pats_trans3_looping.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_looping_dats.o: BUILD/pats_trans3_looping_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_trans3_decl_dats.c: pats_trans3_decl.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_trans3_decl_dats.o: pats_trans3_decl_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_trans3_decl_dats.c: pats_trans3_decl.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_trans3_decl_dats.o: BUILD/pats_trans3_decl_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lintprgm_sats.c: pats_lintprgm.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_lintprgm_sats.o: pats_lintprgm_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lintprgm_sats.c: pats_lintprgm.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_lintprgm_sats.o: BUILD/pats_lintprgm_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lintprgm_dats.c: pats_lintprgm.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_lintprgm_dats.o: pats_lintprgm_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lintprgm_dats.c: pats_lintprgm.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_lintprgm_dats.o: BUILD/pats_lintprgm_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lintprgm_print_dats.c: pats_lintprgm_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_lintprgm_print_dats.o: pats_lintprgm_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lintprgm_print_dats.c: pats_lintprgm_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_lintprgm_print_dats.o: BUILD/pats_lintprgm_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lintprgm_myint_dats.c: pats_lintprgm_myint.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_lintprgm_myint_dats.o: pats_lintprgm_myint_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lintprgm_myint_dats.c: pats_lintprgm_myint.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_lintprgm_myint_dats.o: BUILD/pats_lintprgm_myint_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_lintprgm_solve_dats.c: pats_lintprgm_solve.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_lintprgm_solve_dats.o: pats_lintprgm_solve_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_lintprgm_solve_dats.c: pats_lintprgm_solve.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_lintprgm_solve_dats.o: BUILD/pats_lintprgm_solve_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_constraint3_sats.c: pats_constraint3.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_constraint3_sats.o: pats_constraint3_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_constraint3_sats.c: pats_constraint3.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_constraint3_sats.o: BUILD/pats_constraint3_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_constraint3_dats.c: pats_constraint3.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_constraint3_dats.o: pats_constraint3_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_constraint3_dats.c: pats_constraint3.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_constraint3_dats.o: BUILD/pats_constraint3_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_constraint3_print_dats.c: pats_constraint3_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_constraint3_print_dats.o: pats_constraint3_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_constraint3_print_dats.c: pats_constraint3_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_constraint3_print_dats.o: BUILD/pats_constraint3_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_constraint3_mapgen_dats.c: pats_constraint3_mapgen.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_constraint3_mapgen_dats.o: pats_constraint3_mapgen_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_constraint3_mapgen_dats.c: pats_constraint3_mapgen.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_constraint3_mapgen_dats.o: BUILD/pats_constraint3_mapgen_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_constraint3_jsonize_dats.c: pats_constraint3_jsonize.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_constraint3_jsonize_dats.o: pats_constraint3_jsonize_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_constraint3_jsonize_dats.c: pats_constraint3_jsonize.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_constraint3_jsonize_dats.o: BUILD/pats_constraint3_jsonize_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_constraint3_init_dats.c: pats_constraint3_init.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_constraint3_init_dats.o: pats_constraint3_init_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_constraint3_init_dats.c: pats_constraint3_init.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_constraint3_init_dats.o: BUILD/pats_constraint3_init_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_constraint3_simplify_dats.c: pats_constraint3_simplify.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_constraint3_simplify_dats.o: pats_constraint3_simplify_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_constraint3_simplify_dats.c: pats_constraint3_simplify.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_constraint3_simplify_dats.o: BUILD/pats_constraint3_simplify_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_constraint3_icnstr_dats.c: pats_constraint3_icnstr.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_constraint3_icnstr_dats.o: pats_constraint3_icnstr_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_constraint3_icnstr_dats.c: pats_constraint3_icnstr.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_constraint3_icnstr_dats.o: BUILD/pats_constraint3_icnstr_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_constraint3_solve_dats.c: pats_constraint3_solve.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_constraint3_solve_dats.o: pats_constraint3_solve_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_constraint3_solve_dats.c: pats_constraint3_solve.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_constraint3_solve_dats.o: BUILD/pats_constraint3_solve_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_histaexp_sats.c: pats_histaexp.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_histaexp_sats.o: pats_histaexp_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_histaexp_sats.c: pats_histaexp.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_histaexp_sats.o: BUILD/pats_histaexp_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_histaexp_dats.c: pats_histaexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_histaexp_dats.o: pats_histaexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_histaexp_dats.c: pats_histaexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_histaexp_dats.o: BUILD/pats_histaexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_histaexp_print_dats.c: pats_histaexp_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_histaexp_print_dats.o: pats_histaexp_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_histaexp_print_dats.c: pats_histaexp_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_histaexp_print_dats.o: BUILD/pats_histaexp_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_histaexp_funlab_dats.c: pats_histaexp_funlab.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_histaexp_funlab_dats.o: pats_histaexp_funlab_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_histaexp_funlab_dats.c: pats_histaexp_funlab.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_histaexp_funlab_dats.o: BUILD/pats_histaexp_funlab_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_hidynexp_sats.c: pats_hidynexp.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_hidynexp_sats.o: pats_hidynexp_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_hidynexp_sats.c: pats_hidynexp.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_hidynexp_sats.o: BUILD/pats_hidynexp_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_hidynexp_dats.c: pats_hidynexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_hidynexp_dats.o: pats_hidynexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_hidynexp_dats.c: pats_hidynexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_hidynexp_dats.o: BUILD/pats_hidynexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_hidynexp_print_dats.c: pats_hidynexp_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_hidynexp_print_dats.o: pats_hidynexp_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_hidynexp_print_dats.c: pats_hidynexp_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_hidynexp_print_dats.o: BUILD/pats_hidynexp_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_hidynexp_util_dats.c: pats_hidynexp_util.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_hidynexp_util_dats.o: pats_hidynexp_util_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_hidynexp_util_dats.c: pats_hidynexp_util.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_hidynexp_util_dats.o: BUILD/pats_hidynexp_util_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_typerase_sats.c: pats_typerase.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_typerase_sats.o: pats_typerase_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_typerase_sats.c: pats_typerase.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_typerase_sats.o: BUILD/pats_typerase_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_typerase_error_dats.c: pats_typerase_error.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_typerase_error_dats.o: pats_typerase_error_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_typerase_error_dats.c: pats_typerase_error.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_typerase_error_dats.o: BUILD/pats_typerase_error_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_typerase_staexp_dats.c: pats_typerase_staexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_typerase_staexp_dats.o: pats_typerase_staexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_typerase_staexp_dats.c: pats_typerase_staexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_typerase_staexp_dats.o: BUILD/pats_typerase_staexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_typerase_dynexp_dats.c: pats_typerase_dynexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_typerase_dynexp_dats.o: pats_typerase_dynexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_typerase_dynexp_dats.c: pats_typerase_dynexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_typerase_dynexp_dats.o: BUILD/pats_typerase_dynexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_typerase_decl_dats.c: pats_typerase_decl.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_typerase_decl_dats.o: pats_typerase_decl_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_typerase_decl_dats.c: pats_typerase_decl.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_typerase_decl_dats.o: BUILD/pats_typerase_decl_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_sats.c: pats_ccomp.sats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_sats.o: pats_ccomp_sats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_sats.c: pats_ccomp.sats; $(ATSOPT) $(DATSCC) -o $@ -s $<
+BUILD/pats_ccomp_sats.o: BUILD/pats_ccomp_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_dats.c: pats_ccomp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_dats.o: pats_ccomp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_dats.c: pats_ccomp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_dats.o: BUILD/pats_ccomp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_print_dats.c: pats_ccomp_print.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_print_dats.o: pats_ccomp_print_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_print_dats.c: pats_ccomp_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_print_dats.o: BUILD/pats_ccomp_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_hitype_dats.c: pats_ccomp_hitype.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_hitype_dats.o: pats_ccomp_hitype_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_hitype_dats.c: pats_ccomp_hitype.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_hitype_dats.o: BUILD/pats_ccomp_hitype_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_tmplab_dats.c: pats_ccomp_tmplab.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_tmplab_dats.o: pats_ccomp_tmplab_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_tmplab_dats.c: pats_ccomp_tmplab.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_tmplab_dats.o: BUILD/pats_ccomp_tmplab_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_tmpvar_dats.c: pats_ccomp_tmpvar.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_tmpvar_dats.o: pats_ccomp_tmpvar_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_tmpvar_dats.c: pats_ccomp_tmpvar.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_tmpvar_dats.o: BUILD/pats_ccomp_tmpvar_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_d2env_dats.c: pats_ccomp_d2env.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_d2env_dats.o: pats_ccomp_d2env_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_d2env_dats.c: pats_ccomp_d2env.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_d2env_dats.o: BUILD/pats_ccomp_d2env_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_funlab_dats.c: pats_ccomp_funlab.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_funlab_dats.o: pats_ccomp_funlab_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_funlab_dats.c: pats_ccomp_funlab.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_funlab_dats.o: BUILD/pats_ccomp_funlab_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_funent_dats.c: pats_ccomp_funent.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_funent_dats.o: pats_ccomp_funent_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_funent_dats.c: pats_ccomp_funent.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_funent_dats.o: BUILD/pats_ccomp_funent_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_util_dats.c: pats_ccomp_util.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_util_dats.o: pats_ccomp_util_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_util_dats.c: pats_ccomp_util.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_util_dats.o: BUILD/pats_ccomp_util_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_ccompenv_dats.c: pats_ccomp_ccompenv.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_ccompenv_dats.o: pats_ccomp_ccompenv_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_ccompenv_dats.c: pats_ccomp_ccompenv.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_ccompenv_dats.o: BUILD/pats_ccomp_ccompenv_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_instrseq_dats.c: pats_ccomp_instrseq.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_instrseq_dats.o: pats_ccomp_instrseq_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_instrseq_dats.c: pats_ccomp_instrseq.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_instrseq_dats.o: BUILD/pats_ccomp_instrseq_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_hipat_dats.c: pats_ccomp_hipat.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_hipat_dats.o: pats_ccomp_hipat_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_hipat_dats.c: pats_ccomp_hipat.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_hipat_dats.o: BUILD/pats_ccomp_hipat_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_dynexp_dats.c: pats_ccomp_dynexp.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_dynexp_dats.o: pats_ccomp_dynexp_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_dynexp_dats.c: pats_ccomp_dynexp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_dynexp_dats.o: BUILD/pats_ccomp_dynexp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_caseof_dats.c: pats_ccomp_caseof.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_caseof_dats.o: pats_ccomp_caseof_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_caseof_dats.c: pats_ccomp_caseof.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_caseof_dats.o: BUILD/pats_ccomp_caseof_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_claulst_dats.c: pats_ccomp_claulst.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_claulst_dats.o: pats_ccomp_claulst_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_claulst_dats.c: pats_ccomp_claulst.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_claulst_dats.o: BUILD/pats_ccomp_claulst_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_lazyeval_dats.c: pats_ccomp_lazyeval.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_lazyeval_dats.o: pats_ccomp_lazyeval_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_lazyeval_dats.c: pats_ccomp_lazyeval.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_lazyeval_dats.o: BUILD/pats_ccomp_lazyeval_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_trywith_dats.c: pats_ccomp_trywith.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_trywith_dats.o: pats_ccomp_trywith_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_trywith_dats.c: pats_ccomp_trywith.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_trywith_dats.o: BUILD/pats_ccomp_trywith_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_looping_dats.c: pats_ccomp_looping.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_looping_dats.o: pats_ccomp_looping_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_looping_dats.c: pats_ccomp_looping.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_looping_dats.o: BUILD/pats_ccomp_looping_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_decl_dats.c: pats_ccomp_decl.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_decl_dats.o: pats_ccomp_decl_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_decl_dats.c: pats_ccomp_decl.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_decl_dats.o: BUILD/pats_ccomp_decl_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_subst_dats.c: pats_ccomp_subst.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_subst_dats.o: pats_ccomp_subst_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_subst_dats.c: pats_ccomp_subst.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_subst_dats.o: BUILD/pats_ccomp_subst_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_environ_dats.c: pats_ccomp_environ.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_environ_dats.o: pats_ccomp_environ_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_environ_dats.c: pats_ccomp_environ.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_environ_dats.o: BUILD/pats_ccomp_environ_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_template_dats.c: pats_ccomp_template.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_template_dats.o: pats_ccomp_template_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_template_dats.c: pats_ccomp_template.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_template_dats.o: BUILD/pats_ccomp_template_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_emit_dats.c: pats_ccomp_emit.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_emit_dats.o: pats_ccomp_emit_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_emit_dats.c: pats_ccomp_emit.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_emit_dats.o: BUILD/pats_ccomp_emit_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_emit2_dats.c: pats_ccomp_emit2.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_emit2_dats.o: pats_ccomp_emit2_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_emit2_dats.c: pats_ccomp_emit2.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_emit2_dats.o: BUILD/pats_ccomp_emit2_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_emit3_dats.c: pats_ccomp_emit3.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_emit3_dats.o: pats_ccomp_emit3_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_emit3_dats.c: pats_ccomp_emit3.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_emit3_dats.o: BUILD/pats_ccomp_emit3_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
-pats_ccomp_main_dats.c: pats_ccomp_main.dats; $(ATSCC) $(DATSCC) -cc $<
-pats_ccomp_main_dats.o: pats_ccomp_main_dats.c; $(ATSCC) $(CFLAGS) -c $<
+BUILD/pats_ccomp_main_dats.c: pats_ccomp_main.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_main_dats.o: BUILD/pats_ccomp_main_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
 
 #
-pats_main_dats.c: \
-  pats_main.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
-pats_main_none_dats.c: \
-  pats_main.dats; $(ATSOPT) $(DATSCC) -DATS PATSOPT_MAIN_NONE -o $@ -d $<
+BUILD/pats_main_dats.c: \
+  pats_main.dats ; $(ATSOPT) $(DATSCC) -o $@ -d $<
 #
-pats_main_none_dats.o: pats_main_none_dats.c; $(ATSCC) $(CFLAGS) -c -o $@ $<
+BUILD/pats_main_none_dats.o: \
+BUILD/pats_main_none_dats.c; $(ATSOPT) $(CFLAGS) -o $@ $<
+BUILD/pats_main_none_dats.c: \
+  pats_main.dats ; $(ATSOPT) $(DATSCC) -DATS PATSOPT_MAIN_NONE -o $@ -d $<
 #
 ######
 #
@@ -1622,8 +1621,9 @@ liblines:: ; $(WCL)   ../prelude/*.sats   ../prelude/?ATS/*.?ats   ../libc/?ATS/
 ######
 
 clean:: ; $(RMF) $(DIR)/*~
-clean:: ; $(RMF) $(DIR)/*_?ats.o
 clean:: ; $(RMF) $(DIR)/*_?ats.c
+clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.o
+clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.c
 
 cleanall:: clean
 cleanall:: ; $(RMF) TAGATS

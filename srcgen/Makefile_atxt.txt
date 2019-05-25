@@ -16,7 +16,7 @@ export ATSCCOMP=$(CC)
 #
 ######
 
-ATSCC=$(ATSHOME)/bin/atscc
+ATS1CC=$(ATSHOME)/bin/atscc
 ATSOPT=$(ATSHOME)/bin/atsopt
 
 ######
@@ -77,8 +77,8 @@ SOURCESdyn := $(filter %.dats, $(SOURCES))
 
 TARGETS := \
 #__tok2$
-TARGETS += pats_main_dats.c
-TARGETS += pats_main_none_dats.c
+TARGETS += BUILD/pats_main_dats.c
+TARGETS += BUILD/pats_main_none_dats.c
 
 ######
 
@@ -98,7 +98,7 @@ all:: tempopt
 #
 tempopt:: $(TARGETS)
 tempopt:: $(OBJECTS) ; \
-$(ATSCC) $(CFLAGS) $(GCFLAG) \
+$(ATS1CC) $(CFLAGS) $(GCFLAG) \
 -o $@ pats_main.dats $(OBJECTS) $(LIBATS) $(LIBGMP)
 #
 cleanall:: ; $(RMF) tempopt
@@ -107,7 +107,7 @@ cleanall:: ; $(RMF) tempopt
 #
 libatsopt:: $(TARGETS)
 #
-libatsopt:: $(OBJECTS)   pats_main_none_dats.o; $(ARR) libatsopt.a $^
+libatsopt:: $(OBJECTS) BUILD/pats_main_none_dats.o; $(ARR) libatsopt.a $^
 #
 ######
 #
@@ -121,18 +121,16 @@ BUILD/tempopt: ; make -C BUILD -j8 -f Makefile tempopt
 CBOOT:: CBOOTgmp
 ######
 #
-CBOOTgmp:: ; $(CPF) pats_*.hats CBOOT
 CBOOTgmp:: ; $(CPF) pats_*.cats CBOOT
-CBOOTgmp:: ; $(CPF) pats_*_sats.c CBOOT
-CBOOTgmp:: ; $(CPF) pats_*_dats.c CBOOT
+CBOOTgmp:: ; $(CPF) BUILD/pats_*_sats.c CBOOT
+CBOOTgmp:: ; $(CPF) BUILD/pats_*_dats.c CBOOT
 CBOOTgmp:: ; $(CPF) Makefile_CBOOTgmp CBOOT/Makefile
 #
 ######
 #
-CBOOTint:: ; $(CPF) pats_*.hats CBOOT
 CBOOTint:: ; $(CPF) pats_*.cats CBOOT
-CBOOTint:: ; $(CPF) pats_*_sats.c CBOOT
-CBOOTint:: ; $(CPF) pats_*_dats.c CBOOT
+CBOOTint:: ; $(CPF) BUILD/pats_*_sats.c CBOOT
+CBOOTint:: ; $(CPF) BUILD/pats_*_dats.c CBOOT
 CBOOTint:: ; $(CPF) Makefile_CBOOTint CBOOT/Makefile
 #
 ######
@@ -144,12 +142,13 @@ TAGATS:: ; $(ATSOPT) --output-a $@ --taggen -s $(SOURCESsta) -d $(SOURCESdyn)
 #
 #__tok4$
 #
-pats_main_dats.c: \
-  pats_main.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
-pats_main_none_dats.c: \
-  pats_main.dats; $(ATSOPT) $(DATSCC) -DATS PATSOPT_MAIN_NONE -o $@ -d $<
+BUILD/pats_main_dats.c: \
+  pats_main.dats ; $(ATSOPT) $(DATSCC) -o $@ -d $<
 #
-pats_main_none_dats.o: pats_main_none_dats.c; $(ATSCC) $(CFLAGS) -c -o $@ $<
+BUILD/pats_main_none_dats.o: \
+BUILD/pats_main_none_dats.c; $(ATSOPT) $(CFLAGS) -o $@ $<
+BUILD/pats_main_none_dats.c: \
+  pats_main.dats ; $(ATSOPT) $(DATSCC) -DATS PATSOPT_MAIN_NONE -o $@ -d $<
 #
 ######
 #
@@ -179,8 +178,9 @@ liblines:: ; $(WCL)   ../prelude/*.sats   ../prelude/?ATS/*.?ats   ../libc/?ATS/
 ######
 
 clean:: ; $(RMF) $(DIR)/*~
-clean:: ; $(RMF) $(DIR)/*_?ats.o
 clean:: ; $(RMF) $(DIR)/*_?ats.c
+clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.o
+clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.c
 
 cleanall:: clean
 cleanall:: ; $(RMF) TAGATS
