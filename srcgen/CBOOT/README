@@ -1,0 +1,29 @@
+#
+# This directory contains
+# C-files used for bootstraping ATS2
+#
+
+######
+#
+# HX-2014-04-02:
+# for generating *_?ats.c files:
+#
+# make -C prelude
+# make -C libc
+# make -C libats
+#
+######
+
+#
+# A sequence of command-lines
+# for manually bootstrapping ATS2:
+#
+
+$ libtoolize --force
+$ aclocal
+$ autoheader
+$ automake --force-missing --add-missing
+$ autoconf
+$ ./configure
+
+###### end of [README] ######
