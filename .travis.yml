@@ -49,11 +49,14 @@ script:
   - ./configure&&make CC=${GCC} all
   # Building Temptory
   - cd $TEMPTORY
-  - (cd srcgen && make -f Makefile)
+  - (cd srcgen&&make -f Makefile)
   - (cp -f srcgen/BUILD/tempopt bin/.)
   # Building tempacc
   - (cd utils/tempacc&&make copy build)
   - (cp utils/tempacc/BUILD/tempacc bin/.)
+  # Testing CBOOT
+  - (cd srcgen && make CBOOT)
+  - (cd srcgen/CBOOT && make tempopt && ./tempopt)
   # Testing of all sorts
   - echo 'running unit-tests...'
   - (cd libats/libc/TEST && make -f Makefile testall)
