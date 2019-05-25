@@ -1,6 +1,12 @@
 (* ****** ****** *)
 
 (*
+Author: HX-2019-05-25
+*)
+
+(* ****** ****** *)
+
+(*
 How to compile:
 tempacc -O2 -DATS_MEMALLOC_LIBC -o WordFrqncyCnt_dats WordFrqncyCnt.dats 
 How to test it:

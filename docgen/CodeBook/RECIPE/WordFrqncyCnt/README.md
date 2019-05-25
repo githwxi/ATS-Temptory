@@ -149,7 +149,7 @@ The following output is expected (where each word is followed by its
 frequency in parentheses):
 
 
-```
+```text
 word#1: the(14715)
 word#2: of(6742)
 word#3: and(6517)
