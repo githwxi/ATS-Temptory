@@ -64,4 +64,6 @@ ${TARZXF} ${ATSPACKTGZ}
 #
 ######
 
+(mv -f $ATSPACK $HOME/ATS1)
+
 ###### end of [install-ats1.sh] ######

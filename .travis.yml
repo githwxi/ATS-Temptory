@@ -20,8 +20,10 @@ before_install:
   - date
   - cd ${HOME}
   # Setting-up
-  - export ATSHOME=${HOME}/ats-lang-anairiats-0.2.12
+  - export ATSHOME=${HOME}/ATS1
   - export ATSHOMERELOC=ATS-0.2.12
+  - export PATSHOME=${HOME}/ATS2
+  - export PATH=${PATH}:${PATSHOME}/bin
   - export TEMPTORY=${TRAVIS_BUILD_DIR}
   - export PATH=${PATH}:${TEMPTORY}/bin
   - export GCC=gcc
@@ -29,6 +31,7 @@ before_install:
 
 install:
   - ${TRAVIS_BUILD_DIR}/travis-ci/install-ats1.sh 0.2.12
+  - ${TRAVIS_BUILD_DIR}/travis-ci/install-ats2.sh 0.3.12
 
 after_install:
   - date
@@ -41,6 +44,9 @@ script:
   - cd ${ATSHOME}
   # ./configure&&make CC=${GCC} all
   - ./configure&&make CC=${GCC} all_ngc
+  # Building ATS2
+  - cd ${PATSHOME}
+  - ./configure&&make CC=${GCC} all
   # Building Temptory
   - cd $TEMPTORY
   - (cd srcgen && make -f Makefile)
