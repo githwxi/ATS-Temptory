@@ -64,19 +64,27 @@ ref_make_elt(a): ref(a)
 (* ****** ****** *)
 
 fun
-{a:tflt0} ref_get_elt(ref(a)): (a)
+{a:tflt0}
+ref_get_elt(r: ref(a)): (a)
 fun
-{a:tflt0} ref_set_elt(ref(a), a): void
+{a:tflt0}
+ref_set_elt(r: ref(a), x: a): void
 
 (* ****** ****** *)
-
+//
 fun
 {a:tflt1}
 ref_foreach(ref(a)): void
 fun
 {a:tflt1}
 ref_foreach$work(x: !a): void
-
-(* ****** ****** *)
+fun
+{a:tflt1}
+ref_foreach_ref(ref(a)): void
+fun
+{a:tflt1}
+ref_foreach_ref$work(x: &a >> _): void
 //
+(* ****** ****** *)
+
 (* end of [gref.sats] *)
