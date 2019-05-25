@@ -21,7 +21,7 @@ ATSPACKTGZ=${ATSPACK}.tgz
 ######
 #
 ATSLANGURL_srcfg=\
-http://sourceforge.net/projects/ats-lang
+https://sourceforge.net/projects/ats-lang
 #
 ATSLANGURL_github=http://ats-lang.github.io
 #
