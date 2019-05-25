@@ -402,4 +402,7 @@ word#249: face(95)
 word#250: few(95)
 ```
 
+It is not surprising to see the word `whale` as the first noun in the list
+(word#22): The novel is all about whales and whaling!
+
 Happy programming in ATS-Temptory!!!
