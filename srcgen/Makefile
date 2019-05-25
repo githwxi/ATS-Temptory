@@ -16,14 +16,22 @@ export ATSCCOMP=$(CC)
 #
 ######
 
+DIR=.
+ARR=ar -r
+CPF=cp -f
+RMF=rm -f
+WCL=wc -l
+
+######
+
 ATS1CC=$(ATSHOME)/bin/atscc
 ATSOPT=$(ATSHOME)/bin/atsopt
 
 ######
 
 CFLAGS=-g
-CFLAGS=-g -O
-CFLAGS=-g -O2
+CFLAGS=-O -g
+CFLAGS=-O2 -g
 
 ######
 #
@@ -825,6 +833,9 @@ all:: tempopt
 # please keep the order '$(LIBATS) $(LIBGMP)'
 # as the former depends on the latter
 #
+tempopt:: ; \
+$(CPF) pats_*.cats BUILD
+#
 tempopt:: $(TARGETS)
 tempopt:: $(OBJECTS) ; \
 $(ATS1CC) $(CFLAGS) $(GCFLAG) \
@@ -836,7 +847,8 @@ cleanall:: ; $(RMF) tempopt
 #
 libatsopt:: $(TARGETS)
 #
-libatsopt:: $(OBJECTS) BUILD/pats_main_none_dats.o; $(ARR) libatsopt.a $^
+libatsopt:: $(OBJECTS) \
+BUILD/pats_main_none_dats.o; $(ARR) libatsopt.a $^
 #
 ######
 #
@@ -1605,14 +1617,6 @@ depend::
 -include .depend
 #
 ######
-
-DIR=.
-ARR=ar -r
-CPF=cp -f
-RMF=rm -f
-WCL=wc -l
-
-######
 #
 srclines:: ; $(WCL)   pats_main.dats $(SOURCES)
 #
@@ -1624,6 +1628,7 @@ clean:: ; $(RMF) $(DIR)/*~
 clean:: ; $(RMF) $(DIR)/*_?ats.c
 clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.o
 clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.c
+clean:: ; $(RMF) $(DIR)/BUILD/pats_*.cats 
 
 cleanall:: clean
 cleanall:: ; $(RMF) TAGATS

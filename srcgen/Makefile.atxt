@@ -709,7 +709,7 @@ all:: tempopt
 # please keep the order '$(LIBATS) $(LIBGMP)'
 # as the former depends on the latter
 #
-tempopt:: ; \
+tempopt:: ; \\
 $(CPF) pats_*.cats BUILD
 #
 tempopt:: $(TARGETS)
@@ -723,7 +723,7 @@ cleanall:: ; $(RMF) tempopt
 #
 libatsopt:: $(TARGETS)
 #
-libatsopt:: $(OBJECTS) \
+libatsopt:: $(OBJECTS) \\
 BUILD/pats_main_none_dats.o; $(ARR) libatsopt.a $^
 #
 ######
@@ -797,6 +797,7 @@ clean:: ; $(RMF) $(DIR)/*~
 clean:: ; $(RMF) $(DIR)/*_?ats.c
 clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.o
 clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.c
+clean:: ; $(RMF) $(DIR)/BUILD/pats_*.cats 
 
 cleanall:: clean
 cleanall:: ; $(RMF) TAGATS
