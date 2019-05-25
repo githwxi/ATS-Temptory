@@ -1,7 +1,9 @@
 (* ****** ****** *)
 
 (*
-How to test:
+How to compile:
+tempacc -O2 -DATS_MEMALLOC_LIBC -o WordFrqncyCnt_dats WordFrqncyCnt.dats 
+How to test it:
 wget -q -O - "http://www.gutenberg.org/files/2701/2701-0.txt" | ./WordFrqncyCnt_dats 
 *)
 

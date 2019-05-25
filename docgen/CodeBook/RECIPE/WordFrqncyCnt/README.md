@@ -145,7 +145,8 @@ by Herman Melville:
 wget -q -O - "http://www.gutenberg.org/files/2701/2701-0.txt" | ./WordFrqncyCnt_dats
 ```
 
-The following output is expected:
+The following output is expected (where each word is followed by its
+frequency in parentheses):
 
 
 ```
