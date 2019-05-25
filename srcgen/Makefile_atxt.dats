@@ -631,13 +631,13 @@ val __tok3 = OBJECTS_process()
 val () = theAtextMap_insert_str ("__tok3", __tok3)
 
 (*
-Makefile.atxt: 14036(line=760, offs=2) -- 14059(line=760, offs=25)
+Makefile.atxt: 14012(line=758, offs=2) -- 14035(line=758, offs=25)
 *)
 val __tok4 = process_compile_lines()
 val () = theAtextMap_insert_str ("__tok4", __tok4)
 
 (*
-Makefile.atxt: 15069(line=807, offs=1) -- 15142(line=809, offs=3)
+Makefile.atxt: 15045(line=805, offs=1) -- 15118(line=807, offs=3)
 *)
 
 implement main () = fprint_filsub (stdout_ref, "Makefile_atxt.txt")

@@ -110,9 +110,7 @@ $(CPF) pats_*.cats BUILD
 tempopt:: $(TARGETS)
 tempopt:: $(OBJECTS) ; \
 $(ATS1CC) $(CFLAGS) $(GCFLAG) \
--o $@ pats_main.dats $(OBJECTS) $(LIBATS) $(LIBGMP)
-#
-cleanall:: ; $(RMF) tempopt
+-o BUILD/$@ pats_main.dats $(OBJECTS) $(LIBATS) $(LIBGMP)
 #
 ######
 #
