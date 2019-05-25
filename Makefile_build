@@ -1,0 +1,4 @@
+export TEMPTORYBUILD=${PWD}
+
+gmp:: ; make -c srcgen/DISTRIB/Makefile atspacktarzvcf_gmp
+int:: ; make -c srcgen/DISTRIB/Makefile atspacktarzvcf_int

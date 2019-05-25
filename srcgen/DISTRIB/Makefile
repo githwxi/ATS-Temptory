@@ -101,6 +101,25 @@ srcget_home:: ; $(CPF) ../../CHANGES-contrib $(ATSDIST)/
 # #
 # ######
 
+copy_to_build_dir:: ; \
+$(CPRF) $(TEMPTORYBUILD)/LICENSE ATS-Temptory
+copy_to_build_dir:: ; \
+$(CPRF) $(TEMPTORYBUILD)/README ATS-Temptory
+copy_to_build_dir:: ; \
+$(CPRF) $(TEMPTORYBUILD)/VERSION ATS-Temptory
+copy_to_build_dir:: ; \
+$(CPRF) $(TEMPTORYBUILD)/share ATS-Temptory
+copy_to_build_dir:: ; \
+$(CPRF) $(TEMPTORYBUILD)/libats ATS-Temptory
+copy_to_build_dir:: ; \
+$(CPRF) $(TEMPTORYBUILD)/ccomp/runtime ATS-Temptory/ccomp
+copy_to_build_dir:: ; \
+$(CPRF) $(TEMPTORYBUILD)/contrib ATS-Temptory
+copy_to_build_dir:: ; \
+$(CPRF) $(TEMPTORYBUILD)/share ATS-Temptory
+copy_to_build_dir:: ; \
+$(CPRF) $(TEMPTORYBUILD)/utils ATS-Temptory
+
 ######
 RELVER=$(shell cat $(TEMPTORYBUILD)/VERSION)
 ######
@@ -112,16 +131,15 @@ RELVER=$(shell cat $(TEMPTORYBUILD)/VERSION)
 PACKNAMEgmp=ATS-Temptory-gmp-0.0.0
 PACKNAMEgmp=ATS-Temptory-gmp-$(RELVER)
 #
-atspacktarzvcf_gmp:: ; $(RMRF) $(PACKNAMEgmp)
-atspacktarzvcf_gmp:: ; $(CPRF) ATS-Temptory $(PACKNAMEgmp)
+atspacktarzvcf_gmp:: copy_to_build_dir
+atspacktarzvcf_gmp:: ; \
+$(RMRF) $(PACKNAMEgmp)
 atspacktarzvcf_gmp:: ; \
 cd $(TEMPTORYBUILD) && \
 make -C srcgen -f Makefile C3NSTRINTKND=gmpknd all
-# make -f Makefile_devl C3NSTRINTKND=gmpknd
 atspacktarzvcf_gmp:: ; \
 cd $(TEMPTORYBUILD) && \
 make -C srcgen -f Makefile CBOOTgmp
-
 atspacktarzvcf_gmp:: ; \
 (cd ATS-Temptory && sh ./autogen.sh && ./configure) 
 atspacktarzvcf_gmp:: ; \
@@ -129,50 +147,54 @@ cd $(TEMPTORYBUILD) && \
 make -C srcgen/CBOOT/libc -f Makefile && \
 make -C srcgen/CBOOT/libats -f Makefile && \
 make -C srcgen/CBOOT/prelude -f Makefile
-atspacktarzvcf_gmp:: ; $(CPRF) $(TEMPTORYBUILD)/srcgen/CBOOT $(PACKNAMEgmp)/srcgen/
-atspacktarzvcf_gmp:: ; $(RMF) $(PACKNAMEgmp)/Makefile_conf
-# atspacktarzvcf_gmp:: ; $(RMF) $(PACKNAMEgmp)/missing ; $(CPF) ATS-Temptory/missing $(PACKNAMEgmp)/
-# atspacktarzvcf_gmp:: ; $(RMF) $(PACKNAMEgmp)/install-sh ; $(CPF) ATS-Temptory/install-sh $(PACKNAMEgmp)/
-atspacktarzvcf_gmp:: ; $(MAKE) -C $(PACKNAMEgmp) cleanall
-atspacktarzvcf_gmp:: ; $(TARZVCF) $(PACKNAMEgmp).tgz $(PACKNAMEgmp)/.
-
+atspacktarzvcf_gmp:: ; \
+$(CPRF) $(TEMPTORYBUILD)/srcgen/CBOOT $(PACKNAMEgmp)/srcgen/
+atspacktarzvcf_gmp:: ; \
+$(RMF) $(PACKNAMEgmp)/Makefile_conf
+atspacktarzvcf_gmp:: ; \
+$(MAKE) -C $(PACKNAMEgmp) cleanall
+atspacktarzvcf_gmp:: ; \
+$(TARZVCF) $(PACKNAMEgmp).tgz $(PACKNAMEgmp)/.
 #
-atspacktarzvcf_gmp_up:: ; \
-scp $(PACKNAMEgmp).tgz ats-hwxi,ats-lang@web.sourceforge.net:htdocs/IMPLEMENT/Postiats/$(PACKNAME).tgz
+# atspacktarzvcf_gmp_up:: ; \
+# scp $(PACKNAMEgmp).tgz ats-hwxi,ats-lang@web.sourceforge.net:htdocs/IMPLEMENT/Postiats/$(PACKNAME).tgz
 #
 ######
 #
 PACKNAMEint=ATS-Temptory-int-0.0.0
 PACKNAMEint=ATS-Temptory-int-$(RELVER)
 #
-atspacktarzvcf_int:: ; $(RMRF) $(PACKNAMEint)
-atspacktarzvcf_int:: ; $(CPRF) ATS-Temptory $(PACKNAMEint)
-atspacktarzvcf_int:: ; $(RMF) $(PACKNAMEint)/Makefile_conf
-atspacktarzvcf_int:: ; $(RMF) $(PACKNAMEint)/missing ; $(CPF) ATS-Temptory/missing $(PACKNAMEint)/
-atspacktarzvcf_int:: ; $(RMF) $(PACKNAMEint)/install-sh ; $(CPF) ATS-Temptory/install-sh $(PACKNAMEint)/
-atspacktarzvcf_int:: ; $(MAKE) -C $(PACKNAMEint) cleanall
-atspacktarzvcf_int:: ; $(TARZVCF) $(PACKNAMEint).tgz $(PACKNAMEint)/.
-atspacktarzvcf_int_up:: ; scp $(PACKNAMEint).tgz ats-hwxi,ats-lang@web.sourceforge.net:htdocs/IMPLEMENT/Postiats/$(PACKNAMEint).tgz
+atspacktarzvcf_int:: copy_to_build_dir
+atspacktarzvcf_int:: ; \
+$(RMRF) $(PACKNAMEint)
+atspacktarzvcf_int:: ; \
+cd $(TEMPTORYBUILD) && \
+make -C srcgen -f Makefile C3NSTRINTKND=intknd all
+atspacktarzvcf_int:: ; \
+cd $(TEMPTORYBUILD) && \
+make -C srcgen -f Makefile CBOOTint
+atspacktarzvcf_int:: ; \
+(cd ATS-Temptory && sh ./autogen.sh && ./configure) 
+atspacktarzvcf_int:: ; \
+cd $(TEMPTORYBUILD) && \
+make -C srcgen/CBOOT/libc -f Makefile && \
+make -C srcgen/CBOOT/libats -f Makefile && \
+make -C srcgen/CBOOT/prelude -f Makefile
+atspacktarzvcf_int:: ; \
+$(CPRF) $(TEMPTORYBUILD)/srcgen/CBOOT $(PACKNAMEint)/srcgen/
+atspacktarzvcf_int:: ; \
+$(RMF) $(PACKNAMEint)/Makefile_conf
+atspacktarzvcf_int:: ; \
+$(MAKE) -C $(PACKNAMEint) cleanall
+atspacktarzvcf_int:: ; \
+$(TARZVCF) $(PACKNAMEint).tgz $(PACKNAMEint)/.
 #
-######
-#
-# CONTRIBNAME=ATS-Temptory-contrib-0.3.13
-# CONTRIBNAME=ATS-Temptory-contrib-$(PATSVER)
-# #
-# atscontribtarzvcf:: ; $(RMRF) $(CONTRIBNAME)
-# atscontribtarzvcf:: ; $(CPRF) ATS-Temptory-contrib $(CONTRIBNAME)
-# atscontribtarzvcf:: ; $(TARZVCF)  $(CONTRIBNAME).tgz  $(CONTRIBNAME)/.
-# #
-# atscontribtarzvcf_up:: ; \
-# scp $(CONTRIBNAME).tgz ats-hwxi,ats-lang@web.sourceforge.net:htdocs/IMPLEMENT/Postiats/$(CONTRIBNAME).tgz
+# atspacktarzvcf_int_up:: ; scp $(PACKNAMEint).tgz ats-hwxi,ats-lang@web.sourceforge.net:htdocs/IMPLEMENT/Postiats/$(PACKNAMEint).tgz
 #
 ######
 
 clean:: ; $(RMF) *~
 clean:: ; $(RMF) *_?ats.o *_?ats.c
-clean:: ; $(RMF) *_atxt.txt
-clean:: ; $(RMF) *_atxt.dats
-clean:: ; $(RMF) Makefile.exe
 
 cleanall:: clean
 
