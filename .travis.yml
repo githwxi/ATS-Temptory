@@ -37,6 +37,11 @@ before_script:
   - date
 
 script:
+  # Building ATS1
+  - cd ${ATSHOME}
+  # ./configure&&make CC=${GCC} all
+  - ./configure&&make CC=${GCC} all_ngc
+  # Building Temptory
   - cd $TEMPTORY
   - (cd srcgen && make -f Makefile)
   - (cp -f srcgen/tempopt bin/temopt)
