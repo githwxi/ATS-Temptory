@@ -65,6 +65,7 @@ script:
   - (cd libats/temp/bucs520/TEST && make -f Makefile testall)
   - (cd contrib/hwxi/TEST00 && make -f Makefile testall)
   - (cd contrib/hwxi/TEST01 && make -f Makefile testall)
+  - (cd docgen/CodeBook/RECIPE && make -f Makefile_test testall)
 
 after_script:
   - date
