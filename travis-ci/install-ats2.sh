@@ -9,15 +9,19 @@ ATSPACKTGZ=$ATSPACK.tgz
 
 ######################################
 
+MV=mv
+WGETQ="wget -q"
+TARZXF="tar -zxf"
+
 cd $HOME
-wget https://sourceforge.net/projects/ats2-lang/files/ats2-lang/ats2-postiats-$ATSVER/$ATSPACKTGZ
+$WGETQ https://sourceforge.net/projects/ats2-lang/files/ats2-lang/ats2-postiats-$ATSVER/$ATSPACKTGZ
 
 ######################################
 
-tar -xzf download
+$TARZXF $ATSPACKTGZ
 
 ######################################
 
-(mv -f ${ATSPACK} ${HOME}/ATS2)
+(${MV} -f ${ATSPACK} ${HOME}/ATS2)
 
 ###### end of [install-ats2.sh] ######
