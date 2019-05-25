@@ -64,9 +64,18 @@ ref_make_elt(a): ref(a)
 (* ****** ****** *)
 
 fun
-{a: tflt} ref_get_elt(ref(a)): (a)
+{a:tflt0} ref_get_elt(ref(a)): (a)
 fun
-{a: tflt} ref_set_elt(ref(a), a): void
+{a:tflt0} ref_set_elt(ref(a), a): void
+
+(* ****** ****** *)
+
+fun
+{a:tflt1}
+ref_foreach(ref(a)): void
+fun
+{a:tflt1}
+ref_foreach$work(x: !a): void
 
 (* ****** ****** *)
 //

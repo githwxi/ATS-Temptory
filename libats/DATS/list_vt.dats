@@ -799,10 +799,8 @@ case+ xs0 of
 |
 @list0_vt_cons(x0, xs1) =>
  let
- val cp =
- ptr2cptr{x0}(addr@x0)
  val test =
- list0_vt_forall1_ref$test<x0>(cp)
+ list0_vt_forall1_ref$test<x0>(x0)
  in
    if
    test

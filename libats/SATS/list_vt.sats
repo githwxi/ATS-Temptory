@@ -440,7 +440,7 @@ list0_vt_forall1_ref
 (xs: !list0_vt(INV(x0))): bool
 fun
 {x0:vtflt}
-list0_vt_forall1_ref$test(cptr0(x0)): bool
+list0_vt_forall1_ref$test(&x0 >> _): bool
 //
 (* ****** ****** *)
 //
@@ -450,7 +450,7 @@ list0_vt_foreach1_ref
 (xs: !list0_vt(INV(x0))): void
 fun
 {x0:vtflt}
-list0_vt_foreach1_ref$work(cptr0(x0)): void
+list0_vt_foreach1_ref$work(&x0 >> _): void
 //
 (* ****** ****** *)
 //
@@ -461,7 +461,7 @@ list0_vt_foldleft1_ref(!list0_vt(x0), r0): r0
 fun
 {x0:vtflt}
 {r0:vtflt}
-list0_vt_foldleft1_ref$fopr(r0, cptr0(x0)): r0
+list0_vt_foldleft1_ref$fopr(r0, &(x0) >> _): r0
 //
 (* ****** ****** *)
 //

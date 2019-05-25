@@ -45,6 +45,13 @@ VERBOSE_PRELUDE
 #endif // end of [VERBOSE_INCLUDE]
 
 (* ****** ****** *)
+
+sortdef tbox0 = tbox
+sortdef tbox1 = vtbox
+sortdef tflt0 = tflt
+sortdef tflt1 = vtflt
+
+(* ****** ****** *)
 //
 // HX:
 // some built-in
