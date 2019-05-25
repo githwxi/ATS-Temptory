@@ -368,5 +368,23 @@ fun
 cptr0_rforeach$work(x0: !a): void
 //
 (* ****** ****** *)
+//
+fun
+{a:vtflt}
+cptr0_forall_ref
+(cptr(a), cptr(a)): bool
+fun
+{a:vtflt}
+cptr0_forall_ref$test(x0: &a >> _): bool
+//
+fun
+{a:vtflt}
+cptr0_foreach_ref
+(cptr(a), cptr(a)): void
+fun
+{a:vtflt}
+cptr0_foreach_ref$work(x0: &a >> _): void
+//
+(* ****** ****** *)
 
 (* end of [gptr.sats] *)

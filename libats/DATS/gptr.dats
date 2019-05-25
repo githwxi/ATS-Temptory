@@ -298,5 +298,78 @@ end (* end of [loop] *)
 } (* end of [cptr0_rforeach] *)
 //
 (* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+cptr0_forall_ref
+  (cp0, cp1) = let
+//
+fun
+loop
+(p0: ptr, pz: ptr): bool =
+(
+if
+(p0 >= pz)
+then true else
+let
+val
+(pf0, fpf | p0) =
+$UN.ptr0_vtake{a}(p0)
+val test =
+cptr0_forall_ref$test<a>(!p0)
+//
+in (* in-of-let *)
+//
+let
+prval () = fpf(pf0) in
+if
+test
+then
+loop(p0+sizeof<a>, pz) else false
+end (* end-of-let *)
+//
+end (* end-of-let *)
+)
+//
+in
+  loop(cptr2ptr(cp0), cptr2ptr(cp1))
+end (* end of [cptr0_forall_ref] *)
+//
+(* ****** ****** *)
+//
+implement
+{a}(*tmp*)
+cptr0_foreach_ref
+  (cp0, cp1) =
+(
+loop
+( cptr2ptr(cp0)
+, cptr2ptr(cp1) )
+) where
+{
+//
+fun
+loop
+(p0: ptr, pz: ptr): void =
+(
+if
+(p0 < pz)
+then
+let
+val
+(pf0, fpf | p0) =
+$UN.ptr0_vtake{a}(p0)
+val () =
+cptr0_foreach_ref$work<a>(!p0)
+in (* in-of-let *)
+let
+prval () = fpf(pf0) in loop(p0+sizeof<a>, pz)
+end
+end (* end-of-let *)
+)
+//
+} (* end of [cptr0_foreach_ref] *)
+//
+(* ****** ****** *)
 
 (* end of [gptr.dats] *)
