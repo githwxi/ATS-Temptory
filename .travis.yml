@@ -47,6 +47,9 @@ script:
   # Building ATS2
   - cd ${PATSHOME}
   - ./configure&&make CC=${GCC} all
+  # Building tempacc
+  - (cd utils/tempacc&&make copy build)
+  - (cp utils/tempacc/BUILD/tempacc bin/.)
   # Building Temptory
   - cd $TEMPTORY
   - (cd srcgen && make -f Makefile)
