@@ -58,7 +58,8 @@ loop(xs: words): iwords =
 case+ xs of
 | nil() => nil()
 | cons(x0, xs) => loop2(xs, x0, 1, nil())
-)
+) (* end of [loop] *)
+
 and
 loop2
 ( xs: words
@@ -72,7 +73,7 @@ case+ xs of
   if x0 = x1
   then loop2(xs, x0, i0+1, res)
   else loop2(xs, x1, 1, cons((i0, x0), res))
-)
+) (* end of [loop2] *)
 }
 
 (* ****** ****** *)
@@ -85,12 +86,12 @@ mergesort(iwords)
 implement
 list0_mergesort$cmp<iword>
   (iw1, iw2) =
-  let
+let
   val i1 = iw1.0
   val i2 = iw2.0
-  in
+in
   if i1 > i2 then ~1 else (if i1 < i2 then 1 else compare(iw1.1, iw2.1))
-  end
+end
 }
 
 (* ****** ****** *)

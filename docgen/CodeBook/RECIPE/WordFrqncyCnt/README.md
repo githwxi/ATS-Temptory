@@ -37,13 +37,13 @@ val words = listize(words)
 As we do not plan to use a linear list in this example, we turn this linear
 list into a non-linear list:
 
-```
+```ats
 val words = list0_vt2t(words)
 ```
 
 Then we can merge-sort the list of words obtained so far:
 
-```
+```ats
 val words = mergesort(words)
 ```
 
@@ -64,7 +64,8 @@ loop(xs: words): iwords =
 case+ xs of
 | nil() => nil()
 | cons(x0, xs) => loop2(xs, x0, 1, nil())
-)
+) (* end of [loop2] *)
+
 and
 loop2
 ( xs: words
@@ -78,14 +79,14 @@ case+ xs of
   if x0 = x1
   then loop2(xs, x0, i0+1, res)
   else loop2(xs, x1, 1, cons((i0, x0), res))
-)
+) (* end of [loop2] *)
 }
 ```
 
 For each iword-value in `iwords`, the int-value indicates the number of
 times the string-value appears in `words`.
 
-We can now sort `iwords` based the specific order:
+We can now sort `iwords` based on a specific order:
 
 ```ats
 val iwords =
@@ -96,12 +97,12 @@ mergesort(iwords)
 implement
 list0_mergesort$cmp<iword>
   (iw1, iw2) =
-  let
+let
   val i1 = iw1.0
   val i2 = iw2.0
-  in
+in
   if i1 > i2 then ~1 else (if i1 < i2 then 1 else compare(iw1.1, iw2.1))
-  end
+end
 }
 ```
 
@@ -110,7 +111,8 @@ less than another one `iw2` if the int-value in `iw1` is less than
 that in `iw2` or the two int-values are equal and the string-value in
 `iw1` is less than that in `iw2`.
 
-Let print out the 250 words together with their frquencies:
+Let print out the first 250 (or fewer) words together with their
+frquencies:
 
 
 ```ats
