@@ -1630,5 +1630,7 @@ clean:: ; $(RMF) $(DIR)/BUILD/pats_*.cats
 
 cleanall:: clean
 cleanall:: ; $(RMF) TAGATS
+cleanall:: ; $(RMF) BUILD/tempopt
+#
 
 ###### end of [Makefile] ######
