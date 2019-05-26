@@ -38,6 +38,7 @@ INCLUDE += -I${TEMPTORY}/ccomp/runtime
 ######
 
 all:: test01_dats
+all:: test02_dats
 
 ######
 
@@ -49,11 +50,20 @@ testall:: cleanall
 
 test01_dats: \
 test01.dats; \
-$(TEMPACC) -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $< $(MYLIBS)
+$(TEMPACC) -D_GNU_SOURCE \
+-DATS_MEMALLOC_LIBC -o $@ $< $(MYLIBS)
+
+######
+
+test02_dats: \
+test02.dats; \
+$(TEMPACC) -D_GNU_SOURCE \
+-DATS_MEMALLOC_LIBC -I./node_modules -o $@ $< $(MYLIBS) -lpcre
 
 ######
 
 regress:: test01_dats; ./test01_dats
+regress:: test02_dats; ./test02_dats
 
 ######
 
@@ -62,6 +72,7 @@ clean:: ; $(RMF) *_?ats.c
 
 cleanall:: clean
 cleanall:: ; $(RMF) test01_dats
+cleanall:: ; $(RMF) test02_dats
 
 ######
 

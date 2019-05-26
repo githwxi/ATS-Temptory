@@ -1,5 +1,7 @@
 {
     "dependencies": {
+        "temptory-hx-libpcre": "^1.0.0"
+	,
         "temptory-hx-csv-parse": "^1.0.0"
     }
 }
