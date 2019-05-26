@@ -67,12 +67,6 @@ val words = mergesort(words)
 
 (* ****** ****** *)
 
-#macdef
-lstrcmp(x, y) =
-gcompare$val<string_vt>(,(x), ,(y))
-
-(* ****** ****** *)
-
 val iwords =
 (loop(words)) where
 {
@@ -97,7 +91,7 @@ case+ xs of
 |
 ~lcons(x1, xs) =>
  if
- lstrcmp(x0,x1)=0
+ compare(x0,x1)=0
  then
  let
    val () = free(x1)
@@ -123,7 +117,7 @@ let
   val i1 = iw1.0
   val i2 = iw2.0
 in
-  if i1 > i2 then ~1 else (if i1 < i2 then 1 else lstrcmp(iw1.1, iw2.1))
+  if i1 > i2 then ~1 else (if i1 < i2 then 1 else compare(iw1.1, iw2.1))
 end
 }
 

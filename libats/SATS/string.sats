@@ -132,6 +132,8 @@ fun
 strcmp
 (string, string):<> int = "mac#%"
 //
+#symload compare with strcmp of 10
+//
 (* ****** ****** *)
 //
 fun{}
@@ -335,6 +337,14 @@ string0_vt_isneqz
 //
 #symload iseqz with string0_vt_iseqz
 #symload iseqz with string0_vt_isneqz
+//
+(* ****** ****** *)
+//
+fun
+strcmp_vt
+(!string_vt, !string_vt):<> int = "mac#%"
+//
+#symload compare with strcmp_vt of 10
 //
 (* ****** ****** *)
 //

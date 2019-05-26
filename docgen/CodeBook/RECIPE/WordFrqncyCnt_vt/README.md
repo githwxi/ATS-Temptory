@@ -10,14 +10,14 @@ before the execution terminates.
 Implementing memory-clean program can be highly challenging. This
 claim is strongly supported by the fact that memory leaks commonly
 appear duing the execution of programs written in C or C++. With
-languages like Java that relies on GC at run-time for memory management,
-implementing memory-clean program can hardly be attempted.
+languages like Java that rely on GC at run-time for memory management,
+implementing memory-clean program can hardly be even attempted.
 
 The code in `WordFreqCnt_vt.dats` is obtained from modifying the code
-in `WordFreqCnt_vt.dats`. Non-linear types like `string` and `list0`
+in `WordFreqCnt.dats`. Non-linear types like `string` and `list0`
 are replaced with their linear counterparts `string_vt` and
 `list0_vt`, respectively.  Consequently, combinators on these
-non-linear types are replaced with the corresponding ones on linear
+non-linear types are replaced with the corresponding ones on the linear
 types. Note that the entire replacement is guided by the type-checking
 process.
 

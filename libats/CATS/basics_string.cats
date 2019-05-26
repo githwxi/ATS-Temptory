@@ -37,6 +37,10 @@
 #define temptory_strcpy strcpy
 
 /* ****** ****** */
+
+#define temptory_strcmp_vt strcmp
+
+/* ****** ****** */
 /*
 ATSinline()
 atstype_bool
