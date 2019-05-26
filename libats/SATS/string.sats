@@ -387,6 +387,14 @@ string0_vt_append
 (* ****** ****** *)
 //
 fun{}
+string0_vt_map1
+(src: !string_vt): string_vt
+fun{}
+string0_vt_map1$fopr(char): char
+//
+(* ****** ****** *)
+//
+fun{}
 string0_vt_streamize
   (cs: string_vt): stream_vt(char)
 //

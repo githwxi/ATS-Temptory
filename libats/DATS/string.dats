@@ -750,6 +750,41 @@ end // end of [string0_vt_append]
 
 implement
 {}(*tmp*)
+string0_vt_map1
+  (cs) =
+(
+  $UN.castvwtp0(p0)
+) where
+{
+//
+val n0 = length(cs)
+val p0 = string0_alloc(n0)
+//
+val p1 =
+(
+string0_vt_foldleft1<r0>
+  (cs, p0)
+) where
+{
+//
+typedef r0 = cptr(char)
+//
+implement
+string0_vt_foldleft1$fopr<r0>
+  (cp, c0) =
+  let
+  val c1 =
+  string0_vt_map1$fopr<>(c0)
+  val () = $UN.cptr0_set(cp, c1) in succ(cp)
+  end
+//
+} (* end of [where] *)
+} (* end of [string0_vt_map1] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 string0_vt_streamize
   (cs) =
 (

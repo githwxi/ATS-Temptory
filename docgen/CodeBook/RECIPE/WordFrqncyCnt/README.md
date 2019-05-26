@@ -64,7 +64,7 @@ loop(xs: words): iwords =
 case+ xs of
 | nil() => nil()
 | cons(x0, xs) => loop2(xs, x0, 1, nil())
-) (* end of [loop2] *)
+) (* end of [loop] *)
 
 and
 loop2
