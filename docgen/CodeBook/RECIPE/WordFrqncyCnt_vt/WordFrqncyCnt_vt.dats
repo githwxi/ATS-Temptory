@@ -91,7 +91,7 @@ case+ xs of
 |
 ~lcons(x1, xs) =>
  if
- compare(x0,x1)=0
+ (x0 = x1)
  then
  let
    val () = free(x1)

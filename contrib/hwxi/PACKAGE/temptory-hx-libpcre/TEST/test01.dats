@@ -5,16 +5,6 @@
 //
 (* ****** ****** *)
 
-(*
-##myatsccdef=\
-patscc \
--I./../.. \
--DATS_MEMALLOC_LIBC \
--o $fname($1) $1 -lpcre
-*)
-
-(* ****** ****** *)
-
 #include
 "share/HATS\
 /temptory_staload_bucs320.hats"

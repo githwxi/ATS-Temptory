@@ -61,45 +61,6 @@ regress:: test03; ./$<
 cleanall:: ; $(RMF) test03
 #
 ######
-#
-all:: \
-test04
-test04: \
-test04.dats ; \
-$(TEMPACC) -DATS_MEMALLOC_LIBC -I$(INCLUDE) -o $@ $< -lpcre
-#
-regress:: test04; ./$<
-cleanall:: ; $(RMF) test04
-#
-######
-#
-all:: \
-test05
-test05: \
-test05.dats ; \
-$(TEMPACC) -DATS_MEMALLOC_LIBC -I$(INCLUDE) -o $@ $<  -lpcre
-#
-regress:: \
-test05 ; \
-cat test05.dats | ./test05
-#
-cleanall:: ; $(RMF) test05
-#
-######
-#
-all:: \
-test06
-test06: \
-test06.dats ; \
-$(TEMPACC) -DATS_MEMALLOC_LIBC -I$(INCLUDE) -o $@ $<  -lpcre
-#
-regress:: \
-test06 ; \
-cat test06.dats | ./test06
-#
-cleanall:: ; $(RMF) test06
-#
-######
 
 RMF=rm -f
 

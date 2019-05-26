@@ -68,6 +68,7 @@ pcreptr0_extra_ptrof
 (* ****** ****** *)
 
 typedef ieqz = sint
+typedef igtez = sint
 
 (* ****** ****** *)
 //
@@ -91,7 +92,7 @@ pcre_match_substring
 ( code
 : !pcreptr0
 , subj: string(n)
-, st: sint(st), ln: sint(ln)): ieqz // endfun
+, st: sint(st), ln: sint(ln)): ieqz
 //
 (* ****** ****** *)
 //
@@ -105,6 +106,52 @@ regexp_match_substring
 ( rex: string
 , src: string(n)
 , st0: sint(st), ln0: sint(ln)): ieqz
+//
+(* ****** ****** *)
+//
+fun{}
+pcre_match2_substring
+  {n:int}
+  {st,ln:nat|st+ln <= n}
+( code
+: !pcreptr0
+, subj: string(n), st: sint(st), ln: sint(ln)
+, mbeg: &int? >> int(n0), mend: &int? >> int(n1)
+) : #[n0,n1:int | n0 <= n1; n1 <= st+ln] ieqz
+//
+(* ****** ****** *)
+//
+fun{}
+regexp_match2_string
+  {n:int}
+( rex0: string
+, subj: string(n)
+, mbeg: &int? >> int(n0)
+, mend: &int? >> int(n1)
+) : #[n0,n1:int | n0 <= n1; n1 <= n] igtez
+fun{}
+regexp_match2_substring
+  {n:int}
+  {st,ln:nat|st+ln <= n}
+(
+  rex0: string
+, subj: string(n)
+, st: sint(st), ln: sint(ln)
+, mbeg: &int? >> int(n0)
+, mend: &int? >> int(n1)
+) : #[n0,n1:int | n0 <= n1; n1 <= st+ln] igtez
+//
+(* ****** ****** *)
+//
+fun{}
+pcre_match3_substring
+  {n:int}
+  {st,ln:nat|st+ln <= n}
+( code
+: !pcreptr0
+, subj: string(n), st: sint(st), ln: sint(ln)
+, mbeg: &int? >> int(n0), mend: &int? >> int(n1), err: &int? >> int
+) : #[n0,n1:int | n0 <= n1; n1 <= st+ln] list0_vt(stropt_vt)
 //
 (* ****** ****** *)
 //

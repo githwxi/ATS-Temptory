@@ -73,6 +73,9 @@ typedef char *charptr;
 
 /* ****** ****** */
 
+#define atspre_memcpy memcpy
+#define atspre_memset memset
+
 #define atspre_strcmp strcmp
 #define atspre_strcpy strcpy
 

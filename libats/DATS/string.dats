@@ -564,6 +564,44 @@ isneqz
 )
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+g0lt_lstr_lstr
+  (cs1, cs2) =
+  (strcmp_vt(cs1, cs2) < 0)
+implement
+{}(*tmp*)
+g0gt_lstr_lstr
+  (cs1, cs2) =
+  (strcmp_vt(cs1, cs2) > 0)
+implement
+{}(*tmp*)
+g0eq_lstr_lstr
+  (cs1, cs2) =
+  (strcmp_vt(cs1, cs2) = 0)
+implement
+{}(*tmp*)
+g0lte_lstr_lstr
+  (cs1, cs2) =
+  (strcmp_vt(cs1, cs2) <= 0)
+implement
+{}(*tmp*)
+g0gte_lstr_lstr
+  (cs1, cs2) =
+  (strcmp_vt(cs1, cs2) >= 0)
+implement
+{}(*tmp*)
+g0neq_lstr_lstr
+  (cs1, cs2) =
+  (strcmp_vt(cs1, cs2) != 0)
+//
+implement
+{}(*tmp*)
+g0cmp_lstr_lstr
+(cs1, cs2) = strcmp_vt(cs1, cs2)
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
@@ -1032,6 +1070,36 @@ implement
 string1_copy_vt(cs) = 
 $UN.castvwtp0(string0_copy_vt(cs))
 
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+string1_make_substring
+  (src, st, ln) =
+(
+$UN.castvwtp0
+(string1_make_substring_vt(src, st, ln))
+)
+//
+implement
+{}(*tmp*)
+string1_make_substring_vt
+  (src, st, ln) =
+(
+$UN.castvwtp0(dst)
+) where
+{
+//
+val
+src = cptrof(src)
+val
+dst = string0_alloc<>(ln)
+//
+val () =
+$extfcall
+(void, "atspre_memcpy", dst, src+st, ln)
+} (* end of [string1_make_substring_vt] *)
+//
 (* ****** ****** *)
 
 (* end of [string.dats] *)

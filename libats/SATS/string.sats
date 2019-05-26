@@ -61,11 +61,17 @@ g0ofg1_string
 (cs: string(i)):<> string
 castfn
 g1ofg0_string
-(cs: string):<> [i:int] string(i)
+(cs: string):<> [i:nat] string(i)
 //
 #symload g0ofg1 with g0ofg1_string
 #symload g1ofg0 with g1ofg0_string
 //
+(* ****** ****** *)
+
+prfun
+lemma_string_param
+{n:int}(string(n)): [n >= 0] void
+
 (* ****** ****** *)
 //
 castfn
@@ -123,16 +129,10 @@ g0cmp_str_str
 (*
 #symload <=> with g0cmp_str_str of 10
 *)
-//
 #symload compare with g0cmp_str_str of 10
 //
-(* ****** ****** *)
-//
 fun
-strcmp
-(string, string):<> int = "mac#%"
-//
-#symload compare with strcmp of 10
+strcmp(string, string):<> sint = "mac#%"
 //
 (* ****** ****** *)
 //
@@ -307,6 +307,12 @@ g1ofg0_string_vt
 #symload g1ofg0 with g1ofg0_string_vt
 //
 (* ****** ****** *)
+
+prfun
+lemma_string_vt_param
+{n:int}(!string_vt(n)): [n >= 0] void
+
+(* ****** ****** *)
 //
 castfn
 string0_vt_ptrof
@@ -340,11 +346,37 @@ string0_vt_isneqz
 //
 (* ****** ****** *)
 //
+fun{}
+g0lt_lstr_lstr
+(!string_vt, !string_vt):<> bool
+fun{}
+g0gt_lstr_lstr
+(!string_vt, !string_vt):<> bool
+fun{}
+g0eq_lstr_lstr
+(!string_vt, !string_vt):<> bool
+fun{}
+g0lte_lstr_lstr
+(!string_vt, !string_vt):<> bool
+fun{}
+g0gte_lstr_lstr
+(!string_vt, !string_vt):<> bool
+fun{}
+g0neq_lstr_lstr
+(!string_vt, !string_vt):<> bool
+fun{}
+g0cmp_lstr_lstr
+(!string_vt, !string_vt):<> sint
+//
+#symload = with g0eq_lstr_lstr of 10
+#symload != with g0neq_lstr_lstr of 10
+#symload compare with g0cmp_lstr_lstr of 10
+(*
+#symload <=> with g0cmp_lstr_lstr of 10
+*)
 fun
 strcmp_vt
-(!string_vt, !string_vt):<> int = "mac#%"
-//
-#symload compare with strcmp_vt of 10
+(!string_vt, !string_vt):<> sint = "mac#%"
 //
 (* ****** ****** *)
 //
@@ -513,6 +545,19 @@ string1_copy_vt
 //
 #symload copy with string1_copy of 11
 #symload copy_vt with string1_copy_vt of 11
+//
+(* ****** ****** *)
+//
+fun{}
+string1_make_substring
+{n:int}
+{st,ln:nat|st+ln <= n}
+(src: string(n), st: int(st), ln: int(ln)): string(ln)
+fun{}
+string1_make_substring_vt
+{n:int}
+{st,ln:nat|st+ln <= n}
+(src: string(n), st: int(st), ln: int(ln)): string_vt(ln)
 //
 (* ****** ****** *)
 //

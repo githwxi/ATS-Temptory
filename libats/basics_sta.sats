@@ -488,6 +488,30 @@ vtypedef
 String1_vt = [n:int | n >= 1] string_vt(n)
 //
 (* ****** ****** *)
+
+absvtbox
+stropt_vt1ype = string_vt1ype
+absvtbox
+stropt_int_vt1ype(n:int) = stropt_vt1ype
+//
+sexpdef
+stropt_vt = stropt_vt1ype
+sexpdef
+stropt_vt = stropt_int_vt1ype
+//
+sexpdef
+stropt0_vt = stropt_vt1ype
+sexpdef
+stropt1_vt = stropt_int_vt1ype
+
+vtypedef
+Stropt_vt = [n:int] stropt_vt(n)
+vtypedef
+Stropt0_vt = [n:int] stropt_vt(n)
+vtypedef
+Stropt1_vt = [n:int | n >= 0] stropt_vt(n)
+
+(* ****** ****** *)
 //
 typedef
 tup2
