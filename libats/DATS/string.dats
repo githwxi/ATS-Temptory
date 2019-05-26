@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -605,11 +605,11 @@ g0cmp_lstr_lstr
 
 implement
 {}(*tmp*)
-string0_vt_size(cs) = 
+string0_vt_size(cs) =
 string0_size($UN.string0_vt2t(cs))
 implement
 {}(*tmp*)
-string0_vt_length(cs) = 
+string0_vt_length(cs) =
 string0_length($UN.string0_vt2t(cs))
 
 (* ****** ****** *)
@@ -767,7 +767,7 @@ string0_vt_foldleft1$fopr<r0>
 }
 val cp2 =
 (
-string0_vt_foldleft1<r0>(cs1, cp1)
+string0_vt_foldleft1<r0>(cs2, cp1)
 ) where
 {
 typedef r0 = cptr(char)
@@ -1063,11 +1063,11 @@ $UN.cptr0_set(cptrof(cs)+i0, c0)
 
 implement
 {}(*tmp*)
-string1_copy(cs) = 
+string1_copy(cs) =
 $UN.castvwtp0(string0_copy(cs))
 implement
 {}(*tmp*)
-string1_copy_vt(cs) = 
+string1_copy_vt(cs) =
 $UN.castvwtp0(string0_copy_vt(cs))
 
 (* ****** ****** *)
