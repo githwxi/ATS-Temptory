@@ -63,6 +63,11 @@ temptory_hx_libpcre_pcre_version() \
 /* ****** ****** */
 
 #define \
+temptory_hx_libpcre_memcpy memcpy
+
+/* ****** ****** */
+
+#define \
 temptory_hx_libpcre_pcre_free pcre_free
 #define \
 temptory_hx_libpcre_pcre_free_null pcre_free
@@ -78,6 +83,8 @@ temptory_hx_libpcre_pcre_exec pcre_exec
 temptory_hx_libpcre_pcre_study pcre_study
 #define \
 temptory_hx_libpcre_pcre_free_study pcre_free_study
+#define \
+temptory_hx_libpcre_pcre_free_study_null pcre_free_study
 
 /* ****** ****** */
 

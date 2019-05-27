@@ -26,12 +26,6 @@ println!
 /temptory-hx-libpcre/mylibies.hats"
 
 (* ****** ****** *)
-
-#include
-"$PATSHOMELOCS\
-/temptory-hx-libpcre/mylibies.hats"
-
-(* ****** ****** *)
 //
 val ret01 =
 $PCRE.regexp_match_string

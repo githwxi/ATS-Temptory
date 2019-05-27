@@ -1,0 +1,30 @@
+{
+"name":
+"temptory-hx-libpcre"
+,
+"version": "1.0.0"
+,
+"description":
+"This package is a simple API for PCRE lib"
+,
+"main": "N/A"
+,
+"scripts": {}
+,
+"keywords": [
+    "ATS",
+    "PCRE",
+    "Temptory"
+  ]
+,
+"author": "Hongwei Xi <gmhwxi@gmail.com>"
+,
+"license": "MIT"
+,
+"note-for-me": "The package is stored at ${TEMPTORY}/contrib/hwxi/PACKAGE/."
+,
+"repository": {
+  "url":
+  "https://github.com/ats-lang/ATS-Temptory/tree/master/contrib/hwxi/PACKAGE/temptory-hx-libpcre"
+}
+}
