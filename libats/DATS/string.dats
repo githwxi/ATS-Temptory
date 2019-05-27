@@ -788,6 +788,29 @@ end // end of [string0_vt_append]
 
 implement
 {}(*tmp*)
+string0_vt_map0
+  (cs) =
+(
+let
+val
+res =
+(
+string0_vt_map1<>(cs)
+) where
+{
+implement
+string0_vt_map1$fopr<>(c0) =
+string0_vt_map0$fopr<>(c0)
+}
+in
+let val () = string0_vt_free(cs) in res end
+end
+) (* end of [string0_vt_map0] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 string0_vt_map1
   (cs) =
 (

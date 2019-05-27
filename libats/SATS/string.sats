@@ -92,7 +92,7 @@ fun{}
 string0_isneqz(string):<> bool
 //
 #symload iseqz with string0_iseqz
-#symload iseqz with string0_isneqz
+#symload isneqz with string0_isneqz
 //
 (* ****** ****** *)
 //
@@ -342,7 +342,7 @@ string0_vt_isneqz
 (cs: !string_vt):<> bool
 //
 #symload iseqz with string0_vt_iseqz
-#symload iseqz with string0_vt_isneqz
+#symload isneqz with string0_vt_isneqz
 //
 (* ****** ****** *)
 //
@@ -425,6 +425,14 @@ fun{}
 string0_vt_append
 ( cs2: !string_vt
 , cs1: !string_vt): string_vt
+//
+(* ****** ****** *)
+//
+fun{}
+string0_vt_map0
+(src: string_vt): string_vt
+fun{}
+string0_vt_map0$fopr(char): char
 //
 (* ****** ****** *)
 //

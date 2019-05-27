@@ -48,9 +48,9 @@ pcre_extra =
 $extype"temptory_hx_pcre_extra"
 *)
 //
-absvtflt pcreptr0 =
+absvtbox pcreptr0 =
   $extype"temptory_hx_pcreptr"
-absvtflt pcreptr0_extra =
+absvtbox pcreptr0_extra =
   $extype"temptory_hx_pcreptr_extra"
 //
 (* ****** ****** *)
@@ -98,14 +98,14 @@ pcre_match_substring
 //
 fun{}
 regexp_match_string
-(rex: string, src: string): ieqz
+(rexp: string, subj: string): ieqz
 fun{}
 regexp_match_substring
 {n:int}
 {st,ln:nat|st+ln <= n}
-( rex: string
-, src: string(n)
-, st0: sint(st), ln0: sint(ln)): ieqz
+( rexp: string
+, subj: string(n), st: sint(st), ln: sint(ln)
+) : ieqz // end of [regexp_match_substring]
 //
 (* ****** ****** *)
 //
@@ -124,7 +124,7 @@ pcre_match2_substring
 fun{}
 regexp_match2_string
   {n:int}
-( rex0: string
+( rexp: string
 , subj: string(n)
 , mbeg: &int? >> int(n0)
 , mend: &int? >> int(n1)
@@ -133,8 +133,7 @@ fun{}
 regexp_match2_substring
   {n:int}
   {st,ln:nat|st+ln <= n}
-(
-  rex0: string
+( rexp: string
 , subj: string(n)
 , st: sint(st), ln: sint(ln)
 , mbeg: &int? >> int(n0)
@@ -152,6 +151,42 @@ pcre_match3_substring
 , subj: string(n), st: sint(st), ln: sint(ln)
 , mbeg: &int? >> int(n0), mend: &int? >> int(n1), err: &int? >> int
 ) : #[n0,n1:int | n0 <= n1; n1 <= st+ln] list0_vt(stropt_vt)
+//
+(* ****** ****** *)
+//
+fun{}
+regexp_match3_string
+  {n:int}
+( rexp: string
+, subj: string(n)
+, mbeg: &int? >> int(n0)
+, mend: &int? >> int(n1), err: &int? >> int
+) : #[n0,n1:int|n0 <= n1; n1 <= n] list0_vt(stropt_vt)
+//
+fun{}
+regexp_match3_substring
+  {n:int}
+  {st,ln:nat|st+ln <= n}
+( rexp: string
+, subj: string(n)
+, st: sint(st), ln: sint(ln)
+, mbeg: &int? >> int(n0)
+, mend: &int? >> int(n1), err: &int? >> int
+) : #[n0,n1:int|n0 <= n1; n1 <= st+ln] list0_vt(stropt_vt)
+//
+(* ****** ****** *)
+//
+fun{}
+regexp_match3_string_easy
+( rexp: string
+, subj: string): optn0_vt(list0_vt(stropt_vt))
+fun{}
+regexp_match3_substring_easy
+  {n:int}
+  {st,ln:nat|st+ln <= n}
+( rexp: string
+, subj: string(n)
+, st: sint(st), ln: sint(ln)): optn0_vt(list0_vt(stropt_vt))
 //
 (* ****** ****** *)
 //

@@ -266,5 +266,17 @@ string0_vt_print
 #symload print with string0_vt_print
 //
 (* ****** ****** *)
+//
+fun{}
+stropt0_print
+(opt: stropt): void
+fun{}
+stropt0_vt_print
+(opt: !stropt_vt): void
+//
+#symload print with stropt0_print
+#symload print with stropt0_vt_print
+//
+(* ****** ****** *)
 
 (* end of [print.sats] *)

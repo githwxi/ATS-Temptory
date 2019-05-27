@@ -38,8 +38,15 @@
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/glseq.sats"
 //
+(* ****** ****** *)
+//
 #staload "./../SATS/print.sats"
 #staload "./../SATS/stdio.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/string.sats"
+#staload "./../SATS/stropt.sats"
 //
 (* ****** ****** *)
 
@@ -343,6 +350,26 @@ print_string($UN.string0_vt2t(cs))
 implement
 print$val<string_vt>(cs) = string0_vt_print<>(cs)
 
+(* ****** ****** *)
+
+implement
+stropt0_print<>(opt) =
+if
+iseqz(opt)
+then
+print_ptr($UN.stropt0_unnone(opt))
+else
+print_string($UN.stropt0_unsome(opt))
+//
+implement
+stropt0_vt_print<>(opt) =
+stropt0_print($UN.stropt0_vt2t(opt))
+//
+implement
+print$val<stropt>(opt) = stropt0_print<>(opt)
+implement
+print$val<stropt_vt>(opt) = stropt0_vt_print<>(opt)
+//
 (* ****** ****** *)
 
 (* end of [print.dats] *)

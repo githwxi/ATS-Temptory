@@ -30,6 +30,8 @@
 "libats/SATS/gptr.sats"
 #staload
 "libats/SATS/string.sats"
+#staload
+"libats/SATS/stropt.sats"
 //
 #staload
 UN = "libats/SATS/unsafe.sats"
@@ -70,10 +72,13 @@ $UN.castvwtp0{pcreptr0_extra}(0)
 //
 val subj2 =
 $UN.cast{arrayref(char,st+ln)}(subj)
-val length = st+ln and offset = st and options = 0
-val optvec = $UN.cast{arrayref(int,0)}(0)
+//
+val length = st+ln
+val offset = st and options = 0
+val offvec = $UN.cast{arrayref(int,0)}(0)
+//
 val ret =
-  pcre_exec(code, extra, subj2, length, offset, options, optvec, 0)
+pcre_exec(code, extra, subj2, length, offset, options, offvec, 0)
 //
 prval ((*void*)) = $UN.cast2void(extra)
 //
@@ -118,7 +123,9 @@ in
 if
 isneqz(codep)
 then
-rets where
+(
+  rets
+) where
 {
   val
   rets =
@@ -133,6 +140,13 @@ end // end of [if]
 end // end of [regexp_match_substring]
 
 (* ****** ****** *)
+
+local
+
+#define BSZ1 16
+#define BSZ3 48
+
+in(*in-of-local*)
 
 implement
 {}(*tmp*)
@@ -153,23 +167,28 @@ $UN.castvwtp0{pcreptr0_extra}(0)
 val subj2 =
 $UN.cast{arrayref(char,st+ln)}(subj)
 //
-val length = st+ln and offset = st and options = 0
+val length = st+ln
+val offset = st and options = (0)
 //
 (*
 HX: is [16] adequate?
+HX: the last 1/3 cannot be used!!!
 *)
-var int3 = @[int][48]()
-val optvec =
-$UN.cast{arrayref(int,48)}(addr@int3)
+var int3 = @[int][BSZ3]()
+val offvec =
+$UN.cast{arrayref(int,BSZ3)}(addr@int3)
 //
 val
 retval =
 pcre_exec
 (
-  code, extra
-, subj2, length, offset, options, optvec, 48
+  code
+, extra
+, subj2, length
+, offset, options, offvec, BSZ3(* =48 *)
 ) (* end of [val] *)
-val ((*void*)) = pcre_free_study_null(extra)
+val ((*freed*)) = pcre_free_study_null(extra)
+//
 val
 [n0:int] mbeg_ =
 (
@@ -229,7 +248,9 @@ in
 if
 isneqz(codep)
 then
-rets where
+(
+  rets
+) where
 {
   val
   rets =
@@ -247,13 +268,14 @@ in
 end // end of [else] // end of [if]
 //
 end // end of [regexp_match2_substring]
-////
+
+end // end of [local]
+
 (* ****** ****** *)
 
-(*
 local
 
-#define BSZ 16
+#define BSZ1 16
 #define BSZ3 48
 
 vtypedef
@@ -262,130 +284,272 @@ res_vt = list0_vt(stropt_vt)
 extern
 fun
 memcpy
-(
-  ptr, ptr, size_t
-) : ptr = "mac#temptory_hx_libpcre_memcpy"
+( dst: cptr(char)
+, src: cptr(char), length: size
+) : void = "mac#temptory_hx_libpcre_memcpy"
 // end of [memcpy]
-
-fun
-auxlst
-(
-  subject: string
-, p0: ptr, ret: int
-) : res_vt = let
-//
-fun aux
-(
-  b: int, e: int
-) : Strptr0 = let
-//
-val n = $UN.cast{Size}(e-b)
-val n1 = g1uint_succ_size (n)
-val (pf, pfgc | p) = malloc_gc (n1)
-//
-val p = memcpy
-  (p, ptr_add<char>(string2ptr(subject), b), n)
-//
-val p_n = ptr_add<char> (p, n)
-val ((*void*)) = $UN.ptr0_set<char> (p_n, '\000')
-//
-in
-  $UN.castvwtp0((pf, pfgc | p))
-end // end of [aux]
-//
-val ret1 =
-(
-if ret = 0
-  then BSZ-1 else ret-1
-) : int // end of [ret1]
-val p2 = ptr_add<int> (p0, 2)
-//
-fun loop
-(
-  p: ptr, i: int, res: &ptr? >> res_vt
-) : void =
-  if i < ret1 then let
-    val b = $UN.ptr0_get<int> (p)
-    val p = ptr_succ<int> (p)
-    val e = $UN.ptr0_get<int> (p)
-    val p = ptr_succ<int> (p)
-    val be = (
-    if b >= 0
-      then aux (b, e) else strptr_null ()
-    // end of [if]
-    ) : Strptr0 // end of [val]
-    val () = res := list_vt_cons{Strptr0}{0}(be, _)
-    val+list_vt_cons (_, res1) = res
-    val ((*void*)) = loop (p, i+1, res1)
-  in
-    fold@ (res)
-  end else (
-    res := list_vt_nil(*void*)
-  ) (* end of [if] *)
-//
-var res: ptr
-val () = loop (p2, 0, res)
-//
-in
-  res
-end // end of [auxlst]
 
 in (* in of [local] *)
 
 implement
+{}(*tmp*)
 pcre_match3_substring
   {n}{st,ln}
-(
-  code, subject, st, ln
-, matched_beg, matched_end, err
-) = let
+( code
+, subj, st, ln
+, mbeg, mend, err) = let
 //
-prval () = lemma_g1uint_param(st)
-prval () = lemma_g1uint_param(ln)
+fun
+auxlst
+( subj
+: string
+, cp
+: cptr(int)
+, ret: int): res_vt = let
+//
+fun
+auxone
+(
+b0: int, e0: int
+) : string_vt = let
+//
+val n0 =
+$UN.cast{size}(e0-b0)
+val p1 = string0_alloc(n0)
+//
+val p0 = cptrof(subj)
+val b0 = $UN.cast{uint}(b0)
+//
+in
+//
+let
+val () =
+  memcpy(p1, p0+b0, n0)
+in
+  $UN.castvwtp0{string_vt}(p1)
+end
+//
+end // end of [aux]
+//
+val
+ret =
+(
+if ret = 0
+  then BSZ1-1 else ret-1
+) : int // end of [ret1]
+//
+fun
+loop
+( cp: cptr(int)
+, i0: int, res: &ptr? >> res_vt
+) : void =
+  if
+  (i0 < ret)
+  then let
+    val b0 =
+    $UN.cptr0_get<int>(cp)
+    val e0 =
+    $UN.cptr0_get<int>(cp+1)
+    val be =
+    (
+    if
+    (b0 < 0)
+    then
+    stropt0_vt_none()
+    else
+    stropt0_vt_some(auxone(b0, e0))
+    // end of [if]
+    ) : stropt_vt // end of [val]
+    val () =
+    (
+    res :=
+    list0_vt_cons{stropt_vt}(be, _)
+    )
+    val+list0_vt_cons(_, res1) = res
+  in
+    loop(cp+2, i0+1, res1); fold@(res)
+  end
+  else (res := list0_vt_nil((*void*)))
+//
+in
+  let var res: ptr? in loop(cp + 2, 0, res); res end
+end // end of [auxlst]
 //
 val
 extra =
-$UN.castvwtp0{pcreptr_extra(null)}(0)
+$UN.castvwtp0
+{pcreptr0_extra}(0)
 val
-subject2 =
-$UN.cast{arrayref(char, st+ln)}(subject)
+subj2 =
+$UN.cast
+{arrayref(char, st+ln)}(subj)
 //
-val length = sz2i(st+ln)
-val startoffset = sz2i(st)
-val options = 0u
-var int3 = @[int][BSZ3]() // HX: is [16] adequate?
-val ovector = $UN.cast{arrayref(int,BSZ3)}(addr@int3)
-val ret = pcre_exec
+val length = st+ln
+val offset = st and options = (0)
+//
+// HX: is [16] adequate?
+//
+var int3 = @[int][BSZ3]()
+val offvec =
+$UN.cast{arrayref(int,BSZ3)}(addr@int3)
+//
+val ret =
+pcre_exec
 (
-  code, extra, subject2, length, startoffset, options, ovector, BSZ3
+  code
+, extra
+, subj2, length
+, offset, options, offvec, BSZ3 (* =48 *)
 ) (* end of [val] *)
-prval ((*void*)) = pcre_free_study_null (extra)
+val ((*void*)) = pcre_free_study_null(extra)
 //
-val () = err := ret
+val () =
+(err := ret)
 //
-val [n0:int] _beg =
+val
+[n0:int] mbeg_ =
 (
-  if ret >= 0 then $UN.cast{Int}(int3.[0]) else ~1
+if ret >= 0
+  then $UN.cast{Int}(int3.[0]) else (~1)
 ) : Int // end of [val]
-val [n1:int] _end =
+val
+[n1:int] mend_ =
 (
-  if ret >= 0 then $UN.cast{Int}(int3.[1]) else ~1
+if ret >= 0
+  then $UN.cast{Int}(int3.[1]) else (~1)
 ) : Int // end of [val]
 //
-val () = matched_beg := _beg and () = matched_end := _end
+val () = mbeg := mbeg_ and () = mend := mend_
 //
 prval () =
-__assert() where
-{
-  extern praxi __assert(): [n0 <= n1; n1 <= st+ln] void
-} (* end of [prval] *)
+$UN.prop_assert{n0 <= n1&&n1 <= st+ln}((*void*))
 //
 in
-  if ret >= 0 then auxlst(subject, addr@int3, ret) else list_vt_nil(*void*)
+let
+val cp0 = ptr2cptr{int}(addr@int3)
+in
+  if ret >= 0 then auxlst(subj, cp0, ret) else list0_vt_nil(*void*)
+end
 end // end of [pcre_match3_substring]
 
 end // end of [local]
-*)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+regexp_match3_string
+( rexp
+, subj
+, mbeg, mend, err
+) = let
+//
+val st = (0)
+and ln = length(subj)
+//
+in
+//
+regexp_match3_substring
+(
+  rexp, subj, st, ln, mbeg, mend, err
+) (* regexp_match3_substring *)
+//
+end // end of [regexp_match3_string]
+
+implement
+{}(*tmp*)
+regexp_match3_substring
+( rexp
+, subj, st, ln
+, mbeg, mend, err ) = let
+//
+var errptr: ptr
+var erroff: int
+val tablep = ptr0_null()
+//
+val code =
+pcre_compile
+(rexp, 0(*opts*), errptr, erroff, tablep)
+//
+val codep = ptrof(code)
+//
+in
+//
+if
+isneqz(codep)
+then
+let
+val () = pcre_free(code) in rets
+end where
+{
+  val
+  rets =
+  pcre_match3_substring
+  (code, subj, st, ln, mbeg, mend, err)
+} (* end of [then] *)
+else let
+  val () = err := ~1
+  val () = mbeg := ~1
+  and () = mend := ~1
+  val ((*freed*)) = pcre_free_null(code)
+in
+  list0_vt_nil((*void*))
+end // end of [else] // end of [if]
+//
+end // end of [regexp_match3_substring]
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+regexp_match3_string_easy
+(rexp, subj) = let
+//
+val subj = g1ofg0(subj)
+//
+in
+regexp_match3_substring_easy(rexp, subj, 0, length(subj))
+end // end of [regexp_match3_string_easy]
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+regexp_match3_substring_easy
+(rexp, subj, st, ln) = let
+//
+var mbeg: int?
+and mend: int?
+var err0: int?
+//
+val rets =
+regexp_match3_substring
+(rexp, subj, st, ln, mbeg, mend, err0)
+//
+in
+//
+if
+(err0 >= 0)
+then
+optn0_vt_some(rets)
+else
+(
+optn0_vt_none(*void*)
+) where
+{
+val () = loop(rets) where
+{
+fun
+loop(xs: list0_vt(stropt_vt)): void =
+(
+  case+ xs of
+  | ~list0_vt_nil() => ()
+  | ~list0_vt_cons(x, xs) => (stropt0_vt_free(x); loop(xs))
+)
+} (* end of [val] *)
+} (* end of [else] *)
+//
+end // end of [regexp_match3_string_easy]
 
 (* ****** ****** *)
 

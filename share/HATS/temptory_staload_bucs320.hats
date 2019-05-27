@@ -53,6 +53,8 @@ TEMPLIB_targetloc
 #staload
 "libats/SATS/string.sats"
 #staload
+"libats/SATS/stropt.sats"
+#staload
 "libats/SATS/stream.sats"
 //
 (* ****** ****** *)
@@ -120,6 +122,8 @@ TEMPLIB_targetloc
 "libats/DATS/float.dats"
 #staload _ =
 "libats/DATS/string.dats"
+#staload _ =
+"libats/DATS/stropt.dats"
 #staload _ =
 "libats/DATS/stream.dats"
 //

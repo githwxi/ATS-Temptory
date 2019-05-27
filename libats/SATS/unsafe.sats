@@ -91,6 +91,22 @@ castvwtp1
 (* ****** ****** *)
 //
 castfn
+stropt0_unnone
+(t0: stropt):<> ptr0
+castfn
+stropt0_unsome
+(t0: stropt):<> string
+//
+castfn
+stropt0_vt_unnone
+(t0: stropt_vt):<> ptr0
+castfn
+stropt0_vt_unsome
+(t0: stropt_vt):<> string_vt
+//
+(* ****** ****** *)
+//
+castfn
 string0_t2vt
 (cs: string0):<> string0_vt
 castfn
@@ -105,6 +121,16 @@ castfn
 string1_vt2t
 {n:int}
 (cs: !string1_vt(n)):<> string1(n)
+//
+(* ****** ****** *)
+//
+castfn
+stropt0_vt2t
+(cs: !stropt0_vt):<> stropt0
+castfn
+stropt1_vt2t
+{n:int}
+(cs: !stropt1_vt(n)):<> stropt1(n)
 //
 (* ****** ****** *)
 
