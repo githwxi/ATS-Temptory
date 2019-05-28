@@ -35,11 +35,18 @@
 //
 #staload
 "libats/SATS/gint.sats"
+//
 #staload
 "libats/SATS/string.sats"
+//
+#staload
+"libats/SATS/list.sats"
 #staload
 "libats/SATS/list_vt.sats"
-
+//
+#staload
+"libats/SATS/tuple.sats"
+//
 (* ****** ****** *)
 
 #staload
@@ -66,19 +73,19 @@ primplmnt prop_verify_add() = ()
 
 implement
 {a}(*tmp*)
-lazy_force (lazyval) = !lazyval
+lazy_force(lazyval) = !lazyval
 implement
 {a}(*tmp*)
-lazy_vt_force (lazyval) = !lazyval
+lazy_vt_force(lazyval) = !lazyval
 
 (* ****** ****** *)
 
 primplmnt
-unit_v_elim (pf) = let
+unit_v_elim(pf) = let
   prval unit_v() = pf in (*nothing*)
 end // end of [unit_v_elim]
 primplmnt
-unit_vt_elim (pf) = let
+unit_vt_elim(pf) = let
   prval ~unit_vt() = pf in (*nothing*)
 end // end of [unit_v_elim]
 
@@ -267,6 +274,14 @@ implement
 gequal$val(x1, x2) =
 (gcompare$val<a>(x1, x2) = 0)
 //
+implement
+(a:tflt)
+gequal$val<list0(a)>
+  (xs, ys) =
+(
+  $effmask_all(list0_equal<a>(xs, ys))
+)
+//
 (* ****** ****** *)
 //
 implement
@@ -301,6 +316,34 @@ gcompare$val<string_vt>
   and cs2 = $UN.string0_vt2t(cs2)
 }
 //
+(* ****** ****** *)
+//
+implement
+(a:tflt)
+gcompare$val<list0(a)>
+  (xs, ys) =
+(
+  $effmask_all
+  (list0_compare<a>(xs, ys))
+)
+//
+(* ****** ****** *)
+
+implement
+(a0,a1:tflt)
+gcompare$val<tup(a0,a1)>
+  (xs, ys) =
+(
+  (tuple2_compare<a0,a1>(xs, ys))
+)
+implement
+(a0,a1,a2:tflt)
+gcompare$val<tup(a0,a1,a2)>
+  (xs, ys) =
+(
+  tuple3_compare<a0,a1,a2>(xs, ys)
+)
+
 (* ****** ****** *)
 
 (* end of [basics.dats] *)

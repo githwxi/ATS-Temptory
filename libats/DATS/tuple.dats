@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,25 +28,76 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: February, 2019
+// Start Time: May, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#define
-ATS_PACKNAME "temptory."
-#define
-ATS_EXTERN_PREFIX "temptory_"
-
-(* ****** ****** *)
 //
-fun
-bool0_neg(bool):<> bool = "mac#%"
-//
-#symload ~ with bool0_neg of 10
-#symload not with bool0_neg of 10
-#symload neg with bool0_neg of 10
+#staload "./../SATS/gint.sats"
+#staload "./../SATS/bool.sats"
+#staload "./../SATS/tuple.sats"
 //
 (* ****** ****** *)
+//
+implement
+{a0,a1}
+tuple2_equal(xs, ys) =
+let
+val ans =
+gequal$val<a0>(xs.0, ys.0)
+in
+if ~ans then ans else gequal$val<a1>(xs.1, ys.1)
+end (* end of [tuple2_equal] *)
+implement
+{a0,a1}
+tuple2_compare(xs, ys) =
+let
+val sgn =
+gcompare$val<a0>(xs.0, ys.0)
+in
+if sgn != 0 then sgn else gcompare$val<a1>(xs.1, ys.1)
+end (* end of [tuple2_compare] *)
+//
+(* ****** ****** *)
+//
+implement
+{a0,a1,a2}
+tuple3_equal(xs, ys) =
+let
+val ans =
+gequal$val<a0>(xs.0, ys.0)
+in
+if
+~ans
+then ans
+else let
+val ans =
+gequal$val<a1>(xs.1, ys.1)
+in
+if
+~ans then ans else gequal$val<a2>(xs.2, ys.2)
+end
+end (* end of [tuple3_equal] *)
+//
+implement
+{a0,a1,a2}
+tuple3_compare(xs, ys) =
+let
+val sgn =
+gcompare$val<a0>(xs.0, ys.0)
+in
+if
+sgn != 0
+then sgn
+else let
+val sgn =
+gcompare$val<a1>(xs.1, ys.1)
+in
+if
+sgn != 0 then sgn else gcompare$val<a2>(xs.2, ys.2)
+end
+end (* end of [tuple3_compare] *)
+//
+(* ****** ****** *)
 
-(* end of [bool.sats] *)
+(* end of [tuple.dats] *)

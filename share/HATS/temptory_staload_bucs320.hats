@@ -49,6 +49,9 @@ TEMPLIB_targetloc
 "libats/SATS/optn.sats"
 //
 #staload
+"libats/SATS/tuple.sats"
+//
+#staload
 "libats/SATS/float.sats"
 #staload
 "libats/SATS/string.sats"
@@ -117,6 +120,9 @@ TEMPLIB_targetloc
 "libats/DATS/list.dats"
 #staload _ =
 "libats/DATS/optn.dats"
+//
+#staload
+"libats/DATS/tuple.dats"
 //
 #staload _ =
 "libats/DATS/float.dats"

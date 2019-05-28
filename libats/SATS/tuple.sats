@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,25 +28,38 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: February, 2019
+// Start Time: May, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
 #define
 ATS_PACKNAME "temptory."
 #define
 ATS_EXTERN_PREFIX "temptory_"
-
+//
 (* ****** ****** *)
 //
 fun
-bool0_neg(bool):<> bool = "mac#%"
+{a0,a1:tflt}
+tuple2_equal
+(tup(a0, a1), tup(a0, a1)):<> bool
+fun
+{a0,a1:tflt}
+tuple2_compare
+(tup(a0, a1), tup(a0, a1)):<> sint
 //
-#symload ~ with bool0_neg of 10
-#symload not with bool0_neg of 10
-#symload neg with bool0_neg of 10
+(* ****** ****** *)
+//
+fun
+{a0,a1,a2:tflt}
+tuple3_equal
+(tup(a0, a1, a2), tup(a0, a1, a2)):<> bool
+fun
+{a0,a1,a2:tflt}
+tuple3_compare
+(tup(a0, a1, a2), tup(a0, a1, a2)):<> sint
 //
 (* ****** ****** *)
 
-(* end of [bool.sats] *)
+(* end of [tuple.sats] *)

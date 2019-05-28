@@ -1035,6 +1035,80 @@ gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
 
 implement
 {a}(*tmp*)
+list0_equal
+  (xs, ys) =
+(
+  loop(xs, ys)
+) where
+{
+fun
+loop
+( xs: list0(a)
+, ys: list0(a)): bool =
+(
+case+ xs of
+| list0_nil() =>
+  (
+  case+ ys of
+  | list0_nil() => true
+  | list0_cons _ => false
+  )
+| list0_cons(x0, xs) =>
+  (
+  case+ ys of
+  | list0_nil() => true
+  | list0_cons(y0, ys) =>
+    let
+      val ans =
+      gequal$val<a>(x0, y0)
+    in
+      if ans then loop(xs, ys) else false
+    end
+  )
+) (* end of [loop] *)
+} (* end of [list0_equal] *)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+list0_compare
+  (xs, ys) =
+(
+  loop(xs, ys)
+) where
+{
+fun
+loop
+( xs: list0(a)
+, ys: list0(a)): sint =
+(
+case+ xs of
+| list0_nil() =>
+  (
+  case+ ys of
+  | list0_nil _ => 0
+  | list0_cons _ => ~1
+  )
+| list0_cons(x0, xs) =>
+  (
+  case+ ys of
+  | list0_nil _ => 1
+  | list0_cons(y0, ys) =>
+    let
+      val sgn =
+      gcompare$val<a>(x0, y0)
+    in
+      if sgn != 0 then sgn else loop(xs, ys)
+    end
+  )
+) (* end of [loop] *)
+} (* end of [list0_compare] *)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
 list0_mergesort$cmp
 (x1, x2) = gcompare$val<a>(x1, x2)
 implement

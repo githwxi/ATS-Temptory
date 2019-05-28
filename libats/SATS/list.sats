@@ -478,6 +478,20 @@ list0_imap_stream
 //
 fun
 {a:tflt}
+list0_equal
+(xs: list0(a), ys: list0(a)): bool
+fun
+{a:tflt}
+list0_compare
+(xs: list0(a), ys: list0(a)): sint
+//
+#symload = with list0_equal
+#symload compare with list0_compare
+//
+(* ****** ****** *)
+//
+fun
+{a:tflt}
 list0_mergesort
   (xs: list0(INV(a))): list0(a)
 fun
