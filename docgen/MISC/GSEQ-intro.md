@@ -1,17 +1,22 @@
 # Verbs for Sequencial Processing
 
-* listize
+* listize:
   For turning a sequence into a linear list
 
-* streamize
+* streamize:
   For turning a sequence into a linear stream
 
-* forall
-  For processing a sequence 
+* forall:
+  For processing a sequence in its entirety or
+  until the processing function returns false.
 
-
-* foreach
+* foreach:
+  For processing a sequence in its entirety
+  
 * foldleft
+  For processing a sequence in its entirety and returns
+  the accumulated result at the end
+  
 * map_list
 * map_rlist
 * map_stream
