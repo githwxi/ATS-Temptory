@@ -32,9 +32,9 @@ fun
 list0_fequal
 (xs: list0(a), ys: list0(a), eq: (a, a) -> bool): bool
 
-This is a workable solution but suffers from the requirement
-that each caller must pass explicitly a function argument
-(for testing equality on elements in the two given lists).
+This is a workable solution but suffers from the requirement that each
+caller of `list0_fequal` must pass to it explicitly a function
+argument (for testing equality on elements in the two given lists).
 
 There is a template-based solution to implementing equality test on
 lists. In Temptory, the template `gequal$val` is given the following
@@ -46,10 +46,8 @@ fun
 gequal$val(a, a): bool
 ```
 
-This template can be ea
-
-For instance, we can define as follows a function `list0_equal` to
-test if two given lists are equal:
+We can define as follows a function `list0_equal` to test whether two
+given lists are equal:
 
 ```ats
 extern
@@ -61,14 +59,12 @@ implement
 {a}(*tmp*)
 list0_equal
   (xs, ys) =
-(
-  loop(xs, ys)
-) where
+( loop(xs, ys) ) where
 {
 fun
 loop
 ( xs: list0(a)
-, ys: list0(a)): bool =
+, ys: list0(a) ): bool =
 (
 case+ xs of
 | list0_nil() =>
@@ -92,3 +88,9 @@ case+ xs of
 ) (* end of [loop] *)
 } (* end of [list0_equal] *)
 ```
+
+Note that `gequal$val` is already given a standard implementation on
+basic types like int, bool, char, string, etc. If `list0_equal` is
+called on two lists of the type `list0(int)`, the compiler can
+automatically find an implementation of `gequal$val<int>` needed for
+compiling `list0_equal<int>`.
