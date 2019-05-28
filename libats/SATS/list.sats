@@ -479,11 +479,11 @@ list0_imap_stream
 fun
 {a:tflt}
 list0_equal
-(xs: list0(a), ys: list0(a)): bool
+(list0(INV(a)),list0(INV(a))): bool
 fun
 {a:tflt}
 list0_compare
-(xs: list0(a), ys: list0(a)): sint
+(list0(INV(a)),list0(INV(a))): sint
 //
 #symload = with list0_equal
 #symload compare with list0_compare

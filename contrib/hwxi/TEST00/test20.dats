@@ -45,4 +45,4 @@ val ( ) = A0[3] := nil_vt()
 
 (* ****** ****** *)
 
-(* end of [test19.dats] *)
+(* end of [test20.dats] *)

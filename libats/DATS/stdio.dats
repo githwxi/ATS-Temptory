@@ -115,8 +115,9 @@ $extfcall
 implement
 fprint$val<bool>(out, x) =
 (
-  $extfcall
-  (void, "atspre_fprintf", out, rep)
+$extfcall
+( void
+, "atspre_fprintf", out, "%s", rep)
 ) where
 {
   val rep =
