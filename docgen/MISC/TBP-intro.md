@@ -2,29 +2,29 @@
 
 Template-Based Programming (TBP) advocates the use of (function)
 templates in place of functions. A template generalizes the notion of
-function to support a form of (extreme) late-binding. Conceptually,
-one may think of templates as functions containing knobs or switches
-inside their bodies that can be controlled contextually at compile-time. 
+function to support a form of late-binding at compile-time.
+Conceptually, one may think of templates as functions containing knobs
+or switches inside their bodies that can be controlled from the
+outside.
 
 Various aspects of templates have already appeared in languages such
 as LISP (macros), Haskell (type classes), Scala (implicits), etc. One
 may also see the way in which a template instance (that is, a call of
-the template) is finalized (at compile-time) direcly corresponds to a
+the template) is finalized (at compile-time) corresponds direcly to a
 method in an object being dispatched (at run-time).
 
-## Some Motivating Examples for Templates
+There are plenty of motivation examples for example. For the moment,
+let us take a look at equality types in Standard ML (SML).
 
-### Equality Types in SML
-
-The notion of equality types in SML may be seen as the origin of
-type classes in Haskell. Basically, an equality type in SML is one
-that supports polymorphic equality (=), which is given the type `''a *
-''a -> bool` (instead of `'a * 'a -> bool`). In other words, a type
-variable `''a` can only be instantiated with an equality type.
-
-There is no polymorphic equality in Temptory. In order to test
-whether two given lists are equal, one could try to implement a
-function template of the following type:
+The notion of equality types in SML may be seen as the origin of type
+classes in Haskell. Basically, an equality type in SML is one that
+supports polymorphic equality (=), which is given the type `''a * ''a
+-> bool` (instead of `'a * 'a -> bool`). In other words, a type variable
+`''a` can only be instantiated with an equality type.
+  
+There is no polymorphic equality in Temptory. In order to test whether
+two given lists (of the same generic type) are equal, one could try to
+implement a function template of the following type:
 
 extern
 fun
@@ -32,13 +32,14 @@ fun
 list0_fequal
 (xs: list0(a), ys: list0(a), eq: (a, a) -> bool): bool
 
-This is a workable solution but suffers from the requirement that each
-caller of `list0_fequal` must pass to it explicitly a function
-argument (for testing equality on elements in the two given lists).
+This is a workable solution based on higher-order function
+but it suffers from the requirement that each caller of `list0_fequal`
+must pass to it explicitly a function argument (for testing equality
+on elements in the two given lists).
 
 There is a template-based solution to implementing equality test on
-lists. In Temptory, the template `gequal$val` is given the following
-interface:
+lists. In Temptory, the name `gequal$val` refers to a template of the
+following interface:
 
 ```ats
 fun
@@ -47,7 +48,7 @@ gequal$val(a, a): bool
 ```
 
 We can define as follows a function `list0_equal` to test whether two
-given lists are equal:
+given lists are equal by calling `gequal$val` to test equality on elements:
 
 ```ats
 extern
@@ -92,5 +93,5 @@ case+ xs of
 Note that `gequal$val` is already given a standard implementation on
 basic types like int, bool, char, string, etc. If `list0_equal` is
 called on two lists of the type `list0(int)`, the compiler can
-automatically find an implementation of `gequal$val<int>` needed for
+*automatically* find an implementation of `gequal$val<int>` needed for
 compiling `list0_equal<int>`.
