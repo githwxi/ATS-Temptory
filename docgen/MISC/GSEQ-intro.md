@@ -1,10 +1,12 @@
-# Verbs for Sequencial Processing
+# Verbs for Sequencial Batch-Processing
 
 When teaching functional programming, I often get a question like:
 How can one access an element in a list when given the index of the
 element? It is mostly likely that the person who asks this question
 is still of a mentality that focuses on what I call individual-processing
-(instead of batch-processing).
+(instead of batch-processing). Temptory advocates batch-processing.
+I list as follows some common verbs and their variations in the context
+of batch-processing elements in sequences.
   
 * listize:
   For turning a given sequence into a linear list
