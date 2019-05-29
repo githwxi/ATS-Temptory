@@ -20,7 +20,8 @@ The notion of equality types in SML may be seen as the origin of type
 classes in Haskell. Basically, an equality type in SML is one that
 supports polymorphic equality (=), which is given the type `''a * ''a
 -> bool` (instead of `'a * 'a -> bool`). In other words, a type variable
-`''a` can only be instantiated with an equality type.
+`''a` can only be instantiated with an equality type (where a special
+function is designated for testing equality on elements of this type).
   
 There is no polymorphic equality in Temptory. In order to test whether
 two given lists (of the same generic type) are equal, one could try to
