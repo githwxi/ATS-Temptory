@@ -114,3 +114,13 @@ mean that there is an implementation of `verb2` in the GSEQ package
 that depends on `verb1`. In other words, `verb2` is available for use
 as long as `verb1` is implemented. In the terms of OOP, one may see
 `verb2` as a method whose implementation calls anther method `verb1`.
+
+* forall < foreach
+* foreach < foldleft
+* map_list < foldleft
+* map_rlist < foldleft
+* iforall < forall
+* iforeach < iforall
+* ifoldleft < iforeach
+* rforall < rforeach
+* rforeach < foldright
