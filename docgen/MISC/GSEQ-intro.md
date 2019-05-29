@@ -101,5 +101,15 @@ to as a combinator.
 * xmap_rlist: It is the x-version of `map_rlist`.
 * xmap_stream: It is the x-version of `map_stream`.
 
-##Verb Dependency in the GSEQ package
+------
 
+I will be introducing more verbs elsewhere. I find the above list
+of verbs to be adequate for average programming needs.
+
+## Verb Dependency in the GSEQ package
+
+Given two verbs `verb1` and verb2`, I write `verb1 < verb2` to
+indication there is an implementation of `verb2` in the GSEQ package
+that depends on `verb1`. In other words, `verb2` is available for use
+as long as `verb1` is implemented. In the terms of OOP, one may see
+`verb2` as a method whose implementation calls anther method `verb1`.
