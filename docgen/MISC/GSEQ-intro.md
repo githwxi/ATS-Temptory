@@ -103,13 +103,14 @@ to as a combinator.
 
 ------
 
-I will be introducing more verbs elsewhere. I find the above list
-of verbs to be adequate for average programming needs.
+I will be introducing more verbs elsewhere. My own experience
+indicates the above list of verbs being adequate for average
+programming needs.
 
 ## Verb Dependency in the GSEQ package
 
-Given two verbs `verb1` and verb2`, I write `verb1 < verb2` to
-indication there is an implementation of `verb2` in the GSEQ package
+Given two verbs `verb1` and `verb2`, I write `verb1 < verb2` to
+mean that there is an implementation of `verb2` in the GSEQ package
 that depends on `verb1`. In other words, `verb2` is available for use
 as long as `verb1` is implemented. In the terms of OOP, one may see
 `verb2` as a method whose implementation calls anther method `verb1`.
