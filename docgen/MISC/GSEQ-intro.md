@@ -112,28 +112,42 @@ I will be introducing more verbs elsewhere. My own experience
 indicates the above list of verbs being adequate for average
 programming needs.
 
-## Verb Dependency in the GSEQ package
+## Verb Dependencies in the GSEQ package
 
-Given two verbs `verb1` and `verb2`, I write `verb1 < verb2` to
-mean that there is an implementation of `verb2` in the GSEQ package
-that depends on `verb1`. In other words, `verb2` is available for use
-as long as `verb1` is implemented. In the terms of OOP, one may see
-`verb2` as a method whose implementation calls anther method `verb1`.
+Given two verbs `verb1` and `verb2`, I write `verb1 < verb2` to mean
+that there is an implementation of `verb2` that depends on `verb1`. In
+other words, `verb2` is available for use as long as `verb1` is
+implemented. In the terms of OOP, one may see `verb2` as a method
+whose implementation calls anther method `verb1`.  If `verb2` depends
+on `verb1`, I may also say `verb1` supports `verb2`.
 
-* listize < forall
+In the GSEQ package, the following verb dependecies exist:
+
 * streamize < forall
+* streamize < rforall
 
 * forall < exists
-* forall < foreach
+* forall < foreach 
 * foreach < foldleft
+* foldleft < listize
 
-* map_list < foldleft
-* map_rlist < foldleft
-* map_stream < streamize
+* foldleft < map_list
+* foldleft < map_rlist
+* streamize < map_stream
+
+* foldleft < imap_list
+* foldleft < imap_rlist
+* streamize < imap_stream
 
 * forall < iforall
 * iforall < iexists
 * iforall < iforeach
-* ifoldleft < iforeach
+* iforeach < ifoldleft
+
+* rforall < rexists
 * rforall < rforeach
 * rforeach < foldright
+
+There is really no need to memorize these verb dependencies at this point.
+All one really want to know for now is that if `streamize` is implemented,
+then all of the other verbs are available for use.

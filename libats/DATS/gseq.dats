@@ -347,7 +347,8 @@ loop
 {
 fun
 free
-(xs: list0_vt(x0)): void =
+( xs
+: list0_vt(x0)): void =
 (
 case xs of
 | ~list0_vt_nil() => ()
@@ -362,10 +363,31 @@ case+ xs of
 | ~list0_vt_cons(x0, xs) =>
   if
   gseq_rforall$test<x0>(x0)
-  then loop(xs) else let val () = free(xs) in ff end
+  then loop(xs)
+  else let val () = free(xs) in ff end
 )
 } (* end of [gseq_rforall] *)
 
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+gseq_rexists(xs) =
+(
+if
+gseq_rforall<xs><x0>(xs) then ff else tt
+) where
+{
+//
+implement
+gseq_rforall$test<x0>(x0) = 
+(
+if
+gseq_rexists$test<x0>(x0) then ff else tt
+)
+//
+} (* end of [gseq_rexists] *)
+//
 (* ****** ****** *)
 //
 implement

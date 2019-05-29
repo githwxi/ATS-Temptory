@@ -129,6 +129,14 @@ fun
 {x0:tflt}
 gseq_rforall$test(x0): bool
 //
+fun
+{xs:tflt}
+{x0:tflt}
+gseq_rexists(xs): bool
+fun
+{x0:tflt}
+gseq_rexists$test(x0): bool
+//
 (* ****** ****** *)
 //
 fun
