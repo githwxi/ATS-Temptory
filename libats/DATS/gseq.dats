@@ -843,6 +843,31 @@ stream_vt_mapopt$fopr<x0><y0>(x0) = gseq_mapopt$fopr<x0><y0>(x0)
 // HX-2019-05-28: zipping
 //
 (* ****** ****** *)
+
+implement
+{xs}{x0}
+{ys}{y0}
+gseq_z2forall
+  (xs, ys) =
+(
+let
+val xs =
+gseq_streamize<xs><x0>(xs)
+val ys =
+gseq_streamize<ys><y0>(ys)
+in
+(
+stream_vt_z2forall<x0,y0>(xs, ys)
+) where
+{
+implement
+stream_vt_z2forall$test<x0,y0>
+(x0, y0) = gseq_z2forall$test<x0,y0>(x0, y0)
+}
+end
+) (* end of [gseq_z2forall] *)
+
+(* ****** ****** *)
 //
 implement
 {xs}{x0}
@@ -861,6 +886,112 @@ in
   ignoret(gseq_z2forall<xs><x0><ys><y0>(xs, ys))
 end // end of [let]
 //
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+{ys}{y0}{r0}
+gseq_z2foldleft
+  (xs, ys, r0) = let
+//
+var rr: r0 = r0
+val p0 = addr@(rr)
+//
+implement
+gseq_z2foreach$work<x0,y0>
+  (x0, y0) = () where
+{
+val r0 =
+$UN.ptr0_get<r0>(p0)
+val r0 =
+gseq_z2foldleft$fopr<x0,y0><r0>(r0, x0, y0)
+val () =
+$UN.ptr0_set<r0>(p0, r0)
+} (* end of [where] *)
+//
+in
+let
+val () = gseq_z2foreach<xs><x0><ys><y0>(xs, ys) in rr
+end
+end // end of [gseq_z2foldleft]
+//
+(* ****** ****** *)
+
+implement
+{xs}{x0}
+{ys}{y0}{u0}
+gseq_z2map_list
+  (xs, ys) = let
+//
+vtypedef p0 = ptr
+//
+implement
+gseq_z2foldleft$fopr<x0,y0><p0>
+  (p0, x0, y0) =
+  (addr@(r1)) where
+{
+//
+extern
+praxi
+_assert_
+{vw:view}(vw):<prf> void
+extern
+castfn
+_castfn_
+{vt:vtbox}(vt):<fun> (ptr)
+//
+val u0 =
+gseq_z2map$fopr<x0,y0><u0>
+  (x0, y0)
+val us = list0_vt_cons(u0, _)
+val+list0_vt_cons(u0, r1) = us
+//
+val us = _castfn_(us)
+val () =
+$UN.ptr0_set<ptr>(p0, us)
+//
+prval () = _assert_(view@u0)
+prval () = _assert_(view@r1)
+//
+} (* end of [gseq_foldleft$fopr] *)
+//
+var r0: ptr?
+val p0 = addr@(r0)
+val p1 =
+gseq_z2foldleft<xs><x0><ys><y0><p0>(xs, ys, p0)
+//
+in
+  $UN.ptr0_set
+  (p1, list0_vt_nil()); $UN.castvwtp0{list0_vt(u0)}(r0)
+end (* end of [gseq_z2map_list] *)
+
+(* ****** ****** *)
+
+implement
+{xs}{x0}
+{ys}{y0}{u0}
+gseq_z2map_rlist
+  (xs, ys) =
+let
+//
+vtypedef r0 = list0_vt(u0)
+//
+implement
+gseq_z2foldleft$fopr<x0,y0><r0>
+  (r0, x0, y0) =
+(
+  list0_vt_cons(u0, r0) ) where
+{
+  val u0 =
+  gseq_z2map$fopr<x0,y0><u0>(x0, y0)
+} (* gseq_foldleft$fopr *)
+//
+val r0 = list0_vt_nil((*void*))
+//
+in
+  gseq_z2foldleft<xs><x0><ys><y0><r0>(xs, ys, r0)
+end (* end of [gseq_z2map_rlist] *)
+
 (* ****** ****** *)
 //
 // HX-2019-05-28: crossing

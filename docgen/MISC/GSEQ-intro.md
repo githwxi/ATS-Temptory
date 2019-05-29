@@ -5,10 +5,15 @@ How can one access an element in a list when given the index of the
 element? It is mostly likely that the person who asks this question
 is still of a mentality that focuses on what I call individual-processing
 (instead of batch-processing). Temptory advocates batch-processing.
-I list as follows some common verbs and their variations in the context
-of batch-processing elements sequentially.
 
-******
+## Common Verbs
+
+I list as follows some common verbs and their variations in the
+context of batch-processing elements sequentially. Note that an
+implementation of a verb for a particular datatype is often referred
+to as a combinator.
+
+------
   
 * forall:
   It is for processing a given sequence
@@ -96,4 +101,5 @@ of batch-processing elements sequentially.
 * xmap_rlist: It is the x-version of `map_rlist`.
 * xmap_stream: It is the x-version of `map_stream`.
 
-------
+##Verb Dependency in the GSEQ package
+

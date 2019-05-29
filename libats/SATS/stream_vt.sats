@@ -274,5 +274,19 @@ fun
 stream_vt_foreach0_ref$work(&x0 >> _?): void
 //
 (* ****** ****** *)
+//
+// HX-2019-05-28: zipping
+//
+(* ****** ****** *)
+//
+fun
+{x0,y0:vtflt}
+stream_vt_z2forall
+(stream_vt(x0), stream_vt(y0)): bool
+fun
+{x0,y0:vtflt}
+stream_vt_z2forall$test(x0, y0): bool
+//
+(* ****** ****** *)
 
 (* end of [stream_vt.sats] *)
