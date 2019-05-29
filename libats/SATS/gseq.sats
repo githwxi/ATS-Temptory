@@ -308,6 +308,30 @@ gseq_imapopt_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
 //
+fun
+{x0:tflt}
+{y0:vtflt}
+gseq_rmap$fopr(x0): (y0)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_rmap_list(xs): list0_vt(y0)
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_rmap_rlist(xs): list0_vt(y0)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{y0:vtflt}
+gseq_rmap_stream(xs): stream_vt(y0)
+//
+(* ****** ****** *)
+//
 // HX-2019-05-28: zipping
 //
 (* ****** ****** *)

@@ -14,7 +14,15 @@ implementation of a verb for a particular datatype is often referred
 to as a combinator.
 
 ------
+
+* listize
+  It is for turning a given sequence into a linear list
+* streamize
+  It is for turning a given sequence into a linear stream
   
+* exists:
+  It is for processing a given sequence
+  until the processing function returns true.
 * forall:
   It is for processing a given sequence
   until the processing function returns false.
@@ -41,6 +49,8 @@ to as a combinator.
 
 ------
 
+* rexists:
+  It is like `exists` but processing in done in the reverse order
 * rforall:
   It is like `forall` but processing in done in the reverse order
 * rforeach:
@@ -57,10 +67,18 @@ to as a combinator.
 
 ------
 
-* iforall:
-  It is like `forall` but processing is done to each pair consisting of
-  the index of an element and the element itself. Often `iforall` is
-  referred to as the i-version of `forall`.
+Given a sequence, the i-version of the sequence consists of pairs
+where each pair is the index of an element coupled with the element
+itself. For instance, the list the i-version of the list `(a, b, c)`
+is simply `((0, a), (1, b), (2, c))`.
+
+Given a verb, the i-version of the verb is often named `i<verb>`,
+where `<verb>` stands for the name of the verb.  Basically, applying
+the i-version of a verb to a given sequence is like applying the verb
+to the i-version of the sequence.
+
+* iexists: It is the i-version of `exists`
+* iforall: It is the i-version of `forall`
 * iforeach: It is the i-version of `foreach`
 * ifoldleft: It is the i-version of `foldleft`
 
@@ -70,13 +88,7 @@ to as a combinator.
 
 ------
 
-* zforall:
-  It is the z-version of `forall` that can be understood
-  as applying `forall` to the sequence obtained from zipping
-  the two sequences passed as the given arguments of `zforall`.
-  For those knowing vector arithmetic, zipping is performed
-  for computing inner product.
-  
+* zforall: It is the z-version of `forall`.  
 * zforeach: It is the z-version of `foreach`.
 * zfoldleft: It is the z-version of `foldleft`.
 
@@ -86,15 +98,8 @@ to as a combinator.
 
 ------
 
-* xforall:
-  It is the x-version of `forall` that can be understood
-  as applying `forall` to the sequence obtained from crossing
-  the two sequences passed as the given arguments of `xforall`.
-  For those knowing vector arithmetic, crossing is performed
-  for computing outer product.
-  
-* xforeach:
-  It is the x-version of `foreach`.
+* xforall: It is the z-version of `forall`.    
+* xforeach: It is the x-version of `foreach`.
 * xfoldleft: It is the x-version of `foldleft`.
 
 * xmap_list: It is the x-version of `map_list`.
@@ -115,12 +120,20 @@ that depends on `verb1`. In other words, `verb2` is available for use
 as long as `verb1` is implemented. In the terms of OOP, one may see
 `verb2` as a method whose implementation calls anther method `verb1`.
 
+* listize < forall
+* streamize < forall
+
+* forall < exists
 * forall < foreach
 * foreach < foldleft
+
 * map_list < foldleft
 * map_rlist < foldleft
-* iforall < forall
-* iforeach < iforall
+* map_stream < streamize
+
+* forall < iforall
+* iforall < iexists
+* iforall < iforeach
 * ifoldleft < iforeach
 * rforall < rforeach
 * rforeach < foldright
