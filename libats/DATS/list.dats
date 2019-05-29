@@ -474,6 +474,31 @@ list0_reverse_vt(xs) =
 } (* end of [list0_reverse_vt] *)
 //
 (* ****** ****** *)
+//
+implement
+{x0}(*tmp*)
+list0_mcons
+  (x0, xss) =
+(
+list0_vt2t
+(list0_mcons_vt<x0>(x0, xss))
+)
+//
+implement
+{x0}(*tmp*)
+list0_mcons_vt
+  (x0, xss) =
+(
+list0_map_list<xs><ys>(xss)
+) where
+{
+typedef
+xs = list0(x0) and ys = list0(x0)
+implement
+list0_map$fopr<xs><ys>(xs) = list0_cons(x0, xs)
+}
+//
+(* ****** ****** *)
 
 implement
 {x0}(*tmp*)

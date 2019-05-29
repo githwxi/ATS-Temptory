@@ -220,6 +220,21 @@ list0_reverse_vt
 //
 (* ****** ****** *)
 //
+fun
+{x0:tflt}
+list0_mcons
+( x0: x0
+, xss
+: list0(list0(INV(x0)))): list0(list0(x0))
+fun
+{x0:tflt}
+list0_mcons_vt
+( x0: x0
+, xss
+: list0(list0(INV(x0)))): list0_vt(list0(x0))
+//
+(* ****** ****** *)
+//
 (*
 // HX-2019-05:
 // [split$choose] returns 0/1

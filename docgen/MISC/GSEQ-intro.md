@@ -154,6 +154,10 @@ In the GSEQ package, the following verb dependecies exist:
 * rforall < rforeach
 * rforeach < foldright
 
-There is really no need to memorize these verb dependencies at this point.
-All one really want to know for now is that if `streamize` is implemented,
-then all of the other verbs are available for use.
+There is really no need to memorize these verb dependencies at this
+point.  All one really want to be clear about for now is that if
+`streamize` is implemented, then all of the other verbs are available
+for use.
+
+## Let's see some verbs in action!
+
