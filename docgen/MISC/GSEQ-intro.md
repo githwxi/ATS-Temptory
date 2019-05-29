@@ -4,8 +4,14 @@ When teaching functional programming, I often get a question like:
 How can one access an element in a list when given the index of the
 element? It is mostly likely that the person who asks this question
 is still of a mentality that focuses on what I call individual-processing
-(instead of batch-processing). Temptory advocates batch-processing.
+(instead of batch-processing). 
 
+In functional programming, batch-processing is commonly associated with
+the use of combinators (which are often higher-order functions of relatively
+small bodies). Temptory strongly advocates batch-processing. And it does so
+by making extensive use of templates.
+
+  
 ## Common Verbs
 
 I list as follows some common verbs and their variations in the
