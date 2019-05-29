@@ -8,35 +8,27 @@ is still of a mentality that focuses on what I call individual-processing
 I list as follows some common verbs and their variations in the context
 of batch-processing elements sequentially.
   
-* listize:
-  For turning a given sequence into a linear list
-
-* streamize:
-  For turning a given sequence into a linear stream
-
 * forall:
-  For processing a given sequence in its entirety or
+  It is for processing a given sequence in its entirety or
   until the processing function returns false.
 
 * foreach:
-  For processing a given sequence in its entirety
+  It is for processing a given sequence in its entirety.
   
 * foldleft:
-  For processing a given sequence in its entirety and returning
+  It is for processing a given sequence in its entirety and returning
   the accumulated result at the end
   
-* map_list:
-  For applying a give function to each element in a given sequence and
-  returning a linear list consisting of the results of these
-  applications in the order as they are produced.
+* map_list: It is for applying a give function to each element in a
+  given sequence and returning a linear list consisting of the results
+  of these applications in the order as they are produced.
   
-* map_rlist:
-  For applying a give function to each element in a given sequence and
-  returning a linear list consisting of the results of these
-  applications in the reverse order as they are produced.
+* map_rlist: It is for applying a give function to each element in a
+  given sequence and returning a linear list consisting of the results
+  of these applications in the reverse order as they are produced.
 
 * map_stream:
-  For lazily applying a give function to each element in a given
+  It is for lazily applying a give function to each element in a given
   sequence and returning a linear stream consisting of the results of
   these applications in the order as they are produced.
 
@@ -61,18 +53,21 @@ of batch-processing elements sequentially.
 * iforeach: It is the i-version of `foreach`
 * ifoldleft: It is the i-version of `foldleft`
 
-* imap_list: It is the i-version of `map_list`
-* imap_rlist: It is the i-version of `map_rlist`
-* imap_stream: : It is the i-version of `map_stream`
+* imap_list: It is the i-version of `map_list`.
+* imap_rlist: It is the i-version of `map_rlist`.
+* imap_stream: : It is the i-version of `map_stream`.
 
-* zlistize
-* zstreamize
-* zforall
-* zforeach
-* zfoldleft
-* zmap_list
-* zmap_rlist
-* zmap_stream
+* zforall:
+  It is the z-version of `forall` that can be understood
+  as applying `forall` to the sequence obtained from zipping
+  the two sequences passed as the given arguments of `zforall`.
+  
+* zforeach: It is the z-version of `foreach`.
+* zfoldleft: It is the z-version of `foldleft`.
+
+* zmap_list: It is the z-version of `map_list`.
+* zmap_rlist: It is the z-version of `map_rlist`.
+* zmap_stream: It is the z-version of `map_stream`.
 
 * xlistize
 * xstreamize
