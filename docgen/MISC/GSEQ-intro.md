@@ -61,6 +61,8 @@ of batch-processing elements sequentially.
   It is the z-version of `forall` that can be understood
   as applying `forall` to the sequence obtained from zipping
   the two sequences passed as the given arguments of `zforall`.
+  For those knowing vector arithmetic, zipping is performed
+  for computing inner product.
   
 * zforeach: It is the z-version of `foreach`.
 * zfoldleft: It is the z-version of `foldleft`.
@@ -69,11 +71,16 @@ of batch-processing elements sequentially.
 * zmap_rlist: It is the z-version of `map_rlist`.
 * zmap_stream: It is the z-version of `map_stream`.
 
-* xlistize
-* xstreamize
-* xforall
-* xforeach
-* xfoldleft
-* xmap_list
-* xmap_rlist
-* xmap_stream
+* xforall:
+  It is the x-version of `forall` that can be understood
+  as applying `forall` to the sequence obtained from crossing
+  the two sequences passed as the given arguments of `xforall`.
+  For those knowing vector arithmetic, crossing is performed
+  for computing outer product.
+  
+* xforeach: It is the x-version of `foreach`.
+* xfoldleft: It is the x-version of `foldleft`.
+
+* xmap_list: It is the x-version of `map_list`.
+* xmap_rlist: It is the x-version of `map_rlist`.
+* xmap_stream: It is the x-version of `map_stream`.
