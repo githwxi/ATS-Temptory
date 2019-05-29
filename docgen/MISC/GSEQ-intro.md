@@ -1,5 +1,9 @@
 # Verbs for Sequencial Processing
 
+When teaching functional programming, I often get a question like:
+How can one access an element in a list when given the index of the
+element?
+  
 * listize:
   For turning a given sequence into a linear list
 
@@ -22,12 +26,12 @@
   returning a linear list consisting of the results of these
   applications in the order as they are produced.
   
-* map_rlist
+* map_rlist:
   For applying a give function to each element in a given sequence and
   returning a linear list consisting of the results of these
   applications in the reverse order as they are produced.
 
-* map_stream
+* map_stream:
   For lazily applying a give function to each element in a given
   sequence and returning a linear stream consisting of the results of
   these applications in the order as they are produced.
