@@ -405,6 +405,11 @@ val IMPLMNT : tnode // implmnt
 val IMPLEMENT : tnode // implement
 val PRIMPLMNT : tnode // primplmnt
 
+// RK 2019-05-29
+val DEFIMPLEMENT : tnode // def
+val TMPLIMPLEMENT : tnode // tmpl
+//
+
 val INFIX : tnode
 val INFIXL : tnode
 val INFIXR : tnode

@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -86,6 +86,11 @@ implement CASTFN = T_FUN (FK_castfn)
 implement IMPLMNT = T_IMPLEMENT (0)
 implement IMPLEMENT = T_IMPLEMENT (1)
 implement PRIMPLMNT = T_IMPLEMENT (~1)
+
+// RK 2019-05-29
+implement DEFIMPLEMENT = T_IMPLEMENT (2)
+implement TMPLIMPLEMENT = T_IMPLEMENT (3)
+//
 
 implement INFIX = T_FIXITY (FXK_infix)
 implement INFIXL = T_FIXITY (FXK_infixl)
@@ -170,7 +175,7 @@ implement T0YPE_neg = T_TYPE (T0YPE_neg_int)
 (* ****** ****** *)
 //
 (*
-implement TYPES = T_IDENT_alp "types" 
+implement TYPES = T_IDENT_alp "types"
 implement TYPES_pos = T_TYPE (TYPES_pos_int)
 implement TYPES_neg = T_TYPE (TYPES_neg_int)
 *)
@@ -537,6 +542,13 @@ val () = ins ("#nonfix", T_NONFIX)
 //
 val () = ins ("implmnt", IMPLMNT) // 0
 val () = ins ("implement", IMPLEMENT) // 1
+//
+// RK 2019-05-29
+// introduce shorter syntax for implement
+//
+val () = ins ("def", IMPLEMENT) // 2
+val () = ins ("tmpl", IMPLEMENT) // 3
+//
 //
 val () = ins ("primplmnt", PRIMPLMNT) // ~1
 val () = ins ("primplement", PRIMPLMNT) // ~1
