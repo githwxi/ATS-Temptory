@@ -155,7 +155,7 @@ In the GSEQ package, the following verb dependecies exist:
 * rforeach < foldright
 
 There is really no need to memorize these verb dependencies at this
-point.  All one really want to be clear about for now is that if
+point.  All one really should be clear about for now is that if
 `streamize` is implemented, then all of the other verbs are available
 for use.
 
