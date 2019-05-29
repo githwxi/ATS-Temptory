@@ -125,4 +125,4 @@ great impact on the way in which a program is structured.
 With the above simple example, I have demonstrated a bit of TBP where
 templates are employed to replace higher-order functions.  While this
 is a typical entry point for TBP, there are many more aspects of TBP
-are yet to be explored.
+that are yet to be explored.
