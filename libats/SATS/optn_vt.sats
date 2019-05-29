@@ -67,5 +67,14 @@ optn0_vt_length
 #symload length with optn0_vt_length
 //
 (* ****** ****** *)
+//
+fun
+{a:vtflt}
+optn0_vt_free
+(opt: optn0_vt(a)): void
+//
+#symload free with optn0_vt_free
+//
+(* ****** ****** *)
 
 (* end of [optn_vt.sats] *)

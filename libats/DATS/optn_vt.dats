@@ -82,4 +82,15 @@ case+ opt of
 //
 (* ****** ****** *)
 
+implement
+{x0}//tmp
+optn0_vt_free(opt) =
+(
+case+ opt of
+| ~optn0_vt_none() => ()
+| ~optn0_vt_some(x0) => gfree$val<x0>(x0)
+)
+
+(* ****** ****** *)
+
 (* end of [optn_vt.dats] *)
