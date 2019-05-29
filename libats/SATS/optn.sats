@@ -115,5 +115,23 @@ fun
 optn0_foreach$work(x0): void
 //
 (* ****** ****** *)
+//
+fun
+{x0:tflt}
+optn0_listize
+(xs: optn0(x0)): list0_vt(x0)
+fun
+{x0:tflt}
+optn0_streamize
+(xs: optn0(x0)): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+#symload forall with optn0_forall
+#symload foreach with optn0_foreach
+#symload listize with optn0_listize
+#symload streamize with optn0_streamize
+//
+(* ****** ****** *)
 
 (* end of [optn.sats] *)

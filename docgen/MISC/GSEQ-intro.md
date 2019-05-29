@@ -23,6 +23,9 @@ to as a combinator.
 
 * listize
   It is for turning a given sequence into a linear list
+* rlistize
+  It is for turning a given sequence into a linear list
+  in the reverse order
 * streamize
   It is for turning a given sequence into a linear stream
   
@@ -130,12 +133,14 @@ on `verb1`, I may also say `verb1` supports `verb2`.
 In the GSEQ package, the following verb dependecies exist:
 
 * streamize < forall
-* streamize < rforall
 
 * forall < exists
 * forall < foreach 
 * foreach < foldleft
 * foldleft < listize
+
+* rlistize < rforall
+* foldleft < rlistize  
 
 * foldleft < map_list
 * foldleft < map_rlist

@@ -41,6 +41,8 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/optn.sats"
+#staload "./../SATS/list_vt.sats"
+#staload "./../SATS/stream_vt.sats"
 
 (* ****** ****** *)
 //
@@ -105,6 +107,27 @@ case+ opt of
 | optn0_none() => ()
 | optn0_some(x0) => optn0_foreach$work<x0>(x0)
 ) (* end of [optn0_foreach] *)
+
+(* ****** ****** *)
+
+implement
+{x0}//tmp
+optn0_listize
+  (opt) =
+(
+case+ opt of
+| optn0_none() => list0_vt_nil()
+| optn0_some(x0) => list0_vt_sing(x0)
+)
+implement
+{x0}//tmp
+optn0_streamize
+  (opt) = $ldelay
+(
+case+ opt of
+| optn0_none() => stream_vt_nil()
+| optn0_some(x0) => stream_vt_sing(x0)
+)
 
 (* ****** ****** *)
 
