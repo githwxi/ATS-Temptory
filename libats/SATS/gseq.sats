@@ -307,5 +307,57 @@ fun
 gseq_imapopt_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
+//
+// HX-2019-05-28: zipping
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{ys:tflt}
+{y0:tflt}
+gseq_z2forall(xs, ys): bool
+fun
+{x0,y0:tflt}
+gseq_z2forall$test(x0, y0): bool
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{ys:tflt}
+{y0:tflt}
+gseq_z2foreach(xs, ys): void
+fun
+{x0,y0:tflt}
+gseq_z2foreach$work(x0, y0): void
+//
+(* ****** ****** *)
+//
+// HX-2019-05-28: crossing
+//
+(* ****** ****** *)
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{ys:tflt}
+{y0:tflt}
+gseq_x2forall(xs, ys): bool
+fun
+{x0,y0:tflt}
+gseq_x2forall$test(x0, y0): bool
+//
+fun
+{xs:tflt}
+{x0:tflt}
+{ys:tflt}
+{y0:tflt}
+gseq_x2foreach(xs, ys): void
+fun
+{x0,y0:tflt}
+gseq_x2foreach$work(x0, y0): void
+//
+(* ****** ****** *)
 
 (* end of [gseq.sats] *)

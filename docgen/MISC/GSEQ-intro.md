@@ -9,7 +9,7 @@ I list as follows some common verbs and their variations in the context
 of batch-processing elements sequentially.
   
 * forall:
-  It is for processing a given sequence in its entirety or
+  It is for processing a given sequence
   until the processing function returns false.
 
 * foreach:
@@ -32,6 +32,8 @@ of batch-processing elements sequentially.
   sequence and returning a linear stream consisting of the results of
   these applications in the order as they are produced.
 
+------
+
 * rforall:
   It is like `forall` but processing in done in the reverse order
 * rforeach:
@@ -46,6 +48,8 @@ of batch-processing elements sequentially.
 * rmap_stream:
   It is like `map_stream` but processing in done in the reverse order
 
+------
+
 * iforall:
   It is like `forall` but processing is done to each pair consisting of
   the index of an element and the element itself. Often `iforall` is
@@ -56,6 +60,8 @@ of batch-processing elements sequentially.
 * imap_list: It is the i-version of `map_list`.
 * imap_rlist: It is the i-version of `map_rlist`.
 * imap_stream: : It is the i-version of `map_stream`.
+
+------
 
 * zforall:
   It is the z-version of `forall` that can be understood
@@ -71,6 +77,8 @@ of batch-processing elements sequentially.
 * zmap_rlist: It is the z-version of `map_rlist`.
 * zmap_stream: It is the z-version of `map_stream`.
 
+------
+
 * xforall:
   It is the x-version of `forall` that can be understood
   as applying `forall` to the sequence obtained from crossing
@@ -78,9 +86,12 @@ of batch-processing elements sequentially.
   For those knowing vector arithmetic, crossing is performed
   for computing outer product.
   
-* xforeach: It is the x-version of `foreach`.
+* xforeach:
+  > It is the x-version of `foreach`.
 * xfoldleft: It is the x-version of `foldleft`.
 
 * xmap_list: It is the x-version of `map_list`.
 * xmap_rlist: It is the x-version of `map_rlist`.
 * xmap_stream: It is the x-version of `map_stream`.
+
+------

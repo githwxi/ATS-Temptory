@@ -839,5 +839,51 @@ stream_vt_mapopt$fopr<x0><y0>(x0) = gseq_mapopt$fopr<x0><y0>(x0)
 } (* end of [gseq_mapopt_stream] *)
 
 (* ****** ****** *)
+//
+// HX-2019-05-28: zipping
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+{ys}{y0}
+gseq_z2foreach(xs, ys) =
+let
+//
+implement
+gseq_z2forall$test<x0,y0>(x0, y0) =
+let
+val () =
+gseq_z2foreach$work<x0,y0>(x0, y0) in true
+end // end of [let]
+//
+in
+  ignoret(gseq_z2forall<xs><x0><ys><y0>(xs, ys))
+end // end of [let]
+//
+(* ****** ****** *)
+//
+// HX-2019-05-28: crossing
+//
+(* ****** ****** *)
+//
+implement
+{xs}{x0}
+{ys}{y0}
+gseq_x2foreach(xs, ys) =
+let
+//
+implement
+gseq_x2forall$test<x0,y0>(x0, y0) =
+let
+val () =
+gseq_x2foreach$work<x0,y0>(x0, y0) in true
+end // end of [let]
+//
+in
+  ignoret(gseq_x2forall<xs><x0><ys><y0>(xs, ys))
+end // end of [let]
+//
+(* ****** ****** *)
 
 (* end of [gseq.dats] *)
