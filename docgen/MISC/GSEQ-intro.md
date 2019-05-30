@@ -78,11 +78,11 @@ to as a combinator.
 
 Given a sequence, the i-version of the sequence consists of pairs
 where each pair is the index of an element coupled with the element
-itself. For instance, the list the i-version of the list `(a, b, c)`
-is simply `((0, a), (1, b), (2, c))`.
+itself. For instance, the i-version of the list `(a, b, c)` is simply
+`((0, a), (1, b), (2, c))`.
 
-Given a verb, the i-version of the verb is often named `i<verb>`,
-where `<verb>` stands for the name of the verb.  Basically, applying
+Given a verb, the i-version of the verb is often named `i{verb}`,
+where `{verb}` stands for the name of the verb.  Basically, applying
 the i-version of a verb to a given sequence is like applying the verb
 to the i-version of the sequence.
 
@@ -97,6 +97,12 @@ to the i-version of the sequence.
 
 ------
 
+Given two sequences `xs` and `ys`, let `zip(xs, ys)` be the result of
+zipping `xs` and `ys`. Given a verb, the z-version of the verb is
+often named `z{verb}` where `{verb}` stands for the name of the
+verb. Basically, applying the z-version of a verb to two given
+sequences `xs` and `ys` is like applying the verb to `zip(xs, ys)`.
+  
 * zforall: It is the z-version of `forall`.  
 * zforeach: It is the z-version of `foreach`.
 * zfoldleft: It is the z-version of `foldleft`.
@@ -106,6 +112,12 @@ to the i-version of the sequence.
 * zmap_stream: It is the z-version of `map_stream`.
 
 ------
+
+Given two sequences `xs` and `ys`, let `cross(xs, ys)` be the result
+of crossing `xs` and `ys`. Given a verb, the x-version of the verb is
+often named `x{verb}` where `{verb}` stands for the name of the
+verb. Basically, applying the z-version of a verb to two given
+sequences `xs` and `ys` is like applying the verb to `cross(xs, ys)`.
 
 * xforall: It is the z-version of `forall`.    
 * xforeach: It is the x-version of `foreach`.
@@ -118,8 +130,8 @@ to the i-version of the sequence.
 ------
 
 I will be introducing more verbs elsewhere. My own experience
-indicates the above list of verbs being adequate for average
-programming needs.
+indicates that the above list of verbs are already adequate for
+average programming needs.
 
 ## Verb Dependencies in the GSEQ package
 
@@ -166,3 +178,102 @@ for use.
 
 ## Let's see some verbs in action!
 
+The famous 8-queen puzzle asks the player to find ways to put eight
+queen pieces on a chess board such that no queen piece can attack any
+other ones. In other words, no two queen pieces can be put on the same
+row, the same column, or the same diagnal.
+
+Let us first declare an abstract type `board` for values representing
+board configurations and then implement it as a list:
+
+```ats
+(* ****** ****** *)
+
+abstbox board = ptr
+
+(* ****** ****** *)
+
+extern
+fun
+board_nil(): board
+and
+board_cons(int, board): board
+
+(* ****** ****** *)
+
+local
+
+absimpl board = list0(int)
+
+in(* in-of-local *)
+
+implement
+board_nil() = nil()
+implement
+board_cons(x0, xs) = cons(x0, xs)
+
+implement
+gseq_streamize<board><int>(xs) = list0_streamize<int>(xs)
+
+end (* end of [local] *)
+
+```
+
+At this point, all of the verbs listed above are available for use.
+For instance, the following function can be called to check if
+putting a queen piece at column `x0` on next row can cause a conflict
+with the current board `xs`:
+
+```ats
+fun
+board_check
+(x0: int, xs: board): bool =
+(
+gseq_iforall<board><int>(xs)
+) where
+{
+implement
+gseq_iforall$test<int>(i1, x1) =
+if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
+}
+```
+
+The next function is for printing out a given board:
+
+
+```ats
+fun
+board_print
+(xs: board): void =
+(
+gseq_rforeach<board><int>
+  (xs)
+) where
+{
+implement
+gseq_rforeach$work<int>(x0) =
+(
+  loop(0)
+) where
+{
+fun
+loop(i0: int): void =
+if
+i0 >= N
+then
+println!((*void*))
+else
+(
+if i0 = x0 then print "Q " else print ". "; loop(i0+1)
+)
+}
+} (* end of [board_print *)
+```
+
+Note that the verb `rforeach` is used because the list representation
+of a board actually represents the board in the reverse order: the
+first element in the list represents the column position of the last
+queen piece and the last element in the list represents the column
+position of the first queen piece.
+
+Please find the entirety of the implementation [here](./CODE/QueenPuzzle).

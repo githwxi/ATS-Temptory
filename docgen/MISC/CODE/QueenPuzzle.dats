@@ -31,7 +31,7 @@ local
 
 absimpl board = list0(int)
 
-in
+in(* in-of-local *)
 
 implement
 board_nil() = nil()
@@ -62,18 +62,13 @@ gseq_rforeach$work<int>(x0) =
 fun
 loop(i0: int): void =
 if
-i0 < N
+i0 >= N
 then
+println!((*void*))
+else
 (
-loop(i0+1)
-) where
-{
-  val () =
-  if
-  i0 = x0
-  then print "Q " else print". "
-}
-else println!()
+if i0 = x0 then print "Q " else print ". "; loop(i0+1)
+)
 }
 } (* end of [board_print *)
 
@@ -97,31 +92,30 @@ fun
 board_extend
 (xs: board): list(board) =
 (
-  extend(0)
+list0_vt2t
+(
+gseq_mapopt_list<sint><sint><board>(N)
+)
 ) where
 {
-fun
-extend
-(x0: int)
-:
-list(board) =
-if x0 < N then
-(
-if
-board_check(x0, xs)
-then board_cons(x0, xs) :: extend(x0+1) else extend(x0+1)
-)
-else list0_nil((*void*))
+implement
+gseq_mapopt$test<sint>(x0) = board_check(x0, xs)
+implement
+gseq_mapopt$fopr<sint><board>(x0) = board_cons(x0, xs)
 }
 
 fun
 boardlst_extend
 (xss: list(board)): list(board) =
 (
-case+ xss of
-| list0_nil() => list0_nil()
-| list0_cons(xs, xss) => append(board_extend(xs), boardlst_extend(xss))
-)
+list0_foldright<board><r0>(xss, list0_nil())
+) where
+{
+typedef xs = board
+typedef r0 = list(board)
+implement
+list0_foldright$fopr<xs><r0>(xs, r0) = append(board_extend(xs), r0)
+}
 
 (* ****** ****** *)
 

@@ -70,6 +70,23 @@ gseq_length<optn0(x0)><x0>
 
 implement
 (x0:tflt)
+gseq_listize<optn0(x0)><x0>
+  (xs) =
+(
+  optn0_listize<x0>(xs)
+) (* end of [gseq_listize<optn0>] *)
+implement
+(x0:tflt)
+gseq_streamize<optn0(x0)><x0>
+  (xs) =
+(
+  optn0_streamize<x0>(xs)
+) (* end of [gseq_streamize<optn0>] *)
+
+(* ****** ****** *)
+
+implement
+(x0:tflt)
 gseq_forall<optn0(x0)><x0>
   (xs) =
 (
