@@ -74,15 +74,24 @@ gfree$ref(x: &INV(a) >> a?): void
 (*
 fun
 {a:vtflt}
-ginit$ref(x: &a? >> INV(a)): void
+grand$val((*void*)): (a)
+fun
+{a:vtflt}
+grand$ref(x: &a? >> a): void
 *)
 
 (* ****** ****** *)
 
 (*
+//
+fun
+{a:vtflt}
+ginit$ref(x: &a? >> INV(a)): void
+//
 fun
 {a:vtflt}
 gclear$ref(x: &INV(a) >> a?): void
+//
 *)
 
 (* ****** ****** *)
@@ -112,19 +121,16 @@ gcompare$ref
 (*
 fun
 {a:vtflt}
-tostring$val(x: !INV(a)):<> string
+unparse$val(x: !INV(a)):<> string
 fun
 {a:vtflt}
-tostring$ref(x: &INV(a)):<> string
-*)
-(* ****** ****** *)
-(*
+unparse$ref(x: &INV(a)):<> string
 fun
 {a:vtflt}
-tostrptr$val(x: !INV(a)):<!wrt> Strptr1
+unparse_vt$val(x: !INV(a)):<!wrt> string_vt
 fun
 {a:vtflt}
-tostrptr$ref(x: &INV(a)):<!wrt> Strptr1
+unparse_vt$ref(x: &INV(a)):<!wrt> string_vt
 *)
 (* ****** ****** *)
 

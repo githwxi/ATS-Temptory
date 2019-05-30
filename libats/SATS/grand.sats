@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,68 +28,43 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: February, 2019
+// Start Time: May, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
 #define
 ATS_PACKNAME "temptory."
 #define
 ATS_EXTERN_PREFIX "temptory_"
-
-(* ****** ****** *)
-//
-datatype
-SINT2 = SINT2 of ((*void*))
-//
-fun{}
-SINT2_range$beg((*void*)): (sint)
-fun{}
-SINT2_range$end((*void*)): (sint)
-//
-(* ****** ****** *)
-fun{}
-SINT2_forall(): bool
-fun{}
-SINT2_forall$test(sint): bool
-//
-fun{}
-SINT2_foreach(): void
-fun{}
-SINT2_foreach$work(sint): void
-//
-fun{}
-SINT2_streamize(): stream_vt(sint)
-//
-(* ****** ****** *)
-//
-datatype
-CPTR2 = CPTR2 of ((*void*))
-//
-fun{}
-CPTR2_range$beg{a:vtflt}(): cptr(a)
-fun{}
-CPTR2_range$end{a:vtflt}(): cptr(a)
-//
-fun
-{a:vtflt}
-CPTR_forall(): bool
-fun
-{a:vtflt}
-CPTR2_forall$test(cptr(a)): bool
-//
-fun
-{a:vtflt}
-CPTR_foreach(): void
-fun
-{a:vtflt}
-CPTR2_foreach$test(cptr(a)): void
-//
-fun
-{a:vtflt}
-CPTR2_streamize(): stream_vt(cptr(a))
 //
 (* ****** ****** *)
 
-(* end of [range.sats] *)
+fun
+{a:vtflt}
+grand$val(): (a)
+fun
+{a:vtflt}
+grand$ref(&a? >> a): void
+
+(* ****** ****** *)
+
+fun{}
+nat0_rand(): Nat
+fun{}
+sint_rand(): sint
+fun{}
+uint_rand(): uint
+
+(* ****** ****** *)
+
+fun
+{a:tflt}
+list0_rand(): list0(a)
+fun
+{a:vtflt}
+list0_vt_rand(): list0_vt(a)
+
+(* ****** ****** *)
+
+(* end of [grand.sats] *)
