@@ -21,12 +21,12 @@ to as a combinator.
 
 ------
 
-* listize
+* listize:
   It is for turning a given sequence into a linear list
-* rlistize
+* rlistize:
   It is for turning a given sequence into a linear list
   in the reverse order
-* streamize
+* streamize:
   It is for turning a given sequence into a linear stream
   
 * exists:
@@ -220,12 +220,13 @@ end (* end of [local] *)
 
 ```
 
-Note that the verb `streamize` is implemented for `board`,
-which makes all of the other verbs listed above available for use.
+Note that the verb `streamize` is implemented for `board`, which
+immidiately makes all of the other verbs listed above available for
+use.
 
 For instance, the following function `board_check` can be called to
-check if putting a queen piece at column `x0` on next row can cause a
-conflict with the current board `xs`:
+check if putting a queen piece at column `x0` on the next row can
+cause a conflict with the queen pieces on the current board `xs`:
 
 ```ats
 fun
@@ -278,6 +279,20 @@ Note that the verb `rforeach` is used because the list representation
 of a board actually represents the board in the reverse order: the
 first element in the list represents the column position of the last
 queen piece and the last element in the list represents the column
-position of the first queen piece.
+position of the first queen piece. For instance, Solution#1 is printed
+out as follows:
+
+
+```
+Solution#1:
+Q . . . . . . . 
+. . . . Q . . . 
+. . . . . . . Q 
+. . . . . Q . . 
+. . Q . . . . . 
+. . . . . . Q . 
+. Q . . . . . . 
+. . . Q . . . . 
+```
 
 Please find the entirety of the implementation [here](./CODE/QueenPuzzle.dats).

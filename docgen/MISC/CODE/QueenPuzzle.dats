@@ -4,6 +4,15 @@
 // For ATS-Temptory
 //
 (* ****** ****** *)
+
+(*
+How to test:
+./QueenPuzzle
+How to compile:
+tempacc -D_GNU_SOURCE -DATS_MEMALLOC_LIBC QueenPuzzle.dats  -o QueenPuzzle
+*)
+
+(* ****** ****** *)
 //
 #include
 "share/HATS\
