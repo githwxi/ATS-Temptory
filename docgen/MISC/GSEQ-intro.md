@@ -220,9 +220,10 @@ end (* end of [local] *)
 ```
 
 At this point, all of the verbs listed above are available for use.
-For instance, the following function can be called to check if
-putting a queen piece at column `x0` on next row can cause a conflict
-with the current board `xs`:
+
+For instance, the following function `board_check` can be called to
+check if putting a queen piece at column `x0` on next row can cause a
+conflict with the current board `xs`:
 
 ```ats
 fun
@@ -238,7 +239,8 @@ if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
 }
 ```
 
-The next function is for printing out a given board:
+Note that `abs` stands for the absolute value function.
+The next function `board_print` is for printing out a given board:
 
 
 ```ats
