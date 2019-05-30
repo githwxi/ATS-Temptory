@@ -24,7 +24,8 @@ abstbox board = ptr
 
 (* ****** ****** *)
 
-typedef boardlst = list0(board)
+typedef
+boardlst = list0(board)
 
 (* ****** ****** *)
 
@@ -34,7 +35,7 @@ board_nil(): board
 extern
 fun
 board_cons
-(x0: int,xs: board): board
+(x0: int, xs: board): board
 
 (* ****** ****** *)
 
