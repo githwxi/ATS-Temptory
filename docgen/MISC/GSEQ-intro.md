@@ -12,10 +12,10 @@ small bodies). Temptory strongly advocates batch-processing. And it does so
 by making extensive use of templates.
 
   
-## Common Verbs
+## Commonly used Verbs
 
-I list as follows some common verbs and their variations in the
-context of batch-processing elements sequentially. Note that an
+I list as follows some commonly used verbs and their variations in
+the context of batch-processing elements sequentially. Note that an
 implementation of a verb for a particular datatype is often referred
 to as a combinator.
 
@@ -114,7 +114,7 @@ sequences `xs` and `ys` is like applying the verb to `zip(xs, ys)`.
 ------
 
 Given two sequences `xs` and `ys`, let `cross(xs, ys)` be the result
-of crossing `xs` and `ys`. Given a verb, the x-version of the verb is
+of crossing `xs` by `ys`. Given a verb, the x-version of the verb is
 often named `x{verb}` where `{verb}` stands for the name of the
 verb. Basically, applying the z-version of a verb to two given
 sequences `xs` and `ys` is like applying the verb to `cross(xs, ys)`.
@@ -174,7 +174,8 @@ In the GSEQ package, the following verb dependecies exist:
 There is really no need to memorize these verb dependencies at this
 point.  All one really should be clear about for now is that if
 `streamize` is implemented, then all of the other verbs are available
-for use.
+for use. And please note that all of the verbs are given tail-recursive
+implementations in the GSEQ package.
 
 ## Let's see some verbs in action!
 
@@ -219,7 +220,8 @@ end (* end of [local] *)
 
 ```
 
-At this point, all of the verbs listed above are available for use.
+Note that the verb `streamize` is implemented for `board`,
+which makes all of the other verbs listed above available for use.
 
 For instance, the following function `board_check` can be called to
 check if putting a queen piece at column `x0` on next row can cause a
