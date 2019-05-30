@@ -276,4 +276,4 @@ first element in the list represents the column position of the last
 queen piece and the last element in the list represents the column
 position of the first queen piece.
 
-Please find the entirety of the implementation [here](./CODE/QueenPuzzle).
+Please find the entirety of the implementation [here](./CODE/QueenPuzzle.dats).
