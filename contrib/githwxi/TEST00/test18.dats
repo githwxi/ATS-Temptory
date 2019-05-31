@@ -67,7 +67,7 @@ end
 //
 val
 inez =
-hcreate(i2sz(128*1024))
+hcreate(i2sz(1024*1024))
 //
 val () = assertloc(inez != 0)
 //
