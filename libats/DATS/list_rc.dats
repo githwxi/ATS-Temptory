@@ -124,10 +124,21 @@ implement
 {x0}//tmp
 list0_rc_free
 (rfc) =
-refcnt_decref(rfc)
+refcnt_decref<list0_rc_con(x0)>(rfc)
+//
 implement
 {x0}//tmp
 list0_rc_con_free(con) =
+  ( loop(con) ) where
+{
+fun
+loop
+(con: list0_rc_con(x0)): void =
+let
+implement
+gfree$val<
+list0_rc_con(x0)>(con) = loop(con)
+in
 (
 case+ con of
 |
@@ -135,7 +146,11 @@ case+ con of
 |
 ~list0_rc_cons(x0, xs) =>
  (gfree$val<x0>(x0); list0_rc_free<x0>(xs))
-) (* end of [list0_rc_free_con] *)
+)
+end
+} (* end of [list0_rc_free_con] *)
+//
+(* ****** ****** *)
 //
 implement
 (x0:vtflt)

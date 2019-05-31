@@ -27,7 +27,6 @@ implement
 {a}(*tmp*)
 mergesort(xs) =
 (
-(
 let
 val xs = g1ofg0(xs)
 val n0 = length(xs)
@@ -37,9 +36,11 @@ end
 ) where
 {
 //
-fun
-msort
-{n:int}
+typedef o = list0(a)
+typedef i = (list0(a), int)
+//
+fun{}
+msort{n:int}
 ( xs
 : list1(a, n), n0: int(n)) =
 (
@@ -48,12 +49,6 @@ msort
 {
   val xs = g0ofg1(xs) and n0 = n0
 }
-}
-) where
-{
-//
-typedef o = list0(a)
-typedef i = (list0(a), int)
 //
 (*
 fun
@@ -77,15 +72,6 @@ case+ xs of
 *)
 //
 implement
-divconq_solve_opt<i><o>
-  (inp) =
-(
-  if
-  (inp.1 >= 2)
-  then none_vt() else some_vt(inp.0)
-)
-//
-implement
 divconq_divide<i><o>
   (inp) = let
 //
@@ -100,8 +86,7 @@ divconq_divide<i><o>
   val ys = list0_vt2t(ys)
 //
 in
-  g0ofg1
-  ($list1{i}((ys, n0/2), (zs, n0-n0/2)))
+  g0ofg1($list1{i}((ys, n0/2), (zs, n0-n0/2)))
 end
 //
 implement
@@ -118,7 +103,27 @@ list0_vt2t
   implement
   list0_merge$choose<a>(x1, x2) = gcompare$val<a>(x1, x2)
 //
-}
+} (* end of [where] *)
+//
+implement
+divconq_solve_opt<i><o>
+  (inp) =
+(
+  if
+  (inp.1 >= 2)
+  then none_vt() else some_vt(inp.0)
+)
+implement
+divconq_solve_rec<i><o>
+  (inp) =
+let
+  val
+  [n1:int] xs = g1ofg0(inp.0)
+  val
+  [n2:int] n0 = g1ofg0(inp.1)
+in
+  let prval () = $UN.prop_assert{n1==n2}() in msort(xs, n0) end
+end
 //
 } (* end of [mergesort] *)
 

@@ -51,12 +51,14 @@ divconq_solve(x0) =
 )
 (* ****** ****** *)
 //
+(*
 implement
 {i}{o}//tmp
 divconq_solve_rec(x0) =
 (
   divconq_solve_beg<i><o>(x0)
 )
+*)
 //
 (* ****** ****** *)
 

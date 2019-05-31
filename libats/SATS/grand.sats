@@ -63,14 +63,17 @@ nat0_rand_max
 {n:int|n >= 1}(max: int(n)): Natlt(n)
 
 (* ****** ****** *)
-
+//
 fun
 {a:tflt}
 list0_rand(): list0(a)
 fun
 {a:vtflt}
 list0_vt_rand(): list0_vt(a)
-
+//
+fun{}
+list0_rand$len(): Intgte(0)
+//
 (* ****** ****** *)
 //
 fun{}

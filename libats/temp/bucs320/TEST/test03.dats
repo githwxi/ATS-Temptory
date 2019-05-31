@@ -40,6 +40,10 @@ val-cons(r1, rs) = rs
 }
 //
 implement
+divconq_solve_rec<i><o> =
+lam(n) =>
+f91(n)
+implement
 divconq_solve_opt<i><o> =
 lam(x) =>
 if x <= 100 then none_vt() else some_vt(x-10)
@@ -72,6 +76,10 @@ val-cons(r1, rs) = rs
 val-cons(r2, rs) = rs
 }
 //
+implement
+divconq_solve_rec<i><o> =
+lam(n) =>
+fibonacci(n)
 implement
 divconq_solve_opt<i><o> =
 lam(x) =>

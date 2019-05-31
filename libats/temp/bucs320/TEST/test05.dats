@@ -123,13 +123,16 @@ gseq_rforeach$work<int>(x0) =
 implement
 QueenPuzzle() =
 (
-divconq_solve<i><o>
-(board_nil((*void*)))
+solve(board_nil())
 ) where
 {
 //
 typedef i = board
 typedef o = boardlst
+//
+fun{}
+solve(xs: i): o =
+divconq_solve<i><o>(xs)
 //
 implement
 divconq_divide<i><o>
@@ -151,6 +154,9 @@ board_cons(i, xs)::loop(i+1) else loop(i+1)
 else list0_nil(*void*)
 } (* end of [where] *)
 //
+implement
+divconq_solve_rec<i><o>
+  (xs) = solve(xs)
 implement
 divconq_solve_opt<i><o>
   (xs) =

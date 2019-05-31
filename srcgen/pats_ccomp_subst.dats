@@ -687,17 +687,27 @@ val tmpmap2 = tmpmap_make(tmplst2)
 //
 val tmpret2 = tmpvar2var(tmpmap2, tmpret)
 //
-val () = let
-  val opt = funlab_get_d2copt(flab)
-in
+(*
 //
+// HX-2019-05-31:
+// Template implementation
+// should be non-recursive!!!
+// Please see [TEST00/test23.dats]
+//
+val () =
+let
+val opt = funlab_get_d2copt(flab)
+in
 case+ opt of
 | None() => ()
 | Some(d2c) =>
-    ccompenv_add_tmpcstmat(env, TMPCSTMATsome2(d2c, tmparg2, flab2))
-  // end of [val]
-//
+  ccompenv_add_tmpcstmat(env, TMPCSTMATsome2(d2c, tmparg2, flab2))
 end // end of [val]
+*)
+//
+// HX-2019-05-31:
+// Template function
+// can still be recursive!!!
 //
 val () = let
   val opt = funlab_get_d2vopt(flab)
@@ -705,9 +715,8 @@ in
 //
 case+ opt of
 | None () => ()
-| Some (d2v) => (
-    ccompenv_add_tmpvarmat(env, TMPVARMATsome2(d2v, tmparg2, flab2))
-  ) (* end of [Some] *)
+| Some (d2v) =>
+  ccompenv_add_tmpvarmat(env, TMPVARMATsome2(d2v, tmparg2, flab2))
 //
 end // end of [val]
 //

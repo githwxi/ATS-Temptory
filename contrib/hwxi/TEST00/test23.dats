@@ -41,4 +41,55 @@ val () = println!(string0_rand())
 
 (* ****** ****** *)
 
+local
+implement
+grand$val<sint>() =
+nat0_rand_max<>(100)
+in
+val xs = list0_rand<sint>()
+val () = println!("xs = ", xs)
+end (* end-of-local *)
+local
+implement
+grand$val<sint>() =
+nat0_rand_max<>(100)
+in
+val xs = list0_rand<sint>()
+val () = println!("xs = ", xs)
+end (* end-of-local *)
+
+(* ****** ****** *)
+
+local
+
+implement
+grand$val<sint>() =
+nat0_rand_max<>(100)
+(*
+val
+list0_rand_sint =
+(
+list0_rand<sint>
+) where
+{
+implement
+list0_rand$len<>() = 5
+}
+implement
+grand$val<list0(sint)>
+  ((*void*)) = list0_rand_sint()
+*)
+in
+val xss =
+(
+grand$val<list0(list0(sint))>()
+) where
+{
+implement list0_rand$len<>() = 2
+}
+val () = println!("xss = ", xss)
+end (* end-of-local *)
+
+(* ****** ****** *)
+
 (* end of [test23.dats] *)

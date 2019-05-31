@@ -78,13 +78,13 @@ gfree$val<refcnt(a)>(x) = decref(x)
 (* ****** ****** *)
 //
 datavtype
-refcnt(a:vtflt) =
+refcnt_(a:vtflt) =
   | REFCNT(a) of (uint, a)
 //
 (* ****** ****** *)
 //
 absimpl
-refcnt_vtflt_vtbox(a) = refcnt(a)
+refcnt_vtflt_vtbox(a) = refcnt_(a)
 //
 (* ****** ****** *)
 

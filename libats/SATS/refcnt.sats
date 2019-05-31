@@ -76,10 +76,10 @@ refcnt_get1_cnt(!refcnt(a)): Intgte(1)
 //
 fun
 {a:vtflt}
-refcnt_decref (refcnt(a)): void
+refcnt_decref(refcnt(a)): void
 fun
 {a:vtflt}
-refcnt_incref (!refcnt(a)): refcnt(a)
+refcnt_incref(!refcnt(a)): refcnt(a)
 //
 #symload decref with refcnt_decref
 #symload incref with refcnt_incref
