@@ -107,7 +107,7 @@ end
 ```
 
 Note that the specified order indicates that one iword-value `iw1` is
-less than another one `iw2` if the int-value in `iw1` is less than
+less than another one `iw2` if the int-value in `iw1` is greater than
 that in `iw2` or the two int-values are equal and the string-value in
 `iw1` is less than that in `iw2`.
 
@@ -402,7 +402,7 @@ word#249: face(95)
 word#250: few(95)
 ```
 
-It is not surprising to see the word `whale` as the first noun in the list
-(word#22): The novel is all about whales and whaling!
+It is not surprising to see the word `whale` as the first noun in this list
+(word#22): The novel "Moby Dick" is all about whales and whaling!
 
 Happy programming in ATS-Temptory!!!
