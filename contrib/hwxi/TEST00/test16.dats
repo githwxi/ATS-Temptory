@@ -5,7 +5,7 @@
 //
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 //
@@ -36,7 +36,7 @@ glseq_map0_list<
 stream_vt(word)><word><word>(MobyDick)
 ) where
 {
-implement
+impltmp
 glseq_map0$fopr<word><word>(x0) = tolower(x0)
 }
 val
@@ -99,7 +99,7 @@ nwordlst =
 list0_vt_mergesort(nwordlst)
 ) where
 {
-implement
+impltmp
 list0_vt_mergesort$cmp<nword>
   (nw1, nw2) =
 let
@@ -117,7 +117,7 @@ val () =
 list0_vt_iforeach0<nword>(nwordlst)
 ) where
 {
-implement
+impltmp
 list0_vt_iforeach0$work<nword>(i0, nw) =
   if i0 < 250 then println!("word#", i0+1, ": ", nw.1, "(", nw.0, ")")
 }

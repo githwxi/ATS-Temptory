@@ -46,8 +46,8 @@
 
 (* ****** ****** *)
 
-implement
-{}(*tmp*)
+impltmp
+{}//tmp
 sint_forall
   (n0) =
 ( loop(0) ) where
@@ -63,8 +63,8 @@ then true else
   then loop(succ(i0)) else false
 )
 } (* end of [sint_forall] *)
-implement
-{}(*tmp*)
+impltmp
+{}//tmp
 sint_foreach
   (n0) =
 ( loop(0) ) where
@@ -85,8 +85,8 @@ sint_foreach$work<>(i0); loop(succ(i0))
 
 (* ****** ****** *)
 
-implement
-{r0}(*tmp*)
+impltmp
+{r0}//tmp
 sint_foldleft
   (n0, r0) =
 ( loop(0, r0) ) where
@@ -106,8 +106,8 @@ end // end of [else]
 
 (* ****** ****** *)
 
-implement
-{}(*tmp*)
+impltmp
+{}//tmp
 sint_listize
   (n0) =
 (
@@ -134,8 +134,8 @@ end // end of [else]
 )
 } (* end of [sint_listize] *)
 
-implement
-{}(*tmp*)
+impltmp
+{}//tmp
 uint_listize
   (n0) =
 (
@@ -164,8 +164,8 @@ end // end of [else]
 
 (* ****** ****** *)
 
-implement
-{}(*tmp*)
+impltmp
+{}//tmp
 sint_rlistize
   (n0) =
 (
@@ -192,8 +192,8 @@ end // end of [else]
 )
 } (* end of [sint_rlistize] *)
 
-implement
-{}(*tmp*)
+impltmp
+{}//tmp
 uint_rlistize
   (n0) =
 (
@@ -222,8 +222,8 @@ end // end of [else]
 
 (* ****** ****** *)
 //
-implement
-{}(*tmp*)
+impltmp
+{}//tmp
 sint_streamize
   (n0) =
 ( auxmain(0) ) where
@@ -242,8 +242,8 @@ else stream_vt_cons(i0, auxmain(succ(i0)))
 //
 } (* end of [sint_streamize] *)
 
-implement
-{}(*tmp*)
+impltmp
+{}//tmp
 uint_streamize
   (n0) =
 ( auxmain(0u) ) where

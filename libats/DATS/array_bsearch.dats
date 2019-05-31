@@ -43,7 +43,7 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 array_bsearch
   {n}(A, asz) = let
@@ -94,7 +94,7 @@ void *bsearch
 , int (*compar)(const void *, const void *)
 ) ; // end of [bsearch]
 *)
-implement
+impltmp
 {a}(*tmp*)
 array_bsearch_libc
   (A, asz, key, cmp) = let

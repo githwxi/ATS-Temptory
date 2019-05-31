@@ -5,7 +5,7 @@
 //
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 //
@@ -48,7 +48,7 @@ iforeach0<x0>(ws)
 ) where
 {
 typedef x0 = string
-implement
+impltmp
 list0_vt_iforeach0$work<x0>(i0, w0) = println!("word#", i0, ": ", w0)
 }
 //
@@ -67,7 +67,7 @@ iforeach0<x0>(ws)
 ) where
 {
 typedef x0 = string
-implement
+impltmp
 list0_vt_iforeach0$work<x0>(i0, w0) = println!("word#", i0, ": ", w0)
 }
 //

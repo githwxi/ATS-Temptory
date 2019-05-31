@@ -70,7 +70,7 @@ in (* in-of-local *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 qlist_nil() =
 (
@@ -79,7 +79,7 @@ QLIST(null, null)
 {
   val null = ptr0_null()
 }
-implement
+impltmp
 {}(*tmp*)
 qlist_make_nil() =
 (
@@ -91,14 +91,14 @@ QLIST(null, null)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 qlist_iseqz(xs) =
 (
 case+ xs of
 | QLIST(qf, qr) => iseqz(qf)
 )
-implement
+impltmp
 {}(*tmp*)
 qlist_isneqz(xs) =
 (
@@ -108,14 +108,14 @@ case+ xs of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlist_size(xs) =
 (
 i2sz
 (qlist_length<a>(xs))
 )
-implement
+impltmp
 {a}(*tmp*)
 qlist_length(xs) =
 (
@@ -132,7 +132,7 @@ case+ xs of
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 qlist_insert
   (xs, x0) =
@@ -168,7 +168,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 qlist_takeout_all
   (xs) =
@@ -193,7 +193,7 @@ case+ xs of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlist_remove
   (xs) =
@@ -224,7 +224,7 @@ end // end of [qlist_remove]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlist_takeout
   (xs, res) =
@@ -264,7 +264,7 @@ case+ xs of
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlist_takeout_opt
   (xs) = let
@@ -294,12 +294,12 @@ end (* end of [qlist_takeout_out] *)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 qlist_free(xs) =
 list0_vt_free<a>
 (qlist_freeout<a>(xs))
-implement
+impltmp
 {a}(*tmp*)
 qlist_freeout(xs) =
 (
@@ -310,7 +310,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:vtflt)
 qlist_forall0<x0>
   (xs) =
@@ -318,10 +318,10 @@ qlist_forall0<x0>
 list0_vt_forall0<x0>(qlist_freeout<x0>(xs))
 ) where
 {
-implement
+impltmp
 list0_vt_forall0$test<x0>(x0) = qlist_forall0$test<x0>(x0)
 }
-implement
+impltmp
 (x0:vtflt)
 qlist_foreach0<x0>
   (xs) =
@@ -329,13 +329,13 @@ qlist_foreach0<x0>
 list0_vt_foreach0<x0>(qlist_freeout<x0>(xs))
 ) where
 {
-implement
+impltmp
 list0_vt_foreach0$work<x0>(x0) = qlist_foreach0$work<x0>(x0)
 }
 
 (* ****** ****** *)
  
-implement
+impltmp
 (x0:vtflt)
 qlist_forall1<x0>
   (xs) =
@@ -355,14 +355,14 @@ val test =
 list0_vt_forall1<x0>(ys)
 ) where
 {
-implement
+impltmp
 list0_vt_forall1$test<x0>(x0) = qlist_forall1$test<x0>(x0)
 }
 } (* end of [qlist_forall1] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:vtflt)
 qlist_foreach1<x0>
   (xs) =
@@ -382,7 +382,7 @@ val test =
 list0_vt_foreach1<x0>(ys)
 ) where
 {
-implement
+impltmp
 list0_vt_foreach1$work<x0>(x0) = qlist_foreach1$work<x0>(x0)
 }
 } (* end of [qlist_foreach1] *)
@@ -393,7 +393,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 qlist_print(xs) =
 (
@@ -409,7 +409,7 @@ val p0 =
 $UN.cast
 {ref(int)}(addr@i0)
 //
-implement
+impltmp
 qlist_foreach1$work<x0>
   (x0) = () where
 {
@@ -426,16 +426,16 @@ qlist_foreach1$work<x0>
 
 (* ****** ****** *)
 //
-implement
+impltmp
 qlist_print$beg<>() = print("(")
-implement
+impltmp
 qlist_print$end<>() = print(")")
-implement
+impltmp
 qlist_print$sep<>() = print(",")
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 (x0:vtflt)
 glseq_forall0<qlist(x0)><x0>
   (xs) =
@@ -443,13 +443,13 @@ glseq_forall0<qlist(x0)><x0>
   qlist_forall0<x0>(xs)
 ) where
 {
-implement
+impltmp
 qlist_forall0$test<x0>(x0) = glseq_forall0$test<x0>(x0)
 }
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 (x0:vtflt)
 glseq_foreach0<qlist(x0)><x0>
   (xs) =
@@ -457,13 +457,13 @@ glseq_foreach0<qlist(x0)><x0>
   qlist_foreach0<x0>(xs)
 ) where
 {
-implement
+impltmp
 qlist_foreach0$work<x0>(x0) = glseq_foreach0$work<x0>(x0)
 }
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 (x0:vtflt)
 glseq_forall1<qlist(x0)><x0>
   (xs) =
@@ -471,13 +471,13 @@ glseq_forall1<qlist(x0)><x0>
   qlist_forall1<x0>(xs)
 ) where
 {
-implement
+impltmp
 qlist_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
 }
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 (x0:vtflt)
 glseq_foreach1<qlist(x0)><x0>
   (xs) =
@@ -485,7 +485,7 @@ glseq_foreach1<qlist(x0)><x0>
   qlist_foreach1<x0>(xs)
 ) where
 {
-implement
+impltmp
 qlist_foreach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
 }
 //

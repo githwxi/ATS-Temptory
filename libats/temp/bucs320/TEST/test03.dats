@@ -26,11 +26,11 @@ divconq_solve<i><o>(n)
 typedef i = int
 typedef o = int
 //
-implement
+impltmp
 divconq_divide<i><o>
 (x) =
 g0ofg1($list1{i}(x+11))
-implement
+impltmp
 divconq_conquer_cmb<i><o>(rs) =
 (
 f91(r1)
@@ -39,11 +39,11 @@ f91(r1)
 val-cons(r1, rs) = rs
 }
 //
-implement
+impltmp
 divconq_solve_rec<i><o> =
 lam(n) =>
 f91(n)
-implement
+impltmp
 divconq_solve_opt<i><o> =
 lam(x) =>
 if x <= 100 then none_vt() else some_vt(x-10)
@@ -62,11 +62,11 @@ divconq_solve<i><o>(n)
 typedef i = int
 typedef o = int
 //
-implement
+impltmp
 divconq_divide<i><o>
 (x) =
 g0ofg1($list1{i}(x-1, x-2))
-implement
+impltmp
 divconq_conquer_cmb<i><o>(rs) =
 (
 r1 + r2
@@ -76,11 +76,11 @@ val-cons(r1, rs) = rs
 val-cons(r2, rs) = rs
 }
 //
-implement
+impltmp
 divconq_solve_rec<i><o> =
 lam(n) =>
 fibonacci(n)
-implement
+impltmp
 divconq_solve_opt<i><o> =
 lam(x) =>
 if x >= 2 then none_vt() else some_vt(x)
@@ -93,7 +93,7 @@ if x >= 2 then none_vt() else some_vt(x)
 
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 

@@ -40,7 +40,7 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 SINT2_streamize
   ((*void*)) =
@@ -65,7 +65,7 @@ else stream_vt_cons(i0, auxmain(succ(i0)))
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 CPTR2_streamize
   ((*void*)) =

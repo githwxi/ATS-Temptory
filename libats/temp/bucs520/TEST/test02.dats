@@ -43,7 +43,7 @@ board_cons1
 extern
 fun
 board_free(board): void
-implement
+impltmp
 gfree$val<board>(xs) = board_free(xs)
 //
 (* ****** ****** *)
@@ -52,29 +52,29 @@ local
 absimpl
 board = list0_vt(int)
 in
-implement
+implfun
 board_nil
 () = lnil()
-implement
+implfun
 board_cons1
 (x0, xs) =
 lcons(x0, copy(xs))
 
-implement
+implfun
 board_free(xs) = list0_vt_free(xs)
 
-implement
+impltmp
 glseq_forall1<board><int>
 (xs) =
 (
   list0_vt_forall1<int>(xs)
 ) where
 {
-implement
+impltmp
 list0_vt_forall1$test<int>(x0) = glseq_forall1$test<int>(x0)
 }
 //
-implement glseq_rlistize<board><int>(xs) = list0_vt_reverse(xs)
+impltmp glseq_rlistize<board><int>(xs) = list0_vt_reverse(xs)
 //
 end // end of [local]
 
@@ -87,7 +87,7 @@ board_check
 glseq_iforall1<board><int>(xs)
 ) where
 {
-implement
+impltmp
 glseq_iforall1$test<int>(i0, x1) =
   if (x0 != x1) then (i0+1 != abs(x0-x1)) else false
 }
@@ -102,13 +102,13 @@ glseq_rforeach0<board><int>
   (xs)
 ) where
 {
-implement
+impltmp
 glseq_rforeach0$work<int>(x0) =
 (
   sint_foreach<>(N); println!()
 ) where
 {
-  implement
+  impltmp
   sint_foreach$work<>(i0) =
   (if i0 = x0 then print"Q " else print". ")
 }
@@ -118,7 +118,7 @@ glseq_rforeach0$work<int>(x0) =
 
 (* ****** ****** *)
 
-implement
+impltmp
 gtree_node_children<board>
   (xs) =
 (
@@ -154,7 +154,7 @@ val
 xss =
 gtree_streamize_bfs<board>(board_nil())
 //
-implement
+impltmp
 stream_vt_filter$test<board>(xs) = (glseq_length<board><int>(xs) >= N)
 //
 }
@@ -173,7 +173,7 @@ stream_vt_iforeach0
   the_solutions
 ) where
 {
-implement
+impltmp
 stream_vt_iforeach0$work<board>(i0, xs) =
 (print!("Solution#", i0+1, ":\n"); print0(xs); println!())
 }
@@ -181,7 +181,7 @@ stream_vt_iforeach0$work<board>(i0, xs) =
 
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 

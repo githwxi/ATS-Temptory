@@ -75,7 +75,7 @@ libats_inthash_jenkins
   return a;
 }
 */
-implement
+impltmp
 {}(*tmp*)
 inthash_jenkins(key) =
 $extfcall
@@ -91,7 +91,7 @@ string_hash_multiplier
   K: ulint, H0: ulint, str: string
 ) :<> ulint // endfun
 *)
-implement
+impltmp
 {}(*tmp*)
 string_hash_multiplier
   (K, H0, key) = let
@@ -119,25 +119,25 @@ end // end of [string_hash_multiplier]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {k0}(*tmp*)
 equal_key_key = gequal$val<k0>
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 hash_key<int>(i0) =
 $UN.cast{ulint}
 (
 inthash_jenkins($UN.cast{uint32}(i0))
 )
-implement
+impltmp
 hash_key<uint>(i0) =
 $UN.cast{ulint}
 (
 inthash_jenkins($UN.cast{uint32}(i0))
 )
-implement
+impltmp
 hash_key<usize>(i0) =
 $UN.cast{ulint}
 (
@@ -148,18 +148,18 @@ inthash_jenkins($UN.cast{uint32}(i0))
 //
 // HX: 31 and 37 are top choices
 //
-implement
+impltmp
 hash_key<string>(k0) =
 string_hash_multiplier(31UL, 618033989UL, k0)
 (*
-implement
+impltmp
 hash_key<string>(k0) =
 string_hash_multiplier(31UL, 61803398875UL, k0)
 *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 hash_key<string_vt>(k0) =
 gself$val(hash_key<string>($UN.string0_vt2t(k0)))
 //

@@ -45,7 +45,7 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:tflt)
 gseq_forall<CPTR2><x0>
   (xs) =
@@ -57,14 +57,14 @@ cptr0_forall<x0>(cp0, cp1)
 val cp0 = CPTR2_range$beg<>{x0}()
 val cp1 = CPTR2_range$end<>{x0}()
 //
-implement
+impltmp
 cptr0_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
 //
 } (* end of [gseq_forall] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:tflt)
 gseq_foreach<CPTR2><x0>
   (xs) =
@@ -76,7 +76,7 @@ cptr0_foreach<x0>(cp0, cp1)
 val cp0 = CPTR2_range$beg<>{x0}()
 val cp1 = CPTR2_range$end<>{x0}()
 //
-implement
+impltmp
 cptr0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
 //
 } (* end of [gseq_foreach] *)

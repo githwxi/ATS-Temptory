@@ -15,7 +15,7 @@ tempacc -o Hello_dats Hello.dats
 
 (* ****** ****** *)
 
-implement
+implfun
 main0() = println! ("Hello, world!")
 
 (* ****** ****** *)

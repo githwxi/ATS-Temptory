@@ -4,7 +4,7 @@ HX: for testing [dirent]
 
 (* ****** ****** *)
 
-implement main1() = 0
+implfun main1() = 0
 
 (* ****** ****** *)
 //
@@ -21,7 +21,7 @@ implement main1() = 0
 
 (* ****** ****** *)
 //
-implement
+impltmp
 gseq_forall<
   cptr(DIR)><cptr(dirent)>
   (dp) =
@@ -29,7 +29,7 @@ gseq_forall<
   readdir_forall<>(dp)
 ) where
 {
-implement
+impltmp
 readdir_forall$test<>(ent) =
 (
   gseq_forall$test<cptr(dirent)>(ent)
@@ -47,7 +47,7 @@ gseq_foreach<
   cptr(DIR)><cptr(dirent)>(dp)
 ) where
 {
-implement
+impltmp
 gseq_foreach$work<cptr(dirent)>(ent) =
   println!($UN.cast{string}(ent.d_name()))
 }
@@ -66,7 +66,7 @@ val () =
 stream_vt_foreach0_ref<dirent>(xs)
 ) where
 {
-implement
+impltmp
 stream_vt_foreach0_ref$work<dirent>
   (ent) =
   println!($UN.cast{string}(ent.d_name()))

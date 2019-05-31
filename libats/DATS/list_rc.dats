@@ -44,7 +44,7 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_rc_length(xs) =
 (
@@ -81,7 +81,7 @@ case+ nx of
 
 (* ****** ****** *)
 (*
-implement
+impltmp
 {x0}//tmp
 list0_rc_length0
   (xs) =
@@ -113,20 +113,20 @@ end
 } (* end of [list0_rc_length0] *)
 *)
 (*
-implement
+impltmp
 {x0}//tmp
 list0_rc_length1(xs) =
 list0_rc_length0<x0>(incref(xs))
 *)
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_rc_free
 (rfc) =
 refcnt_decref<list0_rc_con(x0)>(rfc)
 //
-implement
+impltmp
 {x0}//tmp
 list0_rc_con_free(con) =
   ( loop(con) ) where
@@ -135,7 +135,7 @@ fun
 loop
 (con: list0_rc_con(x0)): void =
 let
-implement
+impltmp
 gfree$val<
 list0_rc_con(x0)>(con) = loop(con)
 in
@@ -152,14 +152,14 @@ end
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 (x0:vtflt)
 gfree$val<
 list0_rc_con(x0)>(con) = list0_rc_con_free<x0>(con)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_rc_forall1(xs) =
 (
@@ -211,7 +211,7 @@ case+ nx of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_rc_foreach1(xs) =
 (

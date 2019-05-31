@@ -43,7 +43,7 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {i}{o}//tmp
 divconq_solve(x0) =
 (
@@ -52,7 +52,7 @@ divconq_solve(x0) =
 (* ****** ****** *)
 //
 (*
-implement
+impltmp
 {i}{o}//tmp
 divconq_solve_rec(x0) =
 (
@@ -62,7 +62,7 @@ divconq_solve_rec(x0) =
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {i}{o}//tmp
 divconq_solve_beg
   (x0) = let
@@ -91,7 +91,7 @@ end // end of [divconq_solve_beg]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {i}{o}//tmp
 divconq_conquer
   (xs) = r0 where
@@ -102,7 +102,7 @@ val rs =
 list0_map<i><o>(xs)
 ) where
 {
-implement
+impltmp
 list0_map$fopr<i><o>
 (x0) =
 divconq_solve_rec<i><o>(x0)
@@ -115,7 +115,7 @@ divconq_conquer_cmb<i><o>(rs)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {i}{o}//tmp
 divconq_conquer_aft(x0, r0) = ()
 //

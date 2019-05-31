@@ -45,19 +45,19 @@ absimpl board = list(int)
 
 in(*in-of-local*)
 
-implement
+implfun
 board_nil() = nil()
-implement
+implfun
 board_cons(x0, xs) = cons(x0, xs)
 
-implement
+impltmp
 {}//tmp
 board_forall(xs) =
 (
 list0_forall<int>(xs)
 ) where
 {
-implement
+impltmp
 list0_forall$test<int>(x0) = board_forall$test<>(x0)
 }
 
@@ -65,14 +65,14 @@ end // end of [local]
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_forall<board><int>
   (xs) =
 (
   board_forall<>(xs)
 ) where
 {
-  implement
+  impltmp
   board_forall$test<>(x0) = gseq_forall$test<int>(x0)
 }
 
@@ -86,7 +86,7 @@ gseq_rforeach<board><int>
   (xs)
 ) where
 {
-implement
+impltmp
 gseq_rforeach$work<int>(x0) =
 (
   loop(0)
@@ -119,7 +119,7 @@ board_check
 gseq_iforall<board><int>(xs)
 ) where
 {
-implement
+impltmp
 gseq_iforall$test<int>(i1, x1) =
 if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
 }
@@ -172,7 +172,7 @@ qsolve(): list(board) =
 
 (* ****** ****** *)
 
-implement
+implfun
 main0() = () where
 {
 //
@@ -184,7 +184,7 @@ val () =
 gseq_iforeach<list(board)><board>(xss)
 ) where
 {
-implement
+impltmp
 gseq_iforeach$work<board>(i, xs) =
 (println!("Solution#", i+1, ":"); board_print(xs); println!())
 }

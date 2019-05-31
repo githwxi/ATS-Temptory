@@ -5,7 +5,7 @@
 //
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 //
@@ -66,10 +66,10 @@ mapopt<x0><y0>(xs)
 {
 typedef x0 = sint
 typedef y0 = sint
-implement
+impltmp
 list0_mapopt$test<x0>
 (x0) = (x0 >= 2 andalso x0 < 7)
-implement
+impltmp
 list0_mapopt$fopr<x0><y0>(x0) = (x0)
 }
 //
@@ -80,10 +80,10 @@ mapopt_rlist<x0><y0>(ys)
 {
 typedef x0 = sint
 typedef y0 = sint
-implement
+impltmp
 list0_mapopt$test<x0>
 (x0) = (x0 >= 2 andalso x0 < 7)
-implement
+impltmp
 list0_mapopt$fopr<x0><y0>(x0) = (x0)
 }
 //

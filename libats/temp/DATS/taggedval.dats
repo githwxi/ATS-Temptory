@@ -52,7 +52,7 @@ UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 tvalue_iseqz
   (x0) =
@@ -60,7 +60,7 @@ tvalue_iseqz
 case+ x0 of
 | TVnil() => true | _ => false
 )
-implement
+impltmp
 {}(*tmp*)
 tvalue_isneqz
   (x0) =
@@ -71,7 +71,7 @@ case+ x0 of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 tvalue_print
   (x0) =
@@ -117,7 +117,7 @@ in(* in-of-local *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 tobject_get_at
   (obj, k0) =
@@ -131,7 +131,7 @@ isneqz(cp)
 then $UN.cptr0_get(cp) else TVnil()
 end // end of [let]
 ) (* end of [tobject_get_at] *)
-implement
+impltmp
 {}(*tmp*)
 tobject_set_at
   (obj, k0, x0) =
@@ -152,7 +152,7 @@ end
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 tobject_print(obj) = hmapref_print<k0,x0>(obj)
 

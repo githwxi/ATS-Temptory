@@ -74,23 +74,23 @@ map_vtbox
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 linmap_nil() = list0_vt_nil()
-implement
+impltmp
 {}(*tmp*)
 linmap_make_nil() = list0_vt_nil()
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 linmap_iseqz(map) =
 (
 case+ map of
 | list0_vt_nil _ => tt | list0_vt_cons _ => ff
 )
-implement
+impltmp
 {}(*tmp*)
 linmap_isneqz(map) =
 (
@@ -100,25 +100,25 @@ case+ map of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_size(map) = i2sz(list0_vt_length(map))
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_free(map) = list0_vt_free<(k0,x0)>(map)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_listize(map) = (map) (*list0_vt((k0, x0))*)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_search_ref
   (map, k0) =
@@ -163,7 +163,7 @@ case+ kxs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_insert
 (map, k0, x0, r0) =
@@ -184,7 +184,7 @@ end (* end of [linmap_insert] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_insert_any
 (map, k0, x0) = let
@@ -197,7 +197,7 @@ end // end of [linmap_insert_any]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_takeout
   (map, k0, r0) =
@@ -258,7 +258,7 @@ case+ m0 of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_forall1(map) =
   ( loop(map) ) where
@@ -294,7 +294,7 @@ case+ m0 of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_foreach1(map) =
   ( loop(map) ) where

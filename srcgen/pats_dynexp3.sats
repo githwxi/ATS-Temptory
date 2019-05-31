@@ -257,9 +257,10 @@ d3ecl_node =
 //
   | D3Cdcstdecs of (int(*0/1:sta/ext*), dcstkind, d2cstlst)
 //
-  | D3Cimpdec of (
-      int(*knd*), i3mpdec // knd=0/1 : implement/primplmnt
-    ) // end of [D3Cimpdec]
+  | D3Cimpdec of
+    (
+      int(*knd*), i3mpdec // knd=~1/0/1/2 : implprf/val/fun/tmp
+    ) (* end of [D3Cimpdec] *)
 //
   | D3Cfundecs of (funkind, s2qualst(*decarg*), f3undeclst)
 //

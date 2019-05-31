@@ -41,7 +41,7 @@
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 ref_make_elt(x0) =
 let
@@ -55,7 +55,7 @@ end // end of [ref_make_elt]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 ref_get_elt
   (r0) = !p0 where
@@ -63,7 +63,7 @@ ref_get_elt
   val (vbox(pf) | p0) = ref_vptrof(r0)
 } (* end of [ref_get_elt] *)
 
-implement
+impltmp
 {a}(*tmp*)
 ref_set_elt
   (r0, x0) =

@@ -42,7 +42,7 @@ UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 pcre_match_string
   (code, subj) = let
@@ -58,7 +58,7 @@ end // end of [pcre_match_string]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 pcre_match_substring
   {n}{st,ln}
@@ -86,7 +86,7 @@ prval ((*void*)) = $UN.cast2void(extra)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 regexp_match_string
   (rex, src) = let
@@ -102,7 +102,7 @@ end // end of [regexp_match_string]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 regexp_match_substring
   (rex0, subj, st, ln) = let
@@ -148,7 +148,7 @@ local
 
 in(*in-of-local*)
 
-implement
+impltmp
 {}(*tmp*)
 pcre_match2_substring
   {n}{st,ln}
@@ -208,7 +208,7 @@ prval () = $UN.prop_assert{n0 <= n1&&n1 <= st+ln}((*void*))
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 regexp_match2_string
 (
@@ -226,7 +226,7 @@ end // end of [regexp_match2_string]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 regexp_match2_substring
 ( rex0
@@ -291,7 +291,7 @@ memcpy
 
 in (* in of [local] *)
 
-implement
+impltmp
 {}(*tmp*)
 pcre_match3_substring
   {n}{st,ln}
@@ -436,7 +436,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 regexp_match3_string
 ( rexp
@@ -456,7 +456,7 @@ regexp_match3_substring
 //
 end // end of [regexp_match3_string]
 
-implement
+impltmp
 {}(*tmp*)
 regexp_match3_substring
 ( rexp
@@ -500,7 +500,7 @@ end // end of [regexp_match3_substring]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 regexp_match3_string_easy
 (rexp, subj) = let
@@ -513,7 +513,7 @@ end // end of [regexp_match3_string_easy]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 regexp_match3_substring_easy
 (rexp, subj, st, ln) = let

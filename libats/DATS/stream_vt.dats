@@ -48,7 +48,7 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_sing(x0) =
 stream_vt_cons
@@ -57,13 +57,13 @@ stream_vt_cons
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 stream_vt_make_nil() =
 $ldelay
 (stream_vt_nil(*void*))
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_make_sing(x0) =
 $ldelay
@@ -76,7 +76,7 @@ in stream_vt_cons(x0, xs) end, gfree$val<x0>(x0)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_make_list0
   (xs) =
@@ -98,7 +98,7 @@ case+ xs of
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_make_list0_vt
   (xs) =
@@ -126,7 +126,7 @@ list0_vt_free<x0>(xs)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 stream_vt_length
   (xs) =
@@ -145,7 +145,7 @@ case+ !xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 stream_vt_append
   (xs, ys) =
@@ -192,13 +192,13 @@ end // end-of-let
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_take$when(x0) = 
 not
 (stream_vt_take$until<x0>(x0))
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_take(xs) =
 (
@@ -252,13 +252,13 @@ end
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_drop$when(x0) = 
 not
 (stream_vt_drop$until<x0>(x0))
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_drop(xs) =
 (
@@ -308,7 +308,7 @@ end
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_listize(xs) =
 (
@@ -344,7 +344,7 @@ case+ !xs of
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_group_line
   (xs) =
@@ -365,7 +365,7 @@ val
 stream_vt_take<x0>(xs)
 ) where
 {
-implement
+impltmp
 stream_vt_take$until<x0>(x0) =
 stream_vt_group_line$iseol<x0>(x0)
 }
@@ -392,7 +392,7 @@ end // end-of-let
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_group_word
   (xs) =
@@ -413,7 +413,7 @@ val
 stream_vt_drop<x0>(xs)
 ) where
 {
-implement
+impltmp
 stream_vt_drop$until<x0>(x0) =
 stream_vt_group_word$isalpha<x0>(x0)
 }
@@ -432,7 +432,7 @@ case+ xs of
  stream_vt_take<x0>(xs)
  ) where
  {
- implement
+ impltmp
  stream_vt_take$when<x0>(x0) =
  stream_vt_group_word$isalpha<x0>(x0)
  }
@@ -453,7 +453,7 @@ end // end-of-let
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_forall0
   (xs) =
@@ -480,7 +480,7 @@ case+ !xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_foreach0
   (xs) =
@@ -504,7 +504,7 @@ case+ !xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_iforeach0
   (xs) =
@@ -529,7 +529,7 @@ case+ !xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}{y0}(*tmp*)
 stream_vt_map(xs) =
   (auxmain(xs)) where
@@ -572,7 +572,7 @@ case+ !xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}{y0}//tmp
 stream_vt_mapopt
 (
@@ -633,7 +633,7 @@ end // end of [let]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_filter
 (
@@ -696,7 +696,7 @@ end // end of [let]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}{y0}(*tmp*)
 stream_vt_imap(xs) =
   (auxmain(0, xs)) where
@@ -741,7 +741,7 @@ case+ !xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}{y0}//tmp
 stream_vt_imapopt
 ( xs ) =
@@ -805,7 +805,7 @@ end // end of [let]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_forall0_ref
   (xs) =
@@ -842,7 +842,7 @@ end // end of [let]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 stream_vt_foreach0_ref
   (xs) =

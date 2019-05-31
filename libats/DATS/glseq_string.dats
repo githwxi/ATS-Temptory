@@ -49,7 +49,7 @@ vtypedef cs = string_vt
 
 (* ****** ****** *)
 
-implement
+impltmp
 glseq_streamize<cs><c0>
   (cs) =
 (
@@ -58,27 +58,27 @@ glseq_streamize<cs><c0>
 
 (* ****** ****** *)
 
-implement
+impltmp
 glseq_forall1<cs><c0>
   (cs) =
 (
   string0_vt_forall1<>(cs)
 ) where
 {
-implement
+impltmp
 string0_vt_forall1$test<>(c0) = glseq_forall1$test<c0>(c0)
 } (* end of [gseq_forall] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 glseq_foreach1<cs><c0>
   (cs) =
 (
   string0_vt_foreach1<>(cs)
 ) where
 {
-implement
+impltmp
 string0_vt_foreach1$work<>(c0) = glseq_foreach1$work<c0>(c0)
 } (* end of [gseq_foreach] *)
 

@@ -74,10 +74,10 @@ UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 hashmap$hcap() = 64
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_make() =
 hashmap_make_hcap
@@ -178,20 +178,20 @@ in(*in-of-local*)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0}(*tmp*)
 $LM.equal_key_key = equal_key_key<k0>
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 chain_nil() =
 $LM.linmap_nil<>((*void*))
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {k0,x0}
 chain_free
   (map) =
@@ -199,7 +199,7 @@ chain_free
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {k0,x0}
 chain_listize
   (map) =
@@ -207,7 +207,7 @@ chain_listize
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 chain_search_ref
 (map, k0) =
@@ -215,12 +215,12 @@ $LM.linmap_search_ref<k0,x0>(map, k0)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 chain_insert
 (map, k0, x0, r0) =
 $LM.linmap_insert<k0,x0>(map, k0, x0, r0)
-implement
+impltmp
 {k0,x0}
 chain_insert_any
 (map, k0, x0) =
@@ -228,7 +228,7 @@ $LM.linmap_insert_any<k0,x0>(map, k0, x0)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {k0,x0}
 chain_takeout(map, k0, res) =
 (
@@ -237,14 +237,14 @@ chain_takeout(map, k0, res) =
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 chain_foreach1(map) =
 (
 $LM.linmap_foreach1<k0,x0>(map)
 ) where
 {
-implement
+impltmp
 $LM.linmap_foreach1$work<k0,x0> = chain_foreach1$work<k0,x0>
 } (* end of [chain_foreach1] *)
 
@@ -268,7 +268,7 @@ hashmap_vtbox(k0:vtflt, x0:vtflt) = hashmap(k0, x0)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {k0,x0}
 hashmap_make_hcap
 ([m:int]cap) =
@@ -297,7 +297,7 @@ val A0 = $UN.castvwtp0{arrayptr(chain,m)}(A0)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 hashmap_size
   (map) = let
@@ -312,7 +312,7 @@ end // end of [hashmap_size]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 hashmap_hcap
   (map) = let
@@ -325,7 +325,7 @@ end // end of [hashmap_get_hcap]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_free
   (map) = let
@@ -366,7 +366,7 @@ end // end of [hashmap_free]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_search_ref
   (map, k0) =
@@ -394,7 +394,7 @@ val res = chain_search_ref<k0,x0>(!pi, k0)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_insert
 (map, k0, x0, r0) =
@@ -446,7 +446,7 @@ then
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_insert_any
   (map, k0, x0) =
@@ -493,7 +493,7 @@ val () =
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_takeout
   (map, k0, res) =
@@ -527,7 +527,7 @@ val () = if yn then n0 := pred(n0) // removed
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_takeout_all
   (map) = let
@@ -575,7 +575,7 @@ end // end of [hashmap_takeout_all]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 hashmap_reset_hcap
 ( map, [m2:int]cap2 ) =
@@ -678,10 +678,10 @@ arrayptr_free($UN.castvwtp0{arrayptr(ptr,0)}(A1))
 (*
 HX:
 please
-re-implement if needed
+re-impltmp if needed
 *)
 //
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_adjust_hcap
   (map) = let
@@ -701,7 +701,7 @@ end // end of [hashmap_adjust_hcap]
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0:vtflt}
 hashmap_foreach1(map) =
 let
@@ -724,7 +724,7 @@ then let
     chain_foreach1<k0,x0>(kxs)
   ) where
   {
-    implement
+    impltmp
     chain_foreach1$work<k0,x0>(k0, x0) =
     hashmap_foreach1$work<k0, x0>(k0, x0)
   }

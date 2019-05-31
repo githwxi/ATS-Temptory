@@ -15,7 +15,7 @@
 
 (* ****** ****** *)
 
-implement
+implfun
 main0(argc, argv) =
 {
 val xs =

@@ -42,17 +42,17 @@
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {k0}(*tmp*)
 equal_key_key = gequal$val<k0>
 //
-implement
+impltmp
 {k0}(*tmp*)
 compare_key_key = gcompare$val<k0>
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_search
 (map, k0, r0) = let
@@ -84,7 +84,7 @@ end // end of [linmap_search]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_search_opt
   (map, k0) = let
@@ -110,7 +110,7 @@ end // end of [linmap_search_opt]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 linmap_insert_any
   (map, k0, x0) = () where
@@ -122,7 +122,7 @@ val-~optn0_vt_none() = linmap_insert_opt<k0,x0>(map, k0, x0)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 linmap_insert_opt
   (map, k0, x0) = let
@@ -149,7 +149,7 @@ end // end of [linmap_insert_opt]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 linmap_remove
   (map, k0) = let
@@ -174,7 +174,7 @@ end // end of [linmap_remove]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 linmap_takeout_opt
   (map, k0) = let
@@ -199,18 +199,18 @@ end // end of [linmap_takeout_opt]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 linmap_print$beg<>() = print("(")
-implement
+impltmp
 linmap_print$end<>() = print(")")
-implement
+impltmp
 linmap_print$sep<>() = print(",")
-implement
+impltmp
 linmap_print$mapto<>() = print("->")
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0:vtflt}
 linmap_print(map) =
 (
@@ -225,7 +225,7 @@ var i0 = (0:int)
 val p0 =
 $UN.cast{ref(int)}(addr@i0)
 //
-implement
+impltmp
 linmap_foreach1$work<k0,x0>(k0, x0) =
 (
 let

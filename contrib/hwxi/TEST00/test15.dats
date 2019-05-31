@@ -11,7 +11,7 @@
 //
 (* ****** ****** *)
 //
-implement main0() =
+implfun main0() =
 {
 //
 val xs =
@@ -29,14 +29,14 @@ val () =
 glseq_print<arrszref(int)><int>(A0)
 ) where
 {
-implement
+impltmp
 {xs}{x0}
 glseq_foreach1(xs) =
 (
 glseq_rforeach1<xs><x0>(xs)
 ) where
 {
-implement
+impltmp
 glseq_rforeach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
 }
 }

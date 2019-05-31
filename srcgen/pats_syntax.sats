@@ -1510,7 +1510,7 @@ d0ecl_node =
       (int(*0/1:sta/ext*), token, q0marglst, d0cstdeclst) // dyncst
 //
   | D0Cimpdec of
-      (int(*knd*), i0mparg, i0mpdec) // knd=0/1: implement/primplmnt
+      (int(*knd*), i0mparg, i0mpdec) // knd=~1/0/1/2: implprf/fun/tmp/tmpr
     // end of [D0Cimpdec]
 //
   | D0Cmacdefs of

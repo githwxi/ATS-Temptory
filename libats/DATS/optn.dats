@@ -46,7 +46,7 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}//tmp
 optn0_iseqz
   (opt) =
@@ -56,7 +56,7 @@ case+ opt of
 | optn0_some _ => ff
 )
 //
-implement
+impltmp
 {}//tmp
 optn0_isneqz
   (opt) =
@@ -68,14 +68,14 @@ case+ opt of
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 optn0_size
   (opt) =
 (
 i2sz(optn0_length<x0>(opt))
 )
-implement
+impltmp
 {x0}//tmp
 optn0_length
   (opt) =
@@ -86,7 +86,7 @@ case+ opt of
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 optn0_forall
   (opt) =
@@ -98,7 +98,7 @@ case+ opt of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 optn0_foreach
   (opt) =
@@ -110,7 +110,7 @@ case+ opt of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 optn0_listize
   (opt) =
@@ -119,7 +119,7 @@ case+ opt of
 | optn0_none() => list0_vt_nil()
 | optn0_some(x0) => list0_vt_sing(x0)
 )
-implement
+impltmp
 {x0}//tmp
 optn0_streamize
   (opt) = $ldelay

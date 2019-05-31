@@ -309,7 +309,7 @@ val himp =
 // end of [val]
 //
 in
-  hidecl_impdec (loc0, knd(*implmnt/implement*), himp)
+  hidecl_impdec (loc0, knd(*implfun/tmp/tmpr*), himp)
 end // end of [then]
 else (
   hidecl_none (loc0)

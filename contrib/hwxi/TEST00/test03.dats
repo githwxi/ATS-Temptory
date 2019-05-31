@@ -5,7 +5,7 @@
 //
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 
@@ -42,11 +42,11 @@ g0ofg1($list1{int}(6, 7, 8))
 val () = println!("xs = ", xs)
 //
 local
-implement
+impltmp
 list0_print$beg<>() = print"["
-implement
+impltmp
 list0_print$end<>() = print"]"
-implement
+impltmp
 list0_print$sep<>() = print";"
 in(*in-of-local*)
 val () = println!("ys = ", ys)

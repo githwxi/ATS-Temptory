@@ -84,12 +84,12 @@ in (*in-of-local*)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 slistref_nil
   {a}((*void*)) =
   ref<slist(a)>(list0_vt_nil())
-implement
+impltmp
 {}(*tmp*)
 slistref_make_nil
   {a}((*void*)) =
@@ -97,7 +97,7 @@ slistref_make_nil
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 slistref_sing(x0) =
 let
@@ -108,7 +108,7 @@ end // end of [slistref_sing]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 slistref_iseqz
   (stk) =
@@ -120,7 +120,7 @@ val
 //
 } (* end of [slistref_iseqz] *)
 //
-implement
+impltmp
 {a}(*tmp*)
 slistref_isneqz
   (stk) =
@@ -134,7 +134,7 @@ val
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 slistref_size
   (stk) =
@@ -148,7 +148,7 @@ val
 (vbox(pf)|p0) = ref_vptrof(stk)
 //
 } (* end of [slistref_length] *)  
-implement
+impltmp
 {a}(*tmp*)
 slistref_length
   (stk) =
@@ -164,7 +164,7 @@ val
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 slistref_insert
   (stk, x0) = () where
@@ -181,7 +181,7 @@ val () =
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 slistref_takeout
   (stk) = let
@@ -198,7 +198,7 @@ end (* end of [slistref_takeout] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 slistref_takeout_opt
   (stk) = let
@@ -223,7 +223,7 @@ end (* end of [slistref_takeout_opt] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 slistref_takeout_all
   (stk) = let
@@ -241,7 +241,7 @@ end (* end of [slistref_takeout_all] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 slistref_forall1
   (stk) = let
@@ -255,14 +255,14 @@ $effmask_ref
   list0_vt_forall1<x0>(!p0)
 ) where
 {
-implement
+impltmp
 list0_vt_forall1$test<x0>
   (x0) =
   slistref_forall1$test<x0>(x0)
 }
 end // end of [slistref_forall1]
 //
-implement
+impltmp
 {x0}(*tmp*)
 slistref_foreach1
   (stk) = let
@@ -276,7 +276,7 @@ $effmask_ref
   list0_vt_foreach1<x0>(!p0)
 ) where
 {
-implement
+impltmp
 list0_vt_foreach1$work<x0>
   (x0) =
   slistref_foreach1$work<x0>(x0)
@@ -289,7 +289,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 slistref_print(stk) =
 (
@@ -304,7 +304,7 @@ var i0 = (0:int)
 val p0 =
 $UN.cast{ref(int)}(addr@i0)
 //
-implement
+impltmp
 slistref_foreach1$work<x0>
   (x0) = () where
 {
@@ -322,16 +322,16 @@ slistref_foreach1$work<x0>
 
 (* ****** ****** *)
 //
-implement
+impltmp
 slistref_print$beg<>() = print("(")
-implement
+impltmp
 slistref_print$end<>() = print(")")
-implement
+impltmp
 slistref_print$sep<>() = print(",")
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 (x0:tflt)
 glseq_forall1<slistref(x0)><x0>
   (stk) =
@@ -339,11 +339,11 @@ glseq_forall1<slistref(x0)><x0>
   slistref_forall1<x0>(stk)
 ) where
 {
-implement
+impltmp
 slistref_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
 }
 //
-implement
+impltmp
 (x0:tflt)
 glseq_foreach1<slistref(x0)><x0>
   (stk) =
@@ -351,7 +351,7 @@ glseq_foreach1<slistref(x0)><x0>
   slistref_foreach1<x0>(stk)
 ) where
 {
-implement
+impltmp
 slistref_foreach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
 }
 //

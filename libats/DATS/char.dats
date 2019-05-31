@@ -42,18 +42,18 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}//tmp
 char0_iseqz(c0) = (c0 = NUL)
-implement
+impltmp
 {}//tmp
 char0_isneqz(c0) = (c0 != NUL)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 gequal$val<char>(c1, c2) = g0eq_char_char(c1, c2)
-implement
+impltmp
 gcompare$val<char>(c1, c2) = g0cmp_char_char(c1, c2)
 //
 (* ****** ****** *)

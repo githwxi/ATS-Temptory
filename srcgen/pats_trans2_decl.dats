@@ -2502,20 +2502,71 @@ auxcheck_impdec
   d1c0: d1ecl, knd: int, impdec: i2mpdec
 ) : void = let
   val d2c = impdec.i2mpdec_cst
-  val okay = (
-    if knd < 0 then d2cst_is_prf (d2c) else d2cst_is_nonprf (d2c)
+//
+  val okay =
+  (
+    if
+    (knd < 0)
+    then d2cst_is_prf(d2c) else d2cst_is_nonprf(d2c)
   ) : bool // end of [val]
-  val () = if ~okay then let
-    val () = prerr_error2_loc (d1c0.d1ecl_loc)
-    val () = filprerr_ifdebug "d1ecl_tr: auxcheck_impdec" // for debugging
-    val () = if knd < 0 then
-      prerr ": the implemented dynamic constant is required to be proof."
-    val () = if knd >= 0 then
-      prerr ": the implemented dynamic constant is required to be non-proof."
-    val () = prerr_newline ()
+  val () =
+  if ~okay then let
+    val () =
+    prerr_error2_loc (d1c0.d1ecl_loc)
+    val () =
+    filprerr_ifdebug "d1ecl_tr: auxcheck_impdec" // for debugging
+    val () =
+    if knd < 0 then
+      (prerr ": the implemented dynamic constant is required to be proof.")
+    val () =
+    if knd >= 0 then
+      (prerr ": the implemented dynamic constant is required to be non-proof.")
+    val () = prerr_newline ((*void*))
   in
     the_trans2errlst_add (T2E_d1ecl_tr_impdec (d1c0))
   end // end of [if] // end of [val]
+//
+  val () =
+  if
+  (knd = 1)
+  then
+  let
+    val okay = d2cst_is_funcst(d2c)
+  in
+    if ~okay then
+    {
+    val () =
+    prerr_error2_loc (d1c0.d1ecl_loc)
+    val () =
+    filprerr_ifdebug "d1ecl_tr: auxcheck_impdec" // for debugging
+    val () =
+    (prerr ": the implemented dynamic constant is required to be function.")
+    }
+  end // end of [if]
+//
+  val okay =
+  (
+    if
+    (knd > 1)
+    then d2cst_is_tmpcst(d2c) else d2cst_is_nontmp(d2c)
+  ) : bool // end of [val]
+  val () =
+  if ~okay then let
+    val () =
+    prerr_error2_loc (d1c0.d1ecl_loc)
+    val () =
+    filprerr_ifdebug "d1ecl_tr: auxcheck_impdec" // for debugging
+    val () =
+    if knd > 1 then
+      (prerr ": the implemented dynamic constant is required to be template.")
+    val () =
+    if knd <= 1 then
+      (prerr ": the implemented dynamic constant is required to be non-template.")
+    val () = prerr_newline ((*void*))
+  in
+    the_trans2errlst_add (T2E_d1ecl_tr_impdec (d1c0))
+  end // end of [if] // end of [val]
+//
 in
   // nothing
 end // end of [auxcheck_impdec]

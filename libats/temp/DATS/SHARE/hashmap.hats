@@ -42,12 +42,12 @@
 HX:
 Default: resizable
 *)
-implement{}
+impltmp{}
 hashmap$resizable() = 1
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_search
 (map, k0, res) = let
@@ -83,7 +83,7 @@ end // end of [hashtbl_search]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_search_opt
   (map, k0) = let
@@ -110,7 +110,7 @@ end // end of [hashmap_search_opt]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}//tmp
 hashmap_insert_opt
   (map, k0, x0) = let
@@ -137,7 +137,7 @@ end // end of [hashmap_insert_opt]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 hashmap_remove
   (map, k0) = let
@@ -162,7 +162,7 @@ end // end of [hashmap_remove]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 hashmap_takeout_opt
   (map, k0) = let
@@ -187,19 +187,19 @@ end // end of [hashmap_takeout_opt]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 hashmap_print$beg<>() = print("(")
-implement
+impltmp
 hashmap_print$end<>() = print(")")
-implement
+impltmp
 hashmap_print$sep<>() = print(",")
-implement
+impltmp
 hashmap_print$mapto<>() = print("->")
 //
 (* ****** ****** *)
 
 (*
-implement
+impltmp
 {k0,x0:vtflt}
 hashmap_print(map) =
 (
@@ -217,7 +217,7 @@ hashmap_print$end<>();
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0:vtflt}
 hashmap_print(map) =
 (
@@ -232,7 +232,7 @@ var i0 = (0:int)
 val p0 =
 $UN.cast{ref(int)}(addr@i0)
 //
-implement
+impltmp
 hashmap_foreach1$work<k0,x0>(k0, x0) =
 (
 let

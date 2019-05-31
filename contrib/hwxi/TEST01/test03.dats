@@ -5,7 +5,7 @@
 *)
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 //
@@ -105,7 +105,7 @@ stream_vt_foreach0(names)
 ) where
 {
 vtypedef x0 = string_vt
-implement
+impltmp
 stream_vt_foreach0$work<x0>(name) = (println!(name); free(name))
 }
 

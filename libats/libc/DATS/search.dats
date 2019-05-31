@@ -51,7 +51,7 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 lfind_libc
 (k0, A0, asz, cmp) =
@@ -68,18 +68,18 @@ end
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 hsearch_find(k0) =
 hsearch(ENTRY_cons(k0), FIND)
-implement
+impltmp
 {a}(*tmp*)
 hsearch_enter(k0, x0) =
 hsearch(ENTRY_cons(k0, x0), ENTER)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 hsearch_r_find
 (k0, htab) = let
@@ -96,7 +96,7 @@ end // end of [hsearch_r_find]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 hsearch_r_enter
 (k0, x0, htab) = let
@@ -113,7 +113,7 @@ end // end of [hsearch_r_enter]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 htabref_create(nel) =
 let
@@ -158,7 +158,7 @@ end // end of [htabref_create]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 htabref_destroy(htab) =
 (
@@ -171,7 +171,7 @@ $extfcall(void, "atspre_hdestroy_r", htab)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 htabref_find
 (htab, k0) = let
@@ -188,7 +188,7 @@ end // end of [htabref_find]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 htabref_enter
 (htab, k0, x0) = let
@@ -206,7 +206,7 @@ end // end of [htabref_enter]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 htabref_find_opt
 (htab, k0) = let
@@ -227,7 +227,7 @@ in
 end
 end // end of [htabref_find_opt]
 
-implement
+impltmp
 {a}(*tmp*)
 htabref_enter_opt
 (htab, k0, x0) = let
@@ -250,12 +250,12 @@ end // end of [htabref_enter_opt]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 htabptr0_create
   (nel) =
   $UN.castvwtp0(htabref_create(nel))
-implement
+impltmp
 {}(*tmp*)
 htabptr0_destroy
   (htab) =
@@ -263,14 +263,14 @@ htabptr0_destroy
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 htabptr0_find
 (htab, k0) =
 (
   htabref_find($UN.castvwtp1(htab), k0)
 )
-implement
+impltmp
 {}(*tmp*)
 htabptr0_find_opt
 (htab, k0) =
@@ -278,14 +278,14 @@ htabptr0_find_opt
   htabref_find_opt($UN.castvwtp1(htab), k0)
 )
 //
-implement
+impltmp
 {a}(*tmp*)
 htabptr0_enter
 (htab, k0, x0) =
 (
   htabref_enter($UN.castvwtp1(htab), k0, x0)
 )
-implement
+impltmp
 {a}(*tmp*)
 htabptr0_enter_opt
 (htab, k0, x0) =

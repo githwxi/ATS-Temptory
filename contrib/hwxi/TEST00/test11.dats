@@ -5,7 +5,7 @@
 //
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 //
@@ -24,7 +24,7 @@ intrep_eval
 string0_foldleft<int>(rep, 0)
 ) where
 {
-implement
+impltmp
 string0_foldleft$fopr<int>
 (r0, c0) = 10*r0 + (c0 - '0')
 }
@@ -40,7 +40,7 @@ intrep_rprint
 gseq_rforeach<string><char>(rep)
 ) where
 {
-implement
+impltmp
 gseq_rforeach$work<char>(c0) = print(c0)
 } (* end of [intrep_rprint] *)
 

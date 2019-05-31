@@ -35,15 +35,23 @@ if x > 0 then x * fact2(x-1) else 1
 //
 (* ****** ****** *)
 //
+extern
+val
+fact1_of_10 : int
+and
+fact2_of_10 : int
+implval fact1_of_10 = fact1(10)
+implmnt fact2_of_10 = fact2(10)
+//
 val () =
 (
   assertloc(fact1(10) = fact2(10))
 )
 //
 val () =
-  println!("fact1(10) = ", fact1(10))
+println!("fact1(10) = ", fact1_of_10)
 val () =
-  println!("fact2(10) = ", fact2(10))
+println!("fact2(10) = ", fact2_of_10)
 //
 (* ****** ****** *)
 

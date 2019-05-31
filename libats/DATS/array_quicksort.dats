@@ -52,7 +52,7 @@
 *)
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 array_quicksort$cmp
   (x1, x2) =
@@ -62,7 +62,7 @@ array_quicksort$cmp
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 array_quicksort
   (A, asz) = let
@@ -373,7 +373,7 @@ void qsort
 ) ; // end of [qsort]
 *)
 //
-implement
+impltmp
 {a}(*tmp*)
 array_quicksort_libc
   (A, asz, cmp) =

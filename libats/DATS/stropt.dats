@@ -47,11 +47,11 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 stropt0_iseqz
   (opt) = ptr0_iseqz(ptrof(opt))
-implement
+impltmp
 {}(*tmp*)
 stropt0_isneqz
   (opt) = ptr0_isneqz(ptrof(opt))
@@ -63,18 +63,18 @@ stropt0_isneqz
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 stropt0_vt_iseqz
   (opt) = ptr0_iseqz(ptrof(opt))
-implement
+impltmp
 {}(*tmp*)
 stropt0_vt_isneqz
   (opt) = ptr0_isneqz(ptrof(opt))
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 stropt0_vt_free(opt) =
 if

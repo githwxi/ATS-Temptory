@@ -47,7 +47,7 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 array_get_at_sint
   (A0, i0) = let
@@ -62,7 +62,7 @@ val x0 = gcopy$ref<a>(!pi)
 in
   let prval () = fpf(pf0) in x0 end
 end // end of [array_get_at_sint]
-implement
+impltmp
 {a}(*tmp*)
 array_set_at_sint
   (A0, i0, x0) = let
@@ -80,7 +80,7 @@ let
 end
 end // end of [array_set_at_sint]
 //
-implement
+impltmp
 {a}(*tmp*)
 array_get_at_size
   (A0, i0) = let
@@ -95,7 +95,7 @@ val x0 = gcopy$ref<a>(!pi)
 in
 let prval () = fpf(pf0) in x0 end
 end // end of [array_get_at_size]
-implement
+impltmp
 {a}(*tmp*)
 array_set_at_size
   (A0, i0, x0) = let
@@ -113,14 +113,14 @@ val () = !pi := x0; prval () = fpf(pf0) in ()
 end
 end // end of [array_set_at_size]
 //
-implement
+impltmp
 {a}(*tmp*)
 array_getref_at_sint
   (A0, i0) =
 (
   $UN.cast{cptr(a)}(addr@A0)+i0
 )
-implement
+impltmp
 {a}(*tmp*)
 array_getref_at_size
   (A0, i0) =
@@ -130,7 +130,7 @@ array_getref_at_size
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 array_ptr_mfree
 (pf1, pf2 | p0) =
@@ -143,7 +143,7 @@ end // end of [array_ptr_mfree]
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 array_ptr_alloc
   (asz) =
@@ -157,7 +157,7 @@ $UN.castvwtp0
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 array_forall
   (A0, asz) =
@@ -169,13 +169,13 @@ in
   cptr0_forall<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_forall$test<a>(x) = array_forall$test<a>(x)
 }
 end // end of [array_forall]
 )
 //
-implement
+impltmp
 {a}(*tmp*)
 array_foreach
   (A0, asz) =
@@ -187,7 +187,7 @@ in
   cptr0_foreach<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_foreach$work<a>(x) = array_foreach$work<a>(x)
 }
 end // end of [array_foreach]
@@ -195,7 +195,7 @@ end // end of [array_foreach]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 array_rforall
   (A0, asz) =
@@ -207,13 +207,13 @@ in
   cptr0_rforall<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_rforall$test<a>(x) = array_rforall$test<a>(x)
 }
 end // end of [array_rforall]
 )
 //
-implement
+impltmp
 {a}(*tmp*)
 array_rforeach
   (A0, asz) =
@@ -225,7 +225,7 @@ in
   cptr0_rforeach<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_rforeach$work<a>(x) = array_rforeach$work<a>(x)
 }
 end // end of [array_rforeach]
@@ -233,7 +233,7 @@ end // end of [array_rforeach]
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 array_permute
   (A0, asz) = let
@@ -306,7 +306,7 @@ in (* in-of-local *)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 arrszref_cons
   {a}{n}(A0, n0) =
@@ -316,14 +316,14 @@ prval () =
 $UN.prop_assert{n>=0}() in ARRSZREF(A0, n0)
 end // end of [let]
 )
-implement
+impltmp
 {}(*tmp*)
 arrszref_uncons{a}(AZ) =
 let val ARRSZREF(A0, n0) = AZ in (A0, n0) end
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 arrszref_make_elt
   (n0, x0) = let
@@ -359,7 +359,7 @@ end // end of [arrszref_make_elt]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 arrszref_make_list0
   (xs) =
@@ -381,7 +381,7 @@ list0_foldleft<x0><r0>(xs, p0)
 {
 typedef x0 = (a)
 typedef r0 = cptr(a)
-implement
+impltmp
 list0_foldleft$fopr<x0><r0>
   (p0, x0) =
 ( succ(p0) ) where
@@ -400,7 +400,7 @@ end // end of [let]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 arrszref_make_list0_vt
   (xs) =
@@ -422,7 +422,7 @@ list0_vt_foldleft0<x0><r0>
 {
 vtypedef x0 = (a)
 vtypedef r0 = cptr(a)
-implement
+impltmp
 list0_vt_foldleft0$fopr<x0><r0>
   (p0, x0) =
 ( succ(p0) ) where
@@ -441,7 +441,7 @@ end // end of [let]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 arrszref_get_at_sint
   (AZ, i0) =
@@ -463,7 +463,7 @@ end
 //
 end // end of [let]
 )
-implement
+impltmp
 {a}(*tmp*)
 arrszref_set_at_sint
   (AZ, i0, x0) =
@@ -488,7 +488,7 @@ end // end of [let]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 arrszref_forall
   (AZ) =
@@ -501,12 +501,12 @@ in
 arrayref_forall<a>(A0, n0)  
 ) where
 {
-implement
+impltmp
 arrayref_forall$test<a>(x) = arrszref_forall$test<a>(x)
 }
 end // end of [let]
 )
-implement
+impltmp
 {a}(*tmp*)
 arrszref_foreach
   (AZ) =
@@ -519,7 +519,7 @@ in
 arrayref_foreach<a>(A0, n0)  
 ) where
 {
-implement
+impltmp
 arrayref_foreach$work<a>(x) = arrszref_foreach$work<a>(x)
 }
 end // end of [let]
@@ -527,7 +527,7 @@ end // end of [let]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 arrszref_rforall
   (AZ) =
@@ -540,12 +540,12 @@ in
 arrayref_rforall<a>(A0, n0)  
 ) where
 {
-implement
+impltmp
 arrayref_rforall$test<a>(x) = arrszref_rforall$test<a>(x)
 }
 end // end of [let]
 )
-implement
+impltmp
 {a}(*tmp*)
 arrszref_rforeach
   (AZ) =
@@ -558,7 +558,7 @@ in
 arrayref_rforeach<a>(A0, n0)  
 ) where
 {
-implement
+impltmp
 arrayref_rforeach$work<a>(x) = arrszref_rforeach$work<a>(x)
 }
 end // end of [let]
@@ -568,7 +568,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 arrszref_quicksort(AZ) =
 (
@@ -585,7 +585,7 @@ val(A0, asz) = arrszref_uncons(AZ)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 arrayptr_free{a}(A0) =
 (
@@ -597,7 +597,7 @@ $extfcall(void, "ATS_MFREE", A0)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_make_none
   (asz) =
@@ -605,7 +605,7 @@ arrayptr_make_none
 $UN.castvwtp0($UN.calloc<a>(asz))
 )
 //
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_make_elt
   {n}(asz, x0) =
@@ -641,7 +641,7 @@ end // end of [arrayptr_make_elt]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 arrayref_get_at_sint
   (A0, i0) = let
@@ -656,7 +656,7 @@ val x0 = gcopy$ref<a>(!pi)
 in
 let prval () = fpf(pf0) in x0 end
 end // end of [arrayref_get_at_sint]
-implement
+impltmp
 {a}(*tmp*)
 arrayref_set_at_sint
   (A0, i0, x0) = let
@@ -674,7 +674,7 @@ val () = !pi := x0; prval () = fpf(pf0) in ()
 end
 end // end of [arrayref_set_at_sint]
 //
-implement
+impltmp
 {a}(*tmp*)
 arrayref_get_at_size
   (A0, i0) = let
@@ -689,7 +689,7 @@ val x0 = gcopy$ref<a>(!pi)
 in
 let prval () = fpf(pf0) in x0 end
 end // end of [arrayref_get_at_size]
-implement
+impltmp
 {a}(*tmp*)
 arrayref_set_at_size
   (A0, i0, x0) = let
@@ -709,7 +709,7 @@ end // end of [arrayref_set_at_size]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_get_at_sint
   (A0, i0) = let
@@ -724,7 +724,7 @@ val x0 = gcopy$ref<a>(!pi)
 in
 let prval () = fpf(pf0) in x0 end
 end // end of [arrayptr_get_at_sint]
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_set_at_sint
   (A0, i0, x0) = let
@@ -742,7 +742,7 @@ val () = !pi := x0; prval () = fpf(pf0) in ()
 end
 end // end of [arrayptr_set_at_sint]
 //
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_get_at_size
   (A0, i0) = let
@@ -757,7 +757,7 @@ val x0 = gcopy$ref<a>(!pi)
 in
 let prval () = fpf(pf0) in x0 end
 end // end of [arrayptr_get_at_size]
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_set_at_size
   (A0, i0, x0) = let
@@ -777,7 +777,7 @@ end // end of [arrayptr_set_at_size]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 arrayref_forall
   (A0, asz) =
@@ -789,12 +789,12 @@ in
   cptr0_forall<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_forall$test<a>(x) = arrayref_forall$test<a>(x)
 }
 end // end of [arrayref_forall]
 )
-implement
+impltmp
 {a}(*tmp*)
 arrayref_foreach
   (A0, asz) =
@@ -806,7 +806,7 @@ in
   cptr0_foreach<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_foreach$work<a>(x) = arrayref_foreach$work<a>(x)
 }
 end // end of [arrayref_foreach]
@@ -814,7 +814,7 @@ end // end of [arrayref_foreach]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 arrayref_rforall
   (A0, asz) =
@@ -826,12 +826,12 @@ in
   cptr0_rforall<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_rforall$test<a>(x) = arrayref_rforall$test<a>(x)
 }
 end // end of [arrayref_rforall]
 )
-implement
+impltmp
 {a}(*tmp*)
 arrayref_rforeach
   (A0, asz) =
@@ -843,7 +843,7 @@ in
   cptr0_rforeach<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_rforeach$work<a>(x) = arrayref_rforeach$work<a>(x)
 }
 end // end of [arrayref_rforeach]
@@ -851,7 +851,7 @@ end // end of [arrayref_rforeach]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_forall1
   (A0, asz) =
@@ -863,12 +863,12 @@ in
   cptr0_forall<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_forall$test<a>(x) = arrayptr_forall1$test<a>(x)
 }
 end // end of [arrayptr_forall1]
 )
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_foreach1
   (A0, asz) =
@@ -880,7 +880,7 @@ in
   cptr0_foreach<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_foreach$work<a>(x) = arrayptr_foreach1$work<a>(x)
 }
 end // end of [arrayptr_foreach1]
@@ -888,7 +888,7 @@ end // end of [arrayptr_foreach1]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_rforall1
   (A0, asz) =
@@ -900,12 +900,12 @@ in
   cptr0_rforall<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_rforall$test<a>(x) = arrayptr_rforall1$test<a>(x)
 }
 end // end of [arrayptr_rforall1]
 )
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_rforeach1
   (A0, asz) =
@@ -917,7 +917,7 @@ in
   cptr0_rforeach<a>(pa, pa + asz)
 ) where
 {
-implement
+impltmp
 cptr0_rforeach$work<a>(x) = arrayptr_rforeach1$work<a>(x)
 }
 end // end of [arrayptr_rforeach1]
@@ -925,7 +925,7 @@ end // end of [arrayptr_rforeach1]
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 arrayref_quicksort
   (A0, asz) =
@@ -942,7 +942,7 @@ val (vbox(pf) | p0) = ref_vptrof(r0)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 arrayptr_quicksort
   (A0, asz) =

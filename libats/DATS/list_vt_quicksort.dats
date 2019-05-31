@@ -44,7 +44,7 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 list0_vt_quicksort$cmp
   (x1, x2) =
@@ -52,7 +52,7 @@ list0_vt_quicksort$cmp
   gcompare$ref<a>(x1, x2)
 ) (* list_vt_quicksort$cmp *)
 //
-implement
+impltmp
 {a}(*tmp*)
 list0_vt_quicksort(xs) =
 g0ofg1
@@ -60,7 +60,7 @@ g0ofg1
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 list1_vt_quicksort$cmp
   (x1, x2) =
@@ -75,7 +75,7 @@ list1_vt_quicksort$cmp
 ** (2) Performing quicksort on the array
 ** (3) Copying it back into the list
 *)
-implement
+impltmp
 {a}(*tmp*)
 list1_vt_quicksort
   {n}(xs) = xs where
@@ -155,7 +155,7 @@ prval () = _outa_(pfat)
   array_quicksort<a>(!p0, i2sz(n0))
   ) where
   {
-  implement
+  impltmp
   array_quicksort$cmp<a>
     (x1, x2) =
     list1_vt_quicksort$cmp<a>(x1, x2)

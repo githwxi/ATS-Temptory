@@ -52,21 +52,21 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_vt_sing(x0) =
 list0_vt_cons(x0, list0_vt_nil())
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 list0_vt_iseqz(xs) =
 (
 case+ xs of
 | list0_vt_nil _ => tt | list0_vt_cons _ => ff
 )
-implement
+impltmp
 {}(*tmp*)
 list0_vt_isneqz(xs) =
 (
@@ -76,7 +76,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_length(xs) =
 (
@@ -94,7 +94,7 @@ case+ xs of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_vt_free(xs) =
   (loop(xs)) where
@@ -116,7 +116,7 @@ case+ xs of
 ) (* end of [loop] *)
 } (* end of [list_vt_free] *)
 //
-implement
+impltmp
 (x0:vtbox)
 list0_vt_free<x0>
   (xs) =
@@ -139,7 +139,7 @@ case+ xs of
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_vt_copy(xs) =
 (
@@ -169,7 +169,7 @@ case+ xs of
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_rcopy(xs) =
 (
@@ -193,7 +193,7 @@ case+ xs of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_vt_concat
   (xss) =
@@ -248,7 +248,7 @@ case+ r0 of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_vt_append
   (xs, ys) =
@@ -277,7 +277,7 @@ case+ xs0 of
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_vt_revapp
   (xs, ys) =
@@ -304,7 +304,7 @@ case+ xs0 of
 )
 } (* end of [list0_vt_revapp] *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_vt_reverse(xs) =
 (
@@ -313,7 +313,7 @@ list0_vt_reverse(xs) =
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 list0_vt_streamize
   (xs) =
@@ -340,7 +340,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_forall0
   (xs) =
@@ -372,7 +372,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_foreach0
   (xs) =
@@ -398,7 +398,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}{r0}//tmp
 list0_vt_foldleft0
   (xs, r0) =
@@ -424,7 +424,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_rforall0(xs) =
 (
@@ -433,7 +433,7 @@ list0_vt_rforall0(xs) =
 {
   val xs =
   list0_vt_reverse<x0>(xs)
-  implement
+  impltmp
   list0_vt_forall0$test<x0>(x0) =
   (
     list0_vt_rforall0$test<x0>(x0)
@@ -442,7 +442,7 @@ list0_vt_rforall0(xs) =
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_rforeach0(xs) =
 (
@@ -451,7 +451,7 @@ list0_vt_rforeach0(xs) =
 {
   val xs =
   list0_vt_reverse<x0>(xs)
-  implement
+  impltmp
   list0_vt_foreach0$work<x0>(x0) =
   (
     list0_vt_rforeach0$work<x0>(x0)
@@ -460,7 +460,7 @@ list0_vt_rforeach0(xs) =
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}{r0}//tmp
 list0_vt_foldleft0
   (xs, r0) =
@@ -493,7 +493,7 @@ case+ xs of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 list0_vt_iforall0(xs) =
 (
@@ -503,13 +503,13 @@ list0_vt_iforall0(xs) =
 //
 vtypedef xs = list0_vt(x0)
 //
-implement
+impltmp
 glseq_iforall0$test<x0>
 (i0, x0) = list0_vt_iforall0$test<x0>(i0, x0)
 //
 } (* end of [list0_vt_iforall0] *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 list0_vt_iforeach0(xs) =
 (
@@ -519,7 +519,7 @@ list0_vt_iforeach0(xs) =
 //
 vtypedef xs = list0_vt(x0)
 //
-implement
+impltmp
 glseq_iforeach0$work<x0>
 (i0, x0) = list0_vt_iforeach0$work<x0>(i0, x0)
 //
@@ -527,12 +527,12 @@ glseq_iforeach0$work<x0>
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}{y0}
 list0_vt_map0(xs) =
 list0_vt_map0_list<x0><y0>(xs)
 //
-implement
+impltmp
 {x0}{y0}
 list0_vt_map0_list(xs) =
 (
@@ -542,11 +542,11 @@ list0_vt_map0_list(xs) =
 //
 vtypedef xs = list0_vt(x0)
 //
-implement
+impltmp
 glseq_map0$fopr<x0><y0>(x0) = list0_vt_map0$fopr<x0><y0>(x0)
 //
 } // list0_vt_map0_list
-implement
+impltmp
 {x0}{y0}
 list0_vt_map0_rlist(xs) =
 (
@@ -556,19 +556,19 @@ list0_vt_map0_rlist(xs) =
 //
 vtypedef xs = list0_vt(x0)
 //
-implement
+impltmp
 glseq_map0$fopr<x0><y0>(x0) = list0_vt_map0$fopr<x0><y0>(x0)
 //
 } // list0_vt_map0_rlist
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}{y0}
 list0_vt_imap0(xs) =
 list0_vt_imap0_list<x0><y0>(xs)
 //
-implement
+impltmp
 {x0}{y0}
 list0_vt_imap0_list(xs) =
 (
@@ -578,11 +578,11 @@ list0_vt_imap0_list(xs) =
 //
 vtypedef xs = list0_vt(x0)
 //
-implement
+impltmp
 glseq_imap0$fopr<x0><y0>(i0, x0) = list0_vt_imap0$fopr<x0><y0>(i0, x0)
 //
 } // list0_vt_imap0_list
-implement
+impltmp
 {x0}{y0}
 list0_vt_imap0_rlist(xs) =
 (
@@ -592,14 +592,14 @@ list0_vt_imap0_rlist(xs) =
 //
 vtypedef xs = list0_vt(x0)
 //
-implement
+impltmp
 glseq_imap0$fopr<x0><y0>(i0, x0) = list0_vt_imap0$fopr<x0><y0>(i0, x0)
 //
 } // list0_vt_imap0_rlist
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_forall1(xs) =
   (loop(xs)) where
@@ -625,7 +625,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_foreach1
   (xs) =
@@ -649,7 +649,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_rforall1(xs) =
 (
@@ -658,7 +658,7 @@ list0_vt_rforall1(xs) =
 {
   val xs =
   list0_vt_rcopy<x0>(xs)
-  implement
+  impltmp
   list0_vt_forall0$test<x0>(x0) =
   let
   val
@@ -671,20 +671,20 @@ list0_vt_rforall1(xs) =
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_rforeach1(xs) =
 (
 glseq_rforeach1<list0_vt(x0)><x0>(xs)
 ) where
 {
-implement
+impltmp
 list0_vt_rforeach1$work<x0>(x0) = glseq_rforeach1$work<x0>(x0)
 }
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}{r0}//tmp
 list0_vt_foldleft1
   (xs, r0) =
@@ -709,12 +709,12 @@ case+ xs of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}{y0}
 list0_vt_map1(xs) =
 list0_vt_map1_list<x0><y0>(xs)
 //
-implement
+impltmp
 {x0}{y0}
 list0_vt_map1_list(xs) =
 (
@@ -724,11 +724,11 @@ list0_vt_map1_list(xs) =
 //
 vtypedef xs = list0_vt(x0)
 //
-implement
+impltmp
 glseq_map1$fopr<x0><y0>(x0) = list0_vt_map1$fopr<x0><y0>(x0)
 //
 } // list0_vt_map1_list
-implement
+impltmp
 {x0}{y0}
 list0_vt_map1_rlist(xs) =
 (
@@ -738,19 +738,19 @@ list0_vt_map1_rlist(xs) =
 //
 vtypedef xs = list0_vt(x0)
 //
-implement
+impltmp
 glseq_map1$fopr<x0><y0>(x0) = list0_vt_map1$fopr<x0><y0>(x0)
 //
 } // list0_vt_map1_rlist
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}{y0}
 list0_vt_imap1(xs) =
 list0_vt_imap1_list<x0><y0>(xs)
 //
-implement
+impltmp
 {x0}{y0}
 list0_vt_imap1_list(xs) =
 (
@@ -760,11 +760,11 @@ list0_vt_imap1_list(xs) =
 //
 vtypedef xs = list0_vt(x0)
 //
-implement
+impltmp
 glseq_imap1$fopr<x0><y0>(i0, x0) = list0_vt_imap1$fopr<x0><y0>(i0, x0)
 //
 } // list0_vt_imap1_list
-implement
+impltmp
 {x0}{y0}
 list0_vt_imap1_rlist(xs) =
 (
@@ -774,14 +774,14 @@ list0_vt_imap1_rlist(xs) =
 //
 vtypedef xs = list0_vt(x0)
 //
-implement
+impltmp
 glseq_imap1$fopr<x0><y0>(i0, x0) = list0_vt_imap1$fopr<x0><y0>(i0, x0)
 //
 } // list0_vt_imap1_rlist
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_forall1_ref
   (xs) =
@@ -817,7 +817,7 @@ case+ xs0 of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_vt_foreach1_ref
   (xs) =
@@ -825,13 +825,13 @@ list0_vt_foreach1_ref
 glseq_foreach1_ref<list0_vt(x0)><x0>(xs)
 ) where
 {
-implement
+impltmp
 glseq_foreach1_ref$work<x0>(px) = list0_vt_foreach1_ref$work<x0>(px)
 }
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}{r0}//tmp
 list0_vt_foldleft1_ref
   (xs, r0) =
@@ -839,13 +839,13 @@ list0_vt_foldleft1_ref
 glseq_foldleft1_ref<list0_vt(x0)><x0><r0>(xs, r0)
 ) where
 {
-implement
+impltmp
 glseq_foldleft1_ref$fopr<x0><r0>(r0, px) = list0_vt_foldleft1_ref$fopr<x0><r0>(r0, px)
 }
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list1_vt_length
 {n}(xs) =

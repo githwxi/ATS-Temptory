@@ -15,7 +15,7 @@
 
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 //
@@ -28,7 +28,7 @@ gseq_foreach<int><int>(N)
 typedef xs = sint
 typedef x0 = sint
 //
-implement
+impltmp
 gseq_foreach$work<x0>(i0) = println!("i0 = ", i0)
 //
 } (* end of [val] *)
@@ -46,7 +46,7 @@ typedef xs = sint
 typedef x0 = sint
 typedef r0 = sint
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, i0) = r0 * (i0+1)
 } (* end of [val] *)
 //
@@ -65,7 +65,7 @@ typedef xs = sint
 typedef x0 = sint
 typedef r0 = sint
 //
-implement
+impltmp
 gseq_foldright$fopr<x0><r0>(i0, r0) = r0 * (i0+1)
 } (* end of [val] *)
 //
@@ -83,12 +83,12 @@ gseq_foldleft<SINT2><x0><r0>(SINT2, 1)
 typedef x0 = sint
 typedef r0 = sint
 //
-implement
+impltmp
 SINT2_range$beg<>() = 0
-implement
+impltmp
 SINT2_range$end<>() = n0
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, i0) = r0 * (i0+1)
 //
 } (* end of [fact] *)
@@ -109,12 +109,12 @@ fibo(n0: int): int =
 typedef x0 = sint
 typedef r0 = (sint, sint)
 //
-implement
+impltmp
 SINT2_range$beg<>() = 0
-implement
+impltmp
 SINT2_range$end<>() = n0
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, i0) = (r0.1, r0.0+r0.1)
 //
 } (* end of [fact] *)

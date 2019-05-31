@@ -23,7 +23,7 @@ wget -q -O - "http://www.gutenberg.org/files/2701/2701-0.txt" | valgrind ./WordF
 
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 
@@ -44,7 +44,7 @@ val words =
 stream_vt_map<word><word>(words)
 ) where
 {
-implement
+impltmp
 stream_vt_map$fopr<word><word>(w0) =
 let
 val w1 =
@@ -52,7 +52,7 @@ val w1 =
 string0_vt_map1<>(w0)
 ) where
 {
-implement
+impltmp
 string0_vt_map1$fopr<>(c0) = tolower(c0)
 }
 in
@@ -110,7 +110,7 @@ val iwords =
 mergesort(iwords)
 ) where
 {
-implement
+impltmp
 list0_vt_mergesort$cmp<iword>
   (iw1, iw2) =
 let
@@ -134,7 +134,7 @@ list0_vt_iforall0(iwords)
 ) where
 {
 //
-implement
+impltmp
 list0_vt_iforall0$test<iword>
   (i0, iw) =
 let

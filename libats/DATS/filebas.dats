@@ -55,7 +55,7 @@ UN = "libats/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 FILEref_open_opt
 (fp0, fm0) = let
@@ -73,7 +73,7 @@ else
 optn0_vt_some($UN.cast{FILEref}(fil))
 end // end of [FILEref_open]
 
-implement
+impltmp
 {}(*tmp*)
 FILEptr0_open_opt
 (fp0, fm0) = let
@@ -93,12 +93,12 @@ end // end of [FILEptr0_open]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 FILEref_close(fil) =
 $extfcall
 (void, "atspre_fclose", fil)
-implement
+impltmp
 {}(*tmp*)
 FILEptr0_close(fil) =
 $extfcall
@@ -107,7 +107,7 @@ $extfcall
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 FILEref_streamize_char
   (inp) =
@@ -143,7 +143,7 @@ end
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 FILEptr0_streamize_char
   (inp) =
@@ -182,7 +182,7 @@ end, FILEptr0_close(inp) // HX: close it!
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 FILEref_streamize_line
   (inp) =
@@ -190,7 +190,7 @@ FILEref_streamize_line
 $UN.castvwtp0
 (FILEref_streamize_line_vt<>(inp))
 )
-implement
+impltmp
 {}(*tmp*)
 FILEptr0_streamize_line
   (inp) =
@@ -201,7 +201,7 @@ $UN.castvwtp0
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 FILEref_streamize_line_vt
   (inp) =
@@ -215,18 +215,18 @@ stream_vt_group_line<char>(cs)
 val cs =
   FILEref_streamize_char<>(inp)
 //
-implement
+impltmp
 stream_vt_group_line$iseol<char>(c0) = (c0 = EOL)
 }
 ) where
 {
 vtypedef y0 = string_vt
 vtypedef x0 = list0_vt(char)
-implement
+impltmp
 stream_vt_map$fopr<x0><y0>(x0) = string0_vt_make_list0_vt<>(x0)
 } (* end of [FILEref_streamize_line_vt] *)
 
-implement
+impltmp
 {}(*tmp*)
 FILEptr0_streamize_line_vt
   (inp) =
@@ -240,20 +240,20 @@ stream_vt_group_line<char>(cs)
 val cs =
   FILEptr0_streamize_char<>(inp)
 //
-implement
+impltmp
 stream_vt_group_line$iseol<char>(c0) = (c0 = EOL)
 }
 ) where
 {
 vtypedef y0 = string_vt
 vtypedef x0 = list0_vt(char)
-implement
+impltmp
 stream_vt_map$fopr<x0><y0>(x0) = string0_vt_make_list0_vt<>(x0)
 } (* end of [FILEptr0_streamize_line_vt] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 FILEref_streamize_word
   (inp) =
@@ -261,7 +261,7 @@ FILEref_streamize_word
 $UN.castvwtp0
 (FILEref_streamize_word_vt<>(inp))
 )
-implement
+impltmp
 {}(*tmp*)
 FILEptr0_streamize_word
   (inp) =
@@ -270,14 +270,14 @@ $UN.castvwtp0
 (FILEptr0_streamize_word_vt<>(inp))
 )
 //
-implement
+impltmp
 FILEref_streamize_word$isalpha<>(c0) = char0_isalpha(c0)
-implement
+impltmp
 FILEptr0_streamize_word$isalpha<>(c0) = char0_isalpha(c0)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 FILEref_streamize_word_vt
   (inp) =
@@ -291,7 +291,7 @@ stream_vt_group_word<char>(cs)
 val cs =
   FILEref_streamize_char<>(inp)
 //
-implement
+impltmp
 stream_vt_group_word$isalpha<char>
 (c0) = FILEref_streamize_word$isalpha<>(c0)
 }
@@ -299,11 +299,11 @@ stream_vt_group_word$isalpha<char>
 {
 vtypedef y0 = string_vt
 vtypedef x0 = list0_vt(char)
-implement
+impltmp
 stream_vt_map$fopr<x0><y0>(x0) = string0_vt_make_list0_vt<>(x0)
 } (* end of [FILEref_streamize_word] *)
 
-implement
+impltmp
 {}(*tmp*)
 FILEptr0_streamize_word_vt
   (inp) =
@@ -317,7 +317,7 @@ stream_vt_group_word<char>(cs)
 val cs =
   FILEptr0_streamize_char<>(inp)
 //
-implement
+impltmp
 stream_vt_group_word$isalpha<char>
 (c0) = FILEptr0_streamize_word$isalpha<>(c0)
 }
@@ -325,7 +325,7 @@ stream_vt_group_word$isalpha<char>
 {
 vtypedef y0 = string_vt
 vtypedef x0 = list0_vt(char)
-implement
+impltmp
 stream_vt_map$fopr<x0><y0>(x0) = string0_vt_make_list0_vt<>(x0)
 } (* end of [FILEptr0_streamize_word] *)
 

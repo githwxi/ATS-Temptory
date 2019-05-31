@@ -83,9 +83,18 @@ implement PRAXI = T_FUN (FK_praxi)
 //
 implement CASTFN = T_FUN (FK_castfn)
 
-implement IMPLMNT = T_IMPLEMENT (0)
-implement IMPLEMENT = T_IMPLEMENT (1)
-implement PRIMPLMNT = T_IMPLEMENT (~1)
+(* ****** ****** *)
+//
+implement IMPLMNT = T_IMPLEMENT ( 0)
+implement IMPLPRF = T_IMPLEMENT (~1)
+implement IMPLFUN = T_IMPLEMENT ( 1)
+implement IMPLTMP = T_IMPLEMENT ( 2)
+//
+(*
+implement IMPLTMPR = T_IMPLEMENT ( 3)
+*)
+//
+(* ****** ****** *)
 
 implement INFIX = T_FIXITY (FXK_infix)
 implement INFIXL = T_FIXITY (FXK_infixl)
@@ -535,13 +544,22 @@ val () = ins ("nonfix", T_NONFIX)
 *)
 val () = ins ("#nonfix", T_NONFIX)
 //
-val () = ins ("implmnt", IMPLMNT) // 0
-val () = ins ("implement", IMPLEMENT) // 1
+(*
+** HX: for backward compatibility
+*)
+val () = ins ("implmnt", IMPLMNT) //( 0)
+val () = ins ("implement", IMPLMNT) // 0
 //
-val () = ins ("primplmnt", PRIMPLMNT) // ~1
-val () = ins ("primplement", PRIMPLMNT) // ~1
+val () = ins ("implprf", IMPLPRF) //(~1)
 //
-val () = ins ("import", T_IMPORT) // for importing packages
+val () = ins ("implval", IMPLMNT) //( 0)
+val () = ins ("implfun", IMPLFUN) //( 1)
+val () = ins ("impltmp", IMPLTMP) //( 2)
+(*
+val () = ins ("impltmpr", IMPLTMPR) // 3
+*)
+//
+val () = ins ("#import", T_IMPORT) // for importing packages
 //
 (*
 val () = ins ("fix", FIX)
@@ -555,19 +573,19 @@ val () = ins ("local", T_LOCAL)
 //
 (*
 val () = ins ("macdef", MACDEF)
+val () = ins ("macrodef", MACRODEF)
 *)
 val () = ins ("#macdef", MACDEF)
-val () = ins ("macrodef", MACRODEF)
 val () = ins ("#macrodef", MACRODEF)
 //
-val () = ins ("symelim", T_SYMELIM)
 val () = ins ("symintr", T_SYMINTR)
 (*
+val () = ins ("symelim", T_SYMELIM)
 val () = ins ("symload", T_SYMLOAD)
 val () = ins ("overload", T_SYMLOAD) // first-used
 *)
-val () = ins ("#symelim", T_SYMELIM)
 val () = ins ("#symintr", T_SYMINTR)
+val () = ins ("#symelim", T_SYMELIM)
 val () = ins ("#symload", T_SYMLOAD) // ATS-Xanadu
 //
 val () = ins ("of", T_OF)

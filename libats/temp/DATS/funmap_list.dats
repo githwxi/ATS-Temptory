@@ -76,36 +76,36 @@ map_tbox
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 funmap_nil() = list0_nil()
-implement
+impltmp
 {}(*tmp*)
 funmap_make_nil() = list0_nil()
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 funmap_iseqz(kxs) = list0_iseqz<>(kxs)
-implement
+impltmp
 {}(*tmp*)
 funmap_isneqz(kxs) = list0_isneqz<>(kxs)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {k0,x0}
 funmap_size(kxs) =
 i2sz
 ($UN.cast{Nat}(list0_length<(k0,x0)>(kxs)))
-implement
+impltmp
 {k0,x0}
 funmap_length(kxs) = list0_length<(k0,x0)>(kxs)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {k0,x0}
 funmap_search
 (map, k0, r0) =
@@ -149,7 +149,7 @@ case+ m0 of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 funmap_insert
 (
@@ -171,7 +171,7 @@ val () =
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {k0,x0}
 funmap_insert_any
   (map, k0, x0) =
@@ -182,7 +182,7 @@ funmap_insert_any
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 funmap_takeout
   (map, k0, r0) =
@@ -234,7 +234,7 @@ list0_cons(kx1, kxs1) =>
     ) where
     {
     typedef r0 = list0(kx)
-    implement
+    impltmp
     list0_vt_foldleft0$fopr<kx><r0>
       (r0, kx) = list0_cons{kx}(kx, r0)
     }
@@ -252,7 +252,7 @@ list0_cons(kx1, kxs1) =>
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 funmap_forall
   (map) =
@@ -263,12 +263,12 @@ list0_forall<kx>(map)
 //
 typedef kx = (k0, x0)
 //
-implement
+impltmp
 list0_forall$test<kx>(kx) = funmap_forall$test(kx.0, kx.1)
 //
 } (* end of [funmap_forall] *)
 
-implement
+impltmp
 {k0,x0}
 funmap_foreach
   (map) =
@@ -279,7 +279,7 @@ list0_foreach<kx>(map)
 //
 typedef kx = (k0, x0)
 //
-implement
+impltmp
 list0_foreach$work<kx>(kx) = funmap_foreach$work(kx.0, kx.1)
 //
 } (* end of [funmap_foreach] *)

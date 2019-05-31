@@ -47,7 +47,7 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 readdir_forall
   (dir) =
@@ -81,7 +81,7 @@ end // end of [loop]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 readdir_r_streamize
   (dir) =

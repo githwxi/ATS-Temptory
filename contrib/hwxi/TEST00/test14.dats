@@ -5,7 +5,7 @@
 //
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 //
@@ -39,20 +39,20 @@ mylist_forall$test(x0: a): bool
 
 (* ****** ****** *)
 
-implement
+impltmp
 (a:tflt)
 gseq_forall<mylist(a)><a>(xs) =
 (
 mylist_forall<a>(xs)
 ) where
 {
-implement
+impltmp
 mylist_forall$test<a>(x0) = gseq_forall$test<a>(x0)
 }
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}
 mylist_forall(xs) =
 (

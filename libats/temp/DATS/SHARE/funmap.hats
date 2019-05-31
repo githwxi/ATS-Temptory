@@ -33,12 +33,12 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0}(*tmp*)
 equal_key_key
 (k1, k2) =
 gequal$val<k0>(k1, k2)
-implement
+impltmp
 {k0}(*tmp*)
 compare_key_key
 (k1, k2) =
@@ -46,7 +46,7 @@ gcompare$val<k0>(k1, k2)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 funmap_isneqz
   (xs) =
@@ -54,7 +54,7 @@ funmap_isneqz
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 funmap_search_opt
   (map, k0) = let
@@ -85,7 +85,7 @@ end (* end of [funmap_search_opt] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 funmap_insert_opt
   (map, k0, x0) = let
@@ -115,7 +115,7 @@ end // end of [funmap_insert_opt]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 funmap_remove
   (map, k0) = let
@@ -134,7 +134,7 @@ end (* end of [funmap_remove] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 funmap_takeout_opt
   (map, k0) = let
@@ -165,18 +165,18 @@ end // end of [funmap_takeout_opt]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 funmap_print$beg<>() = print("(")
-implement
+impltmp
 funmap_print$end<>() = print(")")
-implement
+impltmp
 funmap_print$sep<>() = print(",")
-implement
+impltmp
 funmap_print$mapto<>() = print("->")
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0:tflt}
 funmap_print(map) =
 (
@@ -191,7 +191,7 @@ var i0 = (0:int)
 val p0 =
 $UN.cast{ref(int)}(addr@i0)
 //
-implement
+impltmp
 funmap_foreach$work<k0,x0>(k0, x0) =
 (
 let
@@ -211,7 +211,7 @@ end
 
 (* ****** ****** *)
 
-implement
+impltmp
 (k0:tflt
 ,x0:tflt)
 gseq_forall<map(k0,x0)><(k0, x0)>(map) =
@@ -219,13 +219,13 @@ gseq_forall<map(k0,x0)><(k0, x0)>(map) =
   funmap_forall<k0,x0>(map)
 ) where
 {
-implement
+impltmp
 funmap_forall$test<k0,x0>(k0,x0) = gseq_forall$test<(k0,x0)>((k0,x0))
 }
 
 (* ****** ****** *)
 
-implement
+impltmp
 (k0:tflt
 ,x0:tflt)
 gseq_foreach<map(k0,x0)><(k0,x0)>(map) =
@@ -233,13 +233,13 @@ gseq_foreach<map(k0,x0)><(k0,x0)>(map) =
   funmap_foreach<k0,x0>(map)
 ) where
 {
-implement
+impltmp
 funmap_foreach$work<k0,x0>(k0,x0) = gseq_foreach$work<(k0,x0)>((k0,x0))
 }
 
 (* ****** ****** *)
 
-implement
+impltmp
 (k0:tflt
 ,x0:tflt)
 gseq_streamize<map(k0,x0)><(k0,x0)>(map) = funmap_streamize<k0,x0>(map)

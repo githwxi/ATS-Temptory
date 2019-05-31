@@ -21,7 +21,7 @@ wget -q -O - "http://www.gutenberg.org/files/2701/2701-0.txt" | ./WordFrqncyCnt_
 
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 
@@ -43,7 +43,7 @@ val words =
 stream_vt_map<word><word>(words)
 ) where
 {
-implement
+impltmp
 stream_vt_map$fopr<word><word>(w0) = tolower(w0)
 }
 
@@ -91,7 +91,7 @@ val iwords =
 mergesort(iwords)
 ) where
 {
-implement
+impltmp
 list0_mergesort$cmp<iword>
   (iw1, iw2) =
 let
@@ -114,7 +114,7 @@ _(*bool*) =
 list0_iforall(iwords)
 ) where
 {
-implement
+impltmp
 list0_iforall$test<iword>
   (i0, iw) =
 if

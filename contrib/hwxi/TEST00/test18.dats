@@ -5,7 +5,7 @@
 //
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 //
@@ -29,7 +29,7 @@ val cs =
 string0_map(cs)
 ) where
 {
-implement
+impltmp
 string0_map$fopr<>(c0) = c0
 }
 
@@ -91,7 +91,7 @@ val () =
 stream_vt_foreach0<word>(words)
 ) where
 {
-implement
+impltmp
 stream_vt_foreach0$work<word>(w0) =
 ignoret
 (hsearch_enter<ptr>(w0, ptr0_null()))

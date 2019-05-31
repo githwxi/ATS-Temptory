@@ -11,7 +11,7 @@
 //
 (* ****** ****** *)
 
-implement
+implfun
 main0((*void*)) = ()
 
 (* ****** ****** *)
@@ -43,11 +43,11 @@ myseq(a:tflt) = list0(a)
 
 in(*in-of-local*)
 
-implement
+impltmp
 {a}
 myseq_iseqz(xs) = list0_iseqz(xs)
 
-implement
+impltmp
 (a:tflt)
 gseq_streamize<myseq(a)><tup(a,myseq(a))>
   (xs) =
@@ -103,7 +103,7 @@ gseq_map_list<myseq(a)><tup(a,myseq(a))><list0(list0(a))>(xs)
 )
 ) where
 {
-implement
+impltmp
 gseq_map$fopr<tup(a,myseq(a))><list0(list0(a))>(x0) = list0_mcons(x0.0, helper(x0.1))
 }
 )
@@ -121,7 +121,7 @@ val xs =
 g0ofg1
 ($list1{int}(1, 2, 3, 4, 5))
 val xss = list0_permute<int>(xs)
-val ((*void*)) = list0_foreach(xss) where { implement list0_foreach$work<list0(int)>(xs) = println!(xs) }
+val ((*void*)) = list0_foreach(xss) where { impltmp list0_foreach$work<list0(int)>(xs) = println!(xs) }
 
 (* ****** ****** *)
 

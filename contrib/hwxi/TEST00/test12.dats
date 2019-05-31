@@ -5,7 +5,7 @@
 //
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 //
@@ -23,7 +23,7 @@ val () =
 stream_vt_foreach0(cs)
 ) where
 {
-implement
+impltmp
 stream_vt_foreach0$work<char>(c0) = print(c0)
 }
 *)
@@ -36,7 +36,7 @@ val () =
 stream_vt_iforeach0(ls)
 ) where
 {
-implement
+impltmp
 stream_vt_iforeach0$work<string>(i0, l0) = println!("line#", i0, ": ", l0)
 }
 *)
@@ -46,7 +46,7 @@ val ws =
 FILEref_streamize_word(the_stdin())
 ) where
 {
-implement
+impltmp
 FILEref_streamize_word$isalpha<>(c0) = char0_isalnum(c0)
 }
 val () =
@@ -54,7 +54,7 @@ val () =
 stream_vt_iforeach0(ws)
 ) where
 {
-implement
+impltmp
 stream_vt_iforeach0$work<string>(i0, w0) = println!("word#", i0, ": ", w0)
 }
 //

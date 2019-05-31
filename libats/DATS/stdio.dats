@@ -43,22 +43,22 @@ UNSAFE =
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 the_stdin() =
 $extval(FILEref, "atspre_stdin")
-implement
+impltmp
 {}(*tmp*)
 the_stdout() =
 $extval(FILEref, "atspre_stdout")
-implement
+impltmp
 {}(*tmp*)
 the_stderr() =
 $extval(FILEref, "atspre_stderr")
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 fprint_newline
   (out) =
@@ -74,45 +74,45 @@ $extfcall(void, "atspre_fflush", out)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 fprint$val<int>(out, x) =
 (
 $extfcall
 (void, "atspre_fprintf", out, "%i", x)
 )
-implement
+impltmp
 fprint$val<ptr>(out, x) =
 (
 $extfcall
 (void, "atspre_fprintf", out, "%p", x)
 )
-implement
+impltmp
 fprint$val<sint>(out, x) =
 (
 $extfcall
 (void, "atspre_fprintf", out, "%i", x)
 )
-implement
+impltmp
 fprint$val<uint>(out, x) =
 (
 $extfcall
 (void, "atspre_fprintf", out, "%u", x)
 )
 //
-implement
+impltmp
 fprint$val<ssize>(out, x) =
 (
 $extfcall
 (void, "atspre_fprintf", out, "%li", x)
 )
-implement
+impltmp
 fprint$val<usize>(out, x) =
 (
 $extfcall
 (void, "atspre_fprintf", out, "%lu", x)
 )
 //
-implement
+impltmp
 fprint$val<bool>(out, x) =
 (
 $extfcall
@@ -124,7 +124,7 @@ $extfcall
   (if x then "tt" else "ff"): string
 }
 //
-implement
+impltmp
 fprint$val<char>(out, x) =
 (
   $extfcall
@@ -133,37 +133,37 @@ fprint$val<char>(out, x) =
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 fprint$val<ssize>(out, x) =
 (
   $extfcall
   (void, "atspre_fprintf", out, "%li", x)
 )
-implement
+impltmp
 fprint$val<usize>(out, x) =
 (
   $extfcall
   (void, "atspre_fprintf", out, "%lu", x)
 )
-implement
+impltmp
 fprint$val<slint>(out, x) =
 (
   $extfcall
   (void, "atspre_fprintf", out, "%li", x)
 )
-implement
+impltmp
 fprint$val<ulint>(out, x) =
 (
   $extfcall
   (void, "atspre_fprintf", out, "%lu", x)
 )
-implement
+impltmp
 fprint$val<sllint>(out, x) =
 (
   $extfcall
   (void, "atspre_fprintf", out, "%lli", x)
 )
-implement
+impltmp
 fprint$val<ullint>(out, x) =
 (
   $extfcall
@@ -172,19 +172,19 @@ fprint$val<ullint>(out, x) =
 
 (* ****** ****** *)
 
-implement
+impltmp
 fprint$val<float>(out, f0) =
 (
   $extfcall
   (void, "atspre_fprintf", out, "%f", f0)
 )
-implement
+impltmp
 fprint$val<double>(out, f0) =
 (
   $extfcall
   (void, "atspre_fprintf", out, "%f", f0)
 )
-implement
+impltmp
 fprint$val<ldouble>(out, f0) =
 (
   $extfcall
@@ -193,7 +193,7 @@ fprint$val<ldouble>(out, f0) =
 //
 (* ****** ****** *)
 
-implement
+impltmp
 fprint$val<string>(out, cs) =
 let
   val cs =
@@ -202,7 +202,7 @@ in
   $extfcall(void, "atspre_fprintf", out, "%s", cs)
 end // end of [fprint$val<string>]
 
-implement
+impltmp
 fprint$val<string_vt>(out, cs) =
 let
   val cs =

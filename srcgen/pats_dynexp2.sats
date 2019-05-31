@@ -265,11 +265,15 @@ fun d2cst_get_stamp (x: d2cst): stamp
 
 (* ****** ****** *)
 //
+fun d2cst_is_mac (d2c: d2cst): bool // mac#fun
+//
 fun d2cst_is_prf (d2c: d2cst): bool // a proof
 fun d2cst_is_nonprf (d2c: d2cst): bool // a nonproof
 //
-fun d2cst_is_mac (d2c: d2cst): bool // function
-fun d2cst_is_fun (d2c: d2cst): bool // function
+(*
+HX: implemented in pats_hidynexp_util:
+*)
+fun d2cst_is_fun (d2c: d2cst): bool // FUNCLOfun?
 //
 fun d2cst_is_static (d2c: d2cst): bool // static
 //
@@ -277,7 +281,10 @@ fun d2cst_is_fundec (d2c: d2cst): bool // fun declaration
 fun d2cst_is_valdec (d2c: d2cst): bool // val declaration
 fun d2cst_is_castfn (d2c: d2cst): bool // castfn declaration
 //
+fun d2cst_is_funcst (d2c: d2cst): bool // function?
+//
 fun d2cst_is_tmpcst (d2c: d2cst): bool // template?
+fun d2cst_is_nontmp (d2c: d2cst): bool // non-template?
 //
 fun d2cst_is_mainats (d2c: d2cst): bool // a [mainats] fun
 //
@@ -823,7 +830,7 @@ d2ecl_node =
 //
   | D2Cdcstdecs of (int(*0/1:sta/ext*), dcstkind, d2cstlst) // dyncst
 //
-  | D2Cimpdec of (int(*knd*), i2mpdec) // knd=0/1 : implement/primplmnt
+  | D2Cimpdec of (int(*knd*), i2mpdec) // knd=~1/0/1/2: implprf/val/fun/tmp
 //
   | D2Cfundecs of (funkind, s2qualst, f2undeclst)
   | D2Cvaldecs of

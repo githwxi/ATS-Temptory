@@ -44,21 +44,21 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:tflt)
 gseq_iseqz<list0(x0)><x0>
   (xs) =
 (
   list0_iseqz<>{x0}(xs)
 ) (* end of [gseq_iseqz] *)
-implement
+impltmp
 (x0:tflt)
 gseq_isneqz<list0(x0)><x0>
   (xs) =
 (
   list0_isneqz<>{x0}(xs)
 ) (* end of [gseq_isneqz] *)
-implement
+impltmp
 (x0:tflt)
 gseq_length<list0(x0)><x0>
   (xs) =
@@ -68,21 +68,21 @@ gseq_length<list0(x0)><x0>
 
 (* ****** ****** *)
 //
-implement
+impltmp
 (x0:tflt)
 gseq_listize<list0(x0)><x0>
   (xs) =
 (
   list0_listize<x0>(xs)
 ) (* end of [gseq_listize] *)
-implement
+impltmp
 (x0:tflt)
 gseq_rlistize<list0(x0)><x0>
   (xs) =
 (
   list0_rlistize<x0>(xs)
 ) (* end of [gseq_rlistize] *)
-implement
+impltmp
 (x0:tflt)
 gseq_streamize<list0(x0)><x0>
   (xs) =
@@ -92,7 +92,7 @@ gseq_streamize<list0(x0)><x0>
 //
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:tflt)
 gseq_forall<list0(x0)><x0>
   (xs) =
@@ -100,13 +100,13 @@ gseq_forall<list0(x0)><x0>
   list0_forall<x0>(xs)
 ) where
 {
-implement
+impltmp
 list0_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
 } (* end of [gseq_forall] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:tflt)
 gseq_foreach<list0(x0)><x0>
   (xs) =
@@ -114,13 +114,13 @@ gseq_foreach<list0(x0)><x0>
   list0_foreach<x0>(xs)
 ) where
 {
-implement
+impltmp
 list0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
 } (* end of [gseq_foreach] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:tflt)
 gseq_rforall<list0(x0)><x0>
   (xs) =
@@ -128,13 +128,13 @@ gseq_rforall<list0(x0)><x0>
   list0_rforall<x0>(xs)
 ) where
 {
-implement
+impltmp
 list0_rforall$test<x0>(x0) = gseq_rforall$test<x0>(x0)
 } (* end of [gseq_rforall] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:tflt
 ,r0:vtflt)
 gseq_foldleft<list0(x0)><x0><r0>
@@ -143,7 +143,7 @@ gseq_foldleft<list0(x0)><x0><r0>
   list0_foldleft<x0><r0>(xs, r0)
 ) where
 {
-implement
+impltmp
 list0_foldleft$fopr<x0><r0>(r0, x0) = gseq_foldleft$fopr<x0><r0>(r0, x0)
 } (* end of [gseq_foldleft] *)
 

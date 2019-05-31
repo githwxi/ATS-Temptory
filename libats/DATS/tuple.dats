@@ -39,7 +39,7 @@
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a0,a1}
 tuple2_equal(xs, ys) =
 let
@@ -48,7 +48,7 @@ gequal$val<a0>(xs.0, ys.0)
 in
 if ~ans then ans else gequal$val<a1>(xs.1, ys.1)
 end (* end of [tuple2_equal] *)
-implement
+impltmp
 {a0,a1}
 tuple2_compare(xs, ys) =
 let
@@ -60,7 +60,7 @@ end (* end of [tuple2_compare] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a0,a1,a2}
 tuple3_equal(xs, ys) =
 let
@@ -79,7 +79,7 @@ if
 end
 end (* end of [tuple3_equal] *)
 //
-implement
+impltmp
 {a0,a1,a2}
 tuple3_compare(xs, ys) =
 let

@@ -46,18 +46,18 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 stream_make_nil() =
 $delay
 (stream_nil(*void*))
-implement
+impltmp
 {x0}(*tmp*)
 stream_make_sing(x0) =
 $delay
 (stream_cons(x0, stream_make_nil()))
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_make_list0
   (xs) =
@@ -77,7 +77,7 @@ case+ xs of
 ) (* end of [auxmain] *)
 } (* end of [stream_make_list0] *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_make_list0_vt
   (xs) =
@@ -87,7 +87,7 @@ stream_make_list0_vt
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 stream_append
   (xs, ys) =
@@ -123,7 +123,7 @@ end // end-of-let
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_listize
   (xs) =
@@ -133,7 +133,7 @@ gseq_listize<stream(x0)><x0>(xs)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 stream_streamize
   (xs) =
@@ -159,7 +159,7 @@ case+ !xs of
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 stream_forall(xs) =
   (loop(xs)) where
@@ -179,7 +179,7 @@ case+ !xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 stream_foreach(xs) =
   (loop(xs)) where

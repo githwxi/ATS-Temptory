@@ -43,20 +43,20 @@ board_cons
 local
 absimpl board = list0(int)
 in
-implement
+implfun
 board_nil
 () = nil()
-implement
+implfun
 board_cons
 (x0, xs) = cons(x0, xs)
-implement
+impltmp
 gseq_forall<board><int>
 (xs) =
 (
   list0_forall<int>(xs)
 ) where
 {
-implement
+impltmp
 list0_forall$test<int>(x0) = gseq_forall$test<int>(x0)
 }
 end // end of [local]
@@ -70,7 +70,7 @@ board_check
 gseq_iforall<board><int>(xs)
 ) where
 {
-implement
+impltmp
 gseq_iforall$test<int>(i0, x1) =
   if (x0 != x1) then (i0+1 != abs(x0-x1)) else false
 }
@@ -85,13 +85,13 @@ gseq_rforeach<board><int>
   (xs)
 ) where
 {
-implement
+impltmp
 gseq_rforeach$work<int>(x0) =
 (
   sint_foreach<>(N); println!()
 ) where
 {
-  implement
+  impltmp
   sint_foreach$work<>(i0) =
   (if i0 = x0 then print"Q " else print". ")
 }
@@ -101,7 +101,7 @@ gseq_rforeach$work<int>(x0) =
 
 (* ****** ****** *)
 
-implement
+impltmp
 gtree_node_children<board>
   (xs) =
 (
@@ -111,9 +111,9 @@ gseq_mapopt_list<int><int><board>(N)
 )
 ) where
 {
-implement
+impltmp
 gseq_mapopt$test<int>(x0) = board_check(xs, x0)
-implement
+impltmp
 gseq_mapopt$fopr<int><board>(x0) = board_cons(x0, xs)
 } (* end of [gtree_node_children] *)
 
@@ -128,7 +128,7 @@ the_solutions =
 stream_vt_filter<board>(the_solutions)
 ) where
 {
-implement
+impltmp
 stream_vt_filter$test<board>(xs) = (gseq_length<board><int>(xs) >= N)
 }
 
@@ -138,13 +138,13 @@ stream_vt_iforeach0
   the_solutions
 ) where
 {
-implement
+impltmp
 stream_vt_iforeach0$work<board>(i0, xs) = println!("Solution#", i0+1, ":\n", xs)
 }
 
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 

@@ -401,9 +401,30 @@ val FORSTAR : tnode
 val FREE : tnode
 val FREEAT : tnode
 
-val IMPLMNT : tnode // implmnt
+(* ****** ****** *)
+//
+val
+IMPLMNT : tnode // implmnt // 0
+val
+IMPLPRF : tnode // implprf //~1
+//
+(*
+val
+IMPLVAL : tnode // implval // 0
+*)
+val
+IMPLFUN : tnode // implfun // 1
+val
+IMPLTMP : tnode // impltmp // 2
+(*
+val
+IMPLTMPR : tnode // impltmpr // 3
+*)
+(*
 val IMPLEMENT : tnode // implement
-val PRIMPLMNT : tnode // primplmnt
+*)
+//
+(* ****** ****** *)
 
 val INFIX : tnode
 val INFIXL : tnode

@@ -44,60 +44,60 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 gseq_listize<sint><sint>
   (n0) = (sint_listize<>(n0))
-implement
+impltmp
 gseq_listize<uint><uint>
   (n0) = (uint_listize<>(n0))
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 gseq_rlistize<sint><sint>
   (n0) = (sint_rlistize<>(n0))
-implement
+impltmp
 gseq_rlistize<uint><uint>
   (n0) = (uint_rlistize<>(n0))
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 gseq_streamize<sint><sint>
   (n0) = (sint_streamize<>(n0))
-implement
+impltmp
 gseq_streamize<uint><uint>
   (n0) = (uint_streamize<>(n0))
 //
 (* ****** ****** *)
 
 
-implement
+impltmp
 gseq_forall<sint><sint>
   (n0) =
 (
   sint_forall<>(n0)
 ) where
 {
-implement
+impltmp
 sint_forall$test<>(i0) =
 gseq_forall$test<sint>(i0)
 }
-implement
+impltmp
 gseq_foreach<sint><sint>
   (n0) =
 (
   sint_foreach<>(n0)
 ) where
 {
-implement
+impltmp
 sint_foreach$work<>(i0) =
 gseq_foreach$work<sint>(i0)
 }
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_forall<uint><uint>
   (n0) =
 ( loop(0u) ) where
@@ -123,7 +123,7 @@ end (* end of [loop] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_forall<SINT2><sint>
   (SINT2) =
 ( loop(l0, u0) ) where
@@ -153,7 +153,7 @@ val u0 = SINT2_range$end<>()
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_rforall<sint><sint>
   (n0) =
 ( loop(n0) ) where
@@ -179,7 +179,7 @@ end // end-of-let
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_rforall<uint><uint>
   (n0) =
 ( loop(n0) ) where
@@ -205,7 +205,7 @@ end // end-of-let
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_rforall<SINT2><sint>
   (SINT2) =
 ( loop(l0, u0) ) where

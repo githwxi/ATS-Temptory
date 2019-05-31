@@ -25,7 +25,7 @@ BTW, hsearh is HORRIBLE!!!
 
 (* ****** ****** *)
 
-implement main0() = ()
+implfun main0() = ()
 
 (* ****** ****** *)
 //
@@ -65,7 +65,7 @@ val () =
 stream_vt_foreach0<word>(words)
 ) where
 {
-implement
+impltmp
 stream_vt_foreach0$work<word>(w0) =
 ignoret
 (hsearch_enter<ptr>(w0, ptr0_null()))
@@ -73,7 +73,7 @@ ignoret
 //
 in
 
-implement
+implfun
 is_word(w0) = isneqz(hsearch_find(w0))
 
 end // end of [local]
@@ -228,7 +228,7 @@ local
 //
 in
 //
-implement
+implfun
 doublet(w0, w1) =
 (
 let
@@ -242,7 +242,7 @@ nxs =
 stream_vt_filter<node>(nxs)
 ) where
 {
-implement
+impltmp
 stream_vt_filter$test<node>(nx0) =
 (nx0[0] = w1)
 (*
@@ -268,7 +268,7 @@ val-
 ~lsome(ht0) =
 htabref_create(i2sz(128*1024))
 //
-implement
+impltmp
 graph_node_mark<node>
 (nx) =
 {
@@ -278,14 +278,14 @@ htabref_enter_opt<ptr>
   (ht0, nx[0], null)
 }
 //
-implement
+impltmp
 graph_node_is_marked<node>
 (nx) =
 case+
 htabref_find_opt<>(ht0, nx[0])
 of | ~lsome _ => true | ~lnone() => false 
 //
-implement
+impltmp
 graph_node_neighbors<node>
   (nx0) =
 (
@@ -296,7 +296,7 @@ list0_vt_map0<word><node>
 )
 ) where
 {
-  implement
+  impltmp
   list0_vt_map0$fopr<word><node>(w0) = list0_cons(w0, nx0)
 }
 //

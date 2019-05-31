@@ -54,94 +54,94 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 print$val(x) =
 fprint$val<a>(the_stdout<>(), x)
-implement
+impltmp
 {a}(*tmp*)
 print$ref(x) =
 fprint$ref<a>(the_stdout<>(), x)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 print_newline() =
 fprint_newline<>(the_stdout<>())
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 print_int(x) = print$val<int>(x)
-implement
+impltmp
 {}(*tmp*)
 print_ptr(x) = print$val<ptr>(x)
-implement
+impltmp
 {}(*tmp*)
 print_bool(x) = print$val<bool>(x)
-implement
+impltmp
 {}(*tmp*)
 print_char(x) = print$val<char>(x)
-implement
+impltmp
 {}(*tmp*)
 print_double(f0) = print$val<double>(f0)
-implement
+impltmp
 {}(*tmp*)
 print_string(cs) = print$val<string>(cs)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 print_sint(i0) = print$val<sint>(i0)
-implement
+impltmp
 {}(*tmp*)
 print_uint(u0) = print$val<uint>(u0)
 //
-implement
+impltmp
 {}(*tmp*)
 print_size(i0) = print$val<size>(i0)
-implement
+impltmp
 {}(*tmp*)
 print_ssize(i0) = print$val<ssize>(i0)
-implement
+impltmp
 {}(*tmp*)
 print_usize(u0) = print$val<usize>(u0)
 //
-implement
+impltmp
 {}(*tmp*)
 print_lint(i0) = print$val<lint>(i0)
-implement
+impltmp
 {}(*tmp*)
 print_slint(i0) = print$val<slint>(i0)
-implement
+impltmp
 {}(*tmp*)
 print_ulint(u0) = print$val<ulint>(u0)
 //
-implement
+impltmp
 {}(*tmp*)
 print_llint(i0) = print$val<llint>(i0)
-implement
+impltmp
 {}(*tmp*)
 print_sllint(i0) = print$val<sllint>(i0)
-implement
+impltmp
 {}(*tmp*)
 print_ullint(u0) = print$val<ullint>(u0)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 print_float(f0) = print$val<float>(f0)
-implement
+impltmp
 {}(*tmp*)
 print_ldouble(f0) = print$val<ldouble>(f0)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 list0_print(xs) =
 (
@@ -167,23 +167,23 @@ case+ xs of
 )
 } (* end of [list0_print] *)
 //
-implement
+impltmp
 {}(*tmp*)
 list0_print$beg() = print_string("(")
-implement
+impltmp
 {}(*tmp*)
 list0_print$end() = print_string(")")
-implement
+impltmp
 {}(*tmp*)
 list0_print$sep() = print_string(",")
 //
-implement
+impltmp
 (a:tflt)
 print$val<list0(a)>(xs) = list0_print<a>(xs)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}//tmp
 optn0_print(t0) =
 (
@@ -201,20 +201,20 @@ case+ t0 of
   )
 )
 //
-implement
+impltmp
 {}(*tmp*)
 optn0_print$beg() = print_string("(")
-implement
+impltmp
 {}(*tmp*)
 optn0_print$end() = print_string(")")
 //
-implement
+impltmp
 (a:tflt)
 print$val<optn0(a)>(xs) = optn0_print<a>(xs)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a0,a1}
 tuple2_print(xs) =
 (
@@ -223,7 +223,7 @@ print$val<a0>(xs.0);
 tuple_print$sep<>(); print$val<a1>(xs.1);
 tuple_print$end<>();
 )
-implement
+impltmp
 {a0,a1,a2}
 tuple3_print(xs) =
 (
@@ -234,26 +234,26 @@ tuple_print$sep<>(); print$val<a2>(xs.2);
 tuple_print$end<>();
 )
 //
-implement
+impltmp
 {}(*tmp*)
 tuple_print$beg() = print_string("(")
-implement
+impltmp
 {}(*tmp*)
 tuple_print$end() = print_string(")")
-implement
+impltmp
 {}(*tmp*)
 tuple_print$sep() = print_string(",")
 //
-implement
+impltmp
 (a0,a1:tflt)
 print$val<tup(a0,a1)>(xs) = tuple2_print<a0,a1>(xs)
-implement
+impltmp
 (a0,a1,a2:tflt)
 print$val<tup(a0,a1,a2)>(xs) = tuple3_print<a0,a1,a2>(xs)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 stream_print(xs) =
 (
@@ -279,40 +279,40 @@ case+ !xs of
 )
 } (* end of [stream_print] *)
 //
-implement
+impltmp
 {}(*tmp*)
 stream_print$beg() = print_string("(")
-implement
+impltmp
 {}(*tmp*)
 stream_print$end() = print_string(")")
-implement
+impltmp
 {}(*tmp*)
 stream_print$sep() = print_string(",")
 //
-implement
+impltmp
 (a:tflt)
 print$val<stream(a)>(xs) = stream_print<a>(xs)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 arrszref_print(AZ) =
 (
 glseq_print<arrszref(a)><a>(AZ);
 ) where
 {
-implement
+impltmp
 gseq_print$beg<>() = array_print$beg<>()
-implement
+impltmp
 gseq_print$end<>() = array_print$end<>()
-implement
+impltmp
 gseq_print$sep<>() = array_print$sep<>()
 } (* end of [arrszref_print] *)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 list0_vt_print(xs) =
 (
@@ -338,21 +338,21 @@ case+ xs of
 )
 }
 //
-implement
+impltmp
 (a:vtflt)
 print$val<list0_vt(a)> = list0_vt_print<a>
 //
 (* ****** ****** *)
 
-implement
+impltmp
 string0_vt_print<>(cs) =
 print_string($UN.string0_vt2t(cs))
-implement
+impltmp
 print$val<string_vt>(cs) = string0_vt_print<>(cs)
 
 (* ****** ****** *)
 
-implement
+impltmp
 stropt0_print<>(opt) =
 if
 iseqz(opt)
@@ -361,13 +361,13 @@ print_ptr($UN.stropt0_unnone(opt))
 else
 print_string($UN.stropt0_unsome(opt))
 //
-implement
+impltmp
 stropt0_vt_print<>(opt) =
 stropt0_print($UN.stropt0_vt2t(opt))
 //
-implement
+impltmp
 print$val<stropt>(opt) = stropt0_print<>(opt)
-implement
+impltmp
 print$val<stropt_vt>(opt) = stropt0_vt_print<>(opt)
 //
 (* ****** ****** *)

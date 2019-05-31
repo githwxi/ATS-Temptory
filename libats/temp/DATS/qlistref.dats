@@ -83,12 +83,12 @@ in (*in-of-local*)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 qlistref_nil
   {a}((*void*)) =
   ref<qlist(a)>(qlist_nil())
-implement
+impltmp
 {}(*tmp*)
 qlistref_make_nil
   {a}((*void*)) =
@@ -96,7 +96,7 @@ qlistref_make_nil
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 qlistref_sing(x0) =
 let
@@ -107,7 +107,7 @@ end // end of [qlistref_sing]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlistref_iseqz
   (qrf) =
@@ -122,7 +122,7 @@ val
 //
 } (* end of [qlistref_iseqz] *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlistref_isneqz
   (qrf) =
@@ -139,7 +139,7 @@ val
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlistref_size
   (qrf) =
@@ -156,7 +156,7 @@ val
 (vbox(pf)|p0) = ref_vptrof(qrf)
 //
 } (* end of [qlistref_length] *)  
-implement
+impltmp
 {a}(*tmp*)
 qlistref_length
   (qrf) =
@@ -173,7 +173,7 @@ val
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlistref_insert
   (qrf, x0) = () where
@@ -195,7 +195,7 @@ val () =
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlistref_takeout
   (qrf) = let
@@ -220,7 +220,7 @@ end (* end of [qlistref_takeout] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlistref_takeout_opt
   (qrf) = let
@@ -239,7 +239,7 @@ end (* end of [qlistref_takeout_opt] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 qlistref_takeout_all
   (qrf) = let
@@ -254,7 +254,7 @@ end (* end of [qlistref_takeout_all] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 qlistref_forall1
   (qrf) = let
@@ -268,14 +268,14 @@ $effmask_ref
   qlist_forall1<x0>(!p0)
 ) where
 {
-implement
+impltmp
 qlist_forall1$test<x0>
   (x0) =
   qlistref_forall1$test<x0>(x0)
 }
 end // end of [qlistref_forall1]
 //
-implement
+impltmp
 {x0}(*tmp*)
 qlistref_foreach1
   (qrf) = let
@@ -289,7 +289,7 @@ $effmask_ref
   qlist_foreach1<x0>(!p0)
 ) where
 {
-implement
+impltmp
 qlist_foreach1$work<x0>
   (x0) =
   qlistref_foreach1$work<x0>(x0)
@@ -302,7 +302,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 qlistref_print(qrf) =
 (
@@ -317,7 +317,7 @@ var i0 = (0:int)
 val p0 =
 $UN.cast{ref(int)}(addr@i0)
 //
-implement
+impltmp
 qlistref_foreach1$work<x0>
   (x0) = () where
 {
@@ -335,16 +335,16 @@ qlistref_foreach1$work<x0>
 
 (* ****** ****** *)
 //
-implement
+impltmp
 qlistref_print$beg<>() = print("(")
-implement
+impltmp
 qlistref_print$end<>() = print(")")
-implement
+impltmp
 qlistref_print$sep<>() = print(",")
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 (x0:tflt)
 glseq_forall1<qlistref(x0)><x0>
   (qrf) =
@@ -352,11 +352,11 @@ glseq_forall1<qlistref(x0)><x0>
   qlistref_forall1<x0>(qrf)
 ) where
 {
-implement
+impltmp
 qlistref_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
 }
 //
-implement
+impltmp
 (x0:tflt)
 glseq_foreach1<qlistref(x0)><x0>
   (qrf) =
@@ -364,7 +364,7 @@ glseq_foreach1<qlistref(x0)><x0>
   qlistref_foreach1<x0>(qrf)
 ) where
 {
-implement
+impltmp
 qlistref_foreach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
 }
 //

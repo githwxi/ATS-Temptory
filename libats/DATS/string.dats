@@ -51,7 +51,7 @@
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_iseqz(cs) =
 $effmask_all
@@ -59,7 +59,7 @@ $effmask_all
 iseqz
 ($UN.cptr0_get(cptrof(cs)))
 )
-implement
+impltmp
 {}(*tmp*)
 string0_isneqz(cs) =
 $effmask_all
@@ -70,45 +70,45 @@ isneqz
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 g0lt_str_str
 (x1, x2) = (strcmp(x1, x2) < 0)
-implement
+impltmp
 {}(*tmp*)
 g0gt_str_str
 (x1, x2) = (strcmp(x1, x2) > 0)
-implement
+impltmp
 {}(*tmp*)
 g0eq_str_str
 (x1, x2) = (strcmp(x1, x2) = 0)
-implement
+impltmp
 {}(*tmp*)
 g0lte_str_str
 (x1, x2) = (strcmp(x1, x2) <= 0)
-implement
+impltmp
 {}(*tmp*)
 g0gte_str_str
 (x1, x2) = (strcmp(x1, x2) >= 0)
-implement
+impltmp
 {}(*tmp*)
 g0neq_str_str
 (x1, x2) = (strcmp(x1, x2) != 0)
 //
-implement
+impltmp
 {}(*tmp*)
 g0cmp_str_str(x1, x2) = strcmp(x1, x2)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_size(cs) =
 (
 $effmask_all
 (gseq_size<string><char>(cs))
 )
-implement
+impltmp
 {}(*tmp*)
 string0_length(cs) =
 (
@@ -118,7 +118,7 @@ $effmask_all
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_indexof(cs, c0) =
 (
@@ -128,7 +128,7 @@ $effmask_all
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_alloc_size
   (n0) = cp where
@@ -138,7 +138,7 @@ ptr2cptr{char}
 ($UN.malloc(succ(n0)))
 val () = $UN.cptr0_set(cp+n0, CNUL)
 }
-implement
+impltmp
 {}(*tmp*)
 string0_alloc_sint
   (n0) = cp where
@@ -151,7 +151,7 @@ val () = $UN.cptr0_set(cp+n0, CNUL)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_append
   (cs1, cs2) =
@@ -159,7 +159,7 @@ string0_append
 string0_vt2t
 (string0_append_vt<>(cs1, cs2))
 )
-implement
+impltmp
 {}(*tmp*)
 string0_append_vt
   (cs1, cs2) =
@@ -180,7 +180,7 @@ prval () = $UN.cast2void(cs2_)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_map(cs) =
 (
@@ -190,11 +190,11 @@ string0_map_vt(cs)
 )
 ) where
 {
-implement
+impltmp
 string0_map_vt$fopr<>(c0) = string0_map$fopr<>(c0)
 }
 //
-implement
+impltmp
 {}(*tmp*)
 string0_map_vt(cs) =
 (
@@ -210,7 +210,7 @@ val pz =
 ) where
 {
   typedef r0 = cptr0(char)
-  implement
+  impltmp
   string0_foldleft$fopr<r0>(cp, c0) =
   let
     val () =
@@ -223,35 +223,35 @@ val pz =
 (* ****** ****** *)
 
 (*
-implement
+impltmp
 {}(*tmp*)
 string0_copy(cs) =
 (
   string0_map<>(cs)
 ) where
 {
-  implement
+  impltmp
   string0_map$fopr<>(c0) = (c0)
 }
-implement
+impltmp
 {}(*tmp*)
 string0_copy_vt(cs) =
 (
   string0_map_vt<>(cs)
 ) where
 {
-  implement
+  impltmp
   string0_map_vt$fopr<>(c0) = (c0)
 }
 *)
-implement
+impltmp
 {}(*tmp*)
 string0_copy(cs) =
 (
 string0_vt2t(string0_copy_vt(cs))
 )
 //
-implement
+impltmp
 {}(*tmp*)
 string0_copy_vt(cs) =
 (
@@ -271,37 +271,37 @@ val () =
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_tolower(cs) =
 (
   string0_map<>(cs)
 ) where
 {
-  implement
+  impltmp
   string0_map$fopr<>(c0) = tolower(c0)
 }
-implement
+impltmp
 {}(*tmp*)
 string0_toupper(cs) =
 (
   string0_map<>(cs)
 ) where
 {
-  implement
+  impltmp
   string0_map$fopr<>(c0) = toupper(c0)
 }
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_implode
   (cs) =
 (
 string0_make_list0(cs)
 )
-implement
+impltmp
 {}(*tmp*)
 string0_make_list0
   (cs) =
@@ -309,7 +309,7 @@ string0_make_list0
   string0_vt2t
   (string0_vt_make_list0(cs))
 )
-implement
+impltmp
 {}(*tmp*)
 string0_make_list0_vt
   (cs) =
@@ -317,7 +317,7 @@ string0_make_list0_vt
   string0_vt2t
   (string0_vt_make_list0_vt(cs))
 )
-implement
+impltmp
 {}(*tmp*)
 string0_make_rlist0_vt
   (cs) =
@@ -328,14 +328,14 @@ string0_make_rlist0_vt
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_listize
   (cs) =
 (
   gseq_listize<string><char>(cs)
 ) (* end of [string0_listize] *)
-implement
+impltmp
 {}(*tmp*)
 string0_rlistize
   (cs) =
@@ -345,7 +345,7 @@ string0_rlistize
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_streamize
   (cs) =
@@ -373,7 +373,7 @@ end // end of [let]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_forall(cs) =
 (
@@ -402,7 +402,7 @@ end // end of [loop]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_foreach(cs) =
 (
@@ -424,7 +424,7 @@ end // end of [loop]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_rforall(cs) =
   (loop1(p1)) where
@@ -471,7 +471,7 @@ end // end of [let]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_rforeach(cs) =
   (loop1(p1)) where
@@ -515,7 +515,7 @@ end // end of [let]
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {r0}(*tmp*)
 string0_foldleft
   (cs, r0) =
@@ -524,10 +524,10 @@ gseq_foldleft<string><char>(cs, r0)
 ) where
 {
 typedef x0 = char
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, c0) = string0_foldleft$fopr<r0>(r0, c0)
 } (* end of [string0_foldleft] *)
-implement
+impltmp
 {r0}(*tmp*)
 string0_foldright
   (cs, r0) =
@@ -536,7 +536,7 @@ gseq_foldright<string><char>(cs, r0)
 ) where
 {
 typedef x0 = char
-implement
+impltmp
 gseq_foldright$fopr<x0><r0>(c0, r0) = string0_foldright$fopr<r0>(c0, r0)
 } (* end of [string0_foldright] *)
 
@@ -546,7 +546,7 @@ gseq_foldright$fopr<x0><r0>(c0, r0) = string0_foldright$fopr<r0>(c0, r0)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_vt_iseqz(cs) =
 $effmask_all
@@ -554,7 +554,7 @@ $effmask_all
 iseqz
 ($UN.cptr0_get(cptrof(cs)))
 )
-implement
+impltmp
 {}(*tmp*)
 string0_vt_isneqz(cs) =
 $effmask_all
@@ -565,56 +565,56 @@ isneqz
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 g0lt_lstr_lstr
   (cs1, cs2) =
   (strcmp_vt(cs1, cs2) < 0)
-implement
+impltmp
 {}(*tmp*)
 g0gt_lstr_lstr
   (cs1, cs2) =
   (strcmp_vt(cs1, cs2) > 0)
-implement
+impltmp
 {}(*tmp*)
 g0eq_lstr_lstr
   (cs1, cs2) =
   (strcmp_vt(cs1, cs2) = 0)
-implement
+impltmp
 {}(*tmp*)
 g0lte_lstr_lstr
   (cs1, cs2) =
   (strcmp_vt(cs1, cs2) <= 0)
-implement
+impltmp
 {}(*tmp*)
 g0gte_lstr_lstr
   (cs1, cs2) =
   (strcmp_vt(cs1, cs2) >= 0)
-implement
+impltmp
 {}(*tmp*)
 g0neq_lstr_lstr
   (cs1, cs2) =
   (strcmp_vt(cs1, cs2) != 0)
 //
-implement
+impltmp
 {}(*tmp*)
 g0cmp_lstr_lstr
 (cs1, cs2) = strcmp_vt(cs1, cs2)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_vt_size(cs) =
 string0_size($UN.string0_vt2t(cs))
-implement
+impltmp
 {}(*tmp*)
 string0_vt_length(cs) =
 string0_length($UN.string0_vt2t(cs))
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_vt_nil() =
 let
@@ -625,7 +625,7 @@ end // end of [let]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_vt_make_list0
   (cs) =
@@ -649,7 +649,7 @@ list0_foldleft<x0><r0>(cs, cp0)
 {
   typedef x0 = char
   typedef r0 = cptr0(char)
-  implement
+  impltmp
   list0_foldleft$fopr<x0><r0>
     (cp, c0) =
   (
@@ -663,7 +663,7 @@ val () = $UN.cptr0_set(cp1, CNUL)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_vt_make_list0_vt
   (cs) =
@@ -684,7 +684,7 @@ list0_vt_foldleft0<x0><r0>(cs, cp0)
 {
   typedef x0 = char
   typedef r0 = cptr0(char)
-  implement
+  impltmp
   list0_vt_foldleft0$fopr<x0><r0>
     (cp, c0) =
   (
@@ -700,7 +700,7 @@ val ( ) = $UN.cptr0_set(cp1, CNUL)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_vt_make_rlist0_vt
   (cs) =
@@ -727,7 +727,7 @@ list0_vt_foldleft0<x0><r0>(cs, cp1)
 {
   typedef x0 = char
   typedef r0 = cptr0(char)
-  implement
+  impltmp
   list0_vt_foldleft0$fopr<x0><r0>
     (cp, c0) =
   (
@@ -742,7 +742,7 @@ list0_vt_foldleft0<x0><r0>(cs, cp1)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_vt_append
   (cs1, cs2) = let
@@ -760,7 +760,7 @@ string0_vt_foldleft1<r0>(cs1, cp0)
 ) where
 {
 typedef r0 = cptr(char)
-implement
+impltmp
 string0_vt_foldleft1$fopr<r0>
   (r0, x0) =
   ($UN.cptr0_set(r0, x0); succ(r0))
@@ -771,7 +771,7 @@ string0_vt_foldleft1<r0>(cs2, cp1)
 ) where
 {
 typedef r0 = cptr(char)
-implement
+impltmp
 string0_vt_foldleft1$fopr<r0>
   (r0, x0) =
   ($UN.cptr0_set(r0, x0); succ(r0))
@@ -786,7 +786,7 @@ end // end of [string0_vt_append]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_vt_map0
   (cs) =
@@ -798,7 +798,7 @@ res =
 string0_vt_map1<>(cs)
 ) where
 {
-implement
+impltmp
 string0_vt_map1$fopr<>(c0) =
 string0_vt_map0$fopr<>(c0)
 }
@@ -809,7 +809,7 @@ end
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_vt_map1
   (cs) =
@@ -830,7 +830,7 @@ string0_vt_foldleft1<r0>
 //
 typedef r0 = cptr(char)
 //
-implement
+impltmp
 string0_vt_foldleft1$fopr<r0>
   (cp, c0) =
   let
@@ -844,7 +844,7 @@ string0_vt_foldleft1$fopr<r0>
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_vt_streamize
   (cs) =
@@ -880,7 +880,7 @@ end // end of [let]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_vt_forall0
   (cs) =
@@ -892,14 +892,14 @@ string0_vt_forall1<>(cs)
 val () = string0_vt_free(cs) in test
 end where
 {
-implement
+impltmp
 string0_vt_forall1$test<>(c0) = string0_vt_forall0$test<>(c0)
 }
 ) (* end of [string0_vt_forall0] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string0_vt_foreach0
   (cs) =
@@ -909,14 +909,14 @@ val () =
 string0_vt_foreach1<>(cs) in string0_vt_free(cs)
 end where
 {
-implement
+impltmp
 string0_vt_foreach1$work<>(c0) = string0_vt_foreach0$work<>(c0)
 }
 ) (* end of [string0_vt_foreach0] *)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_vt_forall1(cs) =
 (
@@ -949,7 +949,7 @@ end // end of [loop]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_vt_foreach1(cs) =
 (
@@ -975,7 +975,7 @@ end // end of [loop]
 (* ****** ****** *)
 //
 (*
-implement
+impltmp
 {r0}(*tmp*)
 string0_vt_foldleft1
   (cs, r0) =
@@ -1004,7 +1004,7 @@ end // end-of-let // end of [loop]
 } (* end of [string0_vt_foldleft1] *)
 *)
 //
-implement
+impltmp
 {r0}(*tmp*)
 string0_vt_foldleft1
   (cs, r0) =
@@ -1013,10 +1013,10 @@ glseq_foldleft1<string_vt><char>(cs, r0)
 ) where
 {
 typedef x0 = char
-implement
+impltmp
 glseq_foldleft1$fopr<x0><r0>(r0, c0) = string0_vt_foldleft1$fopr<r0>(r0, c0)
 } (* end of [string0_vt_foldleft1] *)
-implement
+impltmp
 {r0}(*tmp*)
 string0_vt_foldright1
   (cs, r0) =
@@ -1025,7 +1025,7 @@ glseq_foldright1<string_vt><char>(cs, r0)
 ) where
 {
 typedef x0 = char
-implement
+impltmp
 glseq_foldright1$fopr<x0><r0>(c0, r0) = string0_vt_foldright1$fopr<r0>(c0, r0)
 } (* end of [string0_vt_foldright1] *)
 //
@@ -1036,12 +1036,12 @@ glseq_foldright1$fopr<x0><r0>(c0, r0) = string0_vt_foldright1$fopr<r0>(c0, r0)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string1_get_at_sint
 (cs, i0) =
 $UN.cptr0_get(cptrof(cs)+i0)
-implement
+impltmp
 {}(*tmp*)
 string1_get_at_size
 (cs, i0) =
@@ -1049,34 +1049,34 @@ $UN.cptr0_get(cptrof(cs)+i0)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string1_size
 (cs) = $UN.cast(string0_size(cs))
-implement
+impltmp
 {}(*tmp*)
 string1_length
 (cs) = $UN.cast(string0_length(cs))
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string1_vt_get_at_sint
 (cs, i0) =
 $UN.cptr0_get(cptrof(cs)+i0)
-implement
+impltmp
 {}(*tmp*)
 string1_vt_get_at_size
 (cs, i0) =
 $UN.cptr0_get(cptrof(cs)+i0)
 //
-implement
+impltmp
 {}(*tmp*)
 string1_vt_set_at_sint
 (cs, i0, c0) =
 $UN.cptr0_set(cptrof(cs)+i0, c0)
-implement
+impltmp
 {}(*tmp*)
 string1_vt_set_at_size
 (cs, i0, c0) =
@@ -1084,18 +1084,18 @@ $UN.cptr0_set(cptrof(cs)+i0, c0)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 string1_copy(cs) =
 $UN.castvwtp0(string0_copy(cs))
-implement
+impltmp
 {}(*tmp*)
 string1_copy_vt(cs) =
 $UN.castvwtp0(string0_copy_vt(cs))
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string1_make_substring
   (src, st, ln) =
@@ -1104,7 +1104,7 @@ $UN.castvwtp0
 (string1_make_substring_vt(src, st, ln))
 )
 //
-implement
+impltmp
 {}(*tmp*)
 string1_make_substring_vt
   (src, st, ln) =

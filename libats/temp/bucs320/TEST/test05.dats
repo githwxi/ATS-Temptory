@@ -56,23 +56,23 @@ local
 absimpl
 board=list0(int)
 in(*in-of-local*)
-implement
+implfun
 board_nil
 () = nil()
-implement
+implfun
 board_cons
 (x0, xs) = cons(x0, xs)
-implement
+implfun
 board_length
 (xs) = list0_length(xs)
-implement
+impltmp
 gseq_forall<board><int>
 (xs) =
 (
   list0_forall<int>(xs)
 ) where
 {
-implement
+impltmp
 list0_forall$test<int>(x0) = gseq_forall$test<int>(x0)
 }
 end // end of [local]
@@ -86,7 +86,7 @@ board_check
 gseq_iforall<board><int>(xs)
 ) where
 {
-implement
+impltmp
 gseq_iforall$test<int>(i0, x1) =
   if (x0 != x1) then (i0+1 != abs(x0-x1)) else false
 }
@@ -101,7 +101,7 @@ gseq_rforeach<board><int>
   (xs)
 ) where
 {
-implement
+impltmp
 gseq_rforeach$work<int>(x0) =
 (
   loop(0); println!()
@@ -120,7 +120,7 @@ gseq_rforeach$work<int>(x0) =
 
 (* ****** ****** *)
 
-implement
+implfun
 QueenPuzzle() =
 (
 solve(board_nil())
@@ -134,7 +134,7 @@ fun{}
 solve(xs: i): o =
 divconq_solve<i><o>(xs)
 //
-implement
+impltmp
 divconq_divide<i><o>
   (xs) =
 ( loop(0) ) where
@@ -154,10 +154,10 @@ board_cons(i, xs)::loop(i+1) else loop(i+1)
 else list0_nil(*void*)
 } (* end of [where] *)
 //
-implement
+impltmp
 divconq_solve_rec<i><o>
   (xs) = solve(xs)
-implement
+impltmp
 divconq_solve_opt<i><o>
   (xs) =
 (
@@ -166,14 +166,14 @@ divconq_solve_opt<i><o>
   then lsome(sing(xs)) else lnone()
 )
 //
-implement
+impltmp
 divconq_conquer_cmb<i><o>(rs) = concat(rs)
 //
 } (* end of [QueenPuzzle] *)
 
 (* ****** ****** *)
 //
-implement
+implfun
 main0() =
 {
 //
@@ -188,7 +188,7 @@ val ((*void*)) =
 list0_iforeach(xss)
 ) where
 {
-implement
+impltmp
 list0_iforeach$work<board>(i0, xs) = println!("Solution#", i0+1, ":\n", xs)
 }
 //

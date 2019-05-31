@@ -46,7 +46,7 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:vtflt)
 glseq_forall1<arrszref(x0)><x0>
   (xs) =
@@ -54,11 +54,11 @@ glseq_forall1<arrszref(x0)><x0>
   arrszref_forall<x0>(xs)
 ) where
 {
-  implement
+  impltmp
   arrszref_forall$test<x0>(x0) = glseq_forall1$test<x0>(x0)
 } (* end of [glseq_forall1] *)
 
-implement
+impltmp
 (x0:vtflt)
 glseq_foreach1<arrszref(x0)><x0>
   (xs) =
@@ -66,13 +66,13 @@ glseq_foreach1<arrszref(x0)><x0>
   arrszref_foreach<x0>(xs)
 ) where
 {
-  implement
+  impltmp
   arrszref_foreach$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
 } (* end of [glseq_foreach1] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:vtflt)
 glseq_rforall1<arrszref(x0)><x0>
   (xs) =
@@ -80,11 +80,11 @@ glseq_rforall1<arrszref(x0)><x0>
   arrszref_rforall<x0>(xs)
 ) where
 {
-  implement
+  impltmp
   arrszref_rforall$test<x0>(x0) = glseq_rforall1$test<x0>(x0)
 } (* end of [glseq_rforall1] *)
 
-implement
+impltmp
 (x0:vtflt)
 glseq_rforeach1<arrszref(x0)><x0>
   (xs) =
@@ -92,7 +92,7 @@ glseq_rforeach1<arrszref(x0)><x0>
   arrszref_rforeach<x0>(xs)
 ) where
 {
-  implement
+  impltmp
   arrszref_rforeach$work<x0>(x0) = glseq_rforeach1$work<x0>(x0)
 } (* end of [glseq_rforeach1] *)
 

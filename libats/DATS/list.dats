@@ -54,21 +54,21 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_sing(x0) =
 list0_cons(x0, list0_nil())
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 list0_iseqz(xs) =
 (
 case+ xs of
 | list0_nil _ => tt | list0_cons _ => ff
 )
-implement
+impltmp
 {}(*tmp*)
 list0_isneqz(xs) =
 (
@@ -78,13 +78,13 @@ case+ xs of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_size(xs) =
 (
 i2sz(list0_length<x0>(xs))
 )
-implement
+impltmp
 {x0}//tmp
 list0_length(xs) =
 (
@@ -102,21 +102,21 @@ case+ xs of
 | list0_cons(_, xs) => loop(xs, succ(i0))
 } (* end of [list0_length] *)
 (*
-implement
+impltmp
 {x0}//tmp
 list0_length(xs) =
 (
 gseq_foldleft<list0(x0)><x0><int>(xs, 0)
 ) where
 {
-implement
+impltmp
 gseq_foldleft$fopr<x0><int>(r0, x0) = succ(r0)
 }
 *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_indexof(xs, x0) =
 $effmask_all
@@ -126,7 +126,7 @@ $effmask_all
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_head_exn(xs) =
 (
@@ -136,7 +136,7 @@ case+ xs of
 | list0_nil((*void*)) =>
   $raise(ListSubscriptExn())
 )
-implement
+impltmp
 {x0}//tmp
 list0_head_opt(xs) =
 (
@@ -147,7 +147,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_tail_exn(xs) =
 (
@@ -157,7 +157,7 @@ case+ xs of
 | list0_nil((*void*)) =>
   $raise(ListSubscriptExn())
 )
-implement
+impltmp
 {x0}//tmp
 list0_tail_opt(xs) =
 (
@@ -168,7 +168,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_get_at_exn
   (xs, i0) =
@@ -193,7 +193,7 @@ case+ xs of
 )
 } (* end of [list0_get_at_exn] *)
 
-implement
+impltmp
 {x0}//tmp
 list0_get_at_opt
   (xs, i0) =
@@ -224,7 +224,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 list0_drop
   (xs, i0) =
@@ -251,7 +251,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 list0_take
   (xs, i0) =
@@ -299,7 +299,7 @@ case+ xs of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_append
   (xs, ys) =
@@ -334,7 +334,7 @@ end
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_append_vt
   (xs, ys) =
@@ -350,7 +350,7 @@ end // end of [list0_append_vt]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_concat(xss) =
 (
@@ -375,14 +375,14 @@ case+ ys of
 | list0_cons _ => list0_append<x0>(xs, ys)
 )
 //
-implement
+impltmp
 list0_foldright$fopr<xs><r0>(xs, r0) = append(xs, r0)
 //
 } (* end of [list0_concat] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_concat_vt(xss) =
 (
@@ -402,14 +402,14 @@ append
 : list0_vt(x0)
 ) : list0_vt(x0) = list0_append_vt<x0>(xs, ys)
 //
-implement
+impltmp
 list0_foldright$fopr<xs><r0>(xs, r0) = append(xs, r0)
 //
 } (* end of [list0_concat_vt] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_revapp
   (xs, ys) =
@@ -429,7 +429,7 @@ case+ xs of
 )
 } (* end of [list0_revapp] *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_reverse(xs) =
 (
@@ -438,7 +438,7 @@ list0_revapp<x0>(xs, list0_nil())
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_revapp_vt
   (xs, ys) =
@@ -452,7 +452,7 @@ $UN.castvwtp0
 end // end of [list0_revapp_vt]
 )
 //
-implement
+impltmp
 {x0}//tmp
 list0_reverse_vt(xs) =
 (
@@ -475,7 +475,7 @@ list0_reverse_vt(xs) =
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 list0_mcons
   (x0, xss) =
@@ -484,7 +484,7 @@ list0_vt2t
 (list0_mcons_vt<x0>(x0, xss))
 )
 //
-implement
+impltmp
 {x0}(*tmp*)
 list0_mcons_vt
   (x0, xss) =
@@ -494,13 +494,13 @@ list0_map_list<xs><ys>(xss)
 {
 typedef
 xs = list0(x0) and ys = list0(x0)
-implement
+impltmp
 list0_map$fopr<xs><ys>(xs) = list0_cons(x0, xs)
 }
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 list0_split
   (xs) =
@@ -554,7 +554,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 list0_merge
   (xs, ys) =
@@ -619,7 +619,7 @@ case+ xs0 of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_listize
   (xs) =
@@ -655,7 +655,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_rlistize
   (xs) =
@@ -679,7 +679,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_streamize
   (xs) =
@@ -703,7 +703,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_forall(xs) =
   (loop(xs)) where
@@ -723,7 +723,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_foreach(xs) =
   (loop(xs)) where
@@ -745,7 +745,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_rforall(xs) =
 (
@@ -781,7 +781,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 list0_rforeach(xs) =
 (
@@ -812,7 +812,7 @@ case+ xs of
 // HX-2019-05-09:
 // tail-recursion
 //
-implement
+impltmp
 {x0}{r0}
 list0_foldleft
   (xs, r0) =
@@ -837,7 +837,7 @@ case+ xs of
 // HX-2019-05-09:
 // tail-recursion
 //
-implement
+impltmp
 {x0}{r0}
 list0_foldright
   (xs, r0) =
@@ -862,7 +862,7 @@ case+ xs of
 } (* end of [list0_foldright] *)
 //
 (*
-implement
+impltmp
 {x0}{r0}
 list0_foldright
   (xs, r0) =
@@ -885,82 +885,82 @@ case+ xs of
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 list0_iforall(xs) =
 (
   gseq_iforall<list0(x0)><x0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_iforall$test<x0>
   (i0, x0) = list0_iforall$test<x0>(i0, x0)
 }
-implement
+impltmp
 {x0}(*tmp*)
 list0_iforeach(xs) =
 (
   gseq_iforeach<list0(x0)><x0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_iforeach$work<x0>
   (i0, x0) = list0_iforeach$work<x0>(i0, x0)
 }
-implement
+impltmp
 {x0}{r0}//tmp
 list0_ifoldleft(xs, r0) =
 (
   gseq_ifoldleft<list0(x0)><x0>(xs, r0)
 ) where
 {
-implement
+impltmp
 gseq_ifoldleft$fopr<x0><r0>
   (r0, i0, x0) = list0_ifoldleft$fopr<x0>(r0, i0, x0)
 }
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}{y0}//tmp
 list0_map(xs) =
 list0_vt2t
 (list0_map_list<x0><y0>(xs))
 //
-implement
+impltmp
 {x0}{y0}//tmp
 list0_map_list(xs) =
 (
   gseq_map_list<list0(x0)><x0><y0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_map$fopr<x0><y0>(x0) = list0_map$fopr<x0><y0>(x0)
 }
-implement
+impltmp
 {x0}{y0}//tmp
 list0_map_rlist(xs) =
 (
   gseq_map_rlist<list0(x0)><x0><y0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_map$fopr<x0><y0>(x0) = list0_map$fopr<x0><y0>(x0)
 }
-implement
+impltmp
 {x0}{y0}//tmp
 list0_map_stream(xs) =
 (
   gseq_map_stream<list0(x0)><x0><y0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_map$fopr<x0><y0>(x0) = list0_map$fopr<x0><y0>(x0)
 }
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 list0_filter(xs) =
 (
@@ -968,97 +968,97 @@ list0_vt2t
 (list0_mapopt_list<x0><x0>(xs))
 ) where
 {
-implement
+impltmp
 list0_mapopt$test<x0>(x0) =
 list0_filter$test<x0>(x0)
-implement
+impltmp
 list0_mapopt$fopr<x0><x0>(x0) = x0
 }
-implement
+impltmp
 {x0}{y0}//tmp
 list0_mapopt(xs) =
 list0_vt2t
 (list0_mapopt_list<x0><y0>(xs))
 //
-implement
+impltmp
 {x0}{y0}//tmp
 list0_mapopt_list(xs) =
 (
   gseq_mapopt_list<list0(x0)><x0><y0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_mapopt$test<x0>(x0) = list0_mapopt$test<x0>(x0)
-implement
+impltmp
 gseq_mapopt$fopr<x0><y0>(x0) = list0_mapopt$fopr<x0><y0>(x0)
 }
-implement
+impltmp
 {x0}{y0}//tmp
 list0_mapopt_rlist(xs) =
 (
   gseq_mapopt_rlist<list0(x0)><x0><y0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_mapopt$test<x0>(x0) = list0_mapopt$test<x0>(x0)
-implement
+impltmp
 gseq_mapopt$fopr<x0><y0>(x0) = list0_mapopt$fopr<x0><y0>(x0)
 }
-implement
+impltmp
 {x0}{y0}//tmp
 list0_mapopt_stream(xs) =
 (
   gseq_mapopt_stream<list0(x0)><x0><y0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_mapopt$test<x0>(x0) = list0_mapopt$test<x0>(x0)
-implement
+impltmp
 gseq_mapopt$fopr<x0><y0>(x0) = list0_mapopt$fopr<x0><y0>(x0)
 }
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}{y0}//tmp
 list0_imap(xs) =
 list0_vt2t
 (list0_imap_list<x0><y0>(xs))
 //
-implement
+impltmp
 {x0}{y0}//tmp
 list0_imap_list(xs) =
 (
   gseq_imap_list<list0(x0)><x0><y0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
 }
-implement
+impltmp
 {x0}{y0}//tmp
 list0_imap_rlist(xs) =
 (
   gseq_imap_rlist<list0(x0)><x0><y0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
 }
-implement
+impltmp
 {x0}{y0}//tmp
 list0_imap_stream(xs) =
 (
   gseq_imap_stream<list0(x0)><x0><y0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
 }
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 list0_equal
   (xs, ys) =
@@ -1095,7 +1095,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 list0_compare
   (xs, ys) =
@@ -1132,18 +1132,18 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 list0_mergesort$cmp
 (x1, x2) = gcompare$val<a>(x1, x2)
-implement
+impltmp
 {a}(*tmp*)
 list0_quicksort$cmp
 (x1, x2) = gcompare$val<a>(x1, x2)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 list0_mergesort(xs) =
 (
@@ -1153,11 +1153,11 @@ list0_vt_mergesort<a>(list0_listize<a>(xs))
 )
 ) where
 {
-implement
+impltmp
 list0_vt_mergesort$cmp<a>(x1, x2) = list0_mergesort$cmp<a>(x1, x2)
 } (* end of [list0_mergesort] *)
 
-implement
+impltmp
 {a}(*tmp*)
 list0_quicksort(xs) =
 (
@@ -1167,7 +1167,7 @@ list0_vt_quicksort<a>(list0_listize<a>(xs))
 )
 ) where
 {
-implement
+impltmp
 list0_vt_quicksort$cmp<a>(x1, x2) = list0_quicksort$cmp<a>(x1, x2)
 } (* end of [list0_quicksort] *)
 
@@ -1178,14 +1178,14 @@ list0_vt_quicksort$cmp<a>(x1, x2) = list0_quicksort$cmp<a>(x1, x2)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 list1_iseqz(xs) =
 (
 case+ xs of
 | list1_nil _ => tt | list1_cons _ => ff
 )
-implement
+impltmp
 {}(*tmp*)
 list1_isneqz(xs) =
 (
@@ -1195,14 +1195,14 @@ case+ xs of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}(*tmp*)
 list1_length(xs) =
 ($UN.cast(list0_length<x0>(g0ofg1(xs))))
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 list1_get_at
   (xs, i0) =
@@ -1226,7 +1226,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 list1_drop
   (xs, i0) =
@@ -1255,7 +1255,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}(*tmp*)
 list1_take
   (xs, i0) =

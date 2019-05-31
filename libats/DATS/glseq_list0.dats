@@ -45,7 +45,7 @@
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:vtflt)
 glseq_forall0<list0_vt(x0)><x0>
   (xs) =
@@ -53,13 +53,13 @@ glseq_forall0<list0_vt(x0)><x0>
   list0_vt_forall0<x0>(xs)
 ) where
 {
-implement
+impltmp
 list0_vt_forall0$test<x0>(x0) = glseq_forall0$test<x0>(x0)
 } (* end of [glseq_forall0] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:vtflt)
 glseq_forall1<list0_vt(x0)><x0>
   (xs) =
@@ -67,13 +67,13 @@ glseq_forall1<list0_vt(x0)><x0>
   list0_vt_forall1<x0>(xs)
 ) where
 {
-implement
+impltmp
 list0_vt_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
 } (* end of [glseq_forall1] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:vtflt)
 glseq_foreach1<list0_vt(x0)><x0>
   (xs) =
@@ -81,13 +81,13 @@ glseq_foreach1<list0_vt(x0)><x0>
   list0_vt_foreach1<x0>(xs)
 ) where
 {
-implement
+impltmp
 list0_vt_foreach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
 } (* end of [glseq_foreach1] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:vtflt)
 glseq_rforall1<list0_vt(x0)><x0>
   (xs) =
@@ -95,13 +95,13 @@ glseq_rforall1<list0_vt(x0)><x0>
   list0_vt_rforall1<x0>(xs)
 ) where
 {
-implement
+impltmp
 list0_vt_rforall1$test<x0>(x0) = glseq_rforall1$test<x0>(x0)
 } (* end of [glseq_rforall1] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (x0:vtflt)
 glseq_forall1_ref<list0_vt(x0)><x0>
   (xs) =
@@ -109,7 +109,7 @@ glseq_forall1_ref<list0_vt(x0)><x0>
   list0_vt_forall1_ref<x0>(xs)
 ) where
 {
-implement
+impltmp
 list0_vt_forall1_ref$test<x0>(x0) = glseq_forall1_ref$test<x0>(x0)
 } (* end of [glseq_forall1_ref] *)
 

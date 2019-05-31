@@ -63,7 +63,7 @@ UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
-implement
+impltmp
 {node}//tmp
 graph_streamize
   (nx0) =
@@ -110,7 +110,7 @@ val () = graph_store_insert(nx0)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {node}//tmp
 graph_streamize_bfs
   (nx0) =
@@ -123,7 +123,7 @@ val
 store =
 qlistref_nil<>{node}()
 //
-implement
+impltmp
 graph_store_insert<node>
 (nx0) =
 let
@@ -144,26 +144,26 @@ else
 )
 end // graph_store_insert
 //
-implement
+impltmp
 graph_store_insert_list<node>
 (nxs) =
 (
   list0_foreach<node>(nxs)
 ) where
 {
-implement
+impltmp
 list0_foreach$work<node>
 (nx0) = graph_store_insert<node>(nx0)
 }
 //
-implement
+impltmp
 graph_store_choose_opt<node>() = qlistref_takeout_opt(store)
 //
 } (* end of [graph_streamize_bfs] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {node}//tmp
 graph_streamize_dfs
   (nx0) =
@@ -176,7 +176,7 @@ val
 store =
 slistref_nil<>{node}()
 //
-implement
+impltmp
 graph_store_insert<node>
 (nx0) =
 let
@@ -199,19 +199,19 @@ else
 //
 end // graph_store_insert
 //
-implement
+impltmp
 graph_store_insert_list<node>
 (nxs) =
 (
   list0_rforeach<node>(nxs)
 ) where
 {
-implement
+impltmp
 list0_rforeach$work<node>
 (nx0) = graph_store_insert<node>(nx0)
 }
 //
-implement
+impltmp
 graph_store_choose_opt<node>() = slistref_takeout_opt(store)
 //
 } (* end of [graph_streamize_dfs] *)

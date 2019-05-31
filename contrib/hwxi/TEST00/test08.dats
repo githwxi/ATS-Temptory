@@ -45,7 +45,7 @@ board_cons1(int, !board): board
 
 (* ****** ****** *)
 
-implement
+impltmp
 gfree$val<board>(xs) = board_free(xs)
 
 (* ****** ****** *)
@@ -56,25 +56,25 @@ absimpl board = list_vt(int)
 
 in(*in-of-local*)
 
-implement
+implfun
 board_nil() = nil_vt()
-implement
+implfun
 board_cons1(x0, xs) =
 let val xs = board_copy(xs) in cons_vt(x0, xs) end
 
-implement
+implfun
 board_free(xs) = list0_vt_free(xs)
-implement
+implfun
 board_copy(xs) = list0_vt_copy(xs)
 
-implement
+impltmp
 {}//tmp
 board_forall1(xs) =
 (
 list0_vt_forall1<int>(xs)
 ) where
 {
-implement
+impltmp
 list0_vt_forall1$test<int>(x0) = board_forall1$test<>(x0)
 }
 
@@ -82,14 +82,14 @@ end // end of [local]
 //
 (* ****** ****** *)
 
-implement
+impltmp
 glseq_forall1<board><int>
   (xs) =
 (
   board_forall1<>(xs)
 ) where
 {
-  implement
+  impltmp
   board_forall1$test<>(x0) = glseq_forall1$test<int>(x0)
 }
 
@@ -112,7 +112,7 @@ glseq_rforeach1<board><int>
   (xs)
 ) where
 {
-implement
+impltmp
 glseq_rforeach1$work<int>(x0) =
 (
   loop(0)
@@ -145,7 +145,7 @@ board_check1
 glseq_iforall1<board><int>(xs)
 ) where
 {
-implement
+impltmp
 glseq_iforall1$test<int>(i1, x1) =
 if
 (x0 != x1)
@@ -205,7 +205,7 @@ qsolve(): list_vt(board) =
 
 (* ****** ****** *)
 
-implement
+implfun
 main0() = () where
 {
 //
@@ -217,7 +217,7 @@ val () =
 glseq_iforeach0<list_vt(board)><board>(xss)
 ) where
 {
-implement
+impltmp
 glseq_iforeach0$work<board>(i, xs) =
 (println!("Solution#", i+1, ":"); board_print0(xs); println!())
 }

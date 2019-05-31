@@ -55,10 +55,10 @@ UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 hmapref$hint((*void*)) = 64
-implement
+impltmp
 {k0,x0}
 hmapref_make() =
 hmapref_make_hint<k0,x0>(hmapref$hint<>())
@@ -81,7 +81,7 @@ ptr2ref
 
 in (* in-of-local *)
 
-implement
+impltmp
 {k0,x0}
 hmapref_make_hint
   (hint) =
@@ -92,7 +92,7 @@ ptr2ref
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}//tmp
 hmapref_size
   (map) = let
@@ -106,7 +106,7 @@ end (* end of [hmapref_size] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 hmapref_search_ref
   (map, k0) = let
@@ -119,7 +119,7 @@ in
   let prval () = $UN.cast2void(map) in res end
 end (* end of [hmapref_search_ref] *)
 
-implement
+impltmp
 {k0,x0}
 hmapref_search_opt
   (map, k0) = let
@@ -132,7 +132,7 @@ in
   let prval () = $UN.cast2void(map) in opt end
 end (* end of [hmapref_search_opt] *)
 
-implement
+impltmp
 {k0,x0}
 hmapref_insert
 (map, k0, x0, res) =
@@ -145,7 +145,7 @@ in
   let prval () = $UN.cast2void(map) in opt end
 end (* end of [hmapref_insert] *)
 
-implement
+impltmp
 {k0,x0}
 hmapref_insert_any
   (map, k0, x0) = let
@@ -158,7 +158,7 @@ in
   let prval () = $UN.cast2void(map) in ( ) end
 end (* end of [hmapref_insert_any] *)
 
-implement
+impltmp
 {k0,x0}
 hmapref_insert_opt
   (map, k0, x0) = let
@@ -171,7 +171,7 @@ in
   let prval () = $UN.cast2void(map) in opt end
 end (* end of [hmapref_insert_opt] *)
 
-implement
+impltmp
 {k0,x0}
 hmapref_remove
   (map, k0) = let
@@ -183,7 +183,7 @@ hashmap_remove<k0,x0>(map, k0)
 in
   let prval () = $UN.cast2void(map) in opt end
 end (* end of [hmapref_remove] *)
-implement
+impltmp
 {k0,x0}
 hmapref_takeout_opt
   (map, k0) = let
@@ -198,7 +198,7 @@ end (* end of [hmapref_takeout_opt] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 hmapref_takeout_all
   (map) = let
@@ -213,7 +213,7 @@ end (* end of [hmapref_takeout_all] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0}
 hmapref_foreach
   (map) =
@@ -232,7 +232,7 @@ val res =
   hashmap_foreach1(map)
 ) where
 {
-implement
+impltmp
 hashmap_foreach1$work<k0,x0> = hmapref_foreach$work<k0,x0>
 } (* end of [val] *)
 //
@@ -242,18 +242,18 @@ end // end of [local]
 
 (* ****** ****** *)
 //
-implement
+impltmp
 hmapref_print$beg<>() = print("(")
-implement
+impltmp
 hmapref_print$end<>() = print(")")
-implement
+impltmp
 hmapref_print$sep<>() = print(",")
-implement
+impltmp
 hmapref_print$mapto<>() = print("->")
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {k0,x0:vtflt}
 hmapref_print(map) =
 (
@@ -268,7 +268,7 @@ var i0 = (0:int)
 val p0 =
 $UN.cast{ref(int)}(addr@i0)
 //
-implement
+impltmp
 hmapref_foreach$work<k0,x0>(k0, x0) =
 (
 let

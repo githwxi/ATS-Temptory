@@ -55,36 +55,36 @@ UN =
 //
 (* ****** ****** *)
 //
-implement
+implfun
 tempopt_version() = "0.0.0"
 //
 (* ****** ****** *)
 //
-primplmnt
+implprf
 false_elim() =
 (case+ 0 of _ =/=> ((*void*)))
 //
 (* ****** ****** *)
 //
-primplmnt prop_verify() = ()
-primplmnt prop_verify_add() = ()
+implprf prop_verify() = ()
+implprf prop_verify_add() = ()
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 lazy_force(lazyval) = !lazyval
-implement
+impltmp
 {a}(*tmp*)
 lazy_vt_force(lazyval) = !lazyval
 
 (* ****** ****** *)
 
-primplmnt
+implprf
 unit_v_elim(pf) = let
   prval unit_v() = pf in (*nothing*)
 end // end of [unit_v_elim]
-primplmnt
+implprf
 unit_vt_elim(pf) = let
   prval ~unit_vt() = pf in (*nothing*)
 end // end of [unit_v_elim]
@@ -92,11 +92,11 @@ end // end of [unit_v_elim]
 (* ****** ****** *)
 (*
 //
-implement{a} box(x) = $UN.cast(x)
-implement{a} unbox(x) = $UN.cast(x)
+impltmp{a} box(x) = $UN.cast(x)
+impltmp{a} unbox(x) = $UN.cast(x)
 //
-implement{a} box_vt(x) = $UN.castvwtp0(x)
-implement{a} unbox_vt(x) = $UN.castvwtp0(x)
+impltmp{a} box_vt(x) = $UN.castvwtp0(x)
+impltmp{a} unbox_vt(x) = $UN.castvwtp0(x)
 //
 *)
 (* ****** ****** *)
@@ -104,14 +104,14 @@ implement{a} unbox_vt(x) = $UN.castvwtp0(x)
 // HX:
 // See prelude/basics_dyn.sats
 //
-implement
+impltmp
 {a}(*tmp*)
 opt_unsome_get(x) =
 let prval () = opt_unsome(x) in (x) end
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 argc_argv_listize
   {n}(argc, argv) = let
@@ -159,55 +159,55 @@ end // end of [listize_argc_argv]
 (* ****** ****** *)
 //
 (*
-implement{}
+impltmp{}
 assertexn_bool0(prop) =
 if not(prop) then $raise AssertExn()
-implement{}
+impltmp{}
 assertexn_bool1(prop) =
 if not(prop) then $raise AssertExn()
 *)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 gself$val(x0) = (x0)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 gcopy$ref(x0) = gcopy$val<a>(x0)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 (a:tflt)
 gcopy$val<a>(x0) = (x0)
-implement
+impltmp
 (a:tflt)
 gcopy$ref<a>(x0) = (x0)
 
-implement
+impltmp
 (a:vtflt)
 gcopy$val<list0_vt(a)>(xs) = list0_vt_copy<a>(xs)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 gfree$ref(x0) = gfree$val<a>(x0)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 (a:tflt)
 gfree$val<a>(x0) = ((*void*))
-implement
+impltmp
 (a:tflt)
 gfree$ref<a>(x0) = ((*void*))
 //
-implement
+impltmp
 (a0:vtflt
 ,a1:vtflt)
 gfree$val<(a0,a1)>(xs) =
@@ -216,7 +216,7 @@ val () =
 gfree$val<a0>(xs.0)
 val () =
 gfree$val<a1>(xs.1) in ignoret(0) end
-implement
+impltmp
 (a0:vtflt
 ,a1:vtflt)
 gfree$ref<(a0,a1)>(xs) =
@@ -226,7 +226,7 @@ gfree$ref<a0>(xs.0)
 val () =
 gfree$ref<a1>(xs.1) in ignoret(0) end
 //
-implement
+impltmp
 (a0:vtflt
 ,a1:vtflt
 ,a2:vtflt)
@@ -238,7 +238,7 @@ val () =
 gfree$val<a1>(xs.1)
 val () =
 gfree$val<a2>(xs.2) in ignoret(0) end
-implement
+impltmp
 (a0:vtflt
 ,a1:vtflt
 ,a2:vtflt)
@@ -253,28 +253,28 @@ gfree$ref<a2>(xs.2) in ignoret(0) end
 //
 (* ****** ****** *)
 
-implement
+impltmp
 gfree$val<string_vt>(cs) = string0_vt_free(cs)
 
 (* ****** ****** *)
 
-implement
+impltmp
 (a:vtflt)
 gfree$val<list0_vt(a)>(xs) = list0_vt_free<a>(xs)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 gequal$ref
 (x1, x2) =
 gequal$val<a>(x1, x2)
-implement
+impltmp
 {a}(*tmp*)
 gequal$val(x1, x2) =
 (gcompare$val<a>(x1, x2) = 0)
 //
-implement
+impltmp
 (a:tflt)
 gequal$val<list0(a)>
   (xs, ys) =
@@ -284,28 +284,28 @@ gequal$val<list0(a)>
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a:vtflt}
 gcompare$ref
 (x1, x2) =
 gcompare$val<a>(x1, x2)
 //
-implement
+impltmp
 gcompare$val<sint>
 (i1, i2) =
 g0cmp_sint_sint(i1, i2)
-implement
+impltmp
 gcompare$val<uint>
 (u1, u2) =
 g0cmp_uint_uint(u1, u2)
 //
-implement
+impltmp
 gcompare$val<string>
 (cs1, cs2) =
 (
   $effmask_all(strcmp(cs1, cs2))
 )
-implement
+impltmp
 gcompare$val<string_vt>
 (cs1, cs2) =
 (
@@ -318,7 +318,7 @@ gcompare$val<string_vt>
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 (a:tflt)
 gcompare$val<list0(a)>
   (xs, ys) =
@@ -329,14 +329,14 @@ gcompare$val<list0(a)>
 //
 (* ****** ****** *)
 
-implement
+impltmp
 (a0,a1:tflt)
 gcompare$val<tup(a0,a1)>
   (xs, ys) =
 (
   (tuple2_compare<a0,a1>(xs, ys))
 )
-implement
+impltmp
 (a0,a1,a2:tflt)
 gcompare$val<tup(a0,a1,a2)>
   (xs, ys) =

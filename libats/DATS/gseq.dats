@@ -47,17 +47,17 @@
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 gseq_iseqz(xs) =
 (
 gseq_forall<xs><x0>(xs)
 ) where
 {
-implement
+impltmp
 gseq_forall$test<x0>(x0) = ff
 }
-implement
+impltmp
 {xs}{x0}
 gseq_isneqz(xs) =
 (
@@ -69,7 +69,7 @@ val eqz = gseq_iseqz<xs><x0>(xs)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 gseq_size(xs) =
 (
@@ -80,10 +80,10 @@ gseq_foldleft<xs><x0><r0>
 //
 typedef r0 = size
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, x0) = succ(r0)
 } (* end of [gseq_size] *)
-implement
+impltmp
 {xs}{x0}
 gseq_length(xs) =
 (
@@ -93,13 +93,13 @@ gseq_foldleft<xs><x0><r0>(xs, 0)
 //
 typedef r0 = Intgte(0)
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, x0) = succ(r0)
 } (* end of [gseq_length] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 gseq_print(xs) =
 {
@@ -113,7 +113,7 @@ gseq_print$end()
 {
 typedef r0 = int
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, x0) =
 let
 val () =
@@ -123,23 +123,23 @@ val () = gseq_print$val<x0>(x0) in succ(r0)
 end
 } (* end of [gseq_print] *)
 //
-implement
+impltmp
 {}(*tmp*)
 gseq_print$beg() = print_string("(")
-implement
+impltmp
 {}(*tmp*)
 gseq_print$end() = print_string(")")
-implement
+impltmp
 {}(*tmp*)
 gseq_print$sep() = print_string(",")
 //
-implement
+impltmp
 {x0}(*tmp*)
 gseq_print$val(x0) = print$val<x0>(x0)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 gseq_indexof
   (xs, x0) =
@@ -158,7 +158,7 @@ end
 var i0: int = ~1
 val p0 = addr@(i0)
 //
-implement
+impltmp
 gseq_exists$test<x0>
   (x1) =
 (
@@ -177,13 +177,13 @@ val () = $UN.ptr0_set<int>(p0, succ(i0))
 HX-2019-05-09:
 This is wild, isn't it :)
 *)
-implement
+impltmp
 {xs}{x0}
 gseq_listize(xs) = let
 //
 vtypedef p0 = ptr
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><p0>
   (p0, x0) =
   (addr@(r1)) where
@@ -223,7 +223,7 @@ end (* end of [gseq_listize] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}
 gseq_rlistize(xs) =
 (
@@ -235,13 +235,13 @@ val r0 = list0_vt_nil()
 //
 vtypedef r0 = list0_vt(x0)
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, x0) = list0_vt_cons(x0, r0)
 } (* end of [gseq_rlistize] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}
 gseq_forall(xs) =
 (
@@ -272,7 +272,7 @@ end // end of [let]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}
 gseq_exists(xs) =
 (
@@ -281,7 +281,7 @@ gseq_forall<xs><x0>(xs) then ff else tt
 ) where
 {
 //
-implement
+impltmp
 gseq_forall$test<x0>(x0) = 
 (
 if
@@ -296,12 +296,12 @@ gseq_exists$test<x0>(x0) then ff else tt
 local
 exception False
 in//in-of-local
-implement
+impltmp
 {xs}{x0}
 gseq_forall(xs) =
 let
 //
-implement
+impltmp
 gseq_foreach$work<x0>(x0) =
 if
 gseq_forall<x0>(x0)
@@ -319,12 +319,12 @@ end // end of [local]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 gseq_foreach(xs) =
 let
 //
-implement
+impltmp
 gseq_forall$test<x0>(x0) =
 let
 val () =
@@ -337,7 +337,7 @@ end // end of [let]
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}
 gseq_rforall(xs) =
 (
@@ -370,7 +370,7 @@ case+ xs of
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 gseq_rexists(xs) =
 (
@@ -379,7 +379,7 @@ gseq_rforall<xs><x0>(xs) then ff else tt
 ) where
 {
 //
-implement
+impltmp
 gseq_rforall$test<x0>(x0) = 
 (
 if
@@ -390,12 +390,12 @@ gseq_rexists$test<x0>(x0) then ff else tt
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 gseq_rforeach(xs) =
 let
 //
-implement
+impltmp
 gseq_rforall$test<x0>(x0) =
 let
 val () =
@@ -408,7 +408,7 @@ end // end of [gseq_rforeach]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}{r0}
 gseq_foldleft
   (xs, r0) = let
@@ -416,7 +416,7 @@ gseq_foldleft
 var rr: r0 = r0
 val p0 = addr@(rr)
 //
-implement
+impltmp
 gseq_foreach$work<x0>
   (x0) = () where
 {
@@ -436,7 +436,7 @@ end // end of [gseq_foldleft]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}{r0}
 gseq_foldright
   (xs, r0) = let
@@ -444,7 +444,7 @@ gseq_foldright
 var rr: r0 = r0
 val p0 = addr@(rr)
 //
-implement
+impltmp
 gseq_rforeach$work<x0>
   (x0) = () where
 {
@@ -464,7 +464,7 @@ end // end of [gseq_foldright]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 gseq_iforall(xs) =
 (
@@ -475,7 +475,7 @@ gseq_forall<xs><x0>(xs)
 var i0: int = 0
 val p0 = addr@(i0)
 //
-implement
+impltmp
 gseq_forall$test<x0>
   (x0) =
 (
@@ -490,7 +490,7 @@ val () = $UN.ptr0_set<int>(p0, succ(i0))
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 gseq_iexists(xs) =
 (
@@ -499,7 +499,7 @@ gseq_iforall<xs><x0>(xs) then ff else tt
 ) where
 {
 //
-implement
+impltmp
 gseq_iforall$test<x0>(i0, x0) = 
 (
 if
@@ -510,7 +510,7 @@ gseq_iexists$test<x0>(i0, x0) then ff else tt
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 gseq_iforeach(xs) =
 (
@@ -519,7 +519,7 @@ ignoret
 ) where
 {
 //
-implement
+impltmp
 gseq_iforall$test<x0>(i0, x0) =
 let
 val () =
@@ -530,7 +530,7 @@ end // end of [let]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}{r0}
 gseq_ifoldleft
   (xs, r0) = let
@@ -538,7 +538,7 @@ gseq_ifoldleft
 var rr: r0 = r0
 val p0 = addr@(rr)
 //
-implement
+impltmp
 gseq_iforeach$work<x0>
   (i0, x0) = () where
 {
@@ -558,13 +558,13 @@ end // end of [gseq_ifoldleft]
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}{y0}
 gseq_map_list(xs) = let
 //
 vtypedef p0 = ptr
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><p0>
   (p0, x0) =
   (addr@(r1)) where
@@ -605,7 +605,7 @@ end (* end of [gseq_map_list] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}{y0}
 gseq_map_rlist(xs) =
 (
@@ -616,7 +616,7 @@ gseq_foldleft<xs><x0><r0>
 //
 vtypedef r0 = list0_vt(y0)
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, x0) =
 (
   list0_vt_cons(y0, r0)
@@ -628,7 +628,7 @@ gseq_foldleft$fopr<x0><r0>(r0, x0) =
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}{y0}
 gseq_map_stream(xs) =
 (
@@ -638,14 +638,14 @@ stream_vt_map<x0><y0>(xs)
 //
 val xs = gseq_streamize<xs><x0>(xs)
 //
-implement
+impltmp
 stream_vt_map$fopr<x0><y0>(x0) = gseq_map$fopr<x0><y0>(x0)
 //
 } (* end of [gseq_map_stream] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}{y0}
 gseq_imap_list(xs) = let
 //
@@ -654,7 +654,7 @@ val pi = addr@(i0)
 //
 vtypedef p0 = ptr
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><p0>
   (p0, x0) =
   (addr@(r1)) where
@@ -700,7 +700,7 @@ end (* end of [gseq_imap_list] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}{y0}
 gseq_imap_rlist(xs) =
 (
@@ -714,7 +714,7 @@ val pi = addr@(i0)
 //
 vtypedef r0 = list0_vt(y0)
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, x0) =
 (
   list0_vt_cons(y0, r0)
@@ -728,7 +728,7 @@ gseq_foldleft$fopr<x0><r0>(r0, x0) =
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}{y0}
 gseq_imap_stream(xs) =
 (
@@ -738,20 +738,20 @@ stream_vt_imap<x0><y0>(xs)
 //
 val xs = gseq_streamize<xs><x0>(xs)
 //
-implement
+impltmp
 stream_vt_imap$fopr<x0><y0>(i0, x0) = gseq_imap$fopr<x0><y0>(i0, x0)
 //
 } (* end of [gseq_imap_stream] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}{y0}
 gseq_mapopt_list(xs) = let
 //
 vtypedef p0 = ptr
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><p0>
   (p0, x0) =
 (
@@ -808,7 +808,7 @@ end (* end of [gseq_mapopt_list] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}{y0}
 gseq_mapopt_rlist(xs) =
 (
@@ -819,7 +819,7 @@ gseq_foldleft<xs><x0><r0>
 //
 vtypedef r0 = list0_vt(y0)
 //
-implement
+impltmp
 gseq_foldleft$fopr<x0><r0>(r0, x0) =
 (
 let
@@ -843,7 +843,7 @@ end // end-of-let
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}{y0}
 gseq_mapopt_stream(xs) =
 (
@@ -853,9 +853,9 @@ stream_vt_mapopt<x0><y0>(xs)
 //
 val xs = gseq_streamize<xs><x0>(xs)
 //
-implement
+impltmp
 stream_vt_mapopt$test<x0>(x0) = gseq_mapopt$test<x0>(x0)
-implement
+impltmp
 stream_vt_mapopt$fopr<x0><y0>(x0) = gseq_mapopt$fopr<x0><y0>(x0)
 //
 } (* end of [gseq_mapopt_stream] *)
@@ -866,7 +866,7 @@ stream_vt_mapopt$fopr<x0><y0>(x0) = gseq_mapopt$fopr<x0><y0>(x0)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}
 {ys}{y0}
 gseq_z2forall
@@ -882,7 +882,7 @@ in
 stream_vt_z2forall<x0,y0>(xs, ys)
 ) where
 {
-implement
+impltmp
 stream_vt_z2forall$test<x0,y0>
 (x0, y0) = gseq_z2forall$test<x0,y0>(x0, y0)
 }
@@ -891,13 +891,13 @@ end
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 {ys}{y0}
 gseq_z2foreach(xs, ys) =
 let
 //
-implement
+impltmp
 gseq_z2forall$test<x0,y0>(x0, y0) =
 let
 val () =
@@ -910,7 +910,7 @@ end // end of [let]
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 {ys}{y0}{r0}
 gseq_z2foldleft
@@ -919,7 +919,7 @@ gseq_z2foldleft
 var rr: r0 = r0
 val p0 = addr@(rr)
 //
-implement
+impltmp
 gseq_z2foreach$work<x0,y0>
   (x0, y0) = () where
 {
@@ -939,7 +939,7 @@ end // end of [gseq_z2foldleft]
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}
 {ys}{y0}{u0}
 gseq_z2map_list
@@ -947,7 +947,7 @@ gseq_z2map_list
 //
 vtypedef p0 = ptr
 //
-implement
+impltmp
 gseq_z2foldleft$fopr<x0,y0><p0>
   (p0, x0, y0) =
   (addr@(r1)) where
@@ -989,7 +989,7 @@ end (* end of [gseq_z2map_list] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {xs}{x0}
 {ys}{y0}{u0}
 gseq_z2map_rlist
@@ -998,7 +998,7 @@ let
 //
 vtypedef r0 = list0_vt(u0)
 //
-implement
+impltmp
 gseq_z2foldleft$fopr<x0,y0><r0>
   (r0, x0, y0) =
 (
@@ -1020,13 +1020,13 @@ end (* end of [gseq_z2map_rlist] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {xs}{x0}
 {ys}{y0}
 gseq_x2foreach(xs, ys) =
 let
 //
-implement
+impltmp
 gseq_x2forall$test<x0,y0>(x0, y0) =
 let
 val () =

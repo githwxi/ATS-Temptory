@@ -45,7 +45,7 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 (x0:vtflt)
 glseq_streamize<stream_vt(x0)><x0>(xs) = xs
 //

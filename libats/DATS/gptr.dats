@@ -40,41 +40,41 @@
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}//tmp
 ptr0_succ(p0) =
 g0add_ptr_size(p0, sizeof<a>)
-implement
+impltmp
 {a}//tmp
 ptr0_pred(p0) =
 g0sub_ptr_size(p0, sizeof<a>)
 
-implement
+impltmp
 {a}//tmp
 ptr0_add_size(p0, n0) =
 g0add_ptr_size(p0, n0*sizeof<a>)
-implement
+impltmp
 {a}//tmp
 ptr0_sub_size(p0, n0) =
 g0sub_ptr_size(p0, n0*sizeof<a>)
 
-implement
+impltmp
 {a}//tmp
 ptr0_add_sint(p0, n0) =
 g0add_ptr_size(p0, i2sz(n0)*sizeof<a>)
-implement
+impltmp
 {a}//tmp
 ptr0_sub_sint(p0, n0) =
 g0sub_ptr_size(p0, i2sz(n0)*sizeof<a>)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}//tmp
 ptr1_succ(p0) =
 $UN.cast
 (g0add_ptr_size(p0, sizeof<a>))
-implement
+impltmp
 {a}//tmp
 ptr1_pred(p0) =
 $UN.cast
@@ -82,21 +82,21 @@ $UN.cast
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 ptr1_alloc() =
 $UN.castvwtp0($UN.calloc_uint<a>(1u))
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}//tmp
 cptr0_succ(cp) =
 (
 ptr2cptr{a}
 (g0add_ptr_size(cptr2ptr(cp), sizeof<a>))
 )
-implement
+impltmp
 {a}//tmp
 cptr0_pred(cp) =
 (
@@ -106,14 +106,14 @@ ptr2cptr{a}
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}//tmp
 g0add_cptr_size(cp, n0) =
 (
 ptr2cptr{a}
 (g0add_ptr_size(cptr2ptr(cp), n0*sizeof<a>))
 )
-implement
+impltmp
 {a}//tmp
 g0sub_cptr_size(cp, n0) =
 (
@@ -121,14 +121,14 @@ ptr2cptr{a}
 (g0sub_ptr_size(cptr2ptr(cp), n0*sizeof<a>))
 )
 //
-implement
+impltmp
 {a}//tmp
 g0add_cptr_uint(cp, n0) =
 (
 ptr2cptr{a}
 (g0add_ptr_size(cptr2ptr(cp), n0*sizeof<a>))
 )
-implement
+impltmp
 {a}//tmp
 g0sub_cptr_uint(cp, n0) =
 (
@@ -136,14 +136,14 @@ ptr2cptr{a}
 (g0sub_ptr_size(cptr2ptr(cp), n0*sizeof<a>))
 )
 //
-implement
+impltmp
 {a}//tmp
 g0add_cptr_sint(cp, n0) =
 (
 ptr2cptr{a}
 (g0add_ptr_size(cptr2ptr(cp), i2sz(n0)*sizeof<a>))
 )
-implement
+impltmp
 {a}//tmp
 g0sub_cptr_sint(cp, n0) =
 (
@@ -153,7 +153,7 @@ ptr2cptr{a}
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 cptr0_forall
   (cp0, cp1) = let
@@ -190,7 +190,7 @@ end (* end of [cptr0_forall] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 cptr0_foreach
   (cp0, cp1) =
@@ -226,7 +226,7 @@ end (* end-of-let *)
 (* ****** ****** *)
 //
 //
-implement
+impltmp
 {a}(*tmp*)
 cptr0_rforall
   (cp1, cp0) =
@@ -264,7 +264,7 @@ end (* end-of-let *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 cptr0_rforeach
   (cp1, cp0) =
@@ -299,7 +299,7 @@ end (* end of [loop] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 cptr0_forall_ref
   (cp0, cp1) = let
@@ -337,7 +337,7 @@ end (* end of [cptr0_forall_ref] *)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 cptr0_foreach_ref
   (cp0, cp1) =

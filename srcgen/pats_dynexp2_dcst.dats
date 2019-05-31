@@ -358,8 +358,15 @@ d2cst_is_castfn (d2c) =
 (* ****** ****** *)
 //
 implement
+d2cst_is_nontmp (d2c) =
+  list_is_nil(d2cst_get_decarg(d2c))
+implement
 d2cst_is_tmpcst (d2c) =
   list_is_cons(d2cst_get_decarg(d2c))
+//
+implement
+d2cst_is_funcst (d2c) =
+  s2exp_is_FUNCLOfun(d2cst_get_type(d2c))
 //
 (* ****** ****** *)
 

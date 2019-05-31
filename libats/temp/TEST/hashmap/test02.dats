@@ -4,7 +4,7 @@ HX: for testing [hashmap]
 */
 (* ****** ****** *)
 
-implement main1() = ( 0 )
+implfun main1() = ( 0 )
 
 (* ****** ****** *)
 //

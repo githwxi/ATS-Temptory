@@ -59,7 +59,7 @@ UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
-implement
+impltmp
 {node}//tmp
 gtree_streamize
   (nx0) =
@@ -106,7 +106,7 @@ val () = gtree_store_insert<node>(nx0)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {node}//tmp
 gtree_streamize_bfs
   (nx0) =
@@ -119,19 +119,19 @@ val
 store =
 qlistref_nil<>{node}()
 //
-implement
+impltmp
 gtree_store_insert<node>
 (nx0) =
 qlistref_insert<node>(store, nx0)
 //
-implement
+impltmp
 gtree_store_insert_list<node>
 (nxs) =
 (
   list0_foreach<node>(nxs)
 ) where
 {
-implement
+impltmp
 list0_foreach$work<node>
 (nx0) =
 (
@@ -139,14 +139,14 @@ list0_foreach$work<node>
 )
 }
 //
-implement
+impltmp
 gtree_store_choose_opt<node>() = qlistref_takeout_opt<node>(store)
 //
 } (* end of [gtree_streamize_bfs] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {node}//tmp
 gtree_streamize_dfs
   (nx0) =
@@ -159,19 +159,19 @@ val
 store =
 slistref_nil<>{node}()
 //
-implement
+impltmp
 gtree_store_insert<node>
 (nx0) =
 slistref_insert<node>(store, nx0)
 //
-implement
+impltmp
 gtree_store_insert_list<node>
 (nxs) =
 (
   list0_rforeach<node>(nxs)
 ) where
 {
-implement
+impltmp
 list0_rforeach$work<node>
 (nx0) =
 (
@@ -179,7 +179,7 @@ list0_rforeach$work<node>
 )
 }
 //
-implement
+impltmp
 gtree_store_choose_opt<node>() = slistref_takeout_opt<node>(store)
 //
 } (* end of [gtree_streamize_dfs] *)

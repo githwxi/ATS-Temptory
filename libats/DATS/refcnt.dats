@@ -49,7 +49,7 @@ UN = "./../SATS/unsafe.sats"
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 refcnt_print(rfc) =
 let
@@ -61,17 +61,17 @@ in
 print$val<a>(!p0); fpf(pf0)
 end // end of [refcnt_print]
 //
-implement
+impltmp
 (a:vtflt)
 print$val<refcnt(a)>
 (rfc) = refcnt_print<a>(rfc)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 (a:vtflt)
 gcopy$val<refcnt(a)>(x) = incref(x)
-implement
+impltmp
 (a:vtflt)
 gfree$val<refcnt(a)>(x) = decref(x)
 //
@@ -88,13 +88,13 @@ refcnt_vtflt_vtbox(a) = refcnt_(a)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 refcnt_make_elt(x0) = REFCNT(1u, x0)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 refcnt_get0_elt
   (rfc) = let
@@ -122,7 +122,7 @@ end // end of [refcnt_get0_elt]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 refcnt_get1_elt
   (rfc) = let
@@ -135,7 +135,7 @@ end // end of [refcnt_get1_elt]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 refcnt_get1_cnt
   (rfc) = let
@@ -148,7 +148,7 @@ end // end of [refcnt_get1_cnt]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 refcnt_incref
   (rfc) = let
@@ -171,7 +171,7 @@ end // end of [refcnt_incref]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 refcnt_decref
   (rfc) = let
@@ -201,7 +201,7 @@ end // end of [refcnt_decref]
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 refcnt_vtakeout
   (rfc) = res where

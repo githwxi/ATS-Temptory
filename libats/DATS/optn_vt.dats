@@ -45,7 +45,7 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {}//tmp
 optn0_vt_iseqz
   (opt) =
@@ -55,7 +55,7 @@ case+ opt of
 | optn0_vt_some _ => ff
 )
 //
-implement
+impltmp
 {}//tmp
 optn0_vt_isneqz
   (opt) =
@@ -67,11 +67,11 @@ case+ opt of
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {x0}//tmp
 optn0_vt_size
   (opt) = i2sz(optn0_vt_length(opt))
-implement
+impltmp
 {x0}//tmp
 optn0_vt_length
   (opt) =
@@ -82,7 +82,7 @@ case+ opt of
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0}//tmp
 optn0_vt_free(opt) =
 (

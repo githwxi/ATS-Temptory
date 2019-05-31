@@ -42,7 +42,7 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 list0_vt_mergesort(xs) =
 g0ofg1
@@ -50,7 +50,7 @@ g0ofg1
 list1_vt_mergesort<a>(g1ofg0(xs))
 ) where
 {
-implement
+impltmp
 list1_vt_mergesort$cmp<a>
 (x1, x2) =
 list0_vt_mergesort$cmp<a>(x1, x2)
@@ -58,14 +58,14 @@ list0_vt_mergesort$cmp<a>(x1, x2)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 list0_vt_mergesort$cmp
   (x1, x2) =
 (
   gcompare$ref<a>(x1, x2)
 ) // end of [list0_vt_mergesort$cmp]
-implement
+impltmp
 {a}(*tmp*)
 list1_vt_mergesort$cmp
   (x1, x2) =
@@ -83,7 +83,7 @@ list1_vt_insort
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 list1_vt_insort
   (xs) =
@@ -169,7 +169,7 @@ lemma_list1_vt_param{a}(xs)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {a}(*tmp*)
 list1_vt_mergesort
   {n}(xs) = let

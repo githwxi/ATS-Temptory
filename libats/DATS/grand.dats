@@ -54,25 +54,25 @@
 
 (* ****** ****** *)
 //
-implement
+impltmp
 {a}(*tmp*)
 grand$ref(x0) =
 (x0 := grand$val<a>())
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 uint_rand() =
 $extfcall
 (uint, "atspre_rand")
 //
-implement
+impltmp
 {}(*tmp*)
 nat0_rand() =
 $extfcall
 (Intgte(0), "atspre_rand")
-implement
+impltmp
 {}(*tmp*)
 sint_rand() =
 let
@@ -86,7 +86,7 @@ end (* sint_rand *)
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 nat0_rand_max(max) =
 (
@@ -100,13 +100,13 @@ nat = $extfcall(Nat, "atspre_rand")
 (* ****** ****** *)
 //
 (*
-implement
+impltmp
 {a}(*tmp*)
 list0_rand() =
 list0_vt2t
 (list0_vt_rand<a>())
 *)
-implement
+impltmp
 {a}(*tmp*)
 list0_rand() = let
 //
@@ -128,13 +128,13 @@ gseq_map_list<xs><x0><y0>(len)
 {
   typedef xs = sint
   typedef x0 = sint and y0 = a
-  implement
+  impltmp
   gseq_map$fopr<x0><y0>(i0) = grand$val<y0>()
 } (* end of [where] *)
 //
 end (* end of [list0_rand] *)
 //
-implement
+impltmp
 {a}(*tmp*)
 list0_vt_rand() = let
 //
@@ -177,20 +177,20 @@ in
   let var r0: ptr? in loop(0(*i0*), r0); r0 end
 end // end of [list0_vt_rand]
 //
-implement
+impltmp
 {}(*tmp*)
 list0_rand$len
   ((*void*)) = nat0_rand_max(100)
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_rand() =
 string0_vt2t
 (string0_vt_rand<>())
 //
-implement
+impltmp
 {}(*tmp*)
 string0_vt_rand() =
 (
@@ -208,7 +208,7 @@ sint_foldleft<r0>(n0, p0)
 //
   typedef r0 = cptr(char)
 //
-  implement
+  impltmp
   sint_foldleft$fopr<r0>
     (p0, x0) =
   (
@@ -220,12 +220,12 @@ sint_foldleft<r0>(n0, p0)
 }
 } (* end of [string0_vt_rand] *)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_rand$len
   ((*void*)) = nat0_rand_max(100)
 //
-implement
+impltmp
 {}(*tmp*)
 string0_rand$char
   ((*void*)) =
@@ -235,14 +235,14 @@ string0_rand$char
 //
 (* ****** ****** *)
 
-implement
+impltmp
 grand$val<sint>() = sint_rand<>()
-implement
+impltmp
 grand$val<uint>() = uint_rand<>()
 
 (* ****** ****** *)
 
-implement
+impltmp
 grand$val<bool>() =
 let
 val
@@ -254,7 +254,7 @@ end (* grand$val<bool> *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 grand$val<char>() =
 let
 val
@@ -264,17 +264,17 @@ end (* grand$val<char> *)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 grand$val<string>() = string0_rand<>()
-implement
+impltmp
 grand$val<string_vt>() = string0_vt_rand<>()
 //
 (* ****** ****** *)
 
-implement
+impltmp
 (a:tflt)
 grand$val<list0(a)>() = list0_rand<a>()
-implement
+impltmp
 (a:vtflt)
 grand$val<list0_vt(a)>() = list0_vt_rand<a>()
 

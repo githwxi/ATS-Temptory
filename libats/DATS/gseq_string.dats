@@ -49,7 +49,7 @@ typedef cs = string
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_streamize<cs><c0>
   (cs) =
 (
@@ -58,53 +58,53 @@ gseq_streamize<cs><c0>
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_forall<cs><c0>
   (cs) =
 (
   string0_forall<>(cs)
 ) where
 {
-implement
+impltmp
 string0_forall$test<>(c0) = gseq_forall$test<c0>(c0)
 } (* end of [gseq_forall] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_foreach<cs><c0>
   (cs) =
 (
   string0_foreach<>(cs)
 ) where
 {
-implement
+impltmp
 string0_foreach$work<>(c0) = gseq_foreach$work<c0>(c0)
 } (* end of [gseq_foreach] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_rforall<cs><c0>
   (cs) =
 (
   string0_rforall<>(cs)
 ) where
 {
-implement
+impltmp
 string0_rforall$test<>(c0) = gseq_rforall$test<c0>(c0)
 } (* end of [gseq_rforall] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 gseq_rforeach<cs><c0>
   (cs) =
 (
   string0_rforeach<>(cs)
 ) where
 {
-implement
+impltmp
 string0_rforeach$work<>(c0) = gseq_rforeach$work<c0>(c0)
 } (* end of [gseq_rforeach] *)
 

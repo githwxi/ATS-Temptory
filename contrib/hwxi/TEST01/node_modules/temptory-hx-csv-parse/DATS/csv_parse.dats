@@ -43,7 +43,7 @@ csv_parse_fileref_vt
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 csv_parse_fileref(inp) =
 (
@@ -53,7 +53,7 @@ csv_parse_fileref(inp) =
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 csv_parse_fileref_vt(inp) =
 (
@@ -73,7 +73,7 @@ stream_vt_map<x0><y0>(lines)
 vtypedef x0 = string_vt
 vtypedef y0 = list0_vt(string_vt)
 //
-implement
+impltmp
 stream_vt_map$fopr<x0><y0>
   (line) =
 ( fields ) where
