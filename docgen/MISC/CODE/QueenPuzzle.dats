@@ -42,12 +42,12 @@ absimpl board = list0(int)
 
 in(* in-of-local *)
 
-implement
+implfun
 board_nil() = nil()
-implement
+implfun
 board_cons(x0, xs) = cons(x0, xs)
 
-implement
+impltmp
 gseq_streamize<board><int>(xs) = list0_streamize<int>(xs)
 
 end (* end of [local] *)
@@ -62,7 +62,7 @@ gseq_rforeach<board><int>
   (xs)
 ) where
 {
-implement
+impltmp
 gseq_rforeach$work<int>(x0) =
 (
   loop(0)
@@ -90,7 +90,7 @@ board_check
 gseq_iforall<board><int>(xs)
 ) where
 {
-implement
+impltmp
 gseq_iforall$test<int>(i1, x1) =
 if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
 }
@@ -107,9 +107,9 @@ gseq_mapopt_list<sint><sint><board>(N)
 )
 ) where
 {
-implement
+impltmp
 gseq_mapopt$test<sint>(x0) = board_check(x0, xs)
-implement
+impltmp
 gseq_mapopt$fopr<sint><board>(x0) = board_cons(x0, xs)
 }
 
@@ -122,7 +122,7 @@ list0_foldright<board><r0>(xss, list0_nil())
 {
 typedef xs = board
 typedef r0 = list(board)
-implement
+impltmp
 list0_foldright$fopr<xs><r0>(xs, r0) = append(board_extend(xs), r0)
 }
 
@@ -142,7 +142,7 @@ qsolve(): list(board) =
 
 (* ****** ****** *)
 
-implement
+implfun
 main0() = () where
 {
 //
@@ -154,7 +154,7 @@ val () =
 gseq_iforeach<list(board)><board>(xss)
 ) where
 {
-implement
+impltmp
 gseq_iforeach$work<board>(i, xs) =
 (println!("Solution#", i+1, ":"); board_print(xs); println!())
 }

@@ -111,6 +111,13 @@ list0_vt_rcopy
 //
 fun
 {x0:vtflt}
+list0_vt_extend
+(
+xs: list0_vt(INV(x0)), x0: x0
+) : list0_vt(x0) // end-of-fun
+//
+fun
+{x0:vtflt}
 list0_vt_append
 ( xs: list0_vt(INV(x0))
 , ys: list0_vt(INV(x0))): list0_vt(x0)
@@ -195,8 +202,17 @@ list0_vt_foldleft0
 fun
 {x0:vtflt}{r0:vtflt}
 list0_vt_foldleft0$fopr(r0: r0, x0: x0): r0
+fun
+{x0:vtflt}
+{r0:vtflt}
+list0_vt_foldright0
+(xs: list0_vt(INV(x0)), r0: r0): r0
+fun
+{x0:vtflt}{r0:vtflt}
+list0_vt_foldright0$fopr(x0: x0, r0: r0): r0
 //
 #symload foldleft with list0_vt_foldleft0
+#symload foldright with list0_vt_foldright0
 //
 (* ****** ****** *)
 //
@@ -370,8 +386,17 @@ list0_vt_foldleft1
 fun
 {x0:vtflt}{r0:vtflt}
 list0_vt_foldleft1$fopr(r0: r0, x0: !x0): r0
+fun
+{x0:vtflt}
+{r0:vtflt}
+list0_vt_foldright1
+(xs: !list0_vt(INV(x0)), r0: r0): r0
+fun
+{x0:vtflt}{r0:vtflt}
+list0_vt_foldright1$fopr(x0: !x0, r0: r0): r0
 //
 #symload foldleft1 with list0_vt_foldleft1
+#symload foldright1 with list0_vt_foldright1
 //
 (* ****** ****** *)
 //

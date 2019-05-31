@@ -250,6 +250,19 @@ case+ r0 of
 //
 impltmp
 {x0}//tmp
+list0_vt_extend
+  (xs, x0) =
+(
+list0_vt_append<x0>(xs, ys)
+) where
+{
+  val ys = list0_vt_sing<x0>(x0)
+}
+//
+(* ****** ****** *)
+//
+impltmp
+{x0}//tmp
 list0_vt_append
   (xs, ys) =
 (
@@ -399,32 +412,6 @@ case+ xs of
 (* ****** ****** *)
 
 impltmp
-{x0}{r0}//tmp
-list0_vt_foldleft0
-  (xs, r0) =
-  (loop(xs, r0)) where
-{
-//
-fun
-loop
-(xs: list0_vt(x0), r0: r0): r0 =
-(
-case+ xs of
-|
-~list0_vt_nil() => r0
-|
-~list0_vt_cons(x0, xs) =>
- let
- val r0 =
- list0_vt_foldleft0$fopr<x0><r0>(r0, x0) in loop(xs, r0)
- end // end of [list0_vt_cons]
-) (* end of [loop] *)
-//
-} (* end of [list0_vt_foldleft0] *)
-
-(* ****** ****** *)
-
-impltmp
 {x0}//tmp
 list0_vt_rforall0(xs) =
 (
@@ -481,15 +468,33 @@ case+ xs of
 ~list0_vt_nil() => r0
 |
 ~list0_vt_cons(x0, xs) =>
- (
-   loop(xs, r0)
- ) where
+ ( loop(xs, r0) ) where
  {
    val r0 =
    list0_vt_foldleft0$fopr<x0><r0>(r0, x0)
  }
 )
-} (* end of [list0_foldleft0] *)
+} (* end of [list0_vt_foldleft0] *)
+
+(* ****** ****** *)
+
+impltmp
+{x0}{r0}//tmp
+list0_vt_foldright0
+  (xs, r0) =
+(
+list0_vt_foldleft0<x0><r0>(xs, r0)
+) where
+{
+  val xs =
+  list0_vt_reverse<x0>(xs)
+  impltmp
+  list0_vt_foldleft0$fopr<x0><r0>
+    (x0, r0) =
+  (
+    list0_vt_foldright0$fopr<x0><r0>(r0, x0)
+  )
+} (* end of [list0_vt_foldright0] *)
 
 (* ****** ****** *)
 //
@@ -685,7 +690,7 @@ list0_vt_rforeach1$work<x0>(x0) = glseq_rforeach1$work<x0>(x0)
 (* ****** ****** *)
 
 impltmp
-{x0}{r0}//tmp
+{x0}{r0}
 list0_vt_foldleft1
   (xs, r0) =
 (

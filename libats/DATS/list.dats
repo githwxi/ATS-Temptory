@@ -301,6 +301,24 @@ case+ xs of
 //
 impltmp
 {x0}//tmp
+list0_extend
+  (xs, x0) =
+(
+list0_vt2t
+(list0_extend_vt<x0>(xs, x0))
+)
+impltmp
+{x0}//tmp
+list0_extend_vt
+  (xs, x0) =
+(
+list0_append_vt<x0>(xs, list0_vt_sing(x0))
+)
+//
+(* ****** ****** *)
+//
+impltmp
+{x0}//tmp
 list0_append
   (xs, ys) =
 (

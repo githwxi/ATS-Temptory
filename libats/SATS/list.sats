@@ -163,6 +163,19 @@ list0_take
 //
 fun
 {x0:tflt}
+list0_extend
+( xs
+: list0(INV(x0)), x0: x0): list0(x0)
+fun
+{x0:tflt}
+list0_extend_vt
+( xs
+: list0(INV(x0)), x0: x0): list0_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
 list0_append
 ( xs: list0(INV(x0))
 , ys: list0(INV(x0))): list0(x0)
