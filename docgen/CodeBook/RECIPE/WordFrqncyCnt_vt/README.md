@@ -9,7 +9,7 @@ before the execution terminates.
 
 Implementing memory-clean program can be highly challenging. This
 claim is strongly supported by the fact that memory leaks commonly
-appear duing the execution of programs written in C or C++. With
+appear during the execution of programs written in C or C++. With
 languages like Java that rely on GC at run-time for memory management,
 implementing memory-clean program can hardly be even attempted.
 
