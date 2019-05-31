@@ -29,12 +29,12 @@ to as a combinator.
 * **streamize**:
   It is for turning a given sequence into a linear stream
   
-* **exists**:
-  It is for processing a given sequence
-  until the processing function returns true.
 * **forall**:
   It is for processing a given sequence
   until the processing function returns false.
+* **exists**:
+  It is for processing a given sequence
+  until the processing function returns true.
 
 * **foreach**:
   It is for processing a given sequence in its entirety.

@@ -1045,6 +1045,15 @@ fun{}
 sint_foreach$work(sint): void
 
 (* ****** ****** *)
+
+fun
+{r0:vtflt}
+sint_foldleft(sint, r0): r0
+fun
+{r0:vtflt}
+sint_foldleft$fopr(r0, sint): r0
+
+(* ****** ****** *)
 //
 fun{}
 sint_listize(sint): list0_vt(sint)

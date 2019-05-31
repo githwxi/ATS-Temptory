@@ -73,6 +73,11 @@ typedef char *charptr;
 
 /* ****** ****** */
 
+#define atspre_rand rand
+#define atspre_srand srand
+
+/* ****** ****** */
+
 #define atspre_memcpy memcpy
 #define atspre_memset memset
 

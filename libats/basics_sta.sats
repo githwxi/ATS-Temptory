@@ -294,7 +294,7 @@ typedef char = char_t0ype // shorthand
 sexpdef char = char_int_t0ype // shorthand
 //
 typedef Char = [c:sint8] char(c)
-typedef charNZ = [c:sint8|c != 0] char(c)
+typedef CharNZ = [c:sint8|c != 0] char(c)
 //
 // signed characters
 //

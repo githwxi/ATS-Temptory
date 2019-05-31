@@ -62,7 +62,7 @@ then true else
   sint_forall$test<>(i0)
   then loop(succ(i0)) else false
 )
-}
+} (* end of [sint_forall] *)
 implement
 {}(*tmp*)
 sint_foreach
@@ -81,7 +81,28 @@ else
 (
 sint_foreach$work<>(i0); loop(succ(i0))
 )
-}
+} (* end of [sint_foreach] *)
+
+(* ****** ****** *)
+
+implement
+{r0}(*tmp*)
+sint_foldleft
+  (n0, r0) =
+( loop(0, r0) ) where
+{
+fun
+loop
+(i0: int, r0: r0): r0 =
+if
+(i0 >= n0)
+then ( r0 )
+else
+let
+val r0 =
+sint_foldleft$fopr<r0>(r0, i0) in loop(succ(i0), r0)
+end // end of [else]
+} (* end of [sint_foreach] *)
 
 (* ****** ****** *)
 

@@ -32,57 +32,25 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
+
 #define
-ATS_PACKNAME "temptory."
+ATS_PACKNAME "temptory.libc."
 #define
-ATS_EXTERN_PREFIX "temptory_"
-//
-(* ****** ****** *)
-
-fun
-{a:vtflt}
-grand$val(): (a)
-fun
-{a:vtflt}
-grand$ref(&a? >> a): void
+ATS_EXTERN_PREFIX "temptory_libc_"
 
 (* ****** ****** *)
 
-fun{}
-nat0_rand(): Nat
-fun{}
-sint_rand(): sint
-fun{}
-uint_rand(): uint
+(*
+int rand(void);
+int rand_r(unsigned int *seedp);                                                                                          void srand(unsigned int seed);    
+*)
 
 (* ****** ****** *)
 
-fun{}
-nat0_rand_max
-{n:int|n >= 1}(max: int(n)): Natlt(n)
+fun rand(): Intgte(0) = "mac#"
+fun srand(seed: uint): void = "mac#"
+fun rand_r(seed: &uint >> _): Intgte(0) = "mac#"
 
 (* ****** ****** *)
 
-fun
-{a:tflt}
-list0_rand(): list0(a)
-fun
-{a:vtflt}
-list0_vt_rand(): list0_vt(a)
-
-(* ****** ****** *)
-//
-fun{}
-string0_rand(): string
-fun{}
-string0_vt_rand(): string_vt
-//
-fun{}
-string0_rand$len(): Intgte(0)
-fun{}
-string0_rand$char(): CharNZ(*!=0*)
-//
-(* ****** ****** *)
-
-(* end of [grand.sats] *)
+(* end of [stdlib.sats] *)

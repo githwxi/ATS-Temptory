@@ -125,4 +125,4 @@ val ((*void*)) = list0_foreach(xss) where { implement list0_foreach$work<list0(i
 
 (* ****** ****** *)
 
-(* end of [Permutation.dats] *)
+(* end of [test22.dats] *)
