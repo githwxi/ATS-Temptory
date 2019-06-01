@@ -554,9 +554,12 @@ val () = ins ("implprf", IMPLPRF) //(~1)
 //
 val () = ins ("implval", IMPLMNT) //( 0)
 val () = ins ("implfun", IMPLFUN) //( 1)
+//
 val () = ins ("impltmp", IMPLTMP) //( 2)
+val () = ins ("implate", IMPLTMP) //( 2)
 (*
 val () = ins ("impltmpr", IMPLTMPR) // 3
+val () = ins ("implater", IMPLTMPR) // 3
 *)
 //
 val () = ins ("#import", T_IMPORT) // for importing packages

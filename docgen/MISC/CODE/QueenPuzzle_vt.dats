@@ -150,7 +150,7 @@ in
 end
 
 fun
-boardlst_extend
+boardlst_extend0
 (xss: boardlst): boardlst =
 (
 list0_vt_foldright0<board><r0>(xss, list0_vt_nil())
@@ -173,7 +173,7 @@ qsolve(): boardlst =
   fun
   loop
   (i0: int, xss: boardlst): boardlst =
-  if i0 < N then loop(i0+1, boardlst_extend(xss)) else xss
+  if i0 < N then loop(i0+1, boardlst_extend0(xss)) else xss
 }
 
 (* ****** ****** *)

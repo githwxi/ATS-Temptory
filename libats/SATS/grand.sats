@@ -87,5 +87,17 @@ fun{}
 string0_rand$char(): CharNZ(*!=0*)
 //
 (* ****** ****** *)
+//
+fun
+{a0
+,a1:tflt}
+tuple2_rand((*void*)): (a0, a1)
+fun
+{a0
+,a1
+,a2:tflt}
+tuple3_rand((*void*)): (a0, a1, a2)
+//
+(* ****** ****** *)
 
 (* end of [grand.sats] *)

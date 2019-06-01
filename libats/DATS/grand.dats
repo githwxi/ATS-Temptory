@@ -234,6 +234,22 @@ string0_rand$char
 )
 //
 (* ****** ****** *)
+//
+impltmp
+{a0,a1}
+tuple2_rand() =
+let
+val x0 = grand$val<a0>()
+and x1 = grand$val<a1>() in (x0, x1) end
+impltmp
+{a0,a1,a2}
+tuple3_rand() =
+let
+val x0 = grand$val<a0>()
+and x1 = grand$val<a1>()
+and x2 = grand$val<a2>() in (x0, x1, x2) end
+//
+(* ****** ****** *)
 
 impltmp
 grand$val<sint>() = sint_rand<>()
@@ -263,6 +279,15 @@ nat0_rand_max<>(128) in char0_chr(code)
 end (* grand$val<char> *)
 
 (* ****** ****** *)
+
+impltmp
+(a:tflt)
+grand$val<list0(a)>() = list0_rand<a>()
+impltmp
+(a:vtflt)
+grand$val<list0_vt(a)>() = list0_vt_rand<a>()
+
+(* ****** ****** *)
 //
 impltmp
 grand$val<string>() = string0_rand<>()
@@ -272,11 +297,11 @@ grand$val<string_vt>() = string0_vt_rand<>()
 (* ****** ****** *)
 
 impltmp
-(a:tflt)
-grand$val<list0(a)>() = list0_rand<a>()
+(a0,a1:tflt)
+grand$val<tup(a0,a1)>() = tuple2_rand<a0,a1>()
 impltmp
-(a:vtflt)
-grand$val<list0_vt(a)>() = list0_vt_rand<a>()
+(a0,a1,a2:tflt)
+grand$val<tup(a0,a1,a2)>() = tuple3_rand<a0,a1,a2>()
 
 (* ****** ****** *)
 

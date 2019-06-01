@@ -15,16 +15,18 @@ implfun main0() = ()
 
 (* ****** ****** *)
 
-impltmp
+implate
 gseq_streamize<FILEref><char>(filr) = FILEref_streamize_char(filr)
-impltmp
+implate
 gseq_streamize<FILEref><string>(filr) = FILEref_streamize_line(filr)
 
 (* ****** ****** *)
 
 (*
-val () = println!("sizeof(stdin) = ", gseq_length<FILEref><char>(the_stdin()))
-val () = println!("sizeof(stdin) = ", gseq_length<FILEref><string>(the_stdin()))
+val () =
+println!("sizeof(stdin) = ", gseq_length<FILEref><char>(the_stdin()))
+val () =
+println!("sizeof(stdin) = ", gseq_length<FILEref><string>(the_stdin()))
 *)
 
 (* ****** ****** *)
@@ -34,7 +36,7 @@ val () =
 gseq_iforeach<FILEref><string>(the_stdin())
 ) where
 {
-impltmp
+implate
 gseq_iforeach$work<string>(i, line) = println!("line#", i+1, ": ", line)
 }
 
