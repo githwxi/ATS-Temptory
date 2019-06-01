@@ -52,23 +52,29 @@ implfun
 board_cons1(x0, xs) =
 let
 val
-xs =
-copy(xs) in list0_vt_cons(x0, xs)
+xs = copy(xs) in list0_vt_cons(x0, xs)
 end
 
 implfun
-board_free(xs) = list0_vt_free<int>(xs)
+board_free(xs) =
+list0_vt_free<int>(xs)
 
 impltmp
-glseq_listize<board><int>(xs) = (xs)
+glseq_listize<board><int>
+  (xs) = (xs)
 impltmp
-glseq_forall1<board><int>(xs) =
+glseq_forall1<board><int>
+  (xs) =
 (
   list0_vt_forall1<int>(xs)
 ) where
 {
 impltmp
-list0_vt_forall1$test<int>(x0) = glseq_forall1$test<int>(x0)
+list0_vt_forall1$test<int>
+  (x0) =
+(
+  glseq_forall1$test<int>(x0)
+)
 }
 impltmp
 glseq_rlistize<board><int>(xs) = list0_vt_reverse(xs)
@@ -119,9 +125,14 @@ glseq_iforall1<board><int>(xs)
 ) where
 {
 impltmp
-glseq_iforall1$test<int>(i1, x1) =
-if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
-}
+glseq_iforall1$test<int>
+  (i1, x1) =
+(
+  (x0 != x1)
+  &&
+  (abs(x0 - x1) != i1 + 1)
+)
+} (* end of [board_check1] *)
 
 (* ****** ****** *)
 

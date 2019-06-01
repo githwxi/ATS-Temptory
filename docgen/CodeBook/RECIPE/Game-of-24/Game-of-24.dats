@@ -234,6 +234,11 @@ println!("Play(10, 10, 4, 4) = ", sol)
 (* ****** ****** *)
 
 %{^
+/*
+** HX-2019-06-01:
+** This part is for
+** handling some exception constants
+*/
 ATSdynexn_dec(temptory_056___ListSubscriptExn) ;
 ATSdynexn_dec(temptory_056___ArraySubscriptExn) ;
 %} (* %{^ *)

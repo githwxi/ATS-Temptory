@@ -208,7 +208,7 @@ library:
 ```
 
 The template `gtree_streamize_dfs` can be called to enumerate the
-nodes in a given tree in the depth-first manner once the template
+nodes in a given tree in the depth-first fashion once the template
 `gtree_node_children` is implemented:
 
 ```ats
@@ -249,11 +249,15 @@ stream_vt_mapopt$fopr<node><expr>(nx) = nx[0]
 end (* end of [Game_of_24] *)
 ```
 
-Given four integers n1, n2, n3, and n4, `Game_of_24` returns a linear
-stream of expr-values formed using the 4 integers such each expr-value
-in the stream evaluates to 24. Note that `stream_vt_mapopt` is like
-`stream_vt_map` except that mapping is applied to an element only of
-the element satisfy certain condition (specified by `stream_vt_mapopt$test`).
+By the way, one could also use the template `gtree_streamize_bfs`
+to enumerate in the breath-first fashion.
+
+Given four integers n1, n2, n3, and n4, `Game_of_24` returns a
+linear stream of expr-values formed using the 4 integers such that
+each expr-value in the stream evaluates to 24. Note that
+`stream_vt_mapopt` is like `stream_vt_map` except that mapping is
+applied to an element only of the element satisfy certain condition
+(specified by `stream_vt_mapopt$test`).
 
 Please find the entirety of the program [here](./Game-of-24.dats).
 
