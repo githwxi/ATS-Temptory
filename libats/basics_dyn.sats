@@ -291,9 +291,9 @@ typedef
 arrszref(a:vtflt) = arrszref_vtflt_tbox(a)
 //
 absvtbox
-arrszptr_vtflt_tbox(a: vtflt) = ptr
+arrszptr_vtflt_vtbox(a: vtflt) = ptr
 vtypedef
-arrszptr(a:vtflt) = arrszptr_vtflt_tbox(a)
+arrszptr(a:vtflt) = arrszptr_vtflt_vtbox(a)
 //
 (* ****** ****** *)
 //

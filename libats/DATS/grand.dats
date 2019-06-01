@@ -42,6 +42,7 @@
 #staload "./../SATS/grand.sats"
 //
 #staload "./../SATS/list.sats"
+#staload "./../SATS/array.sats"
 #staload "./../SATS/string.sats"
 //
 (* ****** ****** *)
@@ -239,15 +240,35 @@ impltmp
 {a0,a1}
 tuple2_rand() =
 let
-val x0 = grand$val<a0>()
-and x1 = grand$val<a1>() in (x0, x1) end
+val x0 =
+grand$val<a0>()
+and x1 =
+grand$val<a1>() in (x0, x1) end
 impltmp
 {a0,a1,a2}
 tuple3_rand() =
 let
-val x0 = grand$val<a0>()
-and x1 = grand$val<a1>()
-and x2 = grand$val<a2>() in (x0, x1, x2) end
+val x0 =
+grand$val<a0>()
+and x1 =
+grand$val<a1>()
+and x2 =
+grand$val<a2>() in (x0, x1, x2) end
+//
+(* ****** ****** *)
+//
+impltmp
+{a}//tmp
+arrszref_rand() =
+let
+val AZ =
+arrszptr_rand<a>() in arrszptr_refize(AZ) end
+//
+(* ****** ****** *)
+//
+// HX-2019-05:
+// for specific
+// grand$val implementations
 //
 (* ****** ****** *)
 

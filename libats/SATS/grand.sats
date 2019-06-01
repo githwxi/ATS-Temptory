@@ -100,4 +100,13 @@ tuple3_rand((*void*)): (a0, a1, a2)
 //
 (* ****** ****** *)
 
+fun
+{a:vtflt}
+arrszptr_rand((*void*)): arrszptr(a)
+fun
+{a:vtflt}
+arrszref_rand((*void*)): arrszref(a)
+
+(* ****** ****** *)
+
 (* end of [grand.sats] *)

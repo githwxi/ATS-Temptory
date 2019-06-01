@@ -47,6 +47,7 @@
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
 #staload "./../SATS/list_vt.sats"
+#staload "./../SATS/stream_vt.sats"
 
 (* ****** ****** *)
 
@@ -1077,6 +1078,102 @@ gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
 (* ****** ****** *)
 
 impltmp
+{x0}{y0}
+list0_mapjoin(xs) =
+(
+  auxlst1(yss)
+) where
+{
+//
+typedef ys = list0(y0)
+//
+val yss =
+(
+list0_map_rlist<x0><ys>(xs)
+) where
+{
+  impltmp
+  list0_map$fopr<x0><ys>(x0) =
+  list0_mapjoin$fopr<x0><y0>(x0)
+}
+//
+fun
+auxlst1
+( yss
+: list0_vt(ys)): list0(y0) =
+(
+case+ yss of
+| ~list0_vt_nil
+   ((*void*)) => list0_nil()
+| ~list0_vt_cons
+   (ys0, yss1) => auxlst2(yss1, ys0)
+)
+and
+auxlst2
+( yss
+: list0_vt(ys)
+, res: list0(y0)): list0(y0) =
+(
+case+ yss of
+| ~list0_vt_nil
+   ((*void*)) => res
+| ~list0_vt_cons
+   (ys0, yss) => auxlst2(yss, append(ys0, res))
+)
+//
+} (* end of [list0_mapjoin] *)
+
+(* ****** ****** *)
+
+impltmp
+{x0}{y0}
+list0_mapjoin_vt(xs) =
+(
+  auxlst1(yss)
+) where
+{
+//
+vtypedef ys = list0_vt(y0)
+//
+val yss =
+(
+list0_map_rlist<x0><ys>(xs)
+) where
+{
+  impltmp
+  list0_map$fopr<x0><ys>(x0) =
+  list0_mapjoin_vt$fopr<x0><y0>(x0)
+}
+//
+fun
+auxlst1
+( yss
+: list0_vt(ys)): list0_vt(y0) =
+(
+case+ yss of
+| ~list0_vt_nil
+   ((*void*)) => list0_vt_nil()
+| ~list0_vt_cons
+   (ys0, yss1) => auxlst2(yss1, ys0)
+)
+and
+auxlst2
+( yss
+: list0_vt(ys)
+, res: list0_vt(y0)): list0_vt(y0) =
+(
+case+ yss of
+| ~list0_vt_nil
+   ((*void*)) => res
+| ~list0_vt_cons
+   (ys0, yss) => auxlst2(yss, append(ys0, res))
+)
+//
+} (* end of [list0_mapjoin_vt] *)
+
+(* ****** ****** *)
+
+impltmp
 {a}(*tmp*)
 list0_equal
   (xs, ys) =
@@ -1147,6 +1244,118 @@ case+ xs of
   )
 ) (* end of [loop] *)
 } (* end of [list0_compare] *)
+
+(* ****** ****** *)
+
+impltmp
+{a}(*tmp*)
+list0_nchoose
+(xs, n0) =
+(
+  auxmain(xs, n0)
+) where
+{
+//
+typedef xs = list0(a)
+//
+fun
+auxmain
+(
+xs: list0(a)
+,
+n0: Intgte(0)
+) : stream_vt(list0(a)) =
+$ldelay
+(
+if
+(n0 = 0)
+then
+stream_vt_sing(list0_nil())
+else
+(
+case+ xs of
+| list0_nil() =>
+  stream_vt_nil()
+| list0_cons(x0, xs) =>
+  ( lazy_vt_force
+    (stream_vt_append<xs>(xss1, xss2))
+  ) where
+  {
+    val xss2 =
+    (
+      auxmain(xs, n0)
+    )
+    val xss1 =
+    (
+      stream_vt_map<xs><xs>
+      (auxmain(xs, pred(n0)))
+    ) where
+    {
+      impltmp
+      stream_vt_map$fopr<xs><xs>(xs) = list0_cons(x0, xs)
+    }
+  } (* end of [list0_cons] *)
+)
+)
+} (* end of [list0_nchoose] *)
+
+(* ****** ****** *)
+
+impltmp
+{a}(*tmp*)
+list0_nchoose_rest
+(xs, n0) =
+(
+  auxmain(xs, n0)
+) where
+{
+//
+typedef xy =
+tup(list0(a), list0(a))
+//
+fun
+auxmain
+(
+xs: list0(a)
+,
+n0: Intgte(0)): stream_vt(xy) =
+$ldelay
+(
+if
+(n0 = 0)
+then
+stream_vt_sing
+(@(list0_nil(), xs))
+else
+(
+case+ xs of
+| list0_nil() =>
+  stream_vt_nil()
+| list0_cons(x0, xs) =>
+  ( lazy_vt_force
+    (stream_vt_append<xy>(res1, res2))
+  ) where
+  {
+    val res2 =
+    (
+    stream_vt_map<xy><xy>(auxmain(xs, n0))
+    ) where
+    {
+    impltmp
+    stream_vt_map$fopr<xy><xy>(xy) = (xy.0, list0_cons(x0, xy.1))
+    }
+    val res1 =
+    (
+    stream_vt_map<xy><xy>(auxmain(xs, pred(n0)))
+    ) where
+    {
+    impltmp
+    stream_vt_map$fopr<xy><xy>(xy) = (list0_cons(x0, xy.0), xy.1)
+    }
+  } (* end of [list0_cons] *)
+)
+)
+} (* end of [list0_nchoose_rest] *)
 
 (* ****** ****** *)
 

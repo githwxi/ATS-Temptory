@@ -140,4 +140,18 @@ val () = println!("ys = ", ys)
 
 (* ****** ****** *)
 
+val xs =
+(
+list0_rand<int>()
+) where
+{
+implate
+list0_rand$len<>() = 1000000
+}
+val ys = mergesort<int>(xs)
+val zs = mergesort<int>(reverse(xs))
+val () = assertloc(ys = zs)
+
+(* ****** ****** *)
+
 (* end of [test04.dats] *)

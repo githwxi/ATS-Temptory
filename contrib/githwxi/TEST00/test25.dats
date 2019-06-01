@@ -147,7 +147,7 @@ list0_vt2t(mergesort(append(ys, zs)))
   ) where
   {
     implate
-    list0_split$choose<int>(x0) = abs(x0 % 2)
+    list0_split$choose<int>(x0) = abs(x0%2)
   }
 (*
   val () = println!("ys = ", ys)
@@ -168,6 +168,20 @@ list0_vt2t(mergesort(append(ys, zs)))
   implate list0_vt_forall1$test<int>(z0) = (z0%2 != 0)
   }
 }
+
+(* ****** ****** *)
+
+val xs =
+g0ofg1
+($list1{int}(0,1,2,3,4,5))
+val () =
+println!
+( "nchoose(xs) = "
+, list0_vt2t(listize(list0_nchoose(xs, 2))))
+val () =
+println!
+( "nchoose_rest(xs) = "
+, list0_vt2t(listize(list0_nchoose_rest(xs, 2))))
 
 (* ****** ****** *)
 

@@ -298,7 +298,8 @@ datatype
 arrszref
 (a:vtflt) =
 {n:nat}
-ARRSZREF of (arrayref(a,n), size(n))
+ARRSZREF of
+(arrayref(a,n), size(n))
 absimpl
 arrszref_vtflt_tbox(a) = arrszref(a)
 //
@@ -563,6 +564,65 @@ arrayref_rforeach$work<a>(x) = arrszref_rforeach$work<a>(x)
 }
 end // end of [let]
 )
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+datavtype
+arrszptr
+(a:vtflt) =
+{n:nat}
+ARRSZPTR of
+(arrayptr(a,n), size(n))
+absimpl
+arrszptr_vtflt_vtbox(a) = arrszptr(a)
+//
+extern
+castfn
+_ptr2ref_{a:vtflt}(!arrszptr(a)): arrszref(a)
+//
+in
+
+impltmp
+{a}(*tmp*)
+arrszptr_get_at_sint
+  (AZ, i0) =
+let
+val AZ = _ptr2ref_(AZ)
+in
+  arrszref_get_at_sint(AZ, i0)
+end
+impltmp
+{a}(*tmp*)
+arrszptr_set_at_sint
+  (AZ, i0, x0) =
+let
+val AZ = _ptr2ref_(AZ)
+in
+  arrszref_set_at_sint(AZ, i0, x0)
+end
+
+impltmp
+{a}(*tmp*)
+arrszptr_get_at_size
+  (AZ, i0) =
+let
+val AZ = _ptr2ref_(AZ)
+in
+  arrszref_get_at_size(AZ, i0)
+end
+impltmp
+{a}(*tmp*)
+arrszptr_set_at_size
+  (AZ, i0, x0) =
+let
+val AZ = _ptr2ref_(AZ)
+in
+  arrszref_set_at_size(AZ, i0, x0)
+end
 
 end // end of [local]
 

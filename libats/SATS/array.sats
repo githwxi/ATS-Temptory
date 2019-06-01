@@ -307,6 +307,74 @@ array_permute$randint{n:int|n > 0}(n: size(n)): Sizelt(n)
 //
 (* ****** ****** *)
 //
+castfn
+arrszptr_refize
+{a:vtflt}
+(AZ: arrszptr(a)): arrszref(a)
+//
+(* ****** ****** *)
+//
+absvtbox
+arrszptrout
+(a:vtflt,l:addr,n:int)
+//
+fun{}
+arrszptr_cons
+{a:vtflt}{n:int}
+(arrayptr(a,n), size(n)): arrszptr(a)
+//
+fun{}
+arrszptr_takeout
+{a:vtflt}
+(
+AZ: !arrszptr(a) >> arrszptrout(a,l,n)
+) : #[l:addr;n:nat] (arrayptr(a,l,n), size(n))
+//
+praxi
+arrszptr_restore
+{a:vtflt}{l:addr}{n:int}
+(AZ: !arrszptrout(a,l,n) >> arrszptr(a), A0: arrayptr(a,l,n)) : void
+//
+#symload takeout with arrszptr_takeout
+#symload restore with arrszptr_restore
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+arrszptr_get_at_size
+( AZ
+: !arrszptr(a), i: size): (a)
+fun
+{a:vtflt}
+arrszptr_set_at_size
+( AZ
+: !arrszptr(a), i: size, x: a): void
+//
+fun
+{a:vtflt}
+arrszptr_get_at_sint
+{i:nat}
+( AZ
+: !arrszptr(a), i: sint(i)): (a)
+fun
+{a:vtflt}
+arrszptr_set_at_sint
+{i:nat}
+( AZ
+: !arrszptr(a), i: sint(i), x: a): void
+//
+#symload [] with arrszptr_get_at_size
+#symload [] with arrszptr_set_at_size
+#symload [] with arrszptr_get_at_sint
+#symload [] with arrszptr_set_at_sint
+#symload arrszptr_get_at with arrszptr_get_at_sint
+#symload arrszptr_set_at with arrszptr_set_at_sint
+#symload arrszptr_get_at with arrszptr_get_at_size
+#symload arrszptr_set_at with arrszptr_set_at_size
+//
+(* ****** ****** *)
+//
 fun{}
 arrszref_cons
 {a:vtflt}{n:int}
@@ -346,22 +414,22 @@ arrszref_make with arrszref_make_list0_vt
 fun
 {a:vtflt}
 arrszref_get_at_size
-(A: arrszref(a), i: size): (a)
+(AZ: arrszref(a), i: size): (a)
 fun
 {a:vtflt}
 arrszref_set_at_size
-(A: arrszref(a), i: size, x: a): void
+(AZ: arrszref(a), i: size, x: a): void
 //
 fun
 {a:vtflt}
 arrszref_get_at_sint
 {i:nat}
-(A: arrszref(a), i: sint(i)): (a)
+(AZ: arrszref(a), i: sint(i)): (a)
 fun
 {a:vtflt}
 arrszref_set_at_sint
 {i:nat}
-(A: arrszref(a), i: sint(i), x: a): void
+(AZ: arrszref(a), i: sint(i), x: a): void
 //
 #symload [] with arrszref_get_at_size
 #symload [] with arrszref_set_at_size
@@ -377,14 +445,14 @@ arrszref_set_at_sint
 fun
 {a:vtflt}
 arrszref_forall
-(A0: arrszref(a)): bool
+(AZ: arrszref(a)): bool
 fun
 {a:vtflt}
 arrszref_forall$test(x: !a): bool
 fun
 {a:vtflt}
 arrszref_foreach
-(A0: arrszref(a)): void
+(AZ: arrszref(a)): void
 fun
 {a:vtflt}
 arrszref_foreach$work(x: !a): void
@@ -392,14 +460,14 @@ arrszref_foreach$work(x: !a): void
 fun
 {a:vtflt}
 arrszref_rforall
-(A0: arrszref(a)): bool
+(AZ: arrszref(a)): bool
 fun
 {a:vtflt}
 arrszref_rforall$test(x: !a): bool
 fun
 {a:vtflt}
 arrszref_rforeach
-(A0: arrszref(a)): void
+(AZ: arrszref(a)): void
 fun
 {a:vtflt}
 arrszref_rforeach$work(x: !a): void

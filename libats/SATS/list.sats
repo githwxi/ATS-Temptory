@@ -510,6 +510,31 @@ list0_imap_stream
 (* ****** ****** *)
 //
 fun
+{x0:tflt}
+{y0:tflt}
+list0_mapjoin
+(list0(INV(x0))): list0(y0)
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_mapjoin_vt
+(list0(INV(x0))): list0_vt(y0)
+//
+fun
+{x0:tflt}
+{y0:tflt}
+list0_mapjoin$fopr(x0): list0(y0)
+fun
+{x0:tflt}
+{y0:vtflt}
+list0_mapjoin_vt$fopr(x0): list0_vt(y0)
+//
+#symload mapjoin with list0_mapjoin
+#symload mapjoin_vt with list0_mapjoin_vt
+//
+(* ****** ****** *)
+//
+fun
 {a:tflt}
 list0_equal
 (list0(INV(a)),list0(INV(a))): bool
@@ -520,6 +545,23 @@ list0_compare
 //
 #symload = with list0_equal
 #symload compare with list0_compare
+//
+(* ****** ****** *)
+//
+fun
+{a:tflt}
+list0_nchoose
+( xs
+: list0(INV(a))
+, n0: Intgte(0))
+: stream_vt(list0(a))
+fun
+{a:tflt}
+list0_nchoose_rest
+( xs
+: list0(INV(a))
+, n0: Intgte(0))
+: stream_vt(tup(list0(a), list0(a)))
 //
 (* ****** ****** *)
 //
