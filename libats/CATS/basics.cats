@@ -193,6 +193,11 @@ atspre_argv_set_at
     
 /* ****** ****** */
 
+ATSdynexn_dec(temptory_056___ListSubscriptExn) ;
+ATSdynexn_dec(temptory_056___ArraySubscriptExn) ;
+
+/* ****** ****** */
+
 #endif // ifndef TEMPTORY_LIBATS_CATS_BASICS
 
 /* ****** ****** */

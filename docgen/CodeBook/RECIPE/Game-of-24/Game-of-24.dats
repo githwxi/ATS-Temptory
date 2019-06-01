@@ -23,16 +23,16 @@ How to test it: ./Game-of-24_dats
 implfun main0() = ()
 
 (* ****** ****** *)
-
+//
 datatype expr =
 | Int of int
 | Add of (expr, expr)
 | Sub of (expr, expr)
 | Mul of (expr, expr)
 | Div of (expr, expr)
-
+//
 typedef exprs = list0(expr)
-
+//
 (* ****** ****** *)
 
 extern
@@ -40,12 +40,9 @@ fun
 print_expr(expr): void
 #symload print with print_expr 
 
-impltmp
-print$val<expr>(e) = print_expr(e)
-
 (* ****** ****** *)
 
-implement
+implfun
 print_expr(e0) =
 (
 case+ e0 of
@@ -56,6 +53,9 @@ case+ e0 of
 | Div(e1, e2) => print!("(", e1, "/", e2, ")")
 ) (* end of [print_expr] *)
 
+impltmp
+print$val<expr>(e) = print_expr(e)
+
 (* ****** ****** *)
 
 extern
@@ -63,7 +63,7 @@ fun
 expr_eval(e0: expr): double
 #symload eval with expr_eval
 
-implement
+implfun
 expr_eval(e0) =
 (
 case+ e0 of
@@ -97,9 +97,9 @@ double_iseqz
 #symload iseqz with expr_iseqz
 #symload iseqz with double_iseqz
 
-implement
+implfun
 expr_iseqz(e0) = iseqz(eval(e0))
-implement
+implfun
 double_iseqz(x0) = (abs(x0) <= EPSILON)
 
 (* ****** ****** *)
@@ -151,33 +151,30 @@ val res = cons(Sub(e0, e1)::ys, res)
 val res = cons(Sub(e1, e0)::ys, res)
 val res = cons(Mul(e0, e1)::ys, res)
 val res =
-if iseqz(e1) then res else cons(Div(e0, e1)::ys, res)
+if
+iseqz(e1)
+then res else cons(Div(e0, e1)::ys, res)
 val res =
-if iseqz(e0) then res else cons(Div(e1, e0)::ys, res)
+if
+iseqz(e0)
+then res else cons(Div(e1, e0)::ys, res)
 } (* end of [where] *)
 } (* end of [where] *)
 } (* end of [$GT.gtree_node_children] *)
 
 (* ****** ****** *)
 
-#macdef
-||(x, y) =
-(,(x) orelse ,(y))
-#macdef
-&&(x, y) =
-(,(x) andalso ,(y))
-
 fun
 Game_of_24
-( c1: int
-, c2: int
-, c3: int
-, c4: int): stream_vt(expr) =
+( n1: int
+, n2: int
+, n3: int
+, n4: int): stream_vt(expr) =
 let
 //
 val NX0 =
-Int(c1)::Int(c2)::
-Int(c3)::Int(c4)::nil{expr}()
+Int(n1)::Int(n2)::
+Int(n3)::Int(n4)::nil{expr}()
 //
 val
 NXS =
@@ -201,7 +198,8 @@ end (* end of [Game_of_24] *)
 
 val
 sol =
-listize(Game_of_24(3, 3, 8, 8))
+listize
+(Game_of_24(3, 3, 8, 8))
 val ((*void*)) =
 println!("Play(3, 3, 8, 8) = ", sol)
 val
@@ -218,16 +216,10 @@ val ((*void*)) =
 println!("Play(5, 7, 7, 11) = ", sol)
 val
 sol =
-listize(Game_of_24(10, 10, 4, 4))
+listize
+(Game_of_24(10, 10, 4, 4))
 val ((*void*)) =
 println!("Play(10, 10, 4, 4) = ", sol)
-
-(* ****** ****** *)
-
-%{^
-ATSdynexn_dec(temptory_056___ListSubscriptExn) ;
-ATSdynexn_dec(temptory_056___ArraySubscriptExn) ;
-%} (* %{^ *)
 
 (* ****** ****** *)
 

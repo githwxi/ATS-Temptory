@@ -43,11 +43,20 @@ ignoret(x) = { val x = ,(x) }
 *)
 #macdef
 orelse(x, y) =
-(if ,(x) then true else ,(y)): bool
+(
+if ,(x) then true else ,(y)
+) : bool (* end-of-macdef *)
 #macdef
 andalso(x, y) =
-(if ,(x) then ,(y) else false): bool
+(
+if ,(x) then ,(y) else false
+) : bool (* end-of-macdef *)
 //
+#macdef
+||(x, y) = (,(x) orelse ,(y))
+#macdef
+&&(x, y) = (,(x) andalso ,(y))
+
 (* ****** ****** *)
 //
 #macdef
