@@ -50,8 +50,8 @@ the given one (the 2nd argument) plus the given stream of lines (the
 3rd argument). Note that the two linear arguments of `loop` are
 considered being consumed at the moment when `loop` returns.
 
-The function for find the longest line in a given file can be implemented
-as follows
+The function for returning the longest line in a given file can be implemented
+as follows:
 
 
 ```ats

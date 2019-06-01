@@ -172,6 +172,9 @@ list0_extend_vt
 ( xs
 : list0(INV(x0)), x0: x0): list0_vt(x0)
 //
+#symload extend with list0_extend
+#symload extend_vt with list0_extend_vt
+//
 (* ****** ****** *)
 //
 fun
@@ -188,11 +191,11 @@ list0_append_vt
 fun
 {x0:tflt}
 list0_concat:
-list0(list0(INV(x0)))->list0(x0)
+list0(list0(INV(x0))) -> list0(x0)
 fun
 {x0:tflt}
 list0_concat_vt:
-list0(list0(INV(x0)))->list0_vt(x0)
+list0(list0(INV(x0))) -> list0_vt(x0)
 //
 #symload append with list0_append
 #symload concat with list0_concat
@@ -262,7 +265,7 @@ fun
 {x0:tflt}
 list0_split
 ( xs
-: list0(x0)
+: list0(INV(x0))
 ) :
 (list0_vt(x0), list0_vt(x0))
 fun
@@ -272,8 +275,10 @@ list0_split$choose(x0): sint
 fun
 {x0:tflt}
 list0_merge
-( xs: list0(x0)
-, ys: list0(x0)): list0_vt(x0)
+( xs
+: list0(INV(x0))
+, ys
+: list0(INV(x0))): list0_vt(x0)
 fun
 {x0:tflt}
 list0_merge$choose(x0, x0): sint

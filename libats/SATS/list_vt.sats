@@ -137,6 +137,7 @@ fun
 list0_vt_reverse
   (xs: list0_vt(INV(x0))): list0_vt(x0)
 //
+#symload extend with list0_vt_extend
 #symload append with list0_vt_append
 #symload concat with list0_vt_concat
 #symload revapp with list0_vt_revapp
