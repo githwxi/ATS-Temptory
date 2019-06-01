@@ -71,8 +71,6 @@ to as a combinator.
   It is like `map_list` but processing in done in the reverse order
 * **rmap_rlist**:
   It is like `map_rlist` but processing in done in the reverse order
-* **rmap_stream**:
-  It is like `map_stream` but processing in done in the reverse order
 
 ------
 

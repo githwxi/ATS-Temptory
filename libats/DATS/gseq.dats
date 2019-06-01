@@ -196,7 +196,7 @@ _assert_
 extern
 castfn
 _castfn_
-{vt:vtbox}(vt):<fun> (ptr)
+{vt:vtbox}(vt):<fun>(ptr)
 //
 val xs =
 list0_vt_cons(x0, _)
@@ -577,7 +577,7 @@ _assert_
 extern
 castfn
 _castfn_
-{vt:vtbox}(vt):<fun> (ptr)
+{vt:vtbox}(vt):<fun>(ptr)
 //
 val y0 =
 gseq_map$fopr<x0><y0>(x0)
@@ -667,7 +667,7 @@ _assert_
 extern
 castfn
 _castfn_
-{vt:vtbox}(vt):<fun> (ptr)
+{vt:vtbox}(vt):<fun>(ptr)
 //
 val i0 =
 $UN.ptr0_get<int>(pi)
@@ -715,10 +715,9 @@ val pi = addr@(i0)
 vtypedef r0 = list0_vt(y0)
 //
 impltmp
-gseq_foldleft$fopr<x0><r0>(r0, x0) =
-(
-  list0_vt_cons(y0, r0)
-) where
+gseq_foldleft$fopr<x0><r0>
+  (r0, x0) =
+( list0_vt_cons(y0, r0) ) where
 {
   val i0 = $UN.ptr0_get<int>(pi)
   val () = $UN.ptr0_set<int>(pi, i0+1)
@@ -759,7 +758,8 @@ let
 val
 test =
 gseq_mapopt$test<x0>(x0)
-in
+//
+in(*in-of-let*)
 //
 if
 test
@@ -776,7 +776,7 @@ _assert_
 extern
 castfn
 _castfn_
-{vt:vtbox}(vt):<fun> (ptr)
+{vt:vtbox}(vt):<fun>(ptr)
 //
 val y0 =
 gseq_mapopt$fopr<x0><y0>(x0)
@@ -859,6 +859,206 @@ impltmp
 stream_vt_mapopt$fopr<x0><y0>(x0) = gseq_mapopt$fopr<x0><y0>(x0)
 //
 } (* end of [gseq_mapopt_stream] *)
+
+(* ****** ****** *)
+
+impltmp
+{xs}{x0}{y0}
+gseq_imapopt_list(xs) = let
+//
+var i0 = (0:int)
+val pi = addr@(i0)
+//
+vtypedef p0 = ptr
+//
+impltmp
+gseq_foldleft$fopr<x0><p0>
+  (p0, x0) =
+(
+let
+//
+val i0 =
+$UN.ptr0_get<int>(pi)
+val () =
+$UN.ptr0_set<int>(pi, i0+1)
+//
+val
+test =
+gseq_imapopt$test<x0>(i0, x0)
+//
+in(*in-of-let*)
+//
+if
+test
+then
+(
+addr@(r1)
+) where
+{
+//
+extern
+praxi
+_assert_
+{vw:view}(vw):<prf> void
+extern
+castfn
+_castfn_
+{vt:vtbox}(vt):<fun>(ptr)
+//
+val y0 =
+gseq_imapopt$fopr<x0><y0>
+  (i0, x0)
+//
+val ys = list0_vt_cons(y0, _)
+val+list0_vt_cons(y0, r1) = ys
+//
+val ys = _castfn_(ys)
+val () =
+$UN.ptr0_set<ptr>(p0, ys)
+//
+prval () = _assert_(view@y0)
+prval () = _assert_(view@r1)
+//
+} else (p0) // end of [if]
+//
+end // end-of-let
+) (* end of [gseq_foldleft$fopr] *)
+//
+var r0: ptr?
+val p0 = addr@(r0)
+val p1 =
+gseq_foldleft<xs><x0><p0>(xs, p0)
+//
+in
+  $UN.ptr0_set
+  (p1, list0_vt_nil()); $UN.castvwtp0{list0_vt(y0)}(r0)
+end (* end of [gseq_imapopt_list] *)
+
+(* ****** ****** *)
+
+impltmp
+{xs}{x0}{y0}
+gseq_imapopt_rlist(xs) =
+(
+gseq_ifoldleft<xs><x0><r0>
+  (xs, list0_vt_nil())
+) where
+{
+//
+vtypedef r0 = list0_vt(y0)
+//
+impltmp
+gseq_ifoldleft$fopr<x0><r0>
+  (r0, i0, x0) =
+(
+let
+val
+test =
+gseq_imapopt$test<x0>(i0, x0)
+in(* in-of-let *)
+if
+test
+then 
+(
+  list0_vt_cons(y0, r0)
+) where
+{
+  val y0 =
+  gseq_imapopt$fopr<x0><y0>(i0, x0)
+} else r0 // end of [if]
+end // end-of-let
+) // end of [gseq_foldleft$fopr]
+//
+} (* end of [gseq_imapopt_rlist] *)
+
+(* ****** ****** *)
+
+impltmp
+{xs}{x0}{y0}
+gseq_imapopt_stream(xs) =
+(
+stream_vt_imapopt<x0><y0>(xs)
+) where
+{
+//
+val xs = gseq_streamize<xs><x0>(xs)
+//
+impltmp
+stream_vt_imapopt$test<x0>(i0, x0) = gseq_imapopt$test<x0>(i0, x0)
+impltmp
+stream_vt_imapopt$fopr<x0><y0>(i0, x0) = gseq_imapopt$fopr<x0><y0>(i0, x0)
+//
+} (* end of [gseq_imapopt_stream] *)
+
+(* ****** ****** *)
+
+impltmp
+{xs}{x0}{y0}
+gseq_rmap_list(xs) = let
+//
+vtypedef p0 = ptr
+//
+impltmp
+gseq_foldright$fopr<x0><p0>
+  (x0, p0) =
+  (addr@(r1)) where
+{
+//
+extern
+praxi
+_assert_
+{vw:view}(vw):<prf> void
+extern
+castfn
+_castfn_
+{vt:vtbox}(vt):<fun>(ptr)
+//
+val y0 =
+gseq_rmap$fopr<x0><y0>(x0)
+val ys = list0_vt_cons(y0, _)
+val+list0_vt_cons(y0, r1) = ys
+//
+val ys = _castfn_(ys)
+val () =
+$UN.ptr0_set<ptr>(p0, ys)
+//
+prval () = _assert_(view@y0)
+prval () = _assert_(view@r1)
+//
+} (* end of [gseq_foldright$fopr] *)
+//
+var r0: ptr?
+val p0 = addr@(r0)
+val p1 =
+gseq_foldright<xs><x0><p0>(xs, p0)
+//
+in
+  $UN.ptr0_set
+  (p1, list0_vt_nil()); $UN.castvwtp0{list0_vt(y0)}(r0)
+end (* end of [gseq_rmap_list] *)
+
+(* ****** ****** *)
+
+impltmp
+{xs}{x0}{y0}
+gseq_rmap_rlist(xs) =
+(
+gseq_foldright<xs><x0><r0>
+  (xs, list0_vt_nil())
+) where
+{
+//
+vtypedef r0 = list0_vt(y0)
+//
+impltmp
+gseq_foldright$fopr<x0><r0>(x0, r0) =
+(
+  list0_vt_cons(y0, r0)
+) where
+{
+  val y0 = gseq_rmap$fopr<x0><y0>(x0)
+} (* gseq_foldright$fopr *)
+} (* end of [gseq_rmap_rlist] *)
 
 (* ****** ****** *)
 //
@@ -960,7 +1160,7 @@ _assert_
 extern
 castfn
 _castfn_
-{vt:vtbox}(vt):<fun> (ptr)
+{vt:vtbox}(vt):<fun>(ptr)
 //
 val u0 =
 gseq_z2map$fopr<x0,y0><u0>

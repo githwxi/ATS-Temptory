@@ -332,11 +332,13 @@ fun
 {y0:vtflt}
 gseq_rmap_rlist(xs): list0_vt(y0)
 //
+(*
 fun
 {xs:tflt}
 {x0:tflt}
 {y0:vtflt}
 gseq_rmap_stream(xs): stream_vt(y0)
+*)
 //
 (* ****** ****** *)
 //
