@@ -193,8 +193,10 @@ atspre_argv_set_at
     
 /* ****** ****** */
 
+#if(0)
 ATSdynexn_dec(temptory_056___ListSubscriptExn) ;
 ATSdynexn_dec(temptory_056___ArraySubscriptExn) ;
+#endif // #if(0)
 
 /* ****** ****** */
 

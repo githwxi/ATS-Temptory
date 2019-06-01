@@ -77,7 +77,7 @@ end
 ) (* end of [LongestLine] *)
 ```
 
-Please find the entirety of the program [here](./LongestLine.dat).
+Please find the entirety of the program [here](./LongestLine.dats).
 With valgrind, one can readily verify that the program is
 memory-clean, that is, all of the memory allocated during the
 execution of the program is supposed to be freed at the point of exit.

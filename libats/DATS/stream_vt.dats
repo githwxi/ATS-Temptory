@@ -310,6 +310,14 @@ end
 //
 impltmp
 {x0}(*tmp*)
+stream_vt_tolist(xs) =
+list0_vt2t
+(stream_vt_listize<x0>(xs))
+//
+(* ****** ****** *)
+//
+impltmp
+{x0}(*tmp*)
 stream_vt_listize(xs) =
 (
 let

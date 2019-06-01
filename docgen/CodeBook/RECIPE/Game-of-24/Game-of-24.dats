@@ -98,9 +98,11 @@ double_iseqz
 #symload iseqz with double_iseqz
 
 implfun
-expr_iseqz(e0) = iseqz(eval(e0))
+expr_iseqz(e0) =
+iseqz(expr_eval(e0))
 implfun
-double_iseqz(x0) = (abs(x0) <= EPSILON)
+double_iseqz(x0) =
+(abs(x0) <= EPSILON)
 
 (* ****** ****** *)
 
@@ -108,25 +110,17 @@ typedef node = list0(expr)
 
 (* ****** ****** *)
 
-#staload // GT =
-"libats/temp/bucs320/SATS/gtree.sats"
-#staload _(*GT*) =
-"libats/temp/bucs320/DATS/gtree.dats"
-
-(* ****** ****** *)
-
-impltmp
-gtree_node_children<node>
-  (NX0) =
+fun
+node_children
+(NX0 : node): list0(node) =
   (NXS) where
 {
 //
 typedef
 xy = (exprs, exprs)
 val xys =
-list0_vt2t
 (
-listize
+tolist
 (list0_nchoose_rest(NX0, 2))
 )
 //
@@ -136,31 +130,41 @@ list0_mapjoin<xy><node>(xys)
 ) where
 {
 impltmp
-list0_mapjoin$fopr<xy><node>(xy) =
+list0_mapjoin$fopr<xy><node>
+  (xy) =
 (
-  res
+  list0_reverse(res)
 ) where
 {
-val xs = xy.0
-val ys = xy.1
-val e0 = xs[0]
-val e1 = xs[1]
-val res = nil(): list0(node)
-val res = cons(Add(e0, e1)::ys, res)
-val res = cons(Sub(e0, e1)::ys, res)
-val res = cons(Sub(e1, e0)::ys, res)
-val res = cons(Mul(e0, e1)::ys, res)
-val res =
-if
-iseqz(e1)
-then res else cons(Div(e0, e1)::ys, res)
-val res =
-if
-iseqz(e0)
-then res else cons(Div(e1, e0)::ys, res)
+//
+  val xs = xy.0 and ys = xy.1
+  val e0 = xs[0] and e1 = xs[1]
+//
+  val res = nil(): list0(node)
+  val res = cons(Add(e0, e1)::ys, res)
+  val res = cons(Sub(e0, e1)::ys, res)
+  val res = cons(Sub(e1, e0)::ys, res)
+  val res = cons(Mul(e0, e1)::ys, res)
+  val res =
+  if
+  iseqz(e1)
+  then res else cons(Div(e0, e1)::ys, res)
+  val res =
+  if iseqz(e0)
+  then res else cons(Div(e1, e0)::ys, res)
+//
 } (* end of [where] *)
 } (* end of [where] *)
-} (* end of [$GT.gtree_node_children] *)
+} (* end of [node_children] *)
+
+(* ****** ****** *)
+
+#staload GT =
+"libats/temp\
+/bucs320/SATS/gtree.sats"
+#staload _(*GT*) =
+"libats/temp\
+/bucs320/DATS/gtree.dats"
 
 (* ****** ****** *)
 
@@ -178,7 +182,13 @@ Int(n3)::Int(n4)::nil{expr}()
 //
 val
 NXS =
-gtree_streamize_dfs<node>(NX0)
+(
+$GT.gtree_streamize_dfs<node>(NX0)
+) where
+{
+impltmp
+$GT.gtree_node_children<node>(NX0) = node_children(NX0)
+}
 in
 (
 stream_vt_mapopt<node><expr>(NXS)
@@ -220,6 +230,13 @@ listize
 (Game_of_24(10, 10, 4, 4))
 val ((*void*)) =
 println!("Play(10, 10, 4, 4) = ", sol)
+
+(* ****** ****** *)
+
+%{^
+ATSdynexn_dec(temptory_056___ListSubscriptExn) ;
+ATSdynexn_dec(temptory_056___ArraySubscriptExn) ;
+%} (* %{^ *)
 
 (* ****** ****** *)
 
