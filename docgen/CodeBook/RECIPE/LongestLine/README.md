@@ -17,8 +17,8 @@ be safely freed (as linear values cannot be shared).
 
 The following `loop` takes an int-value, a line and a linear stream of
 lines such that the int-value is the length of the line, and the line
-is the longest one among those that have be processed, and the stream
-of lines consists of those that have not be processed:
+is the longest one among those that have been processed, and the stream
+of lines consists of those that have not been processed:
 
   
 
@@ -50,10 +50,9 @@ the given one (the 2nd argument) plus the given stream of lines (the
 3rd argument). Note that the two linear arguments of `loop` are
 considered being consumed at the moment when `loop` returns.
 
-```
-
 The function for find the longest line in a given file can be implemented
 as follows
+
 
 ```ats
 fun
