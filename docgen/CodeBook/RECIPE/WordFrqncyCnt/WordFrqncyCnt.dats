@@ -125,4 +125,4 @@ else false
 
 (* ****** ****** *)
 
-(* end of [WordFreqCnt.dats] *)
+(* end of [WordFrqncyCnt.dats] *)

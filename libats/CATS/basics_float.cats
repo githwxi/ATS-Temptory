@@ -93,21 +93,21 @@ temptory_g0cast_double_ldouble
 /* ****** ****** */
 
 ATSinline()
-atstype_sint
+atstype_float
 temptory_g0abs_float
   (atstype_float x)
 {
   return (x >= 0 ? x : -x);
 }
 ATSinline()
-atstype_sint
+atstype_double
 temptory_g0abs_double
   (atstype_double x)
 {
   return (x >= 0 ? x : -x);
 }
 ATSinline()
-atstype_sint
+atstype_ldouble
 temptory_g0abs_ldouble
   (atstype_ldouble x)
 {

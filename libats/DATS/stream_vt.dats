@@ -580,7 +580,11 @@ stream_vt_mapopt
 ) = auxmain1(xs) where
 {
 //
-fnx
+(*
+HX-2019-05:
+fnx // bug!!!
+*)
+fun
 auxmain1
 (
 xs: stream_vt(x0)
@@ -748,7 +752,11 @@ stream_vt_imapopt
 auxmain1(0, xs) where
 {
 //
-fnx
+(*
+HX-2019-05:
+fnx // bug!!!
+*)
+fun
 auxmain1
 (
 i0: int

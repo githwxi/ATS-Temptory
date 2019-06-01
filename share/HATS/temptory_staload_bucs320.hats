@@ -312,6 +312,13 @@ sexpdef list_rc = list0_rc
 
 (* ****** ****** *)
 //
+#staload _ =
+"libats/temp/DATS/qlistref.dats"
+#staload _ =
+"libats/temp/DATS/slistref.dats"
+//
+(* ****** ****** *)
+//
 #staload
 "libats/temp/SATS/hashfun.sats"
 #staload

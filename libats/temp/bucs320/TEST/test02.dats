@@ -11,10 +11,10 @@ testing gtree_streamize_bfs
 /temptory_staload_bucs320.hats"
 //
 (* ****** ****** *)
-
+(*
 #staload _ =
 "libats/temp/DATS/qlistref.dats"
-
+*)
 (* ****** ****** *)
 
 #staload "./../SATS/gtree.sats"

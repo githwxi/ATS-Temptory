@@ -173,7 +173,7 @@ list0_vt2t(mergesort(append(ys, zs)))
 
 val xs =
 g0ofg1
-($list1{int}(0,1,2,3,4,5))
+($list1{int}(0,1,2,3))
 val () =
 println!
 ( "nchoose(xs) = "
@@ -182,6 +182,37 @@ val () =
 println!
 ( "nchoose_rest(xs) = "
 , list0_vt2t(listize(list0_nchoose_rest(xs, 2))))
+
+(* ****** ****** *)
+
+fun
+{a:tflt}
+permute
+(xs: list(INV(a))): list(list(a)) =
+(
+if
+iseqz(xs)
+then sing(nil())
+else
+(
+list0_mapjoin<t0><t1>
+(
+list0_vt2t
+(listize(list0_nchoose_rest(xs, 1)))
+)
+) where
+{
+  typedef t0 =
+  (list0(a), list0(a))
+  typedef t1 = list0(a)
+  impltmp
+  list0_mapjoin$fopr<t0><t1>(t0) = list0_mcons(head(t0.0), permute(t0.1))
+}
+)
+val xss =
+permute<int>(0::1::2::3::nil{int}())
+val ( ) =
+println!("permute(0,1,2,3) = ", xss)
 
 (* ****** ****** *)
 
