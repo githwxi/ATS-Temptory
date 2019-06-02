@@ -93,10 +93,12 @@ datatype
 CPTR2
 (a:vtflt) = CPTR2 of ((*void*))
 //
-fun{}
-CPTR2_range$beg{a:vtflt}(): cptr(a)
-fun{}
-CPTR2_range$end{a:vtflt}(): cptr(a)
+fun
+{a:vtflt}
+CPTR2_range$beg((*void*)): cptr(a)
+fun
+{a:vtflt}
+CPTR2_range$end((*void*)): cptr(a)
 //
 fun
 {a:vtflt}

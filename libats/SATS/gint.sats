@@ -852,6 +852,49 @@ g0cmp_uint_uint
 (* ****** ****** *)
 //
 fun
+g0lt_uint0_sint1
+  {j:nat}
+( x: uint0
+, y: sint1(j)):<> bool = "mac#%"
+fun
+g0gt_uint0_sint1
+  {j:nat}
+( x: uint0
+, y: sint1(j)):<> bool = "mac#%"
+fun
+g0eq_uint0_sint1
+  {j:nat}
+( x: uint0
+, y: sint1(j)):<> bool = "mac#%"
+fun
+g0lte_uint0_sint1
+  {j:nat}
+( x: uint0
+, y: sint1(j)):<> bool = "mac#%"
+fun
+g0gte_uint0_sint1
+  {j:nat}
+( x: uint0
+, y: sint1(j)):<> bool = "mac#%"
+fun
+g0neq_uint0_sint1
+  {j:nat}
+( x: uint0
+, y: sint1(j)):<> bool = "mac#%"
+//
+#symload < with g0lt_uint0_sint1 of 11
+#symload > with g0gt_uint0_sint1 of 11
+#symload = with g0eq_uint0_sint1 of 11
+#symload <= with g0lte_uint0_sint1 of 11
+#symload >= with g0gte_uint0_sint1 of 11
+#symload != with g0neq_uint0_sint1 of 11
+(*
+#symload <=> with g0cmp_uint0_sint1 of 11
+*)
+//
+(* ****** ****** *)
+//
+fun
 g0lt_usize_usize
 ( x: usize
 , y: usize):<> bool = "mac#%"
@@ -894,7 +937,7 @@ g0cmp_usize_usize
 *)
 //
 (* ****** ****** *)
-
+//
 fun
 g0lt_usize_sint1
   {j:nat}
@@ -1059,6 +1102,8 @@ fun{}
 sint_listize(sint): list0_vt(sint)
 fun{}
 uint_listize(uint): list0_vt(uint)
+fun{}
+size_listize(size): list0_vt(size)
 //
 (* ****** ****** *)
 //
@@ -1066,6 +1111,8 @@ fun{}
 sint_rlistize(sint): list0_vt(sint)
 fun{}
 uint_rlistize(uint): list0_vt(uint)
+fun{}
+size_rlistize(size): list0_vt(size)
 //
 (* ****** ****** *)
 //
@@ -1078,16 +1125,21 @@ fun{}
 sint_streamize(sint): stream_vt(sint)
 fun{}
 uint_streamize(uint): stream_vt(uint)
+fun{}
+size_streamize(size): stream_vt(size)
 //
 (* ****** ****** *)
-
+//
 fun{}
 sint_streamize_gte(beg: sint): stream_vt(sint)
 fun{}
 sint_streamize_lte(beg: sint): stream_vt(sint)
+//
 fun{}
 uint_streamize_gte(beg: uint): stream_vt(uint)
-
+fun{}
+size_streamize_gte(beg: size): stream_vt(size)
+//
 (* ****** ****** *)
 //
 // HX-2019-05:

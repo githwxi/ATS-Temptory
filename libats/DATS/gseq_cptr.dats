@@ -54,8 +54,8 @@ gseq_forall<CPTR2(x0)><x0>
 ) where
 {
 //
-val cp0 = CPTR2_range$beg<>{x0}()
-val cp1 = CPTR2_range$end<>{x0}()
+val cp0 = CPTR2_range$beg<x0>()
+val cp1 = CPTR2_range$end<x0>()
 //
 impltmp
 cptr0_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
@@ -73,8 +73,8 @@ gseq_foreach<CPTR2(x0)><x0>
 ) where
 {
 //
-val cp0 = CPTR2_range$beg<>{x0}()
-val cp1 = CPTR2_range$end<>{x0}()
+val cp0 = CPTR2_range$beg<x0>()
+val cp1 = CPTR2_range$end<x0>()
 //
 impltmp
 cptr0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)

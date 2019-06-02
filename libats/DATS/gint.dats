@@ -152,7 +152,7 @@ loop
 (i0: uint, r0: r0): r0 =
 (
 if
-(i0 <= 0u)
+(i0 <= 0)
 then r0 else
 let
   val i0 = pred(i0)
@@ -161,6 +161,34 @@ in
 end // end of [else]
 )
 } (* end of [uint_listize] *)
+
+impltmp
+{}//tmp
+size_listize
+  (n0) =
+(
+loop
+(n0, list0_vt_nil())
+) where
+{
+//
+vtypedef
+r0 = list0_vt(size)
+//
+fun
+loop
+(i0: size, r0: r0): r0 =
+(
+if
+(i0 <= 0)
+then r0 else
+let
+  val i0 = pred(i0)
+in
+  loop(i0, list0_vt_cons(i0, r0))
+end // end of [else]
+)
+} (* end of [size_listize] *)
 
 (* ****** ****** *)
 
@@ -220,6 +248,34 @@ end // end of [else]
 )
 } (* end of [uint_rlistize] *)
 
+impltmp
+{}//tmp
+size_rlistize
+  (n0) =
+(
+loop
+(i2sz(0), list0_vt_nil())
+) where
+{
+//
+vtypedef
+r0 = list0_vt(size)
+//
+fun
+loop
+(i0: size, r0: r0): r0 =
+(
+if
+(i0 >= n0)
+then r0 else
+let
+  val i1 = succ(i0)
+in
+  loop(i1, list0_vt_cons(i0, r0))
+end // end of [else]
+)
+} (* end of [size_rlistize] *)
+
 (* ****** ****** *)
 //
 impltmp
@@ -241,7 +297,7 @@ else stream_vt_cons(i0, auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 //
 } (* end of [sint_streamize] *)
-
+//
 impltmp
 {}//tmp
 uint_streamize
@@ -261,6 +317,26 @@ else stream_vt_cons(i0, auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 //
 } (* end of [uint_streamize] *)
+//
+impltmp
+{}//tmp
+size_streamize
+  (n0) =
+(auxmain(i2sz(0))) where
+{
+//
+fun
+auxmain
+(i0: size): stream_vt(size) =
+$ldelay
+(
+if
+i0 >= n0
+then stream_vt_nil()
+else stream_vt_cons(i0, auxmain(succ(i0)))
+) (* end of [auxmain] *)
+//
+} (* end of [size_streamize] *)
 //
 (* ****** ****** *)
 
@@ -328,6 +404,29 @@ $ldelay
   end
 )
 } (* end of [uint_streamize_gte] *)
+
+(* ****** ****** *)
+
+impltmp
+{}//tmp
+size_streamize_gte
+  (b0) =
+(
+  auxmain(b0)
+) where
+{
+fun
+auxmain
+(b0: size): stream_vt(size) =
+$ldelay
+(
+  let
+    val b1 = succ(b0)
+  in
+    stream_vt_cons(b0, auxmain(b1))
+  end
+)
+} (* end of [size_streamize_gte] *)
 
 (* ****** ****** *)
 

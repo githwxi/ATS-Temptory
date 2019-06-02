@@ -178,8 +178,8 @@ loop(succ(cp0), cp1) else false
 end (* end-of-let *)
 )
 //
-val cp0 = CPTR2_range$beg<>{x0}()
-val cp1 = CPTR2_range$end<>{x0}()
+val cp0 = CPTR2_range$beg<x0>()
+val cp1 = CPTR2_range$end<x0>()
 //
 } (* end of [CPTR2_forall] *)
 
@@ -205,8 +205,8 @@ CPTR2_streamize
   (auxmain(l0)) where
 {
 //
-val l0 = CPTR2_range$beg<>{a}()
-val u0 = CPTR2_range$end<>{a}()
+val l0 = CPTR2_range$beg<a>()
+val u0 = CPTR2_range$end<a>()
 //
 fun
 auxmain

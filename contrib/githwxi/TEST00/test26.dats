@@ -1,6 +1,6 @@
 (* ****** ****** *)
 //
-// HX-2019-05-29:
+// HX-2019-06-01:
 // For ATS-Temptory
 //
 (* ****** ****** *)
@@ -81,6 +81,58 @@ SINT2_range$end<>() = 10
 impltmp
 gseq_rforeach$work<sint>(i0) = println!("i0 = ", i0)
 }
+
+(* ****** ****** *)
+
+val () =
+(
+ftest()
+) where
+{
+fun
+ftest(): void =
+{
+val
+alphabet =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+val p0 =
+cptrof(alphabet)
+val p1 =
+p0 + length(alphabet)
+//
+val () =
+(
+gseq_foreach<
+  CPTR2(char)><char>(CPTR2); println!()
+) where
+{
+//
+impltmp
+CPTR2_range$beg<char>() = p0
+impltmp
+CPTR2_range$end<char>() = p1
+impltmp
+gseq_foreach$work<char>(c0) = print!(c0)
+//
+} (* end of [where] *)
+//
+val () =
+(
+gseq_rforeach<
+  CPTR2(char)><cptr(char)>(CPTR2); println!()
+)  where
+{
+//
+impltmp
+CPTR2_range$beg<char>() = p0
+impltmp
+CPTR2_range$end<char>() = p1
+impltmp
+gseq_rforeach$work<cptr(char)>(cp) = print!($UN.cptr0_get(cp))
+//
+} (* end of [where] *)
+} (* end of [test] *)
+} (* end of [where] *)
 
 (* ****** ****** *)
 

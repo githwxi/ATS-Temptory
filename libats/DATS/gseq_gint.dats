@@ -50,6 +50,9 @@ gseq_listize<sint><sint>
 impltmp
 gseq_listize<uint><uint>
   (n0) = (uint_listize<>(n0))
+impltmp
+gseq_listize<size><size>
+  (n0) = (size_listize<>(n0))
 //
 (* ****** ****** *)
 //
@@ -59,6 +62,9 @@ gseq_rlistize<sint><sint>
 impltmp
 gseq_rlistize<uint><uint>
   (n0) = (uint_rlistize<>(n0))
+impltmp
+gseq_rlistize<size><size>
+  (n0) = (size_rlistize<>(n0))
 //
 (* ****** ****** *)
 //
@@ -68,9 +74,11 @@ gseq_streamize<sint><sint>
 impltmp
 gseq_streamize<uint><uint>
   (n0) = (uint_streamize<>(n0))
+impltmp
+gseq_streamize<size><size>
+  (n0) = (size_streamize<>(n0))
 //
 (* ****** ****** *)
-
 
 impltmp
 gseq_forall<sint><sint>

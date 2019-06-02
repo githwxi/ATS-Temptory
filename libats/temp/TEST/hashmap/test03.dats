@@ -36,7 +36,7 @@ FILEref_open_opt
 ("/usr/share/dict/words", "r")
 val
 words =
-FILEref_streamize_word_vt(inp)
+FILEref_streamize_line_vt(inp)
 //
 val () =
 (

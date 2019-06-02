@@ -198,18 +198,15 @@ library:
 (* ****** ****** *)
 
 #staload GT =
-"libats/temp\
-/bucs320/SATS/gtree.sats"
+"libats/temp/bucs320/SATS/gtree.sats"
 #staload _(*GT*) =
-"libats/temp\
-/bucs320/DATS/gtree.dats"
+"libats/temp/bucs320/DATS/gtree.dats"
 
 (* ****** ****** *)
 ```
 
 The template `gtree_streamize_dfs` can be called to enumerate the
-nodes in a given tree in the depth-first fashion once the template
-`gtree_node_children` is implemented:
+nodes in a given tree in the depth-first fashion:
 
 ```ats
 fun
@@ -249,8 +246,10 @@ stream_vt_mapopt$fopr<node><expr>(nx) = nx[0]
 end (* end of [Game_of_24] *)
 ```
 
-By the way, one could also use the template `gtree_streamize_bfs`
-to enumerate in the breath-first fashion.
+Note that the template `gtree_node_children` needs to be implemented
+in order for `gtree_streamize_dfs` to work.  By the way, one could
+also use the template `gtree_streamize_bfs` to enumerate in the
+breath-first fashion.
 
 Given four integers n1, n2, n3, and n4, `Game_of_24` returns a
 linear stream of expr-values formed using the 4 integers such that

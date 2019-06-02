@@ -84,7 +84,7 @@ FILEref_open_opt
 //
 val
 words =
-FILEref_streamize_word(words)
+FILEref_streamize_line(words)
 //
 val () =
 (

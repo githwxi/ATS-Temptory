@@ -19,11 +19,11 @@ TEMPOPT=$(TEMPTORY)/bin/tempopt
 
 ######
 
-all:: Game-of-24_dats
+all:: Doublet_dats
 
 ######
 
-regress:: Game-of-24_dats; ./$<
+regress:: Doublet_dats; ./$<
 
 ######
 
@@ -32,7 +32,7 @@ testall:: all regress cleanall
 ######
 
 %_dats: %.dats; \
-$(TEMPACC) -O2 -DATS_MEMALLOC_LIBC -o $@ $<
+$(TEMPACC) -O2 -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $<
 
 ######
 
@@ -41,7 +41,7 @@ clean:: ; $(RMF) *_?ats.o
 clean:: ; $(RMF) *_?ats.c
 
 cleanall:: clean
-cleanall:: ; $(RMF) Game-of-24_dats
+cleanall:: ; $(RMF) Doublet_dats
 
 ######
 
