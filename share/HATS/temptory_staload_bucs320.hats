@@ -41,13 +41,12 @@ TEMPLIB_targetloc
 "libats/SATS/gseq.sats"
 //
 #staload
-"libats/SATS/range.sats"
-//
-#staload
 "libats/SATS/list.sats"
 #staload
 "libats/SATS/optn.sats"
 //
+#staload
+"libats/SATS/range.sats"
 #staload
 "libats/SATS/tuple.sats"
 //
@@ -123,6 +122,8 @@ TEMPLIB_targetloc
 #staload _ =
 "libats/DATS/optn.dats"
 //
+#staload _ =
+"libats/DATS/range.dats"
 #staload
 "libats/DATS/tuple.dats"
 //

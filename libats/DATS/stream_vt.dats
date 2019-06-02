@@ -514,6 +514,34 @@ case+ !xs of
 
 impltmp
 {x0}(*tmp*)
+stream_vt_iforall0
+  (xs) =
+  (loop(0, xs)) where
+{
+fun
+loop
+( i0: int
+, xs: stream_vt(x0)): bool =
+(
+case+ !xs of
+|
+~stream_vt_nil() => true
+|
+~stream_vt_cons(x0, xs) =>
+ let
+   val
+   test =
+   stream_vt_iforall0$test<x0>(i0, x0)
+ in
+   if test then loop(i0+1, xs) else (~xs; false)
+ end // end of [stream_vt_cons]
+) (* end of [loop] *)
+} (* end of [stream_vt_iforall0] *)
+
+(* ****** ****** *)
+
+impltmp
+{x0}(*tmp*)
 stream_vt_iforeach0
   (xs) =
   (loop(0, xs)) where

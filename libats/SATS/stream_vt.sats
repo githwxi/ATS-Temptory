@@ -193,6 +193,16 @@ stream_vt_foreach0$work(x0): void
 //
 fun
 {x0:vtflt}
+stream_vt_iforall0
+(xs: stream_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+stream_vt_iforall0$test(int, x0): bool
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 stream_vt_iforeach0
 (xs: stream_vt(INV(x0))): void
 fun

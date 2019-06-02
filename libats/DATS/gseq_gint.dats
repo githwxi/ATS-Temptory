@@ -124,36 +124,6 @@ end (* end of [loop] *)
 (* ****** ****** *)
 
 impltmp
-gseq_forall<SINT2><sint>
-  (SINT2) =
-( loop(l0, u0) ) where
-{
-//
-fun
-loop
-( i0: sint
-, u0: sint): bool =
-if
-i0 >= u0
-then true else
-let
-val
-test =
-gseq_forall$test<sint>(i0)
-in
-if
-test
-then loop(succ(i0), u0) else false
-end (* end-of-let *)
-//
-val l0 = SINT2_range$beg<>()
-val u0 = SINT2_range$end<>()
-//
-} (* end of [gseq_forall<SINT2>] *)
-
-(* ****** ****** *)
-
-impltmp
 gseq_rforall<sint><sint>
   (n0) =
 ( loop(n0) ) where
@@ -206,30 +176,20 @@ end // end-of-let
 (* ****** ****** *)
 
 impltmp
+gseq_forall<SINT2><sint>
+  (SINT2) =
+( SINT2_forall() ) where
+{
+impltmp
+SINT2_forall$test<>(i0) = gseq_forall$test<sint>(i0)
+} (* end of [gseq_forall<SINT2>] *)
+impltmp
 gseq_rforall<SINT2><sint>
   (SINT2) =
-( loop(l0, u0) ) where
+( SINT2_rforall() ) where
 {
-//
-fun
-loop
-( l0: sint
-, i0: sint): bool =
-if
-l0 >= i0
-then true else
-let
-val i0 = pred(i0)
-val
-test =
-gseq_rforall$test<sint>(i0)
-in
-if test then loop(l0, i0) else false
-end (* end-of-if *)
-//
-val l0 = SINT2_range$beg<>()
-val u0 = SINT2_range$end<>()
-//
+impltmp
+SINT2_rforall$test<>(i0) = gseq_rforall$test<sint>(i0)
 } (* end of [gseq_rforall<SINT2>] *)
 
 (* ****** ****** *)

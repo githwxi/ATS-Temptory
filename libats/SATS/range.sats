@@ -49,23 +49,49 @@ fun{}
 SINT2_range$end((*void*)): (sint)
 //
 (* ****** ****** *)
+//
 fun{}
 SINT2_forall(): bool
 fun{}
 SINT2_forall$test(sint): bool
-//
 fun{}
 SINT2_foreach(): void
 fun{}
 SINT2_foreach$work(sint): void
 //
 fun{}
+SINT2_rforall(): bool
+fun{}
+SINT2_rforall$test(sint): bool
+fun{}
+SINT2_rforeach(): void
+fun{}
+SINT2_rforeach$work(sint): void
+//
+fun{}
 SINT2_streamize(): stream_vt(sint)
 //
 (* ****** ****** *)
 //
+fun
+{y0:vtflt}
+SINT2_map$fopr(sint): y0
+//
+fun
+{y0:vtflt}
+SINT2_map_list(sint): list0_vt(y0)
+fun
+{y0:vtflt}
+SINT2_map_rlist(sint): list0_vt(y0)
+fun
+{y0:vtflt}
+SINT2_map_stream(sint): stream_vt(y0)
+//
+(* ****** ****** *)
+//
 datatype
-CPTR2 = CPTR2 of ((*void*))
+CPTR2
+(a:vtflt) = CPTR2 of ((*void*))
 //
 fun{}
 CPTR2_range$beg{a:vtflt}(): cptr(a)
@@ -74,21 +100,41 @@ CPTR2_range$end{a:vtflt}(): cptr(a)
 //
 fun
 {a:vtflt}
-CPTR_forall(): bool
+CPTR2_forall(): bool
 fun
 {a:vtflt}
 CPTR2_forall$test(cptr(a)): bool
 //
 fun
 {a:vtflt}
-CPTR_foreach(): void
+CPTR2_foreach(): void
 fun
 {a:vtflt}
-CPTR2_foreach$test(cptr(a)): void
+CPTR2_foreach$work(cptr(a)): void
 //
 fun
 {a:vtflt}
 CPTR2_streamize(): stream_vt(cptr(a))
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
+{y0:vtflt}
+CPTR2_map$fopr(cptr(x0)): y0
+//
+fun
+{x0:vtflt}
+{y0:vtflt}
+CPTR2_map_list(cptr(x0)): list0_vt(y0)
+fun
+{x0:vtflt}
+{y0:vtflt}
+CPTR2_map_rlist(cptr(x0)): list0_vt(y0)
+fun
+{x0:vtflt}
+{y0:vtflt}
+CPTR2_map_stream(cptr(x0)): stream_vt(y0)
 //
 (* ****** ****** *)
 

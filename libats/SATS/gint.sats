@@ -1080,6 +1080,15 @@ fun{}
 uint_streamize(uint): stream_vt(uint)
 //
 (* ****** ****** *)
+
+fun{}
+sint_streamize_gte(beg: sint): stream_vt(sint)
+fun{}
+sint_streamize_lte(beg: sint): stream_vt(sint)
+fun{}
+uint_streamize_gte(beg: uint): stream_vt(uint)
+
+(* ****** ****** *)
 //
 // HX-2019-05:
 // For fixed-sized integers

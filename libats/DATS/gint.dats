@@ -264,4 +264,71 @@ else stream_vt_cons(i0, auxmain(succ(i0)))
 //
 (* ****** ****** *)
 
+impltmp
+{}//tmp
+sint_streamize_gte
+  (b0) =
+(
+  auxmain(b0)
+) where
+{
+fun
+auxmain
+(b0: sint): stream_vt(sint) =
+$ldelay
+(
+  let
+    val b1 = succ(b0)
+  in
+    stream_vt_cons(b0, auxmain(b1))
+  end
+)
+} (* end of [sint_streamize_gte] *)
+
+impltmp
+{}//tmp
+sint_streamize_lte
+  (b0) =
+(
+  auxmain(b0)
+) where
+{
+fun
+auxmain
+(b0: sint): stream_vt(sint) =
+$ldelay
+(
+  let
+    val b1 = pred(b0)
+  in
+    stream_vt_cons(b0, auxmain(b1))
+  end
+)
+} (* end of [sint_streamize_lte] *)
+
+(* ****** ****** *)
+
+impltmp
+{}//tmp
+uint_streamize_gte
+  (b0) =
+(
+  auxmain(b0)
+) where
+{
+fun
+auxmain
+(b0: uint): stream_vt(uint) =
+$ldelay
+(
+  let
+    val b1 = succ(b0)
+  in
+    stream_vt_cons(b0, auxmain(b1))
+  end
+)
+} (* end of [uint_streamize_gte] *)
+
+(* ****** ****** *)
+
 (* end of [gint.dats] *)

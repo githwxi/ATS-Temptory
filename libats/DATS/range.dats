@@ -41,6 +41,89 @@
 (* ****** ****** *)
 
 impltmp
+SINT2_forall<>
+  ((*void*)) =
+( loop(l0, u0) ) where
+{
+//
+fun
+loop
+( i0: sint
+, u0: sint): bool =
+if
+i0 >= u0
+then true else
+let
+val
+test =
+SINT2_forall$test<>(i0)
+in
+if
+test
+then loop(succ(i0), u0) else false
+end (* end-of-let *)
+//
+val l0 = SINT2_range$beg<>()
+val u0 = SINT2_range$end<>()
+//
+} (* end of [SINT2_forall<>] *)
+
+(* ****** ****** *)
+
+impltmp
+SINT2_foreach<>() =
+(
+  gseq_foreach<SINT2><sint>(SINT2)
+) where
+{
+impltmp
+gseq_foreach$work<sint>(i0) = SINT2_foreach$work<>(i0)
+} (* end of [SINT2_foreach<>] *)
+
+(* ****** ****** *)
+
+impltmp
+SINT2_rforall<>
+  ((*void*)) =
+( loop(l0, u0) ) where
+{
+//
+fun
+loop
+( l0: sint
+, i0: sint): bool =
+if
+l0 >= i0
+then true else
+let
+val i0 = pred(i0)
+val
+test =
+SINT2_rforall$test<>(i0)
+in
+if test then loop(l0, i0) else false
+end (* end-of-if *)
+//
+val l0 = SINT2_range$beg<>()
+val u0 = SINT2_range$end<>()
+//
+} (* end of [SINT2_rforall<>] *)
+
+(* ****** ****** *)
+
+impltmp
+SINT2_rforeach<>() =
+(
+  gseq_rforeach<SINT2><sint>(SINT2)
+) where
+{
+impltmp
+gseq_rforeach$work<sint>(i0) = SINT2_rforeach$work<>(i0)
+} (* end of [SINT2_rforeach<>] *)
+
+(* ****** ****** *)
+
+impltmp
 {}(*tmp*)
 SINT2_streamize
   ((*void*)) =
@@ -66,6 +149,56 @@ else stream_vt_cons(i0, auxmain(succ(i0)))
 (* ****** ****** *)
 
 impltmp
+(x0:tflt)
+CPTR2_forall<x0>
+  () =
+(
+  loop(cp0, cp1)
+) where
+{
+//
+fun
+loop
+( cp0: cptr(x0)
+, cp1: cptr(x0)): bool =
+(
+if
+(cp0 >= cp1)
+then true else
+let
+val
+test =
+CPTR2_forall$test<x0>(cp0)
+//
+in (* in-of-let *)
+if
+test
+then
+loop(succ(cp0), cp1) else false
+end (* end-of-let *)
+)
+//
+val cp0 = CPTR2_range$beg<>{x0}()
+val cp1 = CPTR2_range$end<>{x0}()
+//
+} (* end of [CPTR2_forall] *)
+
+(* ****** ****** *)
+
+impltmp
+(x0:tflt)
+CPTR2_foreach<x0>() =
+(
+  gseq_foreach<CPTR2(x0)><cptr(x0)>(CPTR2)
+) where
+{
+impltmp
+gseq_foreach$work<cptr(x0)>(cp) = CPTR2_foreach$work<x0>(cp)
+} (* end of [CPTR2_foreach<x0>] *)
+
+(* ****** ****** *)
+
+impltmp
 {a}(*tmp*)
 CPTR2_streamize
   ((*void*)) =
@@ -86,7 +219,7 @@ then stream_vt_nil()
 else stream_vt_cons(i0, auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 //
-} (* end of [SINT2_streamize] *)
+} (* end of [CPTR2_streamize] *)
 
 (* ****** ****** *)
 
