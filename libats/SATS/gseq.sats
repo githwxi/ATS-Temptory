@@ -380,7 +380,7 @@ fun
 gseq_z2foldleft$fopr(r0, x0, y0): r0
 //
 (* ****** ****** *)
-
+//
 fun
 {x0
 ,y0:tflt}
@@ -400,7 +400,14 @@ fun
 {y0:tflt}
 {u0:vtflt}
 gseq_z2map_rlist(xs, ys): list0_vt(u0)
-
+fun
+{xs:tflt}
+{x0:tflt}
+{ys:tflt}
+{y0:tflt}
+{u0:vtflt}
+gseq_z2map_stream(xs, ys): stream_vt(u0)
+//
 (* ****** ****** *)
 //
 // HX-2019-05-28: crossing
@@ -426,6 +433,35 @@ gseq_x2foreach(xs, ys): void
 fun
 {x0,y0:tflt}
 gseq_x2foreach$work(x0, y0): void
+//
+(* ****** ****** *)
+//
+fun
+{x0
+,y0:tflt}
+{u0:vtflt}
+gseq_x2map$fopr(x0, y0): u0
+fun
+{xs:tflt}
+{x0:tflt}
+{ys:tflt}
+{y0:tflt}
+{u0:vtflt}
+gseq_x2map_list(xs, ys): list0_vt(u0)
+fun
+{xs:tflt}
+{x0:tflt}
+{ys:tflt}
+{y0:tflt}
+{u0:vtflt}
+gseq_x2map_rlist(xs, ys): list0_vt(u0)
+fun
+{xs:tflt}
+{x0:tflt}
+{ys:tflt}
+{y0:tflt}
+{u0:vtflt}
+gseq_x2map_stream(xs, ys): stream_vt(u0)
 //
 (* ****** ****** *)
 

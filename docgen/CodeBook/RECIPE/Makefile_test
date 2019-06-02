@@ -6,8 +6,13 @@
 
 SUBDIRS :=
 SUBDIRS += ./Hello
+SUBDIRS += ./Doublets
+SUBDIRS += ./Game-of-24
+SUBDIRS += ./LongestLine
 SUBDIRS += ./WordFrqncyCnt
 SUBDIRS += ./WordFrqncyCnt_vt
+
+######
 
 .PHONY: testall
 
