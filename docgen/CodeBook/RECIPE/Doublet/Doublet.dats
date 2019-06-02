@@ -72,7 +72,7 @@ ignoret
 in
 
 fun
-wordq
+legalq
 ( w0
 : word )
 : bool = isneqz(hsearch_find(w0))
@@ -150,7 +150,7 @@ else let
 in
   if
   not
-  (wordq(w1))
+  (legalq(w1))
   then auxlst(w0, c0, i0, j0+1)
   else
   let
