@@ -341,7 +341,7 @@ let val ws = reverse_vt(ws) in println!(ws); free(ws) end
 (* ****** ****** *)
 
 val-
-~lsome(ws) = doublet("garden", "flower")
+~lsome(ws) = doublet("flower", "garden")
 val ((*void*)) =
 let val ws = reverse_vt(ws) in println!(ws); free(ws) end
 

@@ -60,8 +60,6 @@ doublet{n:int}
 
 where the type `wpath(n)` is just `list0(word(n))`.
 
-The entirety of the code implementing Doublets can be found [here](./Doublet.dats).
-
 The first part of the code is for implementing the following function:
 
 ```ats
@@ -98,8 +96,8 @@ word_neighbors_at
 Note that the first argument `w0` of `word_neighbors_at` is given a
 linear type, which allows `w0` to be modified.
 
-Doublets-of-24 is a typical problem of graph-based search. Assume that
-a node NX0 consists of a list of words representing a path (from some
+Doublets is a typical problem of graph-based search. Assume that a
+node NX0 consists of a list of words representing a path (from some
 chosen word).  Let W1 be the last word on NX0. Extending NX0 with
 another word W2 that is one-step related to W1 forms another node NX1
 that is a considered a neighbor of NX0.
