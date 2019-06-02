@@ -12,7 +12,7 @@ of characters. Two given words W0 and W1 are many-step connected if a
 sequence of words beginning with W0 and ending with W1 can be found
 such that any two consecutive words in this sequence are one-step
 connected. The game Doublets basically asks the player to tell whether
-two given words are many-step connected. For instance. `head` and
+two given words are many-step connected. For instance, `head` and
 `tail` form a doublet as is shown by the following sequence:
 
 head, held, hell, tell, tall, tail
@@ -85,7 +85,6 @@ one, which returns all of the words that are one-step related to a given word
 at a given position:
 
 ```ats
-//
 fun
 word_neighbors_at
 {n:int}{i:nat | i < n}
@@ -196,10 +195,11 @@ in order for `graph_streamize_bfs` to work.  Also, graph-based search
 needs to mark a visted node (since the involved graph may contain
 circles).  The template `graph_node_mark` is for marking and
 `graph_node_is_marked` for checking if a node is marked. Theoretically
-speaking, if no marking is done here, the search is still able to find
-a path connecting two given words as long as such a path exists. But
-the search space can become so big that the search probably never
-returns once the path is long (e.g., containing a dozen words).
+speaking, if no marking is done here, the breath-first search is still
+able to find a path connecting two given words as long as such a path
+exists. But the search space can become so big that the actual search
+probably never returns once the path is long (e.g., containing a dozen
+words).
 
 Again, please find the entirety of the code implementing Doublets
 [here](./Doublet.dats).

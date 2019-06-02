@@ -25,7 +25,7 @@ One can readily execute `make` to generate `WordFrqncyCnt_vt_dats`.
 To test for memory-cleaness, one can issue the following command-line:
 
 ```shell
- wget -q -O - "http://www.gutenberg.org/files/2701/2701-0.txt" | valgrind ./WordFrqncyCnt_vt_dats
+wget -q -O - "http://www.gutenberg.org/files/2701/2701-0.txt" | valgrind ./WordFrqncyCnt_vt_dats
 ```
 
 The following output from valgrind attests to the memory-cleaness of

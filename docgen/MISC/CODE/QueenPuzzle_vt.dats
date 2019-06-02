@@ -89,35 +89,6 @@ gfree$val<board>(xs) = board_free(xs)
 (* ****** ****** *)
 
 fun
-board_print0
-(xs: board): void =
-(
-glseq_rforeach0<board><int>
-  (xs)
-) where
-{
-impltmp
-glseq_rforeach0$work<int>(x0) =
-(
-  loop(0)
-) where
-{
-fun
-loop(i0: int): void =
-if
-i0 >= N
-then
-println!((*void*))
-else
-(
-if i0 = x0 then print "Q " else print ". "; loop(i0+1)
-)
-}
-} (* end of [board_print *)
-
-(* ****** ****** *)
-
-fun
 board_check1
 (xs: !board, x0: int): bool =
 (
@@ -172,6 +143,35 @@ vtypedef r0 = boardlst
 impltmp
 list0_vt_foldright0$fopr<xs><r0>(xs, r0) = append(board_extend0(xs), r0)
 }
+
+(* ****** ****** *)
+
+fun
+board_print0
+(xs: board): void =
+(
+glseq_rforeach0<board><int>
+  (xs)
+) where
+{
+impltmp
+glseq_rforeach0$work<int>(x0) =
+(
+  loop(0)
+) where
+{
+fun
+loop(i0: int): void =
+if
+i0 >= N
+then
+println!((*void*))
+else
+(
+if i0 = x0 then print "Q " else print ". "; loop(i0+1)
+)
+}
+} (* end of [board_print0 *)
 
 (* ****** ****** *)
 
