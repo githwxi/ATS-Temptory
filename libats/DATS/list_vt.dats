@@ -93,6 +93,28 @@ case+ xs of
 } (* end of [list0_length] *)
 
 (* ****** ****** *)
+
+impltmp
+{x0}//tmp
+list0_vt_head_exn
+  (xs) =
+(
+case+ xs of
+| list0_vt_nil() =>
+  $raise(ListSubscriptExn())
+| list0_vt_cons(x0, xs) => (x0)
+)
+impltmp
+{x0}//tmp
+list0_vt_head_opt
+  (xs) =
+(
+case+ xs of
+| list0_vt_nil() => optn0_vt_none()
+| list0_vt_cons(x0, xs) => optn0_vt_some(x0)
+)
+
+(* ****** ****** *)
 //
 impltmp
 {x0}//tmp

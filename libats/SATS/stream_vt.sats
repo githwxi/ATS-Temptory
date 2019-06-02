@@ -85,10 +85,17 @@ stream_vt_length
 //
 fun
 {x0:vtflt}
+stream_vt_concat
+(
+stream_vt
+(stream_vt(INV(x0)))): stream_vt(x0)
+fun
+{x0:vtflt}
 stream_vt_append
 ( stream_vt(INV(x0))
 , stream_vt(INV(x0))): stream_vt(x0)
 //
+#symload concat with stream_vt_concat
 #symload append with stream_vt_append
 //
 (* ****** ****** *)

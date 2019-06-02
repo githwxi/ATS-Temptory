@@ -88,6 +88,17 @@ list0_vt_length
 (* ****** ****** *)
 //
 fun
+{x0:tflt}
+list0_vt_head_exn
+(xs: !list0_vt(INV(x0))): (x0)
+fun
+{x0:tflt}
+list0_vt_head_opt
+(xs: !list0_vt(INV(x0))): optn0_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
 {x0:vtflt}
 list0_vt_free(list0_vt(INV(x0))): void
 //

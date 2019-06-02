@@ -147,6 +147,35 @@ case+ !xs of
 
 impltmp
 {a}(*tmp*)
+stream_vt_concat
+  (xx) =
+(
+  auxmain(xx)
+) where
+{
+sexpdef xs = stream_vt(a)
+fun
+auxmain
+(xx: stream_vt(xs)): stream_vt(a) =
+$ldelay
+(
+case+ !xx of
+|
+~stream_vt_nil() =>
+ stream_vt_nil()
+|
+~stream_vt_cons(xs, xx) =>
+ lazy_vt_force
+ (stream_vt_append<a>(xs, auxmain(xx)))
+,
+let val () = lazy_vt_free(xx) in (*freed*) end
+)
+} (* end of [stream_vt_concat] *)
+
+(* ****** ****** *)
+
+impltmp
+{a}(*tmp*)
 stream_vt_append
   (xs, ys) =
 (

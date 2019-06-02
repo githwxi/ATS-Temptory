@@ -9,7 +9,6 @@
 implement main1() = 0
 
 (* ****** ****** *)
-
 //
 #include
 "share/HATS\
@@ -38,7 +37,7 @@ FILEref_open_opt
 
 (* ****** ****** *)
 //
-implement
+impltmp
 $CSVPARLN.csv_parse_line$comma<>
   ((*void*)) =
 (
@@ -56,9 +55,9 @@ val ((*void*)) =
 ) where
 {
 vtypedef x0 = list0_vt(string_vt)
-implement
+impltmp
 list0_print$sep<>() = print(';')
-implement
+impltmp
 stream_vt_foreach0$work<x0>(x0) = (println!(x0); free(x0))
 }
 
