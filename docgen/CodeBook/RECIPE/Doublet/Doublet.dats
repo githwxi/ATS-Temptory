@@ -31,6 +31,12 @@ implfun main0() = ()
 
 (* ****** ****** *)
 
+typedef word = string
+typedef word(n:int) = string(n)
+vtypedef lword(n:int) = string_vt(n)
+
+(* ****** ****** *)
+
 local
 
 (* ****** ****** *)
@@ -41,10 +47,6 @@ hcreate(i2sz(1024*1024))
 //
 val () = assertloc(inez != 0)
 //
-(* ****** ****** *)
-
-typedef word = string
-
 (* ****** ****** *)
 
 val-
@@ -70,16 +72,12 @@ ignoret
 in
 
 fun
-word_is_legal
+wordq
 ( w0
 : word )
 : bool = isneqz(hsearch_find(w0))
 
 end (* end-of-local *)
-//
-(* ****** ****** *)
-
-#symload legalq with word_is_legal
 
 (* ****** ****** *)
 
@@ -91,94 +89,121 @@ val () = assertloc(legalq("zucchini"))
 
 (* ****** ****** *)
 
-typedef word = string
-
-extern
+//
+#define N 26
+//
 fun
-word_neighbors
-(word): list0_vt(word)
-
-(* ****** ****** *)
-//
-#define N0 26
+letter
+(j: Natlt(N)): char = ('a' + j)
 //
 (* ****** ****** *)
-
-implement
-word_neighbors(w0) =
-let
 //
-val n0 = size(w0)
-val w0 = copy_vt(w0)
-val p0 = cptrof(w0)
-//
-//
-typedef
-xs = size and x0 = size
-vtypedef
-w0 = word and ws = list0_vt(word)
-//
-val wss =
+fun
+word_neighbors_at
+{n:int}
+{i:nat | i < n}
+( w0
+: !lword(n)
+, i0: int(i)
+) : list0_vt(string(n)) =
 (
-gseq_map_list<xs><x0><ws>(n0)
+//
+let
+val c0 = w0[i0]
+val ws = 
+(
+auxlst
+(w0, w0[i0], i0, 0(*j*))
+)
+in
+  w0[i0] := c0; reverse(ws)
+end
 ) where
 {
 fun
-helper
-(pi: cptr(char), c0: char): ws =
+auxlst
+{j:nat | j <= N}
+( w0
+: !lword(n)
+, c0: char
+, i0: int(i)
+, j0: int(j)
+) : list0_vt(string(n)) =
 (
-gseq_mapopt_list<int><int><w0>(N0)
-) where
-{
-impltmp
-gseq_mapopt$test<int>(k0) =
+if
+(j0 < N)
+then
 let
-val c1 = 'a' + k0
+val c1 = letter(j0)
+in
+if (c0 = c1)
+then
+auxlst(w0, c0, i0, j0+1)
+else let
+  val () = (w0[i0] := c1)
+  val w1 = $UN.castvwtp1{string(n)}(w0)
+(*
+  val () = println!("i0 = ", i0)
+  val () = println!("j0 = ", j0)
+  val () = println!("w1 = ", w1)
+*)
 in
   if
-  (c0 = c1)
-  then false else
+  not
+  (wordq(w1))
+  then auxlst(w0, c0, i0, j0+1)
+  else
   let
-    val () =
-    $UN.cptr0_set(pi, c1) in legalq($UN.cast{string}(p0))
-  end // end of [else]
-end (* gseq_mapopt$test *)
-//
-impltmp
-gseq_mapopt$fopr<int><w0>(j0) = copy($UN.cast{string}(p0))
-//
-} (* end of [helper] *)
-//
-implate
-gseq_map$fopr<x0><ws>(i0) =
-let
-val pi = p0 + i0
-val c0 = $UN.cptr0_get(pi)
-in
-  let
-  val ws = helper(pi, c0) in $UN.cptr0_set(pi, c0); ws
-  end  
+  val w1 = copy(w1)
+  in
+  list0_vt_cons(w1, auxlst(w0, c0, i0, j0+1))
+  end
 end
-}
+end
+else list0_vt_nil()
+//
+) (* end of [auxlst] *)
+//
+} (* end of [word_neighbors_at] *)
+//
+(* ****** ****** *)
+
+fun
+word_neighbors_all
+(
+w0: word
+) : list0_vt(word) =
+(
+let
+  val w1 = copy_vt(w0)
+  val r0 = auxlst(w1, 0(*i*))
 in
-  let val () = free(w0) in list0_vt_concat<string>(wss) end
-end // end of [word_neighbors]
+  let val () = free(w1) in r0 end
+end
+) where
+{
+  val [n:int]
+      w0 = g1ofg0(w0)
+  val n0 = length(w0)
+  fun
+  auxlst
+  {i:nat | i <= n}
+  ( w1
+  : !lword(n)
+  , i0: int(i)): list0_vt(string(n)) =
+  (
+  if
+  (i0 < n0)
+  then append(word_neighbors_at(w1, i0), auxlst(w1, i0+1))
+  else list0_vt_nil()
+  )
+}
 
 (* ****** ****** *)
 
-(*
-val
-waters =
-word_neighbors("water")
-val () =
-println!("waters = ", waters)
-val () = list0_vt_free(waters)
-*)
+typedef wpath = list0(word)
 
 (* ****** ****** *)
-
-typedef
-wpath = list0(word)
 
 extern
 fun
@@ -267,7 +292,7 @@ graph_node_neighbors<node>
 (
 list0_vt2t
 (
-list0_vt_map0<word><node>(word_neighbors(nx0[0]))
+list0_vt_map0<word><node>(word_neighbors_all(nx0[0]))
 )
 ) where
 {

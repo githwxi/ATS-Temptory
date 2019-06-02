@@ -45,7 +45,7 @@ vtypedef lword(n:int) = string_vt(n)
 
 extern
 fun
-is_word(word): bool
+wordq(word): bool
 
 (* ****** ****** *)
 
@@ -74,16 +74,16 @@ ignoret
 in
 
 implfun
-is_word(w0) = isneqz(hsearch_find(w0))
+wordq(w0) = isneqz(hsearch_find(w0))
 
 end // end of [local]
 
 (* ****** ****** *)
 
 (*
-val () = assertloc(is_word("zephyr"))
-val () = assertloc(is_word("zucchini"))
-val () = assertloc(is_word("camouflage"))
+val () = assertloc(wordq("zephyr"))
+val () = assertloc(wordq("zucchini"))
+val () = assertloc(wordq("camouflage"))
 *)
 
 (* ****** ****** *)
@@ -148,7 +148,7 @@ else let
 in
   if
   not
-  (is_word(w1))
+  (wordq(w1))
   then auxlst(w0, c0, i0, j0+1)
   else
   let
@@ -176,7 +176,7 @@ let
   val w1 = copy_vt(w0)
   val r0 = auxlst(w1, 0(*i*))
 in
-  let val () = free(g0ofg1(w1)) in r0 end
+  let val () = free(w1) in r0 end
 end
 ) where
 {

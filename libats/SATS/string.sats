@@ -588,6 +588,15 @@ string1_vt_cptrof
 //
 (* ****** ****** *)
 //
+fun
+string1_vt_free
+{n:int}
+(string1_vt(n)): void = "mac#%"
+//
+#symload free with string1_vt_free
+//
+(* ****** ****** *)
+//
 fun{}
 string1_vt_get_at_sint
 {n:int}

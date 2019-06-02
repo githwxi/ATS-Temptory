@@ -54,6 +54,8 @@ atspre_string_equal
 //
 #define \
 temptory_string0_vt_free(cs) ATS_MFREE(cs)
+#define \
+temptory_string1_vt_free(cs) ATS_MFREE(cs)
 //
 /* ****** ****** */
 
