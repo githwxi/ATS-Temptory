@@ -32,6 +32,17 @@ implfun main0() = ()
 (* ****** ****** *)
 
 typedef word = string
+typedef wpath = list0(word)
+
+(* ****** ****** *)
+
+extern
+fun
+doublet
+(w0: word, w1: word): optn_vt(wpath)
+
+(* ****** ****** *)
+
 typedef word(n:int) = string(n)
 vtypedef lword(n:int) = string_vt(n)
 
@@ -89,6 +100,12 @@ val () = assertloc(legalq("zucchini"))
 
 (* ****** ****** *)
 
+extern
+fun
+word_neighbors
+(w0: word): list0_vt(word)
+
+(* ****** ****** *)
 //
 #define N 26
 //
@@ -101,11 +118,11 @@ letter
 fun
 word_neighbors_at
 {n:int}
-{i:nat | i < n}
+{i:nat|i < n}
 ( w0
 : !lword(n)
 , i0: int(i)
-) : list0_vt(string(n)) =
+) : list0_vt(word(n)) =
 (
 //
 let
@@ -128,7 +145,7 @@ auxlst
 , c0: char
 , i0: int(i)
 , j0: int(j)
-) : list0_vt(string(n)) =
+) : list0_vt(word(n)) =
 (
 if
 (j0 < N)
@@ -141,7 +158,7 @@ then
 auxlst(w0, c0, i0, j0+1)
 else let
   val () = (w0[i0] := c1)
-  val w1 = $UN.castvwtp1{string(n)}(w0)
+  val w1 = $UN.castvwtp1{word(n)}(w0)
 (*
   val () = println!("i0 = ", i0)
   val () = println!("j0 = ", j0)
@@ -168,11 +185,8 @@ else list0_vt_nil()
 //
 (* ****** ****** *)
 
-fun
-word_neighbors_all
-(
-w0: word
-) : list0_vt(word) =
+implement
+word_neighbors(w0) =
 (
 let
   val w1 = copy_vt(w0)
@@ -190,7 +204,7 @@ end
   {i:nat | i <= n}
   ( w1
   : !lword(n)
-  , i0: int(i)): list0_vt(string(n)) =
+  , i0: int(i)): list0_vt(word(n)) =
   (
   if
   (i0 < n0)
@@ -198,18 +212,6 @@ end
   else list0_vt_nil()
   )
 }
-
-(* ****** ****** *)
-
-typedef wpath = list0(word)
-
-(* ****** ****** *)
-
-extern
-fun
-doublet
-( w0: word
-, w1: word): optn_vt(wpath)
 
 (* ****** ****** *)
 
@@ -292,7 +294,7 @@ graph_node_neighbors<node>
 (
 list0_vt2t
 (
-list0_vt_map0<word><node>(word_neighbors_all(nx0[0]))
+list0_vt_map0<word><node>(word_neighbors(nx0[0]))
 )
 ) where
 {

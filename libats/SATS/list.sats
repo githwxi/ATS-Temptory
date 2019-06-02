@@ -307,6 +307,13 @@ list0_forall
 fun
 {x0:tflt}
 list0_forall$test(x0): bool
+fun
+{x0:tflt}
+list0_exists
+(xs: list0(INV(x0))): bool
+fun
+{x0:tflt}
+list0_exists$test(x0): bool
 //
 (* ****** ****** *)
 //

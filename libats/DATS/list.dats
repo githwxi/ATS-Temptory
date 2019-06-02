@@ -744,6 +744,26 @@ case+ xs of
 
 impltmp
 {x0}//tmp
+list0_exists(xs) =
+  (loop(xs)) where
+{
+//
+fun
+loop
+(xs: list0(x0)): bool =
+(
+case+ xs of
+| list0_nil() => ff
+| list0_cons(x0, xs) =>
+  if
+  list0_exists$test<x0>(x0) then tt else loop(xs)
+)
+} (* end of [list0_exists] *)
+
+(* ****** ****** *)
+
+impltmp
+{x0}//tmp
 list0_foreach(xs) =
   (loop(xs)) where
 {
