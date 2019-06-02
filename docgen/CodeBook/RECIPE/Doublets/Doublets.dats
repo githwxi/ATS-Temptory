@@ -8,8 +8,8 @@ Author: HX-2019-06-01
 
 (*
 How to compile:
-tempacc -O2 -DATS_MEMALLOC_LIBC -o Doublet_dats Doublet.dats 
-How to test it: ./Doublet_dats
+tempacc -O2 -DATS_MEMALLOC_LIBC -o Doublets_dats Doublets.dats 
+How to test it: ./Doublets_dats
 *)
 
 (* ****** ****** *)
@@ -357,4 +357,4 @@ ATSdynexn_dec(temptory_056___ArraySubscriptExn) ;
 
 (* ****** ****** *)
 
-(* end of [Doublet.dats] *)
+(* end of [Doublets.dats] *)

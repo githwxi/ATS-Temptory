@@ -19,11 +19,11 @@ TEMPOPT=$(TEMPTORY)/bin/tempopt
 
 ######
 
-all:: Doublet_dats
+all:: Doublets_dats
 
 ######
 
-regress:: Doublet_dats; ./$<
+regress:: Doublets_dats; ./$<
 
 ######
 
@@ -41,7 +41,7 @@ clean:: ; $(RMF) *_?ats.o
 clean:: ; $(RMF) *_?ats.c
 
 cleanall:: clean
-cleanall:: ; $(RMF) Doublet_dats
+cleanall:: ; $(RMF) Doublets_dats
 
 ######
 
