@@ -160,6 +160,13 @@ list0_vt_forall0
 fun
 {x0:vtflt}
 list0_vt_forall0$test(x0: x0): bool
+fun
+{x0:vtflt}
+list0_vt_exists0
+(xs: list0_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+list0_vt_exists0$test(x0: x0): bool
 //
 fun
 {x0:vtflt}
@@ -344,6 +351,13 @@ list0_vt_forall1
 fun
 {x0:vtflt}
 list0_vt_forall1$test(!x0): bool
+fun
+{x0:vtflt}
+list0_vt_exists1
+(xs: !list0_vt(INV(x0))): bool
+fun
+{x0:vtflt}
+list0_vt_exists1$test(!x0): bool
 //
 fun
 {x0:vtflt}
@@ -354,6 +368,7 @@ fun
 list0_vt_foreach1$work(!x0): void
 //
 #symload forall1 with list0_vt_forall1
+#symload exists1 with list0_vt_exists1
 #symload foreach1 with list0_vt_foreach1
 //
 (* ****** ****** *)

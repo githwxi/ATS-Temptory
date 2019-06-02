@@ -104,8 +104,8 @@ chosen word).  Let W1 be the last word on NX0. Extending NX0 with
 another word W2 that is one-step related to W1 forms another node NX1
 that is a considered a neighbor of NX0.
 
-The third part of the code implements a graph-based search to see if a
-path exists between two given words. A template-based implementation
+The third part of the code implements a graph-based search to check if
+a path exists between two given words. A template-based implementation
 for graph-based search is available in the library:
 
 ```ats
@@ -200,11 +200,11 @@ circles).  The template `graph_node_mark` is for marking and
 `graph_node_is_marked` for checking if a node is marked. Theoretically
 speaking, if no marking is done here, the search is still able to find
 a path connecting two given words as long as such a path exists. But
-the the search space is so big that the search probably never returns
-once the path is long (e.g., containing a dozen words).
+the search space can become so big that the search probably never
+returns once the path is long (e.g., containing a dozen words).
 
-Again, please find the entirety of the code implementing Doublets can
-be found [here](./Doublet.dats).
+Again, please find the entirety of the code implementing Doublets
+[here](./Doublet.dats).
 
 Happy programming in ATS-Temptory!!!
 

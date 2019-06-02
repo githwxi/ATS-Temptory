@@ -387,6 +387,20 @@ case+ xs of
 
 impltmp
 {x0}//tmp
+list0_vt_exists0(xs) =
+(
+not(list0_vt_forall0<x0>(xs))
+) where
+{
+impltmp
+list0_vt_forall0$test<x0>(x0) = 
+not(list0_vt_exists0$test<x0>(x0))
+} (* end of [list0_vt_exists0] *)
+
+(* ****** ****** *)
+
+impltmp
+{x0}//tmp
 list0_vt_foreach0
   (xs) =
   (loop(xs)) where
@@ -615,18 +629,34 @@ loop
 (xs: !list0_vt(x0)): bool =
 (
 case+ xs of
-| list0_vt_nil() => true
-| list0_vt_cons(x0, xs) =>
-  let
-  val
-  test =
-  list0_vt_forall1$test<x0>(x0)
-  in
-    if test then loop(xs) else false
-  end // end of [list0_vt_cons]
+|
+list0_vt_nil() => true
+|
+list0_vt_cons(x0, xs) =>
+let
+val
+test =
+list0_vt_forall1$test<x0>(x0)
+in
+  if test then loop(xs) else false
+end // end of [list0_vt_cons]
 ) (* end of [loop] *)
 //
 } (* end of [list0_vt_forall1] *)
+
+(* ****** ****** *)
+
+impltmp
+{x0}//tmp
+list0_vt_exists1(xs) =
+(
+not(list0_vt_forall1<x0>(xs))
+) where
+{
+impltmp
+list0_vt_forall1$test<x0>(x0) = 
+not(list0_vt_exists1$test<x0>(x0))
+} (* end of [list0_vt_exists1] *)
 
 (* ****** ****** *)
 

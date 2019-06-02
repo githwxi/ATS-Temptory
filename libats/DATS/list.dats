@@ -44,6 +44,7 @@
 (* ****** ****** *)
 
 #staload "./../SATS/gint.sats"
+#staload "./../SATS/bool.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
 #staload "./../SATS/list_vt.sats"
@@ -741,7 +742,20 @@ case+ xs of
 } (* end of [list0_forall] *)
 
 (* ****** ****** *)
-
+//
+impltmp
+{x0}//tmp
+list0_exists(xs) =
+(
+not(list0_forall<x0>(xs))
+) where
+{
+impltmp
+list0_forall$test<x0>(x0) = 
+not(list0_exists$test<x0>(x0))
+} (* end of [list0_exists] *)
+//
+(*
 impltmp
 {x0}//tmp
 list0_exists(xs) =
@@ -759,7 +773,8 @@ case+ xs of
   list0_exists$test<x0>(x0) then tt else loop(xs)
 )
 } (* end of [list0_exists] *)
-
+*)
+//
 (* ****** ****** *)
 
 impltmp
