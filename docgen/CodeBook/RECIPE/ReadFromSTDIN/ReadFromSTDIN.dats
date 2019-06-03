@@ -13,11 +13,13 @@ echo() = let
   loop(xs: stream_vt(string)): void =
   (
     case+ !xs of
-    | ~stream_vt_nil() => ()
-    | ~stream_vt_cons(x, xs) => (println!(x); loop(xs))
+    | ~stream_vt_nil() =>
+       ((*nothing*))
+    | ~stream_vt_cons(x, xs) =>
+       (println!(x); loop(xs))
   )
 in
-  loop(streamize_fileref_line(stdin_ref))
+  loop(FILEref_streamize_line(the_stdin()))
 end //  end of [echo]
 *)
 

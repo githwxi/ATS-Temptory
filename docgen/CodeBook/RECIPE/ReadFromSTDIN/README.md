@@ -15,15 +15,17 @@ echo() = let
   loop(xs: stream_vt(string)): void =
   (
     case+ !xs of
-    | ~stream_vt_nil() => ()
-    | ~stream_vt_cons(x, xs) => (println!(x); loop(xs))
+    | ~stream_vt_nil() =>
+       ((*nothing*))
+    | ~stream_vt_cons(x, xs) =>
+       (println!(x); loop(xs))
   )
 in
-  loop(streamize_fileref_line(stdin_ref))
+  loop(FILEref_streamize_line(the_stdin()))
 end //  end of [echo]
 ```
 
-The function `streamize_fileref_line` is often referred to as a
+The function `FILEref_streamize_line` is often referred to as a
 streamization function, which in this case turns a given file handle
 (of the type `FILEref`) into a linear stream of strings such that
 each string in the stream represents one line of input received from the
@@ -46,7 +48,12 @@ tally(): int = let
         val () =
         if isneqz(x) then prompt()
       in
-        loop(xs, res+g0string2int(x))
+//
+// HX-2019-06:
+// [atoi] converts a given string into
+// the int it represents
+//
+        loop(xs, res+$extfcall(int, "atoi", x))
       end
   ) (* end of [loop] *)
 
@@ -54,17 +61,20 @@ tally(): int = let
   prompt(): void =
   println!
   ("Please input more or type Ctrl-D:")
+
 in
   println!("Please input one integer:");
-  loop(streamize_fileref_line(stdin_ref), 0)
+  loop(FILEref_streamize_line(the_stdin()), 0)
+end // end of [tally]
 end // end of [tally]
 ```
-Note that the function `isneqz` checks whether a
-given string is empty and the function `g0string2int`
-converts a given string into the int-value it represents.
+
+Note that the function `isneqz` checks whether a given string is empty
+and the external libc function `atoi` (declared in stdlib.h) converts
+a given string into the int-value it represents.
 
 As far as I can tell, linear streams are so far a programming feature
 that is only available in ATS. I will gradually present more examples
 involving linear streams.
   
-Happy programming in ATS!!!
+Happy programming in Temptory!!!
