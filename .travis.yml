@@ -66,6 +66,7 @@ script:
   - (cd libats/temp/TEST && make -f Makefile testall)
   - (cd libats/temp/bucs320/TEST && make -f Makefile testall)
   - (cd libats/temp/bucs520/TEST && make -f Makefile testall)
+  - (cd docgen/UNSORTED/CODE && make -f Makefile testall)
   - (cd docgen/CodeBook/RECIPE && make -f Makefile_test testall)
   - (cd contrib/githwxi/TEST00 && make -f Makefile testall)
   - (cd contrib/githwxi/TEST01 && make -f Makefile testall)
