@@ -286,7 +286,8 @@ sortdef uint8 =
 // end of [uint8]
 //
 abstflt
-char_t0ype = $extype"atstype_char"
+char_t0ype =
+$extype"atstype_char"
 abstflt
 char_int_t0ype(c:int) = char_t0ype
 //
@@ -299,7 +300,8 @@ typedef CharNZ = [c:sint8|c != 0] char(c)
 // signed characters
 //
 abstflt
-schar_t0ype = $extype"atstype_schar"
+schar_t0ype =
+$extype"atstype_schar"
 abstflt
 schar_int_t0ype(c:int) = schar_t0ype
 //
@@ -312,7 +314,8 @@ typedef scharNZ = [c:sint8|c != 0] schar(c)
 // unsigned characters
 //
 abstflt
-uchar_t0ype = $extype"atstype_uchar"
+uchar_t0ype =
+$extype"atstype_uchar"
 abstflt
 uchar_int_t0ype(c:int) = uchar_t0ype
 //
@@ -324,13 +327,15 @@ typedef ucharNZ = [c:uint8 | c != 0] uchar(c)
 (* ****** ****** *)
 //
 typedef
-charptr:tbox =
-$extype"atstype_string"
+charptr:tbox = $extype"charptr"
+typedef
+charptrptr:tbox = $extype"charptrptr"
 //
 (* ****** ****** *)
 //
 abstbox
-string_t1ype = charptr
+string_t1ype =
+$extype"atstype_string"
 abstbox
 string_int_t1ype(n: int) = string_t1ype
 //

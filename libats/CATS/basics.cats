@@ -50,6 +50,7 @@
 /* ****** ****** */
 
 typedef char *charptr;
+typedef char **charptrptr;
 
 /* ****** ****** */
 

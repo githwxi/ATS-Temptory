@@ -41,6 +41,7 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/print.sats"
+#staload "./../SATS/list_vt.sats"
 #staload "./../SATS/stream_vt.sats"
 //
 #staload UN = "./../SATS/unsafe.sats"
@@ -1217,6 +1218,60 @@ end (* end of [gseq_z2map_rlist] *)
 (* ****** ****** *)
 //
 // HX-2019-05-28: crossing
+//
+(* ****** ****** *)
+//
+impltmp
+{xs}{x0}
+{ys}{y0}
+gseq_x2forall(xs, ys) =
+(
+  loop2(xs, ys)
+) where
+{
+val xs =
+gseq_listize<xs><x0>(xs)
+val ys =
+gseq_listize<ys><y0>(ys)
+//
+vtypedef xs = list0_vt(x0)
+vtypedef ys = list0_vt(y0)
+//
+fun
+loop1(x0: x0, ys: !ys): bool =
+(
+case+ ys of
+| list0_vt_nil() => true
+| list0_vt_cons(y0, ys) =>
+  (
+  if
+  test
+  then loop1(x0, ys) else false
+  ) where
+  {
+    val
+    test =
+    gseq_x2forall$test<x0,y0>(x0, y0)
+  } (* end of [list0_vt_cons] *)
+)
+fun
+loop2(xs: xs, ys: ys): bool =
+(
+case+ xs of
+| ~list0_vt_nil() =>
+   (list0_vt_free<y0>(ys); true)
+| ~list0_vt_cons(x0, xs) =>
+   if
+   loop1(x0, ys)
+   then
+   loop2(xs, ys)
+   else
+   let
+   val () = list0_vt_free<x0>(xs)
+   val () = list0_vt_free<y0>(ys) in false
+   end (* list0_vt_cons *)
+)
+} (* end of [gseq_x2forall] *)
 //
 (* ****** ****** *)
 //

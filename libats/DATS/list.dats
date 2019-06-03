@@ -1472,6 +1472,21 @@ list1_length(xs) =
 
 impltmp
 {x0}(*tmp*)
+list1_head(xs) =
+(
+case+ xs of list1_cons(x0, xs) => x0
+)
+impltmp
+{x0}(*tmp*)
+list1_tail(xs) =
+(
+case+ xs of list1_cons(x0, xs) => xs
+)
+
+(* ****** ****** *)
+
+impltmp
+{x0}(*tmp*)
 list1_get_at
   (xs, i0) =
 (

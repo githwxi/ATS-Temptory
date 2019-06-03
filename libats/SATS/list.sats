@@ -619,14 +619,21 @@ list0_quicksort$cmp(x1: a, x2: a): int(*sgn*)
 //
 (* ****** ****** *)
 //
+castfn
+list1_vt2t
+{a:tflt}{n:int}
+(list1_vt(INV(a),n)):<>list1(a,n)
+//
+(* ****** ****** *)
+//
 fun{}
 list1_iseqz
 {x0:tflt}{n:int}
-(xs: list1(x0, n)):<> bool(n==0)
+(list1(INV(x0), n)):<> bool(n==0)
 fun{}
 list1_isneqz
 {x0:tflt}{n:int}
-(xs: list1(x0, n)):<> bool(n > 0)
+(list1(INV(x0), n)):<> bool(n > 0)
 //
 #symload iseqz with list1_iseqz
 #symload isneqz with list1_isneqz
@@ -647,6 +654,19 @@ list1_length
 #symload size with list1_size
 #symload length with list1_length
 //
+(* ****** ****** *)
+
+fun
+{x0:tflt}
+list1_head
+{n:int|n > 0}
+(xs: list1(INV(x0), n)): x0
+fun
+{x0:tflt}
+list1_tail
+{n:int|n > 0}
+(xs: list1(INV(x0), n)): list1(x0, n-1)
+
 (* ****** ****** *)
 //
 fun

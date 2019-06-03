@@ -62,14 +62,17 @@ ref_make_elt(a): ref(a)
 #symload ref with ref_make_elt
 //
 (* ****** ****** *)
-
+//
 fun
 {a:tflt0}
 ref_get_elt(r: ref(a)): (a)
 fun
 {a:tflt0}
 ref_set_elt(r: ref(a), x: a): void
-
+//
+#symload [] with ref_get_elt
+#symload [] with ref_set_elt
+//
 (* ****** ****** *)
 //
 fun
