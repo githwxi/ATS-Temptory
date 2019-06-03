@@ -57,6 +57,9 @@ script:
   # Build tempacc
   - (cd utils/tempacc&&make copy build)
   - (cp utils/tempacc/BUILD/tempacc bin/.)
+  # Build mytempacc
+  - (cd utils/mytempacc&&make copy build)
+  - (cp utils/mytempacc/BUILD/mytempacc bin/.)
   # Testing of all sorts
   - echo 'running unit-tests...'
   - (cd libats/libc/TEST && make -f Makefile testall)

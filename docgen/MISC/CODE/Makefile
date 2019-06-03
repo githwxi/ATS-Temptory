@@ -62,6 +62,7 @@ regress:: QueenPuzzle_vt_dats; ./QueenPuzzle_vt_dats
 ######
 
 clean:: ; $(RMF) *~
+clean:: ; $(RMF) a.out
 clean:: ; $(RMF) *_?ats.c
 
 cleanall:: clean
