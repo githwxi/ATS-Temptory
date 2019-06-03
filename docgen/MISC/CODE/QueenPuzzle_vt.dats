@@ -9,7 +9,7 @@
 How to test:
 ./QueenPuzzle_vt
 How to compile:
-tempacc -D_GNU_SOURCE -DATS_MEMALLOC_LIBC QueenPuzzle_vt.dats  -o QueenPuzzle_vt
+mytempacc QueenPuzzle_vt.dats -o QueenPuzzle_vt
 *)
 
 (* ****** ****** *)

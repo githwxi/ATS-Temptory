@@ -103,7 +103,7 @@ let val () = lazy_vt_free(xss) in (*freed*) end
 )
 //
 fun
-revapp
+revappb
 ( xs:
   list0_vt(a)
 , ys:
@@ -112,7 +112,7 @@ revapp
 case+ ys of
 | list0_vt_nil() => xs
 | list0_vt_cons(y0, ys) =>
-  revapp(list0_vt_cons(y0, xs), ys)
+  revappb(list0_vt_cons(y0, xs), ys)
 )
 //
 fun
@@ -159,7 +159,7 @@ case+ xs of
  let
  val xs = copy(xs)
  in
- mcons(x0, auxmain(revapp(xs, ys)))
+ mcons(x0, auxmain(revappb(xs, ys)))
  end
  ,
  auxmain2(xs, list0_vt_cons(x0, ys))
