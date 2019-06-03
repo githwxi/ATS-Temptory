@@ -103,5 +103,17 @@ fun
 stream_foreach$work(x0): void
 //
 (* ****** ****** *)
+//
+fun
+{x0:tflt}
+{r0:vtflt}
+stream_foldleft
+(xs: stream(INV(x0)), r0): r0
+fun
+{x0:tflt}
+{r0:vtflt}
+stream_foldleft$fopr(r0, x0): r0
+//
+(* ****** ****** *)
 
 (* end of [stream.sats] *)

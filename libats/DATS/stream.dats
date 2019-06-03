@@ -193,10 +193,33 @@ case+ !xs of
 | stream_nil() => ()
 | stream_cons(x0, xs) =>
   let
-    val () = stream_foreach$work<x0>(x0) in loop(xs)
+  val () = stream_foreach$work<x0>(x0) in loop(xs)
   end // end of [stream_cons]
 )
 } (* end of [stream_foreach] *)
+
+(* ****** ****** *)
+
+impltmp
+{x0}{r0}
+stream_foldleft
+  (xs, r0) =
+  (loop(xs, r0)) where
+{
+//
+fun
+loop
+(xs: stream(x0), r0: r0): r0 =
+(
+case+ !xs of
+| stream_nil() => r0
+| stream_cons(x0, xs) =>
+  let
+    val r0 =
+    stream_foldleft$fopr<x0><r0>(r0, x0) in loop(xs, r0)
+  end // end of [stream_cons]
+)
+} (* end of [stream_foldleft] *)
 
 (* ****** ****** *)
 

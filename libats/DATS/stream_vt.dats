@@ -542,6 +542,30 @@ case+ !xs of
 (* ****** ****** *)
 
 impltmp
+{x0}{r0}
+stream_vt_foldleft0
+  (xs, r0) =
+  (loop(xs, r0)) where
+{
+fun
+loop
+(xs: stream_vt(x0), r0: r0): r0 =
+(
+case+ !xs of
+|
+~stream_vt_nil() => r0
+|
+~stream_vt_cons(x0, xs) =>
+ let
+ val r0 =
+ stream_vt_foldleft0$fopr<x0><r0>(r0, x0) in loop(xs, r0)
+ end // end of [stream_vt_cons]
+) (* end of [loop] *)
+} (* end of [stream_vt_foldleft0] *)
+
+(* ****** ****** *)
+
+impltmp
 {x0}(*tmp*)
 stream_vt_iforall0
   (xs) =

@@ -200,6 +200,18 @@ stream_vt_foreach0$work(x0): void
 //
 fun
 {x0:vtflt}
+{r0:vtflt}
+stream_vt_foldleft0
+(xs: stream_vt(INV(x0)), r0): r0
+fun
+{x0:vtflt}
+{r0:vtflt}
+stream_vt_foldleft0$fopr(r0, x0): r0
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 stream_vt_iforall0
 (xs: stream_vt(INV(x0))): bool
 fun
