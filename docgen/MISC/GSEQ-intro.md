@@ -43,16 +43,16 @@ to as a combinator.
   It is for processing a given sequence in its entirety and returning
   the accumulated result at the end
   
-* **map_list**: It is for applying a give function to each element in a
+* **map_list**: It is for applying a given function to each element in a
   given sequence and returning a linear list consisting of the results
   of these applications in the order as they are produced.
   
-* **map_rlist**: It is for applying a give function to each element in a
+* **map_rlist**: It is for applying a given function to each element in a
   given sequence and returning a linear list consisting of the results
   of these applications in the reverse order as they are produced.
 
 * **map_stream**:
-  It is for lazily applying a give function to each element in a given
+  It is for lazily applying a given function to each element in a given
   sequence and returning a linear stream consisting of the results of
   these applications in the order as they are produced.
 

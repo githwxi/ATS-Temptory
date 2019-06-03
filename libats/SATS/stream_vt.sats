@@ -310,5 +310,22 @@ fun
 stream_vt_z2forall$test(x0, y0): bool
 //
 (* ****** ****** *)
+//
+fun
+{x0
+,y0:vtflt}
+{z0:vtflt}
+stream_vt_z2map$fopr(x0, y0): z0
+fun
+{x0
+,y0:vtflt}
+{z0:vtflt}
+stream_vt_z2map
+( xs
+: stream_vt(INV(x0))
+, ys
+: stream_vt(INV(y0))): stream_vt(z0)
+//
+(* ****** ****** *)
 
 (* end of [stream_vt.sats] *)

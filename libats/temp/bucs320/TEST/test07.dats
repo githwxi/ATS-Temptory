@@ -22,13 +22,16 @@ implfun main1() = (0)
 //
 val xs =
 g0ofg1
-($list1{int}(1,2,3,4,5))
-//
+($list1{int}(1,2,3,4,5,6))
 val ys = list0_permute(xs)
 val ys = stream_vt_listize(ys)
+val n0 =
+(
+fix
+f(x:int):int =>
+if x > 0 then x*f(x-1) else 1)(6)
 val () =
-println!("permute", xs, " = ", ys)
-//
+assertloc(length(ys) = n0)
 val ((*freed*)) = list0_vt_free(ys)
 //
 (* ****** ****** *)

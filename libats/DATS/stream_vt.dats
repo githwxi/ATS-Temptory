@@ -945,4 +945,95 @@ end // end of [let]
 
 (* ****** ****** *)
 
+impltmp
+{x0,y0}
+stream_vt_z2forall
+(xs, ys) =
+(
+auxmain(xs, ys)
+) where
+{
+fun
+auxmain
+( xs
+: stream_vt(x0)
+, ys
+: stream_vt(y0)): bool =
+(
+case+ !xs of
+|
+~stream_vt_nil() =>
+ (~ys; true)
+|
+~stream_vt_cons(x0, xs) =>
+ (
+ case+ !ys of
+ |
+ ~stream_vt_nil() =>
+  let
+  val () =
+  gfree$val<x0>(x0) in ~xs; true
+  end
+ |
+ ~stream_vt_cons(y0, ys) =>
+  let
+  val
+  test =
+  stream_vt_z2forall$test<x0,y0>(x0, y0)
+  in
+    if test then auxmain(xs, ys) else (~xs; ~ys; false)
+  end
+ )
+)
+} (* stream_vt_z2forall *)
+
+(* ****** ****** *)
+
+impltmp
+{x0,y0}{z0}
+stream_vt_z2map
+(xs, ys) =
+(
+auxmain(xs, ys)
+) where
+{
+fun
+auxmain
+( xs
+: stream_vt(x0)
+, ys
+: stream_vt(y0)
+) : stream_vt(z0) = $ldelay
+(
+case+ !xs of
+|
+~stream_vt_nil() =>
+ let
+ val () = ~ys in stream_vt_nil()
+ end
+|
+~stream_vt_cons(x0, xs) =>
+ (
+ case+ !ys of
+ |
+ ~stream_vt_nil() =>
+  let
+  val () = gfree$val<x0>(x0)
+  val () = ~xs in stream_vt_nil() end
+ |
+ ~stream_vt_cons(y0, ys) =>
+  let
+  val z0 =
+  stream_vt_z2map$fopr<x0,y0>(x0, y0)
+  in
+    stream_vt_cons(z0, auxmain(xs, ys))
+  end
+ )
+,
+let val () = ~xs and () = ~ys in (*freed*) end
+)
+} (* end of [stream_vt_z2map] *)
+
+(* ****** ****** *)
+
 (* end of [stream_vt.dats] *)
