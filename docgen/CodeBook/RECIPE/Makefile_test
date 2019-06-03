@@ -9,6 +9,8 @@ SUBDIRS += ./Hello
 SUBDIRS += ./Doublets
 SUBDIRS += ./Game-of-24
 SUBDIRS += ./LongestLine
+SUBDIRS += ./ReadFromSTDIN
+SUBDIRS += ./ReadFromSTDIN2
 SUBDIRS += ./WordFrqncyCnt
 SUBDIRS += ./WordFrqncyCnt_vt
 

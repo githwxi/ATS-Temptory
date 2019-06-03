@@ -9,7 +9,7 @@ Author: HX-2019-05-31
 
 (*
 How to compile:
-tempacc -O2 -DATS_MEMALLOC_LIBC -o LongestLine_dats LongestLine.dats
+mytempacc -O2 -o LongestLine_dats LongestLine.dats
 How to test it:
 wget -q -O - "http://www.gutenberg.org/files/2701/2701-0.txt" | ./LongestLine_dats
 *)

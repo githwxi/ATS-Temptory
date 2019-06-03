@@ -8,7 +8,7 @@ Author: HX-2019-06-01
 
 (*
 How to compile:
-tempacc -O2 -DATS_MEMALLOC_LIBC -o Game-of-24_dats Game-of-24.dats 
+mytempacc -O2 -o Game-of-24_dats Game-of-24.dats 
 How to test it: ./Game-of-24_dats 
 *)
 

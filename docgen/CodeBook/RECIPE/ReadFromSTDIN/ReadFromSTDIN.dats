@@ -7,6 +7,14 @@
 (* ****** ****** *)
 
 (*
+How to compile:
+mytempacc -O2 -o ReadFromSTDIN_dats ReadFromSTDIN.dats 
+How to test it: ./ReadFromSTDIN_dats
+*)
+
+(* ****** ****** *)
+
+(*
 fun
 echo() = let
   fun

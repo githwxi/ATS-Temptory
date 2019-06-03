@@ -46,7 +46,7 @@ There is a Makefile provide for compiling the code. One can also use
 the following command-line for compilation:
 
 ```shell
-tempacc -o Hello_dats Hello.dats
+mytempacc -o Hello_dats Hello.dats
 ```
 
 which should generate an executable of the name *Hello_dats*. By executing

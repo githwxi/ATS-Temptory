@@ -6,6 +6,14 @@
 
 (* ****** ****** *)
 
+(*
+How to compile:
+mytempacc -O2 -o ReadFromSTDIN2_dats ReadFromSTDIN2.dats 
+How to test it: ./ReadFromSTDIN2_dats
+*)
+
+(* ****** ****** *)
+
 fun
 prompts
 (

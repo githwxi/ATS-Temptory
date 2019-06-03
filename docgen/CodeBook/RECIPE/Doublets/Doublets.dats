@@ -8,7 +8,7 @@ Author: HX-2019-06-01
 
 (*
 How to compile:
-tempacc -O2 -DATS_MEMALLOC_LIBC -o Doublets_dats Doublets.dats 
+mytempacc -O2 -o Doublets_dats Doublets.dats 
 How to test it: ./Doublets_dats
 *)
 

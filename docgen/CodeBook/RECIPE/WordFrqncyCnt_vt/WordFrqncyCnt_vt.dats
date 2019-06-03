@@ -8,7 +8,7 @@ Author: HX-2019-05-25
 
 (*
 How to compile:
-tempacc -O2 -DATS_MEMALLOC_LIBC -o WordFrqncyCnt_vt_dats WordFrqncyCnt_vt.dats 
+mytempacc -O2 -o WordFrqncyCnt_vt_dats WordFrqncyCnt_vt.dats 
 How to test it:
 wget -q -O - "http://www.gutenberg.org/files/2701/2701-0.txt" | ./WordFrqncyCnt_vt_dats 
 How to test for memory-cleaness:
