@@ -163,6 +163,15 @@ list0_take
 //
 fun
 {x0:tflt}
+list0_copy_vt
+(xs: list0(INV(x0))): list0_vt(x0)
+//
+#symload copy_vt with list0_copy_vt
+//
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
 list0_extend
 ( xs
 : list0(INV(x0)), x0: x0): list0(x0)
@@ -298,6 +307,10 @@ fun
 list0_streamize
 (xs: list0(INV(x0))): stream_vt(x0)
 //
+#symload listize with list0_listize
+#symload rlistize with list0_rlistize
+#symload streamize with list0_streamize
+//
 (* ****** ****** *)
 //
 fun
@@ -315,6 +328,9 @@ fun
 {x0:tflt}
 list0_exists$test(x0): bool
 //
+#symload forall with list0_forall
+#symload exists with list0_exists
+//
 (* ****** ****** *)
 //
 fun
@@ -324,6 +340,8 @@ list0_foreach
 fun
 {x0:tflt}
 list0_foreach$work(x0): void
+//
+#symload foreach with list0_foreach
 //
 (* ****** ****** *)
 //

@@ -300,6 +300,12 @@ case+ xs of
 } (* end of [list0_take] *)
 
 (* ****** ****** *)
+
+impltmp
+{x0}(*tmp*)
+list0_copy_vt(xs) = list0_listize<x0>(xs)
+
+(* ****** ****** *)
 //
 impltmp
 {x0}//tmp

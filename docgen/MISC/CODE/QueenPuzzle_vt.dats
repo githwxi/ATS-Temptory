@@ -7,7 +7,7 @@
 
 (*
 How to test:
-./QueenPuzzle
+./QueenPuzzle_vt
 How to compile:
 tempacc -D_GNU_SOURCE -DATS_MEMALLOC_LIBC QueenPuzzle_vt.dats  -o QueenPuzzle_vt
 *)
@@ -210,4 +210,3 @@ glseq_iforeach0$work<board>(i, xs) =
 (* ****** ****** *)
 
 (* end of [QueenPuzzle_vt.dats] *)
-
