@@ -249,6 +249,7 @@ regress:: test26_dats; ./test26_dats
 ######
 
 clean:: ; $(RMF) *~
+clean:: ; $(RMF) a.out
 clean:: ; $(RMF) *_?ats.c
 
 cleanall:: clean

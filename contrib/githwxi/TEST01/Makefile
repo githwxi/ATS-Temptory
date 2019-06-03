@@ -77,6 +77,7 @@ regress:: test03_dats; ./test03_dats
 ######
 
 clean:: ; $(RMF) *~
+clean:: ; $(RMF) a.out
 clean:: ; $(RMF) *_?ats.c
 
 cleanall:: clean
