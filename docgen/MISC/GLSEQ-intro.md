@@ -99,11 +99,11 @@ gfree$val<board>(xs) = board_free(xs)
 The rest of the code in
 [QueenPuzzle_vt.dats](./CODE/QueenPuzzle_vt.dats) is simply obtained
 from modifying the code in
-[QueenPuzzle.dats](./CODE/QueenPuzzle.dats). Non-linear types are
-replaced with their linear counterparts. Consequently, combinators on
-these non-linear types are replaced with the corresponding ones on the
-linear types. Note that the entire replacement is guided by the
-type-checking process.
+[QueenPuzzle.dats](./CODE/QueenPuzzle.dats):
+Non-linear types are replaced with their linear counterparts, and,
+consequently, combinators on these non-linear types are replaced with
+the corresponding ones on the linear types. Note that the entire
+replacement is guided by the type-checking process.
 
 ```shell
 valgrind ./QueenPuzzle_vt_dats
