@@ -19,15 +19,18 @@ For testing divconq
 implfun main1() = (0)
 
 (* ****** ****** *)
-
+//
 val xs =
 g0ofg1
 ($list1{int}(1,2,3,4,5))
+//
 val ys = list0_permute(xs)
-val ys = list0_vt2t(listize(ys))
+val ys = stream_vt_listize(ys)
 val () =
 println!("permute", xs, " = ", ys)
-
+//
+val ((*freed*)) = list0_vt_free(ys)
+//
 (* ****** ****** *)
 
 (* end of [test07.dats] *)
