@@ -191,11 +191,12 @@ atspre_argv_set_at
 /* ****** ****** */
 
 #include "libats/CATS/basics_unsafe.cats"
-    
+
 /* ****** ****** */
 
 #if(0)
 ATSdynexn_dec(temptory_056___ListSubscriptExn) ;
+ATSdynexn_dec(temptory_056___StreamSubscriptExn) ;
 ATSdynexn_dec(temptory_056___ArraySubscriptExn) ;
 #endif // #if(0)
 
