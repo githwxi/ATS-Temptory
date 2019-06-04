@@ -35,14 +35,30 @@ val xs2 = cons_vt(0, gcopy$val<xs>(xs1))
 val xs3 = cons_vt(0, gcopy$val<xs>(xs2))
 
 (* ****** ****** *)
-
+//
+(*
 val ( ) = A0[1] := xs1
 val ( ) = A0[2] := xs2
 val ( ) = A0[3] := xs3
 val ( ) = A0[1] := nil_vt()
 val ( ) = A0[2] := nil_vt()
 val ( ) = A0[3] := nil_vt()
-
+*)
+//
+val xs' = A0.lget_at(1)
+val ( ) = list0_vt_free(xs')
+val xs' = A0.lget_at(2)
+val ( ) = list0_vt_free(xs')
+val xs' = A0.lget_at(3)
+val ( ) = list0_vt_free(xs')
+//
+val ( ) = A0.lset_at(1, xs1)
+val ( ) = A0.lset_at(2, xs2)
+val ( ) = A0.lset_at(3, xs3)
+val ( ) = A0.lset_at(1, nil_vt())
+val ( ) = A0.lset_at(2, nil_vt())
+val ( ) = A0.lset_at(3, nil_vt())
+//
 (* ****** ****** *)
 
 (* end of [test20.dats] *)

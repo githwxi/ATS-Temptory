@@ -39,11 +39,6 @@ ATS_PACKNAME "temptory."
 ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
-
-exception
-StreamSubscriptExn of ()
-
-(* ****** ****** *)
 //
 fun
 {x0:vtflt}

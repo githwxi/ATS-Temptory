@@ -34,7 +34,7 @@
 /* ****** ****** */
 
 #ifndef TEMPTORY_LIBC_CATS_DIRENT
-#define TEMPTORY_LIBC_SATS_DIRENT
+#define TEMPTORY_LIBC_CATS_DIRENT
 
 /* ****** ****** */
 
@@ -43,8 +43,10 @@
 
 /* ****** ****** */
 
-typedef DIR atspre_DIR;
-typedef struct dirent atspre_dirent;
+typedef
+DIR temptory_libc_DIR_t;
+typedef
+struct dirent temptory_libc_dirent_t;
 
 /* ****** ****** */
 
@@ -56,21 +58,21 @@ temptory_libc_closedir(dir) closedir(dir)
 /* ****** ****** */
 
 #define \
-temptory_libc_dirent_get_d_ino(ent) (((atspre_dirent*)ent)->d_ino)
+temptory_libc_dirent_get_d_ino(ent) (((struct dirent*)ent)->d_ino)
 #define \
-temptory_libc_direntp_get_d_ino(ent) (((atspre_dirent*)ent)->d_ino)
+temptory_libc_direntp_get_d_ino(ent) (((struct dirent*)ent)->d_ino)
 
 #define \
-temptory_libc_dirent_get_d_name(ent) (((atspre_dirent*)ent)->d_name)
+temptory_libc_dirent_get_d_name(ent) (((struct dirent*)ent)->d_name)
 #define \
-temptory_libc_direntp_get_d_name(ent) (((atspre_dirent*)ent)->d_name)
+temptory_libc_direntp_get_d_name(ent) (((struct dirent*)ent)->d_name)
 
 /* ****** ****** */
 
 #define \
 temptory_libc_readdir(dir) readdir(dir)
 #define \
-temptory_libc_readdir_r(dir, ent, res) readdir_r(dir, ent, (atspre_dirent**)res)
+temptory_libc_readdir_r(dir, ent, res) readdir_r(dir, ent, (struct dirent**)res)
 
 /* ****** ****** */
 
@@ -83,7 +85,7 @@ temptory_libc_rewinddir(dir) rewinddir(dir)
 
 /* ****** ****** */
 
-# endif// #ifndef TEMPTORY_LIBC_CATS_DIRENT
+#endif // #ifndef TEMPTORY_LIBC_CATS_DIRENT
 
 /* ****** ****** */
 

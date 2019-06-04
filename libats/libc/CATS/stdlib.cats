@@ -34,7 +34,7 @@
 /* ****** ****** */
 
 #ifndef TEMPTORY_LIBC_CATS_STDLIB
-#define TEMPTORY_LIBC_SATS_STDLIB
+#define TEMPTORY_LIBC_CATS_STDLIB
 
 /* ****** ****** */
 
@@ -51,7 +51,7 @@ temptory_libc_rand_R(seedp) rand_r(seedp)
 
 /* ****** ****** */
 
-# endif// #ifndef TEMPTORY_LIBC_CATS_STDLIB
+#endif // #ifndef TEMPTORY_LIBC_CATS_STDLIB
 
 /* ****** ****** */
 

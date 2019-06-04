@@ -33,52 +33,17 @@
 //
 /* ****** ****** */
 
-#ifndef TEMPTORY_LIBC_CATS_SIGNAL
-#define TEMPTORY_LIBC_CATS_SIGNAL
+#ifndef TEMPTORY_LIBC_CATS_UNISTD
+#define TEMPTORY_LIBC_CATS_UNISTD
 
 /* ****** ****** */
 
-#include <signal.h>
-
-/* ****** ****** */
-//
-typedef int signum;
-//
-typedef
-struct sigaction
-temptory_libc_sigaction_t;
-typedef void *
-temptory_libc_sighandler_t(signum);
-//
-/* ****** ****** */
-
-#define temptory_libc_signal signal
+#include <unistd.h>
 
 /* ****** ****** */
 
-#define \
-temptory_libc_sigaction_set_handler(SA, f0) \
-(((struct sigaction*)SA)->sa_handler = (void*)f0)
+#endif // #ifndef TEMPTORY_LIBC_CATS_UNISTD
 
 /* ****** ****** */
 
-#define \
-temptory_libc_sigaction sigaction
-#define \
-temptory_libc_sigaction_null(sig, act) \
-temptory_libc_sigaction(sig, act, (struct sigaction*)0)
-
-/* ****** ****** */
-
-#define temptory_libc_sigaddset sigaddset
-#define temptory_libc_sigdelset sigdelset
-#define temptory_libc_sigfillset sigfillset
-#define temptory_libc_sigemptyset sigemptyset
-
-/* ****** ****** */
-
-#endif // #ifndef TEMPTORY_LIBC_CATS_SIGNAL
-
-/* ****** ****** */
-
-/* end of [signal.cats] */
+/* end of [unistd.cats] */

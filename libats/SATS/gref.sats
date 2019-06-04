@@ -77,6 +77,24 @@ ref_set_elt(r: ref(a), x: a): void
 //
 fun
 {a:tflt1}
+ref_lget_elt(r: ref(a)): (a)
+fun
+{a:tflt1}
+ref_lset_elt(r: ref(a), x: a): void
+//
+#symload .lget with ref_lget_elt
+#symload .lset with ref_lset_elt
+//
+(* ****** ****** *)
+
+fun
+{a:vtflt}
+lrf_nullize(lrf: &a? >> a): void
+
+(* ****** ****** *)
+//
+fun
+{a:tflt1}
 ref_foreach(ref(a)): void
 fun
 {a:tflt1}

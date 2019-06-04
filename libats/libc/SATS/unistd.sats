@@ -35,7 +35,7 @@
 
 %{#
 #include \
-"libats/libc/CATS/signal.cats"
+"libats/libc/CATS/unistd.cats"
 %} (* %{# *)
 
 (* ****** ****** *)
@@ -47,54 +47,4 @@ ATS_EXTERN_PREFIX "temptory_libc_"
 
 (* ****** ****** *)
 
-typedef ieqz = sint
-
-(* ****** ****** *)
-
-abstflt signum = int
-
-(* ****** ****** *)
-
-abstflt
-sigaction = // struct
-$extype"temptory_libc_sigaction_t"
-abstbox
-sighandler = // function
-$extype"temptory-libc_sighandler_t"
-
-(* ****** ****** *)
-//
-fun
-sigaction_set_handler
-( SA
-: &sigaction >> _
-, sighandler
-: (signum) -> void): void = "mac#%"
-//
-(* ****** ****** *)
-//
-// HX: succ/fail=0/-1
-//
-fun
-sigaction
-( signal
-: signum
-, newact
-: &sigaction
-, oldact
-: &sigaction? >> opt(sigaction, i==0)
-) : #[i:int | i <= 0] int(i) = "mac#%"
-//
-fun
-sigaction_null
-( signal: signum
-, newact: &sigaction ): ieqz = "mac#%"
-
-(* ****** ****** *)
-
-#macdef
-SIGALRM = $extval(signum, "SIGALRM") // 14
-
-(* ****** ****** *)
-
-(* end of [signal.sats] *)
+(* end of [unistd.sats] *)

@@ -57,9 +57,11 @@ typedef inez = int // succ/fail: ~0/ 0
 (* ****** ****** *)
 //
 abstflt
-DIR = $extype"atspre_DIR"
+DIR =
+$extype"temptory_libc_DIR_t"
 abstflt
-dirent = $extype"atspre_dirent"
+dirent =
+$extype"temptory_libc_dirent_t"
 //
 (* ****** ****** *)
 
