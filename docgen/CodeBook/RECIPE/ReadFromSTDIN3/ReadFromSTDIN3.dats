@@ -25,6 +25,21 @@ impltmp
 FILEref_streamize_ascii
   (inp) =
 (
+  stream_vt_tabulate<int>()
+) where
+{
+  impltmp
+  stream_vt_tabulate$fopr<int>(_) =
+  (
+    $extfcall(int, "fgetc", inp)
+  )
+}
+
+impltmp
+{}//tmp
+FILEref_streamize_ascii
+  (inp) =
+(
   stream_vt_tabulopt<int>()
 ) where
 {
@@ -75,6 +90,11 @@ impltmp
 stream_vt_tabulopt$test<int>(c0) = (c0 >= ~1)
 }
 
+impltmp
+FILEref_streamize_ascii$alarm_start<>() = alarm(0u)
+impltmp
+FILEref_streamize_ascii$alarm_cancel<>() = alarm(0u)
+
 (* ****** ****** *)
 
 implfun
@@ -99,8 +119,6 @@ FILEref_streamize_ascii(the_stdin())
 {
 impltmp
 FILEref_streamize_ascii$alarm_start<>() = alarm(1u)
-impltmp
-FILEref_streamize_ascii$alarm_cancel<>() = alarm(0u)
 }
 //
 in
