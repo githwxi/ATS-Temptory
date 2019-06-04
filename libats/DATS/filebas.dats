@@ -137,7 +137,14 @@ in
 end
 else stream_vt_nil()
 end
-, () // HX: [FILEref_close] is not called!
+,
+//
+(*
+HX:
+[FILEref_close] is not called!
+*)
+//
+let val () = () in (*nothing*) end
 )
 } (* end of [FILEref_streamize_char] *)
 
