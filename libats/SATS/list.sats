@@ -574,19 +574,19 @@ list0_compare
 (* ****** ****** *)
 //
 fun
-{a:tflt}
-list0_nchoose
-( xs
-: list0(INV(a))
-, n0: Intgte(0))
-: stream_vt(list0(a))
+{x0,y0:tflt}
+list0_z2forall
+(list0(x0), list0(y0)): bool
 fun
-{a:tflt}
-list0_nchoose_rest
-( xs
-: list0(INV(a))
-, n0: Intgte(0))
-: stream_vt(tup(list0(a), list0(a)))
+{x0,y0:tflt}
+list0_z2forall$test(x0, y0): bool
+fun
+{x0,y0:tflt}
+list0_z2foreach
+(list0(x0), list0(y0)): void
+fun
+{x0,y0:tflt}
+list0_z2foreach$work(x0, y0): void
 //
 (* ****** ****** *)
 //

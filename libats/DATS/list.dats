@@ -1289,114 +1289,57 @@ case+ xs of
 (* ****** ****** *)
 
 impltmp
-{a}(*tmp*)
-list0_nchoose
-(xs, n0) =
+{x0,y0}
+list0_z2forall
+  (xs, ys) =
 (
-  auxmain(xs, n0)
+  loop(xs, ys)
 ) where
 {
 //
-typedef xs = list0(a)
-//
 fun
-auxmain
-(
-xs: list0(a)
-,
-n0: Intgte(0)
-) : stream_vt(list0(a)) =
-$ldelay
-(
-if
-(n0 = 0)
-then
-stream_vt_sing(list0_nil())
-else
+loop
+( xs: list0(x0)
+, ys: list0(y0)): bool =
 (
 case+ xs of
-| list0_nil() =>
-  stream_vt_nil()
+| list0_nil() => true
 | list0_cons(x0, xs) =>
-  ( lazy_vt_force
-    (stream_vt_append<xs>(xss1, xss2))
-  ) where
-  {
-    val xss2 =
-    (
-      auxmain(xs, n0)
-    )
-    val xss1 =
-    (
-      stream_vt_map<xs><xs>
-      (auxmain(xs, pred(n0)))
-    ) where
-    {
-      impltmp
-      stream_vt_map$fopr<xs><xs>(xs) = list0_cons(x0, xs)
-    }
-  } (* end of [list0_cons] *)
-)
-)
-} (* end of [list0_nchoose] *)
+  (
+  case+ ys of
+  | list0_nil() => true
+  | list0_cons(y0, ys) =>
+    let
+    val
+    test =
+    list0_z2forall$test<x0,y0>(x0, y0)
+    in
+      if test then loop(xs, ys) else false
+    end
+  )
+) (* end of [loop] *)
+} (* end of [list0_z2forall] *)
 
 (* ****** ****** *)
 
 impltmp
-{a}(*tmp*)
-list0_nchoose_rest
-(xs, n0) =
+{x0,y0}
+list0_z2foreach
+  (xs, ys) =
 (
-  auxmain(xs, n0)
+ignoret
+(list0_z2forall<x0,y0>(xs, ys))
 ) where
 {
 //
-typedef xy =
-tup(list0(a), list0(a))
+impltmp
+list0_z2forall$test<x0,y0>(x0, y0) = 
+let
+val () =
+list0_z2foreach$work<x0,y0>(x0, y0) in false
+end (* end-of-let *)
 //
-fun
-auxmain
-(
-xs: list0(a)
-,
-n0: Intgte(0)): stream_vt(xy) =
-$ldelay
-(
-if
-(n0 = 0)
-then
-stream_vt_sing
-(@(list0_nil(), xs))
-else
-(
-case+ xs of
-| list0_nil() =>
-  stream_vt_nil()
-| list0_cons(x0, xs) =>
-  ( lazy_vt_force
-    (stream_vt_append<xy>(res1, res2))
-  ) where
-  {
-    val res2 =
-    (
-    stream_vt_map<xy><xy>(auxmain(xs, n0))
-    ) where
-    {
-    impltmp
-    stream_vt_map$fopr<xy><xy>(xy) = (xy.0, list0_cons(x0, xy.1))
-    }
-    val res1 =
-    (
-    stream_vt_map<xy><xy>(auxmain(xs, pred(n0)))
-    ) where
-    {
-    impltmp
-    stream_vt_map$fopr<xy><xy>(xy) = (list0_cons(x0, xy.0), xy.1)
-    }
-  } (* end of [list0_cons] *)
-)
-)
-} (* end of [list0_nchoose_rest] *)
+} (* end of [list0_z2foreach] *)
 
 (* ****** ****** *)
 

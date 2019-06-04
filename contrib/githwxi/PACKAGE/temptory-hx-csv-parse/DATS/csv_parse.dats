@@ -7,6 +7,11 @@
 (* ****** ****** *)
 //
 #staload
+"libats/SATS/gint.sats"
+#staload
+"libats/SATS/char.sats"
+//
+#staload
 "libats/SATS/print.sats"
 #staload
 "libats/SATS/stdio.sats"
@@ -14,9 +19,11 @@
 "libats/SATS/filebas.sats"
 //
 #staload
-"libats/SATS/string.sats"
+"libats/SATS/list.sats"
 #staload
 "libats/SATS/list_vt.sats"
+#staload
+"libats/SATS/string.sats"
 #staload
 "libats/SATS/stream_vt.sats"
 //
@@ -28,6 +35,96 @@ UN = "libats/SATS/unsafe.sats"
 #staload
 LINE = "./csv_parse_line.dats"
 //
+(* ****** ****** *)
+//
+extern
+fun{}
+csv_unparse_field
+(ent: string): void
+extern
+fun{}
+csv_unparse_fields
+(ent: list0(string)): void
+
+impltmp
+{}(*tmp*)
+csv_unparse_field
+  (fld) =
+let
+//
+val eol = '\n'
+val cmm =
+char0_chr
+($LINE.csv_parse_line$comma())
+val dqt =
+char0_chr
+($LINE.csv_parse_line$dquote())
+//
+val isexi =
+(
+string0_exists(fld)
+) where
+{
+impltmp
+string0_exists$test<>(c0) =
+(c0 = dqt || c0 = cmm || c0 = eol)
+}
+in
+
+if
+isexi
+then
+(
+print(dqt);
+string0_foreach(fld);
+print(dqt);
+) where
+{
+impltmp
+string0_foreach$work<>(c0) =
+(
+if
+(c0 != dqt)
+then print(c0) else print!(c0, c0)
+)
+} (* end of [then] *)
+else
+(
+string0_foreach(fld)
+) where
+{
+impltmp
+string0_foreach$work<>(c0) = print(c0)
+} (* end of [else] *)
+
+end (* csv_unparse_field *)
+
+(* ****** ****** *)
+
+impltmp
+{}(*tmp*)
+csv_unparse_fields(xs) =
+(
+println!() where
+{
+val () =
+list0_iforeach<string>(xs)
+}
+) where
+{
+val cmm =
+char0_chr
+($LINE.csv_parse_line$comma())
+//
+impltmp
+list0_iforeach$work<string>
+  (i0, x0) =
+  (csv_unparse_field<>(x0)) where
+{
+  val () = if i0 > 0 then print(cmm)
+}
+} (* end of [csv_unparse_fields] *)
+
 (* ****** ****** *)
 //
 extern

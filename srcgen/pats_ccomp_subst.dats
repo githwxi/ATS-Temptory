@@ -504,25 +504,30 @@ case+ opt of
 | ~Some_vt
     (tmp2) => tmp2
   // Some_vt
-| ~None_vt () => let
+| ~None_vt() => let
 //
     val
-    loc = tmpvar_get_loc (tmp)
+    loc =
+    tmpvar_get_loc(tmp)
 //
 (*
     val () =
-    prerr_interror_loc (loc)
+    prerr_interror_loc(loc)
     val () =
-    prerrln! (": tmpvar2var: copy is not found: tmp = ", tmp)
+    prerrln!
+    (": tmpvar2var: copy is not found: tmp = ", tmp)
 *)
 //
+(*
     val () =
-    prerr_warnccomp_loc (loc)
+    prerr_warnccomp_loc(loc)
     val () =
-    prerrln! ": referencing toplevel code in a template may be problematic."
+    prerrln!
+    (": referencing toplevel code in a template may be problematic.")
+*)
 //
   in
-    tmpvar_copy_err (tmp)
+    tmpvar_copy_err(tmp)
   end // end of [None_vt]
 //
 end // end of [tmpvar2var]

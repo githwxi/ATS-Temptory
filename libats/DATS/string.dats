@@ -403,6 +403,20 @@ end // end of [loop]
 (* ****** ****** *)
 //
 impltmp
+{}//tmp
+string0_exists(cs) =
+(
+not(string0_forall<>(cs))
+) where
+{
+impltmp
+string0_forall$test<>(c0) = 
+not(string0_exists$test<>(c0))
+} (* end of [string0_exists] *)
+//
+(* ****** ****** *)
+//
+impltmp
 {}(*tmp*)
 string0_foreach(cs) =
 (

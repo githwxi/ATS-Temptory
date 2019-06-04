@@ -252,6 +252,10 @@ fun{}
 string0_forall(cs: string): bool
 fun{}
 string0_forall$test(c0: char): bool
+fun{}
+string0_exists(cs: string): bool
+fun{}
+string0_exists$test(c0: char): bool
 //
 fun{}
 string0_foreach(cs: string): void

@@ -140,12 +140,42 @@ impltmp
 gseq_foldleft<list0(x0)><x0><r0>
   (xs, r0) =
 (
-  list0_foldleft<x0><r0>(xs, r0)
+list0_foldleft<x0><r0>(xs, r0)
 ) where
 {
 impltmp
-list0_foldleft$fopr<x0><r0>(r0, x0) = gseq_foldleft$fopr<x0><r0>(r0, x0)
+list0_foldleft$fopr<x0><r0>(r0,x0) = gseq_foldleft$fopr<x0><r0>(r0,x0)
 } (* end of [gseq_foldleft] *)
+
+(* ****** ****** *)
+
+impltmp
+(x0:tflt
+,y0:tflt)
+gseq_z2forall<list0(x0)><x0><list0(y0)><y0>
+  (xs, ys) =
+(
+  list0_z2forall<x0,y0>(xs, ys)
+) where
+{
+  impltmp
+  list0_z2forall$test<x0,y0>(x0,y0) = gseq_z2forall$test<x0,y0>(x0,y0)
+} (* end of [gseq_forall] *)
+
+(* ****** ****** *)
+
+impltmp
+(x0:tflt
+,y0:tflt)
+gseq_z2foreach<list0(x0)><x0><list0(y0)><y0>
+  (xs, ys) =
+(
+  list0_z2foreach<x0,y0>(xs, ys)
+) where
+{
+  impltmp
+  list0_z2foreach$work<x0,y0>(x0,y0) = gseq_z2foreach$work<x0,y0>(x0,y0)
+} (* end of [gseq_foreach] *)
 
 (* ****** ****** *)
 

@@ -40,6 +40,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #staload
+"libats/SATS/gint.sats"
+//
+#staload
 "libats/SATS/list.sats"
 #staload
 "libats/SATS/list_vt.sats"
@@ -54,6 +57,118 @@ UN = "libats/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/mylist.sats"
+
+(* ****** ****** *)
+
+impltmp
+{a}(*tmp*)
+list0_nchoose
+(xs, n0) =
+(
+  auxmain(xs, n0)
+) where
+{
+//
+typedef xs = list0(a)
+//
+fun
+auxmain
+(
+xs: list0(a)
+,
+n0: Intgte(0)
+) : stream_vt(list0(a)) =
+$ldelay
+(
+if
+(n0 = 0)
+then
+stream_vt_sing(list0_nil())
+else
+(
+case+ xs of
+| list0_nil() =>
+  stream_vt_nil()
+| list0_cons(x0, xs) =>
+  ( lazy_vt_force
+    (stream_vt_append<xs>(xss1, xss2))
+  ) where
+  {
+    val xss2 =
+    (
+      auxmain(xs, n0)
+    )
+    val xss1 =
+    (
+      stream_vt_map<xs><xs>
+      (auxmain(xs, pred(n0)))
+    ) where
+    {
+      impltmp
+      stream_vt_map$fopr<xs><xs>(xs) = list0_cons(x0, xs)
+    }
+  } (* end of [list0_cons] *)
+)
+)
+} (* end of [list0_nchoose] *)
+
+(* ****** ****** *)
+
+impltmp
+{a}(*tmp*)
+list0_nchoose_rest
+(xs, n0) =
+(
+  auxmain(xs, n0)
+) where
+{
+//
+typedef xy =
+tup(list0(a), list0(a))
+//
+fun
+auxmain
+(
+xs: list0(a)
+,
+n0: Intgte(0)): stream_vt(xy) =
+$ldelay
+(
+if
+(n0 = 0)
+then
+stream_vt_sing
+(@(list0_nil(), xs))
+else
+(
+case+ xs of
+| list0_nil() =>
+  stream_vt_nil()
+| list0_cons(x0, xs) =>
+  ( lazy_vt_force
+    (stream_vt_append<xy>(res1, res2))
+  ) where
+  {
+    val res2 =
+    (
+    stream_vt_map<xy><xy>(auxmain(xs, n0))
+    ) where
+    {
+    impltmp
+    stream_vt_map$fopr<xy><xy>(xy) = (xy.0, list0_cons(x0, xy.1))
+    }
+    val res1 =
+    (
+    stream_vt_map<xy><xy>(auxmain(xs, pred(n0)))
+    ) where
+    {
+    impltmp
+    stream_vt_map$fopr<xy><xy>(xy) = (list0_cons(x0, xy.0), xy.1)
+    }
+  } (* end of [list0_cons] *)
+)
+)
+} (* end of [list0_nchoose_rest] *)
 
 (* ****** ****** *)
 //

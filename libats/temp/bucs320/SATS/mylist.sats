@@ -39,6 +39,23 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 //
+fun
+{a:tflt}
+list0_nchoose
+( xs
+: list0(INV(a))
+, n0: Intgte(0))
+: stream_vt(list0(a))
+fun
+{a:tflt}
+list0_nchoose_rest
+( xs
+: list0(INV(a))
+, n0: Intgte(0))
+: stream_vt(tup(list0(a), list0(a)))
+//
+(* ****** ****** *)
+//
 fun{a:tflt}
 list0_permute
 (xs: list0(INV(a))): stream_vt(list0(a))

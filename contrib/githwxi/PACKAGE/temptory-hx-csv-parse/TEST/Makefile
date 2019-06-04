@@ -4,8 +4,13 @@
 #
 ######
 
+RMF=rm -f
+
+######
+
 TEMPACC=$(TEMPTORY)/bin/tempacc
 TEMPOPT=$(TEMPTORY)/bin/tempopt
+MYTEMPACC=$(TEMPTORY)/bin/mytempacc
 
 ######
 
@@ -13,23 +18,27 @@ all:: \
 test01
 test01: \
 test01.dats ; \
-$(TEMPACC) -O2 -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $<
-regress:: test01; ./$<
-cleanall:: ; $(RMF) test01
-
-######
+$(MYTEMPACC) -O2 -o $@ $<
 
 all:: \
 test02
 test02: \
 test02.dats ; \
-$(TEMPACC) -O2 -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $<
-regress:: test02; ./$<
-cleanall:: ; $(RMF) test02
+$(MYTEMPACC) -O2 -o $@ $<
 
 ######
 
-RMF=rm -f
+all:: \
+test03
+test03: \
+test03.dats ; \
+$(MYTEMPACC) -O2 -o $@ $<
+
+######
+
+regress:: test01; ./$<
+regress:: test02; ./$<
+regress:: test03; ./$<
 
 ######
 
@@ -46,6 +55,9 @@ clean:: ; $(RMF) *_?ats.o
 ######
 
 cleanall:: clean
+cleanall:: ; $(RMF) test01
+cleanall:: ; $(RMF) test02
+cleanall:: ; $(RMF) test03
 
 ######
 #
