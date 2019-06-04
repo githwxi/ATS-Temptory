@@ -151,7 +151,7 @@ DATS_MEMALLOC_set() =
  +
  r_DATS_MEMALLOC_LIBC[]
  +
- r_DATS_MEMALLOC_GCBDW[] 
+ r_DATS_MEMALLOC_GCBDW[]
 )
 
 (* ****** ****** *)
@@ -283,7 +283,18 @@ ifcase
 | tcats_q() => args
 | _(*else*) =>
   let val () = helper0(args) in helper1(args) end
-)  
+)
+
+fun
+usage(): void =
+{
+val () =
+println!("Usage: mytempacc [FLAG] [FILE]")
+val () =
+println!("The following options are supported:")
+val () =
+println!("  -dry/--dryrun: for command generation only")
+}
 
 end // end of [local]
 
@@ -306,6 +317,14 @@ implfun
 main1
 (argc, argv) =
 let
+//
+val () =
+(
+if
+argc = 1
+then
+(usage(); exit(1))
+) // end of val
 //
 val
 arg0 = "tempacc"
