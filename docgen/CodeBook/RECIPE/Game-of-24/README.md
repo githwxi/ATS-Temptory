@@ -186,6 +186,16 @@ are in the stream returned by a call of `list0_nchoose_rest` on `xs` and `n0`:
 ((2,3),(1,4)),
 ((2,4),(1,3)), and ((3,4),(1,2)).
 
+Note that the the following files need to be staloaded in order to use
+`list0_nchoose_rest`:
+
+```ats
+#staload
+"libats/temp/bucs320/SATS/mylist.sats"
+#staload _ =
+"libats/temp/bucs320/DATS/mylist.dats"
+```
+
 The combinator `list0_mapjoin` is essentially a composition of `list0_map` and
 `list0_concat`: Given a list `xs`, `list0_map` maps each element in `xs` to a list
 to form a list of lists, which is passed to `list0_concat` to be flattened and then

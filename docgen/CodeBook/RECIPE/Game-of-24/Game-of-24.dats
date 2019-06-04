@@ -14,18 +14,16 @@ How to test it: ./Game-of-24_dats
 
 (* ****** ****** *)
 
-#staload
-"libats/temp\
-/bucs320/SATS/mylist.sats"
-#staload _ =
-"libats/temp\
-/bucs320/DATS/mylist.dats"
-
-(* ****** ****** *)
-
 #include
 "share/HATS\
 /temptory_staload_bucs320.hats"
+
+(* ****** ****** *)
+
+#staload
+"libats/temp/bucs320/SATS/mylist.sats"
+#staload _ =
+"libats/temp/bucs320/DATS/mylist.dats"
 
 (* ****** ****** *)
 

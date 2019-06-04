@@ -15,6 +15,13 @@
 //
 (* ****** ****** *)
 
+#staload
+"libats/temp/bucs320/SATS/mylist.sats"
+#staload _ =
+"libats/temp/bucs320/DATS/mylist.dats"
+
+(* ****** ****** *)
+
 implfun main0() = ()
 
 (* ****** ****** *)
