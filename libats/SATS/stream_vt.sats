@@ -293,6 +293,25 @@ stream_vt_ifilter(stream_vt(INV(x0))): stream_vt(x0)
 //
 fun
 {x0:vtflt}
+stream_vt_tabulate(): stream_vt(x0)
+fun
+{x0:vtflt}
+stream_vt_tabulate$fopr(i0: Intgte(0)): (x0)
+//
+fun
+{x0:vtflt}
+stream_vt_tabulopt(): stream_vt(x0)
+fun
+{x0:vtflt}
+stream_vt_tabulopt$test(x0: !x0): bool
+fun
+{x0:vtflt}
+stream_vt_tabulopt$fopr(i0: Intgte(0)): (x0)
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 stream_vt_forall0_ref
 (xs: stream_vt(INV(x0))): bool
 fun

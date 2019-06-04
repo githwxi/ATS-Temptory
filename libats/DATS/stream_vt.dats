@@ -904,6 +904,61 @@ end // end of [let]
 
 impltmp
 {x0}(*tmp*)
+stream_vt_tabulate
+  ((*void*)) =
+( auxmain(0) ) where
+{
+fun
+auxmain
+( i0
+: Intgte(0)
+) : stream_vt(x0) = $ldelay
+(
+let
+  val x0 =
+  stream_vt_tabulate$fopr<x0>(i0)
+in
+  stream_vt_cons(x0, auxmain(succ(i0)))
+end
+) (* end of [$ldelay] *)
+} (* end of [stream_vt_tabulate] *)
+
+(* ****** ****** *)
+
+impltmp
+{x0}(*tmp*)
+stream_vt_tabulopt
+  ((*void*)) =
+( auxmain(0) ) where
+{
+fun
+auxmain
+( i0
+: Intgte(0)
+) : stream_vt(x0) = $ldelay
+(
+let
+  val x0 =
+  stream_vt_tabulopt$fopr<x0>(i0)
+  val test =
+  stream_vt_tabulopt$test<x0>(x0)
+in
+  if
+  test
+  then
+  stream_vt_cons(x0, auxmain(succ(i0)))
+  else
+  let
+  val () = gfree$val<x0>(x0) in stream_vt_nil()
+  end // end of [else]
+end
+) (* end of [$ldelay] *)
+} (* end of [stream_vt_tabulopt] *)
+
+(* ****** ****** *)
+
+impltmp
+{x0}(*tmp*)
 stream_vt_forall0_ref
   (xs) =
   (loop(xs)) where

@@ -1,11 +1,7 @@
 # Read from STDIN (3)
 
-If you have not yet read [ReadFromSTDIN2](./../ReadFromSTDIN2), please
-do so first.
-
-The code in this example does essentially the same as the code in
-[ReadFromSTDIN2](./../ReadFromSTDIN2) except for using the alarm signal
-(SIGALRM) to prevent the possible scenario of waiting indefinitely for
-the user's input.
+A common issue with getting input from STDIN is that the wait time
+can be indefinite. In this example, let us address this issue by making
+use the of alarm signal (SIGALRM) in Unix.
 
 Happy programming in ATS!!!
