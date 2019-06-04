@@ -1336,7 +1336,7 @@ impltmp
 list0_z2forall$test<x0,y0>(x0, y0) = 
 let
 val () =
-list0_z2foreach$work<x0,y0>(x0, y0) in false
+list0_z2foreach$work<x0,y0>(x0, y0) in true
 end (* end-of-let *)
 //
 } (* end of [list0_z2foreach] *)
