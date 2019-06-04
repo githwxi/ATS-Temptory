@@ -42,6 +42,11 @@
 
 /* ****** ****** */
 
+#define temptory_libc_alarm_sint alarm
+#define temptory_libc_alarm_uint alarm
+
+/* ****** ****** */
+
 #endif // #ifndef TEMPTORY_LIBC_CATS_UNISTD
 
 /* ****** ****** */

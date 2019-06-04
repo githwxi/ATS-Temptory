@@ -13,8 +13,63 @@
 
 (* ****** ****** *)
 
+extern
+fun{}
+FILEref_streamize_char
+(inp: FILEref): stream_vt(int)
+extern
+fun{}
+FILEref_streamize_char$alarm_start(): uint
+extern
+fun{}
+FILEref_streamize_char$alarm_cancel(): uint
+
+(* ****** ****** *)
+
+impltmp
+{}//tmp
+FILEref_streamize_char
+  (inp) =
+(
+  auxmain()
+) where
+{
+fun
+auxmain(): stream_vt(int) =
+$ldelay
+(
+let
+val u0 =
+FILEref_streamize_char$alarm_start<>()
+//
+val c0 = $extfcall(sint, "fgetc", inp)
+//
+val u1 =
+FILEref_streamize_char$alarm_cancel<>()
+//
+in
+  if
+  (c0 >= 0)
+  then
+  stream_vt_cons(c0, auxmain())
+  else
+  (
+  if
+  (u1 > 0)
+  then
+  stream_vt_nil()
+  else
+  stream_vt_cons(c0, auxmain())  
+  )
+end // end of [let]
+)
+} (* end of [FILEref_streamize_char] *)
+
+(* ****** ****** *)
+
 implfun
 main0() = let
+//
 var
 SA0: sigaction
 val () =
@@ -27,13 +82,26 @@ sigaction_set_handler
 val () =
 assertloc(sigaction_null(SIGALRM, SA0) = 0)
 //
-val ui = $extfcall(uint, "alarm", 1u)
-val c0 = $extfcall(sint, "fgetc", the_stdin())
-val () = println!("c0 = ", c0)
-val () = $extfcall(void, "perror", "fgetc")
+val cs =
+(
+FILEref_streamize_char(the_stdin())
+) where
+{
+impltmp
+FILEref_streamize_char$alarm_start<>() = alarm(1u)
+impltmp
+FILEref_streamize_char$alarm_cancel<>() = alarm(0u)
+}
 //
 in
-  // nothing
+(
+stream_vt_foreach0<int>(cs)
+) where
+{
+impltmp
+stream_vt_foreach0$work<int>(c0) =
+if c0 >= 0 then print(char0_chr(c0)) else println!("ALARM!")
+}
 end // end of [main0]
 
 (* ****** ****** *)

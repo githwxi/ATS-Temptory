@@ -74,4 +74,22 @@ ref_set_elt
 
 (* ****** ****** *)
 
+impltmp
+{a}(*tmp*)
+lrf_nullize(r0) =
+let
+prval () =
+myassert(r0) where
+{
+extern
+prfun
+myassert(r0: &a? >> a): void
+}
+in
+$extfcall
+(void, "atspre_memset", addr@r0, 0, sizeof<a>)
+end (* end of [lrf_nullize] *)
+
+(* ****** ****** *)
+
 (* end of [gref.dats] *)

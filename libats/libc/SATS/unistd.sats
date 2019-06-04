@@ -46,5 +46,21 @@ ATS_PACKNAME "temptory.libc."
 ATS_EXTERN_PREFIX "temptory_libc_"
 
 (* ****** ****** *)
+//
+(*
+uint
+alarm(uint seconds);
+*)
+fun
+alarm_uint
+(secs: uint): uint = "mac#%"
+fun
+alarm_sint
+{n:nat}(secs: sint(n)): uint = "mac#%"
+//
+#symload alarm with alarm_uint of 10
+#symload alarm with alarm_sint of 11
+//
+(* ****** ****** *)
 
 (* end of [unistd.sats] *)

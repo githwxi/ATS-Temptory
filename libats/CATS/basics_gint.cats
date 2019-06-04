@@ -335,9 +335,17 @@ temptory_g0cmp_uint_uint(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 /* ****** ****** */
 
 #define \
+temptory_g0lt_uint0_sint1(x, y) ((x < y) ? 1 : 0)
+#define \
+temptory_g0gt_uint0_sint1(x, y) ((x > y) ? 1 : 0)
+#define \
+temptory_g0eq_uint0_sint1(x, y) ((x == y) ? 1 : 0)
+#define \
 temptory_g0lte_uint0_sint1(x, y) ((x <= y) ? 1 : 0)
 #define \
 temptory_g0gte_uint0_sint1(x, y) ((x >= y) ? 1 : 0)
+#define \
+temptory_g0neq_uint0_sint1(x, y) ((x != y) ? 1 : 0)
 
 /* ****** ****** */
 
