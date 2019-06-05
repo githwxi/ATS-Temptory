@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -387,6 +387,10 @@ dynload "pats_typerase_dynexp.dats"
 dynload "pats_typerase_decl.dats"
 //
 dynload "pats_ccomp.dats"
+
+// RK
+dynload "pats_ccomp_error.dats"
+
 dynload "pats_ccomp_print.dats"
 //
 dynload "pats_ccomp_hitype.dats"
@@ -893,7 +897,7 @@ val fullname = string_of_strptr(fullname)
 val filename =
   $FIL.filename_make(given, given, fullname)
 //
-val (pfpush|()) = 
+val (pfpush|()) =
   $FIL.the_filenamelst_push(filename)
 val d0cs =
   parse_from_filename_toplevel(0(*sta*), filename)
@@ -1372,7 +1376,7 @@ val ((*void*)) = print_newline((*void*))
 } (* end of [val] *)
 *)
 //
-val () = 
+val () =
 {
 //
 val flag =
@@ -1448,11 +1452,11 @@ do_transfinal
   (state, given, d0cs) = let
 //
 (*
-val () = 
+val () =
 println!
 ("PACKNAME=",
  $GLOB.the_PACKNAME_get())
-val () = 
+val () =
 println!
 ("STATIC_PREFIX=",
  $GLOB.the_STATIC_PREFIX_get())
@@ -1582,7 +1586,7 @@ case+ exn of
 (*
 | $ERR.PATSOPT_FILENONE_EXN(fname) =>
   (
-    fold@(exn);  
+    fold@(exn);
     fprintf (outfil, "/* ****** ****** */\n//\n", @());
     fprintf (outfil, "#error(patsopt(%s): [%s] cannot be accessed)\n", @(given, fname));
     fprintf (outfil, "//\n/* ****** ****** */\n", @());
@@ -2156,7 +2160,7 @@ tempopt_main
 //
 val () =
 set () where
-{ 
+{
   extern
   fun set(): void
     = "mac#patsopt_PATSHOME_set"
@@ -2173,7 +2177,7 @@ set () where
 //
 val () =
 set () where
-{ 
+{
   extern
   fun set(): void
     = "mac#patsopt_PATSRELOCROOT_set"
@@ -2182,7 +2186,7 @@ set () where
 //
 val () =
 set () where
-{ 
+{
   extern
   fun set(): void
     = "mac#patsopt_PATSHOMELOCS_set"
@@ -2262,7 +2266,7 @@ state = @{
 , atsreloc= 0 // for package relocation
 //
 , codegenflag= 0 // syntax level for CODEgen
-, jsonizeflag= 0 // syntax level for JSONize 
+, jsonizeflag= 0 // syntax level for JSONize
 //
 , typecheckflag= 0 // compiling by default
 //

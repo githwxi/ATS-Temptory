@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -79,7 +79,7 @@ staload "./pats_staexp2.sats"
 staload
 S2EUT =
 "./pats_staexp2_util.sats"
-vtypedef stasub = $S2EUT.stasub 
+vtypedef stasub = $S2EUT.stasub
 //
 (* ****** ****** *)
 
@@ -484,7 +484,7 @@ datatype tmpsub =
   | TMPSUBcons of (s2var, s2exp, tmpsub) | TMPSUBnil of ()
 typedef tmpsubopt = Option (tmpsub)
 vtypedef tmpsubopt_vt = Option_vt (tmpsub)
- 
+
 fun fprint_tmpsub : fprint_type (tmpsub)
 fun fprint_tmpsubopt : fprint_type (tmpsubopt)
 
@@ -548,7 +548,7 @@ fun fprint_primcstsp : fprint_type (primcstsp)
 datatype
 primdec_node =
 //
-  | PMDnone of () 
+  | PMDnone of ()
   | PMDlist of (primdeclst)
 //
   | PMDsaspdec of (s2aspdec)
@@ -654,7 +654,7 @@ and primval_node =
       (d2var, t2mpmarglst) // for template variables
     // end of [PMVtmpltvar]
 //
-  | PMVtmpltcstmat of  // for matched 
+  | PMVtmpltcstmat of  // for matched
       (d2cst, t2mpmarglst, tmpcstmat) // template constants
     // end of [PMVtmpltcstmat]
   | PMVtmpltvarmat of //  for matched
@@ -1215,7 +1215,7 @@ instr_node =
 //
   | INSextfcall of (tmpvar, string(*fun*), primvalist(*arg*))
   | INSextmcall of (tmpvar, primval(*obj*), string(*mtd*), primvalist(*arg*))
-//    
+//
   | INScond of ( // conditinal instruction
       primval(*test*), instrlst(*then*), instrlst(*else*)
     ) // end of [INScond]
@@ -1482,7 +1482,7 @@ fun instr_patck
 (
   loc: loc_t, pmv: primval, ptck: patck, ptknt: patckont
 ) : instr // pattern check
-  
+
 (* ****** ****** *)
 
 fun
@@ -1922,7 +1922,7 @@ fun ccompenv_localjoin
 fun ccompenv_add_vbindmapall
   (env: !ccompenv, d2v: d2var, pmv: primval): void
 // end of [ccompenv_add_vbindmapall]
-  
+
 fun ccompenv_find_vbindmapall
   (env: !ccompenv, d2v: d2var): Option_vt (primval)
 // end of [ccompenv_find_vbindmapall]
@@ -2022,7 +2022,7 @@ fun hidexp_ccomp_fix : hidexp_ccomp_funtype
 fun hidexp_ccomp_loop : hidexp_ccomp_funtype
 fun hidexp_ccomp_loopexn : hidexp_ccomp_funtype
 //
-fun hidexp_ccompv : hidexp_ccomp_funtype  
+fun hidexp_ccompv : hidexp_ccomp_funtype
 //
 (* ****** ****** *)
 
@@ -2514,6 +2514,18 @@ fun ccomp_main
 (
   out: FILEref, flag: int, infil: filename, hids: hideclist
 ) : void // end of [ccomp_main]
+
+(* ****** ****** *)
+
+//
+// RK-2019-05-13
+//
+datatype ccomperr =
+  | CCE_template_noimpl of (loc_t, d2cst, t2mpmarglst)
+// end of [ccomperr]
+
+fun the_ccomperrlst_add (x: ccomperr): void
+fun the_ccomperrlst_finalize (): void // cleanup all the errors
 
 (* ****** ****** *)
 

@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -773,7 +773,7 @@ case+ fls of
         // end of [if]
     ) : void // end of [val]
   in
-    loop(fls)        
+    loop(fls)
   end // end of [list_cons]
 //
 end // end of [loop]
@@ -1448,10 +1448,17 @@ val () = the_funlablst_initset2()
 //
 } (* end of [val] *)
 //
+//
+(*
+//
+// RK 2019-05-13
+// original location moved below
+//
 val () = emit_time_stamp(out)
 //
 val () = emit_ats_ccomp_header(out)
 val () = emit_ats_ccomp_prelude(out)
+*)
 //
 val () = let
   val pmds = hideclist_ccomp0(hids)
@@ -1467,6 +1474,19 @@ val () = let
 in
   // nothing
 end // end of [val]
+//
+// RK : 2019-05-13
+// check that templates have implementations...
+//
+val () = the_ccomperrlst_finalize((*void*))
+//
+// RK : 2019-05-13
+// moved to here
+val () = emit_time_stamp(out)
+val () = emit_ats_ccomp_header(out)
+val () = emit_ats_ccomp_prelude(out)
+//
+//
 //
 #if(0)
 val () = emit_the_tmpdeclst(out)
