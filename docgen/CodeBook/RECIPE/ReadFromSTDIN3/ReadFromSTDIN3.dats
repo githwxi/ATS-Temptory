@@ -6,6 +6,17 @@
 
 (* ****** ****** *)
 
+(*
+//
+How to test: ./ReadFromSTDIN3_dats
+//
+How to compile:
+mytempacc -O2 -o ReadFromSTDIN3_dats ReadFromSTDIN3.dats 
+//
+*)
+
+(* ****** ****** *)
+
 #staload
 "libats/libc/SATS/signal.sats"
 #staload
@@ -29,10 +40,7 @@ FILEref_streamize_ascii
 ) where
 {
   impltmp
-  stream_vt_tabulate$fopr<int>(_) =
-  (
-    $extfcall(int, "fgetc", inp)
-  )
+  stream_vt_tabulate$fopr<int>(_) = fgetc(inp)
 }
 
 impltmp
@@ -76,7 +84,8 @@ stream_vt_tabulopt$fopr<int>(_) =
 let
 val u0 =
 FILEref_streamize_ascii$alarm_start<>()
-val c0 = $extfcall(sint, "fgetc", inp)
+val c0 =
+fgetc(inp)
 val u1 =
 FILEref_streamize_ascii$alarm_cancel<>()
 //

@@ -46,31 +46,26 @@ UNSAFE =
 impltmp
 {}(*tmp*)
 the_stdin() =
-$extval
-(FILEref, "atspre_stdin")
+$extval(FILEref, "atspre_stdin")
 impltmp
 {}(*tmp*)
 the_stdout() =
-$extval
-(FILEref, "atspre_stdout")
+$extval(FILEref, "atspre_stdout")
 impltmp
 {}(*tmp*)
 the_stderr() =
-$extval
-(FILEref, "atspre_stderr")
+$extval(FILEref, "atspre_stderr")
 
 (* ****** ****** *)
 
 impltmp
 {}(*tmp*)
 feof(fil) =
-$extfcall
-(sint, "atspre_feof", fil)
+$extfcall(sint, "atspre_feof", fil)
 impltmp
 {}(*tmp*)
 fgetc(inp) =
-$extfcall
-(sint, "atspre_fgetc", inp)
+$extfcall(sint, "atspre_fgetc", inp)
 
 (* ****** ****** *)
 //
