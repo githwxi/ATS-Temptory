@@ -65,11 +65,23 @@ sexpdef FILEptr = FILEptr1
 (* ****** ****** *)
 //
 fun{}
-the_stdin(): FILEref // STDIN
+the_stdin
+((*void*)): FILEref // STDIN
 fun{}
-the_stdout(): FILEref // STDOUT
+the_stdout
+((*void*)): FILEref // STDOUT
 fun{}
-the_stderr(): FILEref // STDERR
+the_stderr
+((*void*)): FILEref // STDERR
+//
+(* ****** ****** *)
+//
+fun{}
+feof
+(inp: FILEref): sint = "mac#%"
+fun{}
+fgetc
+(inp: FILEref): sint = "mac#%"
 //
 (* ****** ****** *)
 //

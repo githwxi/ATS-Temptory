@@ -65,6 +65,7 @@ typedef char **charptrptr;
 
 /* ****** ****** */
 
+#define atspre_feof feof
 #define atspre_fgetc fgetc
 
 /* ****** ****** */

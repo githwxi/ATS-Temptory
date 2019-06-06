@@ -57,7 +57,7 @@ impltmp
 {}//tmp
 atoll(rep) =
 $extfcall
-(sllnt, "atspre_atoll", rep)
+(sllint, "atspre_atoll", rep)
 
 (* ****** ****** *)
 
