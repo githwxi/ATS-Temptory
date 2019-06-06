@@ -300,6 +300,7 @@ SOURCES := \
   pats_ccomp_decl.dats \
   pats_ccomp_subst.dats \
   pats_ccomp_environ.dats \
+  pats_ccomp_error.dats \
   pats_ccomp_template.dats \
   pats_ccomp_emit.dats \
   pats_ccomp_emit2.dats \
