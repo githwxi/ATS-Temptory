@@ -113,12 +113,13 @@ end // local
 #macdef
 TVint_un(x0) =
 (
-case+
-,(x0)
-of // case+
-| TVint(x) => x
-| _(*non-int*) =>
+let
+val x0 = ,(x0)
+in
+case+ x0 of
+| TVint(i0) => i0 | _ =>
   let val () = assertloc(false) in exit(1) end
+end
 ) : int // end of [TVint_un]
 
 (* ****** ****** *)
@@ -126,12 +127,13 @@ of // case+
 #macdef
 TVptr_un(x0) =
 (
-case+
-,(x0)
-of // case+
-| TVptr(x) => x
-| _(*non-int*) =>
+let
+val x0 = ,(x0)
+in
+case+ x0 of
+| TVptr(p0) => p0 | _ =>
   let val () = assertloc(false) in exit(1) end
+end
 ) : ptr // end of [TVptr_un]
 
 (* ****** ****** *)
@@ -139,22 +141,26 @@ of // case+
 #macdef
 TVflt_un(x0) =
 (
-case+
-,(x0)
-of // case+
-| TVflt(x) => x
-| _(*non-int*) =>
+let
+val x0 = ,(x0)
+in
+case+ x0 of
+| TVflt(f0) => f0 | _ =>
   let val () = assertloc(false) in exit(1) end
+end
 ) : double // end of [TVflt_un]
+
 #macdef
 TVstr_un(x0) =
 (
-case+
-,(x0)
-of // case+
-| TVstr(x) => x
-| _(*non-int*) =>
-  let val () = assertloc(false) in exit(1) end
+let
+val x0 = ,(x0)
+in
+case+ x0 of
+| TVstr(str) => str | _ =>
+    let val () = assertloc(false) in exit(1) end
+// end of [case+]
+end
 ) : string // end of [TVstr_un]
 
 (* ****** ****** *)
@@ -162,12 +168,14 @@ of // case+
 #macdef
 TVlst_un(x0) =
 (
-case+
-,(x0)
-of // case+
-| TVlst(x) => x
-| _(*non-int*) =>
-  let val () = assertloc(false) in exit(1) end
+let
+val x0 = ,(x0)
+in
+case+ x0 of
+| TVlst(lst) => lst | _ =>
+    let val () = assertloc(false) in exit(1) end
+// end of [case+]
+end
 ) : tvalist // end of [TVlst_un]
 
 (* ****** ****** *)
@@ -175,12 +183,14 @@ of // case+
 #macdef
 TVobj_un(x0) =
 (
-case+
-,(x0)
-of // case+
-| TVobj(x) => x
-| _(*non-int*) =>
-  let val () = assertloc(false) in exit(1) end
+let
+val x0 = ,(x0)
+in
+case+ x0 of
+| TVobj(obj) => obj | _ =>
+    let val () = assertloc(false) in exit(1) end
+// end of [case+]
+end
 ) : tobject // end of [TVobj_un]
 
 (* ****** ****** *)
@@ -188,12 +198,13 @@ of // case+
 #macdef
 TVfun_un(x0) =
 (
-case+
-,(x0)
-of // case+
-| TVfun(x) => x
-| _(*non-int*) =>
-  let val () = assertloc(false) in exit(1) end
+let
+val x0 = ,(x0)
+in
+case+ x0 of
+| TVfun(tfn) => tfn | _ =>
+    let val () = assertloc(false) in exit(1) end
+end
 ) : tcloref // end of [TVfun_un]
 
 (* ****** ****** *)
@@ -210,13 +221,37 @@ tvalue_isneqz(tvalue): bool
 //
 fun{}
 tobject_get_at
-(obj: tobject, k0: string): tvalue
+( obj
+: tobject, k0: string): tvalue
 fun{}
 tobject_set_at
-(obj: tobject, k0: string, x0: tvalue): void
+( obj
+: tobject, k0: string, x0: tvalue): void
 //
 #symload [] with tobject_get_at of 10
 #symload [] with tobject_set_at of 10
+//
+(* ****** ****** *)
+//
+fun{}
+tobject_forall
+(t0: tobject): bool
+fun{}
+tobject_forall$test
+(k0: string, x0: tvalue): bool
+fun{}
+tobject_exists
+(t0: tobject): bool
+fun{}
+tobject_exists$test
+(k0: string, x0: tvalue): bool
+//
+fun{}
+tobject_foreach
+(t0: tobject): void
+fun{}
+tobject_foreach$work
+(k0: string, x0: tvalue): void
 //
 (* ****** ****** *)
 

@@ -114,9 +114,9 @@ postfix 69 ?
 //
 #infixl 50 + - (*additive*)
 //
-(*
-#infixr (+) ++ // concatenative
-*)
+(* ****** ****** *)
+//
+#infixr (+) ++ (*concatenative*)
 //
 (* ****** ****** *)
 
@@ -181,9 +181,11 @@ postfix 69 ?
 
 (* ****** ****** *)
 
+(*
 #prefix 0 ++ -- // inc and dec
 #prefix 0 !++ --! // getinc and decget
 #infixr 0 =++ --= // setinc and decset
+*)
 
 (* ****** ****** *)
 

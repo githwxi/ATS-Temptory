@@ -36,6 +36,8 @@
 #staload
 "libats/SATS/gint.sats"
 #staload
+"libats/SATS/bool.sats"
+#staload
 "libats/SATS/gptr.sats"
 #staload
 "libats/SATS/print.sats"
@@ -68,54 +70,6 @@ tvalue_isneqz
 case+ x0 of
 | TVnil() => false | _ => (true)
 )
-
-(* ****** ****** *)
-
-impltmp
-{}(*tmp*)
-tvalue_print
-  (x0) =
-(
-  helper(x0)
-) where
-{
-//
-fun
-helper
-(x0: tvalue): void = let
-//
-impltmp
-print$val<tvalue>(x0) = helper(x0)
-//
-in
-(
-case+ x0 of
-| TVnil() =>
-  print!("TV(", ")")
-//
-| TVint(x) =>
-  print!("TVint(", x, ")")
-| TVptr(x) =>
-  print!("TVptr(", x, ")")
-//
-| TVflt(x) =>
-  print!("TVflt(", x, ")")
-| TVstr(x) =>
-  print!("TVstr(", x, ")")
-//
-| TVarr(x) =>
-  print!("TVarr(", x, ")")
-| TVlst(x) =>
-  print!("TVlst(", x, ")")
-| TVobj(x) =>
-  print!("TVobj(", x, ")")
-//
-| TVfun(x) =>
-  print!("TVfun(", "<cloref>", ")")
-//
-)
-end // end of [helper]
-} (* end of [print_tvalue] *)
 
 (* ****** ****** *)
 
@@ -176,10 +130,114 @@ end
 
 (* ****** ****** *)
 
-end // end of [local]
+impltmp
+{}//tmp
+tobject_exists
+  (obj) =
+(
+not
+(tobject_forall(obj))
+) where
+{
+impltmp
+tobject_forall$test<>(k0, x0) = 
+not(tobject_exists$test<>(k0, x0))
+}
+
+impltmp
+{}//tmp
+tobject_forall
+  (obj) =
+(
+let
+val
+obj =
+tobject_decode(obj)
+in
+hmapref_forall<k0,x0>(obj)
+end
+) where
+{
+typedef
+k0 = string and x0 = tvalue
+impltmp
+hmapref_forall$test<k0,x0>(k0, x0) = tobject_forall$test<>(k0, x0)
+} (* end of [tobject_forall] *)
 
 (* ****** ****** *)
 
+impltmp
+{}//tmp
+tobject_foreach
+  (obj) =
+(
+let
+val
+obj =
+tobject_decode(obj)
+in
+hmapref_foreach<k0,x0>(obj)
+end
+) where
+{
+typedef
+k0 = string and x0 = tvalue
+impltmp
+hmapref_foreach$work<k0,x0>(k0, x0) = tobject_foreach$work<>(k0, x0)
+} (* end of [tobject_foreach] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+impltmp
+{}(*tmp*)
+tvalue_print
+  (x0) =
+(
+  helper(x0)
+) where
+{
+//
+fun
+helper
+(x0: tvalue): void = let
+//
+impltmp
+print$val<tvalue>(x0) = helper(x0)
+//
+in
+(
+case+ x0 of
+| TVnil() =>
+  print!("TV(", ")")
+//
+| TVint(x) =>
+  print!("TVint(", x, ")")
+| TVptr(x) =>
+  print!("TVptr(", x, ")")
+//
+| TVflt(x) =>
+  print!("TVflt(", x, ")")
+| TVstr(x) =>
+  print!("TVstr(", x, ")")
+//
+| TVarr(x) =>
+  print!("TVarr(", x, ")")
+| TVlst(x) =>
+  print!("TVlst(", x, ")")
+| TVobj(x) =>
+  print!("TVobj(", x, ")")
+//
+| TVfun(x) =>
+  print!("TVfun(", "<cloref>", ")")
+//
+)
+end // end of [helper]
+} (* end of [print_tvalue] *)
+//
 impltmp
 {}(*tmp*)
 tobject_print(t0) =
@@ -191,14 +249,12 @@ k0 = string and x0 = tvalue
 val t0 =
 tobject_decode(t0) in hmapref_print<k0,x0>(t0)
 end (* tobject_print *)
-
-(* ****** ****** *)
-
+//
 impltmp
 print$val<tvalue>(t0) = tvalue_print(t0)
 impltmp
 print$val<tobject>(t0) = tobject_print(t0)
-
+//
 (* ****** ****** *)
 
 (* end of [taggedval.dats] *)

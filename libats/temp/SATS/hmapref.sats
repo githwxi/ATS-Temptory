@@ -160,6 +160,14 @@ hmapref_print$mapto(): void // "->"
 //
 fun
 {k0,x0:vtflt}
+hmapref_forall
+(map: href(k0, x0)): bool
+fun
+{k0,x0:vtflt}
+hmapref_forall$test(k0: !k0, x0: !x0): bool
+//
+fun
+{k0,x0:vtflt}
 hmapref_foreach
 (map: href(k0, x0)): void
 fun

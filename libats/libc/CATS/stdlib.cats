@@ -43,6 +43,15 @@
 /* ****** ****** */
 
 #define \
+temptory_libc_atoi(rep) atoi(rep)
+#define \
+temptory_libc_atol(rep) atol(rep)
+#define \
+temptory_libc_atoll(rep) atoll(rep)
+
+/* ****** ****** */
+
+#define \
 temptory_libc_rand() rand()
 #define \
 temptory_libc_srand(seed) srand(seed)

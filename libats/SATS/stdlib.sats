@@ -28,45 +28,24 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2019
+// Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
 #define
-ATS_PACKNAME "temptory.libc."
+ATS_PACKNAME "temptory."
 #define
-ATS_EXTERN_PREFIX "temptory_libc_"
+ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 //
-(*
-int
-atoi(const char *nptr);
-long
-atol(const char *nptr);
-long
-long atoll(const char *nptr);
-*)
-//
-fun
-atoi(rep: string): sint = "mac#"
-fun
-atol(rep: string): slint = "mac#"
-fun
-atoll(rep: string): sllint = "mac#"
-//
-(* ****** ****** *)
-//
-(*
-int rand(void);
-int
-rand_r(unsigned int *seedp);
-void srand(unsigned int seed);    
-*)
-fun rand(): Intgte(0) = "mac#"
-fun srand(seed: uint): void = "mac#"
-fun rand_r(seed: &uint >> _): Intgte(0) = "mac#"
+fun{}
+atoi(rep: string): sint
+fun{}
+atol(rep: string): slint
+fun{}
+atoll(rep: string): sllint
 //
 (* ****** ****** *)
 

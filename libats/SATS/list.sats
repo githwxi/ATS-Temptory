@@ -206,8 +206,12 @@ fun
 list0_concat_vt:
 list0(list0(INV(x0))) -> list0_vt(x0)
 //
+#symload ++ with list0_append
+//
+#symload extend with list0_extend
 #symload append with list0_append
 #symload concat with list0_concat
+#symload extend_vt with list0_extend_vt
 #symload append_vt with list0_append_vt
 #symload concat_vt with list0_concat_vt
 //

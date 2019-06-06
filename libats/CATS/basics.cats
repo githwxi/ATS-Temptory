@@ -74,6 +74,12 @@ typedef char **charptrptr;
 
 /* ****** ****** */
 
+#define atspre_atoi atoi
+#define atspre_atol atol
+#define atspre_atoll atoll
+
+/* ****** ****** */
+
 #define atspre_rand rand
 #define atspre_srand srand
 

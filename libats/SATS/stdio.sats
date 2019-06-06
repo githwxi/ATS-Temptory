@@ -40,20 +40,6 @@ ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
 
-%{#
-//
-#ifdef \
-TEMPTORY_LIBATS_SATS_STDIO
-#else
-#define \
-TEMPTORY_LIBATS_SATS_STDIO
-#include <stdio.h>
-#endif // TEMPTORY_LIBATS_SATS_STDIO
-//
-%}(* end of [%{#] *)
-
-(* ****** ****** *)
-
 typedef
 charptr = $extype"charptr"
 

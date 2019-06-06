@@ -215,6 +215,34 @@ end (* end of [hmapref_takeout_all] *)
 
 impltmp
 {k0,x0}
+hmapref_forall
+  (map) =
+(
+res where
+{
+prval () =
+$UN.cast2void(map)
+}
+) where
+{
+//
+val map = ref2ptr(map)
+//
+val res =
+(
+  hashmap_forall1(map)
+) where
+{
+impltmp
+hashmap_forall1$test<k0,x0> = hmapref_forall$test<k0,x0>
+} (* end of [val] *)
+//
+} (* end of [hmapref_forall] *)
+
+(* ****** ****** *)
+
+impltmp
+{k0,x0}
 hmapref_foreach
   (map) =
 (

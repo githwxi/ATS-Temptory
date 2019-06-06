@@ -156,6 +156,16 @@ chain_takeout
 extern
 fun
 {k0,x0:vtflt}
+chain_forall1
+(kxs: !chain(k0, INV(x0))): bool
+extern
+fun
+{k0,x0:vtflt}
+chain_forall1$test(k0: !k0, x0: !x0): bool
+//
+extern
+fun
+{k0,x0:vtflt}
 chain_foreach1
 (kxs: !chain(k0, INV(x0))): void
 extern
@@ -237,6 +247,16 @@ chain_takeout(map, k0, res) =
 //
 (* ****** ****** *)
 
+impltmp
+{k0,x0}
+chain_forall1(map) =
+(
+$LM.linmap_forall1<k0,x0>(map)
+) where
+{
+impltmp
+$LM.linmap_forall1$test<k0,x0> = chain_forall1$test<k0,x0>
+} (* end of [chain_forall1] *)
 impltmp
 {k0,x0}
 chain_foreach1(map) =
@@ -699,6 +719,50 @@ hashmap_reset_hcap<k0,x0>(map, cap + cap)
 //
 end // end of [hashmap_adjust_hcap]
 //
+(* ****** ****** *)
+
+impltmp
+{k0,x0:vtflt}
+hashmap_forall1(map) =
+let
+//
+val+HASHMAP(A0, cap, n0) = map
+//
+vtypedef chain = chain(k0, x0)
+//
+fun
+loop
+( p0: cptr(chain)
+, p1: cptr(chain)): bool =
+(
+if
+(p0 >= p1)
+then true else
+let
+  val kxs = $UN.cptr0_get(p0)
+  val ans =
+  (
+    chain_forall1<k0,x0>(kxs)
+  ) where
+  {
+    impltmp
+    chain_forall1$test<k0,x0>(k0, x0) =
+    hashmap_forall1$test<k0, x0>(k0, x0)
+  }
+in
+let
+prval ( ) =
+$UN.cast2void(kxs)
+in
+  if ans then loop(succ(p0), p1) else false
+end
+end // end of [then]
+) (* end of [loop] *)
+//
+in
+let val p0 = cptrof(A0) in loop(p0, p0 + cap) end
+end // end of [hashmap_forall1]
+
 (* ****** ****** *)
 
 impltmp

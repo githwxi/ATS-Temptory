@@ -201,6 +201,14 @@ hashmap_print
 //
 fun
 {k0,x0:vtflt}
+hashmap_forall1
+(map: !hmap(k0, INV(x0))): bool
+fun
+{k0,x0:vtflt}
+hashmap_forall1$test(k0: !k0, x0: !x0): bool
+//
+fun
+{k0,x0:vtflt}
 hashmap_foreach1
 (map: !hmap(k0, INV(x0))): void
 fun
