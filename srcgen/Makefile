@@ -63,7 +63,7 @@ LIBATS=-lats
 
 ######
 #
-# HX: no [gmp] 
+# HX: no [gmp]
 ifeq ($(C3NSTRINTKND),intknd)
 LIBGMP=
 endif
@@ -304,6 +304,7 @@ SOURCES := \
   pats_typerase_decl.dats \
   pats_ccomp.sats \
   pats_ccomp.dats \
+  pats_ccomp_error.dats \
   pats_ccomp_print.dats \
   pats_ccomp_hitype.dats \
   pats_ccomp_tmplab.dats \
@@ -550,6 +551,7 @@ BUILD/pats_typerase_dynexp_dats.c \
 BUILD/pats_typerase_decl_dats.c \
 BUILD/pats_ccomp_sats.c \
 BUILD/pats_ccomp_dats.c \
+BUILD/pats_ccomp_error_dats.c \
 BUILD/pats_ccomp_print_dats.c \
 BUILD/pats_ccomp_hitype_dats.c \
 BUILD/pats_ccomp_tmplab_dats.c \
@@ -795,6 +797,7 @@ BUILD/pats_typerase_dynexp_dats.o \
 BUILD/pats_typerase_decl_dats.o \
 BUILD/pats_ccomp_sats.o \
 BUILD/pats_ccomp_dats.o \
+BUILD/pats_ccomp_error_dats.o \
 BUILD/pats_ccomp_print_dats.o \
 BUILD/pats_ccomp_hitype_dats.o \
 BUILD/pats_ccomp_tmplab_dats.o \
@@ -1518,6 +1521,11 @@ BUILD/pats_ccomp_sats.o: BUILD/pats_ccomp_sats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $
 BUILD/pats_ccomp_dats.c: pats_ccomp.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
 BUILD/pats_ccomp_dats.o: BUILD/pats_ccomp_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
+# RK
+BUILD/pats_ccomp_error_dats.c: pats_ccomp_error.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
+BUILD/pats_ccomp_error_dats.o: BUILD/pats_ccomp_error_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
+#
+
 BUILD/pats_ccomp_print_dats.c: pats_ccomp_print.dats; $(ATSOPT) $(DATSCC) -o $@ -d $<
 BUILD/pats_ccomp_print_dats.o: BUILD/pats_ccomp_print_dats.c; $(ATS1CC) $(CFLAGS) -c -o $@ $<
 
@@ -1626,7 +1634,7 @@ clean:: ; $(RMF) $(DIR)/*~
 clean:: ; $(RMF) $(DIR)/*_?ats.c
 clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.o
 clean:: ; $(RMF) $(DIR)/BUILD/*_?ats.c
-clean:: ; $(RMF) $(DIR)/BUILD/pats_*.cats 
+clean:: ; $(RMF) $(DIR)/BUILD/pats_*.cats
 
 cleanall:: clean
 cleanall:: ; $(RMF) TAGATS
