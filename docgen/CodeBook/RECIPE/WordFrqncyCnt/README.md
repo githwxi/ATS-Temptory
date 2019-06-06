@@ -111,7 +111,7 @@ less than another one `iw2` if the int-value in `iw1` is greater than
 that in `iw2` or the two int-values are equal and the string-value in
 `iw1` is less than that in `iw2`.
 
-Let print out the first 250 (or fewer) words together with their
+Let us print out the first 250 (or fewer) words together with their
 frquencies:
 
 

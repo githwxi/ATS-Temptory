@@ -39,15 +39,14 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 //
-// HX: For tagged values
+(*
+HX:
+For tagged values
+*)
 //
 (* ****** ****** *)
 
-#staload "./hmapref.sats"
-
-(* ****** ****** *)
-
-abstbox tobject
+abstbox tobject = ptr
 
 (* ****** ****** *)
 //
@@ -56,15 +55,17 @@ taggedval =
 //
 | TVnil of ()
 //
-| TVint of int
-| TVptr of ptr
+| TVint of (int)
+| TVptr of (ptr)
 //
 | TVflt of double
 | TVstr of string
 //
 | TVarr of tarray0
 | TVlst of tvalist
+//
 | TVobj of tobject
+//
 //
 | TVfun of tcloref
 //
@@ -76,10 +77,12 @@ and
 tarray0 = arrszref(tvalue)
 (*
 and
-tobject = hmapref(string, tvalue)
+tobject =
+hmapref(string, tvalue)
 *)
 and
-tcloref = (tvalist) -<cloref1> tvalue
+tcloref =
+(tvalist) -<cloref1> tvalue
 //
 (* ****** ****** *)
 //
@@ -90,6 +93,20 @@ tobject_print(tobject): void
 //
 #symload print with tvalue_print
 #symload print with tobject_print
+//
+(* ****** ****** *)
+//
+local
+#staload "./hmapref.sats"
+in
+  typedef
+  hmapref =
+  hmapref(string, tvalue)
+  fun{}
+  tobject_encode(hmapref): tobject
+  fun{}
+  tobject_decode(tobject): hmapref
+end // local
 //
 (* ****** ****** *)
 
@@ -115,7 +132,7 @@ of // case+
 | TVptr(x) => x
 | _(*non-int*) =>
   let val () = assertloc(false) in exit(1) end
-) : int // end of [TVptr_un]
+) : ptr // end of [TVptr_un]
 
 (* ****** ****** *)
 
@@ -128,7 +145,7 @@ of // case+
 | TVflt(x) => x
 | _(*non-int*) =>
   let val () = assertloc(false) in exit(1) end
-) : int // end of [TVflt_un]
+) : double // end of [TVflt_un]
 #macdef
 TVstr_un(x0) =
 (
@@ -138,7 +155,7 @@ of // case+
 | TVstr(x) => x
 | _(*non-int*) =>
   let val () = assertloc(false) in exit(1) end
-) : int // end of [TVstr_un]
+) : string // end of [TVstr_un]
 
 (* ****** ****** *)
 
@@ -151,7 +168,7 @@ of // case+
 | TVlst(x) => x
 | _(*non-int*) =>
   let val () = assertloc(false) in exit(1) end
-) : int // end of [TVlst_un]
+) : tvalist // end of [TVlst_un]
 
 (* ****** ****** *)
 
@@ -164,7 +181,7 @@ of // case+
 | TVobj(x) => x
 | _(*non-int*) =>
   let val () = assertloc(false) in exit(1) end
-) : int // end of [TVobj_un]
+) : tobject // end of [TVobj_un]
 
 (* ****** ****** *)
 
@@ -177,7 +194,7 @@ of // case+
 | TVfun(x) => x
 | _(*non-int*) =>
   let val () = assertloc(false) in exit(1) end
-) : int // end of [TVfun_un]
+) : tcloref // end of [TVfun_un]
 
 (* ****** ****** *)
 //

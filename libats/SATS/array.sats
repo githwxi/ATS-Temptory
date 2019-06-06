@@ -399,6 +399,18 @@ AZ: arrszref(a)
 //
 (* ****** ****** *)
 //
+fun{}
+arrszref_size
+{a:vtflt}(arrszref(a)): size
+fun{}
+arrszref_length
+{a:vtflt}(arrszref(a)): Intgte(0)
+//
+#symload size with arrszref_size
+#symload length with arrszref_length
+//
+(* ****** ****** *)
+//
 fun
 {a:tflt}
 arrszref_make_elt

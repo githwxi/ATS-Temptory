@@ -76,6 +76,19 @@ impltmp
 tvalue_print
   (x0) =
 (
+  helper(x0)
+) where
+{
+//
+fun
+helper
+(x0: tvalue): void = let
+//
+impltmp
+print$val<tvalue>(x0) = helper(x0)
+//
+in
+(
 case+ x0 of
 | TVnil() =>
   print!("TV(", ")")
@@ -100,7 +113,9 @@ case+ x0 of
 | TVfun(x) =>
   print!("TVfun(", "<cloref>", ")")
 //
-) (* end of [print_tvalue] *)
+)
+end // end of [helper]
+} (* end of [print_tvalue] *)
 
 (* ****** ****** *)
 
@@ -115,6 +130,15 @@ hmapref(string, tvalue)
 //
 in(* in-of-local *)
 
+(* ****** ****** *)
+//
+impltmp
+{}(*tmp*)
+tobject_encode(href) = href
+impltmp
+{}(*tmp*)
+tobject_decode(tobj) = tobj
+//
 (* ****** ****** *)
 
 impltmp
@@ -152,13 +176,28 @@ end
 
 (* ****** ****** *)
 
-impltmp
-{}(*tmp*)
-tobject_print(obj) = hmapref_print<k0,x0>(obj)
+end // end of [local]
 
 (* ****** ****** *)
 
-end // end of [local]
+impltmp
+{}(*tmp*)
+tobject_print(t0) =
+let
+//
+typedef
+k0 = string and x0 = tvalue
+//
+val t0 =
+tobject_decode(t0) in hmapref_print<k0,x0>(t0)
+end (* tobject_print *)
+
+(* ****** ****** *)
+
+impltmp
+print$val<tvalue>(t0) = tvalue_print(t0)
+impltmp
+print$val<tobject>(t0) = tobject_print(t0)
 
 (* ****** ****** *)
 

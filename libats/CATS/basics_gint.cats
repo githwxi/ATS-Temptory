@@ -301,6 +301,13 @@ temptory_g0cmp_sint_sint(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 /* ****** ****** */
 
 #define \
+temptory_g0min_sint_sint(x, y) ((x <= y) ? x : y)
+#define \
+temptory_g0max_sint_sint(x, y) ((x >= y) ? x : y)
+
+/* ****** ****** */
+
+#define \
 temptory_g1lt_sint_sint(x, y) ((x < y) ? 1 : 0)
 #define \
 temptory_g1gt_sint_sint(x, y) ((x > y) ? 1 : 0)
@@ -331,6 +338,13 @@ temptory_g0gte_uint_uint(x, y) ((x >= y) ? 1 : 0)
 temptory_g0neq_uint_uint(x, y) ((x != y) ? 1 : 0)
 #define \
 temptory_g0cmp_uint_uint(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
+
+/* ****** ****** */
+
+#define \
+temptory_g1min_sint_sint(x, y) ((x <= y) ? x : y)
+#define \
+temptory_g1max_sint_sint(x, y) ((x >= y) ? x : y)
 
 /* ****** ****** */
 

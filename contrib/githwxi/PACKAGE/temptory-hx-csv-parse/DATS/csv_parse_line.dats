@@ -159,7 +159,7 @@ char_get0<>() = let
 //
 in
   if i0 < len0 then char0_ord(line[i0]) else (~1)
-end // end of [char_get]
+end // end of [char_get0]
 impltmp
 char_get1<>() = let
   val i0 = get_i()
@@ -167,7 +167,7 @@ char_get1<>() = let
 //
 in
   if i1 < len0 then char0_ord(line[i1]) else (~1)
-end // end of [char_get]
+end // end of [char_get1]
 impltmp
 char_getinc<>() = let
   val i0 = get_i()

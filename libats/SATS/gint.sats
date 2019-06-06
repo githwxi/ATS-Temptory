@@ -761,6 +761,20 @@ g0cmp_sint_sint
 (* ****** ****** *)
 //
 fun
+g0max_sint_sint
+( x: sint
+, y: sint):<> sint = "mac#%"
+fun
+g0min_sint_sint
+( x: sint
+, y: sint):<> sint = "mac#%"
+//
+#symload max with g0max_sint_sint of 10
+#symload min with g0max_sint_sint of 10
+//
+(* ****** ****** *)
+//
+fun
 g1lt_sint_sint
 {i,j:int}
 ( x: sint(i)
@@ -803,6 +817,22 @@ g1neq_sint_sint
 (*
 #symload <=> with g1cmp_sint_sint of 12
 *)
+//
+(* ****** ****** *)
+//
+fun
+g1max_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)):<> sint(max(i,j)) = "mac#%"
+fun
+g1min_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)):<> sint(min(i,j)) = "mac#%"
+//
+#symload max with g1max_sint_sint of 12
+#symload min with g1max_sint_sint of 12
 //
 (* ****** ****** *)
 //

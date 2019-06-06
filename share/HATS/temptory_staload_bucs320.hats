@@ -337,6 +337,8 @@ sexpdef list_rc = list0_rc
 
 #staload
 "libats/temp/SATS/taggedval.sats"
+#staload _ =
+"libats/temp/DATS/taggedval.dats"
 
 (* ****** ****** *)
 

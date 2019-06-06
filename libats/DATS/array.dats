@@ -291,6 +291,17 @@ arrszref_uncons{a}(AZ) =
 let val ARRSZREF(A0, n0) = AZ in (A0, n0) end
 //
 (* ****** ****** *)
+//
+impltmp
+{}(*tmp*)
+arrszref_size{a}(AZ) =
+let val ARRSZREF(A0, n0) = AZ in n0 end
+impltmp
+{}(*tmp*)
+arrszref_length{a}(AZ) =
+let val ARRSZREF(A0, n0) = AZ in $UN.cast(n0) end
+//
+(* ****** ****** *)
 
 impltmp
 {a}(*tmp*)

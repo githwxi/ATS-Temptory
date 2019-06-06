@@ -32,12 +32,14 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 /* ****** ****** */
-
+//
 #define \
-temptory_char0_ord(c0) ((int)c0)
+temptory_char0_ord(c0) \
+  ((int)((unsigned char)(c0)))
+//
 #define \
-temptory_char0_chr(i0) ((char)i0)
-
+temptory_char0_chr(i0) ((char)(i0))
+//
 /* ****** ****** */
 
 #define \
