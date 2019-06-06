@@ -11,12 +11,13 @@
 
 (* ****** ****** *)
 
-#include "./../mylibies.hats"
+#include
+"./../mylibies.hats"
 
 (* ****** ****** *)
 
-implement
-main0 () = () where
+implfun
+main0() = () where
 {
 //
 val ret01 =

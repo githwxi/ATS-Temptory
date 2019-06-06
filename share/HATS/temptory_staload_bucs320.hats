@@ -83,6 +83,8 @@ TEMPLIB_targetloc
 (* ****** ****** *)
 //
 #staload
+"libats/SATS/cmpeq.sats"
+#staload
 "libats/SATS/grand.sats"
 #staload
 "libats/SATS/print.sats"
@@ -188,6 +190,8 @@ TEMPLIB_targetloc
 
 (* ****** ****** *)
 //
+#staload _ =
+"libats/DATS/cmpeq.dats"
 #staload _ =
 "libats/DATS/grand.dats"
 #staload _ =

@@ -5,13 +5,14 @@
 //
 (* ****** ****** *)
 
-#include "./../mylibies.hats"
+#include
+"share/HATS\
+/temptory_staload_bucs320.hats"
 
 (* ****** ****** *)
 
 #include
-"share/HATS\
-/temptory_staload_bucs320.hats"
+"./../mylibies.hats"
 
 (* ****** ****** *)
 

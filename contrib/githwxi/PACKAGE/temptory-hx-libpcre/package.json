@@ -2,7 +2,7 @@
 "name":
 "temptory-hx-libpcre"
 ,
-"version": "1.0.0"
+"version": "1.0.1"
 ,
 "description":
 "This package is a simple API for PCRE lib"

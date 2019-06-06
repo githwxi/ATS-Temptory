@@ -38,8 +38,10 @@
 
 (* ****** ****** *)
 
-#define none0_vt optn0_vt_none
-#define some0_vt optn0_vt_some
+#define
+none0_vt optn0_vt_none
+#define
+some0_vt optn0_vt_some
 
 (* ****** ****** *)
 
