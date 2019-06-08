@@ -267,7 +267,7 @@ temptory_g1div_usize_sint1(x, y) (x / y)
 temptory_g0div_usize_usize(x, y) (x / y)
 #define \
 temptory_g1div_usize_usize(x, y) (x / y)
-  
+
 /* ****** ****** */
 
 #define \
@@ -338,6 +338,19 @@ temptory_g0gte_uint_uint(x, y) ((x >= y) ? 1 : 0)
 temptory_g0neq_uint_uint(x, y) ((x != y) ? 1 : 0)
 #define \
 temptory_g0cmp_uint_uint(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
+
+#define \
+temptory_g0lsl_uint_int(x,n) (x << n)
+#define \
+temptory_g0lsr_uint_int(x,n) (x >> n)
+#define \
+temptory_g0lnot_uint(x) (~(x))
+#define \
+temptory_g0lor_uint_uint(x, y) (x | y)
+#define \
+temptory_g0land_uint_uint(x, y) (x & y)
+#define \
+temptory_g0lxor_uint_uint(x, y) (x ^ y)
 
 /* ****** ****** */
 

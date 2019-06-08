@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -878,6 +878,50 @@ g0cmp_uint_uint
 (*
 #symload <=> with g0cmp_uint_uint of 10
 *)
+//
+(* ****** ****** *)
+//
+fun
+g0lsl_uint_int
+( x: uint
+, y: Intgte(0)):<> uint = "mac#%"
+//
+fun
+g0lsr_uint_int
+( x: uint
+, y: Intgte(0)):<> uint = "mac#%"
+//
+#symload << with g0lsl_uint_int
+#symload >> with g0lsr_uint_int
+//
+#symload lsl with g0lsl_uint_int
+#symload lsr with g0lsl_uint_int
+//
+fun
+g0lnot_uint
+(x: uint):<> uint = "mac#%"
+//
+#symload ~ with g0lnot_uint of 10
+#symload lnot with g0lnot_uint of 10
+//
+fun
+g0lor_uint_uint
+( x: uint
+, y: uint):<> uint = "mac#%"
+//
+fun
+g0land_uint_uint
+( x: uint
+, y: uint):<> uint = "mac#%"
+//
+fun
+g0lxor_uint_uint
+( x: uint
+, y: uint):<> uint = "mac#%"
+//
+#symload lor with g0lor_uint_uint of 10
+#symload land with g0land_uint_uint of 10
+#symload lxor with g0lxor_uint_uint of 10
 //
 (* ****** ****** *)
 //
