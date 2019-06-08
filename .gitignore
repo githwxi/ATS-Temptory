@@ -1,0 +1,13 @@
+#
+# ignoring generated files
+#
+*~
+\#*
+.\#*
+*_?ats.o
+*_?ats.c
+*.exe
+*_dats
+
+BUILD/
+bin/
