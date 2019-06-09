@@ -373,7 +373,7 @@ vtypedef
 list1_0_vt
   (a:vtflt) = [n:int | n >= 0] list1_vt(a, n)
 vtypedef
-list1_0_vt
+list1_1_vt
   (a:vtflt) = [n:int | n >= 1] list1_vt(a, n)
 vtypedef
 list1_gt_vt
