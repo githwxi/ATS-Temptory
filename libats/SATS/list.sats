@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -137,11 +137,11 @@ list0_tail_opt
 fun
 {x0:tflt}
 list0_get_at_exn
-(xs: list0(INV(x0)), i0: int): (x0) 
+(xs: list0(INV(x0)), i0: int): (x0)
 fun
 {x0:tflt}
 list0_get_at_opt
-(xs: list0(INV(x0)), i0: int): optn0_vt(x0) 
+(xs: list0(INV(x0)), i0: int): optn0_vt(x0)
 //
 #symload [] with list0_get_at_exn
 #symload get_at with list0_get_at_exn
@@ -648,12 +648,12 @@ fun
 {x0:tflt}
 list1_size
 {n:int}
-(xs: list1(INV(x0))):<> size(n)
+(xs: list1(INV(x0), n)):<> size(n)
 fun
 {x0:tflt}
 list1_length
 {n:int}
-(xs: list1(INV(x0))):<> sint(n)
+(xs: list1(INV(x0), n)):<> sint(n)
 //
 #symload size with list1_size
 #symload length with list1_length
