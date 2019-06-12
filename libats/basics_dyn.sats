@@ -441,7 +441,7 @@ opt_clear{a:tflt}
 //
 datatype
 optn0_tflt_tbox
-  (a:tflt) =
+  (a:tflt+) =
 | optn0_none(a) of ()
 | optn0_some(a) of (INV(a))
 // end of [datatype]
@@ -453,7 +453,7 @@ sexpdef optn0 = optn0_tflt_tbox
 datatype
 optn1_tflt_bool_tbox
 (
-  a:tflt, bool
+  a:tflt+, bool
 ) = // optn1_tflt_bool_tbox
   | optn1_none(a, ff)
   | optn1_some(a, tt) of (INV(a))
@@ -466,7 +466,7 @@ sexpdef optn1(a:tflt) = [b:bool] optn1(a, b)
 //
 datavtype
 optn0_vtflt_vtbox
-  (a:vtflt) =
+  (a:vtflt+) =
   | optn0_vt_none(a)
   | optn0_vt_some(a) of (INV(a))
 // end of [option_vtflt_bool_vtbox]

@@ -455,4 +455,23 @@ temptory_g1cmp_usize_sint1(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 
 /* ****** ****** */
 
+#define \
+temptory_g0lt_usize_sint1(x, y) ((x < y) ? 1 : 0)
+#define \
+temptory_g0gt_usize_sint1(x, y) ((x > y) ? 1 : 0)
+#define \
+temptory_g0eq_usize_sint1(x, y) ((x == y) ? 1 : 0)
+#define \
+temptory_g0lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
+#define \
+temptory_g0lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
+#define \
+temptory_g0gte_usize_sint1(x, y) ((x >= y) ? 1 : 0)
+#define \
+temptory_g0neq_usize_sint1(x, y) ((x != y) ? 1 : 0)
+//#define \
+//temptory_g0cmp_usize_sint1(x, y) ((x < y) ? -1 : (x > y)// ? 1 : 0)
+
+/* ****** ****** */
+
 /* end of [basics_gint.cats] */

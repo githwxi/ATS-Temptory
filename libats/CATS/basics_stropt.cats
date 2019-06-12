@@ -38,4 +38,7 @@
 
 /* ****** ****** */
 
+#define temptory_stropt0_none() (0)
+#define temptory_stropt0_some(cs) (cs)
+
 /* end of [basics_stropt.cats] */
