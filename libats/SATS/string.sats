@@ -283,14 +283,28 @@ fun
 {r0:vtflt}
 string0_foldleft$fopr(r0: r0, c0: char): r0
 //
-(* ****** ****** *)
-//
 fun
 {r0:vtflt}
 string0_foldright(cs: string, r0: r0): r0
 fun
 {r0:vtflt}
 string0_foldright$fopr(c0: char, r0: r0): r0
+//
+(* ****** ****** *)
+//
+fun
+{r0:vtflt}
+string0_ifoldleft(cs: string, r0: r0): r0
+fun
+{r0:vtflt}
+string0_ifoldleft$fopr(r0: r0, i0: int, c0: char): r0
+//
+fun
+{r0:vtflt}
+string0_ifoldright(cs: string, r0: r0): r0
+fun
+{r0:vtflt}
+string0_ifoldright$fopr(i0: int, c0: char, r0: r0): r0
 //
 (* ****** ****** *)
 //

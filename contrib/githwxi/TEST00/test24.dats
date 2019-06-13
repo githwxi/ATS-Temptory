@@ -16,9 +16,9 @@ implfun main0() = ()
 (* ****** ****** *)
 
 implate
-gseq_streamize<FILEref><char>(filr) = FILEref_streamize_char(filr)
+gseq_streamize<gseq><FILEref,char>(filr) = FILEref_streamize_char(filr)
 implate
-gseq_streamize<FILEref><string>(filr) = FILEref_streamize_line(filr)
+gseq_streamize<gseq><FILEref,string>(filr) = FILEref_streamize_line(filr)
 
 (* ****** ****** *)
 
@@ -33,11 +33,11 @@ println!("sizeof(stdin) = ", gseq_length<FILEref><string>(the_stdin()))
 
 val () =
 (
-gseq_iforeach<FILEref><string>(the_stdin())
+gseq_iforeach<gseq><FILEref,string>(the_stdin())
 ) where
 {
 implate
-gseq_iforeach$work<string>(i, line) = println!("line#", i+1, ": ", line)
+gseq_iforeach$work<gseq><FILEref,string>(i, line) = println!("line#", i+1, ": ", line)
 }
 
 (* ****** ****** *)

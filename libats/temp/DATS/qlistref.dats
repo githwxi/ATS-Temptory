@@ -346,26 +346,32 @@ qlistref_print$sep<>() = print(",")
 //
 impltmp
 (x0:tflt)
-glseq_forall1<qlistref(x0)><x0>
+glseq_forall1<
+glseq><qlistref(x0),x0>
   (qrf) =
 (
   qlistref_forall1<x0>(qrf)
 ) where
 {
+typedef xs = qlistref(x0)
 impltmp
-qlistref_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
+qlistref_forall1$test<x0>(x0) =
+  glseq_forall1$test<glseq><xs,x0>(x0)
 }
 //
 impltmp
 (x0:tflt)
-glseq_foreach1<qlistref(x0)><x0>
+glseq_foreach1<
+glseq><qlistref(x0),x0>
   (qrf) =
 (
   qlistref_foreach1<x0>(qrf)
 ) where
 {
+typedef xs = qlistref(x0)
 impltmp
-qlistref_foreach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
+qlistref_foreach1$work<x0>(x0) =
+  glseq_foreach1$work<glseq><xs,x0>(x0)
 }
 //
 (* ****** ****** *)

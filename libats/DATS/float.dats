@@ -38,5 +38,37 @@
 #staload "./../SATS/float.sats"
 //
 (* ****** ****** *)
+//
+impltmp
+{}(*tmp*)
+g0mul_float_sint(f0, i1) = f0*cast2flt(i1)
+impltmp
+{}(*tmp*)
+g0mul_sint_float(i0, f1) = cast2flt(i0)*f1
+//
+impltmp
+{}(*tmp*)
+g0mul_double_sint(f0, i1) = f0*cast2dbl(i1)
+impltmp
+{}(*tmp*)
+g0mul_sint_double(i0, f1) = cast2dbl(i0)*f1
+//
+(* ****** ****** *)
+//
+impltmp
+{}(*tmp*)
+g0div_float_sint(f0, i1) = f0/cast2flt(i1)
+impltmp
+{}(*tmp*)
+g0div_sint_float(i0, f1) = cast2flt(i0)/f1
+//
+impltmp
+{}(*tmp*)
+g0div_double_sint(f0, i1) = f0/cast2dbl(i1)
+impltmp
+{}(*tmp*)
+g0div_sint_double(i0, f1) = cast2dbl(i0)/f1
+//
+(* ****** ****** *)
 
 (* end of [float.dats] *)

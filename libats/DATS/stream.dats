@@ -128,8 +128,27 @@ impltmp
 stream_listize
   (xs) =
 (
-gseq_listize<stream(x0)><x0>(xs)
+let
+var r0: ptr?
+val () = loop(xs, r0) in r0 end
+) where
+{
+fun
+loop
+( xs: stream(x0)
+, r0: &ptr? >> list0_vt(x0)): void =
+(
+case+ !xs of
+| stream_nil() =>
+  (r0 := list0_vt_nil())
+| stream_cons(x0, xs) =>
+  let
+  val () =
+  (r0 := list0_vt_cons(x0, _))
+  val+list0_vt_cons(_, r1) = r0
+  val () = loop(xs, r1) in fold@(r0) end
 )
+} (* end of [stream_listize] *)
 //
 (* ****** ****** *)
 //

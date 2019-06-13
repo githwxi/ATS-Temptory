@@ -255,6 +255,66 @@ print$val<tup(a0,a1,a2)>(xs) = tuple3_print<a0,a1,a2>(xs)
 //
 impltmp
 {a}(*tmp*)
+list0_vt_print(xs) =
+(
+list0_print$beg<>();
+loop(0, xs);
+list0_print$end<>();
+) where
+{
+fun
+loop
+( i0: int
+, xs: !list0_vt(a)): void =
+(
+case+ xs of
+| list0_vt_nil() => ()
+| list0_vt_cons(x0, xs) =>
+  (
+  if
+  (i0 > 0)
+  then list0_print$sep<>();
+  print$val<a>(x0); loop(i0+1, xs)
+  )
+)
+}
+//
+impltmp
+(a:vtflt)
+print$val<list0_vt(a)>(cs) = list0_vt_print<a>(cs)
+//
+(* ****** ****** *)
+
+impltmp
+string0_vt_print<>(cs) =
+print_string($UN.string0_vt2t(cs))
+impltmp
+print$val<string_vt>(cs) = string0_vt_print<>(cs)
+
+(* ****** ****** *)
+
+impltmp
+stropt0_print<>(opt) =
+if
+iseqz(opt)
+then
+print_ptr($UN.stropt0_unnone(opt))
+else
+print_string($UN.stropt0_unsome(opt))
+//
+impltmp
+stropt0_vt_print<>(opt) =
+stropt0_print($UN.stropt0_vt2t(opt))
+//
+impltmp
+print$val<stropt>(opt) = stropt0_print<>(opt)
+impltmp
+print$val<stropt_vt>(opt) = stropt0_vt_print<>(opt)
+//
+(* ****** ****** *)
+//
+impltmp
+{a}(*tmp*)
 stream_print(xs) =
 (
 stream_print$beg<>();
@@ -294,81 +354,41 @@ impltmp
 print$val<stream(a)>(xs) = stream_print<a>(xs)
 //
 (* ****** ****** *)
-
+//
 impltmp
 {a}(*tmp*)
 arrszref_print(AZ) =
 (
-glseq_print<arrszref(a)><a>(AZ);
+glseq_print<glseq><xs,a>(AZ)
 ) where
 {
+//
+typedef xs = arrszref(a)
+//
 impltmp
-gseq_print$beg<>() = array_print$beg<>()
+glseq_print$beg<
+glseq><xs,a>() = array_print$beg<>()
 impltmp
-gseq_print$end<>() = array_print$end<>()
+glseq_print$end<
+glseq><xs,a>() = array_print$end<>()
 impltmp
-gseq_print$sep<>() = array_print$sep<>()
+glseq_print$sep<
+glseq><xs,a>() = array_print$sep<>()
 } (* end of [arrszref_print] *)
-
-(* ****** ****** *)
 //
 impltmp
-{a}(*tmp*)
-list0_vt_print(xs) =
-(
-list0_print$beg<>();
-loop(0, xs);
-list0_print$end<>();
-) where
-{
-fun
-loop
-( i0: int
-, xs: !list0_vt(a)): void =
-(
-case+ xs of
-| list0_vt_nil() => ()
-| list0_vt_cons(x0, xs) =>
-  (
-  if
-  (i0 > 0)
-  then list0_print$sep<>();
-  print$val<a>(x0); loop(i0+1, xs)
-  )
-)
-}
+{}(*tmp*)
+array_print$beg() = print_string("(")
+impltmp
+{}(*tmp*)
+array_print$end() = print_string(")")
+impltmp
+{}(*tmp*)
+array_print$sep() = print_string(",")
 //
 impltmp
-(a:vtflt)
-print$val<list0_vt(a)> = list0_vt_print<a>
-//
-(* ****** ****** *)
-
-impltmp
-string0_vt_print<>(cs) =
-print_string($UN.string0_vt2t(cs))
-impltmp
-print$val<string_vt>(cs) = string0_vt_print<>(cs)
-
-(* ****** ****** *)
-
-impltmp
-stropt0_print<>(opt) =
-if
-iseqz(opt)
-then
-print_ptr($UN.stropt0_unnone(opt))
-else
-print_string($UN.stropt0_unsome(opt))
-//
-impltmp
-stropt0_vt_print<>(opt) =
-stropt0_print($UN.stropt0_vt2t(opt))
-//
-impltmp
-print$val<stropt>(opt) = stropt0_print<>(opt)
-impltmp
-print$val<stropt_vt>(opt) = stropt0_vt_print<>(opt)
+(a:tflt)
+print$val<arrszref(a)>(AZ) = arrszref_print<a>(AZ)
 //
 (* ****** ****** *)
 

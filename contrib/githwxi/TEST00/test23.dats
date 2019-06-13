@@ -59,6 +59,12 @@ val () = println!("xs = ", xs)
 end (* end-of-local *)
 
 (* ****** ****** *)
+//
+// HX-2019-05-31:
+// Template implementation
+// should be non-recursive!!!
+//
+(* ****** ****** *)
 
 local
 

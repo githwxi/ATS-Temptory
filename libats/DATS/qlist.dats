@@ -437,56 +437,64 @@ qlist_print$sep<>() = print(",")
 //
 impltmp
 (x0:vtflt)
-glseq_forall0<qlist(x0)><x0>
+glseq_forall0<
+glseq><qlist(x0),x0>
   (xs) =
 (
   qlist_forall0<x0>(xs)
 ) where
 {
 impltmp
-qlist_forall0$test<x0>(x0) = glseq_forall0$test<x0>(x0)
+qlist_forall0$test<x0>(x0) =
+glseq_forall0$test<glseq><qlist(x0),x0>(x0)
 }
 //
 (* ****** ****** *)
 //
 impltmp
 (x0:vtflt)
-glseq_foreach0<qlist(x0)><x0>
+glseq_foreach0<
+glseq><qlist(x0),x0>
   (xs) =
 (
   qlist_foreach0<x0>(xs)
 ) where
 {
 impltmp
-qlist_foreach0$work<x0>(x0) = glseq_foreach0$work<x0>(x0)
+qlist_foreach0$work<x0>(x0) =
+glseq_foreach0$work<glseq><qlist(x0),x0>(x0)
 }
 //
 (* ****** ****** *)
 //
 impltmp
 (x0:vtflt)
-glseq_forall1<qlist(x0)><x0>
+glseq_forall1<
+glseq><qlist(x0),x0>
   (xs) =
 (
   qlist_forall1<x0>(xs)
 ) where
 {
 impltmp
-qlist_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
+qlist_forall1$test<x0>(x0) =
+glseq_forall1$test<glseq><qlist(x0),x0>(x0)
 }
 //
 (* ****** ****** *)
 //
 impltmp
 (x0:vtflt)
-glseq_foreach1<qlist(x0)><x0>
+glseq_foreach1<
+glseq><qlist(x0),x0>
   (xs) =
 (
   qlist_foreach1<x0>(xs)
 ) where
 {
 impltmp
-qlist_foreach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
+qlist_foreach1$work<x0>(x0) =
+glseq_foreach1$work<glseq><qlist(x0),x0>(x0)
 }
 //
 (* ****** ****** *)

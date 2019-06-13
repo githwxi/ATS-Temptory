@@ -48,52 +48,60 @@
 
 impltmp
 (x0:vtflt)
-glseq_forall1<arrszref(x0)><x0>
+glseq_forall1<
+glseq><arrszref(x0),x0>
   (xs) =
 (
   arrszref_forall<x0>(xs)
 ) where
 {
   impltmp
-  arrszref_forall$test<x0>(x0) = glseq_forall1$test<x0>(x0)
+  arrszref_forall$test<x0>(x0) =
+  glseq_forall1$test<glseq><arrszref(x0),x0>(x0)
 } (* end of [glseq_forall1] *)
 
 impltmp
 (x0:vtflt)
-glseq_foreach1<arrszref(x0)><x0>
+glseq_foreach1<
+glseq><arrszref(x0),x0>
   (xs) =
 (
   arrszref_foreach<x0>(xs)
 ) where
 {
   impltmp
-  arrszref_foreach$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
+  arrszref_foreach$work<x0>(x0) =
+  glseq_foreach1$work<glseq><arrszref(x0),x0>(x0)
 } (* end of [glseq_foreach1] *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:vtflt)
-glseq_rforall1<arrszref(x0)><x0>
+glseq_rforall1<
+glseq><arrszref(x0),x0>
   (xs) =
 (
   arrszref_rforall<x0>(xs)
 ) where
 {
   impltmp
-  arrszref_rforall$test<x0>(x0) = glseq_rforall1$test<x0>(x0)
+  arrszref_rforall$test<x0>(x0) =
+  glseq_rforall1$test<glseq><arrszref(x0),x0>(x0)
 } (* end of [glseq_rforall1] *)
 
 impltmp
 (x0:vtflt)
-glseq_rforeach1<arrszref(x0)><x0>
+glseq_rforeach1<
+glseq><arrszref(x0),x0>
   (xs) =
 (
   arrszref_rforeach<x0>(xs)
 ) where
 {
   impltmp
-  arrszref_rforeach$work<x0>(x0) = glseq_rforeach1$work<x0>(x0)
+  arrszref_rforeach$work<x0>(x0) =
+  glseq_rforeach1$work<glseq><arrszref(x0),x0>(x0)
 } (* end of [glseq_rforeach1] *)
 
 (* ****** ****** *)

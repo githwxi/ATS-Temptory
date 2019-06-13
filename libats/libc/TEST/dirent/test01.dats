@@ -23,7 +23,7 @@ implfun main1() = 0
 //
 impltmp
 gseq_forall<
-  cptr(DIR)><cptr(dirent)>
+gseq><cptr(DIR),cptr(dirent)>
   (dp) =
 (
   readdir_forall<>(dp)
@@ -32,7 +32,8 @@ gseq_forall<
 impltmp
 readdir_forall$test<>(ent) =
 (
-  gseq_forall$test<cptr(dirent)>(ent)
+gseq_forall$test<
+gseq><cptr(DIR),cptr(dirent)>(ent)
 )
 } (* end of [gseq_forall] *)
 //
@@ -44,11 +45,12 @@ val () = assertloc(isneqz(dp))
 val () =
 (
 gseq_foreach<
-  cptr(DIR)><cptr(dirent)>(dp)
+gseq><cptr(DIR),cptr(dirent)>(dp)
 ) where
 {
 impltmp
-gseq_foreach$work<cptr(dirent)>(ent) =
+gseq_foreach$work<
+gseq><cptr(DIR),cptr(dirent)>(ent) =
   println!($UN.cast{string}(ent.d_name()))
 }
 

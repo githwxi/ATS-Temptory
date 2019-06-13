@@ -66,14 +66,15 @@ end // end of [local]
 (* ****** ****** *)
 
 impltmp
-gseq_forall<board><int>
-  (xs) =
+gseq_forall<
+gseq><board,int>(xs) =
 (
   board_forall<>(xs)
 ) where
 {
   impltmp
-  board_forall$test<>(x0) = gseq_forall$test<int>(x0)
+  board_forall$test<>(x0) =
+  gseq_forall$test<gseq><board,int>(x0)
 }
 
 (* ****** ****** *)
@@ -82,12 +83,12 @@ fun
 board_print
 (xs: board): void =
 (
-gseq_rforeach<board><int>
+gseq_rforeach<gseq><board,int>
   (xs)
 ) where
 {
 impltmp
-gseq_rforeach$work<int>(x0) =
+gseq_rforeach$work<gseq><board,int>(x0) =
 (
   loop(0)
 ) where
@@ -116,11 +117,11 @@ fun
 board_check
 (x0: int, xs: board): bool =
 (
-gseq_iforall<board><int>(xs)
+gseq_iforall<gseq><board,int>(xs)
 ) where
 {
 impltmp
-gseq_iforall$test<int>(i1, x1) =
+gseq_iforall$test<gseq><board,int>(i1, x1) =
 if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
 }
 
@@ -181,14 +182,16 @@ xss = qsolve()
 //
 val () =
 (
-gseq_iforeach<list(board)><board>(xss)
+gseq_iforeach<
+gseq><list(board),board>(xss)
 ) where
 {
 impltmp
-gseq_iforeach$work<board>(i, xs) =
+gseq_iforeach$work<
+gseq><list(board),board>(i, xs) =
 (println!("Solution#", i+1, ":"); board_print(xs); println!())
 }
-}
+} (* end of [main0] *)
 
 (* ****** ****** *)
 

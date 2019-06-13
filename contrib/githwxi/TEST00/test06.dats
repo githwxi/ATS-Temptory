@@ -21,7 +21,8 @@ implfun main0() = ()
 //
 val () =
 (
-gseq_foreach<int><int>(N)
+gseq_foreach<
+gseq><xs,x0>(N)
 ) where
 {
 //
@@ -29,7 +30,8 @@ typedef xs = sint
 typedef x0 = sint
 //
 impltmp
-gseq_foreach$work<x0>(i0) = println!("i0 = ", i0)
+gseq_foreach$work<
+gseq><xs,x0>(i0) = println!("i0 = ", i0)
 //
 } (* end of [val] *)
 //
@@ -38,7 +40,7 @@ gseq_foreach$work<x0>(i0) = println!("i0 = ", i0)
 val
 fact =
 (
-gseq_foldleft<xs><x0><r0>(N, 1)
+gseq_foldleft<gseq><xs,x0><r0>(N, 1)
 ) where
 {
 //
@@ -47,17 +49,18 @@ typedef x0 = sint
 typedef r0 = sint
 //
 impltmp
-gseq_foldleft$fopr<x0><r0>(r0, i0) = r0 * (i0+1)
+gseq_foldleft$fopr<gseq><xs,x0><r0>(r0, i0) = r0 * (i0+1)
 } (* end of [val] *)
 //
-val ((*void*)) = println! ("fact(", N, ") = ", fact)
+val ((*void*)) =
+println! ("fact(", N, ") = ", fact)
 //
 (* ****** ****** *)
 //
 val
 fact =
 (
-gseq_foldright<xs><x0><r0>(N, 1)
+gseq_foldright<gseq><xs,x0><r0>(N, 1)
 ) where
 {
 //
@@ -66,17 +69,20 @@ typedef x0 = sint
 typedef r0 = sint
 //
 impltmp
-gseq_foldright$fopr<x0><r0>(i0, r0) = r0 * (i0+1)
+gseq_foldright$fopr<
+gseq><xs,x0><r0>(i0, r0) = r0 * (i0+1)
 } (* end of [val] *)
 //
-val ((*void*)) = println! ("fact(", N, ") = ", fact)
+val ((*void*)) =
+println! ("fact(", N, ") = ", fact)
 //
 (* ****** ****** *)
 //
 fun
 fact(n0: int): int =
 (
-gseq_foldleft<SINT2><x0><r0>(SINT2, 1)
+gseq_foldleft<
+gseq><SINT2,x0><r0>(SINT2, 1)
 ) where
 {
 //
@@ -89,7 +95,7 @@ impltmp
 SINT2_range$end<>() = n0
 //
 impltmp
-gseq_foldleft$fopr<x0><r0>(r0, i0) = r0 * (i0+1)
+gseq_foldleft$fopr<gseq><SINT2,x0><r0>(r0, i0) = r0 * (i0+1)
 //
 } (* end of [fact] *)
 //
@@ -102,7 +108,8 @@ println! ("fact(", N, ") = ", fact(N))
 fun
 fibo(n0: int): int =
 (
-(gseq_foldleft<SINT2><x0><r0>(SINT2, (0, 1))).0
+(gseq_foldleft<
+gseq><SINT2,x0><r0>(SINT2, (0, 1))).0
 ) where
 {
 //
@@ -115,13 +122,12 @@ impltmp
 SINT2_range$end<>() = n0
 //
 impltmp
-gseq_foldleft$fopr<x0><r0>(r0, i0) = (r0.1, r0.0+r0.1)
+gseq_foldleft$fopr<gseq><SINT2,x0><r0>(r0, i0) = (r0.1, r0.0+r0.1)
 //
 } (* end of [fact] *)
 //
 val
-((*void*)) =
-println! ("fibo(", N, ") = ", fibo(N))
+((*void*)) = println! ("fibo(", N, ") = ", fibo(N))
 //
 (* ****** ****** *)
 

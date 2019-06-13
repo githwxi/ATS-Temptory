@@ -47,56 +47,64 @@
 
 impltmp
 (x0:tflt)
-gseq_forall<arrszref(x0)><x0>
+gseq_forall<
+gseq><arrszref(x0),x0>
   (xs) =
 (
   arrszref_forall<x0>(xs)
 ) where
 {
   impltmp
-  arrszref_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
+  arrszref_forall$test<x0>(x0) =
+  gseq_forall$test<gseq><arrszref(x0),x0>(x0)
 } (* end of [gseq_forall] *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:tflt)
-gseq_foreach<arrszref(x0)><x0>
+gseq_foreach<
+gseq><arrszref(x0),x0>
   (xs) =
 (
   arrszref_foreach<x0>(xs)
 ) where
 {
   impltmp
-  arrszref_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
+  arrszref_foreach$work<x0>(x0) =
+  gseq_foreach$work<gseq><arrszref(x0),x0>(x0)
 } (* end of [gseq_foreach] *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:tflt)
-gseq_rforall<arrszref(x0)><x0>
+gseq_rforall<
+gseq><arrszref(x0),x0>
   (xs) =
 (
   arrszref_rforall<x0>(xs)
 ) where
 {
   impltmp
-  arrszref_rforall$test<x0>(x0) = gseq_rforall$test<x0>(x0)
+  arrszref_rforall$test<x0>(x0) =
+  gseq_rforall$test<gseq><arrszref(x0),x0>(x0)
 } (* end of [gseq_rforall] *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:tflt)
-gseq_rforeach<arrszref(x0)><x0>
+gseq_rforeach<
+gseq><arrszref(x0),x0>
   (xs) =
 (
   arrszref_rforeach<x0>(xs)
 ) where
 {
   impltmp
-  arrszref_rforeach$work<x0>(x0) = gseq_rforeach$work<x0>(x0)
+  arrszref_rforeach$work<x0>(x0) =
+  gseq_rforeach$work<gseq><arrszref(x0),x0>(x0)
 } (* end of [gseq_rforeach] *)
 
 (* ****** ****** *)

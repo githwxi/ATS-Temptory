@@ -323,6 +323,7 @@ sexpdef list1 = list1_tflt_int_tbox
 //
 typedef
 list1(a:tflt) = [n:int] list1(a, n)
+(*
 typedef
 list1_0(a:tflt) = [n:int | n >= 0] list1(a, n)
 typedef
@@ -339,6 +340,7 @@ typedef list1_btw
   (a:tflt, m:int, n:int) = [k:int | m <= k; k < n] list1(a, k)
 typedef list1_btwe
   (a:tflt, m:int, n:int) = [k:int | m <= k; k <= n] list1(a, k)
+*)
 //
 (* ****** ****** *)
 //
@@ -369,6 +371,7 @@ sexpdef list1_vt = list1_vtflt_int_vtbox
 //
 vtypedef
 list1_vt(a:vtflt) = [n:int] list1_vt(a, n)
+(*
 vtypedef
 list1_0_vt
   (a:vtflt) = [n:int | n >= 0] list1_vt(a, n)
@@ -376,14 +379,14 @@ vtypedef
 list1_1_vt
   (a:vtflt) = [n:int | n >= 1] list1_vt(a, n)
 vtypedef
-list1_gt_vt
+list1_lt_vt
   (a:vtflt, n:int) = [k:nat | k < n] list1_vt(a, k)
-vtypedef
-list1_lte_vt
-  (a:vtflt, n:int) = [k:nat | k <= n] list1_vt(a, k)
 vtypedef
 list1_gt_vt
   (a:vtflt, n:int) = [k:int | k > n] list1_vt(a, k)
+vtypedef
+list1_lte_vt
+  (a:vtflt, n:int) = [k:nat | k <= n] list1_vt(a, k)
 vtypedef
 list1_gte_vt
   (a:vtflt, n:int) = [k:int | k >= n] list1_vt(a, k)
@@ -393,6 +396,7 @@ list1_btw_vt
 vtypedef
 list1_btwe_vt
   (a:vtflt, m:int, n:int) = [k:int | m <= k; k <= n] list1_vt(a, k)
+*)
 //
 (* ****** ****** *)
 //

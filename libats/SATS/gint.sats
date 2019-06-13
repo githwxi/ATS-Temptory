@@ -882,50 +882,6 @@ g0cmp_uint_uint
 (* ****** ****** *)
 //
 fun
-g0lsl_uint_int
-( x: uint
-, y: Intgte(0)):<> uint = "mac#%"
-//
-fun
-g0lsr_uint_int
-( x: uint
-, y: Intgte(0)):<> uint = "mac#%"
-//
-#symload << with g0lsl_uint_int
-#symload >> with g0lsr_uint_int
-//
-#symload lsl with g0lsl_uint_int
-#symload lsr with g0lsl_uint_int
-//
-fun
-g0lnot_uint
-(x: uint):<> uint = "mac#%"
-//
-#symload ~ with g0lnot_uint of 10
-#symload lnot with g0lnot_uint of 10
-//
-fun
-g0lor_uint_uint
-( x: uint
-, y: uint):<> uint = "mac#%"
-//
-fun
-g0land_uint_uint
-( x: uint
-, y: uint):<> uint = "mac#%"
-//
-fun
-g0lxor_uint_uint
-( x: uint
-, y: uint):<> uint = "mac#%"
-//
-#symload lor with g0lor_uint_uint of 10
-#symload land with g0land_uint_uint of 10
-#symload lxor with g0lxor_uint_uint of 10
-//
-(* ****** ****** *)
-//
-fun
 g0lt_uint0_sint1
   {j:nat}
 ( x: uint0
@@ -1144,6 +1100,56 @@ g1neq_usize_sint1
 (*
 #symload <=> with g1cmp_usize_sint1 of 12
 *)
+//
+(* ****** ****** *)
+//
+fun
+g0lsl_uint0_sint1
+( x: uint
+, y: Intgte(0)):<> uint = "mac#%"
+//
+fun
+g0lsr_uint0_sint1
+( x: uint
+, y: Intgte(0)):<> uint = "mac#%"
+//
+#symload << with g0lsl_uint0_sint1
+#symload >> with g0lsr_uint0_sint1
+//
+#symload lsl with g0lsl_uint0_sint1
+#symload lsr with g0lsl_uint0_sint1
+//
+(* ****** ****** *)
+//
+fun
+g0lnot_uint
+(x: uint):<> uint = "mac#%"
+//
+#symload ~ with g0lnot_uint of 10
+#symload lnot with g0lnot_uint of 10
+//
+fun
+g0lor2_uint_uint
+(x: uint, y: uint):<> uint = "mac#%"
+//
+fun
+g0land_uint_uint
+(x: uint, y: uint):<> uint = "mac#%"
+//
+fun
+g0lxor_uint_uint
+(x: uint, y: uint):<> uint = "mac#%"
+//
+(*
+#symload | with g0lor2_uint_uint of 10
+#symload & with g0land_uint_uint of 10
+#symload ^ with g0lxor_uint_uint of 10
+*)
+//
+#symload lor with g0lor2_uint_uint of 10
+#symload lor2 with g0lor2_uint_uint of 10
+#symload land with g0land_uint_uint of 10
+#symload lxor with g0lxor_uint_uint of 10
 //
 (* ****** ****** *)
 //

@@ -45,43 +45,53 @@
 (* ****** ****** *)
 //
 impltmp
-gseq_listize<sint><sint>
+gseq_listize<
+gseq><sint,sint>
   (n0) = (sint_listize<>(n0))
 impltmp
-gseq_listize<uint><uint>
+gseq_listize<
+gseq><uint,uint>
   (n0) = (uint_listize<>(n0))
 impltmp
-gseq_listize<size><size>
+gseq_listize<
+gseq><size,size>
   (n0) = (size_listize<>(n0))
 //
 (* ****** ****** *)
 //
 impltmp
-gseq_rlistize<sint><sint>
+gseq_rlistize<
+gseq><sint,sint>
   (n0) = (sint_rlistize<>(n0))
 impltmp
-gseq_rlistize<uint><uint>
+gseq_rlistize<
+gseq><uint,uint>
   (n0) = (uint_rlistize<>(n0))
 impltmp
-gseq_rlistize<size><size>
+gseq_rlistize<
+gseq><size,size>
   (n0) = (size_rlistize<>(n0))
 //
 (* ****** ****** *)
 //
 impltmp
-gseq_streamize<sint><sint>
+gseq_streamize<
+gseq><sint,sint>
   (n0) = (sint_streamize<>(n0))
 impltmp
-gseq_streamize<uint><uint>
+gseq_streamize<
+gseq><uint,uint>
   (n0) = (uint_streamize<>(n0))
 impltmp
-gseq_streamize<size><size>
+gseq_streamize<
+gseq><size,size>
   (n0) = (size_streamize<>(n0))
 //
 (* ****** ****** *)
 
 impltmp
-gseq_forall<sint><sint>
+gseq_forall<
+gseq><sint,sint>
   (n0) =
 (
   sint_forall<>(n0)
@@ -89,10 +99,11 @@ gseq_forall<sint><sint>
 {
 impltmp
 sint_forall$test<>(i0) =
-gseq_forall$test<sint>(i0)
+gseq_forall$test<gseq><sint,sint>(i0)
 }
 impltmp
-gseq_foreach<sint><sint>
+gseq_foreach<
+gseq><sint,sint>
   (n0) =
 (
   sint_foreach<>(n0)
@@ -100,13 +111,14 @@ gseq_foreach<sint><sint>
 {
 impltmp
 sint_foreach$work<>(i0) =
-gseq_foreach$work<sint>(i0)
+gseq_foreach$work<gseq><sint,sint>(i0)
 }
 
 (* ****** ****** *)
 
 impltmp
-gseq_forall<uint><uint>
+gseq_forall<
+gseq><uint,uint>
   (n0) =
 ( loop(0u) ) where
 {
@@ -120,7 +132,8 @@ then true else
 let
 val
 test =
-gseq_forall$test<uint>(i0) 
+gseq_forall$test<
+gseq><uint,uint>(i0) 
 in
 if
 test
@@ -132,7 +145,8 @@ end (* end of [loop] *)
 (* ****** ****** *)
 
 impltmp
-gseq_rforall<sint><sint>
+gseq_rforall<
+gseq><sint,sint>
   (n0) =
 ( loop(n0) ) where
 {
@@ -147,7 +161,7 @@ then true else
 let
 val i0 = pred(i0)
 val test =
-gseq_rforall$test<sint>(i0)
+gseq_rforall$test<gseq><sint,sint>(i0)
 in
   if test then loop(i0) else false
 end // end-of-let
@@ -158,7 +172,8 @@ end // end-of-let
 (* ****** ****** *)
 
 impltmp
-gseq_rforall<uint><uint>
+gseq_rforall<
+gseq><uint,uint>
   (n0) =
 ( loop(n0) ) where
 {
@@ -173,7 +188,8 @@ then true else
 let
 val i0 = pred(i0)
 val test =
-gseq_rforall$test<uint>(i0)
+gseq_rforall$test<
+gseq><uint,uint>(i0)
 in
   if test then loop(i0) else false
 end // end-of-let
@@ -184,20 +200,24 @@ end // end-of-let
 (* ****** ****** *)
 
 impltmp
-gseq_forall<SINT2><sint>
-  (SINT2) =
+gseq_forall<
+gseq><SINT2,sint>
+( SINT2 ) =
 ( SINT2_forall() ) where
 {
 impltmp
-SINT2_forall$test<>(i0) = gseq_forall$test<sint>(i0)
+SINT2_forall$test<>(i0) =
+  gseq_forall$test<gseq><SINT2,sint>(i0)
 } (* end of [gseq_forall<SINT2>] *)
 impltmp
-gseq_rforall<SINT2><sint>
-  (SINT2) =
+gseq_rforall<
+gseq><SINT2,sint>
+( SINT2 ) =
 ( SINT2_rforall() ) where
 {
 impltmp
-SINT2_rforall$test<>(i0) = gseq_rforall$test<sint>(i0)
+SINT2_rforall$test<>(i0) =
+  gseq_rforall$test<gseq><SINT2,sint>(i0)
 } (* end of [gseq_rforall<SINT2>] *)
 
 (* ****** ****** *)

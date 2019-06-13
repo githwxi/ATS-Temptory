@@ -37,11 +37,13 @@ fun
 intrep_rprint
 (rep: string): void =
 (
-gseq_rforeach<string><char>(rep)
+gseq_rforeach<
+gseq><string,char>(rep)
 ) where
 {
 impltmp
-gseq_rforeach$work<char>(c0) = print(c0)
+gseq_rforeach$work<
+gseq><string,char>(c0) = print(c0)
 } (* end of [intrep_rprint] *)
 
 (* ****** ****** *)

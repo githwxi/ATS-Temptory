@@ -48,7 +48,7 @@ implfun
 board_cons(x0, xs) = cons(x0, xs)
 
 impltmp
-gseq_streamize<board><int>(xs) = list0_streamize<int>(xs)
+gseq_streamize<gseq><board,int>(xs) = list0_streamize<int>(xs)
 
 end (* end of [local] *)
 
@@ -58,12 +58,12 @@ fun
 board_print
 (xs: board): void =
 (
-gseq_rforeach<board><int>
+gseq_rforeach<gseq><board,int>
   (xs)
 ) where
 {
 impltmp
-gseq_rforeach$work<int>(x0) =
+gseq_rforeach$work<gseq><board,int>(x0) =
 (
   loop(0)
 ) where
@@ -87,11 +87,11 @@ fun
 board_check
 (x0: int, xs: board): bool =
 (
-gseq_iforall<board><int>(xs)
+gseq_iforall<gseq><board,int>(xs)
 ) where
 {
 impltmp
-gseq_iforall$test<int>(i1, x1) =
+gseq_iforall$test<gseq><board,int>(i1, x1) =
 if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
 }
 
@@ -103,14 +103,14 @@ board_extend
 (
 list0_vt2t
 (
-gseq_mapopt_list<sint><sint><board>(N)
+gseq_mapopt_list<gseq><int,int><board>(N)
 )
 ) where
 {
 impltmp
-gseq_mapopt$test<sint>(x0) = board_check(x0, xs)
+gseq_mapopt$test<gseq><int,int>(x0) = board_check(x0, xs)
 impltmp
-gseq_mapopt$fopr<sint><board>(x0) = board_cons(x0, xs)
+gseq_mapopt$fopr<gseq><int,int><board>(x0) = board_cons(x0, xs)
 }
 
 fun
@@ -151,12 +151,14 @@ xss = qsolve()
 //
 val () =
 (
-gseq_iforeach<list(board)><board>(xss)
+gseq_iforeach<
+gseq><list(board),board>(xss)
 ) where
 {
 impltmp
-gseq_iforeach$work<board>(i, xs) =
-(println!("Solution#", i+1, ":"); board_print(xs); println!())
+gseq_iforeach$work<
+gseq><list(board),board>(i0, xs) =
+(println!("Solution#", i0+1, ":"); board_print(xs); println!())
 }
 }
 

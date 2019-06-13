@@ -479,5 +479,47 @@ g0cmp_ldouble_ldouble
 *)
 
 (* ****** ****** *)
+//
+fun{}
+g0mul_sint_float
+  (i0: sint, f1: float): float
+fun{}
+g0mul_float_sint
+  (f0: float, i1: sint): float
+//
+fun{}
+g0mul_sint_double
+  (i0: sint, f1: double): double
+fun{}
+g0mul_double_sint
+  (f0: double, i1: sint): double
+//
+#symload * with g0mul_sint_float
+#symload * with g0mul_float_sint
+#symload * with g0mul_sint_double
+#symload * with g0mul_double_sint
+//
+(* ****** ****** *)
+//
+fun{}
+g0div_sint_float
+  (i0: sint, f1: float): float
+fun{}
+g0div_float_sint
+  (f0: float, i1: sint): float
+//
+fun{}
+g0div_sint_double
+  (i0: sint, f1: double): double
+fun{}
+g0div_double_sint
+  (f0: double, i1: sint): double
+//
+#symload / with g0div_sint_float
+#symload / with g0div_float_sint
+#symload / with g0div_sint_double
+#symload / with g0div_double_sint
+//
+(* ****** ****** *)
 
 (* end of [float.sats] *)

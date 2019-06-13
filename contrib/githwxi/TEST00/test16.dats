@@ -33,11 +33,15 @@ val
 (MobyDick) =
 (
 glseq_map0_list<
-stream_vt(word)><word><word>(MobyDick)
+glseq><words,word><word>(MobyDick)
 ) where
 {
+//
+vtypedef words = stream_vt(word)
+//
 impltmp
-glseq_map0$fopr<word><word>(x0) = tolower(x0)
+glseq_map0$fopr<
+glseq><words,word><word>(x0) = tolower(x0)
 }
 val
 (MobyDick) = mergesort(MobyDick)

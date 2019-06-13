@@ -46,7 +46,8 @@ VERBOSE_PRELUDE
 
 (* ****** ****** *)
 
-#define RD(x) x // for commenting: read-only
+sortdef sint = int // integers
+sortdef uint = int // naturals
 
 (* ****** ****** *)
 
@@ -209,26 +210,27 @@ typedef
 Nat = [a:int | a >= 0] int(a)
 //
 typedef
-Intgt(i:int) = [a:int | a > i] int(a)
-typedef
-Intgte(i:int) = [a:int | a >= i] int(a)
-typedef
-Intlt(i:int) = [a:int | a < i] int(a)
-typedef
-Intlte(i:int) = [a:int | a <= i] int(a)
-typedef
 Natlt(i:int) = [a:nat | a < i] int(a)
 typedef
 Natlte(i:int) = [a:nat | a <= i] int(a)
 //
 typedef
-Sizegt(i:int) = [a:int | a > i] size(a)
+Intlt(i:int) = [a:int | a < i] int(a)
 typedef
-Sizegte(i:int) = [a:int | a >= i] size(a)
+Intgt(i:int) = [a:int | a > i] int(a)
+typedef
+Intlte(i:int) = [a:int | a <= i] int(a)
+typedef
+Intgte(i:int) = [a:int | a >= i] int(a)
+//
 typedef
 Sizelt(i:int) = [a:int | a < i] size(a)
 typedef
+Sizegt(i:int) = [a:int | a > i] size(a)
+typedef
 Sizelte(i:int) = [a:int | a <= i] size(a)
+typedef
+Sizegte(i:int) = [a:int | a >= i] size(a)
 //
 (* ****** ****** *)
 

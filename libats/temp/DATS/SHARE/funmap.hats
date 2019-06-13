@@ -214,13 +214,15 @@ end
 impltmp
 (k0:tflt
 ,x0:tflt)
-gseq_forall<map(k0,x0)><(k0, x0)>(map) =
+gseq_forall<
+gseq><map(k0,x0),tup(k0,x0)>(map) =
 (
   funmap_forall<k0,x0>(map)
 ) where
 {
 impltmp
-funmap_forall$test<k0,x0>(k0,x0) = gseq_forall$test<(k0,x0)>((k0,x0))
+funmap_forall$test<k0,x0>(k0,x0) =
+gseq_forall$test<gseq><map(k0,x0),tup(k0,x0)>((k0,x0))
 }
 
 (* ****** ****** *)
@@ -228,13 +230,15 @@ funmap_forall$test<k0,x0>(k0,x0) = gseq_forall$test<(k0,x0)>((k0,x0))
 impltmp
 (k0:tflt
 ,x0:tflt)
-gseq_foreach<map(k0,x0)><(k0,x0)>(map) =
+gseq_foreach<
+gseq><map(k0,x0),tup(k0,x0)>(map) =
 (
   funmap_foreach<k0,x0>(map)
 ) where
 {
 impltmp
-funmap_foreach$work<k0,x0>(k0,x0) = gseq_foreach$work<(k0,x0)>((k0,x0))
+funmap_foreach$work<k0,x0>(k0,x0) =
+gseq_foreach$work<gseq><map(k0,x0),tup(k0,x0)>((k0,x0))
 }
 
 (* ****** ****** *)
@@ -242,7 +246,8 @@ funmap_foreach$work<k0,x0>(k0,x0) = gseq_foreach$work<(k0,x0)>((k0,x0))
 impltmp
 (k0:tflt
 ,x0:tflt)
-gseq_streamize<map(k0,x0)><(k0,x0)>(map) = funmap_streamize<k0,x0>(map)
+gseq_streamize<
+gseq><map(k0,x0),tup(k0,x0)>(map) = funmap_streamize<k0,x0>(map)
 
 (* ****** ****** *)
 

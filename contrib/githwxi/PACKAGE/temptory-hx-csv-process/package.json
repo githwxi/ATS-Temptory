@@ -1,6 +1,6 @@
 {
     "name": "temptory-hx-csv-process",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "This package is for CSV-related processing",
     "main": "N/A",
     "scripts": {},
@@ -12,7 +12,7 @@
     ],
     "dependencies": {
         "temptory-hx-libpcre": "^1.0.1",
-        "temptory-hx-csv-parse": "^1.0.0"
+        "temptory-hx-csv-parse": "^1.0.2"
     },
     "author": "Hongwei Xi <gmhwxi@gmail.com>",
     "license": "MIT",

@@ -21,11 +21,13 @@ val
 ord =
 (
 list0_vt2t
-(gseq_map_list<string><char><int>(abc))
+(gseq_map_list<
+gseq><string,char><int>(abc))
 ) where
 {
 impltmp
-gseq_map$fopr<char><int>(c0) = char0_ord(c0)
+gseq_map$fopr<
+gseq><string,char><int>(c0) = char0_ord(c0)
 }
 //
 val () =
@@ -43,22 +45,26 @@ val
 ABC =
 (
 list0_vt2t
-(gseq_map_list<string><char><char>(abc))
+(gseq_map_list<
+gseq><string,char><char>(abc))
 ) where
 {
 impltmp
-gseq_map$fopr<char><char>(c0) = char0_toupper(c0)
+gseq_map$fopr<
+gseq><string,char><char>(c0) = char0_toupper(c0)
 }
 //
 val
 ORD =
 (
 list0_vt2t
-(gseq_map_list<list(char)><char><int>(ABC))
+(gseq_map_list<
+gseq><list(char),char><int>(ABC))
 ) where
 {
 impltmp
-gseq_map$fopr<char><int>(c0) = char0_ord(c0)
+gseq_map$fopr<
+gseq><list(char),char><int>(c0) = char0_ord(c0)
 }
 //
 val () =

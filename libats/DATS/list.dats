@@ -105,28 +105,6 @@ case+ xs of
 | list0_nil() => i0
 | list0_cons(_, xs) => loop(xs, succ(i0))
 } (* end of [list0_length] *)
-(*
-impltmp
-{x0}//tmp
-list0_length(xs) =
-(
-gseq_foldleft<list0(x0)><x0><int>(xs, 0)
-) where
-{
-impltmp
-gseq_foldleft$fopr<x0><int>(r0, x0) = succ(r0)
-}
-*)
-//
-(* ****** ****** *)
-//
-impltmp
-{x0}//tmp
-list0_indexof(xs, x0) =
-$effmask_all
-(
-  gseq_indexof<list0(x0)><x0>(xs, x0)
-) (* end of [list0_indexof] *)
 //
 (* ****** ****** *)
 
@@ -948,77 +926,10 @@ case+ xs of
 (* ****** ****** *)
 //
 impltmp
-{x0}(*tmp*)
-list0_iforall(xs) =
-(
-  gseq_iforall<list0(x0)><x0>(xs)
-) where
-{
-impltmp
-gseq_iforall$test<x0>
-  (i0, x0) = list0_iforall$test<x0>(i0, x0)
-}
-impltmp
-{x0}(*tmp*)
-list0_iforeach(xs) =
-(
-  gseq_iforeach<list0(x0)><x0>(xs)
-) where
-{
-impltmp
-gseq_iforeach$work<x0>
-  (i0, x0) = list0_iforeach$work<x0>(i0, x0)
-}
-impltmp
-{x0}{r0}//tmp
-list0_ifoldleft(xs, r0) =
-(
-  gseq_ifoldleft<list0(x0)><x0>(xs, r0)
-) where
-{
-impltmp
-gseq_ifoldleft$fopr<x0><r0>
-  (r0, i0, x0) = list0_ifoldleft$fopr<x0>(r0, i0, x0)
-}
-//
-(* ****** ****** *)
-//
-impltmp
 {x0}{y0}//tmp
 list0_map(xs) =
 list0_vt2t
 (list0_map_list<x0><y0>(xs))
-//
-impltmp
-{x0}{y0}//tmp
-list0_map_list(xs) =
-(
-  gseq_map_list<list0(x0)><x0><y0>(xs)
-) where
-{
-impltmp
-gseq_map$fopr<x0><y0>(x0) = list0_map$fopr<x0><y0>(x0)
-}
-impltmp
-{x0}{y0}//tmp
-list0_map_rlist(xs) =
-(
-  gseq_map_rlist<list0(x0)><x0><y0>(xs)
-) where
-{
-impltmp
-gseq_map$fopr<x0><y0>(x0) = list0_map$fopr<x0><y0>(x0)
-}
-impltmp
-{x0}{y0}//tmp
-list0_map_stream(xs) =
-(
-  gseq_map_stream<list0(x0)><x0><y0>(xs)
-) where
-{
-impltmp
-gseq_map$fopr<x0><y0>(x0) = list0_map$fopr<x0><y0>(x0)
-}
 //
 (* ****** ****** *)
 //
@@ -1042,43 +953,6 @@ list0_mapopt(xs) =
 list0_vt2t
 (list0_mapopt_list<x0><y0>(xs))
 //
-impltmp
-{x0}{y0}//tmp
-list0_mapopt_list(xs) =
-(
-  gseq_mapopt_list<list0(x0)><x0><y0>(xs)
-) where
-{
-impltmp
-gseq_mapopt$test<x0>(x0) = list0_mapopt$test<x0>(x0)
-impltmp
-gseq_mapopt$fopr<x0><y0>(x0) = list0_mapopt$fopr<x0><y0>(x0)
-}
-impltmp
-{x0}{y0}//tmp
-list0_mapopt_rlist(xs) =
-(
-  gseq_mapopt_rlist<list0(x0)><x0><y0>(xs)
-) where
-{
-impltmp
-gseq_mapopt$test<x0>(x0) = list0_mapopt$test<x0>(x0)
-impltmp
-gseq_mapopt$fopr<x0><y0>(x0) = list0_mapopt$fopr<x0><y0>(x0)
-}
-impltmp
-{x0}{y0}//tmp
-list0_mapopt_stream(xs) =
-(
-  gseq_mapopt_stream<list0(x0)><x0><y0>(xs)
-) where
-{
-impltmp
-gseq_mapopt$test<x0>(x0) = list0_mapopt$test<x0>(x0)
-impltmp
-gseq_mapopt$fopr<x0><y0>(x0) = list0_mapopt$fopr<x0><y0>(x0)
-}
-//
 (* ****** ****** *)
 //
 impltmp
@@ -1086,37 +960,6 @@ impltmp
 list0_imap(xs) =
 list0_vt2t
 (list0_imap_list<x0><y0>(xs))
-//
-impltmp
-{x0}{y0}//tmp
-list0_imap_list(xs) =
-(
-  gseq_imap_list<list0(x0)><x0><y0>(xs)
-) where
-{
-impltmp
-gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
-}
-impltmp
-{x0}{y0}//tmp
-list0_imap_rlist(xs) =
-(
-  gseq_imap_rlist<list0(x0)><x0><y0>(xs)
-) where
-{
-impltmp
-gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
-}
-impltmp
-{x0}{y0}//tmp
-list0_imap_stream(xs) =
-(
-  gseq_imap_stream<list0(x0)><x0><y0>(xs)
-) where
-{
-impltmp
-gseq_imap$fopr<x0><y0>(i0, x0) = list0_imap$fopr<x0><y0>(i0, x0)
-}
 //
 (* ****** ****** *)
 

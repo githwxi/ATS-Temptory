@@ -41,13 +41,15 @@ mylist_forall$test(x0: a): bool
 
 impltmp
 (a:tflt)
-gseq_forall<mylist(a)><a>(xs) =
+gseq_forall<
+gseq><mylist(a),a>(xs) =
 (
 mylist_forall<a>(xs)
 ) where
 {
 impltmp
-mylist_forall$test<a>(x0) = gseq_forall$test<a>(x0)
+mylist_forall$test<a>(x0) =
+gseq_forall$test<gseq><mylist(a),a>(x0)
 }
 
 (* ****** ****** *)
@@ -74,10 +76,10 @@ case+ xs of
 //
 val () =
 (print!("xs = ")
-;gseq_print<mylist(int)><int>(xs);println!((*void*)))
+;gseq_print<gseq><mylist(int),int>(xs);println!((*void*)))
 //
 val () =
-println!("length(xs) = ", gseq_length<mylist(int)><int>(xs))
+println!("length(xs) = ", gseq_length<gseq><mylist(int),int>(xs))
 //
 (* ****** ****** *)
 

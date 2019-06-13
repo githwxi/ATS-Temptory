@@ -333,26 +333,32 @@ slistref_print$sep<>() = print(",")
 //
 impltmp
 (x0:tflt)
-glseq_forall1<slistref(x0)><x0>
+glseq_forall1<
+glseq><slistref(x0),x0>
   (stk) =
 (
   slistref_forall1<x0>(stk)
 ) where
 {
+typedef xs = slistref(x0)
 impltmp
-slistref_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
+slistref_forall1$test<x0>(x0) =
+  glseq_forall1$test<glseq><xs,x0>(x0)
 }
 //
 impltmp
 (x0:tflt)
-glseq_foreach1<slistref(x0)><x0>
+glseq_foreach1<
+glseq><slistref(x0),x0>
   (stk) =
 (
   slistref_foreach1<x0>(stk)
 ) where
 {
+typedef xs = slistref(x0)
 impltmp
-slistref_foreach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
+slistref_foreach1$work<x0>(x0) =
+  glseq_foreach1$work<glseq><xs,x0>(x0)
 }
 //
 (* ****** ****** *)

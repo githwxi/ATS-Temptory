@@ -124,13 +124,15 @@ in
 //
 list0_vt2t
 (
-gseq_map_list<xs><x0><y0>(len)
+gseq_map_list<
+gseq><xs,x0><y0>(len)
 ) where
 {
-  typedef xs = sint
-  typedef x0 = sint and y0 = a
-  impltmp
-  gseq_map$fopr<x0><y0>(i0) = grand$val<y0>()
+typedef xs = sint
+typedef x0 = sint and y0 = a
+impltmp
+gseq_map$fopr<
+gseq><xs,x0><y0>(i0) = grand$val<y0>()
 } (* end of [where] *)
 //
 end (* end of [list0_rand] *)

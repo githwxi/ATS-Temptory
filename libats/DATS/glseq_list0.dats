@@ -47,71 +47,281 @@
 
 impltmp
 (x0:vtflt)
-glseq_forall0<list0_vt(x0)><x0>
+glseq_forall0<
+glseq><list0_vt(x0),x0>
   (xs) =
 (
   list0_vt_forall0<x0>(xs)
 ) where
 {
 impltmp
-list0_vt_forall0$test<x0>(x0) = glseq_forall0$test<x0>(x0)
+list0_vt_forall0$test<x0>(x0) =
+  glseq_forall0$test<glseq><list0_vt(x0),x0>(x0)
 } (* end of [glseq_forall0] *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:vtflt)
-glseq_forall1<list0_vt(x0)><x0>
+glseq_forall1<
+glseq><list0_vt(x0),x0>
   (xs) =
 (
   list0_vt_forall1<x0>(xs)
 ) where
 {
 impltmp
-list0_vt_forall1$test<x0>(x0) = glseq_forall1$test<x0>(x0)
+list0_vt_forall1$test<x0>(x0) =
+  glseq_forall1$test<glseq><list0_vt(x0),x0>(x0)
 } (* end of [glseq_forall1] *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:vtflt)
-glseq_foreach1<list0_vt(x0)><x0>
+glseq_foreach1<
+glseq><list0_vt(x0),x0>
   (xs) =
 (
   list0_vt_foreach1<x0>(xs)
 ) where
 {
 impltmp
-list0_vt_foreach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
+list0_vt_foreach1$work<x0>(x0) =
+  glseq_foreach1$work<glseq><list0_vt(x0),x0>(x0)
 } (* end of [glseq_foreach1] *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:vtflt)
-glseq_rforall1<list0_vt(x0)><x0>
+glseq_rforall1<
+glseq><list0_vt(x0),x0>
   (xs) =
 (
   list0_vt_rforall1<x0>(xs)
 ) where
 {
 impltmp
-list0_vt_rforall1$test<x0>(x0) = glseq_rforall1$test<x0>(x0)
+list0_vt_rforall1$test<x0>(x0) =
+  glseq_rforall1$test<glseq><list0_vt(x0),x0>(x0)
 } (* end of [glseq_rforall1] *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:vtflt)
-glseq_forall1_ref<list0_vt(x0)><x0>
+glseq_forall1_ref<
+glseq><list0_vt(x0),x0>
   (xs) =
 (
   list0_vt_forall1_ref<x0>(xs)
 ) where
 {
 impltmp
-list0_vt_forall1_ref$test<x0>(x0) = glseq_forall1_ref$test<x0>(x0)
+list0_vt_forall1_ref$test<x0>(x0) =
+glseq_forall1_ref$test<glseq><list0_vt(x0),x0>(x0)
 } (* end of [glseq_forall1_ref] *)
+
+(* ****** ****** *)
+//
+impltmp
+{x0}(*tmp*)
+list0_vt_iforall0(xs) =
+(
+glseq_iforall0<glseq><xs,x0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_iforall0$test<glseq><xs,x0>
+(i0, x0) = list0_vt_iforall0$test<x0>(i0, x0)
+//
+} (* end of [list0_vt_iforall0] *)
+//
+impltmp
+{x0}(*tmp*)
+list0_vt_iforeach0(xs) =
+(
+glseq_iforeach0<glseq><xs,x0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_iforeach0$work<glseq><xs,x0>
+(i0, x0) = list0_vt_iforeach0$work<x0>(i0, x0)
+//
+} (* end of [list0_vt_iforeach0] *)
+//
+(* ****** ****** *)
+
+impltmp
+{x0}{y0}
+list0_vt_map0_list(xs) =
+(
+glseq_map0_list<glseq><xs,x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_map0$fopr<
+glseq><xs,x0><y0>(x0) = list0_vt_map0$fopr<x0><y0>(x0)
+//
+} // list0_vt_map0_list
+impltmp
+{x0}{y0}
+list0_vt_map0_rlist(xs) =
+(
+glseq_map0_rlist<glseq><xs,x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_map0$fopr<
+glseq><xs,x0><y0>(x0) = list0_vt_map0$fopr<x0><y0>(x0)
+//
+} // list0_vt_map0_rlist
+//
+(* ****** ****** *)
+
+impltmp
+{x0}{y0}
+list0_vt_imap0_list(xs) =
+(
+glseq_imap0_list<glseq><xs,x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_imap0$fopr<
+glseq><xs,x0><y0>(i0, x0) = list0_vt_imap0$fopr<x0><y0>(i0, x0)
+//
+} // list0_vt_imap0_list
+impltmp
+{x0}{y0}
+list0_vt_imap0_rlist(xs) =
+(
+glseq_imap0_rlist<glseq><xs,x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_imap0$fopr<
+glseq><xs,x0><y0>(i0, x0) = list0_vt_imap0$fopr<x0><y0>(i0, x0)
+//
+} // list0_vt_imap0_rlist
+//
+(* ****** ****** *)
+//
+impltmp
+{x0}{y0}
+list0_vt_map1_list(xs) =
+(
+glseq_map1_list<glseq><xs,x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_map1$fopr<
+glseq><xs,x0><y0>(x0) = list0_vt_map1$fopr<x0><y0>(x0)
+//
+} // list0_vt_map1_list
+impltmp
+{x0}{y0}
+list0_vt_map1_rlist(xs) =
+(
+glseq_map1_rlist<glseq><xs,x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_map1$fopr<
+glseq><xs,x0><y0>(x0) = list0_vt_map1$fopr<x0><y0>(x0)
+//
+} // list0_vt_map1_rlist
+//
+(* ****** ****** *)
+//
+impltmp
+{x0}{y0}
+list0_vt_imap1_list(xs) =
+(
+glseq_imap1_list<glseq><xs,x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_imap1$fopr<
+glseq><xs,x0><y0>(i0, x0) = list0_vt_imap1$fopr<x0><y0>(i0, x0)
+//
+} // list0_vt_imap1_list
+impltmp
+{x0}{y0}
+list0_vt_imap1_rlist(xs) =
+(
+glseq_imap1_rlist<glseq><xs,x0><y0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_imap1$fopr<
+glseq><xs,x0><y0>(i0, x0) = list0_vt_imap1$fopr<x0><y0>(i0, x0)
+//
+} // list0_vt_imap1_rlist
+//
+(* ****** ****** *)
+
+impltmp
+{x0}//tmp
+list0_vt_foreach1_ref
+  (xs) =
+(
+glseq_foreach1_ref<glseq><xs,x0>(xs)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_foreach1_ref$work<glseq><xs,x0>(px) = list0_vt_foreach1_ref$work<x0>(px)
+}
+
+(* ****** ****** *)
+
+impltmp
+{x0}{r0}//tmp
+list0_vt_foldleft1_ref
+  (xs, r0) =
+(
+glseq_foldleft1_ref<glseq><xs,x0><r0>(xs, r0)
+) where
+{
+//
+vtypedef xs = list0_vt(x0)
+//
+impltmp
+glseq_foldleft1_ref$fopr<glseq><xs,x0><r0>(r0, px) = list0_vt_foldleft1_ref$fopr<x0><r0>(r0, px)
+}
 
 (* ****** ****** *)
 

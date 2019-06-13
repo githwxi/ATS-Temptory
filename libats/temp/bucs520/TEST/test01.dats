@@ -64,17 +64,19 @@ implfun
 board_free(xs) = list0_vt_free(xs)
 
 impltmp
-glseq_forall1<board><int>
+glseq_forall1<glseq><board,int>
 (xs) =
 (
   list0_vt_forall1<int>(xs)
 ) where
 {
 impltmp
-list0_vt_forall1$test<int>(x0) = glseq_forall1$test<int>(x0)
+list0_vt_forall1$test<int>(x0) =
+glseq_forall1$test<glseq><board,int>(x0)
 }
 //
-impltmp glseq_rlistize<board><int>(xs) = list0_vt_reverse(xs)
+impltmp
+glseq_rlistize<glseq><board,int>(xs) = list0_vt_reverse(xs)
 //
 end // end of [local]
 
@@ -84,11 +86,11 @@ fun
 board_check
 (xs: !board, x0: int): bool =
 (
-glseq_iforall1<board><int>(xs)
+glseq_iforall1<glseq><board,int>(xs)
 ) where
 {
 impltmp
-glseq_iforall1$test<int>(i0, x1) =
+glseq_iforall1$test<glseq><board,int>(i0, x1) =
   if (x0 != x1) then (i0+1 != abs(x0-x1)) else false
 }
 
@@ -98,12 +100,12 @@ fun
 board_print0
 (xs: board): void =
 (
-glseq_rforeach0<board><int>
+glseq_rforeach0<glseq><board,int>
   (xs)
 ) where
 {
 impltmp
-glseq_rforeach0$work<int>(x0) =
+glseq_rforeach0$work<glseq><board,int>(x0) =
 (
   sint_foreach<>(N); println!()
 ) where
@@ -155,7 +157,7 @@ xss =
 gtree_streamize_dfs<board>(board_nil())
 //
 impltmp
-stream_vt_filter$test<board>(xs) = (glseq_length<board><int>(xs) >= N)
+stream_vt_filter$test<board>(xs) = (glseq_length<glseq><board,int>(xs) >= N)
 //
 }
 

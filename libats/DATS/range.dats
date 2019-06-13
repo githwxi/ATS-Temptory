@@ -73,11 +73,13 @@ val u0 = SINT2_range$end<>()
 impltmp
 SINT2_foreach<>() =
 (
-  gseq_foreach<SINT2><sint>(SINT2)
+gseq_foreach<
+gseq><SINT2,sint>(SINT2)
 ) where
 {
 impltmp
-gseq_foreach$work<sint>(i0) = SINT2_foreach$work<>(i0)
+gseq_foreach$work<
+gseq><SINT2,sint>(i0) = SINT2_foreach$work<>(i0)
 } (* end of [SINT2_foreach<>] *)
 
 (* ****** ****** *)
@@ -114,11 +116,13 @@ val u0 = SINT2_range$end<>()
 impltmp
 SINT2_rforeach<>() =
 (
-  gseq_rforeach<SINT2><sint>(SINT2)
+gseq_rforeach<
+gseq><SINT2,sint>(SINT2)
 ) where
 {
 impltmp
-gseq_rforeach$work<sint>(i0) = SINT2_rforeach$work<>(i0)
+gseq_rforeach$work<
+gseq><SINT2,sint>(i0) = SINT2_rforeach$work<>(i0)
 } (* end of [SINT2_rforeach<>] *)
 
 (* ****** ****** *)
@@ -189,11 +193,13 @@ impltmp
 (x0:tflt)
 CPTR2_foreach<x0>() =
 (
-  gseq_foreach<CPTR2(x0)><cptr(x0)>(CPTR2)
+gseq_foreach<
+gseq><CPTR2(x0),cptr(x0)>(CPTR2)
 ) where
 {
 impltmp
-gseq_foreach$work<cptr(x0)>(cp) = CPTR2_foreach$work<x0>(cp)
+gseq_foreach$work<
+gseq><CPTR2(x0),cptr(x0)>(cp) = CPTR2_foreach$work<x0>(cp)
 } (* end of [CPTR2_foreach<x0>] *)
 
 (* ****** ****** *)

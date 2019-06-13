@@ -51,14 +51,14 @@ implfun
 board_cons
 (x0, xs) = cons(x0, xs)
 impltmp
-gseq_forall<board><int>
+gseq_forall<gseq><board,int>
 (xs) =
 (
   list0_forall<int>(xs)
 ) where
 {
 impltmp
-list0_forall$test<int>(x0) = gseq_forall$test<int>(x0)
+list0_forall$test<int>(x0) = gseq_forall$test<gseq><board,int>(x0)
 }
 end // end of [local]
 
@@ -68,11 +68,11 @@ fun
 board_check
 (xs: board, x0: int): bool =
 (
-gseq_iforall<board><int>(xs)
+gseq_iforall<gseq><board,int>(xs)
 ) where
 {
 impltmp
-gseq_iforall$test<int>(i0, x1) =
+gseq_iforall$test<gseq><board,int>(i0, x1) =
   if (x0 != x1) then (i0+1 != abs(x0-x1)) else false
 }
 
@@ -82,12 +82,12 @@ fun
 board_print
 (xs: board): void =
 (
-gseq_rforeach<board><int>
+gseq_rforeach<gseq><board,int>
   (xs)
 ) where
 {
 impltmp
-gseq_rforeach$work<int>(x0) =
+gseq_rforeach$work<gseq><board,int>(x0) =
 (
   loop(0); println!()
 ) where
@@ -111,14 +111,14 @@ gtree_node_children<board>
 (
 list0_vt2t
 (
-gseq_mapopt_list<int><int><board>(N)
+gseq_mapopt_list<gseq><int,int><board>(N)
 )
 ) where
 {
 impltmp
-gseq_mapopt$test<int>(x0) = board_check(xs, x0)
+gseq_mapopt$test<gseq><int,int>(x0) = board_check(xs, x0)
 impltmp
-gseq_mapopt$fopr<int><board>(x0) = board_cons(x0, xs)
+gseq_mapopt$fopr<gseq><int,int><board>(x0) = board_cons(x0, xs)
 } (* end of [gtree_node_children] *)
 
 (* ****** ****** *)
@@ -133,14 +133,12 @@ stream_vt_filter<board>(the_solutions)
 ) where
 {
 impltmp
-stream_vt_filter$test<board>(xs) = (gseq_length<board><int>(xs) >= N)
+stream_vt_filter$test<board>(xs) = (gseq_length<gseq><board,int>(xs) >= N)
 }
 
 val () =
 stream_vt_iforeach0
-(
-  the_solutions
-) where
+( the_solutions ) where
 {
 impltmp
 stream_vt_iforeach0$work<board>(i0, xs) = println!("Solution#", i0+1, ":\n", xs)

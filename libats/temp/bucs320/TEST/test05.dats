@@ -66,14 +66,14 @@ implfun
 board_length
 (xs) = list0_length(xs)
 impltmp
-gseq_forall<board><int>
+gseq_forall<gseq><board,int>
 (xs) =
 (
   list0_forall<int>(xs)
 ) where
 {
 impltmp
-list0_forall$test<int>(x0) = gseq_forall$test<int>(x0)
+list0_forall$test<int>(x0) = gseq_forall$test<gseq><board,int>(x0)
 }
 end // end of [local]
 
@@ -83,11 +83,11 @@ fun
 board_check
 (xs: board, x0: int): bool =
 (
-gseq_iforall<board><int>(xs)
+gseq_iforall<gseq><board,int>(xs)
 ) where
 {
 impltmp
-gseq_iforall$test<int>(i0, x1) =
+gseq_iforall$test<gseq><board,int>(i0, x1) =
   if (x0 != x1) then (i0+1 != abs(x0-x1)) else false
 }
 
@@ -97,12 +97,12 @@ fun
 board_print
 (xs: board): void =
 (
-gseq_rforeach<board><int>
+gseq_rforeach<gseq><board,int>
   (xs)
 ) where
 {
 impltmp
-gseq_rforeach$work<int>(x0) =
+gseq_rforeach$work<gseq><board,int>(x0) =
 (
   loop(0); println!()
 ) where

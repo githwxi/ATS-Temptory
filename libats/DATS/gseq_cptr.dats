@@ -47,7 +47,8 @@
 
 impltmp
 (x0:tflt)
-gseq_forall<CPTR2(x0)><x0>
+gseq_forall<
+gseq><CPTR2(x0),x0>
 (CPTR2) =
 (
   cptr0_forall<x0>(cp0, cp1)
@@ -58,15 +59,17 @@ val cp0 = CPTR2_range$beg<x0>()
 val cp1 = CPTR2_range$end<x0>()
 //
 impltmp
-cptr0_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
+cptr0_forall$test<x0>(x0) =
+  gseq_forall$test<gseq><CPTR2(x0),x0>(x0)
 //
-} (* gseq_forall<CPTR(x0)><x0> *)
+} (* gseq_forall<CPTR2(x0),x0> *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:tflt)
-gseq_foreach<CPTR2(x0)><x0>
+gseq_foreach<
+gseq><CPTR2(x0),x0>
 (CPTR2) =
 (
   cptr0_foreach<x0>(cp0, cp1)
@@ -77,23 +80,26 @@ val cp0 = CPTR2_range$beg<x0>()
 val cp1 = CPTR2_range$end<x0>()
 //
 impltmp
-cptr0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
+cptr0_foreach$work<x0>(x0) =
+  gseq_foreach$work<gseq><CPTR2(x0),x0>(x0)
 //
-} (* gseq_foreach<CPTR2(x0)><x0> *)
+} (* gseq_foreach<CPTR2(x0),x0> *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:tflt)
-gseq_forall<CPTR2(x0)><cptr(x0)>
+gseq_forall<
+gseq><CPTR2(x0),cptr(x0)>
 (
   CPTR2
 ) =
 ( CPTR2_forall<x0>() ) where
 {
 impltmp
-CPTR2_forall$test<x0>(cp) = gseq_forall$test<cptr(x0)>(cp)
-} (* gseq_forall<CPTR2><cptr(x0)> *)
+CPTR2_forall$test<x0>(cp) =
+  gseq_forall$test<gseq><CPTR2(x0),cptr(x0)>(cp)
+} (* gseq_forall<CPTR2(x0),cptr(x0)> *)
 
 (* ****** ****** *)
 

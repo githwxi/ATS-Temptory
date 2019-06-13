@@ -22,22 +22,21 @@ arrszref_make<int>(xs)
 val () =
 println!("A0 = ", A0)
 //
-val () =
-print!("A0 = ")
+val () = print!("A0 = ")
 val () = 
 (
-glseq_print<arrszref(int)><int>(A0)
+glseq_print<glseq><arrszref(int),int>(A0)
 ) where
 {
 impltmp
-{xs}{x0}
+{pf}{xs,x0}
 glseq_foreach1(xs) =
 (
-glseq_rforeach1<xs><x0>(xs)
+glseq_rforeach1<pf><xs,x0>(xs)
 ) where
 {
 impltmp
-glseq_rforeach1$work<x0>(x0) = glseq_foreach1$work<x0>(x0)
+glseq_rforeach1$work<pf><xs,x0>(x0) = glseq_foreach1$work<pf><xs,x0>(x0)
 }
 }
 val () = println!((*void*))

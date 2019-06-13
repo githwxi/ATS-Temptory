@@ -46,21 +46,24 @@
 
 impltmp
 (x0:tflt)
-gseq_iseqz<optn0(x0)><x0>
+gseq_iseqz<
+gseq><optn0(x0),x0>
   (xs) =
 (
   optn0_iseqz<>{x0}(xs)
 ) (* end of [gseq_iseqz] *)
 impltmp
 (x0:tflt)
-gseq_isneqz<optn0(x0)><x0>
+gseq_isneqz<
+gseq><optn0(x0),x0>
   (xs) =
 (
   optn0_isneqz<>{x0}(xs)
 ) (* end of [gseq_isneqz] *)
 impltmp
 (x0:tflt)
-gseq_length<optn0(x0)><x0>
+gseq_length<
+gseq><optn0(x0),x0>
   (xs) =
 (
   optn0_length<x0>(xs)
@@ -70,14 +73,16 @@ gseq_length<optn0(x0)><x0>
 
 impltmp
 (x0:tflt)
-gseq_listize<optn0(x0)><x0>
+gseq_listize<
+gseq><optn0(x0),x0>
   (xs) =
 (
   optn0_listize<x0>(xs)
 ) (* end of [gseq_listize<optn0>] *)
 impltmp
 (x0:tflt)
-gseq_streamize<optn0(x0)><x0>
+gseq_streamize<
+gseq><optn0(x0),x0>
   (xs) =
 (
   optn0_streamize<x0>(xs)
@@ -87,28 +92,32 @@ gseq_streamize<optn0(x0)><x0>
 
 impltmp
 (x0:tflt)
-gseq_forall<optn0(x0)><x0>
+gseq_forall<
+gseq><optn0(x0),x0>
   (xs) =
 (
   optn0_forall<x0>(xs)
 ) where
 {
 impltmp
-optn0_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
+optn0_forall$test<x0>(x0) =
+  gseq_forall$test<gseq><optn0(x0),x0>(x0)
 } (* end of [gseq_forall] *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:tflt)
-gseq_foreach<optn0(x0)><x0>
+gseq_foreach<
+gseq><optn0(x0),x0>
   (xs) =
 (
   optn0_foreach<x0>(xs)
 ) where
 {
 impltmp
-optn0_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
+optn0_foreach$work<x0>(x0) =
+  gseq_foreach$work<gseq><optn0(x0),x0>(x0)
 } (* end of [gseq_foreach] *)
 
 (* ****** ****** *)

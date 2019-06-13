@@ -103,33 +103,6 @@ g0cmp_str_str(x1, x2) = strcmp(x1, x2)
 //
 impltmp
 {}(*tmp*)
-string0_size(cs) =
-(
-$effmask_all
-(gseq_size<string><char>(cs))
-)
-impltmp
-{}(*tmp*)
-string0_length(cs) =
-(
-$effmask_all
-(gseq_length<string><char>(cs))
-)
-//
-(* ****** ****** *)
-//
-impltmp
-{}(*tmp*)
-string0_indexof(cs, c0) =
-(
-$effmask_all
-(gseq_indexof<string><char>(cs, c0))
-)
-//
-(* ****** ****** *)
-//
-impltmp
-{}(*tmp*)
 string0_alloc_size
   (n0) = cp where
 {
@@ -330,23 +303,6 @@ string0_make_rlist0_vt
 
 impltmp
 {}(*tmp*)
-string0_listize
-  (cs) =
-(
-  gseq_listize<string><char>(cs)
-) (* end of [string0_listize] *)
-impltmp
-{}(*tmp*)
-string0_rlistize
-  (cs) =
-(
-  gseq_rlistize<string><char>(cs)
-) (* end of [string0_rlistize] *)
-
-(* ****** ****** *)
-
-impltmp
-{}(*tmp*)
 string0_streamize
   (cs) =
 (
@@ -527,33 +483,6 @@ end // end of [let]
 //
 } (* end of [string0_rforeach] *)
 //
-(* ****** ****** *)
-
-impltmp
-{r0}(*tmp*)
-string0_foldleft
-  (cs, r0) =
-(
-gseq_foldleft<string><char>(cs, r0)
-) where
-{
-typedef x0 = char
-impltmp
-gseq_foldleft$fopr<x0><r0>(r0, c0) = string0_foldleft$fopr<r0>(r0, c0)
-} (* end of [string0_foldleft] *)
-impltmp
-{r0}(*tmp*)
-string0_foldright
-  (cs, r0) =
-(
-gseq_foldright<string><char>(cs, r0)
-) where
-{
-typedef x0 = char
-impltmp
-gseq_foldright$fopr<x0><r0>(c0, r0) = string0_foldright$fopr<r0>(c0, r0)
-} (* end of [string0_foldright] *)
-
 (* ****** ****** *)
 //
 // HX: For linear strings
@@ -985,63 +914,6 @@ end // end of [then]
 end // end of [loop]
 //
 } (* end of [string0_vt_foreach1] *)
-//
-(* ****** ****** *)
-//
-(*
-impltmp
-{r0}(*tmp*)
-string0_vt_foldleft1
-  (cs, r0) =
-(
-loop
-(string0_vt_cptrof(cs), r0)
-) where
-{
-//
-fun
-loop
-( p0
-: cptr(char), r0: r0): r0 =
-let
-  val c0 = $UN.cptr0_get(p0)
-in
-if
-isneqz(c0)
-then
-let
-val r0 =
-string0_vt_foldleft1$fopr<r0>(r0, c0) in loop(succ(p0), r0)
-end else r0
-end // end-of-let // end of [loop]
-//
-} (* end of [string0_vt_foldleft1] *)
-*)
-//
-impltmp
-{r0}(*tmp*)
-string0_vt_foldleft1
-  (cs, r0) =
-(
-glseq_foldleft1<string_vt><char>(cs, r0)
-) where
-{
-typedef x0 = char
-impltmp
-glseq_foldleft1$fopr<x0><r0>(r0, c0) = string0_vt_foldleft1$fopr<r0>(r0, c0)
-} (* end of [string0_vt_foldleft1] *)
-impltmp
-{r0}(*tmp*)
-string0_vt_foldright1
-  (cs, r0) =
-(
-glseq_foldright1<string_vt><char>(cs, r0)
-) where
-{
-typedef x0 = char
-impltmp
-glseq_foldright1$fopr<x0><r0>(c0, r0) = string0_vt_foldright1$fopr<r0>(c0, r0)
-} (* end of [string0_vt_foldright1] *)
 //
 (* ****** ****** *)
 //

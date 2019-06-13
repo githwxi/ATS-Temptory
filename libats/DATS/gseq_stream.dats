@@ -46,7 +46,8 @@
 
 impltmp
 (x0:tflt)
-gseq_streamize<stream(x0)><x0>
+gseq_streamize<
+gseq><stream(x0),x0>
   (xs) =
 (
   stream_streamize<x0>(xs)
@@ -56,28 +57,32 @@ gseq_streamize<stream(x0)><x0>
 
 impltmp
 (x0:tflt)
-gseq_forall<stream(x0)><x0>
+gseq_forall<
+gseq><stream(x0),x0>
   (xs) =
 (
   stream_forall<x0>(xs)
 ) where
 {
 impltmp
-stream_forall$test<x0>(x0) = gseq_forall$test<x0>(x0)
+stream_forall$test<x0>(x0) =
+  gseq_forall$test<gseq><stream(x0),x0>(x0)
 } (* end of [gseq_forall] *)
 
 (* ****** ****** *)
 
 impltmp
 (x0:tflt)
-gseq_foreach<stream(x0)><x0>
+gseq_foreach<
+gseq><stream(x0),x0>
   (xs) =
 (
   stream_foreach<x0>(xs)
 ) where
 {
 impltmp
-stream_foreach$work<x0>(x0) = gseq_foreach$work<x0>(x0)
+stream_foreach$work<x0>(x0) =
+  gseq_foreach$work<gseq><stream(x0),x0>(x0)
 } (* end of [gseq_foreach] *)
 
 (* ****** ****** *)

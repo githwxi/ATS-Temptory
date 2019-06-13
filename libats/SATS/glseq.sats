@@ -32,62 +32,85 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+absprop glseq // default
+
+(* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_length(!xs): (int)
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_print(!xs): void
-fun{}
+fun
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_print$beg(): void
-fun{}
+fun
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_print$end(): void
-fun{}
+fun
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_print$sep(): void
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_print$val(!x0): void
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_listize
   (xs: xs): list0_vt(x0)
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_rlistize
   (xs: xs): list0_vt(x0)
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_streamize
   (xs: xs): stream_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_listize1
   (xs: !xs): list0_vt(x0)
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_rlistize1
   (xs: !xs): list0_vt(x0)
 (*
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_streamize1
   (xs: !xs): stream_vt(x0)
 *)
@@ -95,123 +118,158 @@ glseq_streamize1
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_forall0(xs): bool
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_forall0$test(x0): bool
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_exists0(xs): bool
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_exists0$test(x0): bool
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_foreach0(xs): void
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_foreach0$work(x0): void
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_rforall0(xs): bool
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_rforall0$test(x0): bool
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_rforeach0(xs): void
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_rforeach0$work(x0): void
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {r0:vtflt}
 glseq_foldleft0(xs, r0): r0
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {r0:vtflt}
 glseq_foldleft0$fopr(r0, x0): r0
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {r0:vtflt}
 glseq_foldright0(xs, r0): r0
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {r0:vtflt}
 glseq_foldright0$fopr(x0, r0): r0
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_iforall0(xs): bool
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_iforall0$test(int, x0): bool
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_iexists0(xs): bool
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_iexists0$test(int, x0): bool
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_iforeach0(xs): void
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_iforeach0$work(int, x0): void
 //
 (* ****** ****** *)
 //
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_map0$fopr(x0): (y0)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_map0_list(xs): list0_vt(y0)
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_map0_rlist(xs): list0_vt(y0)
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_map0_stream(xs): stream_vt(y0)
 //
@@ -219,7 +277,9 @@ glseq_map0_stream(xs): stream_vt(y0)
 
 (*
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_filter0$test(x0): bool
 *)
@@ -227,129 +287,163 @@ glseq_filter0$test(x0): bool
 (* ****** ****** *)
 //
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_imap0$fopr(int, x0): (y0)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_imap0_list(xs): list0_vt(y0)
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_imap0_rlist(xs): list0_vt(y0)
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_imap0_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_forall1(!xs): bool
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_forall1$test(!x0): bool
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_exists1(!xs): bool
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_exists1$test(!x0): bool
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_foreach1(!xs): void
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_foreach1$work(!x0): void
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {r0:vtflt}
 glseq_foldleft1(!xs, r0): r0
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {r0:vtflt}
 glseq_foldleft1$fopr(r0, !x0): r0
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {r0:vtflt}
 glseq_foldright1(!xs, r0): r0
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {r0:vtflt}
 glseq_foldright1$fopr(!x0, r0): r0
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_rforall1(!xs): bool
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_rforall1$test(!x0): bool
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_rforeach1(!xs): void
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_rforeach1$work(!x0): void
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_iforall1(!xs): bool
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_iforall1$test(int, !x0): bool
 //
 (* ****** ****** *)
 //
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_map1$fopr(!x0): (y0)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_map1_list(!xs): list0_vt(y0)
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_map1_rlist(!xs): list0_vt(y0)
 (*
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_map1_stream(!xs): stream_vt(y0)
 *)
@@ -357,24 +451,29 @@ glseq_map1_stream(!xs): stream_vt(y0)
 (* ****** ****** *)
 //
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_imap1$fopr(int, !x0): (y0)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_imap1_list(!xs): list0_vt(y0)
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_imap1_rlist(!xs): list0_vt(y0)
 (*
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {y0:vtflt}
 glseq_imap1_stream(!xs): stream_vt(y0)
 *)
@@ -415,30 +514,39 @@ glseq_foldright$fopr glseq_foldright0$fopr
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_forall1_ref(xs: !xs): bool
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_forall1_ref$test(&x0 >> _): bool
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_foreach1_ref(xs: !xs): void
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 glseq_foreach1_ref$work(&x0 >> _): void
 //
 (* ****** ****** *)
 //
 fun
-{xs:vtflt}
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {r0:vtflt}
 glseq_foldleft1_ref(!xs, r0): r0
 fun
-{x0:vtflt}
+{pf:prop}
+{xs:vtflt
+;x0:vtflt}
 {r0:vtflt}
 glseq_foldleft1_ref$fopr(r0, &x0 >> _): r0
 //

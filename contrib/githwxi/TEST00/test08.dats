@@ -83,14 +83,15 @@ end // end of [local]
 (* ****** ****** *)
 
 impltmp
-glseq_forall1<board><int>
+glseq_forall1<gseq><board,int>
   (xs) =
 (
   board_forall1<>(xs)
 ) where
 {
   impltmp
-  board_forall1$test<>(x0) = glseq_forall1$test<int>(x0)
+  board_forall1$test<>(x0) =
+  glseq_forall1$test<gseq><board,int>(x0)
 }
 
 (* ****** ****** *)
@@ -108,12 +109,12 @@ and
 board_print1
 (xs: !board): void =
 (
-glseq_rforeach1<board><int>
+glseq_rforeach1<gseq><board,int>
   (xs)
 ) where
 {
 impltmp
-glseq_rforeach1$work<int>(x0) =
+glseq_rforeach1$work<gseq><board,int>(x0) =
 (
   loop(0)
 ) where
@@ -142,11 +143,11 @@ fun
 board_check1
 (x0: int, xs: !board): bool =
 (
-glseq_iforall1<board><int>(xs)
+glseq_iforall1<gseq><board,int>(xs)
 ) where
 {
 impltmp
-glseq_iforall1$test<int>(i1, x1) =
+glseq_iforall1$test<gseq><board,int>(i1, x1) =
 if
 (x0 != x1)
 then (abs(x0 - x1) != i1 + 1) else false
@@ -214,11 +215,13 @@ xss = qsolve()
 //
 val () =
 (
-glseq_iforeach0<list_vt(board)><board>(xss)
+glseq_iforeach0<
+glseq><list_vt(board),board>(xss)
 ) where
 {
 impltmp
-glseq_iforeach0$work<board>(i, xs) =
+glseq_iforeach0$work<
+glseq><list_vt(board),board>(i, xs) =
 (println!("Solution#", i+1, ":"); board_print0(xs); println!())
 }
 } (* end of [main0] *)

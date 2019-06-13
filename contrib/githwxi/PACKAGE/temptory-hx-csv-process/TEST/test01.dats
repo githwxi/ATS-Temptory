@@ -12,17 +12,12 @@ implement main1() = 0
 "share/HATS\
 /temptory_staload_bucs320.hats"
 //
-#include
-"$PATSHOMELOCS\
-/temptory-hx-libpcre/mylibies.hats"
-#include
-"$PATSHOMELOCS\
-/temptory-hx-csv-parse/mylibies.hats"
-//
 (* ****** ****** *)
 //
 #include 
 "./../mylibies.hats"
+#include 
+"./../mydepies.hats"
 #staload $CSV_PROCESS(*for opening NS*)
 //
 (* ****** ****** *)

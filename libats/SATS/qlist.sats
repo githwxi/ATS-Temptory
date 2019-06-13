@@ -39,6 +39,10 @@ ATS_PACKNAME "temptory."
 ATS_EXTERN_PREFIX "temptory_"
 
 (* ****** ****** *)
+
+absprop glseq_qlist
+
+(* ****** ****** *)
 //
 absvtbox
 qlist_vtflt_vtbox(a:vtflt+) = ptr

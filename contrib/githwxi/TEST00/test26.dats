@@ -57,7 +57,8 @@ stream_vt_iforall0$test<int>(i, r) =
 
 val () =
 (
-gseq_foreach<SINT2><sint>(SINT2)
+gseq_foreach<
+gseq><SINT2,sint>(SINT2)
 ) where
 {
 impltmp
@@ -65,13 +66,15 @@ SINT2_range$beg<>() = 0
 impltmp
 SINT2_range$end<>() = 10
 impltmp
-gseq_foreach$work<sint>(i0) = println!("i0 = ", i0)
+gseq_foreach$work<
+gseq><SINT2,sint>(i0) = println!("i0 = ", i0)
 }
 val () =
 println!("------")
 val () =
 (
-gseq_rforeach<SINT2><sint>(SINT2)
+gseq_rforeach<
+gseq><SINT2,sint>(SINT2)
 ) where
 {
 impltmp
@@ -79,7 +82,8 @@ SINT2_range$beg<>() = 0
 impltmp
 SINT2_range$end<>() = 10
 impltmp
-gseq_rforeach$work<sint>(i0) = println!("i0 = ", i0)
+gseq_rforeach$work<
+gseq><SINT2,sint>(i0) = println!("i0 = ", i0)
 }
 
 (* ****** ****** *)
@@ -103,7 +107,7 @@ p0 + length(alphabet)
 val () =
 (
 gseq_foreach<
-  CPTR2(char)><char>(CPTR2); println!()
+gseq><CPTR2(char),char>(CPTR2); println!()
 ) where
 {
 //
@@ -112,14 +116,15 @@ CPTR2_range$beg<char>() = p0
 impltmp
 CPTR2_range$end<char>() = p1
 impltmp
-gseq_foreach$work<char>(c0) = print!(c0)
+gseq_foreach$work<
+gseq><CPTR2(char),char>(c0) = print!(c0)
 //
 } (* end of [where] *)
 //
 val () =
 (
 gseq_rforeach<
-  CPTR2(char)><cptr(char)>(CPTR2); println!()
+gseq><CPTR2(char),cptr(char)>(CPTR2); println!()
 )  where
 {
 //
@@ -128,7 +133,8 @@ CPTR2_range$beg<char>() = p0
 impltmp
 CPTR2_range$end<char>() = p1
 impltmp
-gseq_rforeach$work<cptr(char)>(cp) = print!($UN.cptr0_get(cp))
+gseq_rforeach$work<
+gseq><CPTR2(char),cptr(char)>(cp) = print!($UN.cptr0_get(cp))
 //
 } (* end of [where] *)
 } (* end of [test] *)

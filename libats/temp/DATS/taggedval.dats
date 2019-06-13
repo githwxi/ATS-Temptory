@@ -212,7 +212,7 @@ in
 (
 case+ x0 of
 | TVnil() =>
-  print!("TV(", ")")
+  print!("TVnil(", ")")
 //
 | TVint(x) =>
   print!("TVint(", x, ")")
