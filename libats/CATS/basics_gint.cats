@@ -460,4 +460,21 @@ temptory_g0lsr_uint0_sint1(x,n) (x >> n)
 
 /* ****** ****** */
 
+#define \
+temptory_g0lt_usize_sint1(x, y) ((x < y) ? 1 : 0)
+#define \
+temptory_g0gt_usize_sint1(x, y) ((x > y) ? 1 : 0)
+#define \
+temptory_g0eq_usize_sint1(x, y) ((x == y) ? 1 : 0)
+#define \
+temptory_g0lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
+#define \
+temptory_g0lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
+#define \
+temptory_g0gte_usize_sint1(x, y) ((x >= y) ? 1 : 0)
+#define \
+temptory_g0neq_usize_sint1(x, y) ((x != y) ? 1 : 0)
+
+/* ****** ****** */
+
 /* end of [basics_gint.cats] */
