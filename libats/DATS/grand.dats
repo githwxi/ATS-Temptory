@@ -64,23 +64,23 @@ grand$ref(x0) =
 //
 impltmp
 {}(*tmp*)
-uint_rand() =
+uint0_rand() =
 $extfcall
 (uint, "atspre_rand")
 //
 impltmp
 {}(*tmp*)
-nat0_rand() =
+snat0_rand() =
 $extfcall
 (Intgte(0), "atspre_rand")
 impltmp
 {}(*tmp*)
-sint_rand() =
+sint0_rand() =
 let
 val
-nat = nat0_rand<>()
+nat = snat0_rand<>()
 val
-sgn = nat0_rand_max<>(2)
+sgn = snat0_rand_max<>(2)
 in
   (if sgn = 0 then nat else ~nat)
 end (* sint_rand *)
@@ -89,7 +89,7 @@ end (* sint_rand *)
 
 impltmp
 {}(*tmp*)
-nat0_rand_max(max) =
+snat0_rand_max(max) =
 (
   $UN.cast(nat % max)
 ) where
@@ -183,7 +183,7 @@ end // end of [list0_vt_rand]
 impltmp
 {}(*tmp*)
 list0_rand$len
-  ((*void*)) = nat0_rand_max(100)
+  ((*void*)) = snat0_rand_max(100)
 //
 (* ****** ****** *)
 //
@@ -205,35 +205,35 @@ string0_rand$len<>()
 val p0 = string0_alloc<>(n0)
 val p1 =
 (
-sint_foldleft<r0>(n0, p0)
+sint0_foldleft<r0>(n0, p0)
 ) where
 {
 //
   typedef r0 = cptr(char)
 //
   impltmp
-  sint_foldleft$fopr<r0>
+  sint0_foldleft$fopr<r0>
     (p0, x0) =
   (
   let
   val c0 = string0_rand$char<>()
   val () = $UN.cptr0_set(p0, c0) in succ(p0)
   end
-  ) (* sint_foldleft$fopr *)
+  ) (* sint0_foldleft$fopr *)
 }
 } (* end of [string0_vt_rand] *)
 //
 impltmp
 {}(*tmp*)
 string0_rand$len
-  ((*void*)) = nat0_rand_max(100)
+  ((*void*)) = snat0_rand_max(100)
 //
 impltmp
 {}(*tmp*)
 string0_rand$char
   ((*void*)) =
 (
-  $UN.cast(1+nat0_rand_max<>(127))
+  $UN.cast(1+snat0_rand_max<>(127))
 )
 //
 (* ****** ****** *)
@@ -275,9 +275,9 @@ arrszptr_rand<a>() in arrszptr_refize(AZ) end
 (* ****** ****** *)
 
 impltmp
-grand$val<sint>() = sint_rand<>()
+grand$val<sint>() = sint0_rand<>()
 impltmp
-grand$val<uint>() = uint_rand<>()
+grand$val<uint>() = uint0_rand<>()
 
 (* ****** ****** *)
 
@@ -286,7 +286,7 @@ grand$val<bool>() =
 let
 val
 n01 =
-nat0_rand_max<>(2)
+snat0_rand_max<>(2)
 in
 if n01 = 0 then true else false
 end (* grand$val<bool> *)
@@ -298,7 +298,7 @@ grand$val<char>() =
 let
 val
 code =
-nat0_rand_max<>(128) in char0_chr(code)
+snat0_rand_max<>(128) in char0_chr(code)
 end (* grand$val<char> *)
 
 (* ****** ****** *)

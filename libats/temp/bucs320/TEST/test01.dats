@@ -88,11 +88,11 @@ gseq_rforeach<gseq><board,int>
 impltmp
 gseq_rforeach$work<gseq><board,int>(x0) =
 (
-  sint_foreach<>(N); println!()
+  sint0_foreach<>(N); println!()
 ) where
 {
   impltmp
-  sint_foreach$work<>(i0) =
+  sint0_foreach$work<>(i0) =
   (if i0 = x0 then print"Q " else print". ")
 }
 }

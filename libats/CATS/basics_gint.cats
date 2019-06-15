@@ -32,21 +32,17 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 /* ****** ****** */
-//
-// HX: for sint
-//
-/* ****** ****** */
 
 ATSinline()
 atstype_sint
-temptory_g0abs_sint
+temptory_g0abs_sint0
   (atstype_sint x)
 {
   return (x >= 0? x : -x);
 }
 ATSinline()
 atstype_slint
-temptory_g0abs_slint
+temptory_g0abs_slint0
   (atstype_slint x)
 {
   return (x >= 0? x : -x);
@@ -55,296 +51,291 @@ temptory_g0abs_slint
 /* ****** ****** */
 
 #define \
-temptory_g0neg_sint(x) (-x)
+temptory_g0neg_sint0(x) (-x)
 #define \
-temptory_g1neg_sint(x) (-x)
+temptory_g1neg_sint1(x) (-x)
 
 /* ****** ****** */
 //
 #define \
-temptory_g0succ_sint(x) (x + 1)
+temptory_g0succ_sint0(x) (x + 1)
 #define \
-temptory_g1succ_sint(x) (x + 1)
+temptory_g1succ_sint1(x) (x + 1)
 #define \
-temptory_g0succ_uint(x) (x + 1)
+temptory_g0succ_uint0(x) (x + 1)
 #define \
-temptory_g1succ_uint(x) (x + 1)
+temptory_g1succ_uint1(x) (x + 1)
 #define \
-temptory_g0succ_ssize(x) (x + 1)
+temptory_g0succ_ssize0(x) (x + 1)
 #define \
-temptory_g1succ_ssize(x) (x + 1)
+temptory_g1succ_ssize1(x) (x + 1)
 #define \
-temptory_g0succ_usize(x) (x + 1)
+temptory_g0succ_usize0(x) (x + 1)
 #define \
-temptory_g1succ_usize(x) (x + 1)
+temptory_g1succ_usize1(x) (x + 1)
 #define \
-temptory_g0succ_ulint(x) (x + 1)
+temptory_g0succ_ulint0(x) (x + 1)
 #define \
-temptory_g1succ_ulint(x) (x + 1)
+temptory_g1succ_ulint1(x) (x + 1)
 //
 #define \
-temptory_g0pred_sint(x) (x - 1)
+temptory_g0pred_sint0(x) (x - 1)
 #define \
-temptory_g1pred_sint(x) (x - 1)
+temptory_g1pred_sint1(x) (x - 1)
 #define \
-temptory_g0pred_uint(x) (x - 1)
+temptory_g0pred_uint0(x) (x - 1)
 #define \
-temptory_g1pred_uint(x) (x - 1)
+temptory_g1pred_uint1(x) (x - 1)
 #define \
-temptory_g0pred_ssize(x) (x - 1)
+temptory_g0pred_ssize0(x) (x - 1)
 #define \
-temptory_g1pred_ssize(x) (x - 1)
+temptory_g1pred_ssize1(x) (x - 1)
 #define \
-temptory_g0pred_usize(x) (x - 1)
+temptory_g0pred_usize0(x) (x - 1)
 #define \
-temptory_g1pred_usize(x) (x - 1)
+temptory_g1pred_usize1(x) (x - 1)
 //
 /* ****** ****** */
 
 ATSinline()
 atstype_uint
-temptory_g0cast_sint_uint
+temptory_g0cast_sint0_uint0
   (atstype_sint x)
-{ return ((atstype_uint)x) ; }
+{ return ( (atstype_uint)x ) ; }
 
 ATSinline()
 atstype_uint
-temptory_g1cast_sint_uint
+temptory_g1cast_sint1_uint1
   (atstype_sint x)
-{ return ((atstype_uint)x) ; }
+{ return ( (atstype_uint)x ) ; }
 
 ATSinline()
 atstype_usize
-temptory_g0cast_sint_usize
+temptory_g0cast_sint0_usize0
   (atstype_sint x)
-{ return ((atstype_usize)x) ; }
+{ return ( (atstype_usize)x ) ; }
 ATSinline()
 atstype_usize
-temptory_g1cast_sint_usize
+temptory_g1cast_sint1_usize1
   (atstype_sint x)
-{ return ((atstype_usize)x) ; }
+{ return ( (atstype_usize)x ) ; }
 
 ATSinline()
 atstype_slint
-temptory_g0cast_sint_slint
+temptory_g0cast_sint0_slint0
   (atstype_sint x)
-{ return ((atstype_slint)x) ; }
+{ return ( (atstype_slint)x ) ; }
 
 ATSinline()
 atstype_slint
-temptory_g1cast_sint_slint
+temptory_g1cast_sint1_slint1
   (atstype_sint x)
-{ return ((atstype_slint)x) ; }
+{ return ( (atstype_slint)x ) ; }
 
 ATSinline()
 atstype_sllint
-temptory_g0cast_slint_sllint
+temptory_g0cast_slint0_sllint0
   (atstype_slint x)
-{ return ((atstype_sllint)x) ; }
+{ return ( (atstype_sllint)x ) ; }
 
 ATSinline()
 atstype_sllint
-temptory_g1cast_slint_sllint
+temptory_g1cast_slint1_sllint1
   (atstype_slint x)
-{ return ((atstype_sllint)x) ; }
-
+{ return ( (atstype_sllint)x ) ; }
 
 /* ****** ****** */
 
 #define \
-temptory_g0add_sint_sint(x, y) (x + y)
+temptory_g0add_sint0_sint0(x, y) (x + y)
 #define \
-temptory_g1add_sint_sint(x, y) (x + y)
+temptory_g1add_sint1_sint1(x, y) (x + y)
 #define \
-temptory_g0add_uint_uint(x, y) (x + y)
+temptory_g0add_uint0_uint0(x, y) (x + y)
 #define \
-temptory_g1add_uint_uint(x, y) (x + y)
+temptory_g1add_uint1_uint1(x, y) (x + y)
 #define \
-temptory_g0add_uint_uint(x, y) (x + y)
+temptory_g0add_sint0_ssize0(x, y) (x + y)
 #define \
-temptory_g1add_uint_uint(x, y) (x + y)
+temptory_g1add_sint1_ssize1(x, y) (x + y)
 #define \
-temptory_g0add_sint0_ssize(x, y) (x + y)
+temptory_g0add_ssize0_ssize0(x, y) (x + y)
 #define \
-temptory_g0add_ssize_ssize(x, y) (x + y)
+temptory_g1add_ssize1_ssize1(x, y) (x + y)
 #define \
-temptory_g1add_sint1_ssize(x, y) (x + y)
+temptory_g0add_uint0_usize0(x, y) (x + y)
 #define \
-temptory_g1add_ssize_ssize(x, y) (x + y)
+temptory_g1add_sint1_usize1(x, y) (x + y)
 #define \
-temptory_g0add_uint0_usize(x, y) (x + y)
+temptory_g1add_uint1_usize1(x, y) (x + y)
 #define \
-temptory_g0add_usize_usize(x, y) (x + y)
+temptory_g0add_usize0_usize0(x, y) (x + y)
 #define \
-temptory_g1add_sint1_usize(x, y) (x + y)
-#define \
-temptory_g1add_uint1_usize(x, y) (x + y)
-#define \
-temptory_g1add_usize_usize(x, y) (x + y)
+temptory_g1add_usize1_usize1(x, y) (x + y)
 //
 /* ****** ****** */
 //
 #define \
-temptory_g0add_slint_slint(x, y) (x + y)
+temptory_g0add_slint0_slint0(x, y) (x + y)
 #define \
-temptory_g1add_slint_slint(x, y) (x + y)
+temptory_g1add_slint1_slint1(x, y) (x + y)
 //
 #define \
-temptory_g0add_ulint_ulint(x, y) (x + y)
+temptory_g0add_ulint0_ulint0(x, y) (x + y)
 #define \
-temptory_g1add_ulint_ulint(x, y) (x + y)
-//
-/* ****** ****** */
-
-#define \
-temptory_g0sub_sint_sint(x, y) (x - y)
-#define \
-temptory_g1sub_sint_sint(x, y) (x - y)
-#define \
-temptory_g0sub_uint_uint(x, y) (x - y)
-#define \
-temptory_g1sub_uint_uint(x, y) (x - y)
-#define \
-temptory_g0sub_ssize_ssize(x, y) (x - y)
-#define \
-temptory_g1sub_ssize_ssize(x, y) (x - y)
-#define \
-temptory_g0sub_usize_sint1(x, y) (x - y)
-#define \
-temptory_g0sub_usize_usize(x, y) (x - y)
-#define \
-temptory_g1sub_usize_usize(x, y) (x - y)
-
-/* ****** ****** */
-
-#define \
-temptory_g0mul_sint_sint(x, y) (x * y)
-#define \
-temptory_g1mul_sint_sint(x, y) (x * y)
-#define \
-temptory_g0mul_uint_uint(x, y) (x * y)
-#define \
-temptory_g1mul_uint_uint(x, y) (x * y)
-#define \
-temptory_g0mul_ssize_ssize(x, y) (x * y)
-#define \
-temptory_g1mul_ssize_ssize(x, y) (x * y)
-#define \
-temptory_g1mul_sint1_usize(x, y) (x * y)
-#define \
-temptory_g0mul_uint0_usize(x, y) (x * y)
-#define \
-temptory_g1mul_uint1_usize(x, y) (x * y)
-#define \
-temptory_g0mul_usize_usize(x, y) (x * y)
-#define \
-temptory_g1mul_usize_usize(x, y) (x * y)
-//
-#define \
-temptory_g0mul_slint_slint(x, y) (x * y)
-#define \
-temptory_g1mul_slint_slint(x, y) (x * y)
-#define \
-temptory_g0mul_ulint_ulint(x, y) (x * y)
-#define \
-temptory_g1mul_ulint_uline(x, y) (x * y)
+temptory_g1add_ulint1_ulint1(x, y) (x + y)
 //
 /* ****** ****** */
 
 #define \
-temptory_g0div_sint_sint(x, y) (x / y)
+temptory_g0sub_sint0_sint0(x, y) (x - y)
 #define \
-temptory_g1div_sint_sint(x, y) (x / y)
+temptory_g1sub_sint1_sint1(x, y) (x - y)
 #define \
-temptory_g0div_uint_uint(x, y) (x / y)
+temptory_g0sub_uint0_uint0(x, y) (x - y)
 #define \
-temptory_g1div_uint_uint(x, y) (x / y)
+temptory_g1sub_uint1_uint1(x, y) (x - y)
 #define \
-temptory_g0div_usize_sint1(x, y) (x / y)
+temptory_g0sub_ssize0_ssize0(x, y) (x - y)
 #define \
-temptory_g1div_usize_sint1(x, y) (x / y)
+temptory_g1sub_ssize1_ssize1(x, y) (x - y)
 #define \
-temptory_g0div_usize_usize(x, y) (x / y)
+temptory_g0sub_usize0_sint1(x, y) (x - y)
 #define \
-temptory_g1div_usize_usize(x, y) (x / y)
+temptory_g0sub_usize0_usize0(x, y) (x - y)
+#define \
+temptory_g1sub_usize1_usize1(x, y) (x - y)
 
 /* ****** ****** */
 
 #define \
-temptory_g0mod_sint_sint(x, y) (x % y)
+temptory_g0mul_sint0_sint0(x, y) (x * y)
 #define \
-temptory_g0mod_uint_uint(x, y) (x % y)
+temptory_g1mul_sint1_sint1(x, y) (x * y)
 #define \
-temptory_g1mod_uint_uint(x, y) (x % y)
+temptory_g0mul_uint0_uint0(x, y) (x * y)
 #define \
-temptory_g0mod_usize_usize(x, y) (x % y)
+temptory_g1mul_uint1_uint1(x, y) (x * y)
 #define \
-temptory_g1mod_usize_usize(x, y) (x % y)
+temptory_g0mul_ssize0_ssize0(x, y) (x * y)
+#define \
+temptory_g1mul_ssize1_ssize1(x, y) (x * y)
+#define \
+temptory_g1mul_sint1_usize1(x, y) (x * y)
+#define \
+temptory_g0mul_uint0_usize0(x, y) (x * y)
+#define \
+temptory_g1mul_uint1_usize1(x, y) (x * y)
+#define \
+temptory_g0mul_usize0_usize0(x, y) (x * y)
+#define \
+temptory_g1mul_usize1_usize1(x, y) (x * y)
+//
+#define \
+temptory_g0mul_slint0_slint0(x, y) (x * y)
+#define \
+temptory_g1mul_slint1_slint1(x, y) (x * y)
+#define \
+temptory_g0mul_ulint0_ulint0(x, y) (x * y)
+#define \
+temptory_g1mul_ulint1_uline1(x, y) (x * y)
+//
+/* ****** ****** */
+
+#define \
+temptory_g0div_sint0_sint0(x, y) (x / y)
+#define \
+temptory_g1div_sint1_sint1(x, y) (x / y)
+#define \
+temptory_g0div_uint0_uint0(x, y) (x / y)
+#define \
+temptory_g1div_uint1_uint1(x, y) (x / y)
+#define \
+temptory_g0div_usize0_sint1(x, y) (x / y)
+#define \
+temptory_g1div_usize1_sint1(x, y) (x / y)
+#define \
+temptory_g0div_usize0_usize0(x, y) (x / y)
+#define \
+temptory_g1div_usize1_usize1(x, y) (x / y)
 
 /* ****** ****** */
 
 #define \
-temptory_g0lt_sint_sint(x, y) ((x < y) ? 1 : 0)
+temptory_g0mod_sint0_sint0(x, y) (x % y)
 #define \
-temptory_g0gt_sint_sint(x, y) ((x > y) ? 1 : 0)
+temptory_g0mod_uint0_uint0(x, y) (x % y)
 #define \
-temptory_g0eq_sint_sint(x, y) ((x == y) ? 1 : 0)
+temptory_g1mod_uint1_uint1(x, y) (x % y)
 #define \
-temptory_g0lte_sint_sint(x, y) ((x <= y) ? 1 : 0)
+temptory_g0mod_usize0_usize0(x, y) (x % y)
 #define \
-temptory_g0gte_sint_sint(x, y) ((x >= y) ? 1 : 0)
-#define \
-temptory_g0neq_sint_sint(x, y) ((x != y) ? 1 : 0)
-#define \
-temptory_g0cmp_sint_sint(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
+temptory_g1mod_usize1_usize1(x, y) (x % y)
 
 /* ****** ****** */
 
 #define \
-temptory_g0min_sint_sint(x, y) ((x <= y) ? x : y)
+temptory_g0lt_sint0_sint0(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g0max_sint_sint(x, y) ((x >= y) ? x : y)
+temptory_g0gt_sint0_sint0(x, y) ((x > y) ? 1 : 0)
+#define \
+temptory_g0eq_sint0_sint0(x, y) ((x == y) ? 1 : 0)
+#define \
+temptory_g0lte_sint0_sint0(x, y) ((x <= y) ? 1 : 0)
+#define \
+temptory_g0gte_sint0_sint0(x, y) ((x >= y) ? 1 : 0)
+#define \
+temptory_g0neq_sint0_sint0(x, y) ((x != y) ? 1 : 0)
+#define \
+temptory_g0cmp_sint0_sint0(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 
 /* ****** ****** */
 
 #define \
-temptory_g1lt_sint_sint(x, y) ((x < y) ? 1 : 0)
+temptory_g0min_sint0_sint0(x, y) ((x <= y) ? x : y)
 #define \
-temptory_g1gt_sint_sint(x, y) ((x > y) ? 1 : 0)
-#define \
-temptory_g1eq_sint_sint(x, y) ((x == y) ? 1 : 0)
-#define \
-temptory_g1lte_sint_sint(x, y) ((x <= y) ? 1 : 0)
-#define \
-temptory_g1gte_sint_sint(x, y) ((x >= y) ? 1 : 0)
-#define \
-temptory_g1neq_sint_sint(x, y) ((x != y) ? 1 : 0)
-#define \
-temptory_g1cmp_sint_sint(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
+temptory_g0max_sint0_sint0(x, y) ((x >= y) ? x : y)
 
 /* ****** ****** */
 
 #define \
-temptory_g0lt_uint_uint(x, y) ((x < y) ? 1 : 0)
+temptory_g1lt_sint1_sint1(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g0gt_uint_uint(x, y) ((x > y) ? 1 : 0)
+temptory_g1gt_sint1_sint1(x, y) ((x > y) ? 1 : 0)
 #define \
-temptory_g0eq_uint_uint(x, y) ((x == y) ? 1 : 0)
+temptory_g1eq_sint1_sint1(x, y) ((x == y) ? 1 : 0)
 #define \
-temptory_g0lte_uint_uint(x, y) ((x <= y) ? 1 : 0)
+temptory_g1lte_sint1_sint1(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g0gte_uint_uint(x, y) ((x >= y) ? 1 : 0)
+temptory_g1gte_sint1_sint1(x, y) ((x >= y) ? 1 : 0)
 #define \
-temptory_g0neq_uint_uint(x, y) ((x != y) ? 1 : 0)
+temptory_g1neq_sint1_sint1(x, y) ((x != y) ? 1 : 0)
 #define \
-temptory_g0cmp_uint_uint(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
+temptory_g1cmp_sint1_sint1(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 
 /* ****** ****** */
 
 #define \
-temptory_g1min_sint_sint(x, y) ((x <= y) ? x : y)
+temptory_g1min_sint1_sint1(x, y) ((x <= y) ? x : y)
 #define \
-temptory_g1max_sint_sint(x, y) ((x >= y) ? x : y)
+temptory_g1max_sint1_sint1(x, y) ((x >= y) ? x : y)
+
+/* ****** ****** */
+
+#define \
+temptory_g0lt_uint0_uint0(x, y) ((x < y) ? 1 : 0)
+#define \
+temptory_g0gt_uint0_uint0(x, y) ((x > y) ? 1 : 0)
+#define \
+temptory_g0eq_uint0_uint0(x, y) ((x == y) ? 1 : 0)
+#define \
+temptory_g0lte_uint0_uint0(x, y) ((x <= y) ? 1 : 0)
+#define \
+temptory_g0gte_uint0_uint0(x, y) ((x >= y) ? 1 : 0)
+#define \
+temptory_g0neq_uint0_uint0(x, y) ((x != y) ? 1 : 0)
+#define \
+temptory_g0cmp_uint0_uint0(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 
 /* ****** ****** */
 
@@ -364,92 +355,92 @@ temptory_g0neq_uint0_sint1(x, y) ((x != y) ? 1 : 0)
 /* ****** ****** */
 
 #define \
-temptory_g0lt_ssize_ssize(x, y) ((x < y) ? 1 : 0)
+temptory_g0lt_ssize0_ssize0(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g0gt_ssize_ssize(x, y) ((x > y) ? 1 : 0)
+temptory_g0gt_ssize0_ssize0(x, y) ((x > y) ? 1 : 0)
 #define \
-temptory_g0eq_ssize_ssize(x, y) ((x == y) ? 1 : 0)
+temptory_g0eq_ssize0_ssize0(x, y) ((x == y) ? 1 : 0)
 #define \
-temptory_g0lte_ssize_ssize(x, y) ((x <= y) ? 1 : 0)
+temptory_g0lte_ssize0_ssize0(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g0gte_ssize_ssize(x, y) ((x >= y) ? 1 : 0)
+temptory_g0gte_ssize0_ssize0(x, y) ((x >= y) ? 1 : 0)
 #define \
-temptory_g0neq_ssize_ssize(x, y) ((x != y) ? 1 : 0)
+temptory_g0neq_ssize0_ssize0(x, y) ((x != y) ? 1 : 0)
 #define \
-temptory_g0cmp_ssize_ssize(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
+temptory_g0cmp_ssize0_ssize0(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 
 /* ****** ****** */
 
 #define \
-temptory_g0lt_usize_usize(x, y) ((x < y) ? 1 : 0)
+temptory_g0lt_usize0_usize0(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g0gt_usize_usize(x, y) ((x > y) ? 1 : 0)
+temptory_g0gt_usize0_usize0(x, y) ((x > y) ? 1 : 0)
 #define \
-temptory_g0eq_usize_usize(x, y) ((x == y) ? 1 : 0)
+temptory_g0eq_usize0_usize0(x, y) ((x == y) ? 1 : 0)
 #define \
-temptory_g0lte_usize_usize(x, y) ((x <= y) ? 1 : 0)
+temptory_g0lte_usize0_usize0(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g0gte_usize_usize(x, y) ((x >= y) ? 1 : 0)
+temptory_g0gte_usize0_usize0(x, y) ((x >= y) ? 1 : 0)
 #define \
-temptory_g0neq_usize_usize(x, y) ((x != y) ? 1 : 0)
+temptory_g0neq_usize0_usize0(x, y) ((x != y) ? 1 : 0)
 #define \
-temptory_g0cmp_usize_usize(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
+temptory_g0cmp_usize0_usize0(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 
 /* ****** ****** */
 
 #define \
-temptory_g0lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
+temptory_g0lte_usize0_sint1(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g0gte_usize_sint1(x, y) ((x >= y) ? 1 : 0)
+temptory_g0gte_usize0_sint1(x, y) ((x >= y) ? 1 : 0)
 
 /* ****** ****** */
 
 #define \
-temptory_g1lt_usize_usize(x, y) ((x < y) ? 1 : 0)
+temptory_g1lt_usize1_usize1(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g1gt_usize_usize(x, y) ((x > y) ? 1 : 0)
+temptory_g1gt_usize1_usize1(x, y) ((x > y) ? 1 : 0)
 #define \
-temptory_g1eq_usize_usize(x, y) ((x == y) ? 1 : 0)
+temptory_g1eq_usize1_usize1(x, y) ((x == y) ? 1 : 0)
 #define \
-temptory_g1lte_usize_usize(x, y) ((x <= y) ? 1 : 0)
+temptory_g1lte_usize1_usize1(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g1lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
+temptory_g1lte_usize1_sint1(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g1gte_usize_usize(x, y) ((x >= y) ? 1 : 0)
+temptory_g1gte_usize1_usize1(x, y) ((x >= y) ? 1 : 0)
 #define \
-temptory_g1neq_usize_usize(x, y) ((x != y) ? 1 : 0)
+temptory_g1neq_usize1_usize1(x, y) ((x != y) ? 1 : 0)
 #define \
-temptory_g1cmp_usize_usize(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
+temptory_g1cmp_usize1_usize1(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 
 /* ****** ****** */
 
 #define \
-temptory_g1lt_usize_sint1(x, y) ((x < y) ? 1 : 0)
+temptory_g1lt_usize1_sint1(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g1gt_usize_sint1(x, y) ((x > y) ? 1 : 0)
+temptory_g1gt_usize1_sint1(x, y) ((x > y) ? 1 : 0)
 #define \
-temptory_g1eq_usize_sint1(x, y) ((x == y) ? 1 : 0)
+temptory_g1eq_usize1_sint1(x, y) ((x == y) ? 1 : 0)
 #define \
-temptory_g1lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
+temptory_g1lte_usize1_sint1(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g1lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
+temptory_g1lte_usize1_sint1(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g1gte_usize_sint1(x, y) ((x >= y) ? 1 : 0)
+temptory_g1gte_usize1_sint1(x, y) ((x >= y) ? 1 : 0)
 #define \
-temptory_g1neq_usize_sint1(x, y) ((x != y) ? 1 : 0)
+temptory_g1neq_usize1_sint1(x, y) ((x != y) ? 1 : 0)
 #define \
-temptory_g1cmp_usize_sint1(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
+temptory_g1cmp_usize1_sint1(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 
 /* ****** ****** */
 
 #define \
-temptory_g0lnot_uint(x) (~(x))
+temptory_g0lnot_uint0(x) (~(x))
 #define \
-temptory_g0lor2_uint_uint(x, y) (x | y)
+temptory_g0lor2_uint0_uint0(x, y) (x | y)
 #define \
-temptory_g0land_uint_uint(x, y) (x & y)
+temptory_g0land_uint0_uint0(x, y) (x & y)
 #define \
-temptory_g0lxor_uint_uint(x, y) (x ^ y)
+temptory_g0lxor_uint0_uint0(x, y) (x ^ y)
 
 /* ****** ****** */
 
@@ -461,19 +452,19 @@ temptory_g0lsr_uint0_sint1(x,n) (x >> n)
 /* ****** ****** */
 
 #define \
-temptory_g0lt_usize_sint1(x, y) ((x < y) ? 1 : 0)
+temptory_g0lt_usize0_sint1(x, y) ((x < y) ? 1 : 0)
 #define \
-temptory_g0gt_usize_sint1(x, y) ((x > y) ? 1 : 0)
+temptory_g0gt_usize0_sint1(x, y) ((x > y) ? 1 : 0)
 #define \
-temptory_g0eq_usize_sint1(x, y) ((x == y) ? 1 : 0)
+temptory_g0eq_usize0_sint1(x, y) ((x == y) ? 1 : 0)
 #define \
-temptory_g0lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
+temptory_g0lte_usize0_sint1(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g0lte_usize_sint1(x, y) ((x <= y) ? 1 : 0)
+temptory_g0lte_usize0_sint1(x, y) ((x <= y) ? 1 : 0)
 #define \
-temptory_g0gte_usize_sint1(x, y) ((x >= y) ? 1 : 0)
+temptory_g0gte_usize0_sint1(x, y) ((x >= y) ? 1 : 0)
 #define \
-temptory_g0neq_usize_sint1(x, y) ((x != y) ? 1 : 0)
+temptory_g0neq_usize0_sint1(x, y) ((x != y) ? 1 : 0)
 
 /* ****** ****** */
 

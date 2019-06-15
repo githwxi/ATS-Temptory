@@ -105,7 +105,7 @@ list0_cons(x0, reverse(xs))
 )
 ) where
 {
-  val x0 = sint_rand<>()
+  val x0 = sint0_rand<>()
   val xs = list0_rand<int>()
 }
 

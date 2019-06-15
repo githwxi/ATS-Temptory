@@ -38,9 +38,9 @@ with ~ListSubscriptExn() => println!("Headless!")
 (* ****** ****** *)
 //
 val xs =
-sint_listize(10)
+sint0_listize(10)
 val ys =
-sint_rlistize(10)
+sint0_rlistize(10)
 //
 val xs = list0_vt2t(xs)
 and ys = list0_vt2t(ys)

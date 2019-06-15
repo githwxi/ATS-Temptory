@@ -380,7 +380,7 @@ g0neq_float_float
 fun
 g0cmp_float_float
 ( x: float
-, y: float):<> float = "mac#%"
+, y: float):<> sint = "mac#%"
 //
 #symload < with g0lt_float_float of 10
 #symload > with g0gt_float_float of 10
@@ -423,7 +423,7 @@ g0neq_double_double
 fun
 g0cmp_double_double
 ( x: double
-, y: double):<> double = "mac#%"
+, y: double):<> sint = "mac#%"
 //
 #symload < with g0lt_double_double of 10
 #symload > with g0gt_double_double of 10
@@ -466,7 +466,7 @@ g0neq_ldouble_ldouble
 fun
 g0cmp_ldouble_ldouble
 ( x: ldouble
-, y: ldouble):<> ldouble = "mac#%"
+, y: ldouble):<> sint = "mac#%"
 //
 #symload < with g0lt_ldouble_ldouble of 10
 #symload > with g0gt_ldouble_ldouble of 10

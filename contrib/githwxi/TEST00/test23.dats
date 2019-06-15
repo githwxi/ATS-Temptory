@@ -25,7 +25,7 @@ main0((*void*)) = ()
 impltmp
 string0_rand$char<>() =
 $UN.cast{CharNZ}
-('0' + nat0_rand_max(48))
+('0' + snat0_rand_max(48))
 
 val () =
 $extfcall
@@ -44,7 +44,7 @@ val () = println!(string0_rand())
 local
 impltmp
 grand$val<sint>() =
-nat0_rand_max<>(100)
+snat0_rand_max<>(100)
 in
 val xs = list0_rand<sint>()
 val () = println!("xs = ", xs)
@@ -52,7 +52,7 @@ end (* end-of-local *)
 local
 impltmp
 grand$val<sint>() =
-nat0_rand_max<>(100)
+snat0_rand_max<>(100)
 in
 val xs = list0_rand<sint>()
 val () = println!("xs = ", xs)
@@ -70,7 +70,7 @@ local
 
 impltmp
 grand$val<sint>() =
-nat0_rand_max<>(100)
+snat0_rand_max<>(100)
 
 impltmp
 grand$val<list0(sint)>

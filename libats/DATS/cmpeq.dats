@@ -73,11 +73,11 @@ gcompare$val<a>(x1, x2)
 impltmp
 gcompare$val<sint>
 (i1, i2) =
-g0cmp_sint_sint(i1, i2)
+g0cmp_sint0_sint0(i1, i2)
 impltmp
 gcompare$val<uint>
 (u1, u2) =
-g0cmp_uint_uint(u1, u2)
+g0cmp_uint0_uint0(u1, u2)
 //
 impltmp
 gcompare$val<string>

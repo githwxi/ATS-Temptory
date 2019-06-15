@@ -15,7 +15,7 @@ implfun main0() =
 {
 //
 val xs =
-sint_listize(10)
+sint0_listize(10)
 val A0 =
 arrszref_make<int>(xs)
 //

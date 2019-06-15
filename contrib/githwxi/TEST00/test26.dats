@@ -22,7 +22,7 @@ f: int -> int
 ): stream_vt(int) =
 (
 stream_vt_filter
-(sint_streamize_gte(0))
+(sint0_streamize_gte(0))
 ) where
 {
   impltmp

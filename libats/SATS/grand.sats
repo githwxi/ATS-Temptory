@@ -50,16 +50,16 @@ grand$ref(&a? >> a): void
 (* ****** ****** *)
 
 fun{}
-nat0_rand(): Nat
+snat0_rand(): Nat
 fun{}
-sint_rand(): sint
+sint0_rand(): sint
 fun{}
-uint_rand(): uint
+uint0_rand(): uint
 
 (* ****** ****** *)
 
 fun{}
-nat0_rand_max
+snat0_rand_max
 {n:int|n >= 1}(max: int(n)): Natlt(n)
 
 (* ****** ****** *)

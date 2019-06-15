@@ -48,7 +48,7 @@
 
 impltmp
 {}//tmp
-sint_forall
+sint0_forall
   (n0) =
 ( loop(0) ) where
 {
@@ -59,13 +59,13 @@ if
 then true else
 (
   if
-  sint_forall$test<>(i0)
+  sint0_forall$test<>(i0)
   then loop(succ(i0)) else false
 )
-} (* end of [sint_forall] *)
+} (* end of [sint0_forall] *)
 impltmp
 {}//tmp
-sint_foreach
+sint0_foreach
   (n0) =
 ( loop(0) ) where
 {
@@ -79,15 +79,15 @@ then
 )
 else
 (
-sint_foreach$work<>(i0); loop(succ(i0))
+sint0_foreach$work<>(i0); loop(succ(i0))
 )
-} (* end of [sint_foreach] *)
+} (* end of [sint0_foreach] *)
 
 (* ****** ****** *)
 
 impltmp
 {r0}//tmp
-sint_foldleft
+sint0_foldleft
   (n0, r0) =
 ( loop(0, r0) ) where
 {
@@ -100,15 +100,15 @@ then ( r0 )
 else
 let
 val r0 =
-sint_foldleft$fopr<r0>(r0, i0) in loop(succ(i0), r0)
+sint0_foldleft$fopr<r0>(r0, i0) in loop(succ(i0), r0)
 end // end of [else]
-} (* end of [sint_foreach] *)
+} (* end of [sint0_foreach] *)
 
 (* ****** ****** *)
 
 impltmp
 {}//tmp
-sint_listize
+sint0_listize
   (n0) =
 (
 loop
@@ -132,11 +132,11 @@ in
   loop(i0, list0_vt_cons(i0, r0))
 end // end of [else]
 )
-} (* end of [sint_listize] *)
+} (* end of [sint0_listize] *)
 
 impltmp
 {}//tmp
-uint_listize
+uint0_listize
   (n0) =
 (
 loop
@@ -160,11 +160,11 @@ in
   loop(i0, list0_vt_cons(i0, r0))
 end // end of [else]
 )
-} (* end of [uint_listize] *)
+} (* end of [uint0_listize] *)
 
 impltmp
 {}//tmp
-size_listize
+usize0_listize
   (n0) =
 (
 loop
@@ -188,13 +188,13 @@ in
   loop(i0, list0_vt_cons(i0, r0))
 end // end of [else]
 )
-} (* end of [size_listize] *)
+} (* end of [usize0_listize] *)
 
 (* ****** ****** *)
 
 impltmp
 {}//tmp
-sint_rlistize
+sint0_rlistize
   (n0) =
 (
 loop
@@ -218,11 +218,11 @@ in
   loop(i1, list0_vt_cons(i0, r0))
 end // end of [else]
 )
-} (* end of [sint_rlistize] *)
+} (* end of [sint0_rlistize] *)
 
 impltmp
 {}//tmp
-uint_rlistize
+uint0_rlistize
   (n0) =
 (
 loop
@@ -246,11 +246,11 @@ in
   loop(i1, list0_vt_cons(i0, r0))
 end // end of [else]
 )
-} (* end of [uint_rlistize] *)
+} (* end of [uint0_rlistize] *)
 
 impltmp
 {}//tmp
-size_rlistize
+usize0_rlistize
   (n0) =
 (
 loop
@@ -274,13 +274,13 @@ in
   loop(i1, list0_vt_cons(i0, r0))
 end // end of [else]
 )
-} (* end of [size_rlistize] *)
+} (* end of [usize0_rlistize] *)
 
 (* ****** ****** *)
 //
 impltmp
 {}//tmp
-sint_streamize
+sint0_streamize
   (n0) =
 ( auxmain(0) ) where
 {
@@ -296,11 +296,11 @@ then stream_vt_nil()
 else stream_vt_cons(i0, auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 //
-} (* end of [sint_streamize] *)
+} (* end of [sint0_streamize] *)
 //
 impltmp
 {}//tmp
-uint_streamize
+uint0_streamize
   (n0) =
 ( auxmain(0u) ) where
 {
@@ -316,11 +316,11 @@ then stream_vt_nil()
 else stream_vt_cons(i0, auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 //
-} (* end of [uint_streamize] *)
+} (* end of [uint0_streamize] *)
 //
 impltmp
 {}//tmp
-size_streamize
+usize0_streamize
   (n0) =
 (auxmain(i2sz(0))) where
 {
@@ -336,13 +336,13 @@ then stream_vt_nil()
 else stream_vt_cons(i0, auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 //
-} (* end of [size_streamize] *)
+} (* end of [usize0_streamize] *)
 //
 (* ****** ****** *)
 
 impltmp
 {}//tmp
-sint_streamize_gte
+sint0_streamize_gte
   (b0) =
 (
   auxmain(b0)
@@ -359,11 +359,11 @@ $ldelay
     stream_vt_cons(b0, auxmain(b1))
   end
 )
-} (* end of [sint_streamize_gte] *)
+} (* end of [sint0_streamize_gte] *)
 
 impltmp
 {}//tmp
-sint_streamize_lte
+sint0_streamize_lte
   (b0) =
 (
   auxmain(b0)
@@ -380,13 +380,13 @@ $ldelay
     stream_vt_cons(b0, auxmain(b1))
   end
 )
-} (* end of [sint_streamize_lte] *)
+} (* end of [sint0_streamize_lte] *)
 
 (* ****** ****** *)
 
 impltmp
 {}//tmp
-uint_streamize_gte
+uint0_streamize_gte
   (b0) =
 (
   auxmain(b0)
@@ -403,13 +403,13 @@ $ldelay
     stream_vt_cons(b0, auxmain(b1))
   end
 )
-} (* end of [uint_streamize_gte] *)
+} (* end of [uint0_streamize_gte] *)
 
 (* ****** ****** *)
 
 impltmp
 {}//tmp
-size_streamize_gte
+usize0_streamize_gte
   (b0) =
 (
   auxmain(b0)
@@ -426,7 +426,7 @@ $ldelay
     stream_vt_cons(b0, auxmain(b1))
   end
 )
-} (* end of [size_streamize_gte] *)
+} (* end of [usize0_streamize_gte] *)
 
 (* ****** ****** *)
 

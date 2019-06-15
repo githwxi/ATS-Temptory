@@ -402,7 +402,8 @@ HASHMAP(A0, cap, n0) = map
 //
 val h0 = hash_key<k0>(k0)
 val h0 = $UN.cast{size}(h0)
-val i0 = g1mod_usize_usize(g1ofg0(h0), cap)
+val i0 =
+g1mod_usize1_usize1(g1ofg0(h0), cap)
 //
 val pi = cptrof(A0) + i0
 val
@@ -425,7 +426,9 @@ val+@HASHMAP(A0, cap, n0) = map
 //
 val h0 = hash_key<k0>(k0)
 val h0 = $UN.cast{size}(h0)
-val i0 = g1mod_usize_usize(g1ofg0(h0), cap)
+//
+val i0 =
+g1mod_usize1_usize1(g1ofg0(h0), cap)
 //
 val pi = cptrof(A0) + i0
 //
@@ -477,7 +480,9 @@ val+@HASHMAP(A0, cap, n0) = map
 //
 val h0 = hash_key<k0>(k0)
 val h0 = $UN.cast{size}(h0)
-val i0 = g1mod_usize_usize(g1ofg0(h0), cap)
+//
+val i0 =
+g1mod_usize1_usize1(g1ofg0(h0), cap)
 //
 val pi = cptrof(A0) + i0
 //
@@ -528,7 +533,9 @@ val+@HASHMAP(A0, cap, n0) = map
 //
 val h0 = hash_key<k0>(k0)
 val h0 = $UN.cast{size}(h0)
-val i0 = g1mod_usize_usize(g1ofg0(h0), cap)
+//
+val i0 =
+g1mod_usize1_usize1(g1ofg0(h0), cap)
 //
 val pi = cptrof(A0) + i0
 //
@@ -662,7 +669,7 @@ case+ kxs of
    val h0 =
    $UN.cast{size}(h0)
    val i0 =
-   g1mod_usize_usize(g1ofg0(h0), cap2)
+   g1mod_usize1_usize1(g1ofg0(h0), cap2)
    val pi = (A2 + i0)
    val
    (pf0, fpf | pi) = $UN.cptr0_vtake(pi)

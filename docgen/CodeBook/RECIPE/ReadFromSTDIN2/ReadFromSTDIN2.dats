@@ -24,7 +24,7 @@ prompts
 ) : stream_vt(int) =
 stream_vt_map<int><int>
 (
-sint_streamize_gte(0) // HX: generating 0, 1, 2, 3, ...
+sint0_streamize_gte(0) // HX: generating 0, 1, 2, 3, ...
 ) where
 {
   impltmp

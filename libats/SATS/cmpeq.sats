@@ -45,11 +45,11 @@ ATS_EXTERN_PREFIX "temptory_"
 (* ****** ****** *)
 //
 #symload
-compare with g0cmp_sint_sint of 10
+compare with g0cmp_sint0_sint0 of 10
 #symload
-compare with g0cmp_uint_uint of 10
+compare with g0cmp_uint0_uint0 of 10
 #symload
-compare with g0cmp_usize_usize of 10
+compare with g0cmp_usize0_usize0 of 10
 //
 (* ****** ****** *)
 

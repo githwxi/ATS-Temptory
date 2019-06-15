@@ -47,45 +47,45 @@
 impltmp
 gseq_listize<
 gseq><sint,sint>
-  (n0) = (sint_listize<>(n0))
+  (n0) = (sint0_listize<>(n0))
 impltmp
 gseq_listize<
 gseq><uint,uint>
-  (n0) = (uint_listize<>(n0))
+  (n0) = (uint0_listize<>(n0))
 impltmp
 gseq_listize<
 gseq><size,size>
-  (n0) = (size_listize<>(n0))
+  (n0) = (usize0_listize<>(n0))
 //
 (* ****** ****** *)
 //
 impltmp
 gseq_rlistize<
 gseq><sint,sint>
-  (n0) = (sint_rlistize<>(n0))
+  (n0) = (sint0_rlistize<>(n0))
 impltmp
 gseq_rlistize<
 gseq><uint,uint>
-  (n0) = (uint_rlistize<>(n0))
+  (n0) = (uint0_rlistize<>(n0))
 impltmp
 gseq_rlistize<
 gseq><size,size>
-  (n0) = (size_rlistize<>(n0))
+  (n0) = (usize0_rlistize<>(n0))
 //
 (* ****** ****** *)
 //
 impltmp
 gseq_streamize<
 gseq><sint,sint>
-  (n0) = (sint_streamize<>(n0))
+  (n0) = (sint0_streamize<>(n0))
 impltmp
 gseq_streamize<
 gseq><uint,uint>
-  (n0) = (uint_streamize<>(n0))
+  (n0) = (uint0_streamize<>(n0))
 impltmp
 gseq_streamize<
 gseq><size,size>
-  (n0) = (size_streamize<>(n0))
+  (n0) = (usize0_streamize<>(n0))
 //
 (* ****** ****** *)
 
@@ -94,11 +94,11 @@ gseq_forall<
 gseq><sint,sint>
   (n0) =
 (
-  sint_forall<>(n0)
+  sint0_forall<>(n0)
 ) where
 {
 impltmp
-sint_forall$test<>(i0) =
+sint0_forall$test<>(i0) =
 gseq_forall$test<gseq><sint,sint>(i0)
 }
 impltmp
@@ -106,11 +106,11 @@ gseq_foreach<
 gseq><sint,sint>
   (n0) =
 (
-  sint_foreach<>(n0)
+  sint0_foreach<>(n0)
 ) where
 {
 impltmp
-sint_foreach$work<>(i0) =
+sint0_foreach$work<>(i0) =
 gseq_foreach$work<gseq><sint,sint>(i0)
 }
 
