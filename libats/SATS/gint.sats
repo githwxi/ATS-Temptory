@@ -832,7 +832,7 @@ g1min_sint1_sint1
 , y: sint(j)):<> sint(min(i,j)) = "mac#%"
 //
 #symload max with g1max_sint1_sint1 of 12
-#symload min with g1max_sint1_sint1 of 12
+#symload min with g1min_sint1_sint1 of 12
 //
 (* ****** ****** *)
 //

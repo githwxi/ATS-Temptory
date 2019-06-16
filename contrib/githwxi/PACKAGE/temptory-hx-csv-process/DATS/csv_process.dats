@@ -37,12 +37,7 @@ UN =
 
 (* ****** ****** *)
 //
-#include
-"$PATSHOMELOCS\
-/temptory-hx-libpcre/mylibies.hats"
-#include
-"$PATSHOMELOCS\
-/temptory-hx-csv-parse/mylibies.hats"
+#include "./../mydepies.hats"
 //
 (* ****** ****** *)
 
@@ -176,7 +171,6 @@ stream_vt_map$fopr<xs><y0>(xs) = csv_line2tarr<>(xs)
 } (* end of [where] *)
 end
 ) (* FILEref_streamize_tarr *)
-
 impltmp
 {}//tmp
 FILEptr0_streamize_tarr
@@ -268,6 +262,69 @@ stream_vt_map$fopr<xs><y0>(xs) = csv_line2tobj<>(ks, xs)
 } (* end of [where] *)
 end
 ) (* FILEptr0_streamize_tobj *)
+
+(* ****** ****** *)
+
+impltmp
+{}//tmp
+stream_vt_line2tarr
+  (lines) =
+(
+let
+val rows =
+$CP.csv_parse_stream_lines<>
+  (lines)
+val-
+~stream_vt_cons
+ (row0, rows) = !rows
+val ks =
+$UN.castvwtp0{list0(string)}(row0)
+in
+( ks
+, stream_vt_map<xs><y0>(rows)
+) where
+{
+//
+sexpdef xs =
+list0_vt(string_vt)
+sexpdef y0 = tarray0
+//
+impltmp
+stream_vt_map$fopr<xs><y0>(xs) = csv_line2tarr<>(xs)
+//
+} (* end of [where] *)
+end
+) (* stream_vt_line2tarr *)
+impltmp
+{}//tmp
+stream_vt_line2tobj
+  (lines) =
+(
+let
+val rows =
+$CP.csv_parse_stream_lines<>
+  (lines)
+val-
+~stream_vt_cons
+ (row0, rows) = !rows
+val ks =
+$UN.castvwtp0{list0(string)}(row0)
+in
+( ks,
+  stream_vt_map<xs><y0>(rows)
+) where
+{
+//
+sexpdef xs =
+list0_vt(string_vt)
+sexpdef y0 = tobject
+//
+impltmp
+stream_vt_map$fopr<xs><y0>(xs) = csv_line2tobj<>(ks, xs)
+//
+} (* end of [where] *)
+end
+) (* stream_vt_line2tobj *)
 
 (* ****** ****** *)
 //

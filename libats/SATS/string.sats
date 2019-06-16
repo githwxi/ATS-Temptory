@@ -170,10 +170,13 @@ string0_alloc with string0_alloc_sint
 //
 fun{}
 string0_append
-  (string0, string0): string
+  (string, string): string
 fun{}
 string0_append_vt
-  (string0, string0): string_vt
+  (string, string): string_vt
+//
+fun{}
+string0_list0_concat(list0(string)): string
 //
 (* ****** ****** *)
 //

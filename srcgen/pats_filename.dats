@@ -132,7 +132,7 @@ if
 0 =
 strncmp
 (
-given, "$PATSHOMELOCS/", 14
+given, "$TEMPTORYLOCS/", 14
 )
 then 1
 else 2(*ext*)
@@ -1348,7 +1348,7 @@ case+ knd of
   (
     //
     // given =
-    // $PATSHOMELOCS/<path>
+    // $TEMPTORYLOCS/<path>
     //
     aux_homelocs(given)
   )
@@ -1513,13 +1513,13 @@ pathlst_insert
 //
 val
 the_PATSHOMELOCS =
-ref<Option(pathlst)>(None())
+ref<
+Option(pathlst)>(None)
 //
 fun
 the_PATSHOMELOCS_split
-(
-  paths: string
-) : pathlst = let
+( paths
+: string): pathlst = let
 //
 #define NUL '\0'
 #define COLON ':'

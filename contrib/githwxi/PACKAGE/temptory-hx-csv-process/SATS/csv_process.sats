@@ -50,6 +50,19 @@ FILEptr0_streamize_tobj
 (* ****** ****** *)
 //
 fun{}
+stream_vt_line2tarr
+( lines
+: stream_vt(string_vt))
+: (list0(string), stream_vt(tarray0))
+fun{}
+stream_vt_line2tobj
+( lines
+: stream_vt(string_vt))
+: (list0(string), stream_vt(tobject))
+//
+(* ****** ****** *)
+//
+fun{}
 tobject_compare
 (tobject, tobject): int
 fun{}

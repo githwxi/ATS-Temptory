@@ -337,8 +337,6 @@ fun
 {a:vtflt}
 cptr0_forall$test(x0: !a): bool
 //
-(* ****** ****** *)
-//
 fun
 {a:vtflt}
 cptr0_foreach
@@ -357,8 +355,6 @@ fun
 {a:vtflt}
 cptr0_rforall$test(x0: !a): bool
 //
-(* ****** ****** *)
-//
 fun
 {a:vtflt}
 cptr0_rforeach
@@ -366,6 +362,24 @@ cptr0_rforeach
 fun
 {a:vtflt}
 cptr0_rforeach$work(x0: !a): void
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+cptr0_iforall
+(cptr(a), cptr(a)): bool
+fun
+{a:vtflt}
+cptr0_iforall$test(int, x0: !a): bool
+//
+fun
+{a:vtflt}
+cptr0_iforeach
+(cptr(a), cptr(a)): void
+fun
+{a:vtflt}
+cptr0_iforeach$work(int, x0: !a): void
 //
 (* ****** ****** *)
 //

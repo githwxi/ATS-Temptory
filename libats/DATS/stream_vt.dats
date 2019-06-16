@@ -380,6 +380,33 @@ case+ !xs of
 } (* end of [stream_vt_listize] *)
 //
 (* ****** ****** *)
+//
+impltmp
+{x0}(*tmp*)
+stream_vt_rlistize(xs) =
+(
+loop(xs, list0_vt_nil())
+) where
+{
+//
+vtypedef r0 = list0_vt(x0)
+//
+fun
+loop
+( xs
+: stream_vt(x0), r0: r0): r0 =
+(
+case+ !xs of
+| ~stream_vt_nil() => r0
+| ~stream_vt_cons(x0, xs) =>
+  (
+   loop(xs, list0_vt_cons(x0, r0))
+  )
+)
+//
+} (* end of [stream_vt_rlistize] *)
+//
+(* ****** ****** *)
 
 impltmp
 {x0}(*tmp*)

@@ -640,6 +640,45 @@ arrayref_rforeach$work<a>(x) = arrszref_rforeach$work<a>(x)
 end // end of [let]
 )
 
+(* ****** ****** *)
+
+impltmp
+{a}(*tmp*)
+arrszref_iforall
+  (AZ) =
+(
+let
+val+
+ARRSZREF(A0, n0) = AZ
+in
+(
+arrayref_iforall<a>(A0, n0)  
+) where
+{
+impltmp
+arrayref_iforall$test<a>(i, x) = arrszref_iforall$test<a>(i, x)
+}
+end // end of [let]
+)
+impltmp
+{a}(*tmp*)
+arrszref_iforeach
+  (AZ) =
+(
+let
+val+
+ARRSZREF(A0, n0) = AZ
+in
+(
+arrayref_iforeach<a>(A0, n0)  
+) where
+{
+impltmp
+arrayref_iforeach$work<a>(i, x) = arrszref_iforeach$work<a>(i, x)
+}
+end // end of [let]
+)
+
 end // end of [local]
 
 (* ****** ****** *)
@@ -999,6 +1038,43 @@ impltmp
 cptr0_rforeach$work<a>(x) = arrayref_rforeach$work<a>(x)
 }
 end // end of [arrayref_rforeach]
+)
+//
+(* ****** ****** *)
+//
+impltmp
+{a}(*tmp*)
+arrayref_iforall
+  (A0, asz) =
+(
+let
+val pa = cptrof(A0)
+in
+(
+  cptr0_iforall<a>(pa, pa + asz)
+) where
+{
+impltmp
+cptr0_iforall$test<a>(i, x) = arrayref_iforall$test<a>(i, x)
+}
+end // end of [arrayref_iforall]
+)
+impltmp
+{a}(*tmp*)
+arrayref_iforeach
+  (A0, asz) =
+(
+let
+val pa = cptrof(A0)
+in
+(
+  cptr0_iforeach<a>(pa, pa + asz)
+) where
+{
+impltmp
+cptr0_iforeach$work<a>(i, x) = arrayref_iforeach$work<a>(i, x)
+}
+end // end of [arrayref_iforeach]
 )
 //
 (* ****** ****** *)

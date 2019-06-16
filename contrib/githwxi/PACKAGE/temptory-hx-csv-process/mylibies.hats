@@ -7,10 +7,10 @@ For downstream staloading
 //
 (*
 #include
-"$PATSHOMELOCS\
+"$TEMPTORYLOCS\
 /temptory-hx-libpcre/mylibies.hats"
 #include
-"$PATSHOMELOCS\
+"$TEMPTORYLOCS\
 /temptory-hx-csv-parse/mylibies.hats"
 *)
 //

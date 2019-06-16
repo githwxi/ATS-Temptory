@@ -43,6 +43,12 @@ ATS_EXTERN_PREFIX "temptory_"
 #staload "./stdio.sats"
 
 (* ****** ****** *)
+
+absprop gseq_char
+absprop gseq_line
+absprop gseq_word
+
+(* ****** ****** *)
 //
 fun{}
 FILEref_open_opt

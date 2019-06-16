@@ -50,6 +50,14 @@ $extfcall
 (sint, "atspre_atoi", rep)
 impltmp
 {}//tmp
+atof(rep) =
+$extfcall
+(double, "atspre_atof", rep)
+
+(* ****** ****** *)
+
+impltmp
+{}//tmp
 atol(rep) =
 $extfcall
 (slint, "atspre_atol", rep)

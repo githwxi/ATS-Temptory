@@ -45,6 +45,35 @@ extern
 fun{}
 csv_unparse_fields
 (ent: list0(string)): void
+//
+(* ****** ****** *)
+//
+extern
+fun{}
+csv_parse_fileref
+  (inp: FILEref)
+: stream_vt(list0(string))
+extern
+fun{}
+csv_parse_fileref_vt
+  (inp: FILEref)
+: stream_vt(list0_vt(string_vt))
+extern
+fun{}
+csv_parse_fileptr_vt
+  (inp: FILEptr0)
+: stream_vt(list0_vt(string_vt))
+//
+(* ****** ****** *)
+//
+extern
+fun{}
+csv_parse_stream_lines
+( lines
+: stream_vt(string_vt))
+: stream_vt(list0_vt(string_vt))
+//
+(* ****** ****** *)
 
 impltmp
 {}(*tmp*)
@@ -126,24 +155,6 @@ list0_iforeach$work<string>
 } (* end of [csv_unparse_fields] *)
 
 (* ****** ****** *)
-//
-extern
-fun{}
-csv_parse_fileref
-  (inp: FILEref)
-: stream_vt(list0(string))
-extern
-fun{}
-csv_parse_fileref_vt
-  (inp: FILEref)
-: stream_vt(list0_vt(string_vt))
-extern
-fun{}
-csv_parse_fileptr_vt
-  (inp: FILEptr0)
-: stream_vt(list0_vt(string_vt))
-//
-(* ****** ****** *)
 
 impltmp
 {}(*tmp*)
@@ -163,31 +174,8 @@ csv_parse_fileref_vt(inp) =
 let
 val lines =
 FILEref_streamize_line_vt<>(inp)
-val lines =
-$LINE.stream_vt_csv_line_repair<>(lines)
 in
-//
-(
-stream_vt_map<x0><y0>(lines)
-) where
-{
-//
-vtypedef x0 = string_vt
-vtypedef y0 = list0_vt(string_vt)
-//
-impltmp
-stream_vt_map$fopr<x0><y0>
-  (line) =
-( fields ) where
-{
-  var nerr = (0:int)
-  val fields =
-  $LINE.csv_parse_line_nerr<>($UN.string0_vt2t(line), nerr)
-  val ((*free*)) =
-  string0_vt_free(line)
-} (* end of [stream_vt_map$fopr] *)
-//
-}
+  csv_parse_stream_lines(lines)
 end // end of [let]
 //
 ) (* end of [csv_parse_fileref_vt] *)
@@ -202,6 +190,21 @@ csv_parse_fileptr_vt(inp) =
 let
 val lines =
 FILEptr0_streamize_line_vt<>(inp)
+in
+  csv_parse_stream_lines(lines)
+end // end of [let]
+//
+) (* end of [csv_parse_fileptr_vt] *)
+
+(* ****** ****** *)
+
+impltmp
+{}(*tmp*)
+csv_parse_stream_lines
+  (lines) =
+(
+//
+let
 val lines =
 $LINE.stream_vt_csv_line_repair<>(lines)
 in
@@ -229,7 +232,7 @@ stream_vt_map$fopr<x0><y0>
 }
 end // end of [let]
 //
-) (* end of [csv_parse_fileptr_vt] *)
+) (* end of [csv_parse_stream_lines] *)
 
 (* ****** ****** *)
 

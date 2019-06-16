@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -34,22 +34,10 @@
 (* ****** ****** *)
 
 #define
-ATS_PACKNAME "temptory."
+ATS_PACKNAME "temptory.libc."
 #define
-ATS_EXTERN_PREFIX "temptory_"
+ATS_EXTERN_PREFIX "temptory_libc_"
 
 (* ****** ****** *)
-//
-fun{}
-atoi(rep: string): sint
-fun{}
-atof(rep: string): double
-//
-fun{}
-atol(rep: string): slint
-fun{}
-atoll(rep: string): sllint
-//
-(* ****** ****** *)
 
-(* end of [stdlib.sats] *)
+(* end of [math.dats] *)

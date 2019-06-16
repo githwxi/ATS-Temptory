@@ -33,23 +33,30 @@
 //
 (* ****** ****** *)
 
+%{#
+//
+#include \
+"libats/libc/CATS/math.cats"
+//
+%} // end of [%{#]
+
+(* ****** ****** *)
+
 #define
-ATS_PACKNAME "temptory."
+ATS_PACKNAME "temptory.libc."
 #define
-ATS_EXTERN_PREFIX "temptory_"
+ATS_EXTERN_PREFIX "temptory_libc_"
 
 (* ****** ****** *)
 //
-fun{}
-atoi(rep: string): sint
-fun{}
-atof(rep: string): double
+fun
+sqrt(f0: double): double = "mac#%"
 //
-fun{}
-atol(rep: string): slint
-fun{}
-atoll(rep: string): sllint
+fun
+sqrtf(f0: float) : float = "mac#%"
+fun
+sqrtl(f0: ldouble): double = "mac#%"
 //
 (* ****** ****** *)
 
-(* end of [stdlib.sats] *)
+(* end of [math.sats] *)

@@ -33,19 +33,19 @@
 //
 (* ****** ****** *)
 
-#define
-ATS_PACKNAME "temptory.libc."
-#define
-ATS_EXTERN_PREFIX "temptory_libc_"
-
-(* ****** ****** *)
-
 %{#
 //
 #include \
 "libats/libc/CATS/dirent.cats"
 //
 %} // end of [%{#]
+
+(* ****** ****** *)
+
+#define
+ATS_PACKNAME "temptory.libc."
+#define
+ATS_EXTERN_PREFIX "temptory_libc_"
 
 (* ****** ****** *)
 //

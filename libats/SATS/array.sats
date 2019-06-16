@@ -532,6 +532,23 @@ fun
 arrszref_rforeach$work(x: !a): void
 
 (* ****** ****** *)
+
+fun
+{a:vtflt}
+arrszref_iforall
+(AZ: arrszref(a)): bool
+fun
+{a:vtflt}
+arrszref_iforall$test(int, x: !a): bool
+fun
+{a:vtflt}
+arrszref_iforeach
+(AZ: arrszref(a)): void
+fun
+{a:vtflt}
+arrszref_iforeach$work(int, x: !a): void
+
+(* ****** ****** *)
 //
 fun
 {a:vtflt}
@@ -788,6 +805,26 @@ arrayref_rforeach
 fun
 {a:vtflt}
 arrayref_rforeach$work(x: !a): void
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
+arrayref_iforall
+{n:int}
+(A: arrayref(a,n), size(n)): bool
+fun
+{a:vtflt}
+arrayref_iforall$test(int, x: !a): bool
+//
+fun
+{a:vtflt}
+arrayref_iforeach
+{n:int}
+(A: arrayref(a,n), size(n)): void
+fun
+{a:vtflt}
+arrayref_iforeach$work(int, x: !a): void
 //
 (* ****** ****** *)
 //

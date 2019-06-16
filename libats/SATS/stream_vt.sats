@@ -150,9 +150,14 @@ fun
 {x0:vtflt}
 stream_vt_listize
 (xs: stream_vt(INV(x0))): list0_vt(x0)
+fun
+{x0:vtflt}
+stream_vt_rlistize
+(xs: stream_vt(INV(x0))): list0_vt(x0)
 //
 #symload tolist with stream_vt_tolist
 #symload listize with stream_vt_listize
+#symload rlistize with stream_vt_rlistize
 //
 (* ****** ****** *)
 //

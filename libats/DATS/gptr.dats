@@ -225,7 +225,6 @@ end (* end-of-let *)
 //
 (* ****** ****** *)
 //
-//
 impltmp
 {a}(*tmp*)
 cptr0_rforall
@@ -296,6 +295,81 @@ end (* end of [loop] *)
 )
 //
 } (* end of [cptr0_rforeach] *)
+//
+(* ****** ****** *)
+//
+impltmp
+{a}(*tmp*)
+cptr0_iforall
+  (cp0, cp1) = let
+//
+fun
+loop
+( i0: int
+, p0: ptr, pz: ptr): bool =
+(
+if
+(p0 >= pz)
+then true else
+let
+val x0 =
+$UN.ptr0_get<a>(p0)
+val test =
+cptr0_iforall$test<a>(i0, x0)
+//
+in (* in-of-let *)
+let
+prval () =
+$UN.cast2void(x0)
+in
+if
+test
+then
+loop(i0+1, p0+sizeof<a>, pz) else false
+end
+end (* end-of-let *)
+)
+//
+in
+  loop(0, cptr2ptr(cp0), cptr2ptr(cp1))
+end (* end of [cptr0_iforall] *)
+//
+(* ****** ****** *)
+//
+impltmp
+{a}(*tmp*)
+cptr0_iforeach
+  (cp0, cp1) =
+(
+loop
+( 0(*i0*)
+, cptr2ptr(cp0)
+, cptr2ptr(cp1) )
+) where
+{
+//
+fun
+loop
+( i0: int
+, p0: ptr, pz: ptr): void =
+(
+if
+(p0 < pz)
+then
+let
+val x0 =
+$UN.ptr0_get<a>(p0)
+val () =
+cptr0_iforeach$work<a>(i0, x0)
+in (* in-of-let *)
+let
+prval () =
+$UN.cast2void(x0) in loop(i0+1, p0+sizeof<a>, pz)
+end
+end (* end-of-let *)
+)
+//
+} (* end of [cptr0_iforeach] *)
 //
 (* ****** ****** *)
 //
