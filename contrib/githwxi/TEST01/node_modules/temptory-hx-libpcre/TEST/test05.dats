@@ -5,13 +5,14 @@
 //
 (* ****** ****** *)
 
-#include "./../mylibies.hats"
+#include
+"share/HATS\
+/temptory_staload_bucs320.hats"
 
 (* ****** ****** *)
 
 #include
-"share/HATS\
-/temptory_staload_bucs320.hats"
+"./../mylibies.hats"
 
 (* ****** ****** *)
 
@@ -65,8 +66,8 @@ end // end of [loop]
 
 (* ****** ****** *)
 
-implement
-main0 () = () where
+implfun
+main0() = () where
 {
 //
 val subject0 = "-1,2,-3,4,-5,6,-7,8,-9,10"

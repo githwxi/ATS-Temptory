@@ -5,18 +5,19 @@
 //
 (* ****** ****** *)
 
-#include "./../mylibies.hats"
-
-(* ****** ****** *)
-
 #include
 "share/HATS\
 /temptory_staload_bucs320.hats"
 
 (* ****** ****** *)
 
-implement
-main0 () = () where
+#include
+"./../mylibies.hats"
+
+(* ****** ****** *)
+
+implfun
+main0() = () where
 {
 //
 val

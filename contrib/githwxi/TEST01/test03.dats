@@ -30,7 +30,7 @@ _(*anon*) =
 (* ****** ****** *)
 
 #include
-"$PATSHOMELOCS\
+"$TEMPTORYLOCS\
 /temptory-hx-libpcre/mylibies.hats"
 
 (* ****** ****** *)

@@ -23,7 +23,7 @@ in(*in-of-local*)
 extern
 fun{}
 csv_parse_line(line: string): list0(string)
-implement
+impltmp
 {}(*tmp*)
 csv_parse_line
   (line) = res0 where
@@ -59,7 +59,7 @@ val ((*void*)) =
 print!("xs0 = "); list0_iforeach(xs0); println!()
 ) where
 {
-implement
+impltmp
 list0_iforeach$work<string>(i0, x0) =
   (if i0 > 0 then print(";"); print!("(", x0, ")"))
 } (* end of [where] *)
