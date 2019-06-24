@@ -77,15 +77,18 @@ fun
 {y0:vtflt}
 SINT2_map$fopr(sint): y0
 //
+(*
 fun
 {y0:vtflt}
-SINT2_map_list(sint): list0_vt(y0)
+SINT2_map_list((*void*)): list0_vt(y0)
 fun
 {y0:vtflt}
-SINT2_map_rlist(sint): list0_vt(y0)
+SINT2_map_rlist((*void*)): list0_vt(y0)
+*)
+//
 fun
 {y0:vtflt}
-SINT2_map_stream(sint): stream_vt(y0)
+SINT2_map_stream((*void*)): stream_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -125,18 +128,21 @@ fun
 {y0:vtflt}
 CPTR2_map$fopr(cptr(x0)): y0
 //
+(*
 fun
 {x0:vtflt}
 {y0:vtflt}
-CPTR2_map_list(cptr(x0)): list0_vt(y0)
+CPTR2_map_list((*void*)): list0_vt(y0)
 fun
 {x0:vtflt}
 {y0:vtflt}
-CPTR2_map_rlist(cptr(x0)): list0_vt(y0)
+CPTR2_map_rlist((*void*)): list0_vt(y0)
+*)
+//
 fun
 {x0:vtflt}
 {y0:vtflt}
-CPTR2_map_stream(cptr(x0)): stream_vt(y0)
+CPTR2_map_stream((*void*)): stream_vt(y0)
 //
 (* ****** ****** *)
 

@@ -533,10 +533,10 @@ list0_vt_quicksort
 //
 fun
 {a:vtflt} // (-)(0)(+)
-list0_vt_mergesort$cmp(x: &a, y: &a): int(*sgn*)
+list0_vt_mergesort$fcmp(x: &a, y: &a): int(*sgn*)
 fun
 {a:vtflt} // (-)(0)(+)
-list0_vt_quicksort$cmp(x: &a, y: &a): int(*sgn*)
+list0_vt_quicksort$fcmp(x: &a, y: &a): int(*sgn*)
 //
 (* ****** ****** *)
 //
@@ -574,10 +574,10 @@ list1_vt_quicksort
 //
 fun
 {a:vtflt}
-list1_vt_mergesort$cmp(x: &a, y: &a): int(*sgn*)
+list1_vt_mergesort$fcmp(x: &a, y: &a): int(*sgn*)
 fun
 {a:vtflt}
-list1_vt_quicksort$cmp(x: &a, y: &a): int(*sgn*)
+list1_vt_quicksort$fcmp(x: &a, y: &a): int(*sgn*)
 //
 (* ****** ****** *)
 

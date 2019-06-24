@@ -744,6 +744,16 @@ end // end of [local]
 
 impltmp
 {a}(*tmp*)
+arrszref_bsearch(AZ) =
+(
+arrayref_bsearch(A0, asz)
+) where
+{
+val(A0, asz) = arrszref_uncons(AZ)
+}
+
+impltmp
+{a}(*tmp*)
 arrszref_quicksort(AZ) =
 (
 arrayref_quicksort(A0, asz)
@@ -1155,6 +1165,39 @@ end // end of [arrayptr_rforeach1]
 
 impltmp
 {a}(*tmp*)
+arrayref_bsearch
+  (A0, asz) =
+(
+$effmask_ref
+(
+array_bsearch<a>(!p0, asz)
+)
+) where
+{
+val r0 = arrayref_decode(A0)
+val (vbox(pf) | p0) = ref_vptrof(r0)
+} (* end of [arrayref_bsearch] *)
+
+impltmp
+{a}(*tmp*)
+arrayptr_bsearch
+  (A0, asz) =
+(
+let
+val idx =
+array_bsearch<a>(!p0, asz) in
+  let prval () = fpf(pf0) in idx end
+end
+) where
+{
+val
+(pf0, fpf | p0) = arrayptr_vptrof(A0)
+} (* end of [arrayptr_bsearch] *)
+
+(* ****** ****** *)
+
+impltmp
+{a}(*tmp*)
 arrayref_quicksort
   (A0, asz) =
 (
@@ -1167,8 +1210,6 @@ array_quicksort<a>(!p0, asz)
 val r0 = arrayref_decode(A0)
 val (vbox(pf) | p0) = ref_vptrof(r0)
 } (* end of [arrayref_quicksort] *)
-
-(* ****** ****** *)
 
 impltmp
 {a}(*tmp*)
@@ -1184,7 +1225,7 @@ end
 {
 val
 (pf0, fpf | p0) = arrayptr_vptrof(A0)
-} (* end of [arrayref_quicksort] *)
+} (* end of [arrayptr_quicksort] *)
 
 (* ****** ****** *)
 

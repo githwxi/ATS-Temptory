@@ -1190,11 +1190,11 @@ end (* end-of-let *)
 
 impltmp
 {a}(*tmp*)
-list0_mergesort$cmp
+list0_mergesort$fcmp
 (x1, x2) = gcompare$val<a>(x1, x2)
 impltmp
 {a}(*tmp*)
-list0_quicksort$cmp
+list0_quicksort$fcmp
 (x1, x2) = gcompare$val<a>(x1, x2)
 
 (* ****** ****** *)
@@ -1210,7 +1210,7 @@ list0_vt_mergesort<a>(list0_listize<a>(xs))
 ) where
 {
 impltmp
-list0_vt_mergesort$cmp<a>(x1, x2) = list0_mergesort$cmp<a>(x1, x2)
+list0_vt_mergesort$fcmp<a>(x1, x2) = list0_mergesort$fcmp<a>(x1, x2)
 } (* end of [list0_mergesort] *)
 
 impltmp
@@ -1224,7 +1224,7 @@ list0_vt_quicksort<a>(list0_listize<a>(xs))
 ) where
 {
 impltmp
-list0_vt_quicksort$cmp<a>(x1, x2) = list0_quicksort$cmp<a>(x1, x2)
+list0_vt_quicksort$fcmp<a>(x1, x2) = list0_quicksort$fcmp<a>(x1, x2)
 } (* end of [list0_quicksort] *)
 
 (* ****** ****** *)

@@ -54,11 +54,11 @@
 //
 impltmp
 {a}(*tmp*)
-array_quicksort$cmp
+array_quicksort$fcmp
   (x1, x2) =
 (
   gcompare$ref<a> (x1, x2)
-) (* array_quicksort$cmp *)
+) (* array_quicksort$fcmp *)
 //
 (* ****** ****** *)
 
@@ -95,7 +95,7 @@ val
   pf2, fpf2 | p2
 ) = $UN.ptr0_vtake{a}(p2)
 //
-val sgn = array_quicksort$cmp<a>(!p1, !p2)
+val sgn = array_quicksort$fcmp<a>(!p1, !p2)
 //
 prval () = fpf1(pf1)
 prval () = fpf2(pf2)

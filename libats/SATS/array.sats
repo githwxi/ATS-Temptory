@@ -237,13 +237,13 @@ array_rforeach$work(x: !(a)): void
 //
 fun
 {a:vtflt}
-array_bsearch$ford(x0: &(a)):<> int
+array_bsearch$ford(x0: &(a)): int
 //
 fun
 {a:vtflt}
 array_bsearch
   {n:int}
-  (A0: &(@[a][n]), n: size(n)):<> Sizelte(n)
+  (A0: &(@[a][n]), n: size(n)): Sizelte(n)
 //
 (*
 ** HX:
@@ -268,7 +268,7 @@ array_quicksort
 : &(@[INV(a)][n]) >> @[a][n], asz: size(n)
 ) : void // end-of-function
 fun{a:vtflt}
-array_quicksort$cmp(x: &(a), y: &(a)): int(*sgn*)
+array_quicksort$fcmp(x: &(a), y: &(a)): int(*sgn*)
 //
 (* ****** ****** *)
 
@@ -516,6 +516,22 @@ fun
 {a:vtflt}
 arrszref_foreach$work(x: !a): void
 
+(* ****** ****** *)
+
+(*
+fun
+{a:vtflt}
+{r0:vtflt}
+arrszref_foldleft
+(AZ: arrszref(a), r0: r0): r0
+fun
+{a:vtflt}
+{r0:vtflt}
+arrszref_foldleft$fopr(r0: r0, x0: !a): r0
+*)
+
+(* ****** ****** *)
+
 fun
 {a:vtflt}
 arrszref_rforall
@@ -552,13 +568,27 @@ arrszref_iforeach$work(int, x: !a): void
 //
 fun
 {a:vtflt}
+arrszref_bsearch(arrszref(a)): size
+fun
+{a:vtflt}
+arrszptr_bsearch(!arrszref(a)): size
+//
+(*
+arrszref_bsearch$ford = array_bsearch$ford
+arrszptr_bsearch$ford = array_bsearch$ford
+*)
+//
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
 arrszref_quicksort(arrszref(a)): void
 fun
 {a:vtflt}
 arrszptr_quicksort(!arrszptr(a)): void
 (*
-arrszref_quicksort$cmp = array_quicksort$cmp
-arrszptr_quicksort$cmp = array_quicksort$cmp
+arrszref_quicksort$fcmp = array_quicksort$fcmp
+arrszptr_quicksort$fcmp = array_quicksort$fcmp
 *)
 //
 (* ****** ****** *)
@@ -870,6 +900,23 @@ arrayptr_rforeach1$work(x: !a): void
 //
 fun
 {a:vtflt}
+arrayref_bsearch
+  {n:int}
+  (arrayref(a, n), size(n)): Sizelte(n)
+fun
+{a:vtflt}
+arrayptr_bsearch
+  {n:int}
+  (!arrayptr(a, n), size(n)): Sizelte(n)
+//
+(*
+arrayref_bsearch$ford = array_bsearch$ford
+arrayptr_bsearch$ford = array_bsearch$ford
+*)
+(* ****** ****** *)
+//
+fun
+{a:vtflt}
 arrayref_quicksort
   {n:int}
   (A0: arrayref(a, n), asz: size(n)): void
@@ -879,8 +926,8 @@ arrayptr_quicksort
   {n:int}
   (A0: !arrayptr(a, n), asz: size(n)): void
 (*
-arrayref_quicksort$cmp = array_quicksort$cmp
-arrayptr_quicksort$cmp = array_quicksort$cmp
+arrayref_quicksort$fcmp = array_quicksort$fcmp
+arrayptr_quicksort$fcmp = array_quicksort$fcmp
 *)
 //
 (* ****** ****** *)

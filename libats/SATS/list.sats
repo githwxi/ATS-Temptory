@@ -600,7 +600,7 @@ list0_mergesort
   (xs: list0(INV(a))): list0(a)
 fun
 {a:tflt}
-list0_mergesort$cmp(x1: a, x2: a): int(*sgn*)
+list0_mergesort$fcmp(x1: a, x2: a): int(*sgn*)
 //
 #symload mergesort with list0_mergesort
 //
@@ -612,7 +612,7 @@ list0_quicksort
   (xs: list0(INV(a))): list0(a)
 fun
 {a:tflt}
-list0_quicksort$cmp(x1: a, x2: a): int(*sgn*)
+list0_quicksort$fcmp(x1: a, x2: a): int(*sgn*)
 //
 #symload quicksort with list0_quicksort
 //

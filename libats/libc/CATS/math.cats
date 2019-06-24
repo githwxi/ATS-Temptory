@@ -43,6 +43,16 @@
 /* ****** ****** */
 
 #define \
+temptory_libc_exp(f0) exp(f0)
+
+/* ****** ****** */
+
+#define \
+temptory_libc_log(f0) log(f0)
+
+/* ****** ****** */
+
+#define \
 temptory_libc_sqrt(f0) sqrt(f0)
 #define \
 temptory_libc_sqrtf(f0) sqrtf(f0)
