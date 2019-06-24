@@ -111,7 +111,7 @@ mergesort(iwords)
 ) where
 {
 impltmp
-list0_vt_mergesort$cmp<iword>
+list0_vt_mergesort$fcmp<iword>
   (iw1, iw2) =
 let
   val i1 = iw1.0
