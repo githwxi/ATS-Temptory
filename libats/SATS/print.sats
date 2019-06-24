@@ -187,6 +187,30 @@ optn1_print$end((*void*)): void
 //
 (* ****** ****** *)
 //
+fun
+{a:vtflt}
+optn0_vt_print
+(xs: !optn0_vt(INV(a))): void
+fun
+{a:vtflt}
+optn1_vt_print
+(xs: !optn1_vt(INV(a))): void
+//
+fun{}
+optn0_vt_print$beg((*void*)): void
+fun{}
+optn0_vt_print$end((*void*)): void
+//
+fun{}
+optn1_vt_print$beg((*void*)): void
+fun{}
+optn1_vt_print$end((*void*)): void
+//
+#symload print with optn0_vt_print
+#symload print with optn1_vt_print
+//
+(* ****** ****** *)
+//
 fun{}
 tuple_print$beg((*void*)): void
 fun{}

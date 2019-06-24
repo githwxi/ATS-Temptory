@@ -314,6 +314,69 @@ print$val<optn1(a)>(xs) = optn1_print<a>(xs)
 (* ****** ****** *)
 
 impltmp
+{a}//tmp
+optn0_vt_print(t0) =
+(
+case+ t0 of
+| optn0_vt_none() =>
+  (
+   optn0_vt_print$beg<>();
+   optn0_vt_print$end<>();
+  )
+| optn0_vt_some(x0) =>
+  (
+   optn0_vt_print$beg<>();
+   print$val<a>(x0);
+   optn0_vt_print$end<>();
+  )
+)
+//
+impltmp
+{}(*tmp*)
+optn0_vt_print$beg() = print_string("(")
+impltmp
+{}(*tmp*)
+optn0_vt_print$end() = print_string(")")
+//
+impltmp
+(a:tflt)
+print$val<optn0_vt(a)>(xs) = optn0_vt_print<a>(xs)
+//
+(* ****** ****** *)
+//
+impltmp
+{a}//tmp
+optn1_vt_print(t0) =
+(
+case+ t0 of
+| optn1_vt_none() =>
+  (
+   optn1_vt_print$beg<>();
+   optn1_vt_print$end<>();
+  )
+| optn1_vt_some(x0) =>
+  (
+   optn1_vt_print$beg<>();
+   print$val<a>(x0);
+   optn1_vt_print$end<>();
+  )
+)
+//
+impltmp
+{}(*tmp*)
+optn1_vt_print$beg() = print_string("(")
+impltmp
+{}(*tmp*)
+optn1_vt_print$end() = print_string(")")
+//
+impltmp
+(a:tflt)
+print$val<optn1_vt(a)>(xs) = optn1_vt_print<a>(xs)
+//
+(* ****** ****** *)
+
+
+impltmp
 {a0,a1}
 tuple2_print(xs) =
 (
