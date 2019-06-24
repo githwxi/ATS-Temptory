@@ -385,6 +385,38 @@ print$val<list0_vt(a)>(cs) = list0_vt_print<a>(cs)
 (* ****** ****** *)
 
 impltmp
+{a}(*tmp*)
+list1_vt_print(xs) =
+(
+list1_print$beg<>();
+loop(0, xs);
+list1_print$end<>();
+) where
+{
+fun
+loop
+( i0: int
+, xs: !list1_vt(a)): void =
+(
+case+ xs of
+| list1_vt_nil() => ()
+| list1_vt_cons(x0, xs) =>
+  (
+  if
+  (i0 > 0)
+  then list1_print$sep<>();
+  print$val<a>(x0); loop(i0+1, xs)
+  )
+)
+}
+//
+impltmp
+(a:vtflt)
+print$val<list1_vt(a)>(cs) = list1_vt_print<a>(cs)
+
+(* ****** ****** *)
+
+impltmp
 string0_vt_print<>(cs) =
 print_string($UN.string0_vt2t(cs))
 impltmp
