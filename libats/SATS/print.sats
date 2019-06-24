@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -187,6 +187,30 @@ optn1_print$end((*void*)): void
 //
 (* ****** ****** *)
 //
+fun
+{a:vtflt}
+optn0_vt_print
+(xs: !optn0_vt(INV(a))): void
+fun
+{a:vtflt}
+optn1_vt_print
+(xs: !optn1_vt(INV(a))): void
+//
+fun{}
+optn0_vt_print$beg((*void*)): void
+fun{}
+optn0_vt_print$end((*void*)): void
+//
+fun{}
+optn1_vt_print$beg((*void*)): void
+fun{}
+optn1_vt_print$end((*void*)): void
+//
+#symload print with optn0_vt_print
+#symload print with optn1_vt_print
+//
+(* ****** ****** *)
+//
 fun{}
 tuple_print$beg((*void*)): void
 fun{}
@@ -277,6 +301,25 @@ stropt0_vt_print
 #symload print with stropt0_print
 #symload print with stropt0_vt_print
 //
+(* ****** ****** *)
+
+fun
+{a:vtflt}
+stream_vt_print
+(xs: stream_vt(INV(a))): void
+//
+fun{}
+stream_vt_print$n(): int
+//
+fun{}
+stream_vt_print$beg((*void*)): void
+fun{}
+stream_vt_print$end((*void*)): void
+fun{}
+stream_vt_print$sep((*void*)): void
+//
+#symload print with stream_vt_print
+
 (* ****** ****** *)
 
 (* end of [print.sats] *)

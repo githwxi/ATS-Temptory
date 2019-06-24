@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -183,17 +183,85 @@ print$val<list0(a)>(xs) = list0_print<a>(xs)
 //
 (* ****** ****** *)
 //
+(*
+//
+// requires list1_forall
+//
+impltmp
+{a}(*tmp*)
+list1_print(xs) =
+(
+gseq_print<gseq><xs,a>(xs)
+) where
+{
+//
+typedef xs = list1(a)
+//
+impltmp
+gseq_print$beg<
+gseq><xs,a>() = list1_print$beg<>()
+impltmp
+gseq_print$end<
+gseq><xs,a>() = list1_print$end<>()
+impltmp
+gseq_print$sep<
+gseq><xs,a>() = list1_print$sep<>()
+}
+*)
+impltmp
+{a}(*tmp*)
+list1_print(xs) =
+(
+list1_print$beg<>();
+loop(0, xs);
+list1_print$end<>();
+) where
+{
+fun
+loop
+( i0: int
+, xs: list1(a)): void =
+(
+case+ xs of
+| list1_nil() => ()
+| list1_cons(x0, xs) =>
+  (
+  if i0 > 0
+    then list1_print$sep<>();
+  // end of [if]
+  print$val<a>(x0); loop(i0+1, xs)
+  )
+)
+} (* end of [list0_print] *)
+
+//
+impltmp
+{}(*tmp*)
+list1_print$beg() = print_string("(")
+impltmp
+{}(*tmp*)
+list1_print$end() = print_string(")")
+impltmp
+{}(*tmp*)
+list1_print$sep() = print_string(",")
+//
+impltmp
+(a:tflt)
+print$val<list1(a)>(xs) = list1_print<a>(xs)
+
+(* ****** ****** *)
+//
 impltmp
 {a}//tmp
 optn0_print(t0) =
 (
 case+ t0 of
-| optn0_none() => 
+| optn0_none() =>
   (
    optn0_print$beg<>();
    optn0_print$end<>();
   )
-| optn0_some(x0) => 
+| optn0_some(x0) =>
   (
    optn0_print$beg<>();
    print$val<a>(x0);
@@ -213,6 +281,100 @@ impltmp
 print$val<optn0(a)>(xs) = optn0_print<a>(xs)
 //
 (* ****** ****** *)
+//
+impltmp
+{a}//tmp
+optn1_print(t0) =
+(
+case+ t0 of
+| optn1_none() =>
+  (
+   optn1_print$beg<>();
+   optn1_print$end<>();
+  )
+| optn1_some(x0) =>
+  (
+   optn1_print$beg<>();
+   print$val<a>(x0);
+   optn1_print$end<>();
+  )
+)
+//
+impltmp
+{}(*tmp*)
+optn1_print$beg() = print_string("(")
+impltmp
+{}(*tmp*)
+optn1_print$end() = print_string(")")
+//
+impltmp
+(a:tflt)
+print$val<optn1(a)>(xs) = optn1_print<a>(xs)
+//
+(* ****** ****** *)
+
+impltmp
+{a}//tmp
+optn0_vt_print(t0) =
+(
+case+ t0 of
+| optn0_vt_none() =>
+  (
+   optn0_vt_print$beg<>();
+   optn0_vt_print$end<>();
+  )
+| optn0_vt_some(x0) =>
+  (
+   optn0_vt_print$beg<>();
+   print$val<a>(x0);
+   optn0_vt_print$end<>();
+  )
+)
+//
+impltmp
+{}(*tmp*)
+optn0_vt_print$beg() = print_string("(")
+impltmp
+{}(*tmp*)
+optn0_vt_print$end() = print_string(")")
+//
+impltmp
+(a:tflt)
+print$val<optn0_vt(a)>(xs) = optn0_vt_print<a>(xs)
+//
+(* ****** ****** *)
+//
+impltmp
+{a}//tmp
+optn1_vt_print(t0) =
+(
+case+ t0 of
+| optn1_vt_none() =>
+  (
+   optn1_vt_print$beg<>();
+   optn1_vt_print$end<>();
+  )
+| optn1_vt_some(x0) =>
+  (
+   optn1_vt_print$beg<>();
+   print$val<a>(x0);
+   optn1_vt_print$end<>();
+  )
+)
+//
+impltmp
+{}(*tmp*)
+optn1_vt_print$beg() = print_string("(")
+impltmp
+{}(*tmp*)
+optn1_vt_print$end() = print_string(")")
+//
+impltmp
+(a:tflt)
+print$val<optn1_vt(a)>(xs) = optn1_vt_print<a>(xs)
+//
+(* ****** ****** *)
+
 
 impltmp
 {a0,a1}
@@ -283,6 +445,38 @@ impltmp
 (a:vtflt)
 print$val<list0_vt(a)>(cs) = list0_vt_print<a>(cs)
 //
+(* ****** ****** *)
+
+impltmp
+{a}(*tmp*)
+list1_vt_print(xs) =
+(
+list1_print$beg<>();
+loop(0, xs);
+list1_print$end<>();
+) where
+{
+fun
+loop
+( i0: int
+, xs: !list1_vt(a)): void =
+(
+case+ xs of
+| list1_vt_nil() => ()
+| list1_vt_cons(x0, xs) =>
+  (
+  if
+  (i0 > 0)
+  then list1_print$sep<>();
+  print$val<a>(x0); loop(i0+1, xs)
+  )
+)
+}
+//
+impltmp
+(a:vtflt)
+print$val<list1_vt(a)>(cs) = list1_vt_print<a>(cs)
+
 (* ****** ****** *)
 
 impltmp
@@ -389,6 +583,70 @@ array_print$sep() = print_string(",")
 impltmp
 (a:tflt)
 print$val<arrszref(a)>(AZ) = arrszref_print<a>(AZ)
+//
+(* ****** ****** *)
+//
+// Note that (n < 0) means to print all the values
+// n is set by template: stream_vt_print$n
+//
+impltmp
+{a}(*tmp*)
+stream_vt_print(xs) =
+(
+stream_vt_print$beg<>();
+(
+if n < 0 then loop1(0, xs) else loop2(0, xs)
+);
+stream_vt_print$end<>()
+) where
+{
+val n = stream_vt_print$n<>()
+//
+fun
+loop1
+( i0: int
+, xs: stream_vt(a)): void =
+(
+case+ !xs of
+| ~stream_vt_nil() => ()
+| ~stream_vt_cons(x, xs) =>
+  (
+  if (i0 > 0)
+    then stream_vt_print$sep<>();
+  print$val<a>(x); gfree$val<a>(x); loop1(i0+1, xs)
+  )
+)
+fun
+loop2
+( i0: int
+, xs: stream_vt(a)): void =
+(
+case+ !xs of
+| ~stream_vt_nil() => ()
+| ~stream_vt_cons(x, xs) =>
+  if (i0 < n) then
+  (
+  if (i0 > 0)
+    then stream_vt_print$sep<>();
+  print$val<a>(x); gfree$val<a>(x); loop2(i0+1, xs)
+  )
+  else (gfree$val<a>(x); ~(xs))
+)
+}
+//
+// default: print entire linear stream
+//
+impltmp{} stream_vt_print$n() = ~1
+//
+impltmp
+{}(*tmp*)
+stream_vt_print$beg() = print_string("(")
+impltmp
+{}(*tmp*)
+stream_vt_print$end() = print_string(")")
+impltmp
+{}(*tmp*)
+stream_vt_print$sep() = print_string(",")
 //
 (* ****** ****** *)
 

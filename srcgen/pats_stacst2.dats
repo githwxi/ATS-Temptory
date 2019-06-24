@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -810,7 +810,7 @@ un_s2exp_g1int_index_t0ype
 in
 //
 case+ s2e.s2exp_node of
-| S2Eapp (s2e_fun, s2es_arg) 
+| S2Eapp (s2e_fun, s2es_arg)
     when s2cstref_equ_exp (
     the_g1int_int_t0ype, s2e_fun
   ) => let
@@ -852,7 +852,7 @@ un_s2exp_g1uint_index_t0ype
 in
 //
 case+ s2e.s2exp_node of
-| S2Eapp (s2e_fun, s2es_arg) 
+| S2Eapp (s2e_fun, s2es_arg)
     when s2cstref_equ_exp (
     the_g1uint_int_t0ype, s2e_fun
   ) => let
@@ -942,7 +942,7 @@ un_s2exp_char_index_t0ype (s2f) = let
 in
 //
 case+ s2e.s2exp_node of
-| S2Eapp (s2e_fun, s2es_arg) 
+| S2Eapp (s2e_fun, s2es_arg)
     when s2cstref_equ_exp (
     the_char_int_t0ype, s2e_fun
   ) => let
@@ -1107,7 +1107,7 @@ s2exp_ptr_type () =
   s2exp_cst(s2c) where
 {
   val s2c = s2cstref_get_cst(the_ptr_type)
-}  
+}
 // end of [s2exp_ptr_type]
 //
 (* ****** ****** *)
@@ -1133,7 +1133,7 @@ un_s2exp_ptr_addr_type
 in
 //
 case+ s2e.s2exp_node of
-| S2Eapp (s2e_fun, s2es_arg) 
+| S2Eapp (s2e_fun, s2es_arg)
     when s2cstref_equ_exp (
     the_ptr_addr_type, s2e_fun
   ) => let
@@ -1236,7 +1236,7 @@ end // end of [s2exp_list1_t0ype_int_type]
 
 implement
 the_list1_vt0ype_int_vtype =
-  s2cstref_make "list1_vt0ype_int_vtype"
+  s2cstref_make "list1_vtflt_int_vtbox"
 implement
 s2exp_list1_vt0ype_int_vtype
   (s2e, s2i) = let
@@ -1276,7 +1276,7 @@ val s2e = s2hnf2exp (s2f)
 in
 //
 case+ s2e.s2exp_node of
-| S2Eapp (s2e_fun, s2es_arg) 
+| S2Eapp (s2e_fun, s2es_arg)
     when s2cstref_equ_exp (
     the_vbox_view_prop, s2e_fun
   ) => let
@@ -1313,7 +1313,7 @@ un_s2exp_ref_vt0ype_type
 in
 //
 case+ s2e.s2exp_node of
-| S2Eapp (s2e_fun, s2es_arg) 
+| S2Eapp (s2e_fun, s2es_arg)
     when s2cstref_equ_exp (
     the_ref_vt0ype_type, s2e_fun
   ) => let
@@ -1350,7 +1350,7 @@ un_s2exp_lazy_t0ype_type
 in
 //
 case+ s2e.s2exp_node of
-| S2Eapp (s2e_fun, s2es_arg) 
+| S2Eapp (s2e_fun, s2es_arg)
     when s2cstref_equ_exp (
     the_lazy_t0ype_type, s2e_fun
   ) => let
@@ -1667,7 +1667,7 @@ sizeof_t0ype_int_assume
   val
   s2v =
   s2var_make_srt(s2rt_t0ype)
-//   
+//
   val
   arg = s2exp_var(s2v)
   val
