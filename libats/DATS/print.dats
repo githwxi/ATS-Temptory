@@ -454,6 +454,43 @@ print$val<stream(a)>(xs) = stream_print<a>(xs)
 //
 (* ****** ****** *)
 //
+impltmp
+{a}(*tmp*)
+arrszref_print(AZ) =
+(
+glseq_print<glseq><xs,a>(AZ)
+) where
+{
+//
+typedef xs = arrszref(a)
+//
+impltmp
+glseq_print$beg<
+glseq><xs,a>() = array_print$beg<>()
+impltmp
+glseq_print$end<
+glseq><xs,a>() = array_print$end<>()
+impltmp
+glseq_print$sep<
+glseq><xs,a>() = array_print$sep<>()
+} (* end of [arrszref_print] *)
+//
+impltmp
+{}(*tmp*)
+array_print$beg() = print_string("(")
+impltmp
+{}(*tmp*)
+array_print$end() = print_string(")")
+impltmp
+{}(*tmp*)
+array_print$sep() = print_string(",")
+//
+impltmp
+(a:tflt)
+print$val<arrszref(a)>(AZ) = arrszref_print<a>(AZ)
+//
+(* ****** ****** *)
+//
 // Note that (n < 0) means to print all the values
 // n is set by template: stream_vt_print$n
 //
@@ -515,12 +552,6 @@ stream_vt_print$end() = print_string(")")
 impltmp
 {}(*tmp*)
 stream_vt_print$sep() = print_string(",")
-//
-(*
-impltmp
-(a:vtflt)
-print$val<stream_vt(a)>(x) = stream_vt_print<a>(x, ~1)
-*)
 //
 (* ****** ****** *)
 
