@@ -126,6 +126,27 @@ memcpy {a:vtflt;l1,l2:addr;n:nat} (
 
 (* ****** ****** *)
 
+impltmp
+{a} (*tmp*)
+dynarray$frealloc {l,m,n,m1} (
+  pf0_arr, pf1_arr, pf_gc
+| p, m, n, m1
+) = let
+  val (pfz_arr, pfz_gc | pz) = array_ptr_alloc<a>(m1)
+
+  prval (pfz1_arr, pfz2_arr) = array_v_split_at (pfz_arr | n)
+
+  val nb = n*sizeof<a>
+  val (pf0_arr1, pfz1_arr | _) = memcpy (pf0_arr, pfz1_arr | pz, p, nb)
+
+  prval pf_arr = array_v_unsplit {a?} (pf0_arr1, pf1_arr)
+  val () = $effmask_all (array_ptr_mfree<> (pf_arr, pf_gc | p))
+in
+  (pfz1_arr, pfz2_arr, pfz_gc | pz)
+end
+
+(* ****** ****** *)
+
 local
 
 datavtype
@@ -291,6 +312,12 @@ val res = array_getref_at_size<a> (!ap, i)
 
 // insertions
 
+impltmp{}
+dynarray$fgrow {n,d} (cap, delta) = res where {
+  // TODO: use a factor of 1.5 or 1.45
+  val res = cap + cap
+}
+
 extern
 fun{a:vtflt}
 recapacitize {n,m,m1:uint} (
@@ -306,18 +333,11 @@ val @DYNARRAY {_,m,l} (pf0_arr, pf1_arr, pf_gc | p, m, n) = DA
 //
 in
 //
-if m1 < m then let prval () = fold@ (DA) in
+if m1 <= m then let prval () = fold@ (DA) in
 end else let
-  val (pfz_arr, pfz_gc | pz) = array_ptr_alloc<a>(m1)
-
-  prval (pfz1_arr, pfz2_arr) = array_v_split_at (pfz_arr | n)
-
-  val nb = n*sizeof<a>
-  val (pf0_arr1, pfz1_arr | _) = memcpy (pf0_arr, pfz1_arr | pz, p, nb)
-
-  prval pf_arr = array_v_unsplit {a?} (pf0_arr1, pf1_arr)
-  val () = $effmask_all (array_ptr_mfree<> (pf_arr, pf_gc | p))
-    
+  val (
+    pfz1_arr, pfz2_arr, pfz_gc | pz
+  ) = dynarray$frealloc<a>(pf0_arr, pf1_arr, pf_gc | p, m, n, m1)
   prval () = pf0_arr := pfz1_arr
   prval () = pf1_arr := pfz2_arr
   prval () = pf_gc := pfz_gc
@@ -335,7 +355,7 @@ dynarray_insert_at{n}{i}
   (DA, i, x) = let
 //
 val @DYNARRAY (pf0_arr, pf1_arr, pf_gc | p, m, n) = DA
-val m1 = succ(m)
+val m1 = dynarray$fgrow<> (m, i2sz 1)
 prval () = fold@(DA)
 //
 val () = recapacitize<a> (DA, m1)
@@ -346,7 +366,19 @@ prval (pf_kat, pf10_arr) = array_v_uncons {a?} (pf1_arr)
 prval pf_karr = array_v_cons {a?} (pf_kat, array_v_nil{a?} ())
 val src = ptr1_add<a> (p, i)
 val dst = ptr1_add<a> (p, succ(i))
-val nb = (n-i)*sizeof<a>
+val nb = (g1sub_usize1_usize1(n, i))*sizeof<a> where {
+//
+extern
+fun
+g1sub_usize1_usize1
+{i,j:int
+|i >= j}
+( x
+: usize(i)
+, y
+: usize(j)):<> usize(i-j) = "mac#temptory_g1sub_usize1_usize1"
+//
+}
 val (pf_karr, pf02_arr | _) = memmove_right (pf02_arr, pf_karr | dst, src, nb)
 prval (pf_kat, pf_karr) = array_v_uncons{a?} (pf_karr)
 prval () = array_v_unnil {a?} (pf_karr)
@@ -369,7 +401,7 @@ dynarray_append{n}
   (DA, x) = let
 //
 val @DYNARRAY (pf0_arr, pf1_arr, pf_gc | p, m, n) = DA
-val m1 = succ(m)
+val m1 = dynarray$fgrow<> (m, i2sz 1)
 prval () = fold@(DA)
 //
 val () = recapacitize<a> (DA, m1)

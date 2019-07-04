@@ -65,10 +65,22 @@ dynarrayptrout
 
 (* ****** ****** *)
 //
-// HX: for recapacitizing policy
+fun{a:vtflt}
+dynarray$frealloc
+  {l:addr;m,n,m1:int | m > 0; n >= 0; n <= m; m < m1} (
+  array_v(a, l, n), array_v(a?, l+n*sizeof(a), m-n), mfree_gc_v(l)
+| ptr l, size m, size n, size m1
+): [l1:addr] (
+  array_v(a, l1, n), array_v(a?, l1+n*sizeof(a), m1-n), mfree_gc_v(l1)
+| ptr l1
+)
+//
+(* ****** ****** *)
 //
 fun{}
-dynarray$recapacitize ((*void*)): int
+dynarray$fgrow {n,d:pos | d <= n} (
+  cap: size(n), delta: size(d)
+): [m:int | n+d <= m] size(m)
 //
 (* ****** ****** *)
 
@@ -119,33 +131,33 @@ fun
 {a:tflt0}
 dynarray_get_at_sint
 {n:int}{i:nat | i < n}
-(A: !dynarray(a, n), i: sint(i)): (a)
+(A: !dynarray(INV(a), n), i: sint(i)): (a)
 fun
 {a:tflt0}
 dynarray_set_at_sint
 {n:int}{i:nat | i < n}
-(A: !dynarray(a, n), i: sint(i), x: a): void
+(A: !dynarray(INV(a), n), i: sint(i), x: a): void
 fun
 {a:tflt0}
 dynarray_get_at_size
 {n:int}{i:nat | i < n}
-(A: !dynarray(a, n), i: size(i)): (a)
+(A: !dynarray(INV(a), n), i: size(i)): (a)
 fun
 {a:tflt0}
 dynarray_set_at_size
 {n:int}{i:nat | i < n}
-(A: !dynarray(a, n), i: size(i), x: a): void
+(A: !dynarray(INV(a), n), i: size(i), x: a): void
 //
 fun
 {a:vtflt}
 dynarray_getref_at_sint
 {n:int}{i:nat | i < n}
-(A: !dynarray(a, n), i: sint(i)): cptr(a)
+(A: !dynarray(INV(a), n), i: sint(i)): cptr(a)
 fun
 {a:vtflt}
 dynarray_getref_at_size
 {n:int}{i:nat | i < n}
-(A: !dynarray(a, n), i: size(i)): cptr(a)
+(A: !dynarray(INV(a), n), i: size(i)): cptr(a)
 //
 #symload [] with dynarray_get_at_sint
 #symload [] with dynarray_set_at_sint
@@ -163,15 +175,15 @@ dynarray_getref_at_size
 
 // insert at index (aka before the index)
 fun{a:vtflt}
-dynarray_insert_at{n:int}{i:nat | i < n}
+dynarray_insert_at{n:int}{i:nat | i <= n}
 (
-  DA: !dynarray(a, n) >> dynarray(a, n+1), i: size(i), x: a
+  DA: !dynarray(INV(a), n) >> dynarray(a, n+1), i: size(i), x: a
 ): void
 // append (aka insert after the last)
 fun{a:vtflt}
 dynarray_append{n:int}
 (
-  DA: !dynarray(a, n) >> dynarray(a, n+1), x: a
+  DA: !dynarray(INV(a), n) >> dynarray(a, n+1), x: a
 ): void
 
 // removals/takeouts
@@ -180,14 +192,14 @@ dynarray_append{n:int}
 fun{a:vtflt}
 dynarray_takeout_at{n,i:int | n > 0; i>=0; i < n}
 (
-  DA: !dynarray(a, n) >> dynarray(a, n-1), i: size(i), res: &a? >> a
+  DA: !dynarray(a, n) >> dynarray(a, n-1), i: size(i), res: &INV(a)? >> a
 ): void
 
 // pop the last element
 fun{a:vtflt}
 dynarray_takeout_last{n:int | n > 0}
 (
-  DA: !dynarray(a, n) >> dynarray(a, n-1), res: &a? >> a
+  DA: !dynarray(INV(a), n) >> dynarray(a, n-1), res: &INV(a)? >> a
 ): void
 
 // FIXME: but need N-ary versions as well... e.g. insert two,three elems
