@@ -252,21 +252,22 @@ temptory_g0neq_ldouble_ldouble(x, y) ((x != y) ? 1 : 0)
 temptory_g0cmp_ldouble_ldouble(x, y) ((x < y) ? -1 : (x > y) ? 1 : 0)
 //
 /* ****** ****** */
-
-#define \
-temptory_g0min_float_float(x, y) (x <= y ? x : y)
-#define \
-temptory_g0min_double_double(x, y) (x <= y ? x : y)
-#define \
-temptory_g0min_ldouble_ldouble(x, y) (x <= y ? x : y)
-
+//
 #define \
 temptory_g0max_float_float(x, y) (x >= y ? x : y)
 #define \
+temptory_g0min_float_float(x, y) (x <= y ? x : y)
+//
+#define \
 temptory_g0max_double_double(x, y) (x >= y ? x : y)
 #define \
+temptory_g0min_double_double(x, y) (x <= y ? x : y)
+//
+#define \
 temptory_g0max_ldouble_ldouble(x, y) (x >= y ? x : y)
-
+#define \
+temptory_g0min_ldouble_ldouble(x, y) (x <= y ? x : y)
+//
 /* ****** ****** */
 //
 #define \

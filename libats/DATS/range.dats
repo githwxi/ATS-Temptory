@@ -41,7 +41,33 @@
 (* ****** ****** *)
 
 impltmp
-SINT2_forall<>
+{}(*tmp*)
+SINT2_streamize
+  ((*void*)) =
+  (auxmain(l0)) where
+{
+//
+val l0 = SINT2_range$beg<>()
+val u0 = SINT2_range$end<>()
+//
+fun
+auxmain
+(i0: sint): stream_vt(sint) =
+$ldelay
+(
+if
+i0 >= u0
+then stream_vt_nil()
+else stream_vt_cons(i0, auxmain(succ(i0)))
+) (* end of [auxmain] *)
+//
+} (* end of [SINT2_streamize] *)
+
+(* ****** ****** *)
+
+impltmp
+{}(*tmp*)
+SINT2_forall
   ((*void*)) =
 ( loop(l0, u0) ) where
 {
@@ -71,7 +97,8 @@ val u0 = SINT2_range$end<>()
 (* ****** ****** *)
 
 impltmp
-SINT2_foreach<>() =
+{}(*tmp*)
+SINT2_foreach() =
 (
 gseq_foreach<
 gseq><SINT2,sint>(SINT2)
@@ -85,7 +112,8 @@ gseq><SINT2,sint>(i0) = SINT2_foreach$work<>(i0)
 (* ****** ****** *)
 
 impltmp
-SINT2_rforall<>
+{}(*tmp*)
+SINT2_rforall
   ((*void*)) =
 ( loop(l0, u0) ) where
 {
@@ -114,7 +142,8 @@ val u0 = SINT2_range$end<>()
 (* ****** ****** *)
 
 impltmp
-SINT2_rforeach<>() =
+{}(*tmp*)
+SINT2_rforeach() =
 (
 gseq_rforeach<
 gseq><SINT2,sint>(SINT2)
@@ -128,8 +157,8 @@ gseq><SINT2,sint>(i0) = SINT2_rforeach$work<>(i0)
 (* ****** ****** *)
 
 impltmp
-{}(*tmp*)
-SINT2_streamize
+{y0}(*tmp*)
+SINT2_map_stream
   ((*void*)) =
   (auxmain(l0)) where
 {
@@ -139,7 +168,35 @@ val u0 = SINT2_range$end<>()
 //
 fun
 auxmain
-(i0: sint): stream_vt(sint) =
+(i0: sint): stream_vt(y0) =
+$ldelay
+(
+if
+i0 >= u0
+then
+stream_vt_nil()
+else
+stream_vt_cons
+(SINT2_map$fopr<y0>(i0), auxmain(succ(i0)))
+) (* end of [auxmain] *)
+//
+} (* end of [SINT2_map_stream] *)
+
+(* ****** ****** *)
+
+impltmp
+{x0}(*tmp*)
+CPTR2_streamize
+  ((*void*)) =
+  (auxmain(l0)) where
+{
+//
+val l0 = CPTR2_range$beg<x0>()
+val u0 = CPTR2_range$end<x0>()
+//
+fun
+auxmain
+(i0: cptr(x0)): stream_vt(cptr(x0)) =
 $ldelay
 (
 if
@@ -148,7 +205,7 @@ then stream_vt_nil()
 else stream_vt_cons(i0, auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 //
-} (* end of [SINT2_streamize] *)
+} (* end of [CPTR2_streamize] *)
 
 (* ****** ****** *)
 
@@ -205,27 +262,30 @@ gseq><CPTR2(x0),cptr(x0)>(cp) = CPTR2_foreach$work<x0>(cp)
 (* ****** ****** *)
 
 impltmp
-{a}(*tmp*)
-CPTR2_streamize
+{x0}{y0}(*tmp*)
+CPTR2_map_stream
   ((*void*)) =
   (auxmain(l0)) where
 {
 //
-val l0 = CPTR2_range$beg<a>()
-val u0 = CPTR2_range$end<a>()
+val l0 = CPTR2_range$beg<x0>()
+val u0 = CPTR2_range$end<x0>()
 //
 fun
 auxmain
-(i0: cptr(a)): stream_vt(cptr(a)) =
+(i0: cptr(x0)): stream_vt(y0) =
 $ldelay
 (
 if
 i0 >= u0
-then stream_vt_nil()
-else stream_vt_cons(i0, auxmain(succ(i0)))
+then
+stream_vt_nil()
+else
+stream_vt_cons
+(CPTR2_map$fopr<x0><y0>(i0), auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 //
-} (* end of [CPTR2_streamize] *)
+} (* end of [CPTR2_map_stream] *)
 
 (* ****** ****** *)
 

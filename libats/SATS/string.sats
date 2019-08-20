@@ -153,6 +153,11 @@ string0_indexof
 #symload indexof with string0_indexof
 //
 (* ****** ****** *)
+
+fun{}
+string0_sing(char): string
+
+(* ****** ****** *)
 //
 fun{}
 string0_alloc_size

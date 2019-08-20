@@ -50,6 +50,16 @@ ATS_EXTERN_PREFIX "temptory_libc_"
 (* ****** ****** *)
 //
 fun
+exp(f0: double): double = "mac#%"
+//
+(* ****** ****** *)
+//
+fun
+log(f0: double): double = "mac#%"
+//
+(* ****** ****** *)
+//
+fun
 sqrt(f0: double): double = "mac#%"
 //
 fun

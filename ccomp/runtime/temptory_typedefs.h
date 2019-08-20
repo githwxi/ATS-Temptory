@@ -192,6 +192,11 @@ typedef void* atstype_cloptr ;
 
 /* ****** ****** */
 
+#define atstyclo_top struct{ void *cfun; }
+#define atstyclo_type(flab) flab##__closure_t0ype
+
+/* ****** ****** */
+
 #define atstkind_type(tknd) tknd
 #define atstkind_t0ype(tknd) tknd
 

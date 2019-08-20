@@ -100,6 +100,23 @@ impltmp
 g0cmp_str_str(x1, x2) = strcmp(x1, x2)
 //
 (* ****** ****** *)
+
+impltmp
+{}(*tmp*)
+string0_sing
+  (c0) =
+(
+$UN.castvwtp0{string}(cp)
+) where
+{
+//
+val cp = string0_alloc_sint(1)
+//
+val () = $UN.cptr0_set(cp, c0)
+//
+} (* end of [string0_sing] *)
+
+(* ****** ****** *)
 //
 impltmp
 {}(*tmp*)

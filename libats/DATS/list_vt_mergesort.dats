@@ -51,27 +51,27 @@ list1_vt_mergesort<a>(g1ofg0(xs))
 ) where
 {
 impltmp
-list1_vt_mergesort$cmp<a>
+list1_vt_mergesort$fcmp<a>
 (x1, x2) =
-list0_vt_mergesort$cmp<a>(x1, x2)
+list0_vt_mergesort$fcmp<a>(x1, x2)
 }
 //
 (* ****** ****** *)
 
 impltmp
 {a}(*tmp*)
-list0_vt_mergesort$cmp
+list0_vt_mergesort$fcmp
   (x1, x2) =
 (
   gcompare$ref<a>(x1, x2)
-) // end of [list0_vt_mergesort$cmp]
+) // end of [list0_vt_mergesort$fcmp]
 impltmp
 {a}(*tmp*)
-list1_vt_mergesort$cmp
+list1_vt_mergesort$fcmp
   (x1, x2) =
 (
   gcompare$ref<a>(x1, x2)
-) // end of [list0_vt_mergesort$cmp]
+) // end of [list0_vt_mergesort$fcmp]
 
 (* ****** ****** *)
 //
@@ -111,7 +111,7 @@ case+ xs0 of
     (x0, xs1) => let
     val
     sgn =
-    list1_vt_mergesort$cmp<a> (x0, !p1)
+    list1_vt_mergesort$fcmp<a> (x0, !p1)
   in
     if
     (sgn <= 0)
@@ -225,7 +225,7 @@ case+ xs1 of
     | @list1_vt_cons
         (x2, xs21) => let
         val sgn =
-          list1_vt_mergesort$cmp<a> (x1, x2)
+          list1_vt_mergesort$fcmp<a> (x1, x2)
         // end of [val]
       in
         if sgn <= 0 then let

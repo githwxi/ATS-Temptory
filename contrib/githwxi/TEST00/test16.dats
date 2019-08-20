@@ -104,7 +104,7 @@ list0_vt_mergesort(nwordlst)
 ) where
 {
 impltmp
-list0_vt_mergesort$cmp<nword>
+list0_vt_mergesort$fcmp<nword>
   (nw1, nw2) =
 let
   val n1 = nw1.0

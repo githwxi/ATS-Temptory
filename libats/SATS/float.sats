@@ -477,7 +477,44 @@ g0cmp_ldouble_ldouble
 (*
 #symload <=> with g0cmp_ldouble_ldouble of 10
 *)
-
+(* ****** ****** *)
+//
+fun
+g0max_float_float
+( x: float
+, y: float):<> float = "mac#%"
+fun
+g0min_float_float
+( x: float
+, y: float):<> float = "mac#%"
+//
+#symload max with g0max_float_float of 10
+#symload min with g0min_float_float of 10
+//
+fun
+g0max_double_double
+( x: double
+, y: double):<> double = "mac#%"
+fun
+g0min_double_double
+( x: double
+, y: double):<> double = "mac#%"
+//
+#symload max with g0max_double_double of 10
+#symload min with g0min_double_double of 10
+//
+fun
+g0max_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> ldouble = "mac#%"
+fun
+g0min_ldouble_ldouble
+( x: ldouble
+, y: ldouble):<> ldouble = "mac#%"
+//
+#symload max with g0max_ldouble_ldouble of 10
+#symload min with g0min_ldouble_ldouble of 10
+//
 (* ****** ****** *)
 //
 fun{}

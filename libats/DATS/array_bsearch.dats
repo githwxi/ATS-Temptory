@@ -59,7 +59,7 @@ loop
 {l,r:nat|l <= r; r <= n} .<r-l>.
 (
 A0: &array(a, n), l: size(l), r: size(r)
-) :<> Sizelte(n) =
+) : Sizelte(n) =
 (
 if
 (l < r)
@@ -69,15 +69,20 @@ then let
   val (
     pf, fpf | pm
   ) = $UN.ptr0_vtake{a}(pm)
-  val sgn = array_bsearch$ford<a> (!pm)
-  prval () = fpf (pf)
+  val sgn =
+  array_bsearch$ford<a>(!pm)
+//
+  prval ((*returned*)) = fpf(pf)
+//
 in
-  if sgn <= 0 then loop(A0, l, m) else loop(A0, succ(m), r)
+  if sgn <= 0
+    then loop(A0, l, m) else loop(A0, succ(m), r)
+  // end of [if]
 end else l (* end of [if] *)
 )
 //
 in
-  loop (A, i2sz(0), asz)
+  let val index = loop(A, i2sz(0), asz) in index end
 end (* end of [array_bsearch] *)
 
 (* ****** ****** *)

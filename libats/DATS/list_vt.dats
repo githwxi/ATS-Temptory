@@ -162,6 +162,12 @@ case+ xs of
 (* ****** ****** *)
 //
 impltmp
+{x0}
+list1_vt_free(xs) = list0_vt_free(g0ofg1(xs))
+//
+(* ****** ****** *)
+//
+impltmp
 {x0}//tmp
 list0_vt_copy(xs) =
 (

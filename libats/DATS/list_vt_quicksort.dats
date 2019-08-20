@@ -46,11 +46,11 @@
 //
 impltmp
 {a}(*tmp*)
-list0_vt_quicksort$cmp
+list0_vt_quicksort$fcmp
   (x1, x2) =
 (
   gcompare$ref<a>(x1, x2)
-) (* list_vt_quicksort$cmp *)
+) (* list_vt_quicksort$fcmp *)
 //
 impltmp
 {a}(*tmp*)
@@ -62,11 +62,11 @@ g0ofg1
 
 impltmp
 {a}(*tmp*)
-list1_vt_quicksort$cmp
+list1_vt_quicksort$fcmp
   (x1, x2) =
 (
   gcompare$ref<a>(x1, x2)
-) // end of [list_vt_quicksort$cmp]
+) // end of [list_vt_quicksort$fcmp]
 
 (* ****** ****** *)
 (*
@@ -156,9 +156,9 @@ prval () = _outa_(pfat)
   ) where
   {
   impltmp
-  array_quicksort$cmp<a>
+  array_quicksort$fcmp<a>
     (x1, x2) =
-    list1_vt_quicksort$cmp<a>(x1, x2)
+    list1_vt_quicksort$fcmp<a>(x1, x2)
   } (* end of [val] *)
 prval () = _into_(pfat)
 //
