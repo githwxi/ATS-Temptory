@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -223,7 +223,7 @@ end // end-of-let
 //
 impltmp
 {x0}(*tmp*)
-stream_vt_take$when(x0) = 
+stream_vt_take$when(x0) =
 not
 (stream_vt_take$until<x0>(x0))
 //
@@ -283,7 +283,7 @@ end
 //
 impltmp
 {x0}(*tmp*)
-stream_vt_drop$when(x0) = 
+stream_vt_drop$when(x0) =
 not
 (stream_vt_drop$until<x0>(x0))
 //
@@ -417,7 +417,7 @@ stream_vt_group_line
 fun
 auxmain
 ( xs
-: stream_vt(x0)) 
+: stream_vt(x0))
 : stream_vt(list0_vt(x0)) =
 $ldelay
 (
@@ -465,7 +465,7 @@ stream_vt_group_word
 fun
 auxmain
 ( xs
-: stream_vt(x0)) 
+: stream_vt(x0))
 : stream_vt(list0_vt(x0)) =
 $ldelay
 (
@@ -707,7 +707,7 @@ xs: stream_vt(x0)
 ) : stream_vt(y0) =
 $ldelay
 (auxmain2(xs), ~xs)
-//  
+//
 and
 auxmain2
 (
@@ -772,7 +772,7 @@ xs: stream_vt(x0)
 ) : stream_vt(x0) =
 $ldelay
 (auxmain2(xs), ~xs)
-//  
+//
 and
 auxmain2
 (
@@ -804,7 +804,7 @@ case+ (nx) of
    else let
      val xs = xs
    in
-     gfree$val<x0>(x0); free@{x0}(nx); auxmain2(xs) 
+     gfree$val<x0>(x0); free@{x0}(nx); auxmain2(xs)
    end (* end of [else] *)
  end // end of [stream_vt_cons]
 //
@@ -881,7 +881,7 @@ xs: stream_vt(x0)
 ) : stream_vt(y0) =
 $ldelay
 (auxmain2(0, xs), ~xs)
-//  
+//
 and
 auxmain2
 (

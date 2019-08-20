@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -302,7 +302,7 @@ gseq_forall<pf><xs,x0>(xs) then ff else tt
 {
 //
 impltmp
-gseq_forall$test<pf><xs,x0>(x0) = 
+gseq_forall$test<pf><xs,x0>(x0) =
 (
 if
 gseq_exists$test<pf><xs,x0>(x0) then ff else tt
@@ -405,7 +405,7 @@ gseq_rforall<pf><xs,x0>(xs) then ff else tt
 {
 //
 impltmp
-gseq_rforall$test<pf><xs,x0>(x0) = 
+gseq_rforall$test<pf><xs,x0>(x0) =
 (
 if
 gseq_rexists$test<pf><xs,x0>(x0) then ff else tt
@@ -528,7 +528,7 @@ gseq_iforall<pf><xs,x0>(xs) then ff else tt
 {
 //
 impltmp
-gseq_iforall$test<pf><xs,x0>(i0, x0) = 
+gseq_iforall$test<pf><xs,x0>(i0, x0) =
 (
 if
 gseq_iexists$test<pf><xs,x0>(i0, x0) then ff else tt
@@ -867,7 +867,7 @@ gseq_mapopt$test<pf><xs,x0>(x0)
 in
 if
 test
-then 
+then
 (
   list0_vt_cons(y0, r0)
 ) where
@@ -1001,7 +1001,7 @@ gseq_imapopt$test<pf><xs,x0>(i0, x0)
 in(* in-of-let *)
 if
 test
-then 
+then
 (
   list0_vt_cons(y0, r0)
 ) where
