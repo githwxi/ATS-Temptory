@@ -43,6 +43,17 @@
 #staload "./../SATS/list.sats"
 
 (* ****** ****** *)
+
+impltmp
+(x0:tflt)
+gseq_nil<gseq><list0(x0),x0>
+  () = list0_nil()
+impltmp
+(x0:tflt)
+gseq_cons<gseq><list0(x0),x0>
+  (x0, xs) = list0_cons(x0, xs)
+
+(* ****** ****** *)
 //
 (*
 impltmp

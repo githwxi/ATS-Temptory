@@ -49,6 +49,44 @@ fun
 gseq_isneqz(xs): bool
 //
 (* ****** ****** *)
+
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_nil(): xs
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_cons(x0, xs): xs
+
+(* ****** ****** *)
+
+(*
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_head_exn(xs): x0
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_head_opt(xs): optn0_vt(x0)
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_tail_exn(xs): xs
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_tail_opt(xs): optn0_vt(xs)
+*)
+
+(* ****** ****** *)
 //
 fun
 {pf:prop}

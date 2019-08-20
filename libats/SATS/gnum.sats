@@ -59,12 +59,12 @@ g_todbl: (a) -> double
 (* ****** ****** *)
 
 fun
-{k0:prop}
+{pf:prop}
 {xs:tflt
 ;x0:tflt}
 gseq_add(xs: xs): x0
 fun
-{k0:prop}
+{pf:prop}
 {xs:tflt
 ;x0:tflt}
 gseq_mul(xs: xs): x0
