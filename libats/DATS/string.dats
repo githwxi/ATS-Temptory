@@ -383,7 +383,7 @@ not(string0_forall<>(cs))
 ) where
 {
 impltmp
-string0_forall$test<>(c0) = 
+string0_forall$test<>(c0) =
 not(string0_exists$test<>(c0))
 } (* end of [string0_exists] *)
 //
@@ -405,6 +405,27 @@ in
 if
 isneqz(c0) then
 (string0_foreach$work<>(c0); loop(succ(p0)))
+end // end of [loop]
+//
+} (* end of [string0_foreach] *)
+(* ****** ****** *)
+//
+impltmp
+{}(*tmp*)
+string0_iforeach(cs) =
+(
+loop(string0_cptrof(cs), 0)
+) where
+{
+//
+fun
+loop(p0: cptr(char), i: int): void =
+let
+  val c0 = $UN.cptr0_get(p0)
+in
+if
+isneqz(c0) then
+(string0_iforeach$work<>(i, c0); loop(succ(p0), i+1))
 end // end of [loop]
 //
 } (* end of [string0_foreach] *)

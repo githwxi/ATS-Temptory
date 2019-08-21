@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -737,7 +737,7 @@ not(list0_forall<x0>(xs))
 ) where
 {
 impltmp
-list0_forall$test<x0>(x0) = 
+list0_forall$test<x0>(x0) =
 not(list0_exists$test<x0>(x0))
 } (* end of [list0_exists] *)
 //
@@ -898,7 +898,7 @@ case+ xs of
 |
 ~list0_vt_cons(x0, xs) =>
  loop(xs, list0_foldright$fopr<x0><r0>(x0, r0))
-//  
+//
 } (* end of [list0_foldright] *)
 //
 (*
@@ -1178,7 +1178,7 @@ ignoret
 {
 //
 impltmp
-list0_z2forall$test<x0,y0>(x0, y0) = 
+list0_z2forall$test<x0,y0>(x0, y0) =
 let
 val () =
 list0_z2foreach$work<x0,y0>(x0, y0) in true

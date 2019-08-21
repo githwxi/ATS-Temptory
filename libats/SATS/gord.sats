@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -33,70 +33,71 @@
 //
 (* ****** ****** *)
 
-#define
-ATS_PACKNAME "temptory."
-#define
-ATS_EXTERN_PREFIX "temptory_"
-
 (* ****** ****** *)
 //
-absvtbox // co-variant
-refcnt_vtflt_vtbox(a:vtflt) = ptr
-//
-vtypedef
-refcnt(a:vtflt) = refcnt_vtflt_vtbox(a)
-//
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-refcnt_make_elt(x0: a): refcnt(a)
-//
-#symload refcnt with refcnt_make_elt
-//
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-refcnt_print(!refcnt(a)): void
+// For ordering
 //
 (* ****** ****** *)
 
 fun
-{a:vtflt}
-refcnt_get0_elt(refcnt(a)): (a)
+{a:tflt}
+g_eq(a, a): bool
 fun
-{a:vtflt}
-refcnt_get1_elt(!refcnt(a)): (a)
+{a:tflt}
+g_neq(a, a): bool
+
+(* ****** ****** *)
+
 fun
-{a:vtflt}
-refcnt_get1_cnt(!refcnt(a)): Intgte(1)
+{a:tflt}
+g_lt(a, a): bool
+fun
+{a:tflt}
+g_gt(a, a): bool
+fun
+{a:tflt}
+g_lte(a, a): bool
+fun
+{a:tflt}
+g_gte(a, a): bool
+
+(* ****** ****** *)
+
+fun
+{a:tflt}
+g_cmp(a, a): sint
 
 (* ****** ****** *)
 //
 fun
-{a:vtflt}
-refcnt_decref(refcnt(a)): void
+{a:tflt}
+g_eqz(x: a): bool
 fun
-{a:vtflt}
-refcnt_incref(!refcnt(a)): refcnt(a)
-//
-#symload decref with refcnt_decref
-#symload incref with refcnt_incref
-//
-(* ****** ****** *)
+{a:tflt}
+g_ltz(x: a): bool
+fun
+{a:tflt}
+g_gtz(x: a): bool
 //
 fun
-{a:vtflt}
-refcnt_vtakeout
-(rfc: !refcnt(a))
-:
-[l:addr]
-( a @ l
-, a @ l -<lin,prf> void | ptr(l))
-//
-#symload vtakeout with refcnt_vtakeout
+{a:tflt}
+g_ltez(x: a): bool
+fun
+{a:tflt}
+g_gtez(x: a): bool
+fun
+{a:tflt}
+g_neqz(x: a): bool
 //
 (* ****** ****** *)
 
-(* end of [refcnt.sats] *)
+fun
+{a:tflt}
+g_max(x: a, y: a): a
+fun
+{a:tflt}
+g_min(x: a, y: a): a
+
+(* ****** ****** *)
+
+(* end of [gord.sats] *)

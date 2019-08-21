@@ -190,7 +190,7 @@ fun
 {a:vtflt}
 array_ptr_alloc
   {n:int}
-( asz: size(n) ) 
+( asz: size(n) )
 : [l:agz] (array_v(a?,l,n), mfree_gc_v(l) | ptr(l))
 //
 (* ****** ****** *)

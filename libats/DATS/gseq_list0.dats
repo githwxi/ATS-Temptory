@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -41,6 +41,17 @@
 #staload "./../SATS/gint.sats"
 #staload "./../SATS/gseq.sats"
 #staload "./../SATS/list.sats"
+
+(* ****** ****** *)
+
+impltmp
+(x0:tflt)
+gseq_nil<gseq><list0(x0),x0>
+  () = list0_nil()
+impltmp
+(x0:tflt)
+gseq_cons<gseq><list0(x0),x0>
+  (x0, xs) = list0_cons(x0, xs)
 
 (* ****** ****** *)
 //

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -33,102 +33,136 @@
 //
 (* ****** ****** *)
 
-#define tt true
-#define ff false
+(* ****** ****** *)
+//
+// For numbers
+//
+(* ****** ****** *)
+
+#staload
+"libats/SATS/gint.sats"
+#staload
+"libats/SATS/float.sats"
 
 (* ****** ****** *)
 
-#staload "./../SATS/gint.sats"
+#staload UN =
+"libats/SATS/unsafe.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/gnum.sats"
 #staload "./../SATS/gseq.sats"
-#staload "./../SATS/optn.sats"
-#staload "./../SATS/list_vt.sats"
-#staload "./../SATS/stream_vt.sats"
-
-(* ****** ****** *)
-//
-impltmp
-{}//tmp
-optn0_iseqz
-  (opt) =
-(
-case+ opt of
-| optn0_none _ => tt
-| optn0_some _ => ff
-)
-//
-impltmp
-{}//tmp
-optn0_isneqz
-  (opt) =
-(
-case+ opt of
-| optn0_none _ => ff
-| optn0_some _ => tt
-)
-//
-(* ****** ****** *)
-//
-impltmp
-{x0}//tmp
-optn0_size
-  (opt) =
-(
-i2sz(optn0_length<x0>(opt))
-)
-impltmp
-{x0}//tmp
-optn0_length
-  (opt) =
-(
-case+ opt of
-| optn0_none _ => 0 | optn0_some _ => 1
-)
-//
-(* ****** ****** *)
-
-impltmp
-{x0}//tmp
-optn0_forall
-  (opt) =
-(
-case+ opt of
-| optn0_none() => true
-| optn0_some(x0) => optn0_forall$test<x0>(x0)
-) (* end of [optn0_forall] *)
 
 (* ****** ****** *)
 
 impltmp
-{x0}//tmp
-optn0_foreach
-  (opt) =
-(
-case+ opt of
-| optn0_none() => ()
-| optn0_some(x0) => optn0_foreach$work<x0>(x0)
-) (* end of [optn0_foreach] *)
+{a}
+g_0() = g_ofint<a>(0)
+impltmp
+{a}
+g_1() = g_ofint<a>(1)
+impltmp
+{a}
+g_2() = g_ofint<a>(2)
 
 (* ****** ****** *)
 
 impltmp
-{x0}//tmp
-optn0_listize
-  (opt) =
-(
-case+ opt of
-| optn0_none() => list0_vt_nil()
-| optn0_some(x0) => list0_vt_sing(x0)
-)
+{a}
+g_ofint(i0) = $UN.cast{a}(i0)
 impltmp
-{x0}//tmp
-optn0_streamize
-  (opt) = $ldelay
-(
-case+ opt of
-| optn0_none() => stream_vt_nil()
-| optn0_some(x0) => stream_vt_sing(x0)
-)
+{a}
+g_toint(x0) = $UN.cast{int}(x0)
 
 (* ****** ****** *)
 
-(* end of [optn.dats] *)
+impltmp
+{a}
+g_ofdbl(i0) = $UN.cast{a}(i0)
+impltmp
+{a}
+g_todbl(x0) = $UN.cast{double}(x0)
+
+(* ****** ****** *)
+
+impltmp
+{a}
+g_succ(x) = g_add<a>(x, g_1<a>())
+impltmp
+{a}
+g_pred(x) = g_sub<a>(x, g_1<a>())
+
+(* ****** ****** *)
+
+impltmp
+{a}
+g_add(x, y) = g_ofdbl<a>(x+y) where
+{
+val x = g_todbl<a>(x)
+val y = g_todbl<a>(y)
+}
+
+impltmp
+{a}
+g_sub(x, y) = g_ofdbl<a>(x-y) where
+{
+val x = g_todbl<a>(x)
+val y = g_todbl<a>(y)
+}
+
+impltmp
+{a}
+g_mul(x, y) = g_ofdbl<a>(x*y) where
+{
+val x = g_todbl<a>(x)
+val y = g_todbl<a>(y)
+}
+
+impltmp
+{a}
+g_div(x, y) = g_ofdbl<a>(x/y) where
+{
+val x = g_todbl<a>(x)
+val y = g_todbl<a>(y)
+}
+
+impltmp
+{a}
+g_mod(x, y) = g_ofdbl<a>(x%y) where
+{
+val x = g_todbl<a>(x)
+val y = g_todbl<a>(y)
+}
+
+(* ****** ****** *)
+
+impltmp
+{k0}
+{xs,x0}
+gseq_add(xs) =
+(
+gseq_foldleft<k0><xs,x0><r0>(xs, g_0<x0>())
+) where
+{
+typedef r0 = x0
+impltmp
+gseq_foldleft$fopr<k0><xs,x0><r0>(r0, x0) = g_add<x0>(r0, x0)
+}
+
+impltmp
+{k0}
+{xs,x0}
+gseq_mul(xs) =
+(
+gseq_foldleft<k0><xs,x0><r0>(xs, g_1<x0>())
+) where
+{
+typedef r0 = x0
+impltmp
+gseq_foldleft$fopr<k0><xs,x0><r0>(r0, x0) = g_mul<x0>(r0, x0)
+}
+
+(* ****** ****** *)
+
+(* end of [gnum.sats] *)

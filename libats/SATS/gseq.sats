@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -48,6 +48,44 @@ fun
 ;x0:tflt}
 gseq_isneqz(xs): bool
 //
+(* ****** ****** *)
+
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_nil(): xs
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_cons(x0, xs): xs
+
+(* ****** ****** *)
+
+(*
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_head_exn(xs): x0
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_head_opt(xs): optn0_vt(x0)
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_tail_exn(xs): xs
+fun
+{pf:prop}
+{xs:tflt
+;x0:tflt}
+gseq_tail_opt(xs): optn0_vt(xs)
+*)
+
 (* ****** ****** *)
 //
 fun

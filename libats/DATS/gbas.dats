@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -33,70 +33,20 @@
 //
 (* ****** ****** *)
 
-#define
-ATS_PACKNAME "temptory."
-#define
-ATS_EXTERN_PREFIX "temptory_"
-
 (* ****** ****** *)
-//
-absvtbox // co-variant
-refcnt_vtflt_vtbox(a:vtflt) = ptr
-//
-vtypedef
-refcnt(a:vtflt) = refcnt_vtflt_vtbox(a)
-//
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-refcnt_make_elt(x0: a): refcnt(a)
-//
-#symload refcnt with refcnt_make_elt
-//
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-refcnt_print(!refcnt(a)): void
-//
+(*
+** For generic sequences
+*)
 (* ****** ****** *)
 
-fun
-{a:vtflt}
-refcnt_get0_elt(refcnt(a)): (a)
-fun
-{a:vtflt}
-refcnt_get1_elt(!refcnt(a)): (a)
-fun
-{a:vtflt}
-refcnt_get1_cnt(!refcnt(a)): Intgte(1)
+#staload "./../SATS/gbas.sats"
 
 (* ****** ****** *)
-//
-fun
-{a:vtflt}
-refcnt_decref(refcnt(a)): void
-fun
-{a:vtflt}
-refcnt_incref(!refcnt(a)): refcnt(a)
-//
-#symload decref with refcnt_decref
-#symload incref with refcnt_incref
-//
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-refcnt_vtakeout
-(rfc: !refcnt(a))
-:
-[l:addr]
-( a @ l
-, a @ l -<lin,prf> void | ptr(l))
-//
-#symload vtakeout with refcnt_vtakeout
-//
+
+impltmp
+{a}
+g_self(x) = let val x = x in x end
+
 (* ****** ****** *)
 
-(* end of [refcnt.sats] *)
+(* end of [gbas.dats] *)

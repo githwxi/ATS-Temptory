@@ -54,6 +54,20 @@ print_newline((*void*)): void
 //
 (* ****** ****** *)
 
+#staload
+"libats/SATS/stdio.sats"
+
+(* ****** ****** *)
+//
+fun
+{x0:tflt}
+g_print(x0: x0): void
+fun
+{x0:tflt}
+g_fprint(FILEref, x0: x0): void
+//
+(* ****** ****** *)
+
 fun{}
 print_int(int): void
 fun{}

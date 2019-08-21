@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2011-2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -33,70 +33,73 @@
 //
 (* ****** ****** *)
 
-#define
-ATS_PACKNAME "temptory."
-#define
-ATS_EXTERN_PREFIX "temptory_"
-
 (* ****** ****** *)
 //
-absvtbox // co-variant
-refcnt_vtflt_vtbox(a:vtflt) = ptr
-//
-vtypedef
-refcnt(a:vtflt) = refcnt_vtflt_vtbox(a)
-//
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-refcnt_make_elt(x0: a): refcnt(a)
-//
-#symload refcnt with refcnt_make_elt
-//
-(* ****** ****** *)
-//
-fun
-{a:vtflt}
-refcnt_print(!refcnt(a)): void
+// For ordering
 //
 (* ****** ****** *)
 
-fun
-{a:vtflt}
-refcnt_get0_elt(refcnt(a)): (a)
-fun
-{a:vtflt}
-refcnt_get1_elt(!refcnt(a)): (a)
-fun
-{a:vtflt}
-refcnt_get1_cnt(!refcnt(a)): Intgte(1)
+#staload
+"libats/SATS/gint.sats"
+#staload
+"libats/SATS/float.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/gnum.sats"
+#staload "./../SATS/gord.sats"
 
 (* ****** ****** *)
 //
-fun
-{a:vtflt}
-refcnt_decref(refcnt(a)): void
-fun
-{a:vtflt}
-refcnt_incref(!refcnt(a)): refcnt(a)
+impltmp
+{a}
+g_eq(x, y) = (g_cmp<a>(x, y) = 0)
+impltmp
+{a}
+g_lt(x, y) = (g_cmp<a>(x, y) < 0)
+impltmp
+{a}
+g_gt(x, y) = (g_cmp<a>(x, y) > 0)
 //
-#symload decref with refcnt_decref
-#symload incref with refcnt_incref
+impltmp
+{a}
+g_lte(x, y) = (g_cmp<a>(x, y) <= 0)
+impltmp
+{a}
+g_gte(x, y) = (g_cmp<a>(x, y) >= 0)
+impltmp
+{a}
+g_neq(x, y) = (g_cmp<a>(x, y) != 0)
 //
 (* ****** ****** *)
 //
-fun
-{a:vtflt}
-refcnt_vtakeout
-(rfc: !refcnt(a))
-:
-[l:addr]
-( a @ l
-, a @ l -<lin,prf> void | ptr(l))
+impltmp
+{a}
+g_eqz(x) = g_eq<a>(x, g_0<a>())
+impltmp
+{a}
+g_ltz(x) = g_lt<a>(x, g_0<a>())
+impltmp
+{a}
+g_gtz(x) = g_gt<a>(x, g_0<a>())
 //
-#symload vtakeout with refcnt_vtakeout
+impltmp
+{a}
+g_ltez(x) = g_lte<a>(x, g_0<a>())
+impltmp
+{a}
+g_gtez(x) = g_gte<a>(x, g_0<a>())
+impltmp
+{a}
+g_neqz(x) = g_neq<a>(x, g_0<a>())
 //
 (* ****** ****** *)
 
-(* end of [refcnt.sats] *)
+impltmp
+{a}
+g_cmp(x, y) =
+g0cmp_double_double(g_todbl<a>(x), g_todbl<a>(y))
+
+(* ****** ****** *)
+
+(* end of [gord.dats] *)

@@ -574,7 +574,7 @@ val+
 ARRSZREF(A0, n0) = AZ
 in
 (
-arrayref_forall<a>(A0, n0)  
+arrayref_forall<a>(A0, n0)
 ) where
 {
 impltmp
@@ -592,7 +592,7 @@ val+
 ARRSZREF(A0, n0) = AZ
 in
 (
-arrayref_foreach<a>(A0, n0)  
+arrayref_foreach<a>(A0, n0)
 ) where
 {
 impltmp
@@ -613,7 +613,7 @@ val+
 ARRSZREF(A0, n0) = AZ
 in
 (
-arrayref_rforall<a>(A0, n0)  
+arrayref_rforall<a>(A0, n0)
 ) where
 {
 impltmp
@@ -631,7 +631,7 @@ val+
 ARRSZREF(A0, n0) = AZ
 in
 (
-arrayref_rforeach<a>(A0, n0)  
+arrayref_rforeach<a>(A0, n0)
 ) where
 {
 impltmp
@@ -652,7 +652,7 @@ val+
 ARRSZREF(A0, n0) = AZ
 in
 (
-arrayref_iforall<a>(A0, n0)  
+arrayref_iforall<a>(A0, n0)
 ) where
 {
 impltmp
@@ -670,7 +670,7 @@ val+
 ARRSZREF(A0, n0) = AZ
 in
 (
-arrayref_iforeach<a>(A0, n0)  
+arrayref_iforeach<a>(A0, n0)
 ) where
 {
 impltmp
