@@ -105,6 +105,8 @@ void
 atspre_exit
 (atstype_int ecd){ exit(ecd); return; }
 
+#define atspre_exit_void atspre_exit
+
 /* ****** ****** */
 
 ATSinline()

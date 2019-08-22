@@ -135,12 +135,10 @@ stropt1_vt2t
 (* ****** ****** *)
 
 castfn
-{a:tflt}
-list0_vt2t
+list0_vt2t{a:tflt}
 (xs: !list0_vt(a)):<> list0(a)
 castfn
-{a:tflt}
-list1_vt2t
+list1_vt2t{a:tflt}
 {n:int}(xs: !list1_vt(a, n)):<> list1(a, n)
 
 (* ****** ****** *)
