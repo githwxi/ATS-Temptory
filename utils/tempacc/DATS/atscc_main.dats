@@ -78,13 +78,18 @@ issome(opt) = stropt0_isneqz(,(opt))
 //
 (* ****** ****** *)
 
+(*
 #include "./util.dats"
+*)
+#staload UTIL = "./../SATS/util.sats"
+#staload _ = "./util.dats"
+(* #staload _ = "./util.dats" *)
 
 (* ****** ****** *)
 //
 extern fun filename_test_ext(xs: string, ys: string): bool
 
-implfun filename_test_ext(xs, ys) = to_booln(ext_cmp(xs, ys))
+implfun filename_test_ext(xs, ys) = $UTIL.to_booln($UTIL.ext_cmp(xs, ys))
 
 #macdef
 isfilsats(name) = filename_test_ext(,(name), "sats")//".sats")
@@ -115,7 +120,7 @@ local
 fun
 auxmain(path: string, sfx: string) : string = res where
 {
-  val-(base2, ext) = base_ext(path)
+  val-(base2, ext) = $UTIL.base_ext(path)
   val res = string0_append($UN.castvwtp1{string0}base2, sfx)
   val () = string0_vt_free(base2)
   val () = string0_vt_free(ext)
