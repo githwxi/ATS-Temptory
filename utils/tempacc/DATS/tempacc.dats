@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -33,13 +33,18 @@
 
 (* ****** ****** *)
 //
+#include "share/HATS/temptory_staload_bucs320.hats"
+(*
 #include
 "share/atspre_staload.hats"
+*)
 //
 (* ****** ****** *)
 //
+(*
 #staload
 "libats/libc/DATS/stdlib.dats"
+*)
 //
 (* ****** ****** *)
 
@@ -64,6 +69,9 @@ var status: int = 0
 //
 val cas =
 atsccproc_commline(argc, argv)
+(*
+val _ = $showtype(cas)
+*)
 //
 // HX-2015-03-22:
 // [tempacc] for [tempacc -vats]
@@ -71,7 +79,7 @@ atsccproc_commline(argc, argv)
 val cas =
 (
 if argc >= 2
-  then cas else cas+'[CAvats]
+  then cas else list0_append<commarg>(cas, g0ofg1('[CAvats]))
 // end of [i]
 ) : commarglst
 //

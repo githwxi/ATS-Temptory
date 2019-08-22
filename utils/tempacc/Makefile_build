@@ -9,15 +9,15 @@ CFLAGS=-std=c99 -D_XOPEN_SOURCE
 #
 ######
 
-PATSHOMEQ="$(PATSHOME)"
+TEMPTORYQ=$(TEMPTORY)
 
 ######
 
-PATSOPT=$(PATSHOMEQ)/bin/patsopt
+TEMPOPT=$(TEMPTORYQ)/bin/tempopt
 
 ######
 
-INCLUDE=-I$(PATSHOMEQ) -I$(PATSHOMEQ)/ccomp/runtime
+INCLUDE=-I$(TEMPTORYQ) -I$(TEMPTORYQ)/ccomp/runtime
 
 ######
 
@@ -34,7 +34,7 @@ tempacc: \
 #
 ######
 
-%_dats.c: %.dats; $(PATSOPT) --output $@ --dynamic $<
+%_dats.c: %.dats; $(TEMPOPT) --output $@ --dynamic $<
 
 ######
 

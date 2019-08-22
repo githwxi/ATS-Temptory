@@ -186,4 +186,18 @@ gseq_foldright$fopr<gseq><cs,c0><r0>(c0, r0) = string0_foldright$fopr<r0>(c0, r0
 
 (* ****** ****** *)
 
+impltmp
+{r0}(*tmp*)
+string0_ifoldleft
+  (cs, r0) =
+(
+gseq_ifoldleft<gseq><cs,c0>(cs, r0)
+) where
+{
+impltmp
+gseq_ifoldleft$fopr<gseq><cs,c0><r0>(r0, i0, c0) =
+  string0_ifoldleft$fopr<r0>(r0, i0, c0)
+} (* end of [string0_ifoldleft] *)
+
+
 (* end of [gseq_string.dats] *)

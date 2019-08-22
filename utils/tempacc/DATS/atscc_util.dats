@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -33,35 +33,44 @@
 
 (* ****** ****** *)
 //
+#include "share/HATS/temptory_staload_bucs320.hats"
+
+
 #define
 ATSOPT_DEFAULT "tempopt"
 //
 (* ****** ****** *)
 //
 #staload
-STDLIB =
-"libats/libc/SATS/stdlib.sats"
+STDLIB = "libats/libc/SATS/stdlib.sats"
 //
 (* ****** ****** *)
 //
 #staload "./../SATS/atscc.sats"
 //
-macdef
-unsome(opt) = stropt_unsome(,(opt))
-macdef
-issome(opt) = stropt_is_some(,(opt))
+#macdef
+unsome(opt) = stropt0_iseqz<>(,(opt))
+#macdef
+issome(opt) = stropt0_isneqz<>(,(opt))
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 atsopt_get() = let
 //
-val def =
-  $STDLIB.getenv_gc ("TEMPOPT")
+(* val def = $STDLIB.getenv_gc<>("TEMPOPT") *)
+val def = $extfcall(cptr(char), "getenv", "TEMPOPT")
 //
 in
 //
+if
+def > $UN.cast{cptr(char)}(0)
+then $UN.castvwtp1{string}(def)
+else (* let prval() = strptr_free_null(def) in *)
+ATSOPT_DEFAULT
+//
+(*
 if
 strptr2ptr(def) > 0
 then strptr2string(def)
@@ -70,10 +79,11 @@ else let
 prval() =
  strptr_free_null(def) in ATSOPT_DEFAULT
 //
+*)
 end (* end of [if] *)
 // end of [if]
 //
-end // end of [atsopt_get]
+(* end // end of [atsopt_get] *)
 
 (* ****** ****** *)
 
@@ -174,10 +184,9 @@ performed externally)
 //
 " (* end of [ATSOPT_USAGE] *)
 //
-implement
+impltmp
 {}(*tmp*)
-atsopt_print_usage() =
-fprint_string (stdout_ref, ATSOPT_USAGE)
+atsopt_print_usage() = print_string(ATSOPT_USAGE)
 //
 (* ****** ****** *)
 //
@@ -213,10 +222,22 @@ gcc -std=c99 \
 
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 atsccomp_get() = let
 //
+val def = $extfcall(cptr(char), "getenv", "TEMPACCOMP")
+//
+in
+//
+if
+def > $UN.cast{cptr(char)}0
+then $UN.castvwtp1{string}(def)
+else (* let prval() = strptr_free_null(def) in *)
+ATSCCOMP_DEFAULT
+//
+end (* end of [if] *)
+(*
 val def =
   $STDLIB.getenv_gc("TEMPACCOMP")
 //
@@ -230,10 +251,11 @@ else let
 end // end of [else]
 //
 end // end of [atsccomp_get]
-  
+*)
+
 (* ****** ****** *)
 
-implement
+impltmp
 {}(*tmp*)
 atsccomp_get2
   (cas) = let
@@ -245,21 +267,21 @@ in
 //
 case+ cas of
 //
-| list_cons
-    (ca, cas) =>
+| list0_cons
+  (ca, cas) =>
   (
   case+ ca of
   | CAatsccomp
       (opt) => (
       if issome(opt)
-        then unsome(opt)
+        then $UN.stropt0_unsome(opt)
         else atsccomp_get2(cas)
       // end of [if]
     ) (* end of [CAatsccomp] *)
   | _ (*void*) => atsccomp_get2(cas)
   ) (* end of [list_cons] *)
 //
-| list_nil() => atsccomp_get()
+| list0_nil() => atsccomp_get()
 //
 end // end of [atsccomp_get2]
 

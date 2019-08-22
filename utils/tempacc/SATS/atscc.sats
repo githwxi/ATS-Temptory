@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -33,10 +33,14 @@
 
 (* ****** ****** *)
 
+#include "share/HATS/temptory_staload_bucs320.hats"
+
+vtypedef stringlst_vt = list0_vt(string)
+
 datatype commarg =
 //
   | CAhats of () // -hats: patsopt --help
-  | CAvats of () // -vats: patsopt --version 
+  | CAvats of () // -vats: patsopt --version
 //
   | CAccats of () // -ccats: compilation only
   | CAtcats of () // -tcats: typechecking only
@@ -63,19 +67,27 @@ datatype commarg =
 (* ****** ****** *)
 //
 typedef
-commarglst = List0(commarg)
+commarglst = list0(commarg)
 vtypedef
-commarglst_vt = List0_vt(commarg)
+commarglst_vt = list0_vt(commarg)
 //
 (* ****** ****** *)
 //
+(*
 fun
 fprint_commarg(out: FILEref, ca: commarg): void
+*)
+fun
+print_commarg(ca: commarg): void
+(*
 fun
 fprint_commarglst(out: FILEref, cas: commarglst): void
+*)
+fun
+print_commarglst(cas: commarglst): void
 //
-overload fprint with fprint_commarg of 0
-overload fprint with fprint_commarglst of 10
+#symload print with print_commarg of 0
+#symload print with print_commarglst of 10
 //
 (* ****** ****** *)
 //
@@ -117,10 +129,10 @@ fprint_atsccompline(out: FILEref, cas: commarglst): void
 //
 fun
 atsoptline_make
-  (cas: !RD(commarglst), ca0: commarg): stringlst_vt
+  (cas: (* !RD *)(commarglst), ca0: commarg): stringlst_vt
 //
 fun
-atsoptline_make_all(cas: commarglst): List0_vt(stringlst_vt)
+atsoptline_make_all(cas: commarglst): list0_vt(stringlst_vt)
 //
 (* ****** ****** *)
 
@@ -135,7 +147,7 @@ atsoptline_exec
 fun
 atsoptline_exec_all
 ( flag: int
-, atsopt: string, args: List_vt (stringlst_vt)): int(*status*)
+, atsopt: string, args: list0_vt (stringlst_vt)): int(*status*)
 //
 (* ****** ****** *)
 //
