@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -32,30 +32,38 @@
 (* Start time: July, 2013 *)
 
 (* ****** ****** *)
+
+(* Modified by: Richard Kent *)
+(* Start time: June 2019 *)
+
+(* ****** ****** *)
 //
+(*
 #include
 "share/atspre_staload.hats"
+*)
+#include "share/HATS/temptory_staload_bucs320.hats"
 //
 (* ****** ****** *)
 //
-staload
+#staload
 STDLIB =
 "libats/libc/SATS/stdlib.sats"
-staload
+#staload
 UNISTD =
 "libats/libc/SATS/unistd.sats"
 //
 (* ****** ****** *)
 
-staload UN = $UNSAFE
+#staload UN = "libats/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
-staload "./../SATS/atscc.sats"
+#staload "./../SATS/atscc.sats"
 
 (* ****** ****** *)
 
-staload _(*anon*) = "./atscc_util.dats"
+#staload _(*anon*) = "./atscc_util.dats"
 
 (* ****** ****** *)
 
@@ -63,19 +71,32 @@ typedef ca = commarg
 
 (* ****** ****** *)
 //
-macdef
-unsome(opt) = stropt_unsome(,(opt))
-macdef
-issome(opt) = stropt_is_some(,(opt))
+#macdef
+unsome(opt) = $UN.stropt0_unsome(,(opt))
+#macdef
+issome(opt) = stropt0_isneqz(,(opt))
 //
 (* ****** ****** *)
+
+(*
+#include "./util.dats"
+*)
+#staload UTIL = "./../SATS/util.sats"
+#staload _ = "./util.dats"
+(* #staload _ = "./util.dats" *)
+
+(* ****** ****** *)
 //
-macdef
-isfilsats(name) = filename_test_ext(,(name), "sats")
-macdef
-isfildats(name) = filename_test_ext(,(name), "dats")
-macdef
-isfilhats(name) = filename_test_ext(,(name), "hats")
+extern fun filename_test_ext(xs: string, ys: string): bool
+
+implfun filename_test_ext(xs, ys) = $UTIL.to_booln($UTIL.ext_cmp(xs, ys))
+
+#macdef
+isfilsats(name) = filename_test_ext(,(name), "sats")//".sats")
+#macdef
+isfildats(name) = filename_test_ext(,(name), "dats")//".dats")
+#macdef
+isfilhats(name) = filename_test_ext(,(name), "hats")//".hats")
 //
 (* ****** ****** *)
 
@@ -86,93 +107,24 @@ argv_getopt_at
   n: int n, argv: !argv(n), i: int i
 ) : stropt =
 (
-  if i < n then stropt_some (argv[i]) else stropt_none()
+  if i < n then stropt0_some (argv[i]) else stropt0_none()
 ) (* end of [argv_getopt_at] *)
 
 (* ****** ****** *)
 
+
+(* ****** ****** *)
+
 local
-//
-// HX: this is a bit heavy-handed, but ...
-//
-fun auxmain
-(
-  path: string, sfx: string
-) : string = let
-//
-val
-(
-  fpf | base
-) = filename_get_base (path)
-val base2 = g1ofg0 ($UN.strptr2string (base))
-val nb = string1_length (base2)
-//
-val (fpf2 | ext) = filename_get_ext (base2)
-val isext = strptr2ptr(ext) > 0
-//
-#define CHR1 '\001'
-//
-val res =
-(
-if isext then let
-//
-val ne =
-  string0_length ($UN.strptr2string (ext))
-val len = nb+i2sz(2) // HX: 2 -> .c
-//
-implement
-string_tabulate$fopr<>
-  (i) = let
-//
-val i = g1ofg0(i)
-val ne1 = succ (ne)
-//
-in
-//
-case+ 0 of
-| _ when (i+ne1 = nb) => '_'
-| _ when (i < nb) => base2[i]
-| _ when (i = nb+i2sz(0)) => '.'
-| _ when (i = nb+i2sz(1)) => 'c'
-| _ => CHR1
-//
-end // end of [string_tabulate$fwork]
-//
-in
-  strnptr2string(string_tabulate(len))
-end else let
-//
-val sfx = g1ofg0(sfx)
-val len = nb+string1_length(sfx)
-//
-implement
-string_tabulate$fopr<>
-  (i) = let
-//
-val i = g1ofg0(i) in
-//
-case+ 0 of
-| _ when (i < nb) => base2[i]
-| _ when (i < len) => let
-    extern praxi
-    __assert{i,j:int}
-      (size_t i, size_t j): [i >= j] void
-    prval () = __assert (i, nb) in sfx[i-nb]
-  end // end of [_ when ...]
-| _ => CHR1
-//
-end // end of [string_tabulate$fwork]
-//
-in
-  strnptr2string(string_tabulate(len))
-end // end of [if]
-) : string // end of [val]
-//
-prval () = fpf(base) and () = fpf2(ext)
-//
-in
-  res
-end // end of [auxmain]
+
+fun
+auxmain(path: string, sfx: string) : string = res where
+{
+  val-(base2, ext) = $UTIL.base_ext(path)
+  val res = string0_append($UN.castvwtp1{string0}base2, sfx)
+  val () = string0_vt_free(base2)
+  val () = string0_vt_free(ext)
+}
 
 in (* in of [local] *)
 
@@ -182,8 +134,8 @@ atscc_outname
 in
 //
 if flag = 0
-  then auxmain (path, "@sats.c")
-  else auxmain (path, "@dats.c")
+  then auxmain (path, "_sats.c")
+  else auxmain (path, "_dats.c")
 // end of [if]
 //
 end // end of [atscc_outname]
@@ -226,54 +178,54 @@ in
 case+ 0 of
 //
 | _ when (str0="-h") => let
-    val res = list_vt_cons{ca}(CAhelp(), res)
+    val res = list0_vt_cons{ca}(CAhelp(), res)
   in
     aux0 (n, argv, i+1, res)
-  end // end of [_ when ...]  
+  end // end of [_ when ...]
 //
 | _ when (str0="--help") => let
-    val res = list_vt_cons{ca}(CAhelp(), res)
+    val res = list0_vt_cons{ca}(CAhelp(), res)
   in
     aux0 (n, argv, i+1, res)
-  end // end of [_ when ...]  
+  end // end of [_ when ...]
 //
 | _ when (str0="-hats") => let
-    val res = list_vt_cons{ca}(CAhats(), res)
+    val res = list0_vt_cons{ca}(CAhats(), res)
   in
     aux0 (n, argv, i+1, res)
   end // end of [_ when ...]
 //
 | _ when (str0="-vats") => let
-    val res = list_vt_cons{ca}(CAvats(), res)
+    val res = list0_vt_cons{ca}(CAvats(), res)
   in
     aux0 (n, argv, i+1, res)
   end // end of [_ when ...]
 //
 | _ when (str0="-ccats") => let
-    val res = list_vt_cons{ca}(CAccats(), res)
+    val res = list0_vt_cons{ca}(CAccats(), res)
   in
     aux0 (n, argv, i+1, res)
   end // end of [_ when ...]
 | _ when (str0="-tcats") => let
-    val res = list_vt_cons{ca}(CAtcats(), res)
+    val res = list0_vt_cons{ca}(CAtcats(), res)
   in
     aux0 (n, argv, i+1, res)
   end // end of [_ when ...]
 //
 | _ when (str0="--gline") => let
-    val res = list_vt_cons{ca}(CAgline(), res)
+    val res = list0_vt_cons{ca}(CAgline(), res)
   in
     aux0 (n, argv, i+1, res)
-  end // end of [_ when ...]  
+  end // end of [_ when ...]
 //
 | _ when (str0="-verbose") => let
-    val res = list_vt_cons{ca}(CAverbose(), res)
+    val res = list0_vt_cons{ca}(CAverbose(), res)
   in
     aux0 (n, argv, i+1, res)
   end // end of [_ when ...]
 //
 | _ when (str0="-cleanaft") => let
-    val res = list_vt_cons{ca}(CAcleanaft(), res)
+    val res = list0_vt_cons{ca}(CAcleanaft(), res)
   in
     aux0 (n, argv, i+1, res)
   end // end of [_ when ...]
@@ -307,21 +259,21 @@ case+ 0 of
 | _ when (
     str0="--tlcalopt-disable"
   ) => let
-    val res = list_vt_cons{ca}(CA_tlcalopt_disable(), res)
+    val res = list0_vt_cons{ca}(CA_tlcalopt_disable(), res)
   in
     aux0 (n, argv, i+1, res)
   end // end of [_ when ...]
 | _ when (
     str0="--constraint-ignore"
   ) => let
-    val res = list_vt_cons{ca}(CA_constraint_ignore(), res)
+    val res = list0_vt_cons{ca}(CA_constraint_ignore(), res)
   in
     aux0 (n, argv, i+1, res)
   end // end of [_ when ...]
 //
 | _ => let
     val res =
-      list_vt_cons{ca}(CA_CCOMPitm(str0), res)
+      list0_vt_cons{ca}(CA_CCOMPitm(str0), res)
     // end of [val]
   in
     aux0 (n, argv, i+1, res)
@@ -343,7 +295,7 @@ aux1_atsccomp
 , res: commarglst_vt
 ) : commarglst_vt = let
   val opt = argv_getopt_at (n, argv, i)
-  val res = list_vt_cons{ca}(CAatsccomp(opt), res)
+  val res = list0_vt_cons{ca}(CAatsccomp(opt), res)
 in
   if i < n then aux0 (n, argv, i+1, res) else res
 end // end of [aux1_atsccomp]
@@ -362,7 +314,7 @@ aux1_iats
 , res: commarglst_vt
 ) : commarglst_vt = let
   val opt = argv_getopt_at (n, argv, i)
-  val res = list_vt_cons{ca}(CAiats(0, opt), res)
+  val res = list0_vt_cons{ca}(CAiats(0, opt), res)
 in
   if i < n then aux0 (n, argv, i+1, res) else res
 end // end of [aux1_iats]
@@ -379,7 +331,7 @@ aux1_iiats
 , res: commarglst_vt
 ) : commarglst_vt = let
   val opt = argv_getopt_at (n, argv, i)
-  val res = list_vt_cons{ca}(CAiats(1, opt), res)
+  val res = list0_vt_cons{ca}(CAiats(1, opt), res)
 in
   if i < n then aux0 (n, argv, i+1, res) else res
 end // end of [aux1_iiats]
@@ -398,7 +350,7 @@ aux1_dats
 , res: commarglst_vt
 ) : commarglst_vt = let
   val opt = argv_getopt_at (n, argv, i)
-  val res = list_vt_cons{ca}(CAdats(0, opt), res)
+  val res = list0_vt_cons{ca}(CAdats(0, opt), res)
 in
   if i < n then aux0 (n, argv, i+1, res) else res
 end // end of [aux1_dats]
@@ -415,7 +367,7 @@ aux1_ddats
 , res: commarglst_vt
 ) : commarglst_vt = let
   val opt = argv_getopt_at (n, argv, i)
-  val res = list_vt_cons{ca}(CAdats(1, opt), res)
+  val res = list0_vt_cons{ca}(CAdats(1, opt), res)
 in
   if i < n then aux0 (n, argv, i+1, res) else res
 end // end of [aux1_ddats]
@@ -434,7 +386,7 @@ aux1_fsats
 , res: commarglst_vt
 ) : commarglst_vt = let
   val opt = argv_getopt_at (n, argv, i)
-  val res = list_vt_cons{ca}(CAfilats(0, opt), res)
+  val res = list0_vt_cons{ca}(CAfilats(0, opt), res)
 in
   if i < n then aux0 (n, argv, i+1, res) else res
 end // end of [aux1_fsats]
@@ -451,7 +403,7 @@ aux1_fdats
 , res: commarglst_vt
 ) : commarglst_vt = let
   val opt = argv_getopt_at (n, argv, i)
-  val res = list_vt_cons{ca}(CAfilats(1, opt), res)
+  val res = list0_vt_cons{ca}(CAfilats(1, opt), res)
 in
   if i < n then aux0 (n, argv, i+1, res) else res
 end // end of [aux1_fdats]
@@ -465,12 +417,12 @@ atsccproc_commline
 prval (
 ) = lemma_argv_param (argv)
 //
-val res = list_vt_nil{ca}()
+val res = list0_vt_nil{ca}()
 val res = aux0 (argc, argv, 0, res)
-val res = list_vt_reverse (res)
+val res = list0_vt_reverse (res)
 //
 in
-  list_vt2t(res)
+  g0ofg1(list1_vt2t(g1ofg0(res)))
 end // end of [atsccproc_commline]
 
 end (* end of [local] *)
@@ -493,14 +445,14 @@ case+ ca of
   {
     val (
     ) = res :=
-      list_vt_cons{string}("--typecheck", res)
+      list0_vt_cons{string}("--typecheck", res)
     // end of [val]
   }
 //
 | CAgline() =>
   {
     val (
-    ) = res := list_vt_cons{string}("--gline", res)
+    ) = res := list0_vt_cons{string}("--gline", res)
   }
 //
 | CAdats(_, opt) =>
@@ -517,7 +469,7 @@ case+ ca of
   {
     val (
     ) = res :=
-      list_vt_cons{string}("--tlcalopt-disable", res)
+      list0_vt_cons{string}("--tlcalopt-disable", res)
     // end of [val]
   }
 //
@@ -525,7 +477,7 @@ case+ ca of
   {
     val (
     ) = res :=
-      list_vt_cons{string}("--constraint-ignore", res)
+      list0_vt_cons{string}("--constraint-ignore", res)
     // end of [val]
   }
 //
@@ -538,16 +490,16 @@ and aux_dats
   path: string, res: &res >> _
 ) : void =
 {
-val () = res := list_vt_cons{string}("-DATS", res)
-val () = res := list_vt_cons{string}(  path , res)
+val () = res := list0_vt_cons{string}("-DATS", res)
+val () = res := list0_vt_cons{string}(  path , res)
 }
 and aux_iats
 (
   path: string, res: &res >> _
 ) : void =
 {
-val () = res := list_vt_cons{string}("-IATS", res)
-val () = res := list_vt_cons{string}(  path , res)
+val () = res := list0_vt_cons{string}("-IATS", res)
+val () = res := list0_vt_cons{string}(  path , res)
 }
 //
 fun auxlst
@@ -557,13 +509,13 @@ fun auxlst
 in
 //
 case+ cas of
-| list_nil
+| list0_nil
     () => ((*void*))
-  // list_nil
-| list_cons
+  // list0_nil
+| list0_cons
     (ca, cas) => let
     val () = aux(ca, i, res) in auxlst(cas, i+1, res)
-  end // end of [list_cons]
+  end // end of [list0_cons]
 //
 end // end of [auxlst]
 
@@ -571,10 +523,10 @@ fun auxout
   (cas: commarglst): bool =
 (
 case+ cas of
-| list_nil
+| list0_nil
     () => true
-  // list_nil
-| list_cons
+  // list0_nil
+| list0_cons
     (ca, cas) =>
   (
     case+ ca of CAtcats() => false | _ => auxout(cas)
@@ -587,7 +539,7 @@ implement
 atsoptline_make
   (cas, ca0) = let
 //
-var res: res = list_vt_nil()
+var res: res = list0_vt_nil()
 val () = auxlst(cas, 1(*i*), res)
 //
 val () =
@@ -597,13 +549,13 @@ case+ ca0 of
   {
     val () =
     res :=
-    list_vt_cons{string}("--help", res)
+    list0_vt_cons{string}("--help", res)
   }
 | CAvats() =>
   {
     val () =
     res :=
-    list_vt_cons{string}("--version", res)
+    list0_vt_cons{string}("--version", res)
   }
 | CAfilats(knd, opt) =>
   if issome (opt) then
@@ -615,25 +567,25 @@ case+ ca0 of
     if auxout (cas) then
     {
       val () =
-        res := list_vt_cons{string}("--output", res)
+        res := list0_vt_cons{string}("--output", res)
       // end of [val]
-      val () = res := list_vt_cons{string}(outname, res)
+      val () = res := list0_vt_cons{string}(outname, res)
     } // end of [if] // end of [val]
 //
     val () =
-      if knd = 0 then res := list_vt_cons{string}("--static", res)
+      if knd = 0 then res := list0_vt_cons{string}("--static", res)
     // end of [val]
     val () =
-      if knd > 0 then res := list_vt_cons{string}("--dynamic", res)
+      if knd > 0 then res := list0_vt_cons{string}("--dynamic", res)
     // end of [val]
-    val () = res := list_vt_cons{string}(name, res)
+    val () = res := list0_vt_cons{string}(name, res)
 //
   } (* end of [if] *)
 | _ (*rest-of-commarg*) => ((*void*))
 ) : void // end of [val]
 //
 in
-  list_vt_reverse(res)
+  list0_vt_reverse(res)
 end // end of [atsoptline_make]
 
 end // end of [local]
@@ -643,9 +595,9 @@ end // end of [local]
 local
 //
 vtypedef res = stringlst_vt
-vtypedef ress = List0_vt (stringlst_vt)
+vtypedef ress = list0_vt (stringlst_vt)
 //
-macdef snoc = list_vt_snoc
+#macdef snoc = list0_vt_extend
 //
 fun auxlst
 (
@@ -655,27 +607,27 @@ in
 //
 case+ cas2 of
 //
-| list_nil() => let
-    val () = list_vt_free (cas1) in (*nothing*)
-  end (* end of [list_nil] *)
+| list0_nil() => let
+    val () = list0_vt_free (cas1) in (*nothing*)
+  end (* end of [list0_nil] *)
 //
-| list_cons
+| list0_cons
     (ca2, cas2) =>
   (
     case+ ca2 of
 //
     | CAhats() => let
         val res =
-          atsoptline_make ($UN.list_vt2t(cas1), ca2)
-        val () = ress := list_vt_cons{res}(res, ress)
+          atsoptline_make ($UN.list0_vt2t(cas1) , ca2)
+        val () = ress := list0_vt_cons{res}(res, ress)
       in
         auxlst (cas1, cas2, ress)
       end (* end of [CAhats] *)
 //
     | CAvats() => let
         val res =
-          atsoptline_make ($UN.list_vt2t(cas1), ca2)
-        val () = ress := list_vt_cons{res}(res, ress)
+          atsoptline_make ($UN.list0_vt2t(cas1), ca2)
+        val () = ress := list0_vt_cons{res}(res, ress)
       in
         auxlst (cas1, cas2, ress)
       end (* end of [CAvats] *)
@@ -701,8 +653,8 @@ case+ cas2 of
 //
     | CAfilats _ => let
         val res =
-          atsoptline_make ($UN.list_vt2t(cas1), ca2) 
-        val () = ress := list_vt_cons{res}(res, ress)
+          atsoptline_make ($UN.list0_vt2t(cas1), ca2)
+        val () = ress := list0_vt_cons{res}(res, ress)
       in
         auxlst (cas1, cas2, ress)
       end (* end of [CAfilats] *)
@@ -716,7 +668,7 @@ case+ cas2 of
 //
     | _(*ignored*) => auxlst (cas1, cas2, ress)
 //
-  ) (* end of [list_cons] *)
+  ) (* end of [list0_cons] *)
 //
 end // end of [auxlst]
 
@@ -726,11 +678,11 @@ implement
 atsoptline_make_all
   (cas0) = let
 //
-var ress: ress = list_vt_nil
-val () = auxlst (list_vt_nil, cas0, ress)
+var ress: ress = list0_vt_nil
+val () = auxlst (list0_vt_nil, cas0, ress)
 //
 in
-  list_vt_reverse (ress)
+  list0_vt_reverse (ress)
 end // end of [atsoptline_make_all]
 
 end // end of [local]
@@ -768,16 +720,16 @@ case+ ca of
 | CAdats(_, opt) =>
   if issome(opt) then
   {
-    val () = res := list_vt_cons{string}("-D", res)
-    val () = res := list_vt_cons{string}(unsome(opt), res)
+    val () = res := list0_vt_cons{string}("-D", res)
+    val () = res := list0_vt_cons{string}(unsome(opt), res)
   } else ((*void*)) // end of [if]
 //
 | CAiats(0, opt) => ()
 | CAiats(_, opt) =>
   if issome (opt) then
   {
-    val () = res := list_vt_cons{string}("-I", res)
-    val () = res := list_vt_cons{string}(unsome(opt), res)
+    val () = res := list0_vt_cons{string}("-I", res)
+    val () = res := list0_vt_cons{string}(unsome(opt), res)
   } else ((*void*)) // end of [if]
 //
 | CAfilats(0, opt) =>
@@ -800,18 +752,18 @@ and aux_fsats
   (path: string, res: &res >> _): void =
 {
   val outname = atscc_outname (0(*sta*), path)
-  val () = res := list_vt_cons{string}(outname, res)
+  val () = res := list0_vt_cons{string}(outname, res)
 }
 and aux_fdats
   (path: string, res: &res >> _): void =
 {
-  val outname = atscc_outname (0(*sta*), path)
-  val () = res := list_vt_cons{string}(outname, res)
+  val outname = atscc_outname (1(*dyn*), path)
+  val () = res := list0_vt_cons{string}(outname, res)
 }
 and aux_CCOMPitm
   (item: string, res: &res >> _): void =
 {
-  val () = res := list_vt_cons{string}(item, res)
+  val () = res := list0_vt_cons{string}(item, res)
 }
 
 fun auxlst
@@ -826,12 +778,12 @@ val () = println! ("auxlst")
 in
 //
 case+ cas of
-| list_nil
+| list0_nil
     () => ((*void*))
-| list_cons
+| list0_cons
     (ca, cas) => let
     val () = aux (ca, i, res) in auxlst (cas, i+1, res)
-  end // end of [list_cons]
+  end // end of [list0_cons]
 //
 end // end of [loop]
 
@@ -841,12 +793,12 @@ implement
 atsccompline_make
   (cas0) = let
 //
-var res: res = list_vt_nil
-val-list_cons(ca, cas) = cas0
+var res: res = list0_vt_nil
+val-list0_cons(ca, cas) = cas0
 val () = auxlst(cas, 1(*i*), res)
 //
 in
-  list_vt_reverse(res)
+  list0_vt_reverse(res)
 end // end of [atsccompline_make]
 
 end // end of [local]
@@ -858,24 +810,24 @@ local
 #define CNUL '\0'
 #define SPACE " "
 
-overload + with add_ptr0_bsz of 10
+#symload + with g0add_ptr_int of 10//add_ptr0_bsz of 10
 
 (* ****** ****** *)
 
 fun
 auxstr
 (
-  p0: &ptr >> _, n0: &size_t >> _, x: string
+  p0: &ptr >> _, n0: &size >> _, x: string
 ) : int = let
 //
-val n = string_length (x)
+val n = string0_length (x)
 //
 in
 //
 if n0 > n then let
   val _ = $extfcall
   (
-    ptr, "memcpy", p0, string2ptr(x), n
+    ptr, "memcpy", p0, ptrof(x), n
   ) // end of [val]
   val () = p0 := p0 + n and () = n0 := n0 - n
 in
@@ -887,12 +839,12 @@ end // end of [auxstr]
 fun
 auxstrlst_sep
 (
-  p0: &ptr >> _, n0: &size_t >> _, sep: string, xs: stringlst
+  p0: &ptr >> _, n0: &size >> _, sep: string, xs: list0(string)//stringlst
 ) : int = let
 in
 //
 case+ xs of
-| list_cons
+| list0_cons
     (x, xs) => let
     val err = auxstr (p0, n0, sep)
     val err =
@@ -901,8 +853,8 @@ case+ xs of
     ) : int // end of [val]
   in
     if err = 0 then auxstrlst_sep (p0, n0, sep, xs) else ~1
-  end // end of [list_cons]
-| list_nil() => 0(*success*)
+  end // end of [list0_cons]
+| list0_nil() => 0(*success*)
 //
 end // end of [auxstrlst_sep]
 
@@ -912,18 +864,15 @@ fun
 auxline
 (
   cmd: string
-, args: stringlst
-, bsz: sizeGte(1)
-) : Strptr1 = let
+, args: list0(string)//stringlst
+, bsz: Sizegte(1)
+) : cptr(char) = let//Strptr1 = let
 //
-val (
-  pfat
-, pfgc
-| p_st
-) = malloc_gc (bsz)
+//val (pfat, pfgc| p_st) = malloc_gc (bsz)
+val p_st = $UN.calloc<char>(bsz)
 //
-var p0: ptr = p_st
-var n0: size_t = bsz
+var p0: ptr = cptr2ptr(p_st): ptr
+var n0: size = bsz
 val sep: string = SPACE
 //
 val err = auxstr (p0, n0, cmd)
@@ -936,10 +885,13 @@ in
 //
 if err = 0
   then let
-  val () = $UN.ptr0_set<char> (p0, CNUL) in
-  $UN.castvwtp0{Strptr1}((pfat, pfgc | p_st))
-  end else let
-  val () = mfree_gc (pfat, pfgc | p_st) in auxline (cmd, args, bsz+bsz)
+  val () = $UN.ptr0_set<char> (p0, CNUL) in (p_st) end
+    //$UN.castvwtp0{Strptr1}((pfat, pfgc | p_st))
+  else let
+    (* val () = mfree_gc (pfat, pfgc | p_st)  *)
+    val () = $UN.cfree(p_st)
+  in
+    auxline (cmd, args, bsz+bsz)
   end // end of [else]
 // end of [if]
 end // end of [auxline]
@@ -954,25 +906,28 @@ atsoptline_exec
 //
 val bsz = 1024 // HX: more or less arbitrary
 //
-val [l:addr]
-  line = auxline (atsopt, $UN.list_vt2t(arglst), i2sz(bsz))
-val () = list_vt_free (arglst)
+//val [l:addr] line = auxline (atsopt, $UN.list0_vt2t(arglst), i2sz(bsz))
+val line = auxline (atsopt, $UN.list0_vt2t(arglst), i2sz(bsz))
+val () = list0_vt_free (arglst)
+//
+
+val () =
+if flag > 0 then
+{
+  val () = println! ("exec(", $UN.castvwtp1{string}line, ")")
+} (* end of [if] *)
+//
+val status = //$STDLIB.system ($UN.strptr2string(line))
+  $extfcall(int, "system", $UN.castvwtp1{string}line)
 //
 val () =
 if flag > 0 then
 {
-  val () = fprintln! (stderr_ref, "exec(", line, ")")
+  val () = println! ("exec(", $UN.castvwtp1{string}line, ") = ", status)
 } (* end of [if] *)
 //
-val status = $STDLIB.system ($UN.strptr2string(line))
-//
-val () =
-if flag > 0 then
-{
-  val () = fprintln! (stderr_ref, "exec(", line, ") = ", status)
-} (* end of [if] *)
-//
-val () = strptr_free (line)
+(* val () = strptr_free (line) *)
+val () = $UN.cfree(line)
 //
 in
   status
@@ -985,7 +940,7 @@ atsoptline_exec_all
   (flag, atsopt, lines) = let
 //
 vtypedef
-lines = List_vt(stringlst_vt)
+lines = list0_vt(stringlst_vt)
 //
 fun auxlst
 (
@@ -994,17 +949,17 @@ fun auxlst
 in
 //
 case+ lines of
-| ~list_vt_nil
+| ~list0_vt_nil
     () => status
-  // list_vt_nil
-| ~list_vt_cons
+  // list0_vt_nil
+| ~list0_vt_cons
     (line, lines) => let
     val status = (
       if status = 0
         then
           atsoptline_exec (flag, atsopt, line)
         else let
-          val () = list_vt_free (line) in status
+          val () = list0_vt_free (line) in status
         end // end of [else]
       // end of [if]
     ) : int // end of [val]
@@ -1015,6 +970,7 @@ case+ lines of
 end // end of [auxlst]
 //
 in
+
   auxlst (lines, 0(*success*))
 end // end of [atsoptline_exec_all]
 
@@ -1031,7 +987,7 @@ auxlst
 ) : bool =
 //
 case+ cas of
-| list_cons
+| list0_cons
     (ca, cas) => let
   in
     case+ ca of
@@ -1043,14 +999,14 @@ case+ cas of
     | CAverbose() => auxlst (cas, n)
     | _ (*rest*) => auxlst (cas, n+1)
   end (* end of [cons] *)
-| list_nil ((*void*)) =>
+| list0_nil ((*void*)) =>
     if n > 0 then true else false
 //
 in
 //
 case+ cas of
-| list_nil () => false
-| list_cons (_, cas) => auxlst (cas, 0)
+| list0_nil () => false
+| list0_cons (_, cas) => auxlst (cas, 0)
 //
 end // end of [atsccomp_cont]
 
@@ -1062,25 +1018,26 @@ atsccompline_exec
 //
 val bsz = 1024 // HX: more or less arbitrary
 //
-val [l:addr]
-  line = auxline (atsccomp, $UN.list_vt2t(arglst), i2sz(bsz))
-val () = list_vt_free (arglst)
+val //[l:addr]
+  line = auxline (atsccomp, $UN.list0_vt2t(arglst), i2sz(bsz))
+val () = list0_vt_free (arglst)
 //
 val (
 ) = if flag > 0 then
 {
-  val () = fprintln! (stderr_ref, "exec(", line, ")")
+  val () = println! ("exec(", $UN.castvwtp1{string}line, ")")
 } (* end of [if] *)
 //
-val status = $STDLIB.system ($UN.strptr2string(line))
+val status = //$STDLIB.system ($UN.strptr2string(line))
+  $extfcall(int, "system", line)
 //
 val (
 ) = if flag > 0 then
 {
-  val () = fprintln! (stderr_ref, "exec(", line, ") = ", status)
+  val () = println! ("exec(", $UN.castvwtp1{string}line, ") = ", status)
 } (* end of [if] *)
 //
-val () = strptr_free (line)
+val () = $UN.cfree(line)//strptr_free (line)
 //
 in
   status
@@ -1096,13 +1053,13 @@ atscc_is_help
 in
 //
 case+ cas of
-| list_cons
+| list0_cons
     (ca, cas) =>
   (
     case+ ca of
     | CAhelp() => true | _ => atscc_is_help(cas)
   )
-| list_nil((*void*)) => false
+| list0_nil((*void*)) => false
 //
 end // end of [atscc_is_help]
 
@@ -1114,13 +1071,13 @@ atscc_is_verbose
 in
 //
 case+ cas of
-| list_cons
+| list0_cons
     (ca, cas) =>
   (
     case+ ca of
     | CAverbose() => true | _ => atscc_is_verbose(cas)
   )
-| list_nil((*void*)) => false
+| list0_nil((*void*)) => false
 //
 end // end of [atscc_verbose]
 
@@ -1132,13 +1089,13 @@ atscc_cleanaft_cont
 in
 //
 case+ cas of
-| list_cons
+| list0_cons
     (ca, cas) =>
   (
     case+ ca of
     | CAcleanaft () => true | _ => atscc_cleanaft_cont(cas)
   )
-| list_nil((*void*)) => false
+| list0_nil((*void*)) => false
 //
 end // end of [atscc_cleanaft_cont]
 
@@ -1155,7 +1112,8 @@ fun rmf
 if issome(opt) then
 {
   val _(*err*) =
-    $UNISTD.unlink(atscc_outname(flag, unsome(opt)))
+    //$UNISTD.unlink(atscc_outname(flag, unsome(opt)))
+      $extfcall(int, "unlink", atscc_outname(flag, unsome(opt)))
   // end of [val]
 } // end of [if]
 ) (* end of [rmf] *)
@@ -1167,7 +1125,7 @@ fun auxlst
 in
 //
 case+ cas of
-| list_cons
+| list0_cons
     (ca, cas) =>
   (
     case+ ca of
@@ -1178,7 +1136,7 @@ case+ cas of
       ) (* end of [CAfilats] *)
     | _(*skipped*) => auxlst (cas)
   )
-| list_nil((*void*)) => ()
+| list0_nil((*void*)) => ()
 //
 end // end of [auxlst]
 //
@@ -1189,9 +1147,15 @@ val () =
 if flag > 0 then
 {
 //
+(*
 val () = fprintln!
 (
-  stderr_ref, "atscc: removal of generated C-files is done."
+  the_stderr<>(), "atscc: removal of generated C-files is done."
+)
+*)
+val () = println!
+(
+  "atscc: removal of generated C-files is done."
 )
 //
 } (* end of [val] *)
