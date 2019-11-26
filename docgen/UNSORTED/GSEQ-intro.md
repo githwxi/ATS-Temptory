@@ -80,7 +80,7 @@ itself. For instance, the i-version of the list `(a, b, c)` is simply
 `((0, a), (1, b), (2, c))`.
 
 Given a verb, the i-version of the verb is often named `i{verb}`,
-where `{verb}` stands for the name of the verb.  Basically, applying
+where `{verb}` refers to the name of the verb.  Basically, applying
 the i-version of a verb to a given sequence is like applying the verb
 to the i-version of the sequence.
 
@@ -97,7 +97,7 @@ to the i-version of the sequence.
 
 Given two sequences `xs` and `ys`, let `zip(xs, ys)` be the result of
 zipping `xs` and `ys`. Given a verb, the z-version of the verb is
-often named `z{verb}` where `{verb}` stands for the name of the
+often named `z{verb}` where `{verb}` refers to the name of the
 verb. Basically, applying the z-version of a verb to two given
 sequences `xs` and `ys` is like applying the verb to `zip(xs, ys)`.
   
@@ -113,11 +113,11 @@ sequences `xs` and `ys` is like applying the verb to `zip(xs, ys)`.
 
 Given two sequences `xs` and `ys`, let `cross(xs, ys)` be the result
 of crossing `xs` by `ys`. Given a verb, the x-version of the verb is
-often named `x{verb}` where `{verb}` stands for the name of the
+often named `x{verb}` where `{verb}` refers to the name of the
 verb. Basically, applying the z-version of a verb to two given
 sequences `xs` and `ys` is like applying the verb to `cross(xs, ys)`.
 
-* **xforall**: It is the z-version of `forall`.    
+* **xforall**: It is the x-version of `forall`.    
 * **xforeach**: It is the x-version of `foreach`.
 * **xfoldleft**: It is the x-version of `foldleft`.
 
