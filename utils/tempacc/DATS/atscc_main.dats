@@ -118,13 +118,26 @@ argv_getopt_at
 local
 
 fun
-auxmain(path: string, sfx: string) : string = res where
+auxmain
+( path
+: string
+, sfx0
+: string
+) : string = fname where
 {
-  val-(base2, ext) = $UTIL.base_ext(path)
-  val res = string0_append($UN.castvwtp1{string0}base2, sfx)
-  val () = string0_vt_free(base2)
-  val () = string0_vt_free(ext)
-}
+//
+val-
+( base
+, ext0) = $UTIL.base_ext(path)
+//
+val fname =
+string0_append
+($UN.castvwtp1{string0}base, sfx0)
+//
+val ((*void*)) = string0_vt_free(base)
+val ((*void*)) = string0_vt_free(ext0)
+//
+} (* auxmain *)
 
 in (* in of [local] *)
 
@@ -561,7 +574,7 @@ case+ ca0 of
   if issome (opt) then
   {
     val name = unsome(opt)
-    val outname = atscc_outname (knd, name)
+    val outname = atscc_outname(knd, name)
 //
     val () =
     if auxout (cas) then

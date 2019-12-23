@@ -226,7 +226,8 @@ impltmp
 {}(*tmp*)
 atsccomp_get() = let
 //
-val def = $extfcall(cptr(char), "getenv", "TEMPACCOMP")
+val def =
+$extfcall(cptr(char), "getenv", "TEMPACCOMP")
 //
 in
 //

@@ -11,7 +11,8 @@ impltmp{}
 to_booln i = ~(to_bool i)
 
 impltmp{}
-str_strr(cs, ch) = (loop0(cptrof(cs), 0, ~1)) where
+str_strr(cs, ch) =
+(loop0(cptrof(cs), 0, ~1)) where
 {
   fun loop0(p1: cptr(char), sz: int, i: int): int = let
     val c1 = $UN.cptr0_get(p1)
@@ -26,7 +27,8 @@ str_strr(cs, ch) = (loop0(cptrof(cs), 0, ~1)) where
 }
 
 impltmp{}
-str_cmp(cs, match) = loop0(cptrof(cs), cptrof(match)) where
+str_cmp(cs, match) =
+loop0(cptrof(cs), cptrof(match)) where
 {
   fun loop0(p1: cptr(char), p2: cptr(char)): int = let
     val c1 = $UN.cptr0_get(p1)
@@ -63,18 +65,30 @@ impltmp{} dirname_parent () = ".."
 (* ****** ****** *)
 
 impltmp{}
-str_rightmost2(cs, ch, ch2) = loop0(p0, 0u, 0u, 0u) where
+str_rightmost2
+(cs, ch1, ch2) =
+loop0(p0, 0u, 0u, 0u) where
 {
-  val p0 = string0_cptrof(cs)
-
-  fun loop0(p1: cptr(char), sz: uint, i: uint, i2: uint): (uint, uint) = let
+//
+val p0 = string0_cptrof(cs)
+//
+  fun
+  loop0
+  ( p1: cptr(char)
+  , sz: uint
+  , i1: uint
+  , i2: uint
+  ) : (uint, uint) = let
     val c1 = $UN.cptr0_get(p1)
   in
     ifcase
-    | iseqz(c1) => (i, i2)
-    | _ => loop0(succ(p1), succ(sz), rch1, rch2) where
+    | iseqz(c1) => (i1, i2)
+    | _ =>
+      loop0
+      (p1, sz, rch1, rch2) where
     {
-      val rch1 = (if c1 = ch then sz else i)
+      val p1 = succ(p1) and sz = succ(sz)
+      val rch1 = (if c1 = ch1 then sz else i1)
       val rch2 = (if c1 = ch2 then sz else i2)
     }
   end
@@ -84,8 +98,10 @@ str_rightmost2(cs, ch, ch2) = loop0(p0, 0u, 0u, 0u) where
 
 impltmp{}
 string0_cpy(cs1, size) = let
-  val cp0 = $UN.calloc<char>(succ(size))
-  val cp1 = (string0_ifoldleft<cptr(char)>(cs1, cp0)) where
+  val cp0 =
+  $UN.calloc<char>(succ(size))
+  val cp1 =
+  (string0_ifoldleft<cptr(char)>(cs1, cp0)) where
   {
     impltmp
     string0_ifoldleft$fopr<cptr(char)>(r0, i0, x0) =
@@ -94,26 +110,50 @@ string0_cpy(cs1, size) = let
       | _ => r0
   }
 in
-    $UN.castvwtp0{string0_vt}(cp0) where
-      val () = $UN.cptr0_set(cp1, CNUL)
-    end
+  $UN.castvwtp0{string0_vt}(cp0) where { val () = $UN.cptr0_set(cp1, CNUL) }
 end
 
 impltmp{}
-base_ext(istr) = (xs, ys) where
+base_ext(str) =
+  (fst, snd) where
 {
-  val sep = dirsep_get<>()
-
-  val-(fst,snd) = str_rightmost2<>(istr, '/', '.')
-
-  val split0 = $UN.cast{size}(snd - fst - 1u)
-
-  val str0 = $UN.cast{string}(succ(cptrof(istr)+fst))
-  val str1 = $UN.cast{string}(succ(cptrof(str0)+split0))
+//
+val sep = dirsep_get<>()
+//
+  val-
+  (fst, snd) =
+  str_rightmost2<>(str, sep, '.')
+//
+(*
+val () =
+  println!("base_ext: str = ", str)
+  val () =
+  println!("base_ext: fst = ", fst)
+  val () =
+  println!("base_ext: snd = ", snd)
+*)
+//
+  val
+  split0 = $UN.cast{size}(snd - fst - 1u)
+//
+  val str0 =
+  $UN.cast{string}(cptrof(str)+fst)
+  val str1 =
+  $UN.cast{string}(succ(cptrof(str0)+split0))
 
   val length = i2sz(length(str0))
   val split1 = length - $UN.cast{size}(split0)
+//
+  val fst = string0_cpy<>(str0, split0)
+  val snd = string0_cpy<>(str1, split1)
+//
+(*
+  val () = println!("base_ext: fst = ", fst)
+  val () = println!("base_ext: snd = ", snd)
+*)
+//
+} (* end of [base_ext] *)
 
-  val xs = string0_cpy<>(str0, split0)
-  val ys = string0_cpy<>(str1, split1)
-}
+(* ****** ****** *)
+
+(* end of [util.dats] *)

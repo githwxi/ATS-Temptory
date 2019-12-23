@@ -33,11 +33,13 @@
 
 (* ****** ****** *)
 //
-#include "share/HATS/temptory_staload_bucs320.hats"
 (*
 #include
 "share/atspre_staload.hats"
 *)
+#include
+"share/HATS\
+/temptory_staload_bucs320.hats"
 //
 (* ****** ****** *)
 //
@@ -78,9 +80,12 @@ val _ = $showtype(cas)
 //
 val cas =
 (
-if argc >= 2
-  then cas else list0_append<commarg>(cas, g0ofg1('[CAvats]))
-// end of [i]
+if
+(argc >= 2)
+  then cas
+  else
+  list0_append<commarg>(cas, g0ofg1('[CAvats]))
+// end of [if]
 ) : commarglst
 //
 val help = atscc_is_help(cas)
@@ -114,7 +119,7 @@ if cont then
 {
 //
 val cmd = atsccomp_get2(cas)
-val arglst = atsccompline_make (cas)
+val arglst = atsccompline_make(cas)
 val () =
 (
   status := atsccompline_exec(verb, cmd, arglst)

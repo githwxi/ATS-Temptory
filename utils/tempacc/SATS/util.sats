@@ -44,7 +44,9 @@ filename_test_base (name: string, base: string):<> bool
 (* ****** ****** *)
 
 fun{}
-str_rightmost2(cs: string, pred: char, pred2: char): (uint, uint)
+str_rightmost2
+( cs: string
+, ch1: char, ch2: char): (uint, uint)
 
 fun{}
 string0_cpy(cs2: string, n: size): string_vt

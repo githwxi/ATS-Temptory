@@ -66,6 +66,7 @@ $(TEMPACC) -D_GNU_SOURCE \
 test03_dats: \
 test03.dats; \
 $(TEMPACC) -D_GNU_SOURCE \
+-Wno-deprecated-declarations \
 -DATS_MEMALLOC_LIBC -I./node_modules -o $@ $< $(MYLIBS) -lpcre
 
 ######
