@@ -42,6 +42,7 @@ term1 = refcnt(term1_con)
 #symload ^ with refcnt_incref
 #symload ~ with refcnt_decref
 #symload ! with refcnt_get0_elt
+#symload !^ with refcnt_get1_elt
 
 (* ****** ****** *)
 //
@@ -237,17 +238,18 @@ evaluate
 : tenv2): term2 =
 (
 let
-val t0 =
-refcnt_get0_elt(t0)
+val
+t0 = !t0
 in
 case+ t0 of
 | ~
 TM1var(x0) =>
 let
-val t0 =
+val
+t0 =
 tenv2_find(env0, x0)
-val t0 =
-refcnt_get0_elt(t0)
+val
+t0 = !t0
 in
 case+ t0 of
 | ~
@@ -267,10 +269,11 @@ end
 | ~
 TM1app(t1, t2) =>
 let
-val t1 =
+val
+t1 =
 evaluate(t1, ^env0)
-val t1 =
-refcnt_get0_elt(t1)
+val
+t1 = !t1
 in
 //
 case+ t1 of
@@ -278,10 +281,8 @@ case+ t1 of
 TM2lam
 (t1, env1) =>
 let
-  val t1 =
-  refcnt_get0_elt(t1)
   val- ~
-  TM1lam(x1, u1) = t1
+  TM1lam(x1, u1) = !t1
   val t2 =
   refcnt(TM2laz(t2, env0))
 in
@@ -318,8 +319,8 @@ fun
 normize(t0: term2): term1 =
 (
 let
-val t0 =
-refcnt_get0_elt(t0)
+val
+t0 = !t0
 in
 case+ t0 of
 | ~
@@ -331,10 +332,8 @@ normize(evaluate(t1, env1))
 | ~
 TM2lam(t1, env1) =>
 let
-  val t1 =
-  refcnt_get0_elt(t1)
   val- ~
-  TM1lam(x1, u1) = t1
+  TM1lam(x1, u1) = !t1
 in
   refcnt
   (
