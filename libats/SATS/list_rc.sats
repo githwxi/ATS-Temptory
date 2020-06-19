@@ -79,6 +79,20 @@ list0_rc_con_free(list0_rc_con(x0)): void
 //
 fun
 {x0:vtflt}
+list0_rc_copy
+(xs: !list0_rc(x0)): list0_rc(x0)
+fun
+{x0:vtflt}
+list0_rc_con_copy
+(xs: !list0_rc_con(x0)): list0_rc_con(x0)
+//
+#symload copy with list0_rc_copy of 10
+#symload copy with list0_rc_con_copy of 10
+//
+(* ****** ****** *)
+//
+fun
+{x0:vtflt}
 list0_rc_forall1
 (xs: !list0_rc(x0)): bool
 fun

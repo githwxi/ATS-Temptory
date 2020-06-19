@@ -6,53 +6,191 @@
 //
 (* ****** ****** *)
 
-implement
-main0() = ((*void*))
+impltmp
+(a:vtflt
+,b:vtflt)
+gcopy$val<(a,b)>
+  (xy) = let
+//
+val (x0, y0) =
+$UN.castvwtp1{(a,b)}(xy)
+val x1 = gcopy$val<a>(x0)
+val y1 = gcopy$val<b>(y0)
+val () = $UN.castvwtp0(x0)
+val () = $UN.castvwtp0(y0) in (x1, y1)
+end
 
 (* ****** ****** *)
 
 typedef tvar = string
 
 (* ****** ****** *)
-
-datatype
-term1 =
+//
+datavtype
+term1_con =
 | TM1var of tvar
-| TM1lam of (tvar, term1)
-| TM1app of (term1, term1)
+| TM1lam of
+  ( tvar, term1 )
+| TM1app of
+  ( term1, term1 )
+//
+where
+term1 = refcnt(term1_con)
 
+(* ****** ****** *)
+//
+fun
+term1_con_copy
+( t0: 
+! term1_con
+) : term1_con =
+(
+case+ t0 of
+|
+TM1var(x1) => TM1var(x1)
+|
+TM1lam(x1, t1) =>
+TM1lam(x1, refcnt_incref(t1))
+|
+TM1app(t1, t2) =>
+TM1app
+(refcnt_incref(t1), refcnt_incref(t2))
+) where
+{
+impltmp
+gcopy$val<term1_con>(t0) = term1_con_copy(t0)
+}
+impltmp
+gcopy$val<term1_con>(t0) = term1_con_copy(t0)
+//
+(* ****** ****** *)
+//
+fun
+term1_con_free
+(t0: term1_con): void =
+(
+case+ t0 of
+| ~
+TM1var(x1) => ()
+| ~
+TM1lam(x1, t1) => refcnt_decref(t1)
+| ~
+TM1app(t1, t2) =>
+(refcnt_decref(t1); refcnt_decref(t2))
+) where
+{
+impltmp
+gfree$val<term1_con>(t0) = term1_con_free(t0)
+}
+impltmp
+gfree$val<term1_con>(t0) = term1_con_free(t0)
+//
 (* ****** ****** *)
 
 extern
 fun
-print_term1
+print0_term1
 (t0: term1): void
-#symload print with print_term1
+#symload
+print0 with print0_term1
 
 implement
-print_term1(t0) =
+print0_term1(t0) =
 (
+let
+#symload
+print with print0_term1
+//
+val t0 = refcnt_get0_elt(t0)
+//
+in
 case+ t0 of
-| TM1var(x1) =>
-  print!("TM1var(", x1, ")")
-| TM1lam(x1, t1) =>
-  print!("TM1lam(", x1, "; ", t1, ")")
-| TM1app(t1, t2) =>
-  print!("TM1app(", t1, "; ", t2, ")")
+| ~
+TM1var(x1) =>
+print!("TM1var(", x1, ")")
+| ~
+TM1lam(x1, t1) =>
+print!("TM1lam(", x1, "; ", t1, ")")
+| ~
+TM1app(t1, t2) =>
+print!("TM1app(", t1, "; ", t2, ")")
+end
 )
 
 (* ****** ****** *)
 //
-datatype
-term2 =
+datavtype
+term2_con =
 | TM2var of tvar
 | TM2lam of
   ( term1, tenv2 )
 | TM2laz of
   ( term1, tenv2 )
-| TM2app of (term2, term2)
+| TM2app of
+  ( term2, term2 )
 where
-tenv2 = list0@(tvar, term2)
+term2 = refcnt(term2_con)
+and
+tenv2 = list0_rc@(tvar, term2)
+
+(* ****** ****** *)
+//
+fun
+term2_con_copy
+( t0: 
+! term2_con
+) : term2_con =
+(
+case+ t0 of
+|
+TM2var(x1) => TM2var(x1)
+|
+TM2lam(t1, env) =>
+TM2lam
+( refcnt_incref(t1)
+, refcnt_incref(env))
+|
+TM2laz(t1, env) =>
+TM2laz
+( refcnt_incref(t1)
+, refcnt_incref(env))
+|
+TM2app(t1, t2) =>
+TM2app
+(refcnt_incref(t1), refcnt_incref(t2))
+) where
+{
+impltmp
+gcopy$val<term2_con>(t0) = term2_con_copy(t0)
+}
+impltmp
+gcopy$val<term2_con>(t0) = term2_con_copy(t0)
+//
+(* ****** ****** *)
+//
+fun
+term2_con_free
+(t0: term2_con): void =
+(
+case+ t0 of
+| ~
+TM2var(x1) => ()
+| ~
+TM2lam(t1, env) =>
+(refcnt_decref(t1); refcnt_decref(env))
+| ~
+TM2laz(t1, env) =>
+(refcnt_decref(t1); refcnt_decref(env))
+| ~
+TM2app(t1, t2) =>
+( refcnt_decref(t1); refcnt_decref(t2) )
+) where
+{
+impltmp
+gfree$val<term2_con>(t0) = term2_con_free(t0)
+}
+impltmp
+gfree$val<term2_con>(t0) = term2_con_free(t0)
 //
 (* ****** ****** *)
 
@@ -64,13 +202,31 @@ implement
 tenv2_find
 (xts, x0) =
 (
+let
+val
+xts =
+refcnt_get0_elt(xts)
+in
 case+ xts of
-| list0_nil() => TM2var(x0)
-| list0_cons
-  (xt0, xts) =>
-  if
-  (x0 = xt0.0)
-  then xt0.1 else tenv2_find(xts, x0)
+| ~
+list0_rc_nil
+((*void*)) => refcnt(TM2var(x0))
+| ~
+list0_rc_cons
+(xt1, xts) =>
+let
+val (x1, t1) = xt1
+in
+if
+(x0 = x1)
+then
+let
+val () = gfree$val(xts) in t1
+end
+else
+(gfree$val(t1); tenv2_find(xts, x0))
+end
+end // end of [let]
 )
 
 (* ****** ****** *)
@@ -82,7 +238,8 @@ compile
 let
 val
 xts = 
-list0_nil() in evaluate(t0, xts)
+refcnt
+(list0_rc_nil()) in evaluate(t0, xts)
 end
 ) (* end of [compile] *)
 
@@ -93,46 +250,76 @@ evaluate
 , env0
 : tenv2): term2 =
 (
+let
+val t0 =
+refcnt_get0_elt(t0)
+in
 case+ t0 of
-|
+| ~
 TM1var(x0) =>
 let
 val t0 =
 tenv2_find(env0, x0)
+val t0 =
+refcnt_get0_elt(t0)
 in
 case+ t0 of
-| TM2laz
-  (t1, env1) =>
-  evaluate(t1, env1)
-| _(*non-TM2laz*) => t0
+| ~
+TM2laz
+(t1, env1) =>
+evaluate(t1, env1)
+| _(*non-TM2laz*) =>
+refcnt_make_elt(t0)
 end
-|
+|(*!*)
 TM1lam(x1, t1) =>
-TM2lam(t0, env0)
-|
+let
+val t0 = refcnt(t0)
+in
+refcnt(TM2lam(t0, env0))
+end
+| ~
 TM1app(t1, t2) =>
 let
-val t1 = evaluate(t1, env0)
+val
+env1 =
+refcnt_incref(env0)
+val t1 =
+evaluate(t1, env1)
+val t1 =
+refcnt_get0_elt(t1)
 in
 //
 case+ t1 of
-| TM2lam
-  (t1, env1) =>
-  let
-  val-
+| ~
+TM2lam
+(t1, env1) =>
+let
+  val t1 =
+  refcnt_get0_elt(t1)
+  val- ~
   TM1lam(x1, u1) = t1
-  val t2 = TM2laz(t2, env0)
-  in
-    evaluate(u1, env1) where
-    {
-      val env1 =
-      list0_cons((x1, t2), env1)
-    }
-  end
+  val t2 =
+  refcnt(TM2laz(t2, env0))
+in
+  evaluate(u1, env1) where
+  {
+  val
+  env1 =
+  refcnt
+  (list0_rc_cons((x1, t2), env1))
+  }
+end
 | _ (*non-TM2lam*) =>
-  TM2app(t1, evaluate(t2, env0))
+  let
+  val t1 = refcnt(t1)
+  in
+  refcnt
+  (TM2app(t1, evaluate(t2, env0)))
+  end
 //
 end
+end // end of [let]
 ) (* end of [evaluate] *)
 
 (* ****** ****** *)
@@ -147,119 +334,171 @@ normalize
 fun
 normize(t0: term2): term1 =
 (
+let
+val t0 =
+refcnt_get0_elt(t0)
+in
 case+ t0 of
-| TM2var(x1) =>
-  TM1var(x1)
-| TM2laz(t1, env1) =>
-  normize(evaluate(t1, env1))
-| TM2lam(t1, env1) =>
-  let
-  val-
+| ~
+TM2var(x1) =>
+refcnt(TM1var(x1))
+| ~
+TM2laz(t1, env1) =>
+normize(evaluate(t1, env1))
+| ~
+TM2lam(t1, env1) =>
+let
+  val t1 =
+  refcnt_get0_elt(t1)
+  val- ~
   TM1lam(x1, u1) = t1
-  in
+in
+  refcnt
+  (
   TM1lam
   ( x1
   , normize(evaluate(u1, env1)))
-  end
-| TM2app(t1, t2) =>
-  TM1app(normize(t1), normize(t2))
+  )
+end
+| ~
+TM2app(t1, t2) =>
+refcnt
+(TM1app(normize(t1), normize(t2)))
+end
 )
 }
 
 (* ****** ****** *)
 
+#macdef
+TM1var_rc(x) =
+refcnt(TM1var(,(x)))
+#macdef
+TM1lam_rc(x, y) =
+refcnt(TM1lam(,(x), ,(y)))
+#macdef
+TM1app_rc(x, y) =
+refcnt(TM1app(,(x), ,(y)))
+
+(* ****** ****** *)
+//
+extern
+fun
+print1_term1
+(t0: !term1): void
+#symload
+print with print1_term1
+//
+implfun
+print1_term1
+  (t0) =
+  print0_term1(refcnt_incref(t0))
+//
+(* ****** ****** *)
+
+implement
+main0() =
+{
+
+(* ****** ****** *)
+
 val K =
 let
-val x = TM1var("x")
-val y = TM1var("y") in
-TM1lam("x", TM1lam("y", x))
+val x = "x"
+val y = "y"
+in
+TM1lam_rc
+( x
+, TM1lam_rc
+  (y, TM1var_rc(x)))
 end
-val K1 =
-let
-val x = TM1var("x")
-val y = TM1var("y") in
-TM1lam("x", TM1lam("y", y))
-end
+
+val () = println!("K = ", K)
 
 (* ****** ****** *)
 
 val S =
 let
-val x = TM1var("x")
-val y = TM1var("y")
-val z = TM1var("z") in
-TM1lam
-( "x"
-,
-TM1lam
-( "y"
-, TM1lam
-  ( "z"
-  , TM1app
-    (TM1app(x, z), TM1app(y, z))
-  )
-)
-)
-end
-
-(* ****** ****** *)
-
-val
-omega =
-let
-val x = TM1var("x")
+val x = "x"
+val y = "y"
+val z = "z"
 in
-TM1lam("x", TM1app(x, x))
+TM1lam_rc
+( x
+,
+TM1lam_rc
+( y
+, 
+TM1lam_rc
+( z
+, 
+TM1app_rc
+(
+TM1app_rc(TM1var_rc(x), TM1var_rc(z))
+,
+TM1app_rc(TM1var_rc(y), TM1var_rc(z))
+)
+)
+)
+)
 end
 
-val
-Omega = TM1app(omega, omega)
+val () = println!("S = ", S)
 
 (* ****** ****** *)
 
-val K1O_nf =
-normalize(TM1app(K1, Omega))
+val K1 = refcnt_incref(K)
+val K2 = refcnt_incref(K)
+val () = refcnt_decref(K)
 
-(* ****** ****** *)
-
-val SKK_nf =
-normalize(TM1app(TM1app(S, K), K))
+val SKK =
+TM1app_rc(TM1app_rc(S, K1), K2)
+val ( ) =
+( print!("SKK_nf = ")
+; print0(normalize(SKK)); println!())
 
 (* ****** ****** *)
 
 val N2 =
 let
-val f = TM1var("f")
-val x = TM1var("x")
+#macdef f = TM1var_rc("f")
+#macdef x = TM1var_rc("x")
 in
-  TM1lam
+  TM1lam_rc
   ( "f"
-  , TM1lam("x", TM1app(f, TM1app(f, x))))
+  , TM1lam_rc("x", TM1app_rc(f, TM1app_rc(f, x))))
 end
 val N3 =
 let
-val f = TM1var("f")
-val x = TM1var("x")
+#macdef f = TM1var_rc("f")
+#macdef x = TM1var_rc("x")
 in
-  TM1lam
-  ( "f"
-  , TM1lam
-    ("x", TM1app(f, TM1app(f, TM1app(f, x)))))
+TM1lam_rc
+( "f"
+,
+TM1lam_rc
+("x"
+,
+TM1app_rc(f, TM1app_rc(f, TM1app_rc(f, TM1app_rc(f, x))))))
 end
 
 (* ****** ****** *)
 //
-val f = TM1var("f")
-val x = TM1var("x")
+#macdef f = TM1var_rc("f")
+#macdef x = TM1var_rc("x")
 //
-val App_N2_N3_nf =
-normalize(TM1app(TM1app(TM1app(N2, N3), f), x))
-val App_N3_N2_nf =
-normalize(TM1app(TM1app(TM1app(N3, N2), f), x))
+val
+App_N2_N3_nf =
+normalize
+(TM1app_rc(TM1app_rc(TM1app_rc(N2, N3), f), x))
 //
-val ((*void*)) = println!("App_2_3 = ", App_N2_N3_nf)
-val ((*void*)) = println!("App_3_2 = ", App_N3_N2_nf)
+val ((*void*)) =
+(print!("App_2_3 = "); print0(normalize(App_N2_N3_nf)); println!())
 //
+(* ****** ****** *)
+
+} // end of [main0]
+
 (* ****** ****** *)
 
 (* end of [LambdaCal_rc.dats] *)

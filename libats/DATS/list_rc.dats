@@ -153,9 +153,51 @@ end
 (* ****** ****** *)
 //
 impltmp
+{x0}//tmp
+list0_rc_copy
+(rfc) =
+refcnt_incref<list0_rc_con(x0)>(rfc)
+//
+impltmp
+{x0}//tmp
+list0_rc_con_copy(con) =
+  ( copy(con) ) where
+{
+fun
+copy
+(con:
+! list0_rc_con(x0)
+)
+: list0_rc_con(x0) =
+let
+impltmp
+gcopy$val<
+list0_rc_con(x0)>(con) = copy(con)
+in
+(
+case+ con of
+|
+list0_rc_nil() =>
+list0_rc_nil()
+|
+list0_rc_cons(x0, xs) =>
+list0_rc_cons
+(gcopy$val<x0>(x0), list0_rc_copy<x0>(xs))
+)
+end
+} (* end of [list0_rc_copy_con] *)
+//
+(* ****** ****** *)
+//
+impltmp
 (x0:vtflt)
 gfree$val<
 list0_rc_con(x0)>(con) = list0_rc_con_free<x0>(con)
+//
+impltmp
+(x0:vtflt)
+gcopy$val<
+list0_rc_con(x0)>(con) = list0_rc_con_copy<x0>(con)
 //
 (* ****** ****** *)
 
