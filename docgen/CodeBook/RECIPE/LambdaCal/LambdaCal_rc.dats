@@ -38,6 +38,12 @@ where
 term1 = refcnt(term1_con)
 
 (* ****** ****** *)
+
+#symload ^ with refcnt_incref
+#symload ~ with refcnt_decref
+#symload ! with refcnt_get0_elt
+
+(* ****** ****** *)
 //
 fun
 term1_con_copy
@@ -49,12 +55,9 @@ case+ t0 of
 |
 TM1var(x1) => TM1var(x1)
 |
-TM1lam(x1, t1) =>
-TM1lam(x1, refcnt_incref(t1))
+TM1lam(x1, t1) => TM1lam(x1, ^t1)
 |
-TM1app(t1, t2) =>
-TM1app
-(refcnt_incref(t1), refcnt_incref(t2))
+TM1app(t1, t2) => TM1app(^t1, ^t2)
 ) where
 {
 impltmp
@@ -73,10 +76,9 @@ case+ t0 of
 | ~
 TM1var(x1) => ()
 | ~
-TM1lam(x1, t1) => refcnt_decref(t1)
+TM1lam(x1, t1) => ~t1
 | ~
-TM1app(t1, t2) =>
-(refcnt_decref(t1); refcnt_decref(t2))
+TM1app(t1, t2) => (~t1; ~t2)
 ) where
 {
 impltmp
@@ -101,10 +103,8 @@ let
 #symload
 print with print0_term1
 //
-val t0 = refcnt_get0_elt(t0)
-//
 in
-case+ t0 of
+case+ !t0 of
 | ~
 TM1var(x1) =>
 print!("TM1var(", x1, ")")
@@ -146,18 +146,13 @@ case+ t0 of
 TM2var(x1) => TM2var(x1)
 |
 TM2lam(t1, env) =>
-TM2lam
-( refcnt_incref(t1)
-, refcnt_incref(env))
+TM2lam(^t1, ^env)
 |
 TM2laz(t1, env) =>
-TM2laz
-( refcnt_incref(t1)
-, refcnt_incref(env))
+TM2laz(^t1, ^env)
 |
 TM2app(t1, t2) =>
-TM2app
-(refcnt_incref(t1), refcnt_incref(t2))
+TM2app(^t1, ^t2)
 ) where
 {
 impltmp
@@ -176,14 +171,11 @@ case+ t0 of
 | ~
 TM2var(x1) => ()
 | ~
-TM2lam(t1, env) =>
-(refcnt_decref(t1); refcnt_decref(env))
+TM2lam(t1, env) => (~t1; ~env)
 | ~
-TM2laz(t1, env) =>
-(refcnt_decref(t1); refcnt_decref(env))
+TM2laz(t1, env) => (~t1; ~env)
 | ~
-TM2app(t1, t2) =>
-( refcnt_decref(t1); refcnt_decref(t2) )
+TM2app( t1, t2 ) => (~t1; ~t2)
 ) where
 {
 impltmp
@@ -202,12 +194,7 @@ implement
 tenv2_find
 (xts, x0) =
 (
-let
-val
-xts =
-refcnt_get0_elt(xts)
-in
-case+ xts of
+case+ !xts of
 | ~
 list0_rc_nil
 ((*void*)) => refcnt(TM2var(x0))
@@ -226,7 +213,6 @@ end
 else
 (gfree$val(t1); tenv2_find(xts, x0))
 end
-end // end of [let]
 )
 
 (* ****** ****** *)
@@ -281,11 +267,8 @@ end
 | ~
 TM1app(t1, t2) =>
 let
-val
-env1 =
-refcnt_incref(env0)
 val t1 =
-evaluate(t1, env1)
+evaluate(t1, ^env0)
 val t1 =
 refcnt_get0_elt(t1)
 in
@@ -390,9 +373,7 @@ print1_term1
 print with print1_term1
 //
 implfun
-print1_term1
-  (t0) =
-  print0_term1(refcnt_incref(t0))
+print1_term1(t0) = print0_term1(^t0)
 //
 (* ****** ****** *)
 
@@ -446,13 +427,11 @@ end
 val () = println!("S = ", S)
 
 (* ****** ****** *)
-
-val K1 = refcnt_incref(K)
-val K2 = refcnt_incref(K)
-val () = refcnt_decref(K)
-
 val SKK =
-TM1app_rc(TM1app_rc(S, K1), K2)
+TM1app_rc
+(TM1app_rc(S, ^K), ^K)
+val ( ) = refcnt_decref(K)
+(* ****** ****** *)
 val ( ) =
 ( print!("SKK_nf = ")
 ; print0(normalize(SKK)); println!())
