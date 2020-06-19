@@ -1348,7 +1348,7 @@ case+ knd of
   (
     //
     // given =
-    // $TEMPTORYLOCS/<path>
+    // $PATSHOMELOCS/<path>
     //
     aux_homelocs(given)
   )

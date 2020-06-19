@@ -731,7 +731,7 @@ aux_tmparg_marglst
   ) :<cloref1> void = let
     val () = prerr_error2_loc (x.t1mpmarg_loc)
     val () = filprerr_ifdebug "i1mpdec_tr_main: aux_tmparg_marglst"
-    val () = prerr ": the template argument group is expected to be contain "
+    val () = prerr ": the template argument group is expected to contain "
     val () = if serr > 0 then prerr_string "more components."
     val () = if serr < 0 then prerr_string "fewer components."
     val () = prerr_newline ()

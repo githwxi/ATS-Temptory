@@ -1,5 +1,7 @@
 {
     "dependencies": {
-        "temptory-hx-csv-process": "^1.0.1"
+        "temptory-hx-csv-parse": "^1.0.3"
+	,
+        "temptory-hx-csv-process": "^1.0.2"
     }
 }

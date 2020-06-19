@@ -9,10 +9,10 @@ implfun main1() = 0
 /temptory_staload_bucs320.hats"
 //
 #include
-"$PATSHOMELOCS\
+"$TEMPTORYLOCS\
 /temptory-hx-csv-process/mylibies.hats"
 #include
-"$PATSHOMELOCS\
+"$TEMPTORYLOCS\
 /temptory-hx-csv-process/mydepies.hats"
 //
 (* ****** ****** *)
