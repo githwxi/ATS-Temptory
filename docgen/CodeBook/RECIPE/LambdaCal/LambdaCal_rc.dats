@@ -242,23 +242,38 @@ val
 t0 = !t0
 in
 case+ t0 of
+//
 | ~
 TM1var(x0) =>
 let
 val
-t0 =
+tx =
 tenv2_find(env0, x0)
 val
-t0 = !t0
+( pf
+, fp
+| p0) = vtakeout(tx)
 in
-case+ t0 of
-| ~
+case+ !p0 of
+|(*!*)
 TM2laz
 (t1, env1) =>
-evaluate(t1, env1)
-| _(*non-TM2laz*) =>
-refcnt_make_elt(t0)
+let
+prval () = fp(pf)
+in
+evaluate
+(t1, env1) where
+{
+val-
+~TM2laz(t1, env1) = !tx
+}
 end
+| _(*non-TM2laz*) =>
+let
+prval () = fp(pf) in tx
+end
+end
+//
 |(*!*)
 TM1lam(x1, t1) =>
 let
@@ -266,12 +281,12 @@ val t0 = refcnt(t0)
 in
 refcnt(TM2lam(t0, env0))
 end
+//
 | ~
 TM1app(t1, t2) =>
 let
 val
-t1 =
-evaluate(t1, ^env0)
+t1 = evaluate(t1, ^env0)
 val
 t1 = !t1
 in
@@ -286,13 +301,13 @@ let
   val t2 =
   refcnt(TM2laz(t2, env0))
 in
-  evaluate(u1, env1) where
-  {
+evaluate(u1, env1) where
+{
   val
   env1 =
   refcnt
   (list0_rc_cons((x1, t2), env1))
-  }
+}
 end
 | _ (*non-TM2lam*) =>
   let
