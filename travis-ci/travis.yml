@@ -40,28 +40,36 @@ before_script:
   - date
 
 script:
-  # Building ATS1
+  # Build ATS1
   - cd ${ATSHOME}
   # ./configure&&make CC=${GCC} all
   - ./configure&&make CC=${GCC} all_ngc
-  # Building ATS2
+  # Build ATS2
   - cd ${PATSHOME}
   - ./configure&&make CC=${GCC} all
-  # Building Temptory
+  # Build tempopt
   - cd $TEMPTORY
-  - (cd srcgen && make -f Makefile)
-  - (cp -f srcgen/tempopt bin/tempopt)
-  # Building tempacc
+  - (cd srcgen&&make -f Makefile)
+  - (cp -f srcgen/BUILD/tempopt bin/.)
+  # Testing CBOOT
+  - (cd srcgen && make CBOOT)
+  - (cd srcgen/CBOOT && make tempopt && ./tempopt)
+  # Build tempacc
   - (cd utils/tempacc&&make copy build)
   - (cp utils/tempacc/BUILD/tempacc bin/.)
+  # Build mytempacc
+  - (cd utils/mytempacc&&make copy build)
+  - (cp utils/mytempacc/BUILD/mytempacc bin/.)
   # Testing of all sorts
   - echo 'running unit-tests...'
   - (cd libats/libc/TEST && make -f Makefile testall)
   - (cd libats/temp/TEST && make -f Makefile testall)
   - (cd libats/temp/bucs320/TEST && make -f Makefile testall)
   - (cd libats/temp/bucs520/TEST && make -f Makefile testall)
-  - (cd contrib/hwxi/TEST00 && make -f Makefile testall)
-  - (cd contrib/hwxi/TEST01 && make -f Makefile testall)
+  - (cd docgen/UNSORTED/CODE && make -f Makefile testall)
+  - (cd docgen/CodeBook/RECIPE && make -f Makefile_test testall)
+  - (cd contrib/githwxi/TEST00 && make -f Makefile testall)
+  - (cd contrib/githwxi/TEST01 && make -f Makefile testall)
 
 after_script:
   - date
