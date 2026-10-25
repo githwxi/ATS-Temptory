@@ -3,7 +3,7 @@ For supporting template-based programming
 
 ## Build Status
 
-* [![Ubuntu CI](https://github.com/githwxi/ATS-Temptory/actions/workflows/ubuntu-ci.yml/badge.svg)](https://github.com/githwxi/ATS-Temptory/actions/workflows/ubuntu-ci.yml) Ubuntu
+* [![Scheduled CI](https://github.com/githwxi/ATS-Temptory/actions/workflows/ubuntu-ci.yml/badge.svg?label=Scheduled%20CI)](https://github.com/githwxi/ATS-Temptory/actions/workflows/ubuntu-ci.yml) Ubuntu
 
 The Ubuntu CI workflow builds ATS1, ATS2, and the Temptory tools, then runs
 the project test suites. It runs every Monday at 2:00 UTC and can also be
