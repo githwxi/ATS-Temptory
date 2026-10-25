@@ -21,7 +21,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgc-dev libgmp-dev wamerican
+          sudo apt-get install -y libgc-dev libgmp-dev libpcre3-dev wamerican
           sudo ln -sf /usr/share/dict/american-english /usr/share/dict/words
 
       - name: Set ATS environment
