@@ -11,6 +11,8 @@
 #
 ######
 #
+set -e
+
 ATSVER=$1
 #
 ATSPACK=\
@@ -20,7 +22,6 @@ ATSPACKTGZ=${ATSPACK}.tgz
 #
 ######
 #
-TARZXF="tar -zxf"
 #
 ######
 #
@@ -29,7 +30,7 @@ ATSPACKPATH=${SCRIPT_DIR}/../xassets/ATS1/${ATSPACKTGZ}
 #
 ######
 #
-${TARZXF} -C "$HOME" "$ATSPACKPATH"
+tar -C "$HOME" -zxf "$ATSPACKPATH"
 #
 ######
 #
@@ -53,6 +54,6 @@ ${TARZXF} -C "$HOME" "$ATSPACKPATH"
 #
 ######
 
-(mv -f "$HOME/$ATSPACK" "$HOME/ATS1")
+mv -f "$HOME/$ATSPACK" "$HOME/ATS1"
 
 ###### end of [install-ats1.sh] ######
