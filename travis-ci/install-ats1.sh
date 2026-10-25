@@ -20,27 +20,16 @@ ATSPACKTGZ=${ATSPACK}.tgz
 #
 ######
 #
-ATSLANGURL_srcfg=\
-https://sourceforge.net/projects/ats-lang
-#
-ATSLANGURL_github=https://ats-lang.github.io
-#
-######
-#
-WGETQ="wget -q"
 TARZXF="tar -zxf"
 #
 ######
 #
-${WGETQ} \
-${ATSLANGURL_github}/ATS-Anairiats/${ATSPACKTGZ}
-#
-# ${WGETQ} \
-# ${ATSLANGURL_srcfg}/files/ats-lang/anairiats-latest/${ATSPACKTGZ}
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+ATSPACKPATH=${SCRIPT_DIR}/../xassets/ATS1/${ATSPACKTGZ}
 #
 ######
 #
-${TARZXF} ${ATSPACKTGZ}
+${TARZXF} -C "$HOME" "$ATSPACKPATH"
 #
 ######
 #
@@ -64,6 +53,6 @@ ${TARZXF} ${ATSPACKTGZ}
 #
 ######
 
-(mv -f $ATSPACK $HOME/ATS1)
+(mv -f "$HOME/$ATSPACK" "$HOME/ATS1")
 
 ###### end of [install-ats1.sh] ######

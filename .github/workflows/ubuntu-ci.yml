@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    env:
+      ATSHOMERELOC: ATS-0.2.12
+      TEMPTORY: ${{ github.workspace }}
+      GCC: gcc
+      CLANG: clang
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libgc-dev libgmp-dev
+
+      - name: Set ATS environment
+        run: |
+          echo "ATSHOME=$HOME/ATS1" >> "$GITHUB_ENV"
+          echo "PATSHOME=$HOME/ATS2" >> "$GITHUB_ENV"
+
+      - name: Install ATS1
+        run: ./travis-ci/install-ats1.sh 0.2.12
+
+      - name: Install ATS2
+        run: ./travis-ci/install-ats2.sh 0.3.12
+
+      - name: Build ATS1
+        run: cd "$HOME/ATS1" && ./configure && make CC="$GCC" all_ngc
+
+      - name: Build ATS2
+        run: cd "$HOME/ATS2" && ./configure && make CC="$GCC" all
+
+      - name: Build Temptory tools and run test suites
+        shell: bash
+        run: |
+          export PATSHOME="$HOME/ATS2"
+          export PATH="$PATH:$PATSHOME/bin:$TEMPTORY/bin"
+
+          cd "$TEMPTORY"
+          (cd srcgen && make -f Makefile)
+          cp -f srcgen/BUILD/tempopt bin/.
+          (cd srcgen && make CBOOT)
+          (cd srcgen/CBOOT && make tempopt && ./tempopt)
+          (cd utils/tempacc && make copy build)
+          cp utils/tempacc/BUILD/tempacc bin/.
+          (cd utils/mytempacc && make copy build)
+          cp utils/mytempacc/BUILD/mytempacc bin/.
+
+          echo 'running unit-tests...'
+          (cd libats/libc/TEST && make -f Makefile testall)
+          (cd libats/temp/TEST && make -f Makefile testall)
+          (cd libats/temp/bucs320/TEST && make -f Makefile testall)
+          (cd libats/temp/bucs520/TEST && make -f Makefile testall)
+          (cd docgen/UNSORTED/CODE && make -f Makefile testall)
+          (cd docgen/CodeBook/RECIPE && make -f Makefile_test testall)
+          (cd contrib/githwxi/TEST00 && make -f Makefile testall)
+          (cd contrib/githwxi/TEST01 && make -f Makefile testall)
